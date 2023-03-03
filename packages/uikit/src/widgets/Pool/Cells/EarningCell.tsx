@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import BigNumber from "bignumber.js";
-import { BIG_ZERO } from "@spaceinvaders-swap/utils/bigNumber";
-import { getBalanceNumber } from "@spaceinvaders-swap/utils/formatBalance";
-import { useTranslation } from "@spaceinvaders-swap/localization";
+import { BIG_ZERO } from "@pancakeswap/utils/bigNumber";
+import { getBalanceNumber } from "@pancakeswap/utils/formatBalance";
+import { useTranslation } from "@pancakeswap/localization";
 
 import { Skeleton, Text, Flex, Box, Balance } from "../../../components";
 import useMatchBreakpoints from "../../../contexts/MatchBreakpoints/useMatchBreakpoints";

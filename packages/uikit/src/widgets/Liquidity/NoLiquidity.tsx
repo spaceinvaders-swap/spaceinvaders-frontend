@@ -1,4 +1,4 @@
-import { useTranslation } from "@spaceinvaders-swap/localization";
+import { useTranslation } from "@pancakeswap/localization";
 import { Text } from "../../components";
 
 export function NoLiquidity() {

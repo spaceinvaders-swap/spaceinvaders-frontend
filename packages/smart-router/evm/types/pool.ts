@@ -1,4 +1,4 @@
-import type { SerializedWrappedToken } from '@spaceinvaders-swap/token-lists'
+import type { SerializedWrappedToken } from '@pancakeswap/token-lists'
 
 export interface BasePool {
   lpSymbol: string

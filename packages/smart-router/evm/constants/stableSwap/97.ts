@@ -1,4 +1,4 @@
-import { bscTestnetTokens } from '@spaceinvaders-swap/tokens'
+import { bscTestnetTokens } from '@pancakeswap/tokens'
 
 import { StableSwapPool } from '../../types/pool'
 

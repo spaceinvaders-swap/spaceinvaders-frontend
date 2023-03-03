@@ -1,6 +1,6 @@
 import { BigNumber } from "bignumber.js";
 import { useMemo } from "react";
-import { formatLpBalance, getBalanceNumber } from "@spaceinvaders-swap/utils/formatBalance";
+import { formatLpBalance, getBalanceNumber } from "@pancakeswap/utils/formatBalance";
 import { Flex } from "../../../../components/Box";
 import { Balance } from "../../../../components/Balance";
 import { Heading } from "../../../../components/Heading";

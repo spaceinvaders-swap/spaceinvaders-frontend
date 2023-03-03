@@ -1,6 +1,6 @@
-import { ChainId, Currency, CurrencyAmount, Pair, Token } from '@spaceinvaders-swap/sdk'
+import { ChainId, Currency, CurrencyAmount, Pair, Token } from '@pancakeswap/sdk'
 import { BigNumber } from '@ethersproject/bignumber'
-import { createMulticall, Call } from '@spaceinvaders-swap/multicall'
+import { createMulticall, Call } from '@pancakeswap/multicall'
 
 import { wrappedCurrency } from '../utils/currency'
 import ISpaceinvadersPairABI from '../abis/ISpaceinvadersPair.json'

@@ -1,5 +1,5 @@
 import { formatUnits } from '@ethersproject/units'
-import { fetchBalance, FetchBalanceArgs, FetchCoinResult } from '@spaceinvaders-swap/awgmi/core'
+import { fetchBalance, FetchBalanceArgs, FetchCoinResult } from '@pancakeswap/awgmi/core'
 
 import { QueryConfig } from '../types'
 import { useCoin } from './useCoin'

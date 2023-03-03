@@ -9,7 +9,7 @@ import {
   ONE,
   Price,
   computePriceImpact,
-} from '@spaceinvaders-swap/sdk'
+} from '@pancakeswap/sdk'
 
 import { TradeWithStableSwap } from './types'
 import { getMidPrice } from './utils/route'

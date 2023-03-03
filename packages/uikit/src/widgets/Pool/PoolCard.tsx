@@ -1,4 +1,4 @@
-import { useTranslation } from "@spaceinvaders-swap/localization";
+import { useTranslation } from "@pancakeswap/localization";
 import { ReactElement } from "react";
 import { Flex } from "../../components/Box";
 import { CardBody, CardRibbon } from "../../components/Card";

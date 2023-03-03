@@ -9,7 +9,7 @@ Spaceinvaders Eslint config with:
 ## Usage
 
 ```
-npx install-peerdeps --dev @spaceinvaders-swap/eslint-config-spaceinvaders
+npx install-peerdeps --dev @pancakeswap/eslint-config-spaceinvaders
 ```
 
-Add `"extends": "@spaceinvaders-swap/eslint-config-spaceinvaders"` to your eslint config file.
+Add `"extends": "@pancakeswap/eslint-config-spaceinvaders"` to your eslint config file.

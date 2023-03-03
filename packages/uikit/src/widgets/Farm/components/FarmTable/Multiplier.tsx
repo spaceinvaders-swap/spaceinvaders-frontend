@@ -1,4 +1,4 @@
-import { useTranslation } from "@spaceinvaders-swap/localization";
+import { useTranslation } from "@pancakeswap/localization";
 import styled from "styled-components";
 import { Text } from "../../../../components/Text";
 import { HelpIcon } from "../../../../components/Svg";
@@ -68,7 +68,7 @@ const Multiplier: React.FunctionComponent<React.PropsWithChildren<FarmTableMulti
           <Link
             mt="8px"
             display="inline"
-            href="https://medium.com/spaceinvaders-swap/farm-mutlipliers-visual-update-1f5f5f615afd"
+            href="https://medium.com/pancakeswap/farm-mutlipliers-visual-update-1f5f5f615afd"
             external
           >
             {t("Read more")}

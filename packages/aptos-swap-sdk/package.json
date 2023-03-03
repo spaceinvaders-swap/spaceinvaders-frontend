@@ -1,5 +1,5 @@
 {
-  "name": "@spaceinvaders-swap/aptos-swap-sdk",
+  "name": "@pancakeswap/aptos-swap-sdk",
   "license": "MIT",
   "version": "0.0.2",
   "description": "🛠 An SDK for building applications on top of Spaceinvadersswap Aptos.",
@@ -11,11 +11,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/spaceinvaders-swap/spaceinvaders-frontend.git",
+    "url": "git+https://github.com/pancakeswap/spaceinvaders-frontend.git",
     "directory": "packages/atpos-swap-sdk"
   },
   "keywords": [
-    "spaceinvaders-swap",
+    "pancakeswap",
     "aptos"
   ],
   "scripts": {
@@ -27,7 +27,7 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "dependencies": {
-    "@spaceinvaders-swap/swap-sdk-core": "*"
+    "@pancakeswap/swap-sdk-core": "*"
   },
   "peerDependencies": {
     "aptos": "^1.3.14"
@@ -47,5 +47,10 @@
     "printWidth": 120,
     "semi": false,
     "singleQuote": true
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/pancakeswap/spaceinvaders-frontend/issues"
+  },
+  "homepage": "https://github.com/pancakeswap/spaceinvaders-frontend#readme",
+  "author": ""
 }

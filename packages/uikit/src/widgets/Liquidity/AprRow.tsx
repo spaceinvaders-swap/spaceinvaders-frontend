@@ -1,5 +1,5 @@
-import { useTranslation } from "@spaceinvaders-swap/localization";
-import { formatAmount } from "@spaceinvaders-swap/utils/formatInfoNumbers";
+import { useTranslation } from "@pancakeswap/localization";
+import { formatAmount } from "@pancakeswap/utils/formatInfoNumbers";
 import { Text, TooltipText } from "../../components/Text";
 import { useTooltip } from "../../hooks/useTooltip";
 import { RowBetween } from "../../components/Row";

@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, ERC20Token, Pair as V2Pair, Percent, Price, TradeType } from '@spaceinvaders-swap/sdk'
+import { Currency, CurrencyAmount, ERC20Token, Pair as V2Pair, Percent, Price, TradeType } from '@pancakeswap/sdk'
 
 import { RouteType } from './bestTrade'
 import { BasePair } from './pair'

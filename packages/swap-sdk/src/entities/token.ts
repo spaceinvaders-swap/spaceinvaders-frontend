@@ -1,4 +1,4 @@
-import { Token } from '@spaceinvaders-swap/swap-sdk-core'
+import { Token } from '@pancakeswap/swap-sdk-core'
 import { validateAndParseAddress } from '../utils'
 
 export interface SerializedToken {

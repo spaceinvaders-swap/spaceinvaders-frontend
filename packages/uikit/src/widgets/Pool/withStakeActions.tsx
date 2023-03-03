@@ -1,7 +1,7 @@
 import BigNumber from "bignumber.js";
 import { ReactElement } from "react";
-import { useTranslation } from "@spaceinvaders-swap/localization";
-import { getBalanceNumber } from "@spaceinvaders-swap/utils/formatBalance";
+import { useTranslation } from "@pancakeswap/localization";
+import { getBalanceNumber } from "@pancakeswap/utils/formatBalance";
 import { DeserializedPool } from "./types";
 import NotEnoughTokensModal from "../Modal/NotEnoughTokensModal";
 import { Button, IconButton } from "../../components/Button";

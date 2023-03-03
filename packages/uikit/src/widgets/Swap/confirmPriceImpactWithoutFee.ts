@@ -1,5 +1,5 @@
-import { Percent } from "@spaceinvaders-swap/swap-sdk-core";
-import { ContextApi } from "@spaceinvaders-swap/localization";
+import { Percent } from "@pancakeswap/swap-sdk-core";
+import { ContextApi } from "@pancakeswap/localization";
 
 /**
  * Given the price impact, get user confirmation.

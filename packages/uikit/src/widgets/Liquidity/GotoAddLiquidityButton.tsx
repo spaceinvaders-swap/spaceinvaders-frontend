@@ -1,4 +1,4 @@
-import { useTranslation } from "@spaceinvaders-swap/localization";
+import { useTranslation } from "@pancakeswap/localization";
 import { AddIcon, Button } from "../../components";
 import { NextLinkFromReactRouter } from "../../components/NextLink";
 

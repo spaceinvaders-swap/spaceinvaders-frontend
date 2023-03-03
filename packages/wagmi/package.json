@@ -1,14 +1,14 @@
 {
-  "name": "@spaceinvaders-swap/wagmi",
+  "name": "@pancakeswap/wagmi",
   "version": "0.1.0",
   "license": "WAGMIT",
-  "description": "wagmi adaptor for spaceinvaders-swap",
+  "description": "wagmi adaptor for pancakeswap",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/spaceinvaders-swap/spaceinvaders-frontend.git",
+    "url": "https://github.com/pancakeswap/spaceinvaders-frontend.git",
     "directory": "packages/wagmi"
   },
   "scripts": {

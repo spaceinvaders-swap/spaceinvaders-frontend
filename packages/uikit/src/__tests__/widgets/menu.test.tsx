@@ -45,7 +45,7 @@ it("renders correctly", () => {
         activeItem="Trade"
         activeSubItem="Exchange"
         buyInvaLabel="Buy INVA"
-        buyInvaLink="https://spaceinvaders-swap.finance/swap?outputCurrency=0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82&chainId=56"
+        buyInvaLink="https://pancakeswap.finance/swap?outputCurrency=0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82&chainId=56"
       >
         body
       </Menu>

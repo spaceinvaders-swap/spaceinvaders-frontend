@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-shadow */
-import { disconnect as disconnectCore } from '@spaceinvaders-swap/awgmi/core'
+import { disconnect as disconnectCore } from '@pancakeswap/awgmi/core'
 import { useMutation } from './utils/useMutation'
 
 export type UseDisconnectConfig = {

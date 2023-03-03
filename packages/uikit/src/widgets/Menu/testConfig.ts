@@ -162,7 +162,7 @@ export const userMenulinks: DropdownMenuItems[] = [
   },
   {
     type: DropdownMenuItemType.EXTERNAL_LINK,
-    href: "https://spaceinvaders-swap.finance",
+    href: "https://pancakeswap.finance",
     label: "Link",
   },
   {

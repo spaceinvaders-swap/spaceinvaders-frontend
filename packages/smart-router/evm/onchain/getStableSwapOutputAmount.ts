@@ -1,6 +1,6 @@
 import { BigNumber } from '@ethersproject/bignumber'
-import { ChainId, Currency, CurrencyAmount } from '@spaceinvaders-swap/sdk'
-import { Call, createMulticall } from '@spaceinvaders-swap/multicall'
+import { ChainId, Currency, CurrencyAmount } from '@pancakeswap/sdk'
+import { Call, createMulticall } from '@pancakeswap/multicall'
 
 import { Provider, StableSwapPair } from '../types'
 import { wrappedCurrencyAmount } from '../utils/currency'

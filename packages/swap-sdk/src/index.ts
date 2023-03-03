@@ -8,4 +8,4 @@ export * from './trade'
 export * from './entities'
 export * from './router'
 
-export * from '@spaceinvaders-swap/swap-sdk-core'
+export * from '@pancakeswap/swap-sdk-core'

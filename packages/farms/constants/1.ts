@@ -1,5 +1,5 @@
-import { ethereumTokens } from '@spaceinvaders-swap/tokens'
-import { SerializedFarmConfig } from '@spaceinvaders-swap/farms'
+import { ethereumTokens } from '@pancakeswap/tokens'
+import { SerializedFarmConfig } from '@pancakeswap/farms'
 
 const farms: SerializedFarmConfig[] = [
   {

@@ -1,6 +1,6 @@
 import { memo, ReactNode } from "react";
 import styled from "styled-components";
-import { useTranslation } from "@spaceinvaders-swap/localization";
+import { useTranslation } from "@pancakeswap/localization";
 import { LinkExternal, Flex, Svg, Image, Button } from "../../components";
 
 const Wrapper = styled.div<{ $isSide: boolean }>`
@@ -50,7 +50,7 @@ const Footer: React.FC<
   helpUrl,
   externalText,
   externalLinkUrl,
-  helpImage = <Image src="https://cdn.spaceinvaders-swap.com/help/help.png" alt="Get some help" width={160} height={108} />,
+  helpImage = <Image src="https://cdn.pancakeswap.com/help/help.png" alt="Get some help" width={160} height={108} />,
 }) => {
   const { t } = useTranslation();
   const isSide = variant === "side";

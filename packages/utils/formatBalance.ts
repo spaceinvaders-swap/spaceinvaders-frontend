@@ -1,8 +1,8 @@
 import BigNumber from 'bignumber.js'
 import { BigNumber as EthersBigNumber, FixedNumber } from '@ethersproject/bignumber'
 import { formatUnits } from '@ethersproject/units'
-import { getLanguageCodeFromLS } from '@spaceinvaders-swap/localization'
-import { getFullDecimalMultiplier } from '@spaceinvaders-swap/utils/getFullDecimalMultiplier'
+import { getLanguageCodeFromLS } from '@pancakeswap/localization'
+import { getFullDecimalMultiplier } from '@pancakeswap/utils/getFullDecimalMultiplier'
 import _trimEnd from 'lodash/trimEnd'
 
 /**

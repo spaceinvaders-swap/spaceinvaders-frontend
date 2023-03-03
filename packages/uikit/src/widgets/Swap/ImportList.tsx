@@ -1,5 +1,5 @@
-import { useTranslation } from "@spaceinvaders-swap/localization";
-import { useTheme } from "@spaceinvaders-swap/hooks";
+import { useTranslation } from "@pancakeswap/localization";
+import { useTheme } from "@pancakeswap/hooks";
 import { useState } from "react";
 import styled from "styled-components";
 import { AutoColumn, Flex, Link, Text, Checkbox, Button, Message, Box, RowBetween, RowFixed } from "../../components";

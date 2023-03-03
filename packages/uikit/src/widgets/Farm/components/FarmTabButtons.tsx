@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useRouter } from "next/router";
-import { useTranslation } from "@spaceinvaders-swap/localization";
+import { useTranslation } from "@pancakeswap/localization";
 import { NextLinkFromReactRouter } from "../../../components/NextLink";
 import { NotificationDot } from "../../../components/NotificationDot";
 import { ButtonMenu, ButtonMenuItem } from "../../../components/ButtonMenu";

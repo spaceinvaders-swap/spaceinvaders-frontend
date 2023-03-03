@@ -1,5 +1,5 @@
-import { goerliTestnetTokens } from '@spaceinvaders-swap/tokens'
-import { SerializedFarmConfig } from '@spaceinvaders-swap/farms'
+import { goerliTestnetTokens } from '@pancakeswap/tokens'
+import { SerializedFarmConfig } from '@pancakeswap/farms'
 
 const priceHelperLps: SerializedFarmConfig[] = [
   {

@@ -1,4 +1,4 @@
-# @spaceinvaders-swap/token-lists
+# @pancakeswap/token-lists
 
 ## 0.0.5
 

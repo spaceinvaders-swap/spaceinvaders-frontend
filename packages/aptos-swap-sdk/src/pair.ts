@@ -13,7 +13,7 @@ import {
   CurrencyAmount,
   sqrt,
   MINIMUM_LIQUIDITY,
-} from '@spaceinvaders-swap/swap-sdk-core'
+} from '@pancakeswap/swap-sdk-core'
 import { TypeTagParser, TxnBuilderTypes, HexString } from 'aptos'
 
 import { Currency } from './currency'

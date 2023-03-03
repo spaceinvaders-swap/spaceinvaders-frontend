@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useTranslation } from "@spaceinvaders-swap/localization";
+import { useTranslation } from "@pancakeswap/localization";
 
 import { Text, ChevronDownIcon } from "../../../components";
 import { BaseCell } from "./BaseCell";

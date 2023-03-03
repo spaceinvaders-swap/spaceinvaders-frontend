@@ -1,4 +1,4 @@
-import { Percent } from '@spaceinvaders-swap/swap-sdk-core'
+import { Percent } from '@pancakeswap/swap-sdk-core'
 import { ERC20Token } from './entities/token'
 
 export enum ChainId {

@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, ERC20Token, Pair, Percent, Price, Trade, TradeType, JSBI } from '@spaceinvaders-swap/sdk'
+import { Currency, CurrencyAmount, ERC20Token, Pair, Percent, Price, Trade, TradeType, JSBI } from '@pancakeswap/sdk'
 import invariant from 'tiny-invariant'
 
 import { RouteType, RouteWithStableSwap, StableSwapFeeRaw, StableSwapPair, StableSwapFeePercent } from '../types'

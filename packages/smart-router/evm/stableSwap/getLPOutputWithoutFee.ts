@@ -1,4 +1,4 @@
-import { CurrencyAmount, Currency, Percent } from '@spaceinvaders-swap/sdk'
+import { CurrencyAmount, Currency, Percent } from '@pancakeswap/sdk'
 
 import { getLPOutput, GetLPOutputParams } from './getLPOutput'
 

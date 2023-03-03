@@ -1,4 +1,4 @@
-# @spaceinvaders-swap/multicall
+# @pancakeswap/multicall
 
 ## 0.0.2
 

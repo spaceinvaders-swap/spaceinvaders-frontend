@@ -16,7 +16,7 @@ export {
   ChainNotConfiguredError,
   ConnectorUnauthorizedError,
   ConnectorAlreadyConnectedError,
-} from '@spaceinvaders-swap/awgmi/core'
+} from '@pancakeswap/awgmi/core'
 
 export * from './client'
 export * from './context'

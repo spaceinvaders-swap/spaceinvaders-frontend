@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { AtomBox } from "@spaceinvaders-swap/ui";
-import { useTranslation } from "@spaceinvaders-swap/localization";
+import { AtomBox } from "@pancakeswap/ui";
+import { useTranslation } from "@pancakeswap/localization";
 import { Text, Button } from "../../components";
 
 export function FindOtherLP() {

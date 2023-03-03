@@ -1,4 +1,4 @@
-import { useTranslation } from "@spaceinvaders-swap/localization";
+import { useTranslation } from "@pancakeswap/localization";
 import { memo } from "react";
 import { Text, TooltipText } from "../../../../components/Text";
 import { Tag, TagProps } from "../../../../components/Tag/index";

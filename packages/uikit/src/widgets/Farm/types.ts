@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import BigNumber from "bignumber.js";
-import { Token } from "@spaceinvaders-swap/sdk";
+import { Token } from "@pancakeswap/sdk";
 
 export interface FarmTableEarnedProps {
   earnings: number;

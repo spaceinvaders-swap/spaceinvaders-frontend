@@ -1,4 +1,4 @@
-const PATH = `https://cdn.spaceinvaders-swap.com/sequnce-assets/`;
+const PATH = `https://cdn.pancakeswap.com/sequnce-assets/`;
 
 export const BNB2INVA_PATH = `${PATH}bnb2inva/bnb2inva-`;
 export const BNB2INVA_COUNTS = 31;

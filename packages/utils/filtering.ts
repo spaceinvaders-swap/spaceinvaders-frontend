@@ -1,5 +1,5 @@
-import { TokenInfo } from '@spaceinvaders-swap/token-lists'
-import { Token } from '@spaceinvaders-swap/swap-sdk-core'
+import { TokenInfo } from '@pancakeswap/token-lists'
+import { Token } from '@pancakeswap/swap-sdk-core'
 
 export function createFilterToken<T extends TokenInfo | Token>(
   search: string,

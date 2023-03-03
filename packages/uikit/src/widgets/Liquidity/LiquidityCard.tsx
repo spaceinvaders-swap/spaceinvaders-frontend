@@ -1,4 +1,4 @@
-import { AtomBox, AtomBoxProps } from "@spaceinvaders-swap/ui";
+import { AtomBox, AtomBoxProps } from "@pancakeswap/ui";
 import styled from "styled-components";
 
 import { Card, CardBody, CardFooter } from "../../components/Card";

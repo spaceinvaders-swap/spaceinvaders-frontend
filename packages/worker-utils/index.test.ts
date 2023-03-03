@@ -3,12 +3,12 @@ import { CORS_ALLOW, isOriginAllowed } from './index'
 
 describe('worker-utils', () => {
   it.each([
-    ['https://spaceinvaders-swap.finance', true],
-    ['https://spaceinvaders-swap.com', true],
-    ['https://aptosspaceinvaders-swap.finance', false],
-    ['https://aptos.spaceinvaders-swap.finance', true],
-    ['https://spaceinvaders-swap.finance.com', false],
-    ['http://spaceinvaders-swap.finance', false],
+    ['https://pancakeswap.finance', true],
+    ['https://pancakeswap.com', true],
+    ['https://aptospancakeswap.finance', false],
+    ['https://aptos.pancakeswap.finance', true],
+    ['https://pancakeswap.finance.com', false],
+    ['http://pancakeswap.finance', false],
     ['https://spaceinvaders.run', false],
     ['https://test.spaceinvaders.run', true],
     ['http://localhost:3000', true],

@@ -1,5 +1,5 @@
-import { vars } from "@spaceinvaders-swap/ui/css/vars.css";
-import { useIsMounted } from "@spaceinvaders-swap/hooks";
+import { vars } from "@pancakeswap/ui/css/vars.css";
+import { useIsMounted } from "@pancakeswap/hooks";
 import React from "react";
 import { Box, Flex } from "../Box";
 import { Link } from "../Link";

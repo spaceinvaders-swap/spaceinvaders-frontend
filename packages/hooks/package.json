@@ -1,5 +1,5 @@
 {
-  "name": "@spaceinvaders-swap/hooks",
+  "name": "@pancakeswap/hooks",
   "license": "MIT",
   "version": "0.0.1",
   "description": "Generic hooks used for common usecases",
@@ -9,6 +9,6 @@
   "scripts": {},
   "dependencies": {
     "react": "^18.2.0",
-    "@spaceinvaders-swap/swap-sdk-core": "*"
+    "@pancakeswap/swap-sdk-core": "*"
   }
 }

@@ -1,4 +1,4 @@
-import { ChainId, WBNB, ERC20Token } from '@spaceinvaders-swap/sdk'
+import { ChainId, WBNB, ERC20Token } from '@pancakeswap/sdk'
 import { BUSD_BSC, INVA_MAINNET, USDT_BSC } from './common'
 
 export const bscTokens = {
@@ -221,7 +221,7 @@ export const bscTokens = {
     18,
     'SYRUP',
     'SyrupBar Token',
-    'https://spaceinvaders-swap.finance/',
+    'https://pancakeswap.finance/',
   ),
   pha: new ERC20Token(
     ChainId.BSC,

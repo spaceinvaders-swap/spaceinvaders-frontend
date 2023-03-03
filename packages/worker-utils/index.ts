@@ -1,9 +1,9 @@
 export const CORS_ALLOW = [
   /\.spaceinvaders\.run$/,
-  /\.spaceinvaders-swap\.finance$/,
-  /\.spaceinvaders-swap\.com$/,
-  'https://spaceinvaders-swap.finance',
-  'https://spaceinvaders-swap.com',
+  /\.pancakeswap\.finance$/,
+  /\.pancakeswap\.com$/,
+  'https://pancakeswap.finance',
+  'https://pancakeswap.com',
   /^http:\/\/localhost(:\d+)?$/,
 ]
 

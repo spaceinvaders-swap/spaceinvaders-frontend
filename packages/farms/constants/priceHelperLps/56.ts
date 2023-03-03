@@ -1,4 +1,4 @@
-import { SerializedFarmConfig } from '@spaceinvaders-swap/farms'
+import { SerializedFarmConfig } from '@pancakeswap/farms'
 
 const priceHelperLps: SerializedFarmConfig[] = []
 

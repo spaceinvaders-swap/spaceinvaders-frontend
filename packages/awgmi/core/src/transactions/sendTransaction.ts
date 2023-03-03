@@ -1,4 +1,4 @@
-import { equalsIgnoreCase } from '@spaceinvaders-swap/utils/equalsIgnoreCase'
+import { equalsIgnoreCase } from '@pancakeswap/utils/equalsIgnoreCase'
 import { Types } from 'aptos'
 import { getAccount } from '../accounts/account'
 import { ChainMismatchError, ConnectorNotFoundError, WalletProviderError, UserRejectedRequestError } from '../errors'

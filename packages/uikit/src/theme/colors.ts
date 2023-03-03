@@ -1,4 +1,4 @@
-import { vars } from "@spaceinvaders-swap/ui/css/vars.css";
+import { vars } from "@pancakeswap/ui/css/vars.css";
 
 export const lightColors = vars.colors;
 

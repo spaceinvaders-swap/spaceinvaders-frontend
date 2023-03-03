@@ -1,5 +1,5 @@
-import { useTranslation } from "@spaceinvaders-swap/localization";
-import { getBalanceNumber } from "@spaceinvaders-swap/utils/formatBalance";
+import { useTranslation } from "@pancakeswap/localization";
+import { getBalanceNumber } from "@pancakeswap/utils/formatBalance";
 import BigNumber from "bignumber.js";
 import { useEffect, useMemo, useRef } from "react";
 import styled from "styled-components";

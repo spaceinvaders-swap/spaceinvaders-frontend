@@ -17,26 +17,26 @@ export const footerLinks: FooterLinkType[] = [
     items: [
       {
         label: "Contact",
-        href: "https://docs.spaceinvaders-swap.finance/contact-us",
+        href: "https://docs.pancakeswap.finance/contact-us",
       },
       {
         label: "Blog",
-        href: "https://medium.com/spaceinvaders-swap",
+        href: "https://medium.com/pancakeswap",
       },
       {
         label: "Community",
-        href: "https://docs.spaceinvaders-swap.finance/contact-us/telegram",
+        href: "https://docs.pancakeswap.finance/contact-us/telegram",
       },
       {
         label: "INVA",
-        href: "https://docs.spaceinvaders-swap.finance/tokenomics/inva",
+        href: "https://docs.pancakeswap.finance/tokenomics/inva",
       },
       {
         label: "—",
       },
       {
         label: "Online Store",
-        href: "https://spaceinvaders-swap.creator-spring.com/",
+        href: "https://pancakeswap.creator-spring.com/",
         isHighlighted: true,
       },
     ],
@@ -46,15 +46,15 @@ export const footerLinks: FooterLinkType[] = [
     items: [
       {
         label: "Customer",
-        href: "Support https://docs.spaceinvaders-swap.finance/contact-us/customer-support",
+        href: "Support https://docs.pancakeswap.finance/contact-us/customer-support",
       },
       {
         label: "Troubleshooting",
-        href: "https://docs.spaceinvaders-swap.finance/help/troubleshooting",
+        href: "https://docs.pancakeswap.finance/help/troubleshooting",
       },
       {
         label: "Guides",
-        href: "https://docs.spaceinvaders-swap.finance/get-started",
+        href: "https://docs.pancakeswap.finance/get-started",
       },
     ],
   },
@@ -63,23 +63,23 @@ export const footerLinks: FooterLinkType[] = [
     items: [
       {
         label: "Github",
-        href: "https://github.com/spaceinvaders-swap",
+        href: "https://github.com/pancakeswap",
       },
       {
         label: "Documentation",
-        href: "https://docs.spaceinvaders-swap.finance",
+        href: "https://docs.pancakeswap.finance",
       },
       {
         label: "Bug Bounty",
-        href: "https://app.gitbook.com/@spaceinvaders-swap-1/s/spaceinvaders-swap/code/bug-bounty",
+        href: "https://app.gitbook.com/@pancakeswap-1/s/pancakeswap/code/bug-bounty",
       },
       {
         label: "Audits",
-        href: "https://docs.spaceinvaders-swap.finance/help/faq#is-spaceinvaders-swap-safe-has-spaceinvaders-swap-been-audited",
+        href: "https://docs.pancakeswap.finance/help/faq#is-pancakeswap-safe-has-pancakeswap-been-audited",
       },
       {
         label: "Careers",
-        href: "https://docs.spaceinvaders-swap.finance/hiring/become-a-chef",
+        href: "https://docs.pancakeswap.finance/hiring/become-a-chef",
       },
     ],
   },
@@ -89,7 +89,7 @@ export const socials = [
   {
     label: "Twitter",
     icon: TwitterIcon,
-    href: "https://twitter.com/spaceinvaders-swap",
+    href: "https://twitter.com/pancakeswap",
   },
   {
     label: "Telegram",
@@ -97,7 +97,7 @@ export const socials = [
     items: [
       {
         label: "English",
-        href: "https://t.me/spaceinvaders-swap",
+        href: "https://t.me/pancakeswap",
       },
       {
         label: "Bahasa Indonesia",
@@ -113,15 +113,15 @@ export const socials = [
       },
       {
         label: "Italiano",
-        href: "https://t.me/spaceinvaders-swap_ita",
+        href: "https://t.me/pancakeswap_ita",
       },
       {
         label: "русский",
-        href: "https://t.me/spaceinvaders-swap_ru",
+        href: "https://t.me/pancakeswap_ru",
       },
       {
         label: "Türkiye",
-        href: "https://t.me/spaceinvaders-swapturkiye",
+        href: "https://t.me/pancakeswapturkiye",
       },
       {
         label: "Português",
@@ -133,11 +133,11 @@ export const socials = [
       },
       {
         label: "日本語",
-        href: "https://t.me/spaceinvaders-swapjp",
+        href: "https://t.me/pancakeswapjp",
       },
       {
         label: "Français",
-        href: "https://t.me/spaceinvaders-swapfr",
+        href: "https://t.me/pancakeswapfr",
       },
       {
         label: "Deutsch",
@@ -164,32 +164,32 @@ export const socials = [
   {
     label: "Reddit",
     icon: RedditIcon,
-    href: "https://reddit.com/r/spaceinvaders-swap",
+    href: "https://reddit.com/r/pancakeswap",
   },
   {
     label: "Instagram",
     icon: InstagramIcon,
-    href: "https://instagram.com/spaceinvaders-swap_official",
+    href: "https://instagram.com/pancakeswap_official",
   },
   {
     label: "Github",
     icon: GithubIcon,
-    href: "https://github.com/spaceinvaders-swap/",
+    href: "https://github.com/pancakeswap/",
   },
   {
     label: "Discord",
     icon: DiscordIcon,
-    href: "https://discord.gg/spaceinvaders-swap",
+    href: "https://discord.gg/pancakeswap",
   },
   {
     label: "Medium",
     icon: MediumIcon,
-    href: "https://medium.com/spaceinvaders-swap",
+    href: "https://medium.com/pancakeswap",
   },
   {
     label: "Youtube",
     icon: YoutubeIcon,
-    href: "https://www.youtube.com/@spaceinvaders-swap_official",
+    href: "https://www.youtube.com/@pancakeswap_official",
   },
 ];
 

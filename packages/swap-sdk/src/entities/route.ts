@@ -1,5 +1,5 @@
 import invariant from 'tiny-invariant'
-import { Token, Currency, Price } from '@spaceinvaders-swap/swap-sdk-core'
+import { Token, Currency, Price } from '@pancakeswap/swap-sdk-core'
 
 import { Pair } from './pair'
 

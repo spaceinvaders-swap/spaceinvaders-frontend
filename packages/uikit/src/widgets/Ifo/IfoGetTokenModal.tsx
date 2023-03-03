@@ -1,4 +1,4 @@
-import { useTranslation } from "@spaceinvaders-swap/localization";
+import { useTranslation } from "@pancakeswap/localization";
 import { useMatchBreakpoints } from "../../contexts";
 import { Modal, ModalBody } from "../Modal";
 import { Text } from "../../components/Text";

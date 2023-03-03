@@ -1,4 +1,4 @@
-import { vars } from "@spaceinvaders-swap/ui/css/vars.css";
+import { vars } from "@pancakeswap/ui/css/vars.css";
 import { AlertTheme } from "../components/Alert/types";
 import { CardTheme } from "../components/Card/types";
 import { SpaceinvadersToggleTheme } from "../components/SpaceinvadersToggle/types";

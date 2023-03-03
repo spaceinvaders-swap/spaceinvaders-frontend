@@ -3,7 +3,7 @@ import { renderWithProvider } from "../../testHelpers";
 import { Link, LinkExternal } from "../../components/Link";
 
 it("renders link correctly", () => {
-  const { asFragment } = renderWithProvider(<Link href="https://spaceinvaders-swap.finance">Link</Link>);
+  const { asFragment } = renderWithProvider(<Link href="https://pancakeswap.finance">Link</Link>);
   expect(asFragment()).toMatchInlineSnapshot(`
     <DocumentFragment>
       .c0 {
@@ -36,7 +36,7 @@ it("renders link correctly", () => {
         class="c0 c1"
         color="primary"
         font-size="16px"
-        href="https://spaceinvaders-swap.finance"
+        href="https://pancakeswap.finance"
       >
         Link
       </a>
@@ -45,7 +45,7 @@ it("renders link correctly", () => {
 });
 
 it("renders link external link correctly", () => {
-  const { asFragment } = renderWithProvider(<LinkExternal href="https://spaceinvaders-swap.finance">Link</LinkExternal>);
+  const { asFragment } = renderWithProvider(<LinkExternal href="https://pancakeswap.finance">Link</LinkExternal>);
   expect(asFragment()).toMatchInlineSnapshot(`
     <DocumentFragment>
       .c2 {
@@ -96,7 +96,7 @@ it("renders link external link correctly", () => {
         class="c0 c1"
         color="primary"
         font-size="16px"
-        href="https://spaceinvaders-swap.finance"
+        href="https://pancakeswap.finance"
         rel="noreferrer noopener"
         target="_blank"
       >

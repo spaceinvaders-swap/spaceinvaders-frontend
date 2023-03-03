@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useTranslation } from "@spaceinvaders-swap/localization";
+import { useTranslation } from "@pancakeswap/localization";
 import { Text } from "../../../../components/Text";
 import { HelpIcon } from "../../../../components/Svg";
 import { Skeleton } from "../../../../components/Skeleton";

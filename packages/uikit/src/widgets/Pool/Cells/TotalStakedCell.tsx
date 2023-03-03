@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { useTranslation } from "@spaceinvaders-swap/localization";
+import { useTranslation } from "@pancakeswap/localization";
 import BigNumber from "bignumber.js";
-import { getBalanceNumber } from "@spaceinvaders-swap/utils/formatBalance";
+import { getBalanceNumber } from "@pancakeswap/utils/formatBalance";
 import { BaseCell, CellContent } from "./BaseCell";
 import { Text } from "../../../components/Text";
 import { Skeleton } from "../../../components/Skeleton";

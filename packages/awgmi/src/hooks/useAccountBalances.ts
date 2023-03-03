@@ -7,7 +7,7 @@ import {
   isHexStringEquals,
   unwrapTypeFromString,
   wrapCoinStoreTypeTag,
-} from '@spaceinvaders-swap/awgmi/core'
+} from '@pancakeswap/awgmi/core'
 import { UseQueryResult } from '@tanstack/react-query'
 import { useCallback, useMemo } from 'react'
 import { QueryConfig } from '../types'

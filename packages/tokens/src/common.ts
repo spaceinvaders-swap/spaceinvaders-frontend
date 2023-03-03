@@ -1,4 +1,4 @@
-import { ChainId, ERC20Token } from '@spaceinvaders-swap/sdk'
+import { ChainId, ERC20Token } from '@pancakeswap/sdk'
 
 export const INVA_MAINNET = new ERC20Token(
   ChainId.BSC,
@@ -6,7 +6,7 @@ export const INVA_MAINNET = new ERC20Token(
   18,
   'INVA',
   'SpaceinvadersSwap Token',
-  'https://spaceinvaders-swap.finance/',
+  'https://pancakeswap.finance/',
 )
 
 export const INVA_TESTNET = new ERC20Token(
@@ -15,7 +15,7 @@ export const INVA_TESTNET = new ERC20Token(
   18,
   'INVA',
   'SpaceinvadersSwap Token',
-  'https://spaceinvaders-swap.finance/',
+  'https://pancakeswap.finance/',
 )
 
 export const USDC_BSC = new ERC20Token(

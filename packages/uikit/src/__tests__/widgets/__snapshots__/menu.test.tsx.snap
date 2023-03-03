@@ -1382,7 +1382,7 @@ exports[`renders correctly 1`] = `
           >
             <a
               class="c26"
-              href="https://spaceinvaders-swap.finance/swap?outputCurrency=0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82&chainId=56"
+              href="https://pancakeswap.finance/swap?outputCurrency=0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82&chainId=56"
               target="_blank"
             >
               <svg
@@ -2796,7 +2796,7 @@ exports[`renders correctly 1`] = `
               color="text"
               data-theme="dark"
               font-size="16px"
-              href="https://docs.spaceinvaders-swap.finance/contact-us"
+              href="https://docs.pancakeswap.finance/contact-us"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -2811,7 +2811,7 @@ exports[`renders correctly 1`] = `
               color="text"
               data-theme="dark"
               font-size="16px"
-              href="https://medium.com/spaceinvaders-swap"
+              href="https://medium.com/pancakeswap"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -2826,7 +2826,7 @@ exports[`renders correctly 1`] = `
               color="text"
               data-theme="dark"
               font-size="16px"
-              href="https://docs.spaceinvaders-swap.finance/contact-us/telegram"
+              href="https://docs.pancakeswap.finance/contact-us/telegram"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -2841,7 +2841,7 @@ exports[`renders correctly 1`] = `
               color="text"
               data-theme="dark"
               font-size="16px"
-              href="https://docs.spaceinvaders-swap.finance/tokenomics/inva"
+              href="https://docs.pancakeswap.finance/tokenomics/inva"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -2865,7 +2865,7 @@ exports[`renders correctly 1`] = `
               color="var(--colors-warning)"
               data-theme="dark"
               font-size="16px"
-              href="https://spaceinvaders-swap.creator-spring.com/"
+              href="https://pancakeswap.creator-spring.com/"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -2889,7 +2889,7 @@ exports[`renders correctly 1`] = `
               color="text"
               data-theme="dark"
               font-size="16px"
-              href="Support https://docs.spaceinvaders-swap.finance/contact-us/customer-support"
+              href="Support https://docs.pancakeswap.finance/contact-us/customer-support"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -2904,7 +2904,7 @@ exports[`renders correctly 1`] = `
               color="text"
               data-theme="dark"
               font-size="16px"
-              href="https://docs.spaceinvaders-swap.finance/help/troubleshooting"
+              href="https://docs.pancakeswap.finance/help/troubleshooting"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -2919,7 +2919,7 @@ exports[`renders correctly 1`] = `
               color="text"
               data-theme="dark"
               font-size="16px"
-              href="https://docs.spaceinvaders-swap.finance/get-started"
+              href="https://docs.pancakeswap.finance/get-started"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -2943,7 +2943,7 @@ exports[`renders correctly 1`] = `
               color="text"
               data-theme="dark"
               font-size="16px"
-              href="https://github.com/spaceinvaders-swap"
+              href="https://github.com/pancakeswap"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -2958,7 +2958,7 @@ exports[`renders correctly 1`] = `
               color="text"
               data-theme="dark"
               font-size="16px"
-              href="https://docs.spaceinvaders-swap.finance"
+              href="https://docs.pancakeswap.finance"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -2973,7 +2973,7 @@ exports[`renders correctly 1`] = `
               color="text"
               data-theme="dark"
               font-size="16px"
-              href="https://app.gitbook.com/@spaceinvaders-swap-1/s/spaceinvaders-swap/code/bug-bounty"
+              href="https://app.gitbook.com/@pancakeswap-1/s/pancakeswap/code/bug-bounty"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -2988,7 +2988,7 @@ exports[`renders correctly 1`] = `
               color="text"
               data-theme="dark"
               font-size="16px"
-              href="https://docs.spaceinvaders-swap.finance/help/faq#is-spaceinvaders-swap-safe-has-spaceinvaders-swap-been-audited"
+              href="https://docs.pancakeswap.finance/help/faq#is-pancakeswap-safe-has-pancakeswap-been-audited"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -3003,7 +3003,7 @@ exports[`renders correctly 1`] = `
               color="text"
               data-theme="dark"
               font-size="16px"
-              href="https://docs.spaceinvaders-swap.finance/hiring/become-a-chef"
+              href="https://docs.pancakeswap.finance/hiring/become-a-chef"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -3058,7 +3058,7 @@ exports[`renders correctly 1`] = `
           class="c20 c13"
           color="primary"
           font-size="16px"
-          href="https://twitter.com/spaceinvaders-swap"
+          href="https://twitter.com/pancakeswap"
           rel="noreferrer noopener"
           target="_blank"
         >
@@ -3098,7 +3098,7 @@ exports[`renders correctly 1`] = `
               class="c26 c13"
               color="textSubtle"
               font-size="16px"
-              href="https://t.me/spaceinvaders-swap"
+              href="https://t.me/pancakeswap"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -3142,7 +3142,7 @@ exports[`renders correctly 1`] = `
               class="c26 c13"
               color="textSubtle"
               font-size="16px"
-              href="https://t.me/spaceinvaders-swap_ita"
+              href="https://t.me/pancakeswap_ita"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -3153,7 +3153,7 @@ exports[`renders correctly 1`] = `
               class="c26 c13"
               color="textSubtle"
               font-size="16px"
-              href="https://t.me/spaceinvaders-swap_ru"
+              href="https://t.me/pancakeswap_ru"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -3164,7 +3164,7 @@ exports[`renders correctly 1`] = `
               class="c26 c13"
               color="textSubtle"
               font-size="16px"
-              href="https://t.me/spaceinvaders-swapturkiye"
+              href="https://t.me/pancakeswapturkiye"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -3197,7 +3197,7 @@ exports[`renders correctly 1`] = `
               class="c26 c13"
               color="textSubtle"
               font-size="16px"
-              href="https://t.me/spaceinvaders-swapjp"
+              href="https://t.me/pancakeswapjp"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -3208,7 +3208,7 @@ exports[`renders correctly 1`] = `
               class="c26 c13"
               color="textSubtle"
               font-size="16px"
-              href="https://t.me/spaceinvaders-swapfr"
+              href="https://t.me/pancakeswapfr"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -3276,7 +3276,7 @@ exports[`renders correctly 1`] = `
           class="c20 c13"
           color="primary"
           font-size="16px"
-          href="https://reddit.com/r/spaceinvaders-swap"
+          href="https://reddit.com/r/pancakeswap"
           rel="noreferrer noopener"
           target="_blank"
         >
@@ -3304,7 +3304,7 @@ exports[`renders correctly 1`] = `
           class="c20 c13"
           color="primary"
           font-size="16px"
-          href="https://instagram.com/spaceinvaders-swap_official"
+          href="https://instagram.com/pancakeswap_official"
           rel="noreferrer noopener"
           target="_blank"
         >
@@ -3329,7 +3329,7 @@ exports[`renders correctly 1`] = `
           class="c20 c13"
           color="primary"
           font-size="16px"
-          href="https://github.com/spaceinvaders-swap/"
+          href="https://github.com/pancakeswap/"
           rel="noreferrer noopener"
           target="_blank"
         >
@@ -3353,7 +3353,7 @@ exports[`renders correctly 1`] = `
           class="c20 c13"
           color="primary"
           font-size="16px"
-          href="https://discord.gg/spaceinvaders-swap"
+          href="https://discord.gg/pancakeswap"
           rel="noreferrer noopener"
           target="_blank"
         >
@@ -3375,7 +3375,7 @@ exports[`renders correctly 1`] = `
           class="c20 c13"
           color="primary"
           font-size="16px"
-          href="https://medium.com/spaceinvaders-swap"
+          href="https://medium.com/pancakeswap"
           rel="noreferrer noopener"
           target="_blank"
         >
@@ -3397,7 +3397,7 @@ exports[`renders correctly 1`] = `
           class="c27 c13"
           color="primary"
           font-size="16px"
-          href="https://www.youtube.com/@spaceinvaders-swap_official"
+          href="https://www.youtube.com/@pancakeswap_official"
           rel="noreferrer noopener"
           target="_blank"
         >
@@ -3740,7 +3740,7 @@ exports[`renders correctly 1`] = `
           >
             <a
               class="c54"
-              href="https://spaceinvaders-swap.finance/swap?outputCurrency=0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82&chainId=56"
+              href="https://pancakeswap.finance/swap?outputCurrency=0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82&chainId=56"
               target="_blank"
             >
               <svg
@@ -3805,7 +3805,7 @@ exports[`renders correctly 1`] = `
           <a
             class="c56"
             data-theme="light"
-            href="https://spaceinvaders-swap.finance/swap?outputCurrency=0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82&chainId=56"
+            href="https://pancakeswap.finance/swap?outputCurrency=0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82&chainId=56"
             scale="sm"
             target="_blank"
           >

@@ -1,4 +1,4 @@
-import { ChainId } from '@spaceinvaders-swap/sdk'
+import { ChainId } from '@pancakeswap/sdk'
 
 import { StableSwapPool } from '../../types/pool'
 import { isStableSwapSupported, STABLE_POOL_MAP } from './pools'

@@ -4,9 +4,9 @@ Spaceinvaders UIkit is a set of React components and hooks used to build pages o
 
 ## Install
 
-`yarn add @spaceinvaders-swap/uikit`
+`yarn add @pancakeswap/uikit`
 
-***Note**: In case you want to use the older version of the Spaceinvaders UIkit, you should install @spaceinvaders-swap-libs/uikit, instead, but we recommend using the latest version of the UIkit.*
+***Note**: In case you want to use the older version of the Spaceinvaders UIkit, you should install @pancakeswap-libs/uikit, instead, but we recommend using the latest version of the UIkit.*
 
 
 ## Setup
@@ -16,7 +16,7 @@ Spaceinvaders UIkit is a set of React components and hooks used to build pages o
 Before using Spaceinvaders UIkit, you need to provide the theme file to uikit provider.
 
 ```
-import { UIKitProvider, light, dark } from '@spaceinvaders-swap/uikit'
+import { UIKitProvider, light, dark } from '@pancakeswap/uikit'
 ...
 <UIKitProvider theme={isDark ? dark : light}>...</UIKitProvider>
 ```
@@ -26,8 +26,8 @@ import { UIKitProvider, light, dark } from '@spaceinvaders-swap/uikit'
 A reset CSS is available as a global styled component.
 
 ```
-import '@spaceinvaders-swap/ui/css/reset.css'
-import { ResetCSS } from '@spaceinvaders-swap/uikit'
+import '@pancakeswap/ui/css/reset.css'
+import { ResetCSS } from '@pancakeswap/uikit'
 ...
 <ResetCSS />
 ```

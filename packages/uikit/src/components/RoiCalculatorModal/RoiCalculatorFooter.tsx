@@ -1,9 +1,9 @@
-import { useTranslation } from "@spaceinvaders-swap/localization";
-import { getApy } from "@spaceinvaders-swap/utils/compoundApyHelpers";
+import { useTranslation } from "@pancakeswap/localization";
+import { getApy } from "@pancakeswap/utils/compoundApyHelpers";
 import { useMemo, useState } from "react";
 import styled from "styled-components";
 
-import { BIG_ONE_HUNDRED } from "@spaceinvaders-swap/utils/bigNumber";
+import { BIG_ONE_HUNDRED } from "@pancakeswap/utils/bigNumber";
 import { useTooltip } from "../../hooks/useTooltip";
 import { Box, Flex, Grid } from "../Box";
 import { ExpandableLabel } from "../Button";
@@ -105,7 +105,7 @@ const RoiCalculatorFooter: React.FC<React.PropsWithChildren<RoiCalculatorFooterP
           <Link
             mt="8px"
             display="inline"
-            href="https://medium.com/spaceinvaders-swap/farm-mutlipliers-visual-update-1f5f5f615afd"
+            href="https://medium.com/pancakeswap/farm-mutlipliers-visual-update-1f5f5f615afd"
             external
           >
             {t("Read more")}

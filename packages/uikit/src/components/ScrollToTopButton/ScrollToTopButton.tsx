@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import styled from "styled-components";
-import { useTranslation } from "@spaceinvaders-swap/localization";
+import { useTranslation } from "@pancakeswap/localization";
 import throttle from "lodash/throttle";
 import { Button } from "../Button";
 import { ChevronUpIcon } from "../Svg";
