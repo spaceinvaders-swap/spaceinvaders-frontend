@@ -3,16 +3,16 @@ import { gql } from 'graphql-request'
 import { useEffect, useState } from 'react'
 import { ChartEntry } from 'state/info/types'
 import { fetchChartData, mapDayData } from '../helpers'
-import { PancakeDayDatasResponse } from '../types'
+import { SpaceinvadersDayDatasResponse } from '../types'
 import { MultiChainName, getMultiChainQueryEndPointWithStableSwap, multiChainStartTime } from '../../constant'
 import { useGetChainName } from '../../hooks'
 
 /**
  * Data for displaying Liquidity and Volume charts on Overview page
  */
-const PANCAKE_DAY_DATAS = gql`
+const SPACEINVADERS_DAY_DATAS = gql`
   query overviewCharts($startTime: Int!, $skip: Int!) {
-    pancakeDayDatas(first: 1000, skip: $skip, where: { date_gt: $startTime }, orderBy: date, orderDirection: asc) {
+    spaceinvadersDayDatas(first: 1000, skip: $skip, where: { date_gt: $startTime }, orderBy: date, orderDirection: asc) {
       date
       dailyVolumeUSD
       totalLiquidityUSD
@@ -25,13 +25,13 @@ const getOverviewChartData = async (
   skip: number,
 ): Promise<{ data?: ChartEntry[]; error: boolean }> => {
   try {
-    const { pancakeDayDatas } = await getMultiChainQueryEndPointWithStableSwap(
+    const { spaceinvadersDayDatas } = await getMultiChainQueryEndPointWithStableSwap(
       chainName,
-    ).request<PancakeDayDatasResponse>(PANCAKE_DAY_DATAS, {
+    ).request<SpaceinvadersDayDatasResponse>(SPACEINVADERS_DAY_DATAS, {
       startTime: multiChainStartTime[chainName],
       skip,
     })
-    const data = pancakeDayDatas.map(mapDayData)
+    const data = spaceinvadersDayDatas.map(mapDayData)
     return { data, error: false }
   } catch (error) {
     console.error('Failed to fetch overview chart data', error)

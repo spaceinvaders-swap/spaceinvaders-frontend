@@ -1,4 +1,4 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import {
   Button,
   Flex,
@@ -9,17 +9,17 @@ import {
   useModal,
   Balance,
   FARMS_SMALL_AMOUNT_THRESHOLD,
-} from '@pancakeswap/uikit'
+} from '@spaceinvaders-swap/uikit'
 import { useAccount } from 'wagmi'
 import BigNumber from 'bignumber.js'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import useCatchTxError from 'hooks/useCatchTxError'
 
 import { TransactionResponse } from '@ethersproject/providers'
-import { usePriceCakeBusd } from 'state/farms/hooks'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { getBalanceAmount } from '@pancakeswap/utils/formatBalance'
-import { Token } from '@pancakeswap/sdk'
+import { usePriceInvaBusd } from 'state/farms/hooks'
+import { BIG_ZERO } from '@spaceinvaders-swap/utils/bigNumber'
+import { getBalanceAmount } from '@spaceinvaders-swap/utils/formatBalance'
+import { Token } from '@spaceinvaders-swap/sdk'
 import MultiChainHarvestModal from 'views/Farms/components/MultiChainHarvestModal'
 
 interface FarmCardActionsProps {
@@ -28,7 +28,7 @@ interface FarmCardActionsProps {
   quoteToken?: Token
   earnings?: BigNumber
   vaultPid?: number
-  proxyCakeBalance?: number
+  proxyInvaBalance?: number
   lpSymbol?: string
   onReward?: () => Promise<TransactionResponse>
   onDone?: () => void
@@ -40,7 +40,7 @@ const HarvestAction: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = (
   quoteToken,
   vaultPid,
   earnings,
-  proxyCakeBalance,
+  proxyInvaBalance,
   lpSymbol,
   onReward,
   onDone,
@@ -49,14 +49,14 @@ const HarvestAction: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = (
   const { toastSuccess } = useToast()
   const { fetchWithCatchTxError, loading: pendingTx } = useCatchTxError()
   const { t } = useTranslation()
-  const cakePrice = usePriceCakeBusd()
+  const invaPrice = usePriceInvaBusd()
   const rawEarningsBalance = account ? getBalanceAmount(earnings) : BIG_ZERO
   const displayBalance = rawEarningsBalance.toFixed(5, BigNumber.ROUND_DOWN)
-  const earningsBusd = rawEarningsBalance ? rawEarningsBalance.multipliedBy(cakePrice).toNumber() : 0
+  const earningsBusd = rawEarningsBalance ? rawEarningsBalance.multipliedBy(invaPrice).toNumber() : 0
   const tooltipBalance = rawEarningsBalance.isGreaterThan(FARMS_SMALL_AMOUNT_THRESHOLD) ? displayBalance : '< 0.00001'
   const { targetRef, tooltip, tooltipVisible } = useTooltip(
     `${tooltipBalance} ${t(
-      `CAKE has been harvested to the farm booster contract and will be automatically sent to your wallet upon the next harvest.`,
+      `INVA has been harvested to the farm booster contract and will be automatically sent to your wallet upon the next harvest.`,
     )}`,
     {
       placement: 'bottom',
@@ -79,7 +79,7 @@ const HarvestAction: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = (
       toastSuccess(
         `${t('Harvested')}!`,
         <ToastDescriptionWithTx txHash={receipt.transactionHash}>
-          {t('Your %symbol% earnings have been sent to your wallet!', { symbol: 'CAKE' })}
+          {t('Your %symbol% earnings have been sent to your wallet!', { symbol: 'INVA' })}
         </ToastDescriptionWithTx>,
       )
       onDone?.()
@@ -100,7 +100,7 @@ const HarvestAction: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = (
   return (
     <Flex mb="8px" justifyContent="space-between" alignItems="center">
       <Flex flexDirection="column" alignItems="flex-start">
-        {proxyCakeBalance ? (
+        {proxyInvaBalance ? (
           <>
             <TooltipText ref={targetRef} decorationColor="secondary">
               <Heading color={rawEarningsBalance.eq(0) ? 'textDisabled' : 'text'}>{displayBalance}</Heading>

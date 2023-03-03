@@ -1,12 +1,12 @@
 import styled from 'styled-components'
-import { Text, Heading, Card, CardHeader, CardBody, Flex, useToast } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Text, Heading, Card, CardHeader, CardBody, Flex, useToast } from '@spaceinvaders-swap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import useApproveConfirmTransaction from 'hooks/useApproveConfirmTransaction'
-import { useCake, useFarmAuctionContract } from 'hooks/useContract'
+import { useInva, useFarmAuctionContract } from 'hooks/useContract'
 import { requiresApproval } from 'utils/requiresApproval'
 import { useAccount } from 'wagmi'
 import ConnectWalletButton from 'components/ConnectWalletButton'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
+import { getBalanceNumber } from '@spaceinvaders-swap/utils/formatBalance'
 import { useCallWithGasPrice } from 'hooks/useCallWithGasPrice'
 import { MaxUint256 } from '@ethersproject/constants'
 import ApproveConfirmButtons, { ButtonArrangement } from 'components/ApproveConfirmButtons'
@@ -25,17 +25,17 @@ const ReclaimBidCard: React.FC<React.PropsWithChildren> = () => {
 
   const [reclaimableAuction, checkForNextReclaimableAuction] = useReclaimAuctionBid()
 
-  const { reader: cakeContractReader, signer: cakeContractApprover } = useCake()
+  const { reader: invaContractReader, signer: invaContractApprover } = useInva()
   const farmAuctionContract = useFarmAuctionContract()
 
   const { toastSuccess } = useToast()
 
   const { isApproving, isApproved, isConfirming, handleApprove, handleConfirm } = useApproveConfirmTransaction({
     onRequiresApproval: async () => {
-      return requiresApproval(cakeContractReader, account, farmAuctionContract.address)
+      return requiresApproval(invaContractReader, account, farmAuctionContract.address)
     },
     onApprove: () => {
-      return callWithGasPrice(cakeContractApprover, 'approve', [farmAuctionContract.address, MaxUint256])
+      return callWithGasPrice(invaContractApprover, 'approve', [farmAuctionContract.address, MaxUint256])
     },
     onApproveSuccess: async ({ receipt }) => {
       toastSuccess(
@@ -68,11 +68,11 @@ const ReclaimBidCard: React.FC<React.PropsWithChildren> = () => {
           {t('Your bid in Auction #%auctionId% was unsuccessful.', { auctionId: reclaimableAuction.id })}
         </Text>
         <Text bold mb="16px">
-          {t('Reclaim your CAKE now.')}
+          {t('Reclaim your INVA now.')}
         </Text>
         <Flex justifyContent="space-between" mb="8px">
           <Text color="textSubtle">{t('Your total bid')}</Text>
-          <Text>{t('%num% CAKE', { num: getBalanceNumber(amount).toLocaleString() })}</Text>
+          <Text>{t('%num% INVA', { num: getBalanceNumber(amount).toLocaleString() })}</Text>
         </Flex>
         <Flex justifyContent="space-between" mb="24px">
           <Text color="textSubtle">{t('Your position')}</Text>

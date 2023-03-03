@@ -1,8 +1,8 @@
 /* eslint-disable camelcase */
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { BIG_ZERO } from '@spaceinvaders-swap/utils/bigNumber'
 import BigNumber from 'bignumber.js'
 import { Ifo } from 'config/constants/types'
-import { useCakePrice } from 'hooks/useStablePrice'
+import { useInvaPrice } from 'hooks/useStablePrice'
 import { useMemo } from 'react'
 import { IFO_RESOURCE_ACCOUNT_TYPE_METADATA, IFO_RESOURCE_ACCOUNT_TYPE_POOL_STORE } from 'views/Ifos/constants'
 import { RootObject as IFOPool } from 'views/Ifos/generated/IFOPool'
@@ -57,10 +57,10 @@ const initState = {
 export const useGetPublicIfoData = (ifo: Ifo): PublicIfoData => {
   const resources = useIfoResources(ifo)
 
-  // TODO: Currently we only support CAKE Price
-  const { data: cakePrice } = useCakePrice()
+  // TODO: Currently we only support INVA Price
+  const { data: invaPrice } = useInvaPrice()
 
-  const currencyPriceInUSD = useMemo(() => new BigNumber(cakePrice), [cakePrice])
+  const currencyPriceInUSD = useMemo(() => new BigNumber(invaPrice), [invaPrice])
 
   const finalState = useMemo(() => {
     if (

@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { AutoRenewIcon, Button, useToast } from '@pancakeswap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { AutoRenewIcon, Button, useToast } from '@spaceinvaders-swap/uikit'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import { PoolIds } from 'config/constants/types'
 import useCatchTxError from 'hooks/useCatchTxError'

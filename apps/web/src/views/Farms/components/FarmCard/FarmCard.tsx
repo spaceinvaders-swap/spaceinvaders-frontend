@@ -1,7 +1,7 @@
-import { FarmWithStakedValue } from '@pancakeswap/farms'
-import { useTranslation } from '@pancakeswap/localization'
-import { Card, ExpandableSectionButton, Farm as FarmUI, Flex, Skeleton, Text } from '@pancakeswap/uikit'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { FarmWithStakedValue } from '@spaceinvaders-swap/farms'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { Card, ExpandableSectionButton, Farm as FarmUI, Flex, Skeleton, Text } from '@spaceinvaders-swap/uikit'
+import { BIG_ZERO } from '@spaceinvaders-swap/utils/bigNumber'
 import BigNumber from 'bignumber.js'
 import { BASE_ADD_LIQUIDITY_URL } from 'config'
 import { CHAIN_QUERY_NAME } from 'config/chains'
@@ -45,7 +45,7 @@ interface FarmCardProps {
   farm: FarmWithStakedValue
   displayApr: string
   removed: boolean
-  cakePrice?: BigNumber
+  invaPrice?: BigNumber
   account?: string
   originalLiquidity?: BigNumber
 }
@@ -54,7 +54,7 @@ const FarmCard: React.FC<React.PropsWithChildren<FarmCardProps>> = ({
   farm,
   displayApr,
   removed,
-  cakePrice,
+  invaPrice,
   account,
   originalLiquidity,
 }) => {
@@ -70,8 +70,8 @@ const FarmCard: React.FC<React.PropsWithChildren<FarmCardProps>> = ({
       ? `$${liquidity.toNumber().toLocaleString(undefined, { maximumFractionDigits: 0 })}`
       : ''
 
-  const lpLabel = farm.lpSymbol && farm.lpSymbol.replace(/pancake/gi, '')
-  const earnLabel = farm.dual ? farm.dual.earnLabel : t('CAKE + Fees')
+  const lpLabel = farm.lpSymbol && farm.lpSymbol.replace(/spaceinvaders/gi, '')
+  const earnLabel = farm.dual ? farm.dual.earnLabel : t('INVA + Fees')
 
   const liquidityUrlPathParts = getLiquidityUrlPathParts({
     quoteTokenAddress: farm.quoteToken.address,
@@ -80,7 +80,7 @@ const FarmCard: React.FC<React.PropsWithChildren<FarmCardProps>> = ({
   })
   const addLiquidityUrl = `${BASE_ADD_LIQUIDITY_URL}/${liquidityUrlPathParts}`
   const { lpAddress, stableSwapAddress, stableLpFee } = farm
-  const isPromotedFarm = farm.token.symbol === 'CAKE'
+  const isPromotedFarm = farm.token.symbol === 'INVA'
   const { stakedBalance, proxy, tokenBalance } = farm.userData
 
   const infoUrl = useMemo(() => {
@@ -134,7 +134,7 @@ const FarmCard: React.FC<React.PropsWithChildren<FarmCardProps>> = ({
                     multiplier={farm.multiplier}
                     lpLabel={lpLabel}
                     addLiquidityUrl={addLiquidityUrl}
-                    cakePrice={cakePrice}
+                    invaPrice={invaPrice}
                     apr={farm.apr}
                     displayApr={displayApr}
                     lpRewardsApr={farm.lpRewardsApr}

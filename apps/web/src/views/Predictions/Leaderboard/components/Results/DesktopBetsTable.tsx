@@ -1,6 +1,6 @@
-import { Token } from '@pancakeswap/sdk'
-import { Box, Card, Text } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Token } from '@spaceinvaders-swap/sdk'
+import { Box, Card, Text } from '@spaceinvaders-swap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import PreviousBetsTable from '../PreviousBetsTable'
 
 interface DesktopBetsTableProps {

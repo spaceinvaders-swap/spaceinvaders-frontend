@@ -1,5 +1,5 @@
-import { Box, Flex, InjectedModalProps, Modal, Button, Spinner } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Box, Flex, InjectedModalProps, Modal, Button, Spinner } from '@spaceinvaders-swap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import useTheme from 'hooks/useTheme'
 import useGetVotingPower from '../hooks/useGetVotingPower'
 import DetailsView from './CastVoteModal/DetailsView'
@@ -13,13 +13,13 @@ const VoteDetailsModal: React.FC<React.PropsWithChildren<VoteDetailsModalProps>>
   const {
     isLoading,
     total,
-    cakeBalance,
-    cakeVaultBalance,
-    cakePoolBalance,
+    invaBalance,
+    invaVaultBalance,
+    invaPoolBalance,
     poolsBalance,
-    cakeBnbLpBalance,
+    invaBnbLpBalance,
     ifoPoolBalance,
-    lockedCakeBalance,
+    lockedInvaBalance,
     lockedEndTime,
   } = useGetVotingPower(block)
   const { theme } = useTheme()
@@ -39,13 +39,13 @@ const VoteDetailsModal: React.FC<React.PropsWithChildren<VoteDetailsModalProps>>
           <>
             <DetailsView
               total={total}
-              cakeBalance={cakeBalance}
-              cakeVaultBalance={cakeVaultBalance}
-              cakePoolBalance={cakePoolBalance}
+              invaBalance={invaBalance}
+              invaVaultBalance={invaVaultBalance}
+              invaPoolBalance={invaPoolBalance}
               poolsBalance={poolsBalance}
               ifoPoolBalance={ifoPoolBalance}
-              cakeBnbLpBalance={cakeBnbLpBalance}
-              lockedCakeBalance={lockedCakeBalance}
+              invaBnbLpBalance={invaBnbLpBalance}
+              lockedInvaBalance={lockedInvaBalance}
               lockedEndTime={lockedEndTime}
               block={block}
             />

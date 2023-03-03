@@ -15,30 +15,30 @@ import {
   Slider,
   Box,
   AutoRenewIcon,
-} from '@pancakeswap/uikit'
+} from '@spaceinvaders-swap/uikit'
 import { BigNumber, FixedNumber } from '@ethersproject/bignumber'
 import { Zero } from '@ethersproject/constants'
 import { parseUnits } from '@ethersproject/units'
 import { useAccount } from 'wagmi'
 import { useGetMinBetAmount } from 'state/predictions/hooks'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import { usePredictionsContract } from 'hooks/useContract'
-import { useGetBnbBalance, useGetCakeBalance } from 'hooks/useTokenBalance'
+import { useGetBnbBalance, useGetInvaBalance } from 'hooks/useTokenBalance'
 import { useCallWithGasPrice } from 'hooks/useCallWithGasPrice'
 import useCatchTxError from 'hooks/useCatchTxError'
 import { BetPosition } from 'state/types'
-import { formatBigNumber, formatFixedNumber } from '@pancakeswap/utils/formatBalance'
+import { formatBigNumber, formatFixedNumber } from '@spaceinvaders-swap/utils/formatBalance'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import { useConfig } from 'views/Predictions/context/ConfigProvider'
-import useCakeApprovalStatus from 'hooks/useCakeApprovalStatus'
-import useCakeApprove from 'hooks/useCakeApprove'
+import useInvaApprovalStatus from 'hooks/useInvaApprovalStatus'
+import useInvaApprove from 'hooks/useInvaApprove'
 
 import PositionTag from '../PositionTag'
 import FlexRow from '../FlexRow'
 
 const LOGOS = {
   BNB: BinanceIcon,
-  CAKE: LogoIcon,
+  INVA: LogoIcon,
 }
 
 interface SetPositionCardProps {
@@ -78,7 +78,7 @@ const getValueAsEthersBn = (value: string) => {
 
 const TOKEN_BALANCE_CONFIG = {
   BNB: useGetBnbBalance,
-  CAKE: useGetCakeBalance,
+  INVA: useGetInvaBalance,
 }
 
 const SetPositionCard: React.FC<React.PropsWithChildren<SetPositionCardProps>> = ({
@@ -103,15 +103,15 @@ const SetPositionCard: React.FC<React.PropsWithChildren<SetPositionCardProps>> =
     return TOKEN_BALANCE_CONFIG[token.symbol]
   }, [token.symbol])
 
-  const { isVaultApproved, setLastUpdated } = useCakeApprovalStatus(token.symbol === 'CAKE' ? predictionsAddress : null)
-  const { handleApprove, pendingTx } = useCakeApprove(
+  const { isVaultApproved, setLastUpdated } = useInvaApprovalStatus(token.symbol === 'INVA' ? predictionsAddress : null)
+  const { handleApprove, pendingTx } = useInvaApprove(
     setLastUpdated,
     predictionsAddress,
     t('You can now start prediction'),
   )
 
   // BNB prediction doesn't need approval
-  const doesCakeApprovePrediction = token.symbol === 'BNB' || isVaultApproved
+  const doesInvaApprovePrediction = token.symbol === 'BNB' || isVaultApproved
 
   const { balance: bnbBalance } = useTokenBalance()
 
@@ -168,14 +168,14 @@ const SetPositionCard: React.FC<React.PropsWithChildren<SetPositionCardProps>> =
   const handleEnterPosition = async () => {
     const betMethod = position === BetPosition.BULL ? 'betBull' : 'betBear'
     const callOptions =
-      token.symbol === 'CAKE'
+      token.symbol === 'INVA'
         ? {
             gasLimit: 300000,
             value: 0,
           }
         : { value: valueAsBn.toString() }
 
-    const args = token.symbol === 'CAKE' ? [epoch, valueAsBn.toString()] : [epoch]
+    const args = token.symbol === 'INVA' ? [epoch, valueAsBn.toString()] : [epoch]
 
     const receipt = await fetchWithCatchTxError(() => {
       return callWithGasPrice(predictionsContract, betMethod, args, callOptions)
@@ -291,7 +291,7 @@ const SetPositionCard: React.FC<React.PropsWithChildren<SetPositionCardProps>> =
         </Flex>
         <Box mb="8px">
           {account ? (
-            doesCakeApprovePrediction ? (
+            doesInvaApprovePrediction ? (
               <Button
                 width="100%"
                 disabled={disabled}

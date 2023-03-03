@@ -3,9 +3,9 @@ import BigNumber from 'bignumber.js'
 import { useFastRefreshEffect } from 'hooks/useRefreshEffect'
 import { SerializedPool } from 'state/types'
 import { transformPool } from 'state/pools/helpers'
-import { getCakeContract } from 'utils/contractHelpers'
+import { getInvaContract } from 'utils/contractHelpers'
 import { PoolCategory } from 'config/constants/types'
-import { bscTokens } from '@pancakeswap/tokens'
+import { bscTokens } from '@spaceinvaders-swap/tokens'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { fetchUserStakeBalances, fetchUserPendingRewards } from './fetchPoolsUser'
 
@@ -14,13 +14,13 @@ export interface PoolsState {
   userDataLoaded: boolean
 }
 
-const cakeContract = getCakeContract()
+const invaContract = getInvaContract()
 
 const initialData = {
   data: {
     sousId: 0,
-    stakingToken: bscTokens.cake.serialize,
-    earningToken: bscTokens.cake.serialize,
+    stakingToken: bscTokens.inva.serialize,
+    earningToken: bscTokens.inva.serialize,
     contractAddress: {
       97: '0x1d32c2945C8FDCBc7156c553B7cEa4325a17f4f9',
       56: '0x73feaa1eE314F8c655E354234017bE2193C9E24E',
@@ -44,7 +44,7 @@ export const useFetchUserPools = (account) => {
           const [stakedBalances, pendingRewards, totalStaking] = await Promise.all([
             fetchUserStakeBalances(account),
             fetchUserPendingRewards(account),
-            cakeContract.balanceOf(initialData.data.contractAddress[chainId]),
+            invaContract.balanceOf(initialData.data.contractAddress[chainId]),
           ])
 
           const userData = {

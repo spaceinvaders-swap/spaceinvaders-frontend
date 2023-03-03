@@ -1,5 +1,5 @@
-import { Pair } from '@pancakeswap/aptos-swap-sdk'
-import type { SerializedFarmConfig } from '@pancakeswap/farms'
+import { Pair } from '@spaceinvaders-swap/aptos-swap-sdk'
+import type { SerializedFarmConfig } from '@spaceinvaders-swap/farms'
 import { mainnetTokens } from '../tokens/index'
 
 const farms: SerializedFarmConfig[] = [
@@ -8,34 +8,34 @@ const farms: SerializedFarmConfig[] = [
    */
   {
     pid: 0,
-    lpSymbol: 'CAKE',
-    lpAddress: '0x159df6b7689437016108a019fd5bef736bac692b6d4a1f10c941f6fbb9a74ca6::oft::CakeOFT',
-    token: mainnetTokens.cake,
-    quoteToken: mainnetTokens.cake,
+    lpSymbol: 'INVA',
+    lpAddress: '0x159df6b7689437016108a019fd5bef736bac692b6d4a1f10c941f6fbb9a74ca6::oft::InvaOFT',
+    token: mainnetTokens.inva,
+    quoteToken: mainnetTokens.inva,
   },
   {
     pid: 1,
-    lpSymbol: 'CAKE-APT LP',
+    lpSymbol: 'INVA-APT LP',
     lpAddress:
-      '0xc7efb4076dbe143cbcd98cfaaa929ecfc8f299203dfff63b95ccb6bfe19850fa::swap::LPToken<0x159df6b7689437016108a019fd5bef736bac692b6d4a1f10c941f6fbb9a74ca6::oft::CakeOFT, 0x1::aptos_coin::AptosCoin>',
+      '0xc7efb4076dbe143cbcd98cfaaa929ecfc8f299203dfff63b95ccb6bfe19850fa::swap::LPToken<0x159df6b7689437016108a019fd5bef736bac692b6d4a1f10c941f6fbb9a74ca6::oft::InvaOFT, 0x1::aptos_coin::AptosCoin>',
     token: mainnetTokens.apt,
-    quoteToken: mainnetTokens.cake,
+    quoteToken: mainnetTokens.inva,
   },
   {
     pid: 2,
-    lpSymbol: 'CAKE-lzUSDC LP',
+    lpSymbol: 'INVA-lzUSDC LP',
     lpAddress:
-      '0xc7efb4076dbe143cbcd98cfaaa929ecfc8f299203dfff63b95ccb6bfe19850fa::swap::LPToken<0x159df6b7689437016108a019fd5bef736bac692b6d4a1f10c941f6fbb9a74ca6::oft::CakeOFT, 0xf22bede237a07e121b56d91a491eb7bcdfd1f5907926a9e58338f964a01b17fa::asset::USDC>',
+      '0xc7efb4076dbe143cbcd98cfaaa929ecfc8f299203dfff63b95ccb6bfe19850fa::swap::LPToken<0x159df6b7689437016108a019fd5bef736bac692b6d4a1f10c941f6fbb9a74ca6::oft::InvaOFT, 0xf22bede237a07e121b56d91a491eb7bcdfd1f5907926a9e58338f964a01b17fa::asset::USDC>',
     token: mainnetTokens.lzusdc,
-    quoteToken: mainnetTokens.cake,
+    quoteToken: mainnetTokens.inva,
   },
   {
     pid: 3,
-    lpSymbol: 'CAKE-ceUSDC LP',
+    lpSymbol: 'INVA-ceUSDC LP',
     lpAddress:
-      '0xc7efb4076dbe143cbcd98cfaaa929ecfc8f299203dfff63b95ccb6bfe19850fa::swap::LPToken<0x159df6b7689437016108a019fd5bef736bac692b6d4a1f10c941f6fbb9a74ca6::oft::CakeOFT, 0x8d87a65ba30e09357fa2edea2c80dbac296e5dec2b18287113500b902942929d::celer_coin_manager::UsdcCoin>',
+      '0xc7efb4076dbe143cbcd98cfaaa929ecfc8f299203dfff63b95ccb6bfe19850fa::swap::LPToken<0x159df6b7689437016108a019fd5bef736bac692b6d4a1f10c941f6fbb9a74ca6::oft::InvaOFT, 0x8d87a65ba30e09357fa2edea2c80dbac296e5dec2b18287113500b902942929d::celer_coin_manager::UsdcCoin>',
     token: mainnetTokens.ceusdc,
-    quoteToken: mainnetTokens.cake,
+    quoteToken: mainnetTokens.inva,
   },
   // * By order of release
   {

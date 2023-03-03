@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { simulateTransaction, SimulateTransactionArgs, SimulateTransactionResult } from '@pancakeswap/awgmi/core'
+import { simulateTransaction, SimulateTransactionArgs, SimulateTransactionResult } from '@spaceinvaders-swap/awgmi/core'
 
 import { MutationConfig } from '../types'
 import { useMutation } from './utils/useMutation'

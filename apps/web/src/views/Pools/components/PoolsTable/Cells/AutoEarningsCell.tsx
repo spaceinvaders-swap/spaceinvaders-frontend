@@ -1,10 +1,10 @@
 import styled from 'styled-components'
-import { Skeleton, Text, useTooltip, HelpIcon, Flex, Box, useMatchBreakpoints, Balance, Pool } from '@pancakeswap/uikit'
+import { Skeleton, Text, useTooltip, HelpIcon, Flex, Box, useMatchBreakpoints, Balance, Pool } from '@spaceinvaders-swap/uikit'
 import { VaultKey } from 'state/types'
 import { useVaultPoolByKey } from 'state/pools/hooks'
-import { useTranslation } from '@pancakeswap/localization'
-import { getCakeVaultEarnings } from 'views/Pools/helpers'
-import { Token } from '@pancakeswap/sdk'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { getInvaVaultEarnings } from 'views/Pools/helpers'
+import { Token } from '@spaceinvaders-swap/sdk'
 import AutoEarningsBreakdown from '../../AutoEarningsBreakdown'
 
 interface AutoEarningsCellProps {
@@ -30,24 +30,24 @@ const AutoEarningsCell: React.FC<React.PropsWithChildren<AutoEarningsCellProps>>
 
   const vaultData = useVaultPoolByKey(vaultKey)
   const {
-    userData: { userShares, cakeAtLastUserAction, isLoading },
+    userData: { userShares, invaAtLastUserAction, isLoading },
     pricePerFullShare,
   } = vaultData
-  const { hasAutoEarnings, autoCakeToDisplay, autoUsdToDisplay } = getCakeVaultEarnings(
+  const { hasAutoEarnings, autoInvaToDisplay, autoUsdToDisplay } = getInvaVaultEarnings(
     account,
-    cakeAtLastUserAction,
+    invaAtLastUserAction,
     userShares,
     pricePerFullShare,
     earningTokenPrice,
-    vaultKey === VaultKey.CakeVault
+    vaultKey === VaultKey.InvaVault
       ? (vaultData as Pool.DeserializedPoolLockedVault<Token>).userData.currentPerformanceFee
           .plus((vaultData as Pool.DeserializedPoolLockedVault<Token>).userData.currentOverdueFee)
           .plus((vaultData as Pool.DeserializedPoolLockedVault<Token>).userData.userBoostedShare)
       : null,
   )
 
-  const labelText = t('Recent CAKE profit')
-  const earningTokenBalance = autoCakeToDisplay
+  const labelText = t('Recent INVA profit')
+  const earningTokenBalance = autoInvaToDisplay
   const hasEarnings = hasAutoEarnings
   const earningTokenDollarBalance = autoUsdToDisplay
 
@@ -55,7 +55,7 @@ const AutoEarningsCell: React.FC<React.PropsWithChildren<AutoEarningsCellProps>>
     placement: 'bottom',
   })
 
-  if (vaultKey === VaultKey.CakeVault && !userShares.gt(0)) {
+  if (vaultKey === VaultKey.InvaVault && !userShares.gt(0)) {
     return null
   }
 

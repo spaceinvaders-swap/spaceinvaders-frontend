@@ -1,4 +1,4 @@
-import { Language } from '@pancakeswap/uikit'
+import { Language } from '@spaceinvaders-swap/uikit'
 
 import translations from './config/translations.json'
 

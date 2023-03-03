@@ -1,19 +1,19 @@
 import BigNumber from 'bignumber.js'
 import _toNumber from 'lodash/toNumber'
 import { useMemo } from 'react'
-import { useCakeVaultPublicData, useCakeVaultUserData } from 'state/pools/hooks'
-import { getBCakeMultiplier } from 'views/Farms/components/YieldBooster/components/BCakeCalculator'
-import { useUserLockedCakeStatus } from 'views/Farms/hooks/useUserLockedCakeStatus'
+import { useInvaVaultPublicData, useInvaVaultUserData } from 'state/pools/hooks'
+import { getBInvaMultiplier } from 'views/Farms/components/YieldBooster/components/BInvaCalculator'
+import { useUserLockedInvaStatus } from 'views/Farms/hooks/useUserLockedInvaStatus'
 import useAvgLockDuration from 'views/Pools/components/LockedPool/hooks/useAvgLockDuration'
 import { secondsToDays } from 'views/Pools/components/utils/formatSecondsToWeeks'
 
 export const useGetBoostedMultiplier = (userBalanceInFarm: BigNumber, lpTokenStakedAmount: BigNumber) => {
-  useCakeVaultPublicData()
-  useCakeVaultUserData()
+  useInvaVaultPublicData()
+  useInvaVaultUserData()
   const { avgLockDurationsInSeconds } = useAvgLockDuration()
-  const { isLoading, lockedAmount, totalLockedAmount, lockedStart, lockedEnd } = useUserLockedCakeStatus()
-  const bCakeMultiplier = useMemo(() => {
-    const result = getBCakeMultiplier(
+  const { isLoading, lockedAmount, totalLockedAmount, lockedStart, lockedEnd } = useUserLockedInvaStatus()
+  const bInvaMultiplier = useMemo(() => {
+    const result = getBInvaMultiplier(
       userBalanceInFarm, // userBalanceInFarm,
       lockedAmount, // userLockAmount
       secondsToDays(_toNumber(lockedEnd) - _toNumber(lockedStart)), // userLockDuration
@@ -32,7 +32,7 @@ export const useGetBoostedMultiplier = (userBalanceInFarm: BigNumber, lpTokenSta
     lockedStart,
     isLoading,
   ])
-  return _toNumber(bCakeMultiplier)
+  return _toNumber(bInvaMultiplier)
 }
 
 export const useGetCalculatorMultiplier = (
@@ -41,12 +41,12 @@ export const useGetCalculatorMultiplier = (
   lockedAmount: BigNumber,
   userLockDuration: number,
 ) => {
-  useCakeVaultPublicData()
-  useCakeVaultUserData()
+  useInvaVaultPublicData()
+  useInvaVaultUserData()
   const { avgLockDurationsInSeconds } = useAvgLockDuration()
-  const { isLoading, totalLockedAmount } = useUserLockedCakeStatus()
-  const bCakeMultiplier = useMemo(() => {
-    const result = getBCakeMultiplier(
+  const { isLoading, totalLockedAmount } = useUserLockedInvaStatus()
+  const bInvaMultiplier = useMemo(() => {
+    const result = getBInvaMultiplier(
       userBalanceInFarm, // userBalanceInFarm,
       lockedAmount, // userLockAmount
       secondsToDays(userLockDuration), // userLockDuration
@@ -64,7 +64,7 @@ export const useGetCalculatorMultiplier = (
     isLoading,
     userLockDuration,
   ])
-  return _toNumber(bCakeMultiplier)
+  return _toNumber(bInvaMultiplier)
 }
 
 const useGetBoostedAPR = (
@@ -73,8 +73,8 @@ const useGetBoostedAPR = (
   apr: number,
   lpRewardsApr: number,
 ) => {
-  const bCakeMultiplier = useGetBoostedMultiplier(userBalanceInFarm, lpTokenStakedAmount)
-  return (apr * bCakeMultiplier + lpRewardsApr).toFixed(2)
+  const bInvaMultiplier = useGetBoostedMultiplier(userBalanceInFarm, lpTokenStakedAmount)
+  return (apr * bInvaMultiplier + lpRewardsApr).toFixed(2)
 }
 
 export default useGetBoostedAPR

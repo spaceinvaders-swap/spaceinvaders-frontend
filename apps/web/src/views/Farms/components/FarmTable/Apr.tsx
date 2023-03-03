@@ -3,7 +3,7 @@ import ApyButton from 'views/Farms/components/FarmCard/ApyButton'
 import BigNumber from 'bignumber.js'
 import { BASE_ADD_LIQUIDITY_URL } from 'config'
 import getLiquidityUrlPathParts from 'utils/getLiquidityUrlPathParts'
-import { Skeleton } from '@pancakeswap/uikit'
+import { Skeleton } from '@spaceinvaders-swap/uikit'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 
 export interface AprProps {
@@ -16,7 +16,7 @@ export interface AprProps {
   lpTokenPrice: BigNumber
   tokenAddress?: string
   quoteTokenAddress?: string
-  cakePrice: BigNumber
+  invaPrice: BigNumber
   originalValue: number
   hideButton?: boolean
   strikethrough?: boolean
@@ -57,7 +57,7 @@ const Apr: React.FC<React.PropsWithChildren<AprProps>> = ({
   multiplier,
   tokenAddress,
   quoteTokenAddress,
-  cakePrice,
+  invaPrice,
   originalValue,
   hideButton = false,
   strikethrough,
@@ -80,7 +80,7 @@ const Apr: React.FC<React.PropsWithChildren<AprProps>> = ({
           lpLabel={lpLabel}
           lpTokenPrice={lpTokenPrice}
           multiplier={multiplier}
-          cakePrice={cakePrice}
+          invaPrice={invaPrice}
           apr={originalValue}
           displayApr={value}
           lpRewardsApr={lpRewardsApr}

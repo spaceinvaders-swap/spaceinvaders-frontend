@@ -1,15 +1,15 @@
 import { useRouter } from 'next/router'
 import PageLoader from 'components/Loader/PageLoader'
-import PancakeCollectibles from './PancakeCollectibles'
+import SpaceinvadersCollectibles from './SpaceinvadersCollectibles'
 
-const PancakeCollectiblesPageRouter = () => {
+const SpaceinvadersCollectiblesPageRouter = () => {
   const router = useRouter()
 
   if (router.isFallback) {
     return <PageLoader />
   }
 
-  return <PancakeCollectibles />
+  return <SpaceinvadersCollectibles />
 }
 
-export default PancakeCollectiblesPageRouter
+export default SpaceinvadersCollectiblesPageRouter

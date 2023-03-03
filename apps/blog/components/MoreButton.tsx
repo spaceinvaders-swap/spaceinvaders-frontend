@@ -1,6 +1,6 @@
-import { Flex, Button } from '@pancakeswap/uikit'
+import { Flex, Button } from '@spaceinvaders-swap/uikit'
 import NextLink from 'next/link'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 
 const MoreButton = () => {
   const { t } = useTranslation()

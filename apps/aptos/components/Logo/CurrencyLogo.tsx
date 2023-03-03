@@ -1,18 +1,18 @@
-import { Currency, Token, ChainId } from '@pancakeswap/aptos-swap-sdk'
-import { APTOS_COIN } from '@pancakeswap/awgmi'
+import { Currency, Token, ChainId } from '@spaceinvaders-swap/aptos-swap-sdk'
+import { APTOS_COIN } from '@spaceinvaders-swap/awgmi'
 import memoize from 'lodash/memoize'
-import { useHttpLocations } from '@pancakeswap/hooks'
-import { WrappedTokenInfo } from '@pancakeswap/token-lists'
+import { useHttpLocations } from '@spaceinvaders-swap/hooks'
+import { WrappedTokenInfo } from '@spaceinvaders-swap/token-lists'
 import { useMemo } from 'react'
 import styled from 'styled-components'
-import { TokenLogo } from '@pancakeswap/uikit'
+import { TokenLogo } from '@spaceinvaders-swap/uikit'
 import { aptosLogoClass } from './CurrencyLogo.css'
 import { BAD_SRCS } from './constants'
 
 const getTokenLogoURL = memoize(
   (token?: Token) => {
     if (token && token.chainId === ChainId.MAINNET) {
-      return `https://tokens.pancakeswap.finance/images/aptos/${token.address}.png` // hex encoding
+      return `https://tokens.spaceinvaders-swap.finance/images/aptos/${token.address}.png` // hex encoding
     }
     return null
   },
@@ -25,7 +25,7 @@ const StyledLogo = styled(TokenLogo)<{ size: string }>`
   border-radius: 50%;
 `
 
-const APT_SRCS = ['https://tokens.pancakeswap.finance/images/symbol/apt.png']
+const APT_SRCS = ['https://tokens.spaceinvaders-swap.finance/images/symbol/apt.png']
 
 export function AptosCoinLogo({ size = '24px', style }: { size?: string; style?: React.CSSProperties }) {
   return (

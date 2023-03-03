@@ -13,17 +13,17 @@ import {
   useMatchBreakpoints,
   MessageText,
   Message,
-} from '@pancakeswap/uikit'
+} from '@spaceinvaders-swap/uikit'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import ConnectWalletButton from 'components/ConnectWalletButton'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import Image from 'next/legacy/image'
 import NextLink from 'next/link'
 import styled, { useTheme } from 'styled-components'
-import { useBCakeProxyContractAddress } from '../hooks/useBCakeProxyContractAddress'
-import useBCakeProxyBalance from '../hooks/useBCakeProxyBalance'
+import { useBInvaProxyContractAddress } from '../hooks/useBInvaProxyContractAddress'
+import useBInvaProxyBalance from '../hooks/useBInvaProxyBalance'
 import { useUserBoosterStatus } from '../hooks/useUserBoosterStatus'
-import { useUserLockedCakeStatus } from '../hooks/useUserLockedCakeStatus'
+import { useUserLockedInvaStatus } from '../hooks/useUserLockedInvaStatus'
 import boosterCardImage from '../images/boosterCardImage.png'
 import CreateProxyButton from './YieldBooster/components/CreateProxyButton'
 
@@ -70,33 +70,33 @@ const StyledCardFooter = styled(CardFooter)`
   }
 `
 
-export const BCakeProxyCakeBalanceCard = () => {
+export const BInvaProxyInvaBalanceCard = () => {
   const { t } = useTranslation()
-  const { bCakeProxyBalance, bCakeProxyDisplayBalance, isLoading } = useBCakeProxyBalance()
-  return !isLoading && bCakeProxyBalance > 0 ? (
+  const { bInvaProxyBalance, bInvaProxyDisplayBalance, isLoading } = useBInvaProxyBalance()
+  return !isLoading && bInvaProxyBalance > 0 ? (
     <Message marginBottom="8px" variant="warning">
       <MessageText>
         {t(
-          'There is %amount% CAKE in the proxy booster contract. In order to harvest that amount you should withdraw, deposit or harvest one of the boosted farms.',
-          { amount: bCakeProxyDisplayBalance },
+          'There is %amount% INVA in the proxy booster contract. In order to harvest that amount you should withdraw, deposit or harvest one of the boosted farms.',
+          { amount: bInvaProxyDisplayBalance },
         )}
       </MessageText>
     </Message>
   ) : null
 }
 
-export const useBCakeTooltipContent = () => {
+export const useBInvaTooltipContent = () => {
   const { t } = useTranslation()
   const tooltipContent = (
     <>
       <Box mb="20px">
         {t(
-          'Yield Boosters allow you to boost your farming yields by locking CAKE in the fixed-term staking CAKE pool. The more CAKE you lock, and the longer you lock them, the higher the boost you will receive.',
+          'Yield Boosters allow you to boost your farming yields by locking INVA in the fixed-term staking INVA pool. The more INVA you lock, and the longer you lock them, the higher the boost you will receive.',
         )}
       </Box>
       <Box>
         {t('To learn more, check out the')}
-        <Link target="_blank" href="https://medium.com/pancakeswap/introducing-bcake-farm-yield-boosters-b27b7a6f0f84">
+        <Link target="_blank" href="https://medium.com/spaceinvaders-swap/introducing-binva-farm-yield-boosters-b27b7a6f0f84">
           {t('Medium Article')}
         </Link>
       </Box>
@@ -105,12 +105,12 @@ export const useBCakeTooltipContent = () => {
   return tooltipContent
 }
 
-export const BCakeBoosterCard = () => {
+export const BInvaBoosterCard = () => {
   const { t } = useTranslation()
   const theme = useTheme()
   const { isMobile } = useMatchBreakpoints()
 
-  const tooltipContent = useBCakeTooltipContent()
+  const tooltipContent = useBInvaTooltipContent()
 
   const { targetRef, tooltip, tooltipVisible } = useTooltip(tooltipContent, {
     placement: 'bottom-start',
@@ -133,7 +133,7 @@ export const BCakeBoosterCard = () => {
           </Box>
         </StyledCardBody>
         <StyledCardFooter>
-          <BCakeProxyCakeBalanceCard />
+          <BInvaProxyInvaBalanceCard />
           <CardContent />
         </StyledCardFooter>
       </Card>
@@ -144,9 +144,9 @@ export const BCakeBoosterCard = () => {
 const CardContent: React.FC = () => {
   const { t } = useTranslation()
   const { account, chainId } = useActiveWeb3React()
-  const { proxyCreated, refreshProxyAddress } = useBCakeProxyContractAddress(account, chainId)
+  const { proxyCreated, refreshProxyAddress } = useBInvaProxyContractAddress(account, chainId)
   const { maxBoostCounts, remainingCounts } = useUserBoosterStatus(account)
-  const { locked, lockedEnd } = useUserLockedCakeStatus()
+  const { locked, lockedEnd } = useUserLockedInvaStatus()
   const theme = useTheme()
 
   if (!account)
@@ -156,7 +156,7 @@ const CardContent: React.FC = () => {
           {t('Connect wallet to view booster')}
         </Text>
         <Text color="textSubtle" fontSize={12} mb="16px">
-          {t('An active fixed-term CAKE staking position is required for activating farm yield boosters.')}
+          {t('An active fixed-term INVA staking position is required for activating farm yield boosters.')}
         </Text>
         <ConnectWalletButton width="100%" style={{ backgroundColor: theme.colors.textSubtle }} />
       </Box>
@@ -165,10 +165,10 @@ const CardContent: React.FC = () => {
     return (
       <Box width="100%">
         <Text color="textSubtle" fontSize={12} bold>
-          {t('No CAKE locked')}
+          {t('No INVA locked')}
         </Text>
         <Text color="textSubtle" fontSize={12} mb="16px">
-          {t('An active fixed-term CAKE staking position is required for activating farm yield boosters.')}
+          {t('An active fixed-term INVA staking position is required for activating farm yield boosters.')}
         </Text>
         <NextLink href="/pools" passHref>
           <Button width="100%" style={{ backgroundColor: theme.colors.textSubtle }}>
@@ -184,7 +184,7 @@ const CardContent: React.FC = () => {
           {t('Locked staking is ended')}
         </Text>
         <Text color="textSubtle" fontSize={12} mb="16px">
-          {t('An active fixed-term CAKE staking position is required for activating farm yield boosters.')}
+          {t('An active fixed-term INVA staking position is required for activating farm yield boosters.')}
         </Text>
         <NextLink href="/pools" passHref>
           <Button width="100%" style={{ backgroundColor: theme.colors.textSubtle }}>

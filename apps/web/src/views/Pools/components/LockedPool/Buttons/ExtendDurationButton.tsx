@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { Button, useModal, ButtonProps } from '@pancakeswap/uikit'
+import { Button, useModal, ButtonProps } from '@spaceinvaders-swap/uikit'
 import { ONE_WEEK_DEFAULT, MAX_LOCK_DURATION } from 'config/constants/pools'
 
 import ExtendDurationModal from '../Modals/ExtendDurationModal'

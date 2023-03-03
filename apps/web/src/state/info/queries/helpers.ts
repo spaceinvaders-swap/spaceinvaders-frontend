@@ -1,17 +1,17 @@
-import { ChainId } from '@pancakeswap/sdk'
+import { ChainId } from '@spaceinvaders-swap/sdk'
 import fromPairs from 'lodash/fromPairs'
 import chunk from 'lodash/chunk'
 import uniq from 'lodash/uniq'
 import mapValues from 'lodash/mapValues'
 import { ONE_DAY_UNIX } from 'config/constants/info'
-import IPancakePairABI from 'config/abi/IPancakePair.json'
+import ISpaceinvadersPairABI from 'config/abi/ISpaceinvadersPair.json'
 import bep20Abi from 'config/abi/erc20.json'
 import { multicallv2 } from 'utils/multicall'
 import { getUnixTime } from 'date-fns'
 import { TransactionType } from 'state/info/types'
 import { ChartEntry } from '../types'
 import { MultiChainName, multiChainStartTime } from '../constant'
-import { MintResponse, SwapResponse, BurnResponse, TokenDayData, PairDayData, PancakeDayData } from './types'
+import { MintResponse, SwapResponse, BurnResponse, TokenDayData, PairDayData, SpaceinvadersDayData } from './types'
 
 export const mapMints = (mint: MintResponse) => {
   return {
@@ -61,7 +61,7 @@ export const mapSwaps = (swap: SwapResponse) => {
   }
 }
 
-export const mapDayData = (tokenDayData: TokenDayData | PancakeDayData): ChartEntry => ({
+export const mapDayData = (tokenDayData: TokenDayData | SpaceinvadersDayData): ChartEntry => ({
   date: tokenDayData.date,
   volumeUSD: parseFloat(tokenDayData.dailyVolumeUSD),
   liquidityUSD: parseFloat(tokenDayData.totalLiquidityUSD),
@@ -221,7 +221,7 @@ export async function getPairTokenMap(poolAddresses: string[], chainName: 'ETH' 
     .flat()
   try {
     rawPairTokenResults = await multicallv2({
-      abi: IPancakePairABI,
+      abi: ISpaceinvadersPairABI,
       calls,
       options: { requireSuccess: false },
       chainId: chainName === 'ETH' ? ChainId.ETHEREUM : ChainId.BSC,

@@ -1,4 +1,4 @@
-import { breakpoints, mediaQueries, vars } from "@pancakeswap/ui";
+import { breakpoints, mediaQueries, vars } from "@spaceinvaders-swap/ui";
 
 export default {
   siteWidth: 1200,

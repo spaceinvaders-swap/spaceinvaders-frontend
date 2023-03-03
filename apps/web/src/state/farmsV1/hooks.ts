@@ -1,16 +1,16 @@
 import { useAccount } from 'wagmi'
-import { ChainId } from '@pancakeswap/sdk'
+import { ChainId } from '@spaceinvaders-swap/sdk'
 import BigNumber from 'bignumber.js'
-import { getFarmConfig } from '@pancakeswap/farms/constants'
+import { getFarmConfig } from '@spaceinvaders-swap/farms/constants'
 import { useFastRefreshEffect, useSlowRefreshEffect } from 'hooks/useRefreshEffect'
 import { useMemo } from 'react'
 import { useSelector } from 'react-redux'
 import { useAppDispatch } from 'state'
-import { useCakeBusdPrice } from 'hooks/useBUSDPrice'
-import { deserializeToken } from '@pancakeswap/token-lists'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { getBalanceAmount } from '@pancakeswap/utils/formatBalance'
-import { DeserializedFarm, DeserializedFarmsState, DeserializedFarmUserData, SerializedFarm } from '@pancakeswap/farms'
+import { useInvaBusdPrice } from 'hooks/useBUSDPrice'
+import { deserializeToken } from '@spaceinvaders-swap/token-lists'
+import { BIG_ZERO } from '@spaceinvaders-swap/utils/bigNumber'
+import { getBalanceAmount } from '@spaceinvaders-swap/utils/formatBalance'
+import { DeserializedFarm, DeserializedFarmsState, DeserializedFarmUserData, SerializedFarm } from '@spaceinvaders-swap/farms'
 import { fetchFarmsPublicDataAsync, fetchFarmUserDataAsync } from '.'
 import { State } from '../types'
 
@@ -65,7 +65,7 @@ export const usePollFarmsV1WithUserData = () => {
 
 /**
  * Fetches the "core" farm data used globally
- * 251 = CAKE-BNB LP
+ * 251 = INVA-BNB LP
  * 252 = BUSD-BNB LP
  */
 export const usePollCoreFarmData = () => {
@@ -140,7 +140,7 @@ export const useLpTokenPrice = (symbol: string) => {
 /**
  * @deprecated use the BUSD hook in /hooks
  */
-export const usePriceCakeBusd = (): BigNumber => {
-  const price = useCakeBusdPrice()
+export const usePriceInvaBusd = (): BigNumber => {
+  const price = useInvaBusdPrice()
   return useMemo(() => (price ? new BigNumber(price.toSignificant(6)) : BIG_ZERO), [price])
 }

@@ -1,6 +1,6 @@
-import { Box, Button, Flex, Link, Text } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
-import { LandingBodyWrapper } from 'views/PancakeSquad/styles'
+import { Box, Button, Flex, Link, Text } from '@spaceinvaders-swap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { LandingBodyWrapper } from 'views/SpaceinvadersSquad/styles'
 import eventDescriptionConfigBuilder from './config'
 import {
   StyledBodyTextElement,

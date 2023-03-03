@@ -1,8 +1,8 @@
-import { ChainId, Currency, Token } from '@pancakeswap/sdk'
-import { Text, QuestionHelper, AutoColumn } from '@pancakeswap/uikit'
+import { ChainId, Currency, Token } from '@spaceinvaders-swap/sdk'
+import { Text, QuestionHelper, AutoColumn } from '@spaceinvaders-swap/uikit'
 import styled from 'styled-components'
 import useNativeCurrency from 'hooks/useNativeCurrency'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 
 import { SUGGESTED_BASES } from 'config/constants/exchange'
 import { AutoRow } from '../Layout/Row'

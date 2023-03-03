@@ -1,15 +1,15 @@
-import { Text, Flex, Skeleton, Heading, Box, useMatchBreakpoints, BalanceWithLoading, Pool } from '@pancakeswap/uikit'
+import { Text, Flex, Skeleton, Heading, Box, useMatchBreakpoints, BalanceWithLoading, Pool } from '@spaceinvaders-swap/uikit'
 import { useAccount } from 'wagmi'
-import { getCakeVaultEarnings } from 'views/Pools/helpers'
-import { useTranslation } from '@pancakeswap/localization'
+import { getInvaVaultEarnings } from 'views/Pools/helpers'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import { useVaultPoolByKey } from 'state/pools/hooks'
-import { VaultKey, DeserializedLockedCakeVault } from 'state/types'
-import { getVaultPosition, VaultPosition } from 'utils/cakePool'
+import { VaultKey, DeserializedLockedInvaVault } from 'state/types'
+import { getVaultPosition, VaultPosition } from 'utils/invaPool'
 import { useVaultApy } from 'hooks/useVaultApy'
-import { Token } from '@pancakeswap/sdk'
+import { Token } from '@spaceinvaders-swap/sdk'
 
 import { ActionContainer, ActionTitles, ActionContent, RowActionContainer } from './styles'
-import UnstakingFeeCountdownRow from '../../CakeVaultCard/UnstakingFeeCountdownRow'
+import UnstakingFeeCountdownRow from '../../InvaVaultCard/UnstakingFeeCountdownRow'
 import useUserDataInVaultPresenter from '../../LockedPool/hooks/useUserDataInVaultPresenter'
 
 const AutoHarvestAction: React.FunctionComponent<React.PropsWithChildren<Pool.DeserializedPool<Token>>> = ({
@@ -23,27 +23,27 @@ const AutoHarvestAction: React.FunctionComponent<React.PropsWithChildren<Pool.De
 
   const vaultData = useVaultPoolByKey(vaultKey)
   const {
-    userData: { userShares, cakeAtLastUserAction },
+    userData: { userShares, invaAtLastUserAction },
     pricePerFullShare,
   } = vaultData
-  const { hasAutoEarnings, autoCakeToDisplay, autoUsdToDisplay } = getCakeVaultEarnings(
+  const { hasAutoEarnings, autoInvaToDisplay, autoUsdToDisplay } = getInvaVaultEarnings(
     account,
-    cakeAtLastUserAction,
+    invaAtLastUserAction,
     userShares,
     pricePerFullShare,
     earningTokenPrice,
-    vaultKey === VaultKey.CakeVault
-      ? (vaultData as DeserializedLockedCakeVault).userData.currentPerformanceFee
-          .plus((vaultData as DeserializedLockedCakeVault).userData.currentOverdueFee)
-          .plus((vaultData as DeserializedLockedCakeVault).userData.userBoostedShare)
+    vaultKey === VaultKey.InvaVault
+      ? (vaultData as DeserializedLockedInvaVault).userData.currentPerformanceFee
+          .plus((vaultData as DeserializedLockedInvaVault).userData.currentOverdueFee)
+          .plus((vaultData as DeserializedLockedInvaVault).userData.userBoostedShare)
       : null,
   )
 
   const { secondDuration, weekDuration } = useUserDataInVaultPresenter({
     lockStartTime:
-      vaultKey === VaultKey.CakeVault ? (vaultData as DeserializedLockedCakeVault).userData?.lockStartTime ?? '0' : '0',
+      vaultKey === VaultKey.InvaVault ? (vaultData as DeserializedLockedInvaVault).userData?.lockStartTime ?? '0' : '0',
     lockEndTime:
-      vaultKey === VaultKey.CakeVault ? (vaultData as DeserializedLockedCakeVault).userData?.lockEndTime ?? '0' : '0',
+      vaultKey === VaultKey.InvaVault ? (vaultData as DeserializedLockedInvaVault).userData?.lockEndTime ?? '0' : '0',
   })
 
   const { boostFactor } = useVaultApy({ duration: secondDuration })
@@ -52,7 +52,7 @@ const AutoHarvestAction: React.FunctionComponent<React.PropsWithChildren<Pool.De
 
   const actionTitle = (
     <Text fontSize="12px" bold color="secondary" as="span" textTransform="uppercase">
-      {t('Recent CAKE profit')}
+      {t('Recent INVA profit')}
     </Text>
   )
 
@@ -87,7 +87,7 @@ const AutoHarvestAction: React.FunctionComponent<React.PropsWithChildren<Pool.De
             <>
               {hasAutoEarnings ? (
                 <>
-                  <BalanceWithLoading lineHeight="1" bold fontSize="20px" decimals={5} value={autoCakeToDisplay} />
+                  <BalanceWithLoading lineHeight="1" bold fontSize="20px" decimals={5} value={autoInvaToDisplay} />
                   {Number.isFinite(earningTokenPrice) && earningTokenPrice > 0 && (
                     <BalanceWithLoading
                       display="inline"
@@ -118,7 +118,7 @@ const AutoHarvestAction: React.FunctionComponent<React.PropsWithChildren<Pool.De
           </Flex>
         </ActionContent>
       </Box>
-      {!isMobile && vaultKey === VaultKey.CakeVault && (vaultData as DeserializedLockedCakeVault).userData.locked && (
+      {!isMobile && vaultKey === VaultKey.InvaVault && (vaultData as DeserializedLockedInvaVault).userData.locked && (
         <Box minWidth="123px">
           <ActionTitles>
             <Text fontSize="12px" bold color="secondary" as="span" textTransform="uppercase">

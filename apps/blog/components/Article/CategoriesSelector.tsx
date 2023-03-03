@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
-import { Flex, Button } from '@pancakeswap/uikit'
+import { Flex, Button } from '@spaceinvaders-swap/uikit'
 import { Categories } from 'types'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 
 interface CategoriesSelectorProps {
   selected: number

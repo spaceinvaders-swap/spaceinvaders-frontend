@@ -1,7 +1,7 @@
 [
   {
     "inputs": [
-      { "internalType": "address", "name": "_pancakeProfile", "type": "address" },
+      { "internalType": "address", "name": "_spaceinvadersProfile", "type": "address" },
       { "internalType": "uint256", "name": "_numberPoints", "type": "uint256" },
       { "internalType": "uint256", "name": "_thresholdPoints", "type": "uint256" },
       { "internalType": "uint256", "name": "_campaignId", "type": "uint256" },
@@ -115,8 +115,8 @@
   },
   {
     "inputs": [],
-    "name": "pancakeProfile",
-    "outputs": [{ "internalType": "contract PancakeProfile", "name": "", "type": "address" }],
+    "name": "spaceinvadersProfile",
+    "outputs": [{ "internalType": "contract SpaceinvadersProfile", "name": "", "type": "address" }],
     "stateMutability": "view",
     "type": "function"
   },

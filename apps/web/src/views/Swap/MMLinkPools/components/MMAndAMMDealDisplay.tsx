@@ -1,6 +1,6 @@
-import { Currency, Trade, TradeType } from '@pancakeswap/sdk'
-import { TradeWithStableSwap } from '@pancakeswap/smart-router/evm'
-import { Box, Text } from '@pancakeswap/uikit'
+import { Currency, Trade, TradeType } from '@spaceinvaders-swap/sdk'
+import { TradeWithStableSwap } from '@spaceinvaders-swap/smart-router/evm'
+import { Box, Text } from '@spaceinvaders-swap/uikit'
 import { useRouter } from 'next/router'
 
 import { Field } from 'state/swap/actions'

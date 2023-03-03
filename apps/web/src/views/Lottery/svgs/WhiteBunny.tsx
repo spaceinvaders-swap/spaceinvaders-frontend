@@ -1,4 +1,4 @@
-import { Svg, SvgProps } from '@pancakeswap/uikit'
+import { Svg, SvgProps } from '@spaceinvaders-swap/uikit'
 
 const WhiteBunny: React.FC<React.PropsWithChildren<SvgProps>> = (props) => {
   return (

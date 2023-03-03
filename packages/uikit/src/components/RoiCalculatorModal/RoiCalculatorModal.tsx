@@ -1,5 +1,5 @@
-import { useTranslation } from "@pancakeswap/localization";
-import { getBalanceNumber } from "@pancakeswap/utils/formatBalance";
+import { useTranslation } from "@spaceinvaders-swap/localization";
+import { getBalanceNumber } from "@spaceinvaders-swap/utils/formatBalance";
 import BigNumber from "bignumber.js";
 import { useEffect, useMemo, useRef } from "react";
 import styled from "styled-components";
@@ -72,10 +72,10 @@ export interface RoiCalculatorModalProps {
   initialValue?: string;
   strategy?: any;
   header?: React.ReactNode;
-  rewardCakePerSecond?: boolean;
+  rewardInvaPerSecond?: boolean;
   onBack?: () => void;
   onDismiss?: () => void;
-  bCakeCalculatorSlot?: (stakingTokenBalance: string) => React.ReactNode;
+  bInvaCalculatorSlot?: (stakingTokenBalance: string) => React.ReactNode;
   isLocked?: boolean;
   stableSwapAddress?: string;
   stableLpFee?: number;
@@ -94,7 +94,7 @@ const RoiCalculatorModal: React.FC<React.PropsWithChildren<RoiCalculatorModalPro
   stakingTokenPrice,
   multiplier,
   initialValue,
-  earningTokenSymbol = "CAKE",
+  earningTokenSymbol = "INVA",
   autoCompoundFrequency = 0,
   performanceFee = 0,
   isFarm = false,
@@ -103,10 +103,10 @@ const RoiCalculatorModal: React.FC<React.PropsWithChildren<RoiCalculatorModalPro
   header,
   children,
   stakingTokenDecimals,
-  rewardCakePerSecond,
+  rewardInvaPerSecond,
   onBack,
   onDismiss,
-  bCakeCalculatorSlot,
+  bInvaCalculatorSlot,
   isLocked = false,
   stableSwapAddress,
   stableLpFee,
@@ -261,7 +261,7 @@ const RoiCalculatorModal: React.FC<React.PropsWithChildren<RoiCalculatorModalPro
               </FullWidthButtonMenu>
             </>
           )}
-          {bCakeCalculatorSlot && bCakeCalculatorSlot(principalAsToken)}
+          {bInvaCalculatorSlot && bInvaCalculatorSlot(principalAsToken)}
           {autoCompoundFrequency === 0 && (
             <>
               <Text mt="24px" color="secondary" bold fontSize="12px" textTransform="uppercase">
@@ -308,7 +308,7 @@ const RoiCalculatorModal: React.FC<React.PropsWithChildren<RoiCalculatorModalPro
         linkLabel={linkLabel}
         linkHref={linkHref}
         performanceFee={performanceFee}
-        rewardCakePerSecond={rewardCakePerSecond}
+        rewardInvaPerSecond={rewardInvaPerSecond}
         isLocked={isLocked}
         stableSwapAddress={stableSwapAddress}
         stableLpFee={stableLpFee}

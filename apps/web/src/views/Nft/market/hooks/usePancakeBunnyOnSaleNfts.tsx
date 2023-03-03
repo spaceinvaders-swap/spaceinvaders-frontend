@@ -3,16 +3,16 @@ import { NftToken, ApiResponseCollectionTokens } from 'state/nftMarket/types'
 import {
   getNftsMarketData,
   getMetadataWithFallback,
-  getPancakeBunniesAttributesField,
+  getSpaceinvadersBunniesAttributesField,
   combineApiAndSgResponseToNftToken,
   getNftsUpdatedMarketData,
 } from 'state/nftMarket/helpers'
 import useSWRInfinite from 'swr/infinite'
 import { FetchStatus } from 'config/constants/types'
-import { formatBigNumber } from '@pancakeswap/utils/formatBalance'
+import { formatBigNumber } from '@spaceinvaders-swap/utils/formatBalance'
 import { NOT_ON_SALE_SELLER } from 'config/constants'
 import { isAddress } from 'utils'
-import { pancakeBunniesAddress } from '../constants'
+import { spaceinvadersBunniesAddress } from '../constants'
 
 const fetchMarketDataNfts = async (
   bunnyId: string,
@@ -22,7 +22,7 @@ const fetchMarketDataNfts = async (
   itemsPerPage: number,
 ): Promise<{ newNfts: NftToken[]; isPageLast: boolean }> => {
   const whereClause = {
-    collection: pancakeBunniesAddress.toLowerCase(),
+    collection: spaceinvadersBunniesAddress.toLowerCase(),
     otherId: bunnyId,
     isTradable: true,
   }
@@ -36,13 +36,13 @@ const fetchMarketDataNfts = async (
 
   const moreTokensWithRequestedBunnyId = nftsMarket.map((marketData) => {
     const apiMetadata = getMetadataWithFallback(nftMetadata.data, marketData.otherId)
-    const attributes = getPancakeBunniesAttributesField(marketData.otherId)
+    const attributes = getSpaceinvadersBunniesAttributesField(marketData.otherId)
     return combineApiAndSgResponseToNftToken(apiMetadata, marketData, attributes)
   })
   return { newNfts: moreTokensWithRequestedBunnyId, isPageLast: moreTokensWithRequestedBunnyId.length < itemsPerPage }
 }
 
-export const usePancakeBunnyOnSaleNfts = (
+export const useSpaceinvadersBunnyOnSaleNfts = (
   bunnyId: string,
   nftMetadata: ApiResponseCollectionTokens,
   itemsPerPage: number,
@@ -65,13 +65,13 @@ export const usePancakeBunnyOnSaleNfts = (
     (pageIndex, previousPageData) => {
       if (!nftMetadata) return null
       if (pageIndex !== 0 && previousPageData && !previousPageData.length) return null
-      return [bunnyId, direction, pageIndex, 'pancakeBunnyOnSaleNfts'] as const
+      return [bunnyId, direction, pageIndex, 'spaceinvadersBunnyOnSaleNfts'] as const
     },
     async ([id, sortDirection, page]) => {
       const { newNfts, isPageLast } = await fetchMarketDataNfts(id, nftMetadata, sortDirection, page, itemsPerPage)
       isLastPage.current = isPageLast
       const nftsMarketTokenIds = newNfts.map((marketData) => marketData.tokenId)
-      const updatedMarketData = await getNftsUpdatedMarketData(pancakeBunniesAddress.toLowerCase(), nftsMarketTokenIds)
+      const updatedMarketData = await getNftsUpdatedMarketData(spaceinvadersBunniesAddress.toLowerCase(), nftsMarketTokenIds)
       if (!updatedMarketData) return newNfts
 
       return updatedMarketData

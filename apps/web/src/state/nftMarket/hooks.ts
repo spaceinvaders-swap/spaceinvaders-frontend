@@ -4,7 +4,7 @@ import { useAtom } from 'jotai'
 import { FetchStatus } from 'config/constants/types'
 import erc721Abi from 'config/abi/erc721.json'
 import { useSWRMulticall } from 'hooks/useSWRContract'
-import { getPancakeProfileAddress } from 'utils/addressHelpers'
+import { getSpaceinvadersProfileAddress } from 'utils/addressHelpers'
 import useSWR from 'swr'
 import useSWRImmutable from 'swr/immutable'
 import isEmpty from 'lodash/isEmpty'
@@ -63,7 +63,7 @@ export const useApprovalNfts = (nftsInWallet: NftToken[]) => {
   )
 
   const { data } = useSWRMulticall(erc721Abi, nftApprovalCalls)
-  const profileAddress = getPancakeProfileAddress()
+  const profileAddress = getSpaceinvadersProfileAddress()
 
   const approvedTokenIds = Array.isArray(data)
     ? fromPairs(data.flat().map((address, index) => [nftsInWallet[index].tokenId, profileAddress === address]))

@@ -1,39 +1,39 @@
 import { useState, useEffect } from 'react'
-import { Flex } from '@pancakeswap/uikit'
+import { Flex } from '@spaceinvaders-swap/uikit'
 import Page from 'components/Layout/Page'
 import { useGetCollection } from 'state/nftMarket/hooks'
 import { getNftsFromCollectionApi } from 'state/nftMarket/helpers'
 import { NftToken, ApiResponseCollectionTokens } from 'state/nftMarket/types'
 import PageLoader from 'components/Loader/PageLoader'
 import { useGetCollectionDistributionPB } from 'views/Nft/market/hooks/useGetCollectionDistribution'
-import MainPancakeBunnyCard from './MainPancakeBunnyCard'
+import MainSpaceinvadersBunnyCard from './MainSpaceinvadersBunnyCard'
 import PropertiesCard from '../shared/PropertiesCard'
 import DetailsCard from '../shared/DetailsCard'
 import MoreFromThisCollection from '../shared/MoreFromThisCollection'
 import ForSaleTableCard from './ForSaleTableCard'
-import { pancakeBunniesAddress } from '../../../constants'
+import { spaceinvadersBunniesAddress } from '../../../constants'
 import { TwoColumnsContainer } from '../shared/styles'
-import { usePancakeBunnyCheapestNft } from '../../../hooks/usePancakeBunnyCheapestNfts'
+import { useSpaceinvadersBunnyCheapestNft } from '../../../hooks/useSpaceinvadersBunnyCheapestNfts'
 import ManageNftsCard from '../shared/ManageNFTsCard'
 
-interface IndividualPancakeBunnyPageProps {
+interface IndividualSpaceinvadersBunnyPageProps {
   bunnyId: string
 }
 
-const IndividualPancakeBunnyPage = (props: IndividualPancakeBunnyPageProps) => {
-  const collection = useGetCollection(pancakeBunniesAddress)
+const IndividualSpaceinvadersBunnyPage = (props: IndividualSpaceinvadersBunnyPageProps) => {
+  const collection = useGetCollection(spaceinvadersBunniesAddress)
 
   if (!collection) {
     return <PageLoader />
   }
 
-  return <IndividualPancakeBunnyPageBase {...props} />
+  return <IndividualSpaceinvadersBunnyPageBase {...props} />
 }
 
-const IndividualPancakeBunnyPageBase: React.FC<React.PropsWithChildren<IndividualPancakeBunnyPageProps>> = ({
+const IndividualSpaceinvadersBunnyPageBase: React.FC<React.PropsWithChildren<IndividualSpaceinvadersBunnyPageProps>> = ({
   bunnyId,
 }) => {
-  const collection = useGetCollection(pancakeBunniesAddress)
+  const collection = useGetCollection(spaceinvadersBunniesAddress)
   const totalBunnyCount = Number(collection?.totalSupply)
   const [nothingForSaleBunny, setNothingForSaleBunny] = useState<NftToken>(null)
   const [nftMetadata, setNftMetadata] = useState<ApiResponseCollectionTokens>(null)
@@ -41,13 +41,13 @@ const IndividualPancakeBunnyPageBase: React.FC<React.PropsWithChildren<Individua
     data: cheapestBunny,
     isFetched: isFetchedCheapestBunny,
     refresh: refreshCheapestNft,
-  } = usePancakeBunnyCheapestNft(bunnyId, nftMetadata)
+  } = useSpaceinvadersBunnyCheapestNft(bunnyId, nftMetadata)
 
   const { data: distributionData, isFetching: isFetchingDistribution } = useGetCollectionDistributionPB()
 
   useEffect(() => {
     const fetchNftMetadata = async () => {
-      const metadata = await getNftsFromCollectionApi(pancakeBunniesAddress)
+      const metadata = await getNftsFromCollectionApi(spaceinvadersBunniesAddress)
       setNftMetadata(metadata)
     }
 
@@ -64,7 +64,7 @@ const IndividualPancakeBunnyPageBase: React.FC<React.PropsWithChildren<Individua
         name: nftMetadata.data[bunnyId].name,
         description: nftMetadata.data[bunnyId].description,
         collectionName: nftMetadata.data[bunnyId].collection.name,
-        collectionAddress: pancakeBunniesAddress,
+        collectionAddress: spaceinvadersBunniesAddress,
         image: nftMetadata.data[bunnyId].image,
         attributes: [
           {
@@ -110,7 +110,7 @@ const IndividualPancakeBunnyPageBase: React.FC<React.PropsWithChildren<Individua
 
   return (
     <Page>
-      <MainPancakeBunnyCard
+      <MainSpaceinvadersBunnyCard
         cheapestNft={cheapestBunny}
         nothingForSaleBunny={nothingForSaleBunny}
         onSuccessSale={refreshCheapestNft}
@@ -124,7 +124,7 @@ const IndividualPancakeBunnyPageBase: React.FC<React.PropsWithChildren<Individua
           />
           <PropertiesCard properties={properties} rarity={propertyRarity} />
           <DetailsCard
-            contractAddress={pancakeBunniesAddress}
+            contractAddress={spaceinvadersBunniesAddress}
             ipfsJson={cheapestBunny?.marketData?.metadataUrl}
             rarity={propertyRarity?.bunnyId}
             count={getBunnyIdCount()}
@@ -133,11 +133,11 @@ const IndividualPancakeBunnyPageBase: React.FC<React.PropsWithChildren<Individua
         <ForSaleTableCard bunnyId={bunnyId} nftMetadata={nftMetadata} onSuccessSale={refreshCheapestNft} />
       </TwoColumnsContainer>
       <MoreFromThisCollection
-        collectionAddress={pancakeBunniesAddress}
+        collectionAddress={spaceinvadersBunniesAddress}
         currentTokenName={cheapestBunny?.name || nothingForSaleBunny?.name}
       />
     </Page>
   )
 }
 
-export default IndividualPancakeBunnyPage
+export default IndividualSpaceinvadersBunnyPage

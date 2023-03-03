@@ -1,6 +1,6 @@
-import { Token } from '@pancakeswap/sdk'
-import { Flex, Message, MessageText, useMatchBreakpoints, SkeletonV2 } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Token } from '@spaceinvaders-swap/sdk'
+import { Flex, Message, MessageText, useMatchBreakpoints, SkeletonV2 } from '@spaceinvaders-swap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import { memo } from 'react'
 import { useVaultApy } from 'hooks/useVaultApy'
 

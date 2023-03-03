@@ -1,5 +1,5 @@
-import { RowBetween, Text, IconButton, PencilIcon, useModal } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { RowBetween, Text, IconButton, PencilIcon, useModal } from '@spaceinvaders-swap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import { useUserSlippage } from 'state/user'
 import { SettingsModal } from '../../Menu/Settings/SettingsModal'
 

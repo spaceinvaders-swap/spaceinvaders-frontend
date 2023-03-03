@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react'
 import { formatUnits } from '@ethersproject/units'
-import { Card, CardBody, Heading, Text, useToast } from '@pancakeswap/uikit'
+import { Card, CardBody, Heading, Text, useToast } from '@spaceinvaders-swap/uikit'
 import { useAccount } from 'wagmi'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import useApproveConfirmTransaction from 'hooks/useApproveConfirmTransaction'
-import { useCake, useBunnyFactory } from 'hooks/useContract'
-import { useGetCakeBalance } from 'hooks/useTokenBalance'
+import { useInva, useBunnyFactory } from 'hooks/useContract'
+import { useGetInvaBalance } from 'hooks/useTokenBalance'
 import { useCallWithGasPrice } from 'hooks/useCallWithGasPrice'
 import ApproveConfirmButtons from 'components/ApproveConfirmButtons'
 import { getNftsFromCollectionApi } from 'state/nftMarket/helpers'
 import { ApiSingleTokenData } from 'state/nftMarket/types'
-import { pancakeBunniesAddress } from 'views/Nft/market/constants'
+import { spaceinvadersBunniesAddress } from 'views/Nft/market/constants'
 import { requiresApproval } from 'utils/requiresApproval'
 import { FetchStatus } from 'config/constants/types'
 import SelectionCard from './SelectionCard'
@@ -25,20 +25,20 @@ interface MintNftData extends ApiSingleTokenData {
 const Mint: React.FC<React.PropsWithChildren> = () => {
   const [selectedBunnyId, setSelectedBunnyId] = useState<string>('')
   const [starterNfts, setStarterNfts] = useState<MintNftData[]>([])
-  const { actions, minimumCakeRequired, allowance } = useProfileCreation()
+  const { actions, minimumInvaRequired, allowance } = useProfileCreation()
   const { toastSuccess } = useToast()
 
   const { address: account } = useAccount()
-  const { reader: cakeContractReader, signer: cakeContractApprover } = useCake()
+  const { reader: invaContractReader, signer: invaContractApprover } = useInva()
   const bunnyFactoryContract = useBunnyFactory()
   const { t } = useTranslation()
-  const { balance: cakeBalance, fetchStatus } = useGetCakeBalance()
-  const hasMinimumCakeRequired = fetchStatus === FetchStatus.Fetched && cakeBalance.gte(MINT_COST)
+  const { balance: invaBalance, fetchStatus } = useGetInvaBalance()
+  const hasMinimumInvaRequired = fetchStatus === FetchStatus.Fetched && invaBalance.gte(MINT_COST)
   const { callWithGasPrice } = useCallWithGasPrice()
 
   useEffect(() => {
     const getStarterNfts = async () => {
-      const response = await getNftsFromCollectionApi(pancakeBunniesAddress)
+      const response = await getNftsFromCollectionApi(spaceinvadersBunniesAddress)
       if (!response) return
       const { data: allPbTokens } = response
       const nfts = STARTER_NFT_BUNNY_IDS.map((bunnyId) => {
@@ -57,10 +57,10 @@ const Mint: React.FC<React.PropsWithChildren> = () => {
   const { isApproving, isApproved, isConfirmed, isConfirming, handleApprove, handleConfirm } =
     useApproveConfirmTransaction({
       onRequiresApproval: async () => {
-        return requiresApproval(cakeContractReader, account, bunnyFactoryContract.address, minimumCakeRequired)
+        return requiresApproval(invaContractReader, account, bunnyFactoryContract.address, minimumInvaRequired)
       },
       onApprove: () => {
-        return callWithGasPrice(cakeContractApprover, 'approve', [bunnyFactoryContract.address, allowance.toString()])
+        return callWithGasPrice(invaContractApprover, 'approve', [bunnyFactoryContract.address, allowance.toString()])
       },
       onConfirm: () => {
         return callWithGasPrice(bunnyFactoryContract, 'mintNFT', [selectedBunnyId])
@@ -85,7 +85,7 @@ const Mint: React.FC<React.PropsWithChildren> = () => {
       <Text as="p">{t('Every profile starts by making a “starter” collectible (NFT).')}</Text>
       <Text as="p">{t('This starter will also become your first profile picture.')}</Text>
       <Text as="p" mb="24px">
-        {t('You can change your profile pic later if you get another approved Pancake Collectible.')}
+        {t('You can change your profile pic later if you get another approved Spaceinvaders Collectible.')}
       </Text>
       <Card mb="24px">
         <CardBody>
@@ -96,7 +96,7 @@ const Mint: React.FC<React.PropsWithChildren> = () => {
             {t('Choose wisely: you can only ever make one starter collectible!')}
           </Text>
           <Text as="p" mb="24px" color="textSubtle">
-            {t('Cost: %num% CAKE', { num: formatUnits(MINT_COST) })}
+            {t('Cost: %num% INVA', { num: formatUnits(MINT_COST) })}
           </Text>
           {starterNfts.map((nft) => {
             const handleChange = (value: string) => setSelectedBunnyId(value)
@@ -109,21 +109,21 @@ const Mint: React.FC<React.PropsWithChildren> = () => {
                 image={nft?.image.thumbnail}
                 isChecked={selectedBunnyId === nft?.bunnyId}
                 onChange={handleChange}
-                disabled={isApproving || isConfirming || isConfirmed || !hasMinimumCakeRequired}
+                disabled={isApproving || isConfirming || isConfirmed || !hasMinimumInvaRequired}
               >
                 <Text bold>{nft?.name}</Text>
               </SelectionCard>
             )
           })}
-          {!hasMinimumCakeRequired && (
+          {!hasMinimumInvaRequired && (
             <Text color="failure" mb="16px">
-              {t('A minimum of %num% CAKE is required', { num: formatUnits(MINT_COST) })}
+              {t('A minimum of %num% INVA is required', { num: formatUnits(MINT_COST) })}
             </Text>
           )}
           <ApproveConfirmButtons
             isApproveDisabled={selectedBunnyId === null || isConfirmed || isConfirming || isApproved}
             isApproving={isApproving}
-            isConfirmDisabled={!isApproved || isConfirmed || !hasMinimumCakeRequired}
+            isConfirmDisabled={!isApproved || isConfirmed || !hasMinimumInvaRequired}
             isConfirming={isConfirming}
             onApprove={handleApprove}
             onConfirm={handleConfirm}

@@ -1,11 +1,11 @@
 import { useState, useCallback, useMemo, useEffect } from 'react'
 import { useIsTransactionPending } from 'state/transactions/hooks'
-import { getFullDisplayBalance } from '@pancakeswap/utils/formatBalance'
+import { getFullDisplayBalance } from '@spaceinvaders-swap/utils/formatBalance'
 import { useAppDispatch } from 'state'
 import { updateUserBalance } from 'state/pools'
-import { ChainId, Native } from '@pancakeswap/sdk'
-import { CAKE } from '@pancakeswap/tokens'
-import tryParseAmount from '@pancakeswap/utils/tryParseAmount'
+import { ChainId, Native } from '@spaceinvaders-swap/sdk'
+import { INVA } from '@spaceinvaders-swap/tokens'
+import tryParseAmount from '@spaceinvaders-swap/utils/tryParseAmount'
 import { useTradeExactOut } from 'hooks/Trades'
 import { useSwapCallback } from 'hooks/useSwapCallback'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
@@ -13,7 +13,7 @@ import { useSwapCallArguments } from 'hooks/useSwapCallArguments'
 import { INITIAL_ALLOWED_SLIPPAGE } from 'config/constants'
 import BigNumber from 'bignumber.js'
 
-export const useCakeEnable = (enableAmount: BigNumber) => {
+export const useInvaEnable = (enableAmount: BigNumber) => {
   const { account, chainId } = useActiveWeb3React()
   const dispatch = useAppDispatch()
   const [pendingEnableTx, setPendingEnableTx] = useState(false)
@@ -21,7 +21,7 @@ export const useCakeEnable = (enableAmount: BigNumber) => {
   const isTransactionPending = useIsTransactionPending(transactionHash)
   const swapAmount = useMemo(() => getFullDisplayBalance(enableAmount), [enableAmount])
 
-  const parsedAmount = tryParseAmount(swapAmount, CAKE[chainId])
+  const parsedAmount = tryParseAmount(swapAmount, INVA[chainId])
 
   const trade = useTradeExactOut(Native.onChain(ChainId.BSC), parsedAmount)
 

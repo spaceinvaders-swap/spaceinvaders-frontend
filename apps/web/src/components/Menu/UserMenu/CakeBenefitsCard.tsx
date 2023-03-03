@@ -11,14 +11,14 @@ import {
   Text,
   NextLinkFromReactRouter,
   useMatchBreakpoints,
-} from '@pancakeswap/uikit'
-import { VaultPosition } from 'utils/cakePool'
+} from '@spaceinvaders-swap/uikit'
+import { VaultPosition } from 'utils/invaPool'
 import { FetchStatus } from 'config/constants/types'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import styled from 'styled-components'
-import useCakeBenefits from './hooks/useCakeBenefits'
+import useInvaBenefits from './hooks/useInvaBenefits'
 
-const CakeBenefitsCardWrapper = styled(Box)`
+const InvaBenefitsCardWrapper = styled(Box)`
   width: 100%;
   margin-bottom: 24px;
   padding: 1px 1px 3px 1px;
@@ -26,7 +26,7 @@ const CakeBenefitsCardWrapper = styled(Box)`
   border-radius: ${({ theme }) => theme.radii.default};
 `
 
-const CakeBenefitsCardInner = styled(Box)`
+const InvaBenefitsCardInner = styled(Box)`
   position: relative;
   z-index: 1;
   padding: 8px 12px;
@@ -47,25 +47,25 @@ const CakeBenefitsCardInner = styled(Box)`
   }
 `
 
-interface CakeBenefitsCardProps {
+interface InvaBenefitsCardProps {
   onDismiss: () => void
 }
 
-const CakeBenefitsCard: React.FC<React.PropsWithChildren<CakeBenefitsCardProps>> = ({ onDismiss }) => {
+const InvaBenefitsCard: React.FC<React.PropsWithChildren<InvaBenefitsCardProps>> = ({ onDismiss }) => {
   const { t } = useTranslation()
-  const { data: cakeBenefits, status: cakeBenefitsFetchStatus } = useCakeBenefits()
+  const { data: invaBenefits, status: invaBenefitsFetchStatus } = useInvaBenefits()
   const { isMobile } = useMatchBreakpoints()
 
   const {
-    targetRef: cakeTargetRef,
-    tooltip: cakeTooltip,
-    tooltipVisible: cakeTooltipVisible,
+    targetRef: invaTargetRef,
+    tooltip: invaTooltip,
+    tooltipVisible: invaTooltipVisible,
   } = useTooltip(
     <>
       <Text>
-        {t(`%lockedCake% CAKE (including rewards) are locked in the CAKE Pool until %lockedEndTime%`, {
-          lockedCake: cakeBenefits?.lockedCake,
-          lockedEndTime: cakeBenefits?.lockedEndTime,
+        {t(`%lockedInva% INVA (including rewards) are locked in the INVA Pool until %lockedEndTime%`, {
+          lockedInva: invaBenefits?.lockedInva,
+          lockedEndTime: invaBenefits?.lockedEndTime,
         })}
       </Text>
       <NextLinkFromReactRouter to="/pools" onClick={onDismiss}>
@@ -81,14 +81,14 @@ const CakeBenefitsCard: React.FC<React.PropsWithChildren<CakeBenefitsCardProps>>
   )
 
   const {
-    targetRef: iCakeTargetRef,
-    tooltip: iCakeTooltip,
-    tooltipVisible: iCakeTooltipVisible,
+    targetRef: iInvaTargetRef,
+    tooltip: iInvaTooltip,
+    tooltipVisible: iInvaTooltipVisible,
   } = useTooltip(
     <>
       <Text>
-        {t(`iCAKE allows you to participate in the IFO public sales and commit up to %iCake% amount of CAKE.`, {
-          iCake: cakeBenefits?.iCake,
+        {t(`iINVA allows you to participate in the IFO public sales and commit up to %iInva% amount of INVA.`, {
+          iInva: invaBenefits?.iInva,
         })}
       </Text>
       <NextLinkFromReactRouter to="/ifo" onClick={onDismiss}>
@@ -104,12 +104,12 @@ const CakeBenefitsCard: React.FC<React.PropsWithChildren<CakeBenefitsCardProps>>
   )
 
   const {
-    targetRef: bCakeTargetRef,
-    tooltip: bCakeTooltip,
-    tooltipVisible: bCakeTooltipVisible,
+    targetRef: bInvaTargetRef,
+    tooltip: bInvaTooltip,
+    tooltipVisible: bInvaTooltipVisible,
   } = useTooltip(
     <>
-      <Text>{t(`bCAKE allows you to boost your yield in PancakeSwap Farms by up to 2x.`)}</Text>
+      <Text>{t(`bINVA allows you to boost your yield in SpaceinvadersSwap Farms by up to 2x.`)}</Text>
       <NextLinkFromReactRouter to="/farms" onClick={onDismiss}>
         <Text bold color="primary">
           {t('Learn More')}
@@ -123,14 +123,14 @@ const CakeBenefitsCard: React.FC<React.PropsWithChildren<CakeBenefitsCardProps>>
   )
 
   const {
-    targetRef: vCakeTargetRef,
-    tooltip: vCakeTooltip,
-    tooltipVisible: vCakeTooltipVisible,
+    targetRef: vInvaTargetRef,
+    tooltip: vInvaTooltip,
+    tooltipVisible: vInvaTooltipVisible,
   } = useTooltip(
     <>
       <Text>
-        {t(`vCAKE boosts your voting power to %totalScore% in the PancakeSwap voting governance.`, {
-          totalScore: cakeBenefits?.vCake?.totalScore,
+        {t(`vINVA boosts your voting power to %totalScore% in the SpaceinvadersSwap voting governance.`, {
+          totalScore: invaBenefits?.vInva?.totalScore,
         })}
       </Text>
       <NextLinkFromReactRouter to="/voting" onClick={onDismiss}>
@@ -145,23 +145,23 @@ const CakeBenefitsCard: React.FC<React.PropsWithChildren<CakeBenefitsCardProps>>
     },
   )
 
-  return cakeBenefitsFetchStatus === FetchStatus.Fetched ? (
+  return invaBenefitsFetchStatus === FetchStatus.Fetched ? (
     <>
-      {[VaultPosition.None, VaultPosition.Flexible].includes(cakeBenefits?.lockPosition) ? (
+      {[VaultPosition.None, VaultPosition.Flexible].includes(invaBenefits?.lockPosition) ? (
         <>
           <Flex flexDirection="row" alignItems="center">
             <Tag variant="secondary" mr="auto">
               <Flex alignItems="center">
                 <Box as={LockIcon} mr="4px" />
-                {t('No CAKE locked')}
+                {t('No INVA locked')}
               </Flex>
             </Tag>
-            <Text fontSize="16px">{cakeBenefits?.lockedCake}</Text>
+            <Text fontSize="16px">{invaBenefits?.lockedInva}</Text>
           </Flex>
           <Message mt="8px" mb="16px" variant="warning">
             <MessageText maxWidth="200px">
               {t(
-                'Lock CAKE to enjoy the benefits of farm yield boosting, participating in IFOs, voting power boosts, and so much more!',
+                'Lock INVA to enjoy the benefits of farm yield boosting, participating in IFOs, voting power boosts, and so much more!',
               )}{' '}
               <NextLinkFromReactRouter
                 style={{ textDecoration: 'underline', fontWeight: 'bold' }}
@@ -173,16 +173,16 @@ const CakeBenefitsCard: React.FC<React.PropsWithChildren<CakeBenefitsCardProps>>
             </MessageText>
           </Message>
         </>
-      ) : [VaultPosition.LockedEnd, VaultPosition.AfterBurning].includes(cakeBenefits?.lockPosition) ? (
+      ) : [VaultPosition.LockedEnd, VaultPosition.AfterBurning].includes(invaBenefits?.lockPosition) ? (
         <>
           <Flex flexDirection="row" justifyContent="space-between" alignItems="center">
             <Tag variant="failure" mr="auto">
               <Flex alignItems="center">
                 <Box as={LockIcon} mr="4px" />
-                {t('CAKE staking expired')}
+                {t('INVA staking expired')}
               </Flex>
             </Tag>
-            <Text fontSize="16px">{cakeBenefits?.lockedCake}</Text>
+            <Text fontSize="16px">{invaBenefits?.lockedInva}</Text>
           </Flex>
           <Message mt="8px" mb="16px" variant="warning">
             <MessageText maxWidth="200px">
@@ -200,43 +200,43 @@ const CakeBenefitsCard: React.FC<React.PropsWithChildren<CakeBenefitsCardProps>>
           </Message>
         </>
       ) : (
-        <CakeBenefitsCardWrapper>
-          <CakeBenefitsCardInner>
+        <InvaBenefitsCardWrapper>
+          <InvaBenefitsCardInner>
             <Flex flexDirection="row" alignItems="center">
               <Tag variant="secondary" mr="auto">
                 <Flex alignItems="center">
                   <Box as={LockIcon} mr="4px" />
-                  {t('CAKE locked')}
+                  {t('INVA locked')}
                 </Flex>
               </Tag>
-              <TooltipText ref={cakeTargetRef} bold fontSize="16px">
-                {cakeBenefits?.lockedCake}
+              <TooltipText ref={invaTargetRef} bold fontSize="16px">
+                {invaBenefits?.lockedInva}
               </TooltipText>
-              {cakeTooltipVisible && cakeTooltip}
+              {invaTooltipVisible && invaTooltip}
             </Flex>
             <Flex mt="10px" flexDirection="row" alignItems="center">
-              <TooltipText ref={iCakeTargetRef} color="textSubtle" fontSize="16px" mr="auto">
-                iCAKE
+              <TooltipText ref={iInvaTargetRef} color="textSubtle" fontSize="16px" mr="auto">
+                iINVA
               </TooltipText>
-              {iCakeTooltipVisible && iCakeTooltip}
-              {cakeBenefits?.iCake}
+              {iInvaTooltipVisible && iInvaTooltip}
+              {invaBenefits?.iInva}
             </Flex>
             <Flex mt="10px" flexDirection="row" alignItems="center">
-              <TooltipText ref={bCakeTargetRef} color="textSubtle" fontSize="16px" mr="auto">
-                bCAKE
+              <TooltipText ref={bInvaTargetRef} color="textSubtle" fontSize="16px" mr="auto">
+                bINVA
               </TooltipText>
-              {bCakeTooltipVisible && bCakeTooltip}
+              {bInvaTooltipVisible && bInvaTooltip}
               {t('Up to %boostMultiplier%x', { boostMultiplier: 2 })}
             </Flex>
             <Flex mt="10px" flexDirection="row" alignItems="center">
-              <TooltipText ref={vCakeTargetRef} color="textSubtle" fontSize="16px" mr="auto">
-                vCAKE
+              <TooltipText ref={vInvaTargetRef} color="textSubtle" fontSize="16px" mr="auto">
+                vINVA
               </TooltipText>
-              {vCakeTooltipVisible && vCakeTooltip}
-              {cakeBenefits?.vCake?.vaultScore}
+              {vInvaTooltipVisible && vInvaTooltip}
+              {invaBenefits?.vInva?.vaultScore}
             </Flex>
-          </CakeBenefitsCardInner>
-        </CakeBenefitsCardWrapper>
+          </InvaBenefitsCardInner>
+        </InvaBenefitsCardWrapper>
       )}
     </>
   ) : (
@@ -244,4 +244,4 @@ const CakeBenefitsCard: React.FC<React.PropsWithChildren<CakeBenefitsCardProps>>
   )
 }
 
-export default CakeBenefitsCard
+export default InvaBenefitsCard

@@ -1,4 +1,4 @@
-import { AtomBox } from "@pancakeswap/ui";
+import { AtomBox } from "@spaceinvaders-swap/ui";
 import { inputContainerVariants } from "./SwapWidget.css";
 
 import { NumericalInput } from "./NumericalInput";

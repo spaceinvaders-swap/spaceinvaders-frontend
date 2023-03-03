@@ -1,6 +1,6 @@
 import { useCallback, useMemo, memo } from 'react'
-import { Currency, Trade, TradeType } from '@pancakeswap/aptos-swap-sdk'
-import { ConfirmationModalContent } from '@pancakeswap/uikit'
+import { Currency, Trade, TradeType } from '@spaceinvaders-swap/aptos-swap-sdk'
+import { ConfirmationModalContent } from '@spaceinvaders-swap/uikit'
 import { maxAmountSpend } from 'utils/maxAmountSpend'
 import { Field } from 'state/swap'
 import { computeSlippageAdjustedAmounts } from 'utils/exchange'

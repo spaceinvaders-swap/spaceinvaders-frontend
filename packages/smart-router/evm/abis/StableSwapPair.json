@@ -1081,7 +1081,7 @@
     "name": "token",
     "outputs": [
       {
-        "internalType": "contract PancakeStableSwapLP",
+        "internalType": "contract SpaceinvadersStableSwapLP",
         "name": "",
         "type": "address"
       }

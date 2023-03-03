@@ -1,6 +1,6 @@
 import { useEffect, useState, createElement, useRef } from 'react'
 import styled from 'styled-components'
-import { FarmWithStakedValue } from '@pancakeswap/farms'
+import { FarmWithStakedValue } from '@spaceinvaders-swap/farms'
 import {
   Flex,
   useMatchBreakpoints,
@@ -12,10 +12,10 @@ import {
   FarmTableFarmTokenInfoProps,
   MobileColumnSchema,
   DesktopColumnSchema,
-} from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+} from '@spaceinvaders-swap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import { useFarmUser } from 'state/farms/hooks'
-import { useDelayedUnmount } from '@pancakeswap/hooks'
+import { useDelayedUnmount } from '@spaceinvaders-swap/hooks'
 
 import Apr, { AprProps } from './Apr'
 import Farm from './Farm'

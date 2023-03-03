@@ -1,7 +1,7 @@
 import styled, { DefaultTheme } from 'styled-components'
 import Link from 'next/link'
-import { Button, Card, CommunityIcon, Flex, Heading, PrizeIcon, Text } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Button, Card, CommunityIcon, Flex, Heading, PrizeIcon, Text } from '@spaceinvaders-swap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import { Team } from 'config/constants/types'
 
 interface TeamCardProps {

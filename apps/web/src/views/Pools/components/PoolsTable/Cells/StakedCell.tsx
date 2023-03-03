@@ -1,12 +1,12 @@
-import { Box, Flex, Skeleton, Text, useMatchBreakpoints, Balance, Pool } from '@pancakeswap/uikit'
+import { Box, Flex, Skeleton, Text, useMatchBreakpoints, Balance, Pool } from '@spaceinvaders-swap/uikit'
 import BigNumber from 'bignumber.js'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 
 import { useVaultPoolByKey } from 'state/pools/hooks'
 import { VaultKey } from 'state/types'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
-import { Token } from '@pancakeswap/sdk'
+import { BIG_ZERO } from '@spaceinvaders-swap/utils/bigNumber'
+import { getBalanceNumber } from '@spaceinvaders-swap/utils/formatBalance'
+import { Token } from '@spaceinvaders-swap/sdk'
 
 interface StakedCellProps {
   pool: Pool.DeserializedPool<Token>
@@ -22,7 +22,7 @@ const StakedCell: React.FC<React.PropsWithChildren<StakedCellProps>> = ({ pool, 
   const {
     userData: {
       userShares,
-      balance: { cakeAsBigNumber, cakeAsNumberBalance },
+      balance: { invaAsBigNumber, invaAsNumberBalance },
       isLoading,
     },
   } = vaultData
@@ -31,7 +31,7 @@ const StakedCell: React.FC<React.PropsWithChildren<StakedCellProps>> = ({ pool, 
 
   // pool
   const { stakingTokenPrice, stakingToken, userData } = pool
-  const stakedAutoDollarValue = getBalanceNumber(cakeAsBigNumber.multipliedBy(stakingTokenPrice), stakingToken.decimals)
+  const stakedAutoDollarValue = getBalanceNumber(invaAsBigNumber.multipliedBy(stakingTokenPrice), stakingToken.decimals)
   const stakedBalance = userData?.stakedBalance ? new BigNumber(userData.stakedBalance) : BIG_ZERO
   const stakedTokenBalance = getBalanceNumber(stakedBalance, stakingToken.decimals)
   const stakedTokenDollarBalance = getBalanceNumber(
@@ -40,7 +40,7 @@ const StakedCell: React.FC<React.PropsWithChildren<StakedCellProps>> = ({ pool, 
   )
 
   const labelText = `${pool.stakingToken.symbol} ${
-    pool.vaultKey === VaultKey.CakeVault && (vaultData as Pool.DeserializedPoolLockedVault<Token>).userData.locked
+    pool.vaultKey === VaultKey.InvaVault && (vaultData as Pool.DeserializedPoolLockedVault<Token>).userData.locked
       ? t('Locked')
       : t('Staked')
   }`
@@ -53,9 +53,9 @@ const StakedCell: React.FC<React.PropsWithChildren<StakedCellProps>> = ({ pool, 
     <Pool.BaseCell
       role="cell"
       flex={
-        pool.vaultKey === VaultKey.CakeFlexibleSideVault
+        pool.vaultKey === VaultKey.InvaFlexibleSideVault
           ? '1 0 162px'
-          : pool.vaultKey === VaultKey.CakeVault && !hasStaked
+          : pool.vaultKey === VaultKey.InvaVault && !hasStaked
           ? '1 0 120px'
           : '2 0 100px'
       }
@@ -79,9 +79,9 @@ const StakedCell: React.FC<React.PropsWithChildren<StakedCellProps>> = ({ pool, 
                   value={
                     hasStaked
                       ? pool.vaultKey
-                        ? Number.isNaN(cakeAsNumberBalance)
+                        ? Number.isNaN(invaAsNumberBalance)
                           ? 0
-                          : cakeAsNumberBalance
+                          : invaAsNumberBalance
                         : stakedTokenBalance
                       : 0
                   }

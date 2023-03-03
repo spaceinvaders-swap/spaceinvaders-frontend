@@ -1,6 +1,6 @@
-import { Button, Card, CardBody, CardHeader, Heading } from '@pancakeswap/uikit'
+import { Button, Card, CardBody, CardHeader, Heading } from '@spaceinvaders-swap/uikit'
 import uniqueId from 'lodash/uniqueId'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import Choice from './Choice'
 
 export interface ChoiceIdValue {

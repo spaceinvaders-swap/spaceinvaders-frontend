@@ -1,15 +1,15 @@
-import { Token } from '@pancakeswap/sdk'
-import { TooltipText, useTooltip, Balance, Pool } from '@pancakeswap/uikit'
+import { Token } from '@spaceinvaders-swap/sdk'
+import { TooltipText, useTooltip, Balance, Pool } from '@spaceinvaders-swap/uikit'
 import AutoEarningsBreakdown from '../AutoEarningsBreakdown'
 
-interface RecentCakeProfitBalanceProps {
-  cakeToDisplay: number
+interface RecentInvaProfitBalanceProps {
+  invaToDisplay: number
   pool: Pool.DeserializedPool<Token>
   account: string
 }
 
-const RecentCakeProfitBalance: React.FC<React.PropsWithChildren<RecentCakeProfitBalanceProps>> = ({
-  cakeToDisplay,
+const RecentInvaProfitBalance: React.FC<React.PropsWithChildren<RecentInvaProfitBalanceProps>> = ({
+  invaToDisplay,
   pool,
   account,
 }) => {
@@ -21,10 +21,10 @@ const RecentCakeProfitBalance: React.FC<React.PropsWithChildren<RecentCakeProfit
     <>
       {tooltipVisible && tooltip}
       <TooltipText ref={targetRef} small>
-        <Balance fontSize="14px" value={cakeToDisplay} />
+        <Balance fontSize="14px" value={invaToDisplay} />
       </TooltipText>
     </>
   )
 }
 
-export default RecentCakeProfitBalance
+export default RecentInvaProfitBalance

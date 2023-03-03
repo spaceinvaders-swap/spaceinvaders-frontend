@@ -1,5 +1,5 @@
-import { Pool } from '@pancakeswap/uikit'
-import { Coin } from '@pancakeswap/aptos-swap-sdk'
+import { Pool } from '@spaceinvaders-swap/uikit'
+import { Coin } from '@spaceinvaders-swap/aptos-swap-sdk'
 import StakeActions from './StakeActions'
 import HarvestActions from './HarvestActions'
 

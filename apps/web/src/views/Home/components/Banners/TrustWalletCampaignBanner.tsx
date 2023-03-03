@@ -1,4 +1,4 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import {
   Box,
   Button,
@@ -8,7 +8,7 @@ import {
   useMatchBreakpoints,
   OpenNewIcon,
   ArrowForwardIcon,
-} from '@pancakeswap/uikit'
+} from '@spaceinvaders-swap/uikit'
 import Image from 'next/legacy/image'
 import styled, { css } from 'styled-components'
 import { trustwalletBg, trustwalletBunny } from './images'
@@ -120,7 +120,7 @@ const TrustWalletCampaignBanner = () => {
     >
       <S.Inner>
         <S.LeftWrapper>
-          <StyledBox>PancakeSwap x Trust Wallet</StyledBox>
+          <StyledBox>SpaceinvadersSwap x Trust Wallet</StyledBox>
           <Title>{t('Trade and win $10,000 Prize Pool')}</Title>
           <Flex style={{ gap: 8 }} flexWrap={isMobile ? 'wrap' : 'nowrap'}>
             <NextLinkFromReactRouter to="/swap?chain=eth">

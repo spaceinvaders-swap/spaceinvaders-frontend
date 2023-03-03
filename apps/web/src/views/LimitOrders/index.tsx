@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, CurrencyAmount, Percent, Token, Trade, TradeType } from '@pancakeswap/sdk'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { Currency, CurrencyAmount, Percent, Token, Trade, TradeType } from '@spaceinvaders-swap/sdk'
 import {
   BottomDrawer,
   Box,
@@ -10,8 +10,8 @@ import {
   useMatchBreakpoints,
   useModal,
   AutoColumn,
-} from '@pancakeswap/uikit'
-import replaceBrowserHistory from '@pancakeswap/utils/replaceBrowserHistory'
+} from '@spaceinvaders-swap/uikit'
+import replaceBrowserHistory from '@spaceinvaders-swap/utils/replaceBrowserHistory'
 import { AppBody } from 'components/App'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import CurrencyInputPanel from 'components/CurrencyInputPanel'

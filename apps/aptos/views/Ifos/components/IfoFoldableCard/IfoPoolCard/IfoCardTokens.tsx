@@ -1,7 +1,7 @@
-import { Currency } from '@pancakeswap/aptos-swap-sdk'
-import { useAccount } from '@pancakeswap/awgmi'
-import { getBalanceNumber, getFullDisplayBalance } from '@pancakeswap/utils/formatBalance'
-import { useTranslation } from '@pancakeswap/localization'
+import { Currency } from '@spaceinvaders-swap/aptos-swap-sdk'
+import { useAccount } from '@spaceinvaders-swap/awgmi'
+import { getBalanceNumber, getFullDisplayBalance } from '@spaceinvaders-swap/utils/formatBalance'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 
 import {
   Text,
@@ -18,7 +18,7 @@ import {
   IfoPercentageOfTotal,
   IfoVestingAvailableToClaim,
   BalanceWithLoading,
-} from '@pancakeswap/uikit'
+} from '@spaceinvaders-swap/uikit'
 import { TokenImage, TokenPairImage } from 'components/TokenImage'
 import { Ifo, PoolIds } from 'config/constants/types'
 import { PublicIfoData, WalletIfoData } from 'views/Ifos/types'
@@ -111,7 +111,7 @@ const IfoCardTokens: React.FC<React.PropsWithChildren<IfoCardTokensProps>> = ({
   const getNow = useLedgerTimestamp()
   const { targetRef, tooltip, tooltipVisible } = useTooltip(
     t(
-      'Sorry, you didn’t contribute enough CAKE to meet the minimum threshold. You didn’t buy anything in this sale, but you can still reclaim your CAKE.',
+      'Sorry, you didn’t contribute enough INVA to meet the minimum threshold. You didn’t buy anything in this sale, but you can still reclaim your INVA.',
     ),
     { placement: 'bottom' },
   )

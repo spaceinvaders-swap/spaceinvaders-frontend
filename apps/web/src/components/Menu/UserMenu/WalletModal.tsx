@@ -10,10 +10,10 @@ import {
   ModalContainer,
   ModalHeader as UIKitModalHeader,
   ModalTitle,
-} from '@pancakeswap/uikit'
+} from '@spaceinvaders-swap/uikit'
 import { useAccount, useBalance } from 'wagmi'
 import { useState, useCallback } from 'react'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import styled from 'styled-components'
 import WalletInfo from './WalletInfo'
 import WalletTransactions from './WalletTransactions'

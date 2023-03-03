@@ -2,10 +2,10 @@ import React, { useMemo, useCallback } from 'react'
 import BigNumber from 'bignumber.js'
 import { useAccount } from 'wagmi'
 import { getFarmApr } from 'utils/apr'
-import { useTranslation } from '@pancakeswap/localization'
-import { CAKE_PER_YEAR } from 'config'
-import { useFarmsV1, usePriceCakeBusd } from 'state/farmsV1/hooks'
-import { DeserializedFarm, FarmWithStakedValue } from '@pancakeswap/farms'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { INVA_PER_YEAR } from 'config'
+import { useFarmsV1, usePriceInvaBusd } from 'state/farmsV1/hooks'
+import { DeserializedFarm, FarmWithStakedValue } from '@spaceinvaders-swap/farms'
 import MigrationFarmTable from '../../MigrationFarmTable'
 import { DesktopColumnSchema } from '../../types'
 
@@ -13,7 +13,7 @@ const OldFarmStep1: React.FC<React.PropsWithChildren> = () => {
   const { t } = useTranslation()
   const { address: account } = useAccount()
   const { data: farmsLP, userDataLoaded } = useFarmsV1()
-  const cakePrice = usePriceCakeBusd()
+  const invaPrice = usePriceInvaBusd()
 
   const userDataReady = !account || (!!account && userDataLoaded)
 
@@ -34,20 +34,20 @@ const OldFarmStep1: React.FC<React.PropsWithChildren> = () => {
           return farm
         }
         const totalLiquidity = new BigNumber(farm.lpTotalInQuoteToken).times(farm.quoteTokenPriceBusd)
-        const { cakeRewardsApr, lpRewardsApr } = getFarmApr(
+        const { invaRewardsApr, lpRewardsApr } = getFarmApr(
           56,
           new BigNumber(farm.poolWeight),
-          cakePrice,
+          invaPrice,
           totalLiquidity,
           farm.lpAddress,
-          CAKE_PER_YEAR,
+          INVA_PER_YEAR,
         )
-        return { ...farm, apr: cakeRewardsApr, lpRewardsApr, liquidity: totalLiquidity }
+        return { ...farm, apr: invaRewardsApr, lpRewardsApr, liquidity: totalLiquidity }
       })
 
       return farmsToDisplayWithAPR
     },
-    [cakePrice],
+    [invaPrice],
   )
 
   const chosenFarmsMemoized = useMemo(() => {
@@ -59,7 +59,7 @@ const OldFarmStep1: React.FC<React.PropsWithChildren> = () => {
       title={t('Old Farms')}
       noStakedFarmText={t('You are not currently staking in any v1 farms.')}
       account={account}
-      cakePrice={cakePrice}
+      invaPrice={invaPrice}
       columnSchema={DesktopColumnSchema}
       farms={chosenFarmsMemoized}
       userDataReady={userDataReady}

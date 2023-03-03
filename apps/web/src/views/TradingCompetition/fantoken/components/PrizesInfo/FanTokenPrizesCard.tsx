@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { Card, CardHeader, Box, Heading, Text } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Card, CardHeader, Box, Heading, Text } from '@spaceinvaders-swap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import PrizesGrid from '../../../components/PrizesInfo/PrizesGrid/PrizesGrid'
 import { fanTokenPrizes } from '../../../../../config/constants/trading-competition/prizes'
 
@@ -28,10 +28,10 @@ const FanTokenPrizesCard = () => {
       <Box p="24px">
         <Text color="textSubtle" fontSize="14px">
           {t(
-            'Prizes to be distributed in CAKE, LAZIO, PORTO and SANTOS in a distribution of 3:1:1:1 and shared by all members of each respective tier.',
+            'Prizes to be distributed in INVA, LAZIO, PORTO and SANTOS in a distribution of 3:1:1:1 and shared by all members of each respective tier.',
           )}{' '}
           {t(
-            'The price of token prizes (CAKE, LAZIO, PORTO and SANTOS) in USD will be determined as per their BUSD pair price during the tally period.',
+            'The price of token prizes (INVA, LAZIO, PORTO and SANTOS) in USD will be determined as per their BUSD pair price during the tally period.',
           )}
         </Text>
       </Box>

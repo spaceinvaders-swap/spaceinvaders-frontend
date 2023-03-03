@@ -1,4 +1,4 @@
-import { Fraction } from '@pancakeswap/aptos-swap-sdk'
+import { Fraction } from '@spaceinvaders-swap/aptos-swap-sdk'
 
 export default function formatAmountDisplay(amount: Fraction | undefined): string {
   if (!amount) return ''

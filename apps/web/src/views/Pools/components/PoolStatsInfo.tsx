@@ -1,9 +1,9 @@
-import { Flex, Link, LinkExternal, Skeleton, Text, TimerIcon, Balance, Pool } from '@pancakeswap/uikit'
+import { Flex, Link, LinkExternal, Skeleton, Text, TimerIcon, Balance, Pool } from '@spaceinvaders-swap/uikit'
 import AddToWalletButton, { AddToWalletTextOptions } from 'components/AddToWallet/AddToWalletButton'
 import { bsc } from 'wagmi/chains'
-import { useTranslation } from '@pancakeswap/localization'
-import { Token } from '@pancakeswap/sdk'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { Token } from '@spaceinvaders-swap/sdk'
+import { BIG_ZERO } from '@spaceinvaders-swap/utils/bigNumber'
 import { memo } from 'react'
 import { useCurrentBlock } from 'state/block/hooks'
 import { useVaultPoolByKey } from 'state/pools/hooks'
@@ -48,7 +48,7 @@ const PoolStatsInfo: React.FC<React.PropsWithChildren<ExpandedFooterProps>> = ({
   const stakedBalance = poolUserData?.stakedBalance ? poolUserData.stakedBalance : BIG_ZERO
 
   const {
-    totalCakeInVault,
+    totalInvaInVault,
     totalLockedAmount,
     fees: { performanceFeeAsDecimal },
     userData,
@@ -56,7 +56,7 @@ const PoolStatsInfo: React.FC<React.PropsWithChildren<ExpandedFooterProps>> = ({
 
   const tokenAddress = earningToken.address || ''
   const poolContractAddress = getAddress(contractAddress)
-  const cakeVaultContractAddress = getVaultPoolAddress(vaultKey)
+  const invaVaultContractAddress = getVaultPoolAddress(vaultKey)
 
   const { shouldShowBlockCountdown, blocksUntilStart, blocksRemaining, hasPoolStarted, blocksToDisplay } =
     getPoolBlockInfo(pool, currentBlock)
@@ -67,7 +67,7 @@ const PoolStatsInfo: React.FC<React.PropsWithChildren<ExpandedFooterProps>> = ({
         <Flex mb="8px" justifyContent="space-between">
           <Text small>{t('Requirement')}:</Text>
           <Text small textAlign="right">
-            {profileRequirement.required && t('Pancake Profile')}{' '}
+            {profileRequirement.required && t('Spaceinvaders Profile')}{' '}
             {profileRequirement.thresholdPoints.gt(0) && (
               <Text small>
                 {profileRequirement.thresholdPoints.toNumber().toLocaleString()} {t('Profile Points')}
@@ -79,14 +79,14 @@ const PoolStatsInfo: React.FC<React.PropsWithChildren<ExpandedFooterProps>> = ({
       {!vaultKey && <AprInfo pool={pool} stakedBalance={stakedBalance} />}
       {showTotalStaked && (
         <Pool.TotalStaked
-          totalStaked={vaultKey ? totalCakeInVault : totalStaked}
+          totalStaked={vaultKey ? totalInvaInVault : totalStaked}
           tokenDecimals={stakingToken.decimals}
           symbol={stakingToken.symbol}
           decimalsToShow={0}
         />
       )}
-      {vaultKey === VaultKey.CakeVault && <TotalLocked totalLocked={totalLockedAmount} lockedToken={stakingToken} />}
-      {vaultKey === VaultKey.CakeVault && <DurationAvg />}
+      {vaultKey === VaultKey.InvaVault && <TotalLocked totalLocked={totalLockedAmount} lockedToken={stakingToken} />}
+      {vaultKey === VaultKey.InvaVault && <DurationAvg />}
       {!isFinished && stakingLimit && stakingLimit.gt(0) && (
         <MaxStakeRow
           small
@@ -131,7 +131,7 @@ const PoolStatsInfo: React.FC<React.PropsWithChildren<ExpandedFooterProps>> = ({
       )}
       {vaultKey && (
         <Flex mb="2px" justifyContent={alignLinksToRight ? 'flex-end' : 'flex-start'}>
-          <LinkExternal href="https://docs.pancakeswap.finance/products/syrup-pool/new-cake-pool" bold={false} small>
+          <LinkExternal href="https://docs.spaceinvaders-swap.finance/products/syrup-pool/new-inva-pool" bold={false} small>
             {t('View Tutorial')}
           </LinkExternal>
         </Flex>
@@ -141,7 +141,7 @@ const PoolStatsInfo: React.FC<React.PropsWithChildren<ExpandedFooterProps>> = ({
           <LinkExternal
             isBscScan
             href={`${bsc.blockExplorers.default.url}/address/${
-              vaultKey ? cakeVaultContractAddress : poolContractAddress
+              vaultKey ? invaVaultContractAddress : poolContractAddress
             }`}
             bold={false}
             small
@@ -162,7 +162,7 @@ const PoolStatsInfo: React.FC<React.PropsWithChildren<ExpandedFooterProps>> = ({
             tokenAddress={tokenAddress}
             tokenSymbol={earningToken.symbol}
             tokenDecimals={earningToken.decimals}
-            tokenLogo={`https://tokens.pancakeswap.finance/images/${tokenAddress}.png`}
+            tokenLogo={`https://tokens.spaceinvaders-swap.finance/images/${tokenAddress}.png`}
           />
         </Flex>
       )}

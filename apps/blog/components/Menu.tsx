@@ -1,7 +1,7 @@
-import { Box, Flex, Logo, ThemeSwitcher, Link, Button, LangSelector } from '@pancakeswap/uikit'
+import { Box, Flex, Logo, ThemeSwitcher, Link, Button, LangSelector } from '@spaceinvaders-swap/uikit'
 import { useTheme as useNextTheme } from 'next-themes'
-import { useTranslation, languageList } from '@pancakeswap/localization'
-import { useTheme } from '@pancakeswap/hooks'
+import { useTranslation, languageList } from '@spaceinvaders-swap/localization'
+import { useTheme } from '@spaceinvaders-swap/hooks'
 import NoSSR from 'components/NoSSR'
 
 const Menu = () => {
@@ -28,7 +28,7 @@ const Menu = () => {
           langs={languageList}
           setLang={setLanguage}
         />
-        <Link external href="https://pancakeswap.finance/">
+        <Link external href="https://spaceinvaders-swap.finance/">
           <Button scale="sm">{t('Launch App')}</Button>
         </Link>
       </Flex>

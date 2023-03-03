@@ -12,11 +12,11 @@ import {
   LaurelRightIcon,
   CheckmarkCircleIcon,
   useModal,
-} from '@pancakeswap/uikit'
+} from '@spaceinvaders-swap/uikit'
 import { CLAIM, OVER } from 'config/constants/trading-competition/phases'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import SubgraphHealthIndicator from 'components/SubgraphHealthIndicator'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import ClaimModal from '../ClaimModal'
 import CardUserInfo from './CardUserInfo'
 import ShareImageModal from '../ShareImageModal'
@@ -54,7 +54,7 @@ interface ScoreCardProps extends YourScoreProps {
   userPrizeGrid: ReactNode
   flippersShareImage: StaticImageData
   stormShareImage: StaticImageData
-  cakersShareImage: StaticImageData
+  invarsShareImage: StaticImageData
   extraUserRankBox?: ReactNode
   subgraphName?: string
 }
@@ -64,7 +64,7 @@ const ScoreCard: React.FC<React.PropsWithChildren<ScoreCardProps>> = ({
   extraUserRankBox,
   flippersShareImage,
   stormShareImage,
-  cakersShareImage,
+  invarsShareImage,
   hasRegistered,
   account,
   userTradingInformation,
@@ -117,7 +117,7 @@ const ScoreCard: React.FC<React.PropsWithChildren<ScoreCardProps>> = ({
               shareModal={
                 <ShareImageModal
                   flippersShareImage={flippersShareImage}
-                  cakersShareImage={cakersShareImage}
+                  invarsShareImage={invarsShareImage}
                   stormShareImage={stormShareImage}
                   profile={profile}
                   userLeaderboardInformation={userLeaderboardInformation}

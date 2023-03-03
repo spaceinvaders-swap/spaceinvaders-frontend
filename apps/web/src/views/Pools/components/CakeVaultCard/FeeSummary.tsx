@@ -1,5 +1,5 @@
-import { Text, Flex, useTooltip, TooltipText } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Text, Flex, useTooltip, TooltipText } from '@spaceinvaders-swap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import { VaultKey } from 'state/types'
 import { useVaultPoolByKey } from 'state/pools/hooks'
 import { secondsToDay } from 'utils/timeHelper'
@@ -23,7 +23,7 @@ const FeeSummary: React.FC<React.PropsWithChildren<FeeSummaryProps>> = ({
     userData: { lastDepositedTime },
   } = useVaultPoolByKey(vaultKey)
   const feeAsDecimal = withdrawalFee / 100
-  const feeInCake = (parseFloat(stakeAmount) * (feeAsDecimal / 100)).toFixed(4)
+  const feeInInva = (parseFloat(stakeAmount) * (feeAsDecimal / 100)).toFixed(4)
   const withdrawalDayPeriod = withdrawalFeePeriod ? secondsToDay(withdrawalFeePeriod) : '-'
   const { targetRef, tooltip, tooltipVisible } = useTooltip(
     <>
@@ -32,7 +32,7 @@ const FeeSummary: React.FC<React.PropsWithChildren<FeeSummaryProps>> = ({
       </Text>
       <Text>
         {t(
-          'Only applies within %num% days of staking. Unstaking after %num% days will not include a fee. Timer resets every time you stake new CAKE in the pool.',
+          'Only applies within %num% days of staking. Unstaking after %num% days will not include a fee. Timer resets every time you stake new INVA in the pool.',
           {
             num: withdrawalDayPeriod,
           },
@@ -52,7 +52,7 @@ const FeeSummary: React.FC<React.PropsWithChildren<FeeSummaryProps>> = ({
           {t('Unstaking Fee')}
         </TooltipText>
         <Text fontSize="14px">
-          {stakeAmount && hasFeeToPay ? feeInCake : '-'} {stakingTokenSymbol}
+          {stakeAmount && hasFeeToPay ? feeInInva : '-'} {stakingTokenSymbol}
         </Text>
       </Flex>
       <UnstakingFeeCountdownRow vaultKey={vaultKey} />

@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
-import { Text, Flex, AccountIcon, TeamBattleIcon, Box, useTooltip, LinkExternal } from '@pancakeswap/uikit'
+import { Text, Flex, AccountIcon, TeamBattleIcon, Box, useTooltip, LinkExternal } from '@spaceinvaders-swap/uikit'
 import { useAccount } from 'wagmi'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 
 import OkNFTIcon from './Icons/OkNFT'
 import OkProfilePointsIcon from './Icons/OkProfilePoints'
@@ -10,9 +10,9 @@ import TransWithElement from '../../TransWithElement'
 const NotOkNFT = ({ admissionProfile }) => {
   const { t } = useTranslation()
 
-  const keyword = '%Pancake Squad NFT%'
+  const keyword = '%Spaceinvaders Squad NFT%'
 
-  const rawText = t(`Set %Pancake Squad NFT% as Pancake Profile avatar`)
+  const rawText = t(`Set %Spaceinvaders Squad NFT% as Spaceinvaders Profile avatar`)
 
   return (
     <TransWithElement
@@ -22,9 +22,9 @@ const NotOkNFT = ({ admissionProfile }) => {
         <>
           <LinkExternal
             style={{ display: 'inline' }}
-            href={`https://pancakeswap.finance/nfts/collections/${admissionProfile}`}
+            href={`https://spaceinvaders-swap.finance/nfts/collections/${admissionProfile}`}
           >
-            {t('Pancake Squad NFT')}
+            {t('Spaceinvaders Squad NFT')}
           </LinkExternal>
           <br />
         </>
@@ -37,9 +37,9 @@ const NotOkProfilePoints = ({ pointThreshold }) => {
   const { address: account } = useAccount()
   const { t } = useTranslation()
 
-  const keyword = '%Pancake Profile%'
+  const keyword = '%Spaceinvaders Profile%'
 
-  const rawText = t(`Reach %point% or more %Pancake Profile% points`, { point: pointThreshold })
+  const rawText = t(`Reach %point% or more %Spaceinvaders Profile% points`, { point: pointThreshold })
 
   return (
     <TransWithElement
@@ -50,9 +50,9 @@ const NotOkProfilePoints = ({ pointThreshold }) => {
           <br />
           <LinkExternal
             style={{ display: 'inline' }}
-            href={`https://pancakeswap.finance/profile/${account}/achievements/`}
+            href={`https://spaceinvaders-swap.finance/profile/${account}/achievements/`}
           >
-            {t('Pancake Profile')}
+            {t('Spaceinvaders Profile')}
           </LinkExternal>
         </>
       }
@@ -66,7 +66,7 @@ const configCriterias = (pointThreshold: number, admissionProfile: string, t) =>
     okMsg: t('Eligible NFT avatar found!'),
     notOkMsg: <NotOkNFT admissionProfile={admissionProfile} />,
     NotOkIcon: AccountIcon,
-    name: t('Pancake Squad'),
+    name: t('Spaceinvaders Squad'),
   },
   isQualifiedPoints: {
     OkIcon: OkProfilePointsIcon,

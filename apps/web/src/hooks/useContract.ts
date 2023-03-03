@@ -1,7 +1,7 @@
 import {
-  Cake,
-  CakeFlexibleSideVaultV2,
-  CakeVaultV2,
+  Inva,
+  InvaFlexibleSideVaultV2,
+  InvaVaultV2,
   Erc20,
   Erc20Bytes32,
   Erc721collection,
@@ -15,20 +15,20 @@ import { useMemo } from 'react'
 import { getMulticallAddress, getPredictionsV1Address, getZapAddress } from 'utils/addressHelpers'
 import {
   getAnniversaryAchievementContract,
-  getBCakeFarmBoosterContract,
-  getBCakeFarmBoosterProxyFactoryContract,
-  getBCakeProxyContract,
+  getBInvaFarmBoosterContract,
+  getBInvaFarmBoosterProxyFactoryContract,
+  getBInvaProxyContract,
   getBep20Contract,
   getBunnyFactoryContract,
-  getBunnySpecialCakeVaultContract,
+  getBunnySpecialInvaVaultContract,
   getBunnySpecialContract,
   getBunnySpecialLotteryContract,
   getBunnySpecialPredictionContract,
   getBunnySpecialXmasContract,
-  getCakeContract,
-  getCakeFlexibleSideVaultV2Contract,
-  getCakePredictionsContract,
-  getCakeVaultV2Contract,
+  getInvaContract,
+  getInvaFlexibleSideVaultV2Contract,
+  getInvaPredictionsContract,
+  getInvaVaultV2Contract,
   getChainlinkOracleContract,
   getClaimRefundContract,
   getCrossFarmingProxyContract,
@@ -46,8 +46,8 @@ import {
   getNftMarketContract,
   getNftSaleContract,
   getNonBscVaultContract,
-  getPancakeBunniesContract,
-  getPancakeSquadContract,
+  getSpaceinvadersBunniesContract,
+  getSpaceinvadersSquadContract,
   getPointCenterIfoContract,
   getPotteryDrawContract,
   getPotteryVaultContract,
@@ -65,15 +65,15 @@ import { useSigner } from 'wagmi'
 
 // Imports below migrated from Exchange useContract.ts
 import { Contract } from '@ethersproject/contracts'
-import { WNATIVE } from '@pancakeswap/sdk'
+import { WNATIVE } from '@spaceinvaders-swap/sdk'
 import { ERC20_BYTES32_ABI } from 'config/abi/erc20'
 import ERC20_ABI from 'config/abi/erc20.json'
-import IPancakePairABI from 'config/abi/IPancakePair.json'
+import ISpaceinvadersPairABI from 'config/abi/ISpaceinvadersPair.json'
 import multiCallAbi from 'config/abi/Multicall.json'
 import WETH_ABI from 'config/abi/weth.json'
 import { getContract } from 'utils'
 
-import { IPancakePair } from 'config/abi/types/IPancakePair'
+import { ISpaceinvadersPair } from 'config/abi/types/ISpaceinvadersPair'
 import { VaultKey } from 'state/types'
 import { useActiveChainId } from './useActiveChainId'
 
@@ -109,12 +109,12 @@ export const useERC721 = (address: string, withSignerIfPossible = true) => {
   return useMemo(() => getErc721Contract(address, providerOrSigner), [address, providerOrSigner])
 }
 
-export const useCake = (): { reader: Cake; signer: Cake } => {
+export const useInva = (): { reader: Inva; signer: Inva } => {
   const providerOrSigner = useProviderOrSigner(true, true)
   return useMemo(
     () => ({
-      reader: getCakeContract(null),
-      signer: getCakeContract(providerOrSigner),
+      reader: getInvaContract(null),
+      signer: getInvaContract(providerOrSigner),
     }),
     [providerOrSigner],
   )
@@ -125,9 +125,9 @@ export const useBunnyFactory = () => {
   return useMemo(() => getBunnyFactoryContract(signer), [signer])
 }
 
-export const usePancakeBunnies = () => {
+export const useSpaceinvadersBunnies = () => {
   const { data: signer } = useSigner()
-  return useMemo(() => getPancakeBunniesContract(signer), [signer])
+  return useMemo(() => getSpaceinvadersBunniesContract(signer), [signer])
 }
 
 export const useProfileContract = (withSignerIfPossible = true) => {
@@ -196,22 +196,22 @@ export const useEasterNftContract = () => {
   return useMemo(() => getEasterNftContract(signer), [signer])
 }
 
-export const useVaultPoolContract = (vaultKey: VaultKey): CakeVaultV2 | CakeFlexibleSideVaultV2 => {
+export const useVaultPoolContract = (vaultKey: VaultKey): InvaVaultV2 | InvaFlexibleSideVaultV2 => {
   const { data: signer } = useSigner()
   return useMemo(() => {
-    if (vaultKey === VaultKey.CakeVault) {
-      return getCakeVaultV2Contract(signer)
+    if (vaultKey === VaultKey.InvaVault) {
+      return getInvaVaultV2Contract(signer)
     }
-    if (vaultKey === VaultKey.CakeFlexibleSideVault) {
-      return getCakeFlexibleSideVaultV2Contract(signer)
+    if (vaultKey === VaultKey.InvaFlexibleSideVault) {
+      return getInvaFlexibleSideVaultV2Contract(signer)
     }
     return null
   }, [signer, vaultKey])
 }
 
-export const useCakeVaultContract = (withSignerIfPossible = true) => {
+export const useInvaVaultContract = (withSignerIfPossible = true) => {
   const providerOrSigner = useProviderOrSigner(withSignerIfPossible)
-  return useMemo(() => getCakeVaultV2Contract(providerOrSigner), [providerOrSigner])
+  return useMemo(() => getInvaVaultV2Contract(providerOrSigner), [providerOrSigner])
 }
 
 export const useIfoCreditAddressContract = () => {
@@ -224,7 +224,7 @@ export const usePredictionsContract = (address: string, tokenSymbol: string) => 
     if (address === getPredictionsV1Address()) {
       return getPredictionsV1Contract(signer)
     }
-    const getPredContract = tokenSymbol === 'CAKE' ? getCakePredictionsContract : getPredictionsContract
+    const getPredContract = tokenSymbol === 'INVA' ? getInvaPredictionsContract : getPredictionsContract
 
     return getPredContract(address, signer)
   }, [address, tokenSymbol, signer])
@@ -235,9 +235,9 @@ export const useChainlinkOracleContract = (address, withSignerIfPossible = true)
   return useMemo(() => getChainlinkOracleContract(address, providerOrSigner), [providerOrSigner, address])
 }
 
-export const useSpecialBunnyCakeVaultContract = () => {
+export const useSpecialBunnyInvaVaultContract = () => {
   const { data: signer } = useSigner()
-  return useMemo(() => getBunnySpecialCakeVaultContract(signer), [signer])
+  return useMemo(() => getBunnySpecialInvaVaultContract(signer), [signer])
 }
 
 export const useSpecialBunnyPredictionContract = () => {
@@ -265,9 +265,9 @@ export const useNftSaleContract = () => {
   return useMemo(() => getNftSaleContract(signer), [signer])
 }
 
-export const usePancakeSquadContract = () => {
+export const useSpaceinvadersSquadContract = () => {
   const { data: signer } = useSigner()
-  return useMemo(() => getPancakeSquadContract(signer), [signer])
+  return useMemo(() => getSpaceinvadersSquadContract(signer), [signer])
 }
 
 export const useFarmAuctionContract = (withSignerIfPossible = true) => {
@@ -329,8 +329,8 @@ export function useBytes32TokenContract(tokenAddress?: string, withSignerIfPossi
   return useContract<Erc20Bytes32>(tokenAddress, ERC20_BYTES32_ABI, withSignerIfPossible)
 }
 
-export function usePairContract(pairAddress?: string, withSignerIfPossible?: boolean): IPancakePair | null {
-  return useContract(pairAddress, IPancakePairABI, withSignerIfPossible)
+export function usePairContract(pairAddress?: string, withSignerIfPossible?: boolean): ISpaceinvadersPair | null {
+  return useContract(pairAddress, ISpaceinvadersPairABI, withSignerIfPossible)
 }
 
 export function useMulticallContract() {
@@ -353,20 +353,20 @@ export function useZapContract(withSignerIfPossible = true) {
   return useContract<Zap>(getZapAddress(chainId), zapAbi, withSignerIfPossible)
 }
 
-export function useBCakeFarmBoosterContract(withSignerIfPossible = true) {
+export function useBInvaFarmBoosterContract(withSignerIfPossible = true) {
   const providerOrSigner = useProviderOrSigner(withSignerIfPossible, true)
-  return useMemo(() => getBCakeFarmBoosterContract(providerOrSigner), [providerOrSigner])
+  return useMemo(() => getBInvaFarmBoosterContract(providerOrSigner), [providerOrSigner])
 }
 
-export function useBCakeFarmBoosterProxyFactoryContract(withSignerIfPossible = true) {
+export function useBInvaFarmBoosterProxyFactoryContract(withSignerIfPossible = true) {
   const providerOrSigner = useProviderOrSigner(withSignerIfPossible, true)
-  return useMemo(() => getBCakeFarmBoosterProxyFactoryContract(providerOrSigner), [providerOrSigner])
+  return useMemo(() => getBInvaFarmBoosterProxyFactoryContract(providerOrSigner), [providerOrSigner])
 }
 
-export function useBCakeProxyContract(proxyContractAddress: string, withSignerIfPossible = true) {
+export function useBInvaProxyContract(proxyContractAddress: string, withSignerIfPossible = true) {
   const providerOrSigner = useProviderOrSigner(withSignerIfPossible, true)
   return useMemo(
-    () => proxyContractAddress && getBCakeProxyContract(proxyContractAddress, providerOrSigner),
+    () => proxyContractAddress && getBInvaProxyContract(proxyContractAddress, providerOrSigner),
     [providerOrSigner, proxyContractAddress],
   )
 }

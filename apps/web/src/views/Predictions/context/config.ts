@@ -1,8 +1,8 @@
 import addresses from 'config/constants/contracts'
 
-import { GRAPH_API_PREDICTION_CAKE, GRAPH_API_PREDICTION_BNB } from 'config/constants/endpoints'
+import { GRAPH_API_PREDICTION_INVA, GRAPH_API_PREDICTION_BNB } from 'config/constants/endpoints'
 import { getAddress } from 'utils/addressHelpers'
-import { bscTokens } from '@pancakeswap/tokens'
+import { bscTokens } from '@spaceinvaders-swap/tokens'
 
 export default {
   BNB: {
@@ -12,11 +12,11 @@ export default {
     displayedDecimals: 4,
     token: bscTokens.bnb,
   },
-  CAKE: {
-    address: getAddress(addresses.predictionsCAKE),
-    api: GRAPH_API_PREDICTION_CAKE,
-    chainlinkOracleAddress: getAddress(addresses.chainlinkOracleCAKE),
+  INVA: {
+    address: getAddress(addresses.predictionsINVA),
+    api: GRAPH_API_PREDICTION_INVA,
+    chainlinkOracleAddress: getAddress(addresses.chainlinkOracleINVA),
     displayedDecimals: 4,
-    token: bscTokens.cake,
+    token: bscTokens.inva,
   },
 }

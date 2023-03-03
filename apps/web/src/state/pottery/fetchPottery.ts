@@ -2,9 +2,9 @@ import BigNumber from 'bignumber.js'
 import { multicallv3 } from 'utils/multicall'
 import potteryVaultAbi from 'config/abi/potteryVaultAbi.json'
 import { getPotteryDrawAddress } from 'utils/addressHelpers'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { BIG_ZERO } from '@spaceinvaders-swap/utils/bigNumber'
 import { PotteryDepositStatus } from 'state/types'
-import { bscTokens } from '@pancakeswap/tokens'
+import { bscTokens } from '@spaceinvaders-swap/tokens'
 import { getBep20Contract } from 'utils/contractHelpers'
 import { request, gql } from 'graphql-request'
 import { GRAPH_API_POTTERY } from 'config/constants/endpoints'
@@ -39,7 +39,7 @@ export const fetchPublicPotteryValue = async (potteryVaultAddress: string) => {
   try {
     const calls = [
       'getStatus',
-      'totalLockCake',
+      'totalLockInva',
       'totalSupply',
       'lockStartTime',
       'getLockTime',
@@ -59,7 +59,7 @@ export const fetchPublicPotteryValue = async (potteryVaultAddress: string) => {
 
     const [
       getStatus,
-      [totalLockCake],
+      [totalLockInva],
       [totalSupply],
       [lockStartTime],
       getLockTime,
@@ -71,7 +71,7 @@ export const fetchPublicPotteryValue = async (potteryVaultAddress: string) => {
       lastDrawId: new BigNumber(lastDrawId.toString()).toJSON(),
       totalPrize: new BigNumber(totalPrize.toString()).toJSON(),
       getStatus: getStatus[0],
-      totalLockCake: new BigNumber(totalLockCake.toString()).toJSON(),
+      totalLockInva: new BigNumber(totalLockInva.toString()).toJSON(),
       totalSupply: new BigNumber(totalSupply.toString()).toJSON(),
       lockStartTime: lockStartTime.toString(),
       lockTime: Number(getLockTime),
@@ -83,7 +83,7 @@ export const fetchPublicPotteryValue = async (potteryVaultAddress: string) => {
       lastDrawId: BIG_ZERO.toJSON(),
       totalPrize: BIG_ZERO.toJSON(),
       getStatus: PotteryDepositStatus.BEFORE_LOCK,
-      totalLockCake: BIG_ZERO.toJSON(),
+      totalLockInva: BIG_ZERO.toJSON(),
       totalSupply: BIG_ZERO.toJSON(),
       lockStartTime: BIG_ZERO.toJSON(),
       lockTime: 0,
@@ -94,7 +94,7 @@ export const fetchPublicPotteryValue = async (potteryVaultAddress: string) => {
 
 export const fetchTotalLockedValue = async (potteryVaultAddress: string) => {
   try {
-    const contract = getBep20Contract(bscTokens.cake.address)
+    const contract = getBep20Contract(bscTokens.inva.address)
     const totalLocked = await contract.balanceOf(potteryVaultAddress)
 
     return {

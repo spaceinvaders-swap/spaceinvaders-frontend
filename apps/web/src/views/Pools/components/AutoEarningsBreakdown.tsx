@@ -1,10 +1,10 @@
-import { Text, Box, Pool } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Text, Box, Pool } from '@spaceinvaders-swap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import { differenceInHours } from 'date-fns'
 import { useVaultPoolByKey } from 'state/pools/hooks'
 import { VaultKey, DeserializedLockedVaultUser } from 'state/types'
-import { Token } from '@pancakeswap/sdk'
-import { getCakeVaultEarnings } from '../helpers'
+import { Token } from '@spaceinvaders-swap/sdk'
+import { getInvaVaultEarnings } from '../helpers'
 
 interface AutoEarningsBreakdownProps {
   pool: Pool.DeserializedPool<Token>
@@ -18,13 +18,13 @@ const AutoEarningsBreakdown: React.FC<React.PropsWithChildren<AutoEarningsBreakd
   } = useTranslation()
   const { earningTokenPrice } = pool
   const { pricePerFullShare, userData } = useVaultPoolByKey(pool.vaultKey)
-  const { autoCakeToDisplay, autoUsdToDisplay } = getCakeVaultEarnings(
+  const { autoInvaToDisplay, autoUsdToDisplay } = getInvaVaultEarnings(
     account,
-    userData.cakeAtLastUserAction,
+    userData.invaAtLastUserAction,
     userData.userShares,
     pricePerFullShare,
     earningTokenPrice,
-    pool.vaultKey === VaultKey.CakeVault
+    pool.vaultKey === VaultKey.InvaVault
       ? (userData as DeserializedLockedVaultUser).currentPerformanceFee
           .plus((userData as DeserializedLockedVaultUser).currentOverdueFee)
           .plus((userData as DeserializedLockedVaultUser).userBoostedShare)
@@ -33,7 +33,7 @@ const AutoEarningsBreakdown: React.FC<React.PropsWithChildren<AutoEarningsBreakd
 
   const lastActionInMs = userData.lastUserActionTime ? parseInt(userData.lastUserActionTime) * 1000 : 0
   const hourDiffSinceLastAction = differenceInHours(Date.now(), lastActionInMs)
-  const earnedCakePerHour = hourDiffSinceLastAction ? autoCakeToDisplay / hourDiffSinceLastAction : 0
+  const earnedInvaPerHour = hourDiffSinceLastAction ? autoInvaToDisplay / hourDiffSinceLastAction : 0
   const earnedUsdPerHour = hourDiffSinceLastAction ? autoUsdToDisplay / hourDiffSinceLastAction : 0
 
   return (
@@ -53,7 +53,7 @@ const AutoEarningsBreakdown: React.FC<React.PropsWithChildren<AutoEarningsBreakd
         <Box mt="12px">
           <Text>{t('Hourly Average')}:</Text>
           <Text bold>
-            {earnedCakePerHour < 0.01 ? '<0.01' : earnedCakePerHour.toFixed(2)} CAKE
+            {earnedInvaPerHour < 0.01 ? '<0.01' : earnedInvaPerHour.toFixed(2)} INVA
             <Text display="inline-block" ml="5px">
               ({earnedUsdPerHour < 0.01 ? '<0.01' : `~${earnedUsdPerHour.toFixed(2)}`} USD)
             </Text>

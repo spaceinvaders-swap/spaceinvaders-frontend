@@ -1,5 +1,5 @@
-import { Flex, Text, Message } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Flex, Text, Message } from '@spaceinvaders-swap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import styled from 'styled-components'
 
 const StyledAnchor = styled.a`
@@ -20,9 +20,9 @@ const NftSubgraphWarning: React.FC = () => {
         <Message variant="warning">
           <Text>
             {t(
-              'Due to an ongoing Subgraph indexing issue from the underlying infrastructure provider. The PancakeSwap NFT marketplace is currently showing outdated data. Continuing trading may be subject to the risk of executing orders at unexpected prices and loss of funds. We recommend not to trade until the issue is resolved. Follow our ',
+              'Due to an ongoing Subgraph indexing issue from the underlying infrastructure provider. The SpaceinvadersSwap NFT marketplace is currently showing outdated data. Continuing trading may be subject to the risk of executing orders at unexpected prices and loss of funds. We recommend not to trade until the issue is resolved. Follow our ',
             )}
-            <StyledAnchor target="_blank" rel="noreferrer noopener" href="https://twitter.com/pancakeswap/">
+            <StyledAnchor target="_blank" rel="noreferrer noopener" href="https://twitter.com/spaceinvaders-swap/">
               Twitter
             </StyledAnchor>{' '}
             {t('for the latest update.')}

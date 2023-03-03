@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { BigNumber } from '@ethersproject/bignumber'
-import { ContextApi } from '@pancakeswap/localization'
-import { AutoRenewIcon, Button, useModal, useToast } from '@pancakeswap/uikit'
+import { ContextApi } from '@spaceinvaders-swap/localization'
+import { AutoRenewIcon, Button, useModal, useToast } from '@spaceinvaders-swap/uikit'
 import { useCallWithGasPrice } from 'hooks/useCallWithGasPrice'
 import useCatchTxError from 'hooks/useCatchTxError'
 import { useNftSaleContract } from 'hooks/useContract'

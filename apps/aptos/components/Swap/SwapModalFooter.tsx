@@ -1,5 +1,5 @@
-import { Trade, Currency, CurrencyAmount, TradeType } from '@pancakeswap/aptos-swap-sdk'
-import { useTranslation } from '@pancakeswap/localization'
+import { Trade, Currency, CurrencyAmount, TradeType } from '@spaceinvaders-swap/aptos-swap-sdk'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import {
   AutoColumn,
   AutoRow,
@@ -10,7 +10,7 @@ import {
   Swap as SwapUI,
   Text,
   SwapCallbackError,
-} from '@pancakeswap/uikit'
+} from '@spaceinvaders-swap/uikit'
 import { useMemo } from 'react'
 import { Field } from 'state/swap'
 import styled from 'styled-components'
@@ -107,7 +107,7 @@ export default function SwapModalFooter({
                   <Text mb="12px">{t('For each trade a %amount% fee is paid', { amount: totalFeePercent })}</Text>
                   <Text>- {t('%amount% to LP token holders', { amount: lpHoldersFeePercent })}</Text>
                   <Text>- {t('%amount% to the Treasury', { amount: treasuryFeePercent })}</Text>
-                  <Text>- {t('%amount% towards CAKE buyback and burn', { amount: buyBackFeePercent })}</Text>
+                  <Text>- {t('%amount% towards INVA buyback and burn', { amount: buyBackFeePercent })}</Text>
                 </>
               }
               ml="4px"

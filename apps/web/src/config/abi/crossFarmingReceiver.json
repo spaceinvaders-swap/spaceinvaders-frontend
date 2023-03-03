@@ -2,7 +2,7 @@
   {
     "inputs": [
       { "internalType": "address", "name": "_messageBus", "type": "address" },
-      { "internalType": "address", "name": "_cake", "type": "address" },
+      { "internalType": "address", "name": "_inva", "type": "address" },
       { "internalType": "address", "name": "_sender", "type": "address" },
       { "internalType": "contract IMasterChefV2", "name": "_mcv2", "type": "address" },
       { "internalType": "address", "name": "_operator", "type": "address" },
@@ -103,7 +103,7 @@
   },
   {
     "inputs": [],
-    "name": "CAKE",
+    "name": "INVA",
     "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
     "stateMutability": "view",
     "type": "function"

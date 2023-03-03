@@ -105,11 +105,11 @@ exports[`renders correctly 1`] = `
   box-shadow: none;
 }
 
-.c31:hover:not(:disabled):not(.pancake-button--disabled):not(.pancake-button--disabled):not(:active) {
+.c31:hover:not(:disabled):not(.spaceinvaders-button--disabled):not(.spaceinvaders-button--disabled):not(:active) {
   opacity: 0.65;
 }
 
-.c31:active:not(:disabled):not(.pancake-button--disabled):not(.pancake-button--disabled) {
+.c31:active:not(:disabled):not(.spaceinvaders-button--disabled):not(.spaceinvaders-button--disabled) {
   opacity: 0.85;
   -webkit-transform: translateY(1px);
   -ms-transform: translateY(1px);
@@ -118,7 +118,7 @@ exports[`renders correctly 1`] = `
 }
 
 .c31:disabled,
-.c31.pancake-button--disabled {
+.c31.spaceinvaders-button--disabled {
   background-color: var(--colors-backgroundDisabled);
   border-color: var(--colors-backgroundDisabled);
   box-shadow: none;
@@ -165,11 +165,11 @@ exports[`renders correctly 1`] = `
   height: sm;
 }
 
-.c35:hover:not(:disabled):not(.pancake-button--disabled):not(.pancake-button--disabled):not(:active) {
+.c35:hover:not(:disabled):not(.spaceinvaders-button--disabled):not(.spaceinvaders-button--disabled):not(:active) {
   opacity: 0.65;
 }
 
-.c35:active:not(:disabled):not(.pancake-button--disabled):not(.pancake-button--disabled) {
+.c35:active:not(:disabled):not(.spaceinvaders-button--disabled):not(.spaceinvaders-button--disabled) {
   opacity: 0.85;
   -webkit-transform: translateY(1px);
   -ms-transform: translateY(1px);
@@ -178,7 +178,7 @@ exports[`renders correctly 1`] = `
 }
 
 .c35:disabled,
-.c35.pancake-button--disabled {
+.c35.spaceinvaders-button--disabled {
   background-color: var(--colors-backgroundDisabled);
   border-color: var(--colors-backgroundDisabled);
   box-shadow: none;
@@ -1013,7 +1013,7 @@ exports[`renders correctly 1`] = `
             class="c4"
           >
             <a
-              aria-label="Pancake home page"
+              aria-label="Spaceinvaders home page"
               class="c5"
               href="/"
             >
@@ -1382,7 +1382,7 @@ exports[`renders correctly 1`] = `
           >
             <a
               class="c26"
-              href="https://pancakeswap.finance/swap?outputCurrency=0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82&chainId=56"
+              href="https://spaceinvaders-swap.finance/swap?outputCurrency=0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82&chainId=56"
               target="_blank"
             >
               <svg
@@ -1915,11 +1915,11 @@ exports[`renders correctly 1`] = `
   height: sm;
 }
 
-.c49:hover:not(:disabled):not(.pancake-button--disabled):not(.pancake-button--disabled):not(:active) {
+.c49:hover:not(:disabled):not(.spaceinvaders-button--disabled):not(.spaceinvaders-button--disabled):not(:active) {
   opacity: 0.65;
 }
 
-.c49:active:not(:disabled):not(.pancake-button--disabled):not(.pancake-button--disabled) {
+.c49:active:not(:disabled):not(.spaceinvaders-button--disabled):not(.spaceinvaders-button--disabled) {
   opacity: 0.85;
   -webkit-transform: translateY(1px);
   -ms-transform: translateY(1px);
@@ -1928,7 +1928,7 @@ exports[`renders correctly 1`] = `
 }
 
 .c49:disabled,
-.c49.pancake-button--disabled {
+.c49.spaceinvaders-button--disabled {
   background-color: var(--colors-backgroundDisabled);
   border-color: var(--colors-backgroundDisabled);
   box-shadow: none;
@@ -1973,11 +1973,11 @@ exports[`renders correctly 1`] = `
   box-shadow: none;
 }
 
-.c45:hover:not(:disabled):not(.pancake-button--disabled):not(.pancake-button--disabled):not(:active) {
+.c45:hover:not(:disabled):not(.spaceinvaders-button--disabled):not(.spaceinvaders-button--disabled):not(:active) {
   opacity: 0.65;
 }
 
-.c45:active:not(:disabled):not(.pancake-button--disabled):not(.pancake-button--disabled) {
+.c45:active:not(:disabled):not(.spaceinvaders-button--disabled):not(.spaceinvaders-button--disabled) {
   opacity: 0.85;
   -webkit-transform: translateY(1px);
   -ms-transform: translateY(1px);
@@ -1986,7 +1986,7 @@ exports[`renders correctly 1`] = `
 }
 
 .c45:disabled,
-.c45.pancake-button--disabled {
+.c45.spaceinvaders-button--disabled {
   background-color: var(--colors-backgroundDisabled);
   border-color: var(--colors-backgroundDisabled);
   box-shadow: none;
@@ -2030,11 +2030,11 @@ exports[`renders correctly 1`] = `
   color: var(--colors-invertedContrast);
 }
 
-.c56:hover:not(:disabled):not(.pancake-button--disabled):not(.pancake-button--disabled):not(:active) {
+.c56:hover:not(:disabled):not(.spaceinvaders-button--disabled):not(.spaceinvaders-button--disabled):not(:active) {
   opacity: 0.65;
 }
 
-.c56:active:not(:disabled):not(.pancake-button--disabled):not(.pancake-button--disabled) {
+.c56:active:not(:disabled):not(.spaceinvaders-button--disabled):not(.spaceinvaders-button--disabled) {
   opacity: 0.85;
   -webkit-transform: translateY(1px);
   -ms-transform: translateY(1px);
@@ -2043,7 +2043,7 @@ exports[`renders correctly 1`] = `
 }
 
 .c56:disabled,
-.c56.pancake-button--disabled {
+.c56.spaceinvaders-button--disabled {
   background-color: var(--colors-backgroundDisabled);
   border-color: var(--colors-backgroundDisabled);
   box-shadow: none;
@@ -2796,7 +2796,7 @@ exports[`renders correctly 1`] = `
               color="text"
               data-theme="dark"
               font-size="16px"
-              href="https://docs.pancakeswap.finance/contact-us"
+              href="https://docs.spaceinvaders-swap.finance/contact-us"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -2811,7 +2811,7 @@ exports[`renders correctly 1`] = `
               color="text"
               data-theme="dark"
               font-size="16px"
-              href="https://medium.com/pancakeswap"
+              href="https://medium.com/spaceinvaders-swap"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -2826,7 +2826,7 @@ exports[`renders correctly 1`] = `
               color="text"
               data-theme="dark"
               font-size="16px"
-              href="https://docs.pancakeswap.finance/contact-us/telegram"
+              href="https://docs.spaceinvaders-swap.finance/contact-us/telegram"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -2841,11 +2841,11 @@ exports[`renders correctly 1`] = `
               color="text"
               data-theme="dark"
               font-size="16px"
-              href="https://docs.pancakeswap.finance/tokenomics/cake"
+              href="https://docs.spaceinvaders-swap.finance/tokenomics/inva"
               rel="noreferrer noopener"
               target="_blank"
             >
-              CAKE
+              INVA
             </a>
           </li>
           <li
@@ -2865,7 +2865,7 @@ exports[`renders correctly 1`] = `
               color="var(--colors-warning)"
               data-theme="dark"
               font-size="16px"
-              href="https://pancakeswap.creator-spring.com/"
+              href="https://spaceinvaders-swap.creator-spring.com/"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -2889,7 +2889,7 @@ exports[`renders correctly 1`] = `
               color="text"
               data-theme="dark"
               font-size="16px"
-              href="Support https://docs.pancakeswap.finance/contact-us/customer-support"
+              href="Support https://docs.spaceinvaders-swap.finance/contact-us/customer-support"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -2904,7 +2904,7 @@ exports[`renders correctly 1`] = `
               color="text"
               data-theme="dark"
               font-size="16px"
-              href="https://docs.pancakeswap.finance/help/troubleshooting"
+              href="https://docs.spaceinvaders-swap.finance/help/troubleshooting"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -2919,7 +2919,7 @@ exports[`renders correctly 1`] = `
               color="text"
               data-theme="dark"
               font-size="16px"
-              href="https://docs.pancakeswap.finance/get-started"
+              href="https://docs.spaceinvaders-swap.finance/get-started"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -2943,7 +2943,7 @@ exports[`renders correctly 1`] = `
               color="text"
               data-theme="dark"
               font-size="16px"
-              href="https://github.com/pancakeswap"
+              href="https://github.com/spaceinvaders-swap"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -2958,7 +2958,7 @@ exports[`renders correctly 1`] = `
               color="text"
               data-theme="dark"
               font-size="16px"
-              href="https://docs.pancakeswap.finance"
+              href="https://docs.spaceinvaders-swap.finance"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -2973,7 +2973,7 @@ exports[`renders correctly 1`] = `
               color="text"
               data-theme="dark"
               font-size="16px"
-              href="https://app.gitbook.com/@pancakeswap-1/s/pancakeswap/code/bug-bounty"
+              href="https://app.gitbook.com/@spaceinvaders-swap-1/s/spaceinvaders-swap/code/bug-bounty"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -2988,7 +2988,7 @@ exports[`renders correctly 1`] = `
               color="text"
               data-theme="dark"
               font-size="16px"
-              href="https://docs.pancakeswap.finance/help/faq#is-pancakeswap-safe-has-pancakeswap-been-audited"
+              href="https://docs.spaceinvaders-swap.finance/help/faq#is-spaceinvaders-swap-safe-has-spaceinvaders-swap-been-audited"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -3003,7 +3003,7 @@ exports[`renders correctly 1`] = `
               color="text"
               data-theme="dark"
               font-size="16px"
-              href="https://docs.pancakeswap.finance/hiring/become-a-chef"
+              href="https://docs.spaceinvaders-swap.finance/hiring/become-a-chef"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -3058,7 +3058,7 @@ exports[`renders correctly 1`] = `
           class="c20 c13"
           color="primary"
           font-size="16px"
-          href="https://twitter.com/pancakeswap"
+          href="https://twitter.com/spaceinvaders-swap"
           rel="noreferrer noopener"
           target="_blank"
         >
@@ -3098,7 +3098,7 @@ exports[`renders correctly 1`] = `
               class="c26 c13"
               color="textSubtle"
               font-size="16px"
-              href="https://t.me/pancakeswap"
+              href="https://t.me/spaceinvaders-swap"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -3109,7 +3109,7 @@ exports[`renders correctly 1`] = `
               class="c26 c13"
               color="textSubtle"
               font-size="16px"
-              href="https://t.me/PancakeSwapIndonesia"
+              href="https://t.me/SpaceinvadersSwapIndonesia"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -3120,7 +3120,7 @@ exports[`renders correctly 1`] = `
               class="c26 c13"
               color="textSubtle"
               font-size="16px"
-              href="https://t.me/PancakeSwap_CN"
+              href="https://t.me/SpaceinvadersSwap_CN"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -3131,7 +3131,7 @@ exports[`renders correctly 1`] = `
               class="c26 c13"
               color="textSubtle"
               font-size="16px"
-              href="https://t.me/PancakeSwapVN"
+              href="https://t.me/SpaceinvadersSwapVN"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -3142,7 +3142,7 @@ exports[`renders correctly 1`] = `
               class="c26 c13"
               color="textSubtle"
               font-size="16px"
-              href="https://t.me/pancakeswap_ita"
+              href="https://t.me/spaceinvaders-swap_ita"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -3153,7 +3153,7 @@ exports[`renders correctly 1`] = `
               class="c26 c13"
               color="textSubtle"
               font-size="16px"
-              href="https://t.me/pancakeswap_ru"
+              href="https://t.me/spaceinvaders-swap_ru"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -3164,7 +3164,7 @@ exports[`renders correctly 1`] = `
               class="c26 c13"
               color="textSubtle"
               font-size="16px"
-              href="https://t.me/pancakeswapturkiye"
+              href="https://t.me/spaceinvaders-swapturkiye"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -3175,7 +3175,7 @@ exports[`renders correctly 1`] = `
               class="c26 c13"
               color="textSubtle"
               font-size="16px"
-              href="https://t.me/PancakeSwapPortuguese"
+              href="https://t.me/SpaceinvadersSwapPortuguese"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -3186,7 +3186,7 @@ exports[`renders correctly 1`] = `
               class="c26 c13"
               color="textSubtle"
               font-size="16px"
-              href="https://t.me/PancakeswapEs"
+              href="https://t.me/SpaceinvadersswapEs"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -3197,7 +3197,7 @@ exports[`renders correctly 1`] = `
               class="c26 c13"
               color="textSubtle"
               font-size="16px"
-              href="https://t.me/pancakeswapjp"
+              href="https://t.me/spaceinvaders-swapjp"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -3208,7 +3208,7 @@ exports[`renders correctly 1`] = `
               class="c26 c13"
               color="textSubtle"
               font-size="16px"
-              href="https://t.me/pancakeswapfr"
+              href="https://t.me/spaceinvaders-swapfr"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -3219,7 +3219,7 @@ exports[`renders correctly 1`] = `
               class="c26 c13"
               color="textSubtle"
               font-size="16px"
-              href="https://t.me/PancakeSwap_DE"
+              href="https://t.me/SpaceinvadersSwap_DE"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -3230,7 +3230,7 @@ exports[`renders correctly 1`] = `
               class="c26 c13"
               color="textSubtle"
               font-size="16px"
-              href="https://t.me/Pancakeswap_Ph"
+              href="https://t.me/Spaceinvadersswap_Ph"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -3241,7 +3241,7 @@ exports[`renders correctly 1`] = `
               class="c26 c13"
               color="textSubtle"
               font-size="16px"
-              href="https://t.me/PancakeSwapGeorgia"
+              href="https://t.me/SpaceinvadersSwapGeorgia"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -3252,7 +3252,7 @@ exports[`renders correctly 1`] = `
               class="c26 c13"
               color="textSubtle"
               font-size="16px"
-              href="https://t.me/PancakeSwapINDIA"
+              href="https://t.me/SpaceinvadersSwapINDIA"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -3263,7 +3263,7 @@ exports[`renders correctly 1`] = `
               class="c26 c13"
               color="textSubtle"
               font-size="16px"
-              href="https://t.me/PancakeSwapAnn"
+              href="https://t.me/SpaceinvadersSwapAnn"
               rel="noreferrer noopener"
               target="_blank"
             >
@@ -3276,7 +3276,7 @@ exports[`renders correctly 1`] = `
           class="c20 c13"
           color="primary"
           font-size="16px"
-          href="https://reddit.com/r/pancakeswap"
+          href="https://reddit.com/r/spaceinvaders-swap"
           rel="noreferrer noopener"
           target="_blank"
         >
@@ -3304,7 +3304,7 @@ exports[`renders correctly 1`] = `
           class="c20 c13"
           color="primary"
           font-size="16px"
-          href="https://instagram.com/pancakeswap_official"
+          href="https://instagram.com/spaceinvaders-swap_official"
           rel="noreferrer noopener"
           target="_blank"
         >
@@ -3329,7 +3329,7 @@ exports[`renders correctly 1`] = `
           class="c20 c13"
           color="primary"
           font-size="16px"
-          href="https://github.com/pancakeswap/"
+          href="https://github.com/spaceinvaders-swap/"
           rel="noreferrer noopener"
           target="_blank"
         >
@@ -3353,7 +3353,7 @@ exports[`renders correctly 1`] = `
           class="c20 c13"
           color="primary"
           font-size="16px"
-          href="https://discord.gg/pancakeswap"
+          href="https://discord.gg/spaceinvaders-swap"
           rel="noreferrer noopener"
           target="_blank"
         >
@@ -3375,7 +3375,7 @@ exports[`renders correctly 1`] = `
           class="c20 c13"
           color="primary"
           font-size="16px"
-          href="https://medium.com/pancakeswap"
+          href="https://medium.com/spaceinvaders-swap"
           rel="noreferrer noopener"
           target="_blank"
         >
@@ -3397,7 +3397,7 @@ exports[`renders correctly 1`] = `
           class="c27 c13"
           color="primary"
           font-size="16px"
-          href="https://www.youtube.com/@pancakeswap_official"
+          href="https://www.youtube.com/@spaceinvaders-swap_official"
           rel="noreferrer noopener"
           target="_blank"
         >
@@ -3740,7 +3740,7 @@ exports[`renders correctly 1`] = `
           >
             <a
               class="c54"
-              href="https://pancakeswap.finance/swap?outputCurrency=0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82&chainId=56"
+              href="https://spaceinvaders-swap.finance/swap?outputCurrency=0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82&chainId=56"
               target="_blank"
             >
               <svg
@@ -3805,11 +3805,11 @@ exports[`renders correctly 1`] = `
           <a
             class="c56"
             data-theme="light"
-            href="https://pancakeswap.finance/swap?outputCurrency=0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82&chainId=56"
+            href="https://spaceinvaders-swap.finance/swap?outputCurrency=0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82&chainId=56"
             scale="sm"
             target="_blank"
           >
-            Buy CAKE
+            Buy INVA
             <svg
               class="c57"
               color="backgroundAlt"

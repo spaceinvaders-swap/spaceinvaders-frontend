@@ -1,10 +1,10 @@
 import React, { useMemo } from 'react'
-import { Flex, Text, Balance, Pool } from '@pancakeswap/uikit'
+import { Flex, Text, Balance, Pool } from '@spaceinvaders-swap/uikit'
 import styled from 'styled-components'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import BigNumber from 'bignumber.js'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
-import { Token } from '@pancakeswap/sdk'
+import { getBalanceNumber } from '@spaceinvaders-swap/utils/formatBalance'
+import { Token } from '@spaceinvaders-swap/sdk'
 
 const Containter = styled(Flex)`
   margin-top: 12px;
@@ -18,26 +18,26 @@ const Containter = styled(Flex)`
 
 interface TotalStakedProps {
   pool: Pool.DeserializedPool<Token>
-  totalCakeInVault: BigNumber
-  cakeInVaults: BigNumber
+  totalInvaInVault: BigNumber
+  invaInVaults: BigNumber
 }
 
-const TotalStaked: React.FC<React.PropsWithChildren<TotalStakedProps>> = ({ pool, totalCakeInVault, cakeInVaults }) => {
+const TotalStaked: React.FC<React.PropsWithChildren<TotalStakedProps>> = ({ pool, totalInvaInVault, invaInVaults }) => {
   const { t } = useTranslation()
   const { sousId, stakingToken, totalStaked, vaultKey } = pool
 
-  const isManualCakePool = sousId === 0
+  const isManualInvaPool = sousId === 0
 
   const totalStakedBalance = useMemo(() => {
     if (vaultKey) {
-      return getBalanceNumber(totalCakeInVault, stakingToken.decimals)
+      return getBalanceNumber(totalInvaInVault, stakingToken.decimals)
     }
-    if (isManualCakePool) {
-      const manualCakeTotalMinusAutoVault = new BigNumber(totalStaked).minus(cakeInVaults)
-      return getBalanceNumber(manualCakeTotalMinusAutoVault, stakingToken.decimals)
+    if (isManualInvaPool) {
+      const manualInvaTotalMinusAutoVault = new BigNumber(totalStaked).minus(invaInVaults)
+      return getBalanceNumber(manualInvaTotalMinusAutoVault, stakingToken.decimals)
     }
     return getBalanceNumber(totalStaked, stakingToken.decimals)
-  }, [vaultKey, totalCakeInVault, isManualCakePool, totalStaked, stakingToken.decimals, cakeInVaults])
+  }, [vaultKey, totalInvaInVault, isManualInvaPool, totalStaked, stakingToken.decimals, invaInVaults])
 
   return (
     <Containter justifyContent="space-between">

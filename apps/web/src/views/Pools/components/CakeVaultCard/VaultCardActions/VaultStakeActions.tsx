@@ -1,7 +1,7 @@
-import { Flex, Skeleton, useModal, Pool } from '@pancakeswap/uikit'
+import { Flex, Skeleton, useModal, Pool } from '@spaceinvaders-swap/uikit'
 import BigNumber from 'bignumber.js'
 import { VaultKey } from 'state/types'
-import { Token } from '@pancakeswap/sdk'
+import { Token } from '@spaceinvaders-swap/sdk'
 import NotEnoughTokensModal from '../../Modals/NotEnoughTokensModal'
 import { VaultStakeButtonGroup } from '../../Vault/VaultStakeButtonGroup'
 import VaultStakeModal from '../VaultStakeModal'
@@ -40,7 +40,7 @@ const VaultStakeActions: React.FC<React.PropsWithChildren<VaultStakeActionsProps
     ) : (
       <VaultStakeButtonGroup
         onFlexibleClick={stakingTokenBalance.gt(0) ? onPresentStake : onPresentTokenRequired}
-        onLockedClick={pool.vaultKey === VaultKey.CakeVault ? openPresentLockedStakeModal : null}
+        onLockedClick={pool.vaultKey === VaultKey.InvaVault ? openPresentLockedStakeModal : null}
       />
     )
   }

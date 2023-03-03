@@ -1,4 +1,4 @@
-import { shouldGeoBlock } from '@pancakeswap/utils/geoBlock'
+import { shouldGeoBlock } from '@spaceinvaders-swap/utils/geoBlock'
 import { NextRequest, NextResponse } from 'next/server'
 
 export async function middleware(req: NextRequest) {

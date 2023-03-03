@@ -86,7 +86,7 @@ const defaultProps = {
   langs,
   setLang: noop,
   currentLang: "EN",
-  cakePriceUsd: 0.023158668932877668,
+  invaPriceUsd: 0.023158668932877668,
   links,
   subLinks: links[0].items,
   footerLinks,
@@ -98,8 +98,8 @@ const defaultProps = {
     </>
   ),
   activeItem: "/swap",
-  activeSubItem: "https://exchange.pancakeswap.finance",
-  buyCakeLabel: "Buy CAKE",
+  activeSubItem: "https://exchange.spaceinvaders-swap.finance",
+  buyInvaLabel: "Buy INVA",
 };
 
 const ConnectedTemplate: React.FC<React.PropsWithChildren<NavProps>> = (args) => {
@@ -202,8 +202,8 @@ export const NotConnected: React.FC<React.PropsWithChildren> = () => {
         subLinks={links[0].items as SubMenuItemsType[]}
         footerLinks={footerLinks}
         activeItem="/swap"
-        activeSubItem="https://exchange.pancakeswap.finance"
-        buyCakeLabel="Buy CAKE"
+        activeSubItem="https://exchange.spaceinvaders-swap.finance"
+        buyInvaLabel="Buy INVA"
       >
         <div>
           <h1>Page body</h1>
@@ -235,8 +235,8 @@ export const WithoutConnectButton: React.FC<React.PropsWithChildren> = () => {
         footerLinks={footerLinks}
         subLinks={links[0].items as SubMenuItemsType[]}
         activeItem="/swap"
-        activeSubItem="https://exchange.pancakeswap.finance"
-        buyCakeLabel="Buy CAKE"
+        activeSubItem="https://exchange.spaceinvaders-swap.finance"
+        buyInvaLabel="Buy INVA"
       >
         <div>
           <h1>No connect button on top</h1>
@@ -256,13 +256,13 @@ export const WithSubmenuSelected: React.FC<React.PropsWithChildren> = () => {
         langs={langs}
         setLang={noop}
         currentLang="EN"
-        cakePriceUsd={0.23158668932877668}
+        invaPriceUsd={0.23158668932877668}
         links={links}
         subLinks={links[0].items as SubMenuItemsType[]}
         footerLinks={footerLinks}
         activeItem="/swap"
-        activeSubItem="https://exchange.pancakeswap.finance"
-        buyCakeLabel="Buy CAKE"
+        activeSubItem="https://exchange.spaceinvaders-swap.finance"
+        buyInvaLabel="Buy INVA"
       >
         <div>
           <Heading as="h1" mb="8px">

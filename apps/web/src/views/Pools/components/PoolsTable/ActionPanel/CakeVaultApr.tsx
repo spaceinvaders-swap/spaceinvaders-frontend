@@ -1,20 +1,20 @@
-import { Box, Button, Flex, Skeleton, Text, CalculateIcon, useModal, Balance, Pool } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Box, Button, Flex, Skeleton, Text, CalculateIcon, useModal, Balance, Pool } from '@spaceinvaders-swap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import { DeserializedLockedVaultUser, VaultKey, DeserializedVaultUser } from 'state/types'
 import { useVaultApy } from 'hooks/useVaultApy'
-import { VaultPosition } from 'utils/cakePool'
+import { VaultPosition } from 'utils/invaPool'
 import { MAX_LOCK_DURATION } from 'config/constants/pools'
-import { Token } from '@pancakeswap/sdk'
+import { Token } from '@spaceinvaders-swap/sdk'
 
 import { VaultRoiCalculatorModal } from '../../Vault/VaultRoiCalculatorModal'
 
-interface CakeVaultAprProps {
+interface InvaVaultAprProps {
   pool: Pool.DeserializedPool<Token>
   userData: DeserializedVaultUser
   vaultPosition: VaultPosition
 }
 
-const CakeVaultApr: React.FC<React.PropsWithChildren<CakeVaultAprProps>> = ({ pool, userData, vaultPosition }) => {
+const InvaVaultApr: React.FC<React.PropsWithChildren<InvaVaultAprProps>> = ({ pool, userData, vaultPosition }) => {
   const { t } = useTranslation()
 
   const { flexibleApy, lockedApy } = useVaultApy({
@@ -57,7 +57,7 @@ const CakeVaultApr: React.FC<React.PropsWithChildren<CakeVaultAprProps>> = ({ po
           )}
         </Flex>
       </Box>
-      {pool.vaultKey === VaultKey.CakeVault && (
+      {pool.vaultKey === VaultKey.InvaVault && (
         <Box marginX="8px" mb="8px">
           <Flex justifyContent="space-between">
             <Text fontSize="16px" color="textSubtle" textAlign="left">
@@ -100,4 +100,4 @@ const CakeVaultApr: React.FC<React.PropsWithChildren<CakeVaultAprProps>> = ({ po
   )
 }
 
-export default CakeVaultApr
+export default InvaVaultApr

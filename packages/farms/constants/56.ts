@@ -1,6 +1,6 @@
-import { SerializedFarmConfig } from '@pancakeswap/farms'
-import { bscTokens } from '@pancakeswap/tokens'
-import { CAKE_BNB_LP_MAINNET } from './common'
+import { SerializedFarmConfig } from '@spaceinvaders-swap/farms'
+import { bscTokens } from '@spaceinvaders-swap/tokens'
+import { INVA_BNB_LP_MAINNET } from './common'
 
 const farms: SerializedFarmConfig[] = [
   /**
@@ -9,7 +9,7 @@ const farms: SerializedFarmConfig[] = [
   {
     pid: 0,
     v1pid: 0,
-    lpSymbol: 'CAKE',
+    lpSymbol: 'INVA',
     lpAddress: '0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82',
     token: bscTokens.syrup,
     quoteToken: bscTokens.wbnb,
@@ -17,27 +17,27 @@ const farms: SerializedFarmConfig[] = [
   {
     pid: 2,
     v1pid: 251,
-    lpSymbol: 'CAKE-BNB LP',
-    lpAddress: CAKE_BNB_LP_MAINNET,
-    token: bscTokens.cake,
+    lpSymbol: 'INVA-BNB LP',
+    lpAddress: INVA_BNB_LP_MAINNET,
+    token: bscTokens.inva,
     quoteToken: bscTokens.wbnb,
     boosted: true,
   },
   {
     pid: 39,
     v1pid: 389,
-    lpSymbol: 'CAKE-BUSD LP',
+    lpSymbol: 'INVA-BUSD LP',
     lpAddress: '0x804678fa97d91B974ec2af3c843270886528a9E6',
     boosted: true,
-    token: bscTokens.cake,
+    token: bscTokens.inva,
     quoteToken: bscTokens.busd,
   },
   {
     pid: 47,
     v1pid: 422,
-    lpSymbol: 'CAKE-USDT LP',
+    lpSymbol: 'INVA-USDT LP',
     lpAddress: '0xA39Af17CE4a8eb807E076805Da1e2B8EA7D0755b',
-    token: bscTokens.cake,
+    token: bscTokens.inva,
     quoteToken: bscTokens.usdt,
     boosted: true,
   },
@@ -81,10 +81,10 @@ const farms: SerializedFarmConfig[] = [
   },
   {
     pid: 148,
-    lpSymbol: 'CSIX-CAKE LP',
+    lpSymbol: 'CSIX-INVA LP',
     lpAddress: '0x43C2aBe5e3bceC619072D8668Ac83Ad825da707f',
     token: bscTokens.csix,
-    quoteToken: bscTokens.cake,
+    quoteToken: bscTokens.inva,
   },
   {
     pid: 147,
@@ -113,10 +113,10 @@ const farms: SerializedFarmConfig[] = [
   },
   {
     pid: 142,
-    lpSymbol: 'ARENA-CAKE LP',
+    lpSymbol: 'ARENA-INVA LP',
     lpAddress: '0xfcc860289819c8b754ef31a1709a7952EB940223',
     token: bscTokens.arena,
-    quoteToken: bscTokens.cake,
+    quoteToken: bscTokens.inva,
   },
   {
     pid: 140,
@@ -127,17 +127,17 @@ const farms: SerializedFarmConfig[] = [
   },
   {
     pid: 139,
-    lpSymbol: 'ZBC-CAKE LP',
+    lpSymbol: 'ZBC-INVA LP',
     lpAddress: '0x269043694D070e8811c620bf95485314BCC7B4b7',
     token: bscTokens.zbc,
-    quoteToken: bscTokens.cake,
+    quoteToken: bscTokens.inva,
   },
   {
     pid: 138,
-    lpSymbol: 'SQUAD-CAKE LP',
+    lpSymbol: 'SQUAD-INVA LP',
     lpAddress: '0x54cd9d6Ce45cEF4fCc1AC568329254661B28711d',
     token: bscTokens.squad,
-    quoteToken: bscTokens.cake,
+    quoteToken: bscTokens.inva,
   },
   {
     pid: 135,
@@ -181,10 +181,10 @@ const farms: SerializedFarmConfig[] = [
   },
   {
     pid: 131,
-    lpSymbol: 'HOOK-CAKE',
+    lpSymbol: 'HOOK-INVA',
     lpAddress: '0x9e9b768174eF24233BF8AC2f4131F10ff5E72Dee',
     token: bscTokens.hook,
-    quoteToken: bscTokens.cake,
+    quoteToken: bscTokens.inva,
   },
   {
     pid: 109,
@@ -197,10 +197,10 @@ const farms: SerializedFarmConfig[] = [
   },
   {
     pid: 130,
-    lpSymbol: 'XCAD-CAKE',
+    lpSymbol: 'XCAD-INVA',
     lpAddress: '0x50e4837Fc2eEFFD34EF78483A89c6Afb7Dd70c77',
     token: bscTokens.xcad,
-    quoteToken: bscTokens.cake,
+    quoteToken: bscTokens.inva,
   },
   {
     pid: 106,
@@ -327,10 +327,10 @@ const farms: SerializedFarmConfig[] = [
   },
   {
     pid: 111,
-    lpSymbol: 'AOG-CAKE LP',
+    lpSymbol: 'AOG-INVA LP',
     lpAddress: '0xF8cA29a3BF6d34691981D3Ee8D4c9Cd1C437EfeE',
     token: bscTokens.aog,
-    quoteToken: bscTokens.cake,
+    quoteToken: bscTokens.inva,
     isCommunity: true,
   },
   {
@@ -502,10 +502,10 @@ const farms: SerializedFarmConfig[] = [
   {
     pid: 88,
     v1pid: 518,
-    lpSymbol: 'FROYO-CAKE LP',
+    lpSymbol: 'FROYO-INVA LP',
     lpAddress: '0x1CCc3cC95c8148477Afd18a552f03835Be9D182a',
     token: bscTokens.froyo,
-    quoteToken: bscTokens.cake,
+    quoteToken: bscTokens.inva,
   },
   {
     pid: 87,
@@ -518,10 +518,10 @@ const farms: SerializedFarmConfig[] = [
   {
     pid: 86,
     v1pid: 515,
-    lpSymbol: 'DUET-CAKE LP',
+    lpSymbol: 'DUET-INVA LP',
     lpAddress: '0xbDF0aA1D1985Caa357A6aC6661D838DA8691c569',
     token: bscTokens.duet,
-    quoteToken: bscTokens.cake,
+    quoteToken: bscTokens.inva,
   },
   {
     pid: 85,

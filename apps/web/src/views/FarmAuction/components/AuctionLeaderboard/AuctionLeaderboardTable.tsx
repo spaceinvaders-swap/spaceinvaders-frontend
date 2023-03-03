@@ -14,11 +14,11 @@ import {
   EllipsisIcon,
   LinkExternal,
   useMatchBreakpoints,
-} from '@pancakeswap/uikit'
+} from '@spaceinvaders-swap/uikit'
 import { getBlockExploreLink } from 'utils'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
-import { useTranslation } from '@pancakeswap/localization'
-import { usePriceCakeBusd } from 'state/farms/hooks'
+import { getBalanceNumber } from '@spaceinvaders-swap/utils/formatBalance'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { usePriceInvaBusd } from 'state/farms/hooks'
 import { Bidder } from 'config/constants/types'
 import WhitelistedBiddersModal from '../WhitelistedBiddersModal'
 
@@ -40,13 +40,13 @@ const GridCell = styled(Flex)<{ isTopPosition: boolean }>`
 
 interface LeaderboardRowProps {
   bidder: Bidder
-  cakePriceBusd: BigNumber
+  invaPriceBusd: BigNumber
   isMobile: boolean
 }
 
 const LeaderboardRow: React.FC<React.PropsWithChildren<LeaderboardRowProps>> = ({
   bidder,
-  cakePriceBusd,
+  invaPriceBusd,
   isMobile,
 }) => {
   const { t } = useTranslation()
@@ -79,9 +79,9 @@ const LeaderboardRow: React.FC<React.PropsWithChildren<LeaderboardRowProps>> = (
           <Text bold textTransform="uppercase" width="100%" textAlign="right">
             {getBalanceNumber(amount).toLocaleString()}
           </Text>
-          {cakePriceBusd.gt(0) ? (
+          {invaPriceBusd.gt(0) ? (
             <Text fontSize="12px" color="textSubtle" textAlign="right">
-              ~${getBalanceNumber(amount.times(cakePriceBusd)).toLocaleString('en', { maximumFractionDigits: 0 })}
+              ~${getBalanceNumber(amount.times(invaPriceBusd)).toLocaleString('en', { maximumFractionDigits: 0 })}
             </Text>
           ) : (
             <Flex justifyContent="flex-end">
@@ -124,7 +124,7 @@ const AuctionLeaderboardTable: React.FC<React.PropsWithChildren<{ bidders: Bidde
   noBidsText,
 }) => {
   const [visibleBidders, setVisibleBidders] = useState(10)
-  const cakePriceBusd = usePriceCakeBusd()
+  const invaPriceBusd = usePriceInvaBusd()
   const { t } = useTranslation()
 
   const { isMobile } = useMatchBreakpoints()
@@ -159,12 +159,12 @@ const AuctionLeaderboardTable: React.FC<React.PropsWithChildren<{ bidders: Bidde
           pr={[null, null, '24px']}
           py="16px"
         >
-          {t('CAKE bid')}
+          {t('INVA bid')}
         </Text>
         <Box />
         {/* Rows */}
         {bidders.slice(0, visibleBidders).map((bidder) => (
-          <LeaderboardRow key={bidder.account} bidder={bidder} cakePriceBusd={cakePriceBusd} isMobile={isMobile} />
+          <LeaderboardRow key={bidder.account} bidder={bidder} invaPriceBusd={invaPriceBusd} isMobile={isMobile} />
         ))}
       </LeaderboardContainer>
       <Flex mt="16px" px="24px" flexDirection="column" justifyContent="center" alignItems="center">

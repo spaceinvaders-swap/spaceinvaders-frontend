@@ -1,7 +1,7 @@
 import { BigNumber } from '@ethersproject/bignumber'
-import { ContextApi } from '@pancakeswap/localization'
+import { ContextApi } from '@spaceinvaders-swap/localization'
 import { DefaultTheme } from 'styled-components'
-import { UserInfos, EventInfos, UserStatusEnum } from 'views/PancakeSquad/types'
+import { UserInfos, EventInfos, UserStatusEnum } from 'views/SpaceinvadersSquad/types'
 
 export type EventStepsProps = {
   eventInfos?: EventInfos
@@ -11,7 +11,7 @@ export type EventStepsProps = {
   account: string
 }
 
-export type EventStepsType = { t: ContextApi['t']; theme: DefaultTheme; cakeBalance: BigNumber } & Pick<
+export type EventStepsType = { t: ContextApi['t']; theme: DefaultTheme; invaBalance: BigNumber } & Pick<
   EventStepsProps,
   'eventInfos' | 'userInfos' | 'userStatus' | 'account'
 >

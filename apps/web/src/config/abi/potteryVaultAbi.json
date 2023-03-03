@@ -3,16 +3,16 @@
     "inputs": [
       {
         "internalType": "contract IERC20",
-        "name": "_cake",
+        "name": "_inva",
         "type": "address"
       },
       {
-        "internalType": "contract ICakePool",
-        "name": "_cakePool",
+        "internalType": "contract IInvaPool",
+        "name": "_invaPool",
         "type": "address"
       },
       {
-        "internalType": "contract IPancakeSwapPotteryDraw",
+        "internalType": "contract ISpaceinvadersSwapPotteryDraw",
         "name": "_potteryDraw",
         "type": "address"
       },
@@ -617,7 +617,7 @@
   },
   {
     "inputs": [],
-    "name": "lockCake",
+    "name": "lockInva",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -953,7 +953,7 @@
   },
   {
     "inputs": [],
-    "name": "totalLockCake",
+    "name": "totalLockInva",
     "outputs": [
       {
         "internalType": "uint256",
@@ -1045,7 +1045,7 @@
   },
   {
     "inputs": [],
-    "name": "unlockCake",
+    "name": "unlockInva",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"

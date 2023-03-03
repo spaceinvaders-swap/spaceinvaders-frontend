@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import { useProfile } from 'state/profile/hooks'
-import { Box, useMatchBreakpoints, PageSection } from '@pancakeswap/uikit'
+import { Box, useMatchBreakpoints, PageSection } from '@spaceinvaders-swap/uikit'
 import { useTradingCompetitionContractMobox } from 'hooks/useContract'
 import useTheme from 'hooks/useTheme'
 import { TC_MOBOX_SUBGRAPH, API_PROFILE } from 'config/constants/endpoints'
@@ -16,7 +16,7 @@ import {
   REGISTRATION,
 } from 'config/constants/trading-competition/phases'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
-import { ChainId } from '@pancakeswap/sdk'
+import { ChainId } from '@spaceinvaders-swap/sdk'
 import { MIDBLUEBG, MIDBLUEBG_DARK, TRADINGCOMPETITIONBANNER } from './pageSectionStyles'
 import { RulesIcon } from './svgs'
 import Countdown from './components/Countdown'
@@ -36,7 +36,7 @@ import { useRegistrationClaimStatus } from './useRegistrationClaimStatus'
 import Footer from './Footer'
 import PrizesInfoSection from './components/PrizesInfoSection'
 import TeamRanksWithParticipants from './components/TeamRanks/TeamRanksWithParticipants'
-import MoboxCakerBunny from './pngs/mobox-cakers.png'
+import MoboxInvarBunny from './pngs/mobox-invars.png'
 
 const MoboxCompetition = () => {
   const { account, chainId } = useActiveWeb3React()
@@ -79,7 +79,7 @@ const MoboxCompetition = () => {
   const {
     hasUserClaimed,
     isUserActive,
-    userCakeRewards,
+    userInvaRewards,
     userMoboxRewards,
     userPointReward,
     canClaimMysteryBox,
@@ -90,7 +90,7 @@ const MoboxCompetition = () => {
     currentPhase.state === CLAIM &&
     isUserActive &&
     !hasUserClaimed &&
-    (userCakeRewards !== '0' ||
+    (userInvaRewards !== '0' ||
       userMoboxRewards !== '0' ||
       userPointReward !== '0' ||
       canClaimMysteryBox ||
@@ -113,7 +113,7 @@ const MoboxCompetition = () => {
           isUserActive: user[1],
           hasUserClaimed: user[2],
           userRewardGroup: user[3].toString(),
-          userCakeRewards: user[4].toString(),
+          userInvaRewards: user[4].toString(),
           userMoboxRewards: user[5].toString(),
           userPointReward: user[6].toString(),
           canClaimMysteryBox: user[7],
@@ -242,13 +242,13 @@ const MoboxCompetition = () => {
           >
             <Box my="64px">
               <TeamRanksWithParticipants
-                image={MoboxCakerBunny}
+                image={MoboxInvarBunny}
                 team1LeaderboardInformation={team1LeaderboardInformation}
                 team2LeaderboardInformation={team2LeaderboardInformation}
                 team3LeaderboardInformation={team3LeaderboardInformation}
                 globalLeaderboardInformation={globalLeaderboardInformation}
                 participantSubgraphAddress={TC_MOBOX_SUBGRAPH}
-                subgraphName="pancakeswap/trading-competition-v3"
+                subgraphName="spaceinvaders-swap/trading-competition-v3"
               />
             </Box>
           </PageSection>

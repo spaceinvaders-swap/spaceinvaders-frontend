@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Button as UIKitButton, AutoRenewIcon } from '@pancakeswap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { Button as UIKitButton, AutoRenewIcon } from '@spaceinvaders-swap/uikit'
 import styled from 'styled-components'
 
 interface ConfirmButtonProps {

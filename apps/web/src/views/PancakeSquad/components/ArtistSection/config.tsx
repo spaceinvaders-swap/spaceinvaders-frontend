@@ -1,5 +1,5 @@
-import { InstagramIcon, TwitterIcon } from '@pancakeswap/uikit'
-import { ContextApi } from '@pancakeswap/localization'
+import { InstagramIcon, TwitterIcon } from '@spaceinvaders-swap/uikit'
+import { ContextApi } from '@spaceinvaders-swap/localization'
 
 type ArtistConfigType = {
   t: ContextApi['t']
@@ -16,7 +16,7 @@ const artistConfigBuilder = ({ t, isDark }: ArtistConfigType) => ({
     t('‘Twas full of rabbits, who caught her attention'),
     t('Making neat stuff beyond her comprehension'),
     t('The bunnies were working in a big ol’ kitchen'),
-    t('Cooking hot pancakes for their big ol’ mission:'),
+    t('Cooking hot spaceinvaderss for their big ol’ mission:'),
     t('To drizzle in syrup and hand them out soon'),
     t('So that bunnies worldwide may fly to the moon.'),
   ],
@@ -34,7 +34,7 @@ const artistConfigBuilder = ({ t, isDark }: ArtistConfigType) => ({
       icon: <InstagramIcon color="white" />,
     },
   ],
-  image: { src: `/images/pancakeSquad/artist${isDark ? '-dark' : ''}.png`, alt: 'Chef Cecy bio' },
+  image: { src: `/images/spaceinvadersSquad/artist${isDark ? '-dark' : ''}.png`, alt: 'Chef Cecy bio' },
 })
 
 export default artistConfigBuilder

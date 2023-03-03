@@ -1,8 +1,8 @@
 import { ChangeEvent, useState, useEffect } from 'react'
-import { Box, BoxProps, Text, Input } from '@pancakeswap/uikit'
+import { Box, BoxProps, Text, Input } from '@spaceinvaders-swap/uikit'
 import styled from 'styled-components'
 import { isAddress } from 'utils'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import CircleLoader from 'components/Loader/CircleLoader'
 
 enum ResultStatus {

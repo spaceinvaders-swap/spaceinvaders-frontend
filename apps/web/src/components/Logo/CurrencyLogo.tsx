@@ -1,9 +1,9 @@
-import { ChainId, Currency } from '@pancakeswap/sdk'
-import { BinanceIcon, TokenLogo } from '@pancakeswap/uikit'
+import { ChainId, Currency } from '@spaceinvaders-swap/sdk'
+import { BinanceIcon, TokenLogo } from '@spaceinvaders-swap/uikit'
 import { useMemo } from 'react'
-import { WrappedTokenInfo } from '@pancakeswap/token-lists'
+import { WrappedTokenInfo } from '@spaceinvaders-swap/token-lists'
 import styled from 'styled-components'
-import { useHttpLocations } from '@pancakeswap/hooks'
+import { useHttpLocations } from '@spaceinvaders-swap/hooks'
 import { BAD_SRCS } from './constants'
 import getTokenLogoURL from '../../utils/getTokenLogoURL'
 

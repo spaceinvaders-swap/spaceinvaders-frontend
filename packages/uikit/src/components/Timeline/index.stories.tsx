@@ -18,20 +18,20 @@ const eventsMock: Event[] = [
     status: "live",
     text: "Pre-Sale: Now Live",
     infoText:
-      "During this phase, any wallet holding a Minting Ticket can redeem their ticket to mint a Pancake Squad NFT.",
+      "During this phase, any wallet holding a Minting Ticket can redeem their ticket to mint a Spaceinvaders Squad NFT.",
   },
   {
     status: "upcoming",
     text: "Public-Sale:",
     altText: "1d 4h 34m",
     infoText:
-      "Public Sale: Any wallet with an active Pancake Profile can purchase up to 20 Minting Tickets, while stocks last.",
+      "Public Sale: Any wallet with an active Spaceinvaders Profile can purchase up to 20 Minting Tickets, while stocks last.",
   },
   {
     status: "upcoming",
     text: "Mint",
     infoText:
-      "Pre-sale: Wallets which held “Gen 0” Pancake Bunnies NFTs (bunnyID 0,1,2,3,4) at block xxxxxxx can purchase one Minting Ticket per Gen 0 NFT.",
+      "Pre-sale: Wallets which held “Gen 0” Spaceinvaders Bunnies NFTs (bunnyID 0,1,2,3,4) at block xxxxxxx can purchase one Minting Ticket per Gen 0 NFT.",
   },
 ];
 

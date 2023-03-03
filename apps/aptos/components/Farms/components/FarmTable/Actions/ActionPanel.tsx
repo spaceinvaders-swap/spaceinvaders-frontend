@@ -1,4 +1,4 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import {
   LinkExternal,
   Text,
@@ -7,10 +7,10 @@ import {
   FarmTableLiquidityProps,
   FarmTableMultiplierProps,
   Flex,
-} from '@pancakeswap/uikit'
+} from '@spaceinvaders-swap/uikit'
 import styled, { css, keyframes } from 'styled-components'
 import getLiquidityUrlPathParts from 'utils/getLiquidityUrlPathParts'
-import { FarmWithStakedValue } from '@pancakeswap/farms'
+import { FarmWithStakedValue } from '@spaceinvaders-swap/farms'
 
 import Apr, { AprProps } from '../Apr'
 import { HarvestAction, HarvestActionContainer } from './HarvestAction'

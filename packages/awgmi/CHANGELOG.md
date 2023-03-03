@@ -1,4 +1,4 @@
-# @pancakeswap/awgmi
+# @spaceinvaders-swap/awgmi
 
 ## 0.0.11
 

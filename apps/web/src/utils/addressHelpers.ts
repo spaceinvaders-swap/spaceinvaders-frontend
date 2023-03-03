@@ -1,5 +1,5 @@
-import { ChainId } from '@pancakeswap/sdk'
-import { Pool } from '@pancakeswap/uikit'
+import { ChainId } from '@spaceinvaders-swap/sdk'
+import { Pool } from '@spaceinvaders-swap/uikit'
 import addresses from 'config/constants/contracts'
 import { VaultKey } from 'state/types'
 
@@ -19,11 +19,11 @@ export const getMulticallAddress = (chainId?: number) => {
 export const getLotteryV2Address = () => {
   return getAddress(addresses.lotteryV2)
 }
-export const getPancakeProfileAddress = () => {
-  return getAddress(addresses.pancakeProfile)
+export const getSpaceinvadersProfileAddress = () => {
+  return getAddress(addresses.spaceinvadersProfile)
 }
-export const getPancakeBunniesAddress = () => {
-  return getAddress(addresses.pancakeBunnies)
+export const getSpaceinvadersBunniesAddress = () => {
+  return getAddress(addresses.spaceinvadersBunnies)
 }
 export const getBunnyFactoryAddress = () => {
   return getAddress(addresses.bunnyFactory)
@@ -66,16 +66,16 @@ export const getVaultPoolAddress = (vaultKey: VaultKey) => {
   return getAddress(addresses[vaultKey])
 }
 
-export const getCakeVaultAddress = () => {
-  return getAddress(addresses.cakeVault)
+export const getInvaVaultAddress = () => {
+  return getAddress(addresses.invaVault)
 }
 
-export const getCakeFlexibleSideVaultAddress = () => {
-  return getAddress(addresses.cakeFlexibleSideVault)
+export const getInvaFlexibleSideVaultAddress = () => {
+  return getAddress(addresses.invaFlexibleSideVault)
 }
 
-export const getBunnySpecialCakeVaultAddress = () => {
-  return getAddress(addresses.bunnySpecialCakeVault)
+export const getBunnySpecialInvaVaultAddress = () => {
+  return getAddress(addresses.bunnySpecialInvaVault)
 }
 export const getBunnySpecialPredictionAddress = () => {
   return getAddress(addresses.bunnySpecialPrediction)
@@ -99,8 +99,8 @@ export const getNftMarketAddress = () => {
 export const getNftSaleAddress = () => {
   return getAddress(addresses.nftSale)
 }
-export const getPancakeSquadAddress = () => {
-  return getAddress(addresses.pancakeSquad)
+export const getSpaceinvadersSquadAddress = () => {
+  return getAddress(addresses.spaceinvadersSquad)
 }
 export const getPotteryDrawAddress = () => {
   return getAddress(addresses.potteryDraw)
@@ -109,16 +109,16 @@ export const getPotteryDrawAddress = () => {
 export const getZapAddress = (chainId?: number) => {
   return getAddress(addresses.zap, chainId)
 }
-export const getICakeAddress = () => {
-  return getAddress(addresses.iCake)
+export const getIInvaAddress = () => {
+  return getAddress(addresses.iInva)
 }
 
-export const getBCakeFarmBoosterAddress = () => {
-  return getAddress(addresses.bCakeFarmBooster)
+export const getBInvaFarmBoosterAddress = () => {
+  return getAddress(addresses.bInvaFarmBooster)
 }
 
-export const getBCakeFarmBoosterProxyFactoryAddress = () => {
-  return getAddress(addresses.bCakeFarmBoosterProxyFactory)
+export const getBInvaFarmBoosterProxyFactoryAddress = () => {
+  return getAddress(addresses.bInvaFarmBoosterProxyFactory)
 }
 
 export const getNonBscVaultAddress = (chainId?: number) => {

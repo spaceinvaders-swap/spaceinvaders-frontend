@@ -1,5 +1,5 @@
 import { formatUnits } from '@ethersproject/units'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import {
   AutoRenewIcon,
   Button,
@@ -15,13 +15,13 @@ import {
   useModal,
   useToast,
   WarningIcon,
-} from '@pancakeswap/uikit'
-import { useDebounce } from '@pancakeswap/hooks'
-import { useSignMessage } from '@pancakeswap/wagmi'
+} from '@spaceinvaders-swap/uikit'
+import { useDebounce } from '@spaceinvaders-swap/hooks'
+import { useSignMessage } from '@spaceinvaders-swap/wagmi'
 import { API_PROFILE } from 'config/constants/endpoints'
 import { FetchStatus } from 'config/constants/types'
 import { formatDistance, parseISO } from 'date-fns'
-import { useGetCakeBalance } from 'hooks/useTokenBalance'
+import { useGetInvaBalance } from 'hooks/useTokenBalance'
 import { ChangeEvent, useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 import fetchWithTimeout from 'utils/fetchWithTimeout'
@@ -58,7 +58,7 @@ const Indicator = styled(Flex)`
 
 const UserName: React.FC<React.PropsWithChildren> = () => {
   const [isAcknowledged, setIsAcknowledged] = useState(false)
-  const { teamId, selectedNft, userName, actions, minimumCakeRequired, allowance } = useProfileCreation()
+  const { teamId, selectedNft, userName, actions, minimumInvaRequired, allowance } = useProfileCreation()
   const { t } = useTranslation()
   const { address: account } = useAccount()
   const { toastError } = useToast()
@@ -68,15 +68,15 @@ const UserName: React.FC<React.PropsWithChildren> = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [message, setMessage] = useState('')
   const fetchAbortSignal = useRef<AbortController>(null)
-  const { balance: cakeBalance, fetchStatus } = useGetCakeBalance()
-  const hasMinimumCakeRequired = fetchStatus === FetchStatus.Fetched && cakeBalance.gte(REGISTER_COST)
+  const { balance: invaBalance, fetchStatus } = useGetInvaBalance()
+  const hasMinimumInvaRequired = fetchStatus === FetchStatus.Fetched && invaBalance.gte(REGISTER_COST)
   const [onPresentConfirmProfileCreation] = useModal(
     <ConfirmProfileCreationModal
       userName={userName}
       selectedNft={selectedNft}
       account={account}
       teamId={teamId}
-      minimumCakeRequired={minimumCakeRequired}
+      minimumInvaRequired={minimumInvaRequired}
       allowance={allowance}
     />,
     false,
@@ -267,9 +267,9 @@ const UserName: React.FC<React.PropsWithChildren> = () => {
       >
         {t('Complete Profile')}
       </Button>
-      {!hasMinimumCakeRequired && (
+      {!hasMinimumInvaRequired && (
         <Text color="failure" mt="16px">
-          {t('A minimum of %num% CAKE is required', { num: formatUnits(REGISTER_COST) })}
+          {t('A minimum of %num% INVA is required', { num: formatUnits(REGISTER_COST) })}
         </Text>
       )}
     </>

@@ -1,15 +1,15 @@
-import { Text, TokenPairImage as UITokenPairImage, useMatchBreakpoints, Skeleton, Pool } from '@pancakeswap/uikit'
+import { Text, TokenPairImage as UITokenPairImage, useMatchBreakpoints, Skeleton, Pool } from '@spaceinvaders-swap/uikit'
 import BigNumber from 'bignumber.js'
 import { TokenPairImage } from 'components/TokenImage'
 import { vaultPoolConfig } from 'config/constants/pools'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import { memo, useMemo } from 'react'
 import { useVaultPoolByKey } from 'state/pools/hooks'
-import { VaultKey, DeserializedLockedCakeVault } from 'state/types'
+import { VaultKey, DeserializedLockedInvaVault } from 'state/types'
 import styled from 'styled-components'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { getVaultPosition, VaultPosition, VaultPositionParams } from 'utils/cakePool'
-import { Token } from '@pancakeswap/sdk'
+import { BIG_ZERO } from '@spaceinvaders-swap/utils/bigNumber'
+import { getVaultPosition, VaultPosition, VaultPositionParams } from 'utils/invaPool'
+import { Token } from '@spaceinvaders-swap/sdk'
 
 interface NameCellProps {
   pool: Pool.DeserializedPool<Token>
@@ -32,7 +32,7 @@ const NameCell: React.FC<React.PropsWithChildren<NameCellProps>> = ({ pool }) =>
   const vaultData = useVaultPoolByKey(pool.vaultKey)
   const {
     userData: { userShares },
-    totalCakeInVault,
+    totalInvaInVault,
   } = vaultData
   const hasVaultShares = userShares.gt(0)
 
@@ -55,10 +55,10 @@ const NameCell: React.FC<React.PropsWithChildren<NameCellProps>> = ({ pool }) =>
 
   const isLoaded = useMemo(() => {
     if (pool.vaultKey) {
-      return totalCakeInVault && totalCakeInVault.gte(0)
+      return totalInvaInVault && totalInvaInVault.gte(0)
     }
     return totalStaked && totalStaked.gte(0)
-  }, [pool.vaultKey, totalCakeInVault, totalStaked])
+  }, [pool.vaultKey, totalInvaInVault, totalStaked])
 
   return (
     <StyledCell role="cell">
@@ -71,11 +71,11 @@ const NameCell: React.FC<React.PropsWithChildren<NameCellProps>> = ({ pool }) =>
           )}
           <Pool.CellContent>
             {showStakedTag &&
-              (vaultKey === VaultKey.CakeVault ? (
-                <StakedCakeStatus
+              (vaultKey === VaultKey.InvaVault ? (
+                <StakedInvaStatus
                   userShares={userShares}
-                  locked={(vaultData as DeserializedLockedCakeVault).userData.locked}
-                  lockEndTime={(vaultData as DeserializedLockedCakeVault).userData.lockEndTime}
+                  locked={(vaultData as DeserializedLockedInvaVault).userData.locked}
+                  lockEndTime={(vaultData as DeserializedLockedInvaVault).userData.lockEndTime}
                 />
               ) : (
                 <Text fontSize="12px" bold color={isFinished ? 'failure' : 'secondary'} textTransform="uppercase">
@@ -115,7 +115,7 @@ const stakedStatus = {
   [VaultPosition.Flexible]: { text: 'Flexible', color: 'success' },
 }
 
-export const StakedCakeStatus: React.FC<React.PropsWithChildren<VaultPositionParams>> = memo(
+export const StakedInvaStatus: React.FC<React.PropsWithChildren<VaultPositionParams>> = memo(
   ({ userShares, locked, lockEndTime }) => {
     const vaultPosition = getVaultPosition({ userShares, locked, lockEndTime })
     const { t } = useTranslation()

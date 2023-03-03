@@ -1,8 +1,8 @@
 import { memo, useState } from 'react'
-import { JSBI, Percent } from '@pancakeswap/swap-sdk-core'
+import { JSBI, Percent } from '@spaceinvaders-swap/swap-sdk-core'
 import styled from 'styled-components'
-import { useTranslation } from '@pancakeswap/localization'
-import { Pair, Currency, CurrencyAmount } from '@pancakeswap/aptos-swap-sdk'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { Pair, Currency, CurrencyAmount } from '@spaceinvaders-swap/aptos-swap-sdk'
 import { CurrencyLogo, DoubleCurrencyLogo } from 'components/Logo'
 
 import {
@@ -20,10 +20,10 @@ import {
   RowFixed,
   Button,
   AddIcon,
-} from '@pancakeswap/uikit/src/components'
+} from '@spaceinvaders-swap/uikit/src/components'
 
-import { useTooltip } from '@pancakeswap/uikit/src/hooks'
-import { NextLinkFromReactRouter } from '@pancakeswap/uikit/src/components/NextLink'
+import { useTooltip } from '@spaceinvaders-swap/uikit/src/hooks'
+import { NextLinkFromReactRouter } from '@spaceinvaders-swap/uikit/src/components/NextLink'
 import formatAmountDisplay from 'utils/formatAmountDisplay'
 
 const FixedHeightRow = styled(RowBetween)`
@@ -151,7 +151,7 @@ function MinimalPositionCardView({
       ) : (
         <LightCard padding="24px">
           <Text fontSize="14px" style={{ textAlign: 'center' }}>
-            <span role="img" aria-label="pancake-icon">
+            <span role="img" aria-label="spaceinvaders-icon">
               🥞
             </span>{' '}
             {t(

@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Button, InjectedModalProps, Skeleton, Text, useToast } from '@pancakeswap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { Box, Button, InjectedModalProps, Skeleton, Text, useToast } from '@spaceinvaders-swap/uikit'
 import { useAccount, useSigner } from 'wagmi'
 import ApproveConfirmButtons from 'components/ApproveConfirmButtons'
 import { ToastDescriptionWithTx } from 'components/Toast'
@@ -10,7 +10,7 @@ import { useMemo, useState } from 'react'
 import { useApprovalNfts } from 'state/nftMarket/hooks'
 import { NftLocation } from 'state/nftMarket/types'
 import { useProfile } from 'state/profile/hooks'
-import { getPancakeProfileAddress } from 'utils/addressHelpers'
+import { getSpaceinvadersProfileAddress } from 'utils/addressHelpers'
 import { getErc721Contract } from 'utils/contractHelpers'
 import SelectionCard from 'views/ProfileCreation/SelectionCard'
 import { useNftsForAddress } from '../../../Nft/market/hooks/useNftsForAddress'
@@ -48,7 +48,7 @@ const ChangeProfilePicPage: React.FC<React.PropsWithChildren<ChangeProfilePicPag
       onApprove: () => {
         const contract = getErc721Contract(selectedNft.collectionAddress, signer)
 
-        return callWithGasPrice(contract, 'approve', [getPancakeProfileAddress(), selectedNft.tokenId])
+        return callWithGasPrice(contract, 'approve', [getSpaceinvadersProfileAddress(), selectedNft.tokenId])
       },
       onConfirm: () => {
         if (!profile.isActive) {
@@ -108,7 +108,7 @@ const ChangeProfilePicPage: React.FC<React.PropsWithChildren<ChangeProfilePicPag
             {t('Sorry! You don’t have any eligible Collectibles in your wallet to use!')}
           </Text>
           <Text as="p" color="textSubtle" mb="24px">
-            {t('Make sure you have a Pancake Collectible in your wallet and try again!')}
+            {t('Make sure you have a Spaceinvaders Collectible in your wallet and try again!')}
           </Text>
         </>
       )}

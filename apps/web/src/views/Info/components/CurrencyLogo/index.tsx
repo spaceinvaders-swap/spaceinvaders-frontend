@@ -1,4 +1,4 @@
-import { Token } from '@pancakeswap/sdk'
+import { Token } from '@spaceinvaders-swap/sdk'
 import { useMemo } from 'react'
 import { multiChainId } from 'state/info/constant'
 import styled from 'styled-components'

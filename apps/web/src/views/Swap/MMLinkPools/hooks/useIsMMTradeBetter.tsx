@@ -1,5 +1,5 @@
-import { Currency, Trade, TradeType, ZERO } from '@pancakeswap/sdk'
-import { TradeWithStableSwap } from '@pancakeswap/smart-router/evm'
+import { Currency, Trade, TradeType, ZERO } from '@spaceinvaders-swap/sdk'
+import { TradeWithStableSwap } from '@spaceinvaders-swap/smart-router/evm'
 import { useMemo } from 'react'
 import { Field } from 'state/swap/actions'
 import { TradeWithMM } from '../types'

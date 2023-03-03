@@ -10,15 +10,15 @@ import {
   TokenPairImage as UITokenPairImage,
   Balance,
   Pool,
-} from '@pancakeswap/uikit'
+} from '@spaceinvaders-swap/uikit'
 import { useVaultPoolByKey, useIfoCredit } from 'state/pools/hooks'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import { vaultPoolConfig } from 'config/constants/pools'
 import { VaultKey } from 'state/types'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
+import { getBalanceNumber } from '@spaceinvaders-swap/utils/formatBalance'
 import { useConfig } from 'views/Ifos/contexts/IfoContext'
-import { CakeVaultDetail } from 'views/Pools/components/CakeVaultCard'
-import { Token } from '@pancakeswap/sdk'
+import { InvaVaultDetail } from 'views/Pools/components/InvaVaultCard'
+import { Token } from '@spaceinvaders-swap/sdk'
 
 const StyledCardMobile = styled(Card)`
   max-width: 400px;
@@ -41,7 +41,7 @@ const IfoPoolVaultCardMobile: React.FC<React.PropsWithChildren<IfoPoolVaultCardM
   const { address: account } = useAccount()
   const credit = useIfoCredit()
   const { isExpanded, setIsExpanded } = useConfig()
-  const cakeAsNumberBalance = getBalanceNumber(credit)
+  const invaAsNumberBalance = getBalanceNumber(credit)
 
   const vaultPool = useVaultPoolByKey(pool.vaultKey)
 
@@ -58,28 +58,28 @@ const IfoPoolVaultCardMobile: React.FC<React.PropsWithChildren<IfoPoolVaultCardM
       <CardHeader p="16px">
         <Flex justifyContent="space-between" alignItems="center">
           <StyledTokenContent alignItems="center" flex={1}>
-            <UITokenPairImage width={24} height={24} {...vaultPoolConfig[VaultKey.CakeVault].tokenImage} />
+            <UITokenPairImage width={24} height={24} {...vaultPoolConfig[VaultKey.InvaVault].tokenImage} />
             <Box ml="8px" width="180px">
               <Text small bold>
-                {vaultPoolConfig[VaultKey.CakeVault].name}
+                {vaultPoolConfig[VaultKey.InvaVault].name}
               </Text>
               <Text color="textSubtle" fontSize="12px">
-                {vaultPoolConfig[VaultKey.CakeVault].description}
+                {vaultPoolConfig[VaultKey.InvaVault].description}
               </Text>
             </Box>
           </StyledTokenContent>
           <StyledTokenContent flexDirection="column" flex={1}>
             <Text color="textSubtle" fontSize="12px">
-              {t('iCAKE')}
+              {t('iINVA')}
             </Text>
-            <Balance small bold decimals={3} value={cakeAsNumberBalance} />
+            <Balance small bold decimals={3} value={invaAsNumberBalance} />
           </StyledTokenContent>
           <ExpandableButton expanded={isExpanded} onClick={() => setIsExpanded((prev) => !prev)} />
         </Flex>
       </CardHeader>
       {isExpanded && (
-        <CakeVaultDetail
-          showICake
+        <InvaVaultDetail
+          showIInva
           isLoading={isLoading}
           account={account}
           pool={pool}

@@ -1,12 +1,12 @@
 import { CSSProperties } from 'react'
-import { Currency, Token } from '@pancakeswap/sdk'
-import { Button, Text, CheckmarkCircleIcon, useMatchBreakpoints, Flex, ListLogo, AutoColumn } from '@pancakeswap/uikit'
+import { Currency, Token } from '@spaceinvaders-swap/sdk'
+import { Button, Text, CheckmarkCircleIcon, useMatchBreakpoints, Flex, ListLogo, AutoColumn } from '@spaceinvaders-swap/uikit'
 import { AutoRow, RowFixed } from 'components/Layout/Row'
 import CurrencyLogo from 'components/Logo/CurrencyLogo'
 import { useCombinedInactiveList } from 'state/lists/hooks'
 import styled from 'styled-components'
 import { useIsUserAddedToken, useIsTokenActive } from 'hooks/Tokens'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import { BAD_SRCS } from '../Logo/constants'
 
 const TokenSection = styled.div<{ dim?: boolean }>`

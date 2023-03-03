@@ -1,12 +1,12 @@
 {
-  "name": "@pancakeswap/eslint-config-pancake",
+  "name": "@spaceinvaders-swap/eslint-config-spaceinvaders",
   "version": "1.2.0",
-  "description": "Eslint config for PancakeSwap",
+  "description": "Eslint config for SpaceinvadersSwap",
   "main": "lib/index.js",
   "files": [
     "lib"
   ],
-  "repository": "https://github.com/pancakeswap/pancake-toolkit/tree/master/packages/eslint-config-pancake",
+  "repository": "https://github.com/spaceinvaders-swap/spaceinvaders-toolkit/tree/master/packages/eslint-config-spaceinvaders",
   "license": "MIT",
   "author": "RabbitDoge",
   "private": true,

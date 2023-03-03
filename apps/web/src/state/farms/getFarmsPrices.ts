@@ -1,7 +1,7 @@
 import BigNumber from 'bignumber.js'
-import { BIG_ONE, BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { filterFarmsByQuoteToken, SerializedFarm } from '@pancakeswap/farms'
-import { ChainId } from '@pancakeswap/sdk'
+import { BIG_ONE, BIG_ZERO } from '@spaceinvaders-swap/utils/bigNumber'
+import { filterFarmsByQuoteToken, SerializedFarm } from '@spaceinvaders-swap/farms'
+import { ChainId } from '@spaceinvaders-swap/sdk'
 
 const getFarmFromTokenSymbol = (
   farms: SerializedFarm[],

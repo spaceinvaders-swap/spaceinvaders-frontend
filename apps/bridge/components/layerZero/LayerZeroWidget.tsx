@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { Box, PancakeTheme } from '@pancakeswap/uikit'
+import { Box, SpaceinvadersTheme } from '@spaceinvaders-swap/uikit'
 import { darkTheme, lightTheme } from 'components/layerZero/theme'
 
 declare global {
@@ -11,7 +11,7 @@ declare global {
   }
 }
 
-export const LayerZeroWidget = ({ theme }: { theme: PancakeTheme }) => {
+export const LayerZeroWidget = ({ theme }: { theme: SpaceinvadersTheme }) => {
   useEffect(() => {
     const themeText = theme.isDark ? 'dark' : 'light'
     const themeColor = theme.isDark ? darkTheme : lightTheme

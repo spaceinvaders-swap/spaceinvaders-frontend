@@ -1,4 +1,4 @@
-import { Card, CardBody, Flex, Heading, ProfileAvatar, NextLinkFromReactRouter } from '@pancakeswap/uikit'
+import { Card, CardBody, Flex, Heading, ProfileAvatar, NextLinkFromReactRouter } from '@spaceinvaders-swap/uikit'
 
 import Image from 'next/image'
 import styled, { css } from 'styled-components'

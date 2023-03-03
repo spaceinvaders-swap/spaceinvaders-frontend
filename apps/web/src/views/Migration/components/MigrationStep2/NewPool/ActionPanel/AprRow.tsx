@@ -1,12 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Text, Flex, Pool } from '@pancakeswap/uikit'
+import { Text, Flex, Pool } from '@spaceinvaders-swap/uikit'
 import BigNumber from 'bignumber.js'
-import { useTranslation } from '@pancakeswap/localization'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { BIG_ZERO } from '@spaceinvaders-swap/utils/bigNumber'
 import { useVaultPoolByKey } from 'state/pools/hooks'
 import Apr from 'views/Pools/components/Apr'
-import { Token } from '@pancakeswap/sdk'
+import { Token } from '@spaceinvaders-swap/sdk'
 
 const Containter = styled(Flex)`
   margin: 12px 0 0 0;
@@ -29,7 +29,7 @@ const AprRow: React.FunctionComponent<React.PropsWithChildren<AprRowProps>> = ({
 
   const {
     userData: {
-      balance: { cakeAsBigNumber },
+      balance: { invaAsBigNumber },
     },
     fees: { performanceFeeAsDecimal },
   } = useVaultPoolByKey(vaultKey)
@@ -37,7 +37,7 @@ const AprRow: React.FunctionComponent<React.PropsWithChildren<AprRowProps>> = ({
   const stakingTokenBalance = userData?.stakingTokenBalance ? new BigNumber(userData.stakingTokenBalance) : BIG_ZERO
   const stakedBalance = userData?.stakedBalance ? new BigNumber(userData.stakedBalance) : BIG_ZERO
   const poolStakingTokenBalance = vaultKey
-    ? cakeAsBigNumber.plus(stakingTokenBalance)
+    ? invaAsBigNumber.plus(stakingTokenBalance)
     : stakedBalance.plus(stakingTokenBalance)
 
   return (

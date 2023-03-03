@@ -1,16 +1,16 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { AddIcon, Button, Flex, IconButton, MinusIcon, useModal, useToast, Farm as FarmUI } from '@pancakeswap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { AddIcon, Button, Flex, IconButton, MinusIcon, useModal, useToast, Farm as FarmUI } from '@spaceinvaders-swap/uikit'
 import styled from 'styled-components'
 import { useRouter } from 'next/router'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
-import { usePriceCakeUsdc } from 'hooks/useStablePrice'
-import type { DeserializedFarmUserData } from '@pancakeswap/farms'
-import { TransactionResponse } from '@pancakeswap/awgmi/core'
+import { usePriceInvaUsdc } from 'hooks/useStablePrice'
+import type { DeserializedFarmUserData } from '@spaceinvaders-swap/farms'
+import { TransactionResponse } from '@spaceinvaders-swap/awgmi/core'
 import useCatchTxError from 'hooks/useCatchTxError'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { BIG_ZERO } from '@spaceinvaders-swap/utils/bigNumber'
 import { FARM_DEFAULT_DECIMALS } from 'components/Farms/constants'
-import { FarmWithStakedValue } from '@pancakeswap/farms'
+import { FarmWithStakedValue } from '@spaceinvaders-swap/farms'
 
 const IconButtonWrapper = styled.div`
   display: flex;
@@ -50,7 +50,7 @@ const StakeAction: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = ({
   const { toastSuccess } = useToast()
   const { fetchWithCatchTxError } = useCatchTxError()
   const { stakedBalance, tokenBalance } = (userData as DeserializedFarmUserData) || {}
-  const cakePrice = usePriceCakeUsdc()
+  const invaPrice = usePriceInvaUsdc()
   const router = useRouter()
 
   const handleStake = async (amount: string) => {
@@ -92,7 +92,7 @@ const StakeAction: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = ({
       apr={apr}
       displayApr={displayApr}
       addLiquidityUrl={addLiquidityUrl}
-      cakePrice={cakePrice}
+      invaPrice={invaPrice}
       decimals={FARM_DEFAULT_DECIMALS}
     />,
   )

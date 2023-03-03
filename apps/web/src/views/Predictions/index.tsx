@@ -1,4 +1,4 @@
-import { useModal, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { useModal, useMatchBreakpoints } from '@spaceinvaders-swap/uikit'
 import { useEffect, useRef } from 'react'
 import { useChartView, useIsChartPaneOpen } from 'state/predictions/hooks'
 import { PredictionsChartView } from 'state/types'

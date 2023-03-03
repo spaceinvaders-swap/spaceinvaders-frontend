@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Button } from '@pancakeswap/uikit'
+import { Button } from '@spaceinvaders-swap/uikit'
 
 interface PercentageButtonProps {
   onClick: () => void

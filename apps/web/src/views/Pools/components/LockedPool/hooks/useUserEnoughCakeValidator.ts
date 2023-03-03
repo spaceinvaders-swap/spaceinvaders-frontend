@@ -1,16 +1,16 @@
 import BigNumber from 'bignumber.js'
-import { useTranslation } from '@pancakeswap/localization'
-import { getBalanceAmount } from '@pancakeswap/utils/formatBalance'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { getBalanceAmount } from '@spaceinvaders-swap/utils/formatBalance'
 
 import { useMemo } from 'react'
 
-export const useUserEnoughCakeValidator = (cakeAmount: string, stakingTokenBalance: BigNumber) => {
+export const useUserEnoughInvaValidator = (invaAmount: string, stakingTokenBalance: BigNumber) => {
   const { t } = useTranslation()
-  const errorMessage = t('Insufficient CAKE balance')
+  const errorMessage = t('Insufficient INVA balance')
 
-  const userNotEnoughCake = useMemo(() => {
-    if (new BigNumber(cakeAmount).gt(getBalanceAmount(stakingTokenBalance, 18))) return true
+  const userNotEnoughInva = useMemo(() => {
+    if (new BigNumber(invaAmount).gt(getBalanceAmount(stakingTokenBalance, 18))) return true
     return false
-  }, [cakeAmount, stakingTokenBalance])
-  return { userNotEnoughCake, notEnoughErrorMessage: errorMessage }
+  }, [invaAmount, stakingTokenBalance])
+  return { userNotEnoughInva, notEnoughErrorMessage: errorMessage }
 }

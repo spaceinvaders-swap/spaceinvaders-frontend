@@ -1,4 +1,4 @@
-import { multicallAddresses } from '@pancakeswap/multicall'
+import { multicallAddresses } from '@spaceinvaders-swap/multicall'
 
 export default {
   masterChef: {
@@ -18,11 +18,11 @@ export default {
     56: '0x5aF6D33DE2ccEC94efb1bDF8f92Bd58085432d2c',
   },
   multiCall: multicallAddresses,
-  pancakeProfile: {
+  spaceinvadersProfile: {
     56: '0xDf4dBf6536201370F95e06A0F8a7a70fE40E388a',
     97: '0x4B683C7E13B6d5D7fd1FeA9530F451954c1A7c8A',
   },
-  pancakeBunnies: {
+  spaceinvadersBunnies: {
     56: '0xDf7952B35f24aCF7fC0487D01c8d5690a60DBa07',
     97: '0x60935F36e4631F73f0f407e68642144e07aC7f5E',
   },
@@ -62,11 +62,11 @@ export default {
     56: '0x23c41D28A239dDCAABd1bb1deF8d057189510066',
     97: '0x24ec6962dbe874F6B67B5C50857565667fA0854F',
   },
-  cakeVault: {
+  invaVault: {
     56: '0x45c54210128a065de780C4B0Df3d16664f7f859e',
     97: '0x683433ba14e8F26774D43D3E90DA6Dd7a22044Fe',
   },
-  cakeFlexibleSideVault: {
+  invaFlexibleSideVault: {
     56: '0x615e896A8C2CA8470A2e9dc2E9552998f8658Ea0',
     97: '',
   },
@@ -74,7 +74,7 @@ export default {
     56: '0x18B2A687610328590Bc8F2e5fEdDe3b582A49cdA',
     97: '',
   },
-  predictionsCAKE: {
+  predictionsINVA: {
     56: '0x0E3A8078EDD2021dadcdE733C6b4a86E51EE8f07',
     97: '',
   },
@@ -82,7 +82,7 @@ export default {
     56: '0x0567F2323251f0Aab15c8dFb1967E4e8A7D42aeE',
     97: '',
   },
-  chainlinkOracleCAKE: {
+  chainlinkOracleINVA: {
     56: '0xB6064eD41d4f67e353768aA239cA86f4F73665a1',
     97: '',
   },
@@ -90,7 +90,7 @@ export default {
     56: '0x516ffd7d1e0ca40b1879935b2de87cb20fc1124b',
     97: '',
   },
-  bunnySpecialCakeVault: {
+  bunnySpecialInvaVault: {
     56: '0x5B4a770Abe7Eafb2601CA4dF9d73EA99363E60a4',
     97: '',
   },
@@ -122,7 +122,7 @@ export default {
     56: '0x29fE7148636b7Ae0b1E53777b28dfbaA9327af8E',
     97: '0xe486De509c5381cbdBF3e71F57D7F1f7570f5c46',
   },
-  pancakeSquad: {
+  spaceinvadersSquad: {
     56: '0x0a8901b0E25DEb55A87524f0cC164E9644020EBA',
     97: '0xfC0c3F11fDA72Cb9A56F28Ec8D44C0ae4B3ABF86',
   },
@@ -138,15 +138,15 @@ export default {
     56: '0x52E5D1e24A4308ef1A221C949cb2F7cbbAFEE090',
     97: '0x494B692Fe0CF54f633dCDFbba0D0a8629Edb344F',
   },
-  iCake: {
+  iInva: {
     56: '0x3C458828D1622F5f4d526eb0d24Da8C4Eb8F07b1',
     97: '',
   },
-  bCakeFarmBooster: {
+  bInvaFarmBooster: {
     56: '0xE4FAa3Ef5A9708C894435B0F39c2B440936A3A52',
     97: '',
   },
-  bCakeFarmBoosterProxyFactory: {
+  bInvaFarmBoosterProxyFactory: {
     56: '0x2C36221bF724c60E9FEE3dd44e2da8017a8EF3BA',
     97: '',
   },

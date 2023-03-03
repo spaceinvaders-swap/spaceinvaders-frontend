@@ -1,9 +1,9 @@
 import { useCallback } from 'react'
 import { useRouter } from 'next/router'
-import { Button } from '@pancakeswap/uikit'
+import { Button } from '@spaceinvaders-swap/uikit'
 import { useConfig } from 'views/Ifos/contexts/IfoContext'
 
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 
 const StakeVaultButton = (props) => {
   const { t } = useTranslation()
@@ -33,7 +33,7 @@ const StakeVaultButton = (props) => {
 
   return (
     <Button {...props} onClick={handleClickButton}>
-      {t('Go to CAKE pool')}
+      {t('Go to INVA pool')}
     </Button>
   )
 }

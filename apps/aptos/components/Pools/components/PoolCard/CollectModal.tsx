@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
-import { Pool } from '@pancakeswap/uikit'
-import { useQueryClient } from '@pancakeswap/awgmi'
+import { Pool } from '@spaceinvaders-swap/uikit'
+import { useQueryClient } from '@spaceinvaders-swap/awgmi'
 import { SMARTCHEF_ADDRESS } from 'contracts/smartchef/constants'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import splitTypeTag from 'utils/splitTypeTag'

@@ -1,4 +1,4 @@
-import { BigintIsh, JSBI, ZERO, ONE } from '@pancakeswap/sdk'
+import { BigintIsh, JSBI, ZERO, ONE } from '@spaceinvaders-swap/sdk'
 import invariant from 'tiny-invariant'
 
 interface Params {

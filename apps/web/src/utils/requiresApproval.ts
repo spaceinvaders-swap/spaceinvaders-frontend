@@ -1,8 +1,8 @@
 import { BigNumber } from '@ethersproject/bignumber'
-import { Cake, Erc20 } from 'config/abi/types'
+import { Inva, Erc20 } from 'config/abi/types'
 
 export const requiresApproval = async (
-  contract: Erc20 | Cake,
+  contract: Erc20 | Inva,
   account: string,
   spenderAddress: string,
   minimumRequired: number | BigNumber = 0,

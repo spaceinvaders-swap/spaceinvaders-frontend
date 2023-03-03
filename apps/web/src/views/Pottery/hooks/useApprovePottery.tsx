@@ -1,22 +1,22 @@
 import { useCallback } from 'react'
-import { useToast } from '@pancakeswap/uikit'
+import { useToast } from '@spaceinvaders-swap/uikit'
 import useCatchTxError from 'hooks/useCatchTxError'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import { MaxUint256 } from '@ethersproject/constants'
 import { useCallWithGasPrice } from 'hooks/useCallWithGasPrice'
-import { useCake } from 'hooks/useContract'
+import { useInva } from 'hooks/useContract'
 
 export const useApprovePottery = (potteryVaultAddress: string) => {
   const { t } = useTranslation()
   const { toastSuccess } = useToast()
   const { fetchWithCatchTxError, loading: isPending } = useCatchTxError()
   const { callWithGasPrice } = useCallWithGasPrice()
-  const { signer: cakeContract } = useCake()
+  const { signer: invaContract } = useInva()
 
   const onApprove = useCallback(async () => {
     const receipt = await fetchWithCatchTxError(() => {
-      return callWithGasPrice(cakeContract, 'approve', [potteryVaultAddress, MaxUint256])
+      return callWithGasPrice(invaContract, 'approve', [potteryVaultAddress, MaxUint256])
     })
 
     if (receipt?.status) {
@@ -27,7 +27,7 @@ export const useApprovePottery = (potteryVaultAddress: string) => {
         </ToastDescriptionWithTx>,
       )
     }
-  }, [potteryVaultAddress, cakeContract, t, callWithGasPrice, fetchWithCatchTxError, toastSuccess])
+  }, [potteryVaultAddress, invaContract, t, callWithGasPrice, fetchWithCatchTxError, toastSuccess])
 
   return { isPending, onApprove }
 }

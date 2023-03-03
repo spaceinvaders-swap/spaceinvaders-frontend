@@ -9,8 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@pancakeswap/localization": "*",
-    "@pancakeswap/uikit": "*",
+    "@spaceinvaders-swap/localization": "*",
+    "@spaceinvaders-swap/uikit": "*",
     "next": "13.0.7",
     "next-axiom": "^0.16.0",
     "react": "^18.2.0",

@@ -1,10 +1,10 @@
-import { InjectedModalProps, Modal } from '@pancakeswap/uikit'
-import { useTranslation, ContextApi } from '@pancakeswap/localization'
+import { InjectedModalProps, Modal } from '@spaceinvaders-swap/uikit'
+import { useTranslation, ContextApi } from '@spaceinvaders-swap/localization'
 import useEditProfile, { Views } from './reducer'
 import StartView from './StartView'
 import PauseProfileView from './PauseProfileView'
 import ChangeProfilePicView from './ChangeProfilePicView'
-import ApproveCakeView from './ApproveCakeView'
+import ApproveInvaView from './ApproveInvaView'
 
 interface EditProfileModalProps extends InjectedModalProps {
   onSuccess?: () => void
@@ -19,7 +19,7 @@ const viewTitle = (t: ContextApi['t'], currentView: Views) => {
     case Views.REMOVE:
       return t('Remove Profile Pic')
     case Views.APPROVE:
-      return t('Enable CAKE')
+      return t('Enable INVA')
     default:
       return ''
   }
@@ -40,7 +40,7 @@ const EditProfileModal: React.FC<React.PropsWithChildren<EditProfileModalProps>>
         )}
         {currentView === Views.REMOVE && <PauseProfileView onDismiss={onDismiss} onSuccess={onSuccess} />}
         {currentView === Views.CHANGE && <ChangeProfilePicView onDismiss={onDismiss} onSuccess={onSuccess} />}
-        {currentView === Views.APPROVE && <ApproveCakeView goToChange={goToChange} onDismiss={onDismiss} />}
+        {currentView === Views.APPROVE && <ApproveInvaView goToChange={goToChange} onDismiss={onDismiss} />}
       </div>
     </Modal>
   )

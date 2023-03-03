@@ -1,6 +1,6 @@
-import { Text } from '@pancakeswap/uikit'
+import { Text } from '@spaceinvaders-swap/uikit'
 import { Auction, AuctionStatus } from 'config/constants/types'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 
 import styled from 'styled-components'
 

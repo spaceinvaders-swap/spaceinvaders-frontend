@@ -1,11 +1,11 @@
 import styled from 'styled-components'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import ScoreHeader from '../../../components/YourScore/ScoreHeader'
 import RibbonWithImage from '../../../components/RibbonWithImage'
 import { YourScoreProps } from '../../../types'
 import FlippersShare from '../../../pngs/easter-flippers-share.png'
 import StormShare from '../../../pngs/easter-storm-share.png'
-import CakersShare from '../../../pngs/easter-cakers-share.png'
+import InvarsShare from '../../../pngs/easter-invars-share.png'
 import ScoreCard from '../../../components/YourScore/ScoreCard'
 import EasterUserPrizeGrid from './EasterUserPrizeGrid'
 
@@ -46,7 +46,7 @@ const EasterYourScore: React.FC<React.PropsWithChildren<YourScoreProps>> = ({
       <ScoreCard
         userPrizeGrid={<EasterUserPrizeGrid userTradingInformation={userTradingInformation} />}
         flippersShareImage={FlippersShare}
-        cakersShareImage={CakersShare}
+        invarsShareImage={InvarsShare}
         stormShareImage={StormShare}
         hasRegistered={hasRegistered}
         account={account}

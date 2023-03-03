@@ -1,12 +1,12 @@
 import { ReactElement, useMemo } from 'react'
-import { TradeType, CurrencyAmount, Currency, Percent } from '@pancakeswap/sdk'
-import { Button, Text, ErrorIcon, ArrowDownIcon, AutoColumn } from '@pancakeswap/uikit'
+import { TradeType, CurrencyAmount, Currency, Percent } from '@spaceinvaders-swap/sdk'
+import { Button, Text, ErrorIcon, ArrowDownIcon, AutoColumn } from '@spaceinvaders-swap/uikit'
 import { Field } from 'state/swap/actions'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import { warningSeverity, basisPointsToPercent } from 'utils/exchange'
 import { CurrencyLogo } from 'components/Logo'
 import { RowBetween, RowFixed } from 'components/Layout/Row'
-import truncateHash from '@pancakeswap/utils/truncateHash'
+import truncateHash from '@spaceinvaders-swap/utils/truncateHash'
 import { TruncatedText, SwapShowAcceptChanges } from './styleds'
 
 export default function SwapModalHeader({

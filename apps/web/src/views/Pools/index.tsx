@@ -1,18 +1,18 @@
 import styled from 'styled-components'
 
 import { useAccount } from 'wagmi'
-import { Heading, Flex, Image, Text, Link, FlexLayout, PageHeader, Loading, Pool, ViewMode } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Heading, Flex, Image, Text, Link, FlexLayout, PageHeader, Loading, Pool, ViewMode } from '@spaceinvaders-swap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import { usePoolsPageFetch, usePoolsWithVault } from 'state/pools/hooks'
 import Page from 'components/Layout/Page'
 import ConnectWalletButton from 'components/ConnectWalletButton'
-import { Token } from '@pancakeswap/sdk'
+import { Token } from '@spaceinvaders-swap/sdk'
 import { TokenPairImage } from 'components/TokenImage'
 
 import CardActions from './components/PoolCard/CardActions'
 import AprRow from './components/PoolCard/AprRow'
 import CardFooter from './components/PoolCard/CardFooter'
-import CakeVaultCard from './components/CakeVaultCard'
+import InvaVaultCard from './components/InvaVaultCard'
 import PoolControls from './components/PoolControls'
 import PoolRow, { VaultPoolRow } from './components/PoolsTable/PoolRow'
 
@@ -65,7 +65,7 @@ const Pools: React.FC<React.PropsWithChildren> = () => {
               {showFinishedPools && (
                 <FinishedTextContainer>
                   <Text fontSize={['16px', null, '20px']} color="failure" pr="4px">
-                    {t('Looking for v1 CAKE syrup pools?')}
+                    {t('Looking for v1 INVA syrup pools?')}
                   </Text>
                   <FinishedTextLink href="/migration" fontSize={['16px', null, '20px']} color="failure">
                     {t('Go to migration page')}.
@@ -81,7 +81,7 @@ const Pools: React.FC<React.PropsWithChildren> = () => {
                 <CardLayout>
                   {chosenPools.map((pool) =>
                     pool.vaultKey ? (
-                      <CakeVaultCard key={pool.vaultKey} pool={pool} showStakedOnly={stakedOnly} />
+                      <InvaVaultCard key={pool.vaultKey} pool={pool} showStakedOnly={stakedOnly} />
                     ) : (
                       <Pool.PoolCard<Token>
                         key={pool.sousId}
@@ -138,7 +138,7 @@ const Pools: React.FC<React.PropsWithChildren> = () => {
                 mx="auto"
                 mt="12px"
                 src="/images/decorations/3d-syrup-bunnies.png"
-                alt="Pancake illustration"
+                alt="Spaceinvaders illustration"
                 width={192}
                 height={184.5}
               />

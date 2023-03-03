@@ -11,8 +11,8 @@ import {
   NftFillIcon,
   MoreIcon,
   DropdownMenuItems,
-} from '@pancakeswap/uikit'
-import { ContextApi } from '@pancakeswap/localization'
+} from '@spaceinvaders-swap/uikit'
+import { ContextApi } from '@spaceinvaders-swap/localization'
 import { nftsBaseUrl } from 'views/Nft/market/constants'
 import { getPerpetualUrl } from 'utils/getPerpetualUrl'
 import { SUPPORT_ONLY_BSC } from 'config/constants/supportChains'
@@ -74,7 +74,7 @@ const config: (
         },
         {
           label: t('Bridge'),
-          href: 'https://bridge.pancakeswap.finance/',
+          href: 'https://bridge.spaceinvaders-swap.finance/',
           type: DropdownMenuItemType.EXTERNAL_LINK,
         },
       ].map((item) => addMenuItemSupported(item, chainId)),
@@ -185,12 +185,12 @@ const config: (
         },
         {
           label: t('Blog'),
-          href: 'https://medium.com/pancakeswap',
+          href: 'https://medium.com/spaceinvaders-swap',
           type: DropdownMenuItemType.EXTERNAL_LINK,
         },
         {
           label: t('Docs'),
-          href: 'https://docs.pancakeswap.finance',
+          href: 'https://docs.spaceinvaders-swap.finance',
           type: DropdownMenuItemType.EXTERNAL_LINK,
         },
       ].map((item) => addMenuItemSupported(item, chainId)),

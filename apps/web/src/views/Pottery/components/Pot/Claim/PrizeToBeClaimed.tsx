@@ -1,8 +1,8 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Flex, Box, Text, Balance } from '@pancakeswap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { Flex, Box, Text, Balance } from '@spaceinvaders-swap/uikit'
 import { DeserializedPotteryUserData } from 'state/types'
-import { usePriceCakeBusd } from 'state/farms/hooks'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
+import { usePriceInvaBusd } from 'state/farms/hooks'
+import { getBalanceNumber } from '@spaceinvaders-swap/utils/formatBalance'
 import BigNumber from 'bignumber.js'
 import ClaimButton from './ClaimButton'
 
@@ -12,10 +12,10 @@ interface PrizeToBeClaimedProps {
 
 const PrizeToBeClaimed: React.FC<React.PropsWithChildren<PrizeToBeClaimedProps>> = ({ userData }) => {
   const { t } = useTranslation()
-  const cakePriceBusd = usePriceCakeBusd()
+  const invaPriceBusd = usePriceInvaBusd()
 
   const rewardToken = getBalanceNumber(userData.rewards)
-  const rewardInBusd = new BigNumber(rewardToken).times(cakePriceBusd).toNumber()
+  const rewardInBusd = new BigNumber(rewardToken).times(invaPriceBusd).toNumber()
 
   return (
     <Box mt="20px">

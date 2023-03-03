@@ -1,4 +1,4 @@
-import { useAccountResources, useTableItem } from '@pancakeswap/awgmi'
+import { useAccountResources, useTableItem } from '@spaceinvaders-swap/awgmi'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import _toString from 'lodash/toString'
 
@@ -10,13 +10,13 @@ import { getFarmConfig } from 'config/constants/farms'
 import { PairState, usePairs } from 'hooks/usePairs'
 import useLedgerTimestamp from 'hooks/useLedgerTimestamp'
 import { APT, L0_USDC } from 'config/coins'
-import { deserializeToken } from '@pancakeswap/token-lists'
-import { Coin, Pair, PAIR_LP_TYPE_TAG } from '@pancakeswap/aptos-swap-sdk'
-import { CAKE_PID } from 'config/constants'
-import { useInterval, useLastUpdated } from '@pancakeswap/hooks'
+import { deserializeToken } from '@spaceinvaders-swap/token-lists'
+import { Coin, Pair, PAIR_LP_TYPE_TAG } from '@spaceinvaders-swap/aptos-swap-sdk'
+import { INVA_PID } from 'config/constants'
+import { useInterval, useLastUpdated } from '@spaceinvaders-swap/hooks'
 
 import { PoolResource } from '../types'
-import transformCakePool from '../transformers/transformCakePool'
+import transformInvaPool from '../transformers/transformInvaPool'
 import transformPool from '../transformers/transformPool'
 import { POOL_RESET_INTERVAL } from '../constants'
 import useAddressPriceMap from './useAddressPriceMap'
@@ -54,7 +54,7 @@ export const usePoolsList = () => {
 
   const prices = useAddressPriceMap({ pools, chainId })
 
-  // const tranformCakePool = useCakePool({ balances, chainId })
+  // const tranformInvaPool = useInvaPool({ balances, chainId })
 
   return useMemo(() => {
     const currentTimestamp = getNow()
@@ -67,9 +67,9 @@ export const usePoolsList = () => {
           .sort((a, b) => Number(a?.sousId) - Number(b?.sousId))
       : []
 
-    // const cakePool = tranformCakePool()
+    // const invaPool = tranformInvaPool()
 
-    // return cakePool ? [cakePool, ...syrupPools] : syrupPools
+    // return invaPool ? [invaPool, ...syrupPools] : syrupPools
 
     return syrupPools
 
@@ -78,26 +78,26 @@ export const usePoolsList = () => {
   }, [pools, balances, chainId, prices, lastUpdated])
 }
 
-export const useCakePool = ({ balances, chainId }) => {
+export const useInvaPool = ({ balances, chainId }) => {
   const usdcCoin = L0_USDC[chainId]
   const aptCoin = APT[chainId]
 
   // Since Aptos is timestamp-based update for earning, we will forcely refresh in 6 seconds.
-  const cakeFarm = useMemo(() => getFarmConfig(chainId)?.find((f) => f.pid === CAKE_PID), [chainId])
+  const invaFarm = useMemo(() => getFarmConfig(chainId)?.find((f) => f.pid === INVA_PID), [chainId])
 
-  const cakeToken = useMemo(() => cakeFarm?.token && deserializeToken(cakeFarm?.token), [cakeFarm])
+  const invaToken = useMemo(() => invaFarm?.token && deserializeToken(invaFarm?.token), [invaFarm])
 
   const pairs: [Coin, Coin][] = useMemo(() => {
-    if (!cakeToken) {
+    if (!invaToken) {
       return []
     }
 
     return [
       [aptCoin, usdcCoin],
-      [aptCoin, cakeToken],
-      [usdcCoin, cakeToken],
+      [aptCoin, invaToken],
+      [usdcCoin, invaToken],
     ]
-  }, [aptCoin, cakeToken, usdcCoin])
+  }, [aptCoin, invaToken, usdcCoin])
 
   const pairsWithInfo = usePairs(pairs)
 
@@ -108,10 +108,10 @@ export const useCakePool = ({ balances, chainId }) => {
 
     return getPriceInUSDC({
       availablePairs: pairsWithInfo.filter(([status]) => status === PairState.EXISTS).map(([, pair]) => pair as Pair),
-      tokenIn: cakeToken,
+      tokenIn: invaToken,
       usdcCoin,
     })
-  }, [cakeToken, pairsWithInfo, usdcCoin])
+  }, [invaToken, pairsWithInfo, usdcCoin])
 
   const { data: masterChef } = useMasterChefResource()
 
@@ -122,7 +122,7 @@ export const useCakePool = ({ balances, chainId }) => {
   const { data: userInfo } = useTableItem({
     handle: poolUserInfoHandle,
     data: {
-      key: _toString(CAKE_PID),
+      key: _toString(INVA_PID),
       keyType: 'u64',
       valueType: FARMS_USER_INFO,
     },
@@ -131,18 +131,18 @@ export const useCakePool = ({ balances, chainId }) => {
   const getNow = useLedgerTimestamp()
 
   return useCallback(() => {
-    if (!masterChef || !cakeFarm) return undefined
-    const cakePoolInfo = masterChef.data.pool_info[CAKE_PID]
+    if (!masterChef || !invaFarm) return undefined
+    const invaPoolInfo = masterChef.data.pool_info[INVA_PID]
 
-    return transformCakePool({
+    return transformInvaPool({
       balances,
-      cakePoolInfo,
+      invaPoolInfo,
       userInfo,
       masterChefData: masterChef.data,
-      cakeFarm,
+      invaFarm,
       chainId,
       earningTokenPrice,
       getNow,
     })
-  }, [masterChef, cakeFarm, balances, userInfo, chainId, earningTokenPrice, getNow])
+  }, [masterChef, invaFarm, balances, userInfo, chainId, earningTokenPrice, getNow])
 }

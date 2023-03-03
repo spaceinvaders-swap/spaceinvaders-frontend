@@ -7,8 +7,8 @@ import BunniesSection from './components/BunniesSection'
 import EventDescriptionSection from './components/EventDescriptionSection'
 import EventStepsSection from './components/EventStepsSection'
 import FaqSection from './components/FaqSection'
-import PancakeSquadHeader from './components/Header'
-import { PancakeSquadContext } from './context'
+import SpaceinvadersSquadHeader from './components/Header'
+import { SpaceinvadersSquadContext } from './context'
 import useEventInfos from './hooks/useEventInfos'
 import useUserInfos from './hooks/useUserInfos'
 import { StyledSquadContainer } from './styles'
@@ -17,7 +17,7 @@ import { getUserStatus } from './utils'
 
 const REFRESH_INTERVAL = 4000
 
-const PancakeSquad: React.FC<React.PropsWithChildren> = () => {
+const SpaceinvadersSquad: React.FC<React.PropsWithChildren> = () => {
   const { address: account } = useAccount()
   const { hasProfile, isInitialized } = useProfile()
   const [eventInfos, setEventInfo] = useState<EventInfos>()
@@ -50,9 +50,9 @@ const PancakeSquad: React.FC<React.PropsWithChildren> = () => {
   }, [account])
 
   return (
-    <PancakeSquadContext.Provider value={{ isUserEnabled, setIsUserEnabled }}>
+    <SpaceinvadersSquadContext.Provider value={{ isUserEnabled, setIsUserEnabled }}>
       <StyledSquadContainer>
-        <PancakeSquadHeader
+        <SpaceinvadersSquadHeader
           account={account}
           isLoading={isLoading}
           userInfos={userInfos}
@@ -71,8 +71,8 @@ const PancakeSquad: React.FC<React.PropsWithChildren> = () => {
         <ArtistSection />
         <FaqSection />
       </StyledSquadContainer>
-    </PancakeSquadContext.Provider>
+    </SpaceinvadersSquadContext.Provider>
   )
 }
 
-export default PancakeSquad
+export default SpaceinvadersSquad

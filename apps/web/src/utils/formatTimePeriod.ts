@@ -1,4 +1,4 @@
-import getTimePeriods from '@pancakeswap/utils/getTimePeriods'
+import getTimePeriods from '@spaceinvaders-swap/utils/getTimePeriods'
 
 /**
  * @param {Object} periods Return value from getTimePeriods

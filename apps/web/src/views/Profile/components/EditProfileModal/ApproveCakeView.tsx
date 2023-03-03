@@ -1,35 +1,35 @@
-import { AutoRenewIcon, Button, Flex, InjectedModalProps, Text } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
-import { useCake } from 'hooks/useContract'
+import { AutoRenewIcon, Button, Flex, InjectedModalProps, Text } from '@spaceinvaders-swap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { useInva } from 'hooks/useContract'
 import useCatchTxError from 'hooks/useCatchTxError'
 import { useProfile } from 'state/profile/hooks'
-import { getPancakeProfileAddress } from 'utils/addressHelpers'
-import { formatBigNumber } from '@pancakeswap/utils/formatBalance'
+import { getSpaceinvadersProfileAddress } from 'utils/addressHelpers'
+import { formatBigNumber } from '@spaceinvaders-swap/utils/formatBalance'
 import useGetProfileCosts from 'views/Profile/hooks/useGetProfileCosts'
 import { UseEditProfileResponse } from './reducer'
 
-interface ApproveCakePageProps extends InjectedModalProps {
+interface ApproveInvaPageProps extends InjectedModalProps {
   goToChange: UseEditProfileResponse['goToChange']
 }
 
-const ApproveCakePage: React.FC<React.PropsWithChildren<ApproveCakePageProps>> = ({ goToChange, onDismiss }) => {
+const ApproveInvaPage: React.FC<React.PropsWithChildren<ApproveInvaPageProps>> = ({ goToChange, onDismiss }) => {
   const { profile } = useProfile()
   const { t } = useTranslation()
   const { fetchWithCatchTxError, loading: isApproving } = useCatchTxError()
   const {
-    costs: { numberCakeToUpdate, numberCakeToReactivate },
+    costs: { numberInvaToUpdate, numberInvaToReactivate },
   } = useGetProfileCosts()
-  const { signer: cakeContract } = useCake()
+  const { signer: invaContract } = useInva()
 
   if (!profile) {
     return null
   }
 
-  const cost = profile.isActive ? numberCakeToUpdate : numberCakeToReactivate
+  const cost = profile.isActive ? numberInvaToUpdate : numberInvaToReactivate
 
   const handleApprove = async () => {
     const receipt = await fetchWithCatchTxError(() => {
-      return cakeContract.approve(getPancakeProfileAddress(), cost.mul(2).toString())
+      return invaContract.approve(getSpaceinvadersProfileAddress(), cost.mul(2).toString())
     })
     if (receipt?.status) {
       goToChange()
@@ -40,7 +40,7 @@ const ApproveCakePage: React.FC<React.PropsWithChildren<ApproveCakePageProps>> =
     <Flex flexDirection="column">
       <Flex alignItems="center" justifyContent="space-between" mb="24px">
         <Text>{profile.isActive ? t('Cost to update:') : t('Cost to reactivate:')}</Text>
-        <Text>{formatBigNumber(cost)} CAKE</Text>
+        <Text>{formatBigNumber(cost)} INVA</Text>
       </Flex>
       <Button
         disabled={isApproving}
@@ -59,4 +59,4 @@ const ApproveCakePage: React.FC<React.PropsWithChildren<ApproveCakePageProps>> =
   )
 }
 
-export default ApproveCakePage
+export default ApproveInvaPage

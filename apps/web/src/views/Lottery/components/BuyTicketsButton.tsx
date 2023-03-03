@@ -1,7 +1,7 @@
-import { Button, useModal, WaitIcon, ButtonProps } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Button, useModal, WaitIcon, ButtonProps } from '@spaceinvaders-swap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import { useLottery } from 'state/lottery/hooks'
-import { useTheme } from '@pancakeswap/hooks'
+import { useTheme } from '@spaceinvaders-swap/hooks'
 import { LotteryStatus } from 'config/constants/types'
 import BuyTicketsModal from './BuyTicketsModal/BuyTicketsModal'
 

@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 import { isAfter, differenceInSeconds } from 'date-fns'
-import { Text, Flex, PocketWatchIcon, Skeleton } from '@pancakeswap/uikit'
+import { Text, Flex, PocketWatchIcon, Skeleton } from '@spaceinvaders-swap/uikit'
 import { Auction, AuctionStatus } from 'config/constants/types'
-import getTimePeriods from '@pancakeswap/utils/getTimePeriods'
-import { useTranslation } from '@pancakeswap/localization'
+import getTimePeriods from '@spaceinvaders-swap/utils/getTimePeriods'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 
 const AuctionCountDown = styled(Flex)`
   align-items: flex-end;

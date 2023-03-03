@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from 'react'
-import { Token } from '@pancakeswap/sdk'
+import { Token } from '@spaceinvaders-swap/sdk'
 import BigNumber from 'bignumber.js'
-import { VaultPosition, VaultPositionParams } from 'utils/cakePool'
+import { VaultPosition, VaultPositionParams } from 'utils/invaPool'
 import { DeserializedLockedVaultUser } from 'state/types'
 
 type VoidFn = () => void

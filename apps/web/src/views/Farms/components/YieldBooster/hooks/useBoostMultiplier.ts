@@ -1,4 +1,4 @@
-import { useBCakeFarmBoosterContract, useMasterchef } from 'hooks/useContract'
+import { useBInvaFarmBoosterContract, useMasterchef } from 'hooks/useContract'
 import farmBoosterAbi from 'config/abi/farmBooster.json'
 import masterChefAbi from 'config/abi/masterchef.json'
 import { FixedNumber } from '@ethersproject/bignumber'
@@ -90,7 +90,7 @@ async function getMultiplierFromMC({ pid, proxyAddress, masterChefContract }): P
 }
 
 export default function useBoostMultiplier({ pid, boosterState, proxyAddress }): number {
-  const farmBoosterContract = useBCakeFarmBoosterContract()
+  const farmBoosterContract = useBInvaFarmBoosterContract()
   const masterChefContract = useMasterchef()
 
   const { address: account } = useAccount()

@@ -1,6 +1,6 @@
-import { Coin, PAIR_LP_TYPE_TAG, Token } from '@pancakeswap/aptos-swap-sdk'
-import { APTOS_COIN, isStructTag, useAccount, useAccountBalance, useAccountBalances } from '@pancakeswap/awgmi'
-import { useTranslation } from '@pancakeswap/localization'
+import { Coin, PAIR_LP_TYPE_TAG, Token } from '@spaceinvaders-swap/aptos-swap-sdk'
+import { APTOS_COIN, isStructTag, useAccount, useAccountBalance, useAccountBalances } from '@spaceinvaders-swap/awgmi'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import {
   AddCircleIcon,
   AptosIcon,
@@ -17,8 +17,8 @@ import {
   RowBetween,
   RowFixed,
   Text,
-} from '@pancakeswap/uikit'
-import replaceBrowserHistory from '@pancakeswap/utils/replaceBrowserHistory'
+} from '@spaceinvaders-swap/uikit'
+import replaceBrowserHistory from '@spaceinvaders-swap/utils/replaceBrowserHistory'
 import { CoinRegisterButton } from 'components/CoinRegisterButton'
 import { CurrencyLogo } from 'components/Logo'
 import { L0_USDC } from 'config/coins'

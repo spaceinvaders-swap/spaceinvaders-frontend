@@ -1,4 +1,4 @@
-import { CopyIcon, IconButton, SvgProps, useTooltip } from "@pancakeswap/uikit";
+import { CopyIcon, IconButton, SvgProps, useTooltip } from "@spaceinvaders-swap/uikit";
 import { ElementType, useState } from "react";
 import { copyText } from "./copyText";
 

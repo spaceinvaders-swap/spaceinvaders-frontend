@@ -1,5 +1,5 @@
-import { ChainId, Currency, CurrencyAmount, Percent, Price, TradeType, ZERO_PERCENT } from '@pancakeswap/sdk'
-import { Pair } from '@pancakeswap/smart-router/evm'
+import { ChainId, Currency, CurrencyAmount, Percent, Price, TradeType, ZERO_PERCENT } from '@spaceinvaders-swap/sdk'
+import { Pair } from '@spaceinvaders-swap/smart-router/evm'
 import { useMemo } from 'react'
 import { Field } from 'state/swap/actions'
 

@@ -1,8 +1,8 @@
 import BigNumber from "bignumber.js";
-import { useTranslation } from "@pancakeswap/localization";
+import { useTranslation } from "@spaceinvaders-swap/localization";
 import React, { useMemo, ReactNode } from "react";
 import styled from "styled-components";
-import { BIG_ZERO } from "@pancakeswap/utils/bigNumber";
+import { BIG_ZERO } from "@spaceinvaders-swap/utils/bigNumber";
 import { DeserializedPool } from "../types";
 import { BaseCell, CellContent } from "./BaseCell";
 import { Text, Skeleton } from "../../../components";
@@ -11,7 +11,7 @@ import useMatchBreakpoints from "../../../contexts/MatchBreakpoints/useMatchBrea
 interface NameCellProps<T> {
   pool: DeserializedPool<T>;
   userShares?: BigNumber;
-  totalCakeInVault?: BigNumber;
+  totalInvaInVault?: BigNumber;
   tokenPairImage: ReactNode;
 }
 
@@ -25,7 +25,7 @@ const StyledCell = styled(BaseCell)`
   }
 `;
 
-export function NameCell<T>({ pool, totalCakeInVault, userShares, tokenPairImage }: NameCellProps<T>) {
+export function NameCell<T>({ pool, totalInvaInVault, userShares, tokenPairImage }: NameCellProps<T>) {
   const { t } = useTranslation();
   const { isMobile } = useMatchBreakpoints();
   const { sousId, stakingToken, earningToken, userData, isFinished, vaultKey, totalStaked } = pool;
@@ -45,10 +45,10 @@ export function NameCell<T>({ pool, totalCakeInVault, userShares, tokenPairImage
 
   const isLoaded = useMemo(() => {
     if (pool.vaultKey) {
-      return totalCakeInVault && totalCakeInVault.gte(0);
+      return totalInvaInVault && totalInvaInVault.gte(0);
     }
     return totalStaked && totalStaked.gte(0);
-  }, [pool.vaultKey, totalCakeInVault, totalStaked]);
+  }, [pool.vaultKey, totalInvaInVault, totalStaked]);
 
   return (
     <StyledCell role="cell">

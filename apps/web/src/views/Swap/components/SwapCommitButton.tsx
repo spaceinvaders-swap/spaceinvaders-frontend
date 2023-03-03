@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Button, Text, useModal, confirmPriceImpactWithoutFee, Column } from '@pancakeswap/uikit'
-import { Currency, CurrencyAmount, Trade, TradeType } from '@pancakeswap/sdk'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { Button, Text, useModal, confirmPriceImpactWithoutFee, Column } from '@spaceinvaders-swap/uikit'
+import { Currency, CurrencyAmount, Trade, TradeType } from '@spaceinvaders-swap/sdk'
 
 import { GreyCard } from 'components/Card'
 import { CommitButton } from 'components/CommitButton'

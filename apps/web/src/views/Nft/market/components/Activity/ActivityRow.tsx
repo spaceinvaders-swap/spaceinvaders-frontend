@@ -10,16 +10,16 @@ import {
   Skeleton,
   useMatchBreakpoints,
   NextLinkFromReactRouter,
-} from '@pancakeswap/uikit'
+} from '@spaceinvaders-swap/uikit'
 import { Activity, NftToken } from 'state/nftMarket/types'
-import { Price, Currency } from '@pancakeswap/sdk'
+import { Price, Currency } from '@spaceinvaders-swap/sdk'
 import { getBlockExploreLink, isAddress } from 'utils'
 import ProfileCell from 'views/Nft/market/components/ProfileCell'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import MobileModal from './MobileModal'
 import ActivityPrice from './ActivityPrice'
 import ActivityEventText from './ActivityEventText'
-import { nftsBaseUrl, pancakeBunniesAddress } from '../../constants'
+import { nftsBaseUrl, spaceinvadersBunniesAddress } from '../../constants'
 import NFTMedia from '../NFTMedia'
 
 interface ActivityRowProps {
@@ -57,7 +57,7 @@ const ActivityRow: React.FC<React.PropsWithChildren<ActivityRowProps>> = ({
       isUserActivity={isUserActivity}
     />,
   )
-  const isPBCollection = nft ? isAddress(nft.collectionAddress) === pancakeBunniesAddress : false
+  const isPBCollection = nft ? isAddress(nft.collectionAddress) === spaceinvadersBunniesAddress : false
   const tokenId =
     nft && isPBCollection
       ? nft.attributes.find((attribute) => attribute.traitType === 'bunnyId')?.value

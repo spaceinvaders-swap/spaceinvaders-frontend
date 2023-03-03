@@ -2,7 +2,7 @@ import { useCallback, useMemo, useState, useContext } from 'react'
 import styled from 'styled-components'
 import { TransactionResponse } from '@ethersproject/providers'
 import { useRouter } from 'next/router'
-import { Currency, Percent, WNATIVE } from '@pancakeswap/sdk'
+import { Currency, Percent, WNATIVE } from '@spaceinvaders-swap/sdk'
 import {
   useToast,
   Button,
@@ -19,12 +19,12 @@ import {
   PencilIcon,
   AutoColumn,
   ColumnCenter,
-} from '@pancakeswap/uikit'
-import { useDebouncedChangeHandler } from '@pancakeswap/hooks'
+} from '@spaceinvaders-swap/uikit'
+import { useDebouncedChangeHandler } from '@spaceinvaders-swap/hooks'
 import { BigNumber } from '@ethersproject/bignumber'
 import useNativeCurrency from 'hooks/useNativeCurrency'
 import { CommitButton } from 'components/CommitButton'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import { transactionErrorToUserReadableMessage } from 'utils/transactionErrorToUserReadableMessage'
 import { StableConfigContext } from 'views/Swap/StableSwap/hooks/useStableConfig'
 import { useStableSwapNativeHelperContract } from 'hooks/useContract'

@@ -1,6 +1,6 @@
-import { Currency, CurrencyAmount, Percent, Token } from '@pancakeswap/sdk'
+import { Currency, CurrencyAmount, Percent, Token } from '@spaceinvaders-swap/sdk'
 
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import { Field } from 'state/burn/actions'
 import { useTokenBalances } from 'state/wallet/hooks'
 import { useBurnState } from 'state/burn/hooks'

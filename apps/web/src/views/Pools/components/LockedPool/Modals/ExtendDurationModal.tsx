@@ -1,14 +1,14 @@
 import { useCallback } from 'react'
-import { Modal, Box } from '@pancakeswap/uikit'
+import { Modal, Box } from '@spaceinvaders-swap/uikit'
 import _noop from 'lodash/noop'
 import useTheme from 'hooks/useTheme'
-import { useBUSDCakeAmount } from 'hooks/useBUSDPrice'
+import { useBUSDInvaAmount } from 'hooks/useBUSDPrice'
 import { MAX_LOCK_DURATION } from 'config/constants/pools'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import BigNumber from 'bignumber.js'
 import { useIfoCeiling } from 'state/pools/hooks'
 
-import { getBalanceAmount } from '@pancakeswap/utils/formatBalance'
+import { getBalanceAmount } from '@spaceinvaders-swap/utils/formatBalance'
 import StaticAmount from '../Common/StaticAmount'
 import LockedBodyModal from '../Common/LockedModalBody'
 import Overview from '../Common/Overview'
@@ -31,7 +31,7 @@ const ExtendDurationModal: React.FC<ExtendDurationModal> = ({
   const ceiling = useIfoCeiling()
   const { t } = useTranslation()
 
-  const usdValueStaked = useBUSDCakeAmount(currentLockedAmount)
+  const usdValueStaked = useBUSDInvaAmount(currentLockedAmount)
 
   const validator = useCallback(
     ({ duration }) => {

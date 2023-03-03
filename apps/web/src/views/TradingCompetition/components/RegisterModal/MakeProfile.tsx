@@ -1,6 +1,6 @@
-import { Button, Heading, Text } from '@pancakeswap/uikit'
+import { Button, Heading, Text } from '@spaceinvaders-swap/uikit'
 import { useAccount } from 'wagmi'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import { CompetitionProps } from 'views/TradingCompetition/types'
 import { useRouter } from 'next/router'
 
@@ -20,7 +20,7 @@ const MakeProfile: React.FC<React.PropsWithChildren<CompetitionProps>> = ({ onDi
         {t('Make a profile!')}
       </Heading>
       <Text color="textSubtle">
-        {t('It looks like you’ve disabled your account by removing your Pancake Collectible (NFT) profile picture.')}
+        {t('It looks like you’ve disabled your account by removing your Spaceinvaders Collectible (NFT) profile picture.')}
       </Text>
       <Button mt="24px" width="100%" onClick={handleClick}>
         {t('Make a profile!')}

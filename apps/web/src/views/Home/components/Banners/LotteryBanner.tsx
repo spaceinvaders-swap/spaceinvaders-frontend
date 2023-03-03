@@ -6,18 +6,18 @@ import {
   Text,
   useMatchBreakpoints,
   NextLinkFromReactRouter,
-} from '@pancakeswap/uikit'
+} from '@spaceinvaders-swap/uikit'
 import BigNumber from 'bignumber.js'
 import { FetchStatus, LotteryStatus } from 'config/constants/types'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import Image from 'next/legacy/image'
 import { memo } from 'react'
-import { usePriceCakeBusd } from 'state/farms/hooks'
+import { usePriceInvaBusd } from 'state/farms/hooks'
 import { LotteryResponse } from 'state/types'
 import styled from 'styled-components'
 import useSWR from 'swr'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
-import getTimePeriods from '@pancakeswap/utils/getTimePeriods'
+import { getBalanceNumber } from '@spaceinvaders-swap/utils/formatBalance'
+import getTimePeriods from '@spaceinvaders-swap/utils/getTimePeriods'
 import Timer from 'views/Lottery/components/Countdown/Timer'
 import useGetNextLotteryEvent from 'views/Lottery/hooks/useGetNextLotteryEvent'
 import useNextEventCountdown from './hooks/useNextEventCountdown'
@@ -76,8 +76,8 @@ const isLotteryLive = (status: LotteryStatus) => status === LotteryStatus.OPEN
 
 const LotteryPrice: React.FC<React.PropsWithChildren> = () => {
   const { data } = useSWR<LotteryResponse>(['currentLottery'])
-  const cakePriceBusd = usePriceCakeBusd()
-  const prizeInBusd = new BigNumber(data.amountCollectedInCake).times(cakePriceBusd)
+  const invaPriceBusd = usePriceInvaBusd()
+  const prizeInBusd = new BigNumber(data.amountCollectedInInva).times(invaPriceBusd)
   const prizeTotal = getBalanceNumber(prizeInBusd)
   const { t } = useTranslation()
 

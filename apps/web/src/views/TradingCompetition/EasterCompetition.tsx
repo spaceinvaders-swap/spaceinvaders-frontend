@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useProfile } from 'state/profile/hooks'
-import { Flex, Box, useMatchBreakpoints, PageSection } from '@pancakeswap/uikit'
+import { Flex, Box, useMatchBreakpoints, PageSection } from '@spaceinvaders-swap/uikit'
 import styled from 'styled-components'
 import { useTradingCompetitionContractEaster } from 'hooks/useContract'
 import { API_PROFILE } from 'config/constants/endpoints'
@@ -15,7 +15,7 @@ import {
   REGISTRATION,
 } from 'config/constants/trading-competition/phases'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
-import { ChainId } from '@pancakeswap/sdk'
+import { ChainId } from '@spaceinvaders-swap/sdk'
 import { DARKBG, MIDBLUEBG, MIDBLUEBG_DARK } from './pageSectionStyles'
 import EasterStormBunny from './pngs/easter-storm.png'
 import Countdown from './components/Countdown'
@@ -24,7 +24,7 @@ import BattleCta from './components/BattleCta'
 import EasterBattleBanner from './easter/components/BattleBanner/EasterBattleBanner'
 import EasterPrizesInfo from './easter/components/PrizesInfo/EasterPrizesInfo'
 import EasterYourScore from './easter/components/YourScore/EasterYourScore'
-import EasterCakerBunny from './pngs/easter-cakers.png'
+import EasterInvarBunny from './pngs/easter-invars.png'
 import { useTeamInformation } from './useTeamInformation'
 import { useRegistrationClaimStatus } from './useRegistrationClaimStatus'
 import Footer from './Footer'
@@ -62,7 +62,7 @@ const EasterCompetition = () => {
     hasRegistered: false,
     hasUserClaimed: false,
     userRewardGroup: '0',
-    userCakeRewards: '0',
+    userInvaRewards: '0',
     userPointReward: '0',
     canClaimNFT: false,
   })
@@ -84,12 +84,12 @@ const EasterCompetition = () => {
   const hasCompetitionEnded =
     currentPhase.state === FINISHED || currentPhase.state === CLAIM || currentPhase.state === OVER
 
-  const { hasUserClaimed, userCakeRewards, userPointReward, canClaimNFT } = userTradingInformation
+  const { hasUserClaimed, userInvaRewards, userPointReward, canClaimNFT } = userTradingInformation
 
   const userCanClaimPrizes =
     currentPhase.state === CLAIM &&
     !hasUserClaimed &&
-    (userCakeRewards !== '0' || userPointReward !== '0' || canClaimNFT)
+    (userInvaRewards !== '0' || userPointReward !== '0' || canClaimNFT)
   const finishedAndPrizesClaimed = hasCompetitionEnded && account && hasUserClaimed
   const finishedAndNothingToClaim = hasCompetitionEnded && account && !userCanClaimPrizes
 
@@ -107,7 +107,7 @@ const EasterCompetition = () => {
         hasRegistered: user[0],
         hasUserClaimed: user[1],
         userRewardGroup: user[2].toString(),
-        userCakeRewards: user[3].toString(),
+        userInvaRewards: user[3].toString(),
         userPointReward: user[4].toString(),
         canClaimNFT: user[5],
       }
@@ -125,7 +125,7 @@ const EasterCompetition = () => {
           hasRegistered: false,
           hasUserClaimed: false,
           userRewardGroup: '0',
-          userCakeRewards: '0',
+          userInvaRewards: '0',
           userPointReward: '0',
           canClaimNFT: false,
         })
@@ -216,7 +216,7 @@ const EasterCompetition = () => {
         </Box>
       </PageSection>
       <TeamRanksSection
-        image={EasterCakerBunny}
+        image={EasterInvarBunny}
         team1LeaderboardInformation={team1LeaderboardInformation}
         team2LeaderboardInformation={team2LeaderboardInformation}
         team3LeaderboardInformation={team3LeaderboardInformation}

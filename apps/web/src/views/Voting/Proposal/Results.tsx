@@ -10,11 +10,11 @@ import {
   Skeleton,
   Tag,
   CheckmarkCircleIcon,
-} from '@pancakeswap/uikit'
+} from '@spaceinvaders-swap/uikit'
 import { useAccount } from 'wagmi'
 import { Vote } from 'state/types'
-import { formatNumber } from '@pancakeswap/utils/formatBalance'
-import { useTranslation } from '@pancakeswap/localization'
+import { formatNumber } from '@spaceinvaders-swap/utils/formatBalance'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import { FetchStatus } from 'config/constants/types'
 import { calculateVoteResults, getTotalFromVotes } from '../helpers'
 import TextEllipsis from '../components/TextEllipsis'

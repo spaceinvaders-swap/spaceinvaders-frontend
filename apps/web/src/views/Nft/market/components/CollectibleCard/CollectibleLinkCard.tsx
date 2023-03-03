@@ -1,9 +1,9 @@
-import { NextLinkFromReactRouter } from '@pancakeswap/uikit'
+import { NextLinkFromReactRouter } from '@spaceinvaders-swap/uikit'
 import { isAddress } from 'utils'
 import { StyledCollectibleCard } from './styles'
 import CardBody from './CardBody'
 import { CollectibleCardProps } from './types'
-import { nftsBaseUrl, pancakeBunniesAddress } from '../../constants'
+import { nftsBaseUrl, spaceinvadersBunniesAddress } from '../../constants'
 
 const CollectibleLinkCard: React.FC<React.PropsWithChildren<CollectibleCardProps>> = ({
   nft,
@@ -11,7 +11,7 @@ const CollectibleLinkCard: React.FC<React.PropsWithChildren<CollectibleCardProps
   currentAskPrice,
   ...props
 }) => {
-  const urlId = isAddress(nft.collectionAddress) === pancakeBunniesAddress ? nft.attributes[0].value : nft.tokenId
+  const urlId = isAddress(nft.collectionAddress) === spaceinvadersBunniesAddress ? nft.attributes[0].value : nft.tokenId
   return (
     <StyledCollectibleCard {...props}>
       <NextLinkFromReactRouter to={`${nftsBaseUrl}/collections/${nft.collectionAddress}/${urlId}`}>

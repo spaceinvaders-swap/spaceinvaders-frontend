@@ -1,4 +1,4 @@
-import { useAccountResources } from '@pancakeswap/awgmi'
+import { useAccountResources } from '@spaceinvaders-swap/awgmi'
 import { TxnBuilderTypes, TypeTagParser } from 'aptos'
 import splitTypeTag from 'utils/splitTypeTag'
 import {

@@ -1,11 +1,11 @@
 import styled, { keyframes, css } from 'styled-components'
-import { Box, Flex, HelpIcon, Text, useMatchBreakpoints, Pool } from '@pancakeswap/uikit'
+import { Box, Flex, HelpIcon, Text, useMatchBreakpoints, Pool } from '@spaceinvaders-swap/uikit'
 import { useVaultPoolByKey } from 'state/pools/hooks'
-import { getVaultPosition, VaultPosition } from 'utils/cakePool'
+import { getVaultPosition, VaultPosition } from 'utils/invaPool'
 import BigNumber from 'bignumber.js'
-import { VaultKey, DeserializedLockedCakeVault, DeserializedLockedVaultUser } from 'state/types'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { Token } from '@pancakeswap/sdk'
+import { VaultKey, DeserializedLockedInvaVault, DeserializedLockedVaultUser } from 'state/types'
+import { BIG_ZERO } from '@spaceinvaders-swap/utils/bigNumber'
+import { Token } from '@spaceinvaders-swap/sdk'
 import Harvest from './Harvest'
 import Stake from './Stake'
 import AutoHarvest from './AutoHarvest'
@@ -13,7 +13,7 @@ import { VaultPositionTagWithLabel } from '../../Vault/VaultPositionTag'
 import YieldBoostRow from '../../LockedPool/Common/YieldBoostRow'
 import LockDurationRow from '../../LockedPool/Common/LockDurationRow'
 import useUserDataInVaultPresenter from '../../LockedPool/hooks/useUserDataInVaultPresenter'
-import CakeVaultApr from './CakeVaultApr'
+import InvaVaultApr from './InvaVaultApr'
 import PoolStatsInfo from '../../PoolStatsInfo'
 import PoolTypeTag from '../../PoolTypeTag'
 
@@ -115,29 +115,29 @@ const ActionPanel: React.FC<React.PropsWithChildren<ActionPanelProps>> = ({ acco
   const vaultData = useVaultPoolByKey(vaultKey)
   const {
     userData: {
-      balance: { cakeAsBigNumber },
+      balance: { invaAsBigNumber },
     },
   } = vaultData
 
   const vaultPosition = getVaultPosition(vaultData.userData)
 
-  const isLocked = (vaultData as DeserializedLockedCakeVault).userData.locked
+  const isLocked = (vaultData as DeserializedLockedInvaVault).userData.locked
 
   const stakingTokenBalance = userData?.stakingTokenBalance ? new BigNumber(userData.stakingTokenBalance) : BIG_ZERO
   const stakedBalance = userData?.stakedBalance ? new BigNumber(userData.stakedBalance) : BIG_ZERO
 
   const poolStakingTokenBalance = vaultKey
-    ? cakeAsBigNumber.plus(stakingTokenBalance)
+    ? invaAsBigNumber.plus(stakingTokenBalance)
     : stakedBalance.plus(stakingTokenBalance)
 
   return (
     <StyledActionPanel expanded={expanded}>
       <InfoSection>
-        {isMobile && vaultKey === VaultKey.CakeVault && isLocked && (
+        {isMobile && vaultKey === VaultKey.InvaVault && isLocked && (
           <Box mb="16px">
             <YieldBoostDurationRow
-              lockEndTime={(vaultData as DeserializedLockedCakeVault).userData.lockEndTime}
-              lockStartTime={(vaultData as DeserializedLockedCakeVault).userData.lockStartTime}
+              lockEndTime={(vaultData as DeserializedLockedInvaVault).userData.lockEndTime}
+              lockStartTime={(vaultData as DeserializedLockedInvaVault).userData.lockStartTime}
             />
           </Box>
         )}
@@ -155,11 +155,11 @@ const ActionPanel: React.FC<React.PropsWithChildren<ActionPanelProps>> = ({ acco
         </Flex>
       </InfoSection>
       <ActionContainer>
-        {isMobile && vaultKey === VaultKey.CakeVault && vaultPosition === VaultPosition.None && (
-          <CakeVaultApr pool={pool} userData={vaultData.userData} vaultPosition={vaultPosition} />
+        {isMobile && vaultKey === VaultKey.InvaVault && vaultPosition === VaultPosition.None && (
+          <InvaVaultApr pool={pool} userData={vaultData.userData} vaultPosition={vaultPosition} />
         )}
         <Box width="100%">
-          {pool.vaultKey === VaultKey.CakeVault && (
+          {pool.vaultKey === VaultKey.InvaVault && (
             <VaultPositionTagWithLabel
               userData={vaultData.userData as DeserializedLockedVaultUser}
               width={['auto', , 'fit-content']}

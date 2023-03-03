@@ -1,5 +1,5 @@
-import { ContextApi } from '@pancakeswap/localization'
-import { Text } from '@pancakeswap/uikit'
+import { ContextApi } from '@spaceinvaders-swap/localization'
+import { Text } from '@spaceinvaders-swap/uikit'
 import { SaleStatusEnum, UserStatusEnum } from '../../types'
 
 type PreEventProps = {

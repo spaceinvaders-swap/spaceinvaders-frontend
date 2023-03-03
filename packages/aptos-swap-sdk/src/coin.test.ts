@@ -11,30 +11,30 @@ describe('Coin', () => {
   describe('#equals', () => {
     it('fails if address differs', () => {
       expect(
-        new Coin(ChainId.TESTNET, ADDRESS_ONE, 18, 'CAKE').equals(new Coin(ChainId.TESTNET, ADDRESS_TWO, 18, 'CAKE'))
+        new Coin(ChainId.TESTNET, ADDRESS_ONE, 18, 'INVA').equals(new Coin(ChainId.TESTNET, ADDRESS_TWO, 18, 'INVA'))
       ).toBe(false)
     })
 
     it('false if chain id differs', () => {
       expect(
-        new Coin(ChainId.MAINNET, ADDRESS_ONE, 18, 'CAKE').equals(new Coin(ChainId.TESTNET, ADDRESS_ONE, 18, 'CAKE'))
+        new Coin(ChainId.MAINNET, ADDRESS_ONE, 18, 'INVA').equals(new Coin(ChainId.TESTNET, ADDRESS_ONE, 18, 'INVA'))
       ).toBe(false)
     })
 
     it('true if only decimals differs', () => {
       expect(
-        new Coin(ChainId.TESTNET, ADDRESS_ONE, 9, 'CAKE').equals(new Coin(ChainId.TESTNET, ADDRESS_ONE, 18, 'CAKE'))
+        new Coin(ChainId.TESTNET, ADDRESS_ONE, 9, 'INVA').equals(new Coin(ChainId.TESTNET, ADDRESS_ONE, 18, 'INVA'))
       ).toBe(true)
     })
 
     it('true if address is the same', () => {
       expect(
-        new Coin(ChainId.TESTNET, ADDRESS_ONE, 18, 'CAKE').equals(new Coin(ChainId.TESTNET, ADDRESS_ONE, 18, 'CAKE'))
+        new Coin(ChainId.TESTNET, ADDRESS_ONE, 18, 'INVA').equals(new Coin(ChainId.TESTNET, ADDRESS_ONE, 18, 'INVA'))
       ).toBe(true)
     })
 
     it('true on reference equality', () => {
-      const token = new Coin(ChainId.TESTNET, ADDRESS_ONE, 18, 'CAKE')
+      const token = new Coin(ChainId.TESTNET, ADDRESS_ONE, 18, 'INVA')
       expect(token.equals(token)).toBe(true)
     })
 
@@ -66,7 +66,7 @@ describe('Coin', () => {
       ).toBe(false)
 
       expect(
-        new Coin(ChainId.TESTNET, '0x16::pancake::CAKE', 8, '').sortsBefore(
+        new Coin(ChainId.TESTNET, '0x16::spaceinvaders::INVA', 8, '').sortsBefore(
           new Coin(ChainId.TESTNET, '0x16::devnet_coins::DevnetBTC', 8, '')
         )
       ).toBe(false)

@@ -1,25 +1,25 @@
 import { useCallback, memo, useMemo } from 'react'
-import { Currency, TradeType, CurrencyAmount } from '@pancakeswap/sdk'
+import { Currency, TradeType, CurrencyAmount } from '@spaceinvaders-swap/sdk'
 import {
   InjectedModalProps,
   LinkExternal,
   Text,
   TransactionErrorContent,
   ConfirmationPendingContent,
-} from '@pancakeswap/uikit'
+} from '@spaceinvaders-swap/uikit'
 import { TransactionSubmittedContent } from 'components/TransactionConfirmationModal'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import { Field } from 'state/swap/actions'
-import { TradeWithStableSwap } from '@pancakeswap/smart-router/evm'
+import { TradeWithStableSwap } from '@spaceinvaders-swap/smart-router/evm'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import ConfirmSwapModalContainer from '../../components/ConfirmSwapModalContainer'
 import TransactionConfirmSwapContentWithSmartRouter from './TransactionConfirmSwapContent'
 
-const PancakeRouterSlippageErrorMsg =
+const SpaceinvadersRouterSlippageErrorMsg =
   'This transaction will not succeed either due to price movement or fee on transfer. Try increasing your slippage tolerance.'
 
 const SwapTransactionErrorContent = ({ onDismiss, message, openSettingModal }) => {
-  const isSlippagedErrorMsg = message?.includes(PancakeRouterSlippageErrorMsg)
+  const isSlippagedErrorMsg = message?.includes(SpaceinvadersRouterSlippageErrorMsg)
 
   const handleErrorDismiss = useCallback(() => {
     onDismiss?.()
@@ -42,7 +42,7 @@ const SwapTransactionErrorContent = ({ onDismiss, message, openSettingModal }) =
             </Text>
           </Text>
           <LinkExternal
-            href="https://docs.pancakeswap.finance/products/pancakeswap-exchange/trade-guide"
+            href="https://docs.spaceinvaders-swap.finance/products/spaceinvaders-swap-exchange/trade-guide"
             style={{ width: '100%', justifyContent: 'center' }}
           >
             {t('What are the potential issues with the token?')}

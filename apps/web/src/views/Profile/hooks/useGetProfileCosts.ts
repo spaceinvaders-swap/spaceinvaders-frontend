@@ -1,41 +1,41 @@
 import { useEffect, useState } from 'react'
 import { BigNumber } from '@ethersproject/bignumber'
 import { Zero } from '@ethersproject/constants'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import { multicallv2 } from 'utils/multicall'
-import profileABI from 'config/abi/pancakeProfile.json'
-import { getPancakeProfileAddress } from 'utils/addressHelpers'
-import { useToast } from '@pancakeswap/uikit'
+import profileABI from 'config/abi/spaceinvadersProfile.json'
+import { getSpaceinvadersProfileAddress } from 'utils/addressHelpers'
+import { useToast } from '@spaceinvaders-swap/uikit'
 
 const useGetProfileCosts = () => {
   const { t } = useTranslation()
   const [isLoading, setIsLoading] = useState(true)
   const [costs, setCosts] = useState({
-    numberCakeToReactivate: Zero,
-    numberCakeToRegister: Zero,
-    numberCakeToUpdate: Zero,
+    numberInvaToReactivate: Zero,
+    numberInvaToRegister: Zero,
+    numberInvaToUpdate: Zero,
   })
   const { toastError } = useToast()
 
   useEffect(() => {
     const fetchCosts = async () => {
       try {
-        const calls = ['numberCakeToReactivate', 'numberCakeToRegister', 'numberCakeToUpdate'].map((method) => ({
-          address: getPancakeProfileAddress(),
+        const calls = ['numberInvaToReactivate', 'numberInvaToRegister', 'numberInvaToUpdate'].map((method) => ({
+          address: getSpaceinvadersProfileAddress(),
           name: method,
         }))
-        const [[numberCakeToReactivate], [numberCakeToRegister], [numberCakeToUpdate]] = await multicallv2<
+        const [[numberInvaToReactivate], [numberInvaToRegister], [numberInvaToUpdate]] = await multicallv2<
           [[BigNumber], [BigNumber], [BigNumber]]
         >({ abi: profileABI, calls })
 
         setCosts({
-          numberCakeToReactivate,
-          numberCakeToRegister,
-          numberCakeToUpdate,
+          numberInvaToReactivate,
+          numberInvaToRegister,
+          numberInvaToUpdate,
         })
         setIsLoading(false)
       } catch (error) {
-        toastError(t('Error'), t('Could not retrieve CAKE costs for profile'))
+        toastError(t('Error'), t('Could not retrieve INVA costs for profile'))
       }
     }
 

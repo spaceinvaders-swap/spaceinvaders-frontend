@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import { useProfile } from 'state/profile/hooks'
-import { Flex, Box, useMatchBreakpoints, PageSection } from '@pancakeswap/uikit'
+import { Flex, Box, useMatchBreakpoints, PageSection } from '@spaceinvaders-swap/uikit'
 import Image from 'next/image'
 import { useTradingCompetitionContractMoD } from 'hooks/useContract'
 import useTheme from 'hooks/useTheme'
 import { TC_MOD_SUBGRAPH, API_PROFILE } from 'config/constants/endpoints'
 import { multicallv2 } from 'utils/multicall'
-import { ChainId } from '@pancakeswap/sdk'
+import { ChainId } from '@spaceinvaders-swap/sdk'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import tradingCompetitionMoDAbi from 'config/abi/tradingCompetitionMoD.json'
 import {
@@ -39,7 +39,7 @@ import ModYourScore from './mod/components/YourScore/ModYourScore'
 import { useTeamInformation } from './useTeamInformation'
 import { useRegistrationClaimStatus } from './useRegistrationClaimStatus'
 import TeamRanksWithParticipants from './components/TeamRanks/TeamRanksWithParticipants'
-import MoDCakerBunny from './pngs/MoD-caker.png'
+import MoDInvarBunny from './pngs/MoD-invar.png'
 import PrizesInfoSection from './components/PrizesInfoSection'
 
 const MoDCompetition = () => {
@@ -66,14 +66,14 @@ const MoDCompetition = () => {
   const hasCompetitionEnded =
     currentPhase.state === FINISHED || currentPhase.state === CLAIM || currentPhase.state === OVER
 
-  const { hasUserClaimed, isUserActive, userCakeRewards, userDarRewards, userPointReward, canClaimNFT } =
+  const { hasUserClaimed, isUserActive, userInvaRewards, userDarRewards, userPointReward, canClaimNFT } =
     userTradingInformation
 
   const userCanClaimPrizes =
     currentPhase.state === CLAIM &&
     isUserActive &&
     !hasUserClaimed &&
-    (userCakeRewards !== '0' || userDarRewards !== '0' || userPointReward !== '0' || canClaimNFT)
+    (userInvaRewards !== '0' || userDarRewards !== '0' || userPointReward !== '0' || canClaimNFT)
   const finishedAndPrizesClaimed = hasCompetitionEnded && account && hasUserClaimed
   const finishedAndNothingToClaim = hasCompetitionEnded && account && !userCanClaimPrizes
 
@@ -108,7 +108,7 @@ const MoDCompetition = () => {
           isUserActive: user[1],
           hasUserClaimed: userClaimed,
           userRewardGroup: user[3].toString(),
-          userCakeRewards: user[4].toString(),
+          userInvaRewards: user[4].toString(),
           userDarRewards: user[5].toString(),
           userPointReward: user[6].toString(),
           canClaimNFT: user[7],
@@ -231,13 +231,13 @@ const MoDCompetition = () => {
           >
             <Box my="64px">
               <TeamRanksWithParticipants
-                image={MoDCakerBunny}
+                image={MoDInvarBunny}
                 team1LeaderboardInformation={team1LeaderboardInformation}
                 team2LeaderboardInformation={team2LeaderboardInformation}
                 team3LeaderboardInformation={team3LeaderboardInformation}
                 globalLeaderboardInformation={globalLeaderboardInformation}
                 participantSubgraphAddress={TC_MOD_SUBGRAPH}
-                subgraphName="pancakeswap/trading-competition-v4"
+                subgraphName="spaceinvaders-swap/trading-competition-v4"
               />
             </Box>
           </PageSection>

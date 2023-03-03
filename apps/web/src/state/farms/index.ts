@@ -1,6 +1,6 @@
-import { createFarmFetcher, SerializedFarm, SerializedFarmsState } from '@pancakeswap/farms'
-import { getFarmConfig } from '@pancakeswap/farms/constants'
-import { ChainId } from '@pancakeswap/sdk'
+import { createFarmFetcher, SerializedFarm, SerializedFarmsState } from '@spaceinvaders-swap/farms'
+import { getFarmConfig } from '@spaceinvaders-swap/farms/constants'
+import { ChainId } from '@spaceinvaders-swap/sdk'
 import { createAsyncThunk, createSlice, isAnyOf } from '@reduxjs/toolkit'
 import type {
   UnknownAsyncThunkFulfilledAction,
@@ -29,12 +29,12 @@ const fetchFarmPublicDataPkg = async ({ pids, chainId, chain }): Promise<[Serial
   const farmsCanFetch = farmsConfig.filter((farmConfig) => pids.includes(farmConfig.pid))
   const priceHelperLpsConfig = getFarmsPriceHelperLpFiles(chainId)
 
-  const { farmsWithPrice, poolLength, regularCakePerBlock } = await farmFetcher.fetchFarms({
+  const { farmsWithPrice, poolLength, regularInvaPerBlock } = await farmFetcher.fetchFarms({
     chainId,
     isTestnet: chain.testnet,
     farms: farmsCanFetch.concat(priceHelperLpsConfig),
   })
-  return [farmsWithPrice, poolLength, regularCakePerBlock]
+  return [farmsWithPrice, poolLength, regularInvaPerBlock]
 }
 
 export const farmFetcher = createFarmFetcher(multicallv2)
@@ -266,7 +266,7 @@ export const farmsSlice = createSlice({
 
     // Update farms with live data
     builder.addCase(fetchFarmsPublicDataAsync.fulfilled, (state, action) => {
-      const [farmPayload, poolLength, regularCakePerBlock] = action.payload
+      const [farmPayload, poolLength, regularInvaPerBlock] = action.payload
       const farmPayloadPidMap = keyBy(farmPayload, 'pid')
 
       state.data = state.data.map((farm) => {
@@ -274,7 +274,7 @@ export const farmsSlice = createSlice({
         return { ...farm, ...liveFarmData }
       })
       state.poolLength = poolLength
-      state.regularCakePerBlock = regularCakePerBlock
+      state.regularInvaPerBlock = regularInvaPerBlock
     })
 
     // Update farms with user data

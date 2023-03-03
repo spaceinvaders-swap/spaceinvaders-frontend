@@ -1,17 +1,17 @@
-import { Flex, Heading, Skeleton, Text, Balance } from '@pancakeswap/uikit'
-import cakeAbi from 'config/abi/cake.json'
-import { bscTokens } from '@pancakeswap/tokens'
-import { useTranslation } from '@pancakeswap/localization'
-import { useIntersectionObserver } from '@pancakeswap/hooks'
+import { Flex, Heading, Skeleton, Text, Balance } from '@spaceinvaders-swap/uikit'
+import invaAbi from 'config/abi/inva.json'
+import { bscTokens } from '@spaceinvaders-swap/tokens'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { useIntersectionObserver } from '@spaceinvaders-swap/hooks'
 import { useEffect, useState } from 'react'
-import { usePriceCakeBusd } from 'state/farms/hooks'
+import { usePriceInvaBusd } from 'state/farms/hooks'
 import styled from 'styled-components'
-import { formatBigNumber, formatLocalisedCompactNumber } from '@pancakeswap/utils/formatBalance'
+import { formatBigNumber, formatLocalisedCompactNumber } from '@spaceinvaders-swap/utils/formatBalance'
 import { multicallv3 } from 'utils/multicall'
-import { getCakeVaultAddress } from 'utils/addressHelpers'
+import { getInvaVaultAddress } from 'utils/addressHelpers'
 import useSWR from 'swr'
 import { SLOW_INTERVAL } from 'config/constants'
-import cakeVaultV2Abi from 'config/abi/cakeVaultV2.json'
+import invaVaultV2Abi from 'config/abi/invaVaultV2.json'
 import { BigNumber } from '@ethersproject/bignumber'
 
 const StyledColumn = styled(Flex)<{ noMobileBorder?: boolean; noDesktopBorder?: boolean }>`
@@ -65,51 +65,51 @@ const Grid = styled.div`
 const emissionsPerBlock = 9.9
 
 /**
- * User (Planet Finance) built a contract on top of our original manual CAKE pool,
+ * User (Planet Finance) built a contract on top of our original manual INVA pool,
  * but the contract was written in such a way that when we performed the migration from Masterchef v1 to v2, the tokens were stuck.
  * These stuck tokens are forever gone (see their medium post) and can be considered out of circulation."
- * https://planetfinanceio.medium.com/pancakeswap-works-with-planet-to-help-cake-holders-f0d253b435af
- * https://twitter.com/PancakeSwap/status/1523913527626702849
+ * https://planetfinanceio.medium.com/spaceinvaders-swap-works-with-planet-to-help-inva-holders-f0d253b435af
+ * https://twitter.com/SpaceinvadersSwap/status/1523913527626702849
  * https://bscscan.com/tx/0xd5ffea4d9925d2f79249a4ce05efd4459ed179152ea5072a2df73cd4b9e88ba7
  */
 const planetFinanceBurnedTokensWei = BigNumber.from('637407922445268000000000')
-const cakeVaultAddress = getCakeVaultAddress()
+const invaVaultAddress = getInvaVaultAddress()
 
-const CakeDataRow = () => {
+const InvaDataRow = () => {
   const { t } = useTranslation()
   const { observerRef, isIntersecting } = useIntersectionObserver()
   const [loadData, setLoadData] = useState(false)
   const {
-    data: { cakeSupply, burnedBalance, circulatingSupply } = {
-      cakeSupply: 0,
+    data: { invaSupply, burnedBalance, circulatingSupply } = {
+      invaSupply: 0,
       burnedBalance: 0,
       circulatingSupply: 0,
     },
   } = useSWR(
-    loadData ? ['cakeDataRow'] : null,
+    loadData ? ['invaDataRow'] : null,
     async () => {
-      const totalSupplyCall = { abi: cakeAbi, address: bscTokens.cake.address, name: 'totalSupply' }
+      const totalSupplyCall = { abi: invaAbi, address: bscTokens.inva.address, name: 'totalSupply' }
       const burnedTokenCall = {
-        abi: cakeAbi,
-        address: bscTokens.cake.address,
+        abi: invaAbi,
+        address: bscTokens.inva.address,
         name: 'balanceOf',
         params: ['0x000000000000000000000000000000000000dEaD'],
       }
-      const cakeVaultCall = {
-        abi: cakeVaultV2Abi,
-        address: cakeVaultAddress,
+      const invaVaultCall = {
+        abi: invaVaultV2Abi,
+        address: invaVaultAddress,
         name: 'totalLockedAmount',
       }
 
       const [[totalSupply], [burned], [totalLockedAmount]] = await multicallv3({
-        calls: [totalSupplyCall, burnedTokenCall, cakeVaultCall],
+        calls: [totalSupplyCall, burnedTokenCall, invaVaultCall],
         allowFailure: true,
       })
       const totalBurned = planetFinanceBurnedTokensWei.add(burned)
       const circulating = totalSupply.sub(totalBurned.add(totalLockedAmount))
 
       return {
-        cakeSupply: totalSupply && burned ? +formatBigNumber(totalSupply.sub(totalBurned)) : 0,
+        invaSupply: totalSupply && burned ? +formatBigNumber(totalSupply.sub(totalBurned)) : 0,
         burnedBalance: burned ? +formatBigNumber(totalBurned) : 0,
         circulatingSupply: circulating ? +formatBigNumber(circulating) : 0,
       }
@@ -118,8 +118,8 @@ const CakeDataRow = () => {
       refreshInterval: SLOW_INTERVAL,
     },
   )
-  const cakePriceBusd = usePriceCakeBusd()
-  const mcap = cakePriceBusd.times(circulatingSupply)
+  const invaPriceBusd = usePriceInvaBusd()
+  const mcap = invaPriceBusd.times(circulatingSupply)
   const mcapString = formatLocalisedCompactNumber(mcap.toNumber())
 
   useEffect(() => {
@@ -140,8 +140,8 @@ const CakeDataRow = () => {
       </Flex>
       <StyledColumn noMobileBorder style={{ gridArea: 'b' }}>
         <Text color="textSubtle">{t('Total supply')}</Text>
-        {cakeSupply ? (
-          <Balance decimals={0} lineHeight="1.1" fontSize="24px" bold value={cakeSupply} />
+        {invaSupply ? (
+          <Balance decimals={0} lineHeight="1.1" fontSize="24px" bold value={invaSupply} />
         ) : (
           <>
             <div ref={observerRef} />
@@ -173,10 +173,10 @@ const CakeDataRow = () => {
       <StyledColumn style={{ gridArea: 'f' }}>
         <Text color="textSubtle">{t('Current emissions')}</Text>
 
-        <Heading scale="lg">{t('%cakeEmissions%/block', { cakeEmissions: emissionsPerBlock })}</Heading>
+        <Heading scale="lg">{t('%invaEmissions%/block', { invaEmissions: emissionsPerBlock })}</Heading>
       </StyledColumn>
     </Grid>
   )
 }
 
-export default CakeDataRow
+export default InvaDataRow

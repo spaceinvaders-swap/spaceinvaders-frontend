@@ -86,16 +86,16 @@ export const masterchefSetUpkeepAdmin = (
   }
 }
 
-export type MasterchefUpdateCakeRateArgs = [bigint | string, bigint | string, boolean]
+export type MasterchefUpdateInvaRateArgs = [bigint | string, bigint | string, boolean]
 
-export const masterchefUpdateCakeRate = (
-  args: MasterchefUpdateCakeRateArgs,
+export const masterchefUpdateInvaRate = (
+  args: MasterchefUpdateInvaRateArgs,
 ): Types.TransactionPayload_EntryFunctionPayload => {
   return {
     type: 'entry_function_payload',
     type_arguments: [],
     arguments: args,
-    function: `${ADDRESS}::${MASTERCHEF_MODULE_NAME}::update_cake_rate`,
+    function: `${ADDRESS}::${MASTERCHEF_MODULE_NAME}::update_inva_rate`,
   }
 }
 

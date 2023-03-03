@@ -3,7 +3,7 @@
     "inputs": [
       { "internalType": "address", "name": "_farmBooster", "type": "address" },
       { "internalType": "address", "name": "_masterchefV2", "type": "address" },
-      { "internalType": "address", "name": "_cakeToken", "type": "address" }
+      { "internalType": "address", "name": "_invaToken", "type": "address" }
     ],
     "stateMutability": "nonpayable",
     "type": "constructor"
@@ -23,7 +23,7 @@
   },
   {
     "inputs": [],
-    "name": "cakeToken",
+    "name": "invaToken",
     "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
     "stateMutability": "view",
     "type": "function"

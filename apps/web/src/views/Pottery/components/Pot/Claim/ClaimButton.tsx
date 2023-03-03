@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
-import { useTranslation } from '@pancakeswap/localization'
-import { Button, AutoRenewIcon } from '@pancakeswap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { Button, AutoRenewIcon } from '@spaceinvaders-swap/uikit'
 import { useClaimPottery } from 'views/Pottery/hooks/useClaimPottery'
 
 interface ClaimButtonProps {

@@ -1,10 +1,10 @@
 import React, { useMemo } from 'react'
 import BigNumber from 'bignumber.js'
 import styled from 'styled-components'
-import { useTranslation } from '@pancakeswap/localization'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
-import { Flex, Spinner, RowType } from '@pancakeswap/uikit'
-import { FarmWithStakedValue } from '@pancakeswap/farms'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { getBalanceNumber } from '@spaceinvaders-swap/utils/formatBalance'
+import { Flex, Spinner, RowType } from '@spaceinvaders-swap/uikit'
+import { FarmWithStakedValue } from '@spaceinvaders-swap/farms'
 import TableHeader from './MigrationTable/TableHeader'
 import EmptyText from './MigrationTable/EmptyText'
 import TableStyle from './MigrationTable/StyledTable'
@@ -25,7 +25,7 @@ export interface ITableProps {
   title: string
   noStakedFarmText: string
   account: string
-  cakePrice: BigNumber
+  invaPrice: BigNumber
   columnSchema: ColumnsDefTypes[]
   farms: FarmWithStakedValue[]
   userDataReady: boolean
@@ -36,7 +36,7 @@ const MigrationFarmTable: React.FC<React.PropsWithChildren<ITableProps>> = ({
   title,
   noStakedFarmText,
   account,
-  cakePrice,
+  invaPrice,
   columnSchema,
   farms,
   userDataReady,
@@ -47,7 +47,7 @@ const MigrationFarmTable: React.FC<React.PropsWithChildren<ITableProps>> = ({
     const { token, quoteToken } = farm
     const tokenAddress = token.address
     const quoteTokenAddress = quoteToken.address
-    const lpLabel = farm.lpSymbol && farm.lpSymbol.replace(/pancake/gi, '')
+    const lpLabel = farm.lpSymbol && farm.lpSymbol.replace(/spaceinvaders/gi, '')
     const customRows =
       columnSchema === DesktopV2ColumnSchema
         ? {
@@ -60,7 +60,7 @@ const MigrationFarmTable: React.FC<React.PropsWithChildren<ITableProps>> = ({
               lpTokenPrice: farm.lpTokenPrice,
               tokenAddress,
               quoteTokenAddress,
-              cakePrice,
+              invaPrice,
               lpRewardsApr: farm.lpRewardsApr,
               originalValue: farm.apr,
             },

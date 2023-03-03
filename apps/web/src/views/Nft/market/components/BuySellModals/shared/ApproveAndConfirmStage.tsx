@@ -1,5 +1,5 @@
-import { Flex, Text, Button, Spinner } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Flex, Text, Button, Spinner } from '@spaceinvaders-swap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import { StepIndicator } from './styles'
 
 interface ApproveAndConfirmStageProps {

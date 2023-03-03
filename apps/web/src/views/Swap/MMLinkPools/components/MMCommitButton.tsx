@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, CurrencyAmount, TradeType } from '@pancakeswap/sdk'
-import { Button, Column, useModal } from '@pancakeswap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { Currency, CurrencyAmount, TradeType } from '@spaceinvaders-swap/sdk'
+import { Button, Column, useModal } from '@spaceinvaders-swap/uikit'
 
 import { CommitButton } from 'components/CommitButton'
 import ConnectWalletButton from 'components/ConnectWalletButton'

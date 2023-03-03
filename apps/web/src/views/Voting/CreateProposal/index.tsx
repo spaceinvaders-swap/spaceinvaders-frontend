@@ -14,16 +14,16 @@ import {
   useModal,
   useToast,
   ReactMarkdown,
-} from '@pancakeswap/uikit'
-import { useWeb3LibraryContext } from '@pancakeswap/wagmi'
+} from '@spaceinvaders-swap/uikit'
+import { useWeb3LibraryContext } from '@spaceinvaders-swap/wagmi'
 import snapshot from '@snapshot-labs/snapshot.js'
 import isEmpty from 'lodash/isEmpty'
 import times from 'lodash/times'
 import { ChangeEvent, FormEvent, useEffect, useMemo, useState } from 'react'
 import { useInitialBlock } from 'state/block/hooks'
 
-import { useTranslation } from '@pancakeswap/localization'
-import truncateHash from '@pancakeswap/utils/truncateHash'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import truncateHash from '@spaceinvaders-swap/utils/truncateHash'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import Container from 'components/Layout/Container'
 import dynamic from 'next/dynamic'
@@ -34,7 +34,7 @@ import { DatePicker, DatePickerPortal, TimePicker } from 'views/Voting/component
 import { useAccount } from 'wagmi'
 import Layout from '../components/Layout'
 import VoteDetailsModal from '../components/VoteDetailsModal'
-import { ADMINS, PANCAKE_SPACE, VOTE_THRESHOLD } from '../config'
+import { ADMINS, SPACEINVADERS_SPACE, VOTE_THRESHOLD } from '../config'
 import Choices, { ChoiceIdValue, makeChoice, MINIMUM_CHOICES } from './Choices'
 import { combineDateAndTime, getFormErrors } from './helpers'
 import { FormErrors, Label, SecondaryLabel } from './styles'
@@ -79,7 +79,7 @@ const CreateProposal = () => {
       setIsLoading(true)
 
       const data: any = await client.proposal(library as any, account, {
-        space: PANCAKE_SPACE,
+        space: SPACEINVADERS_SPACE,
         type: 'single-choice',
         title: name,
         body,

@@ -3,7 +3,7 @@ import { SUPPORT_FARMS } from 'config/constants/supportChains'
 import { FarmsPageLayout, FarmsContext } from 'views/Farms'
 import FarmCard from 'views/Farms/components/FarmCard/FarmCard'
 import { getDisplayApr } from 'views/Farms/components/getDisplayApr'
-import { usePriceCakeBusd } from 'state/farms/hooks'
+import { usePriceInvaBusd } from 'state/farms/hooks'
 import { useAccount } from 'wagmi'
 import ProxyFarmContainer, {
   YieldBoosterStateContext,
@@ -11,7 +11,7 @@ import ProxyFarmContainer, {
 
 const ProxyFarmCardContainer = ({ farm }) => {
   const { address: account } = useAccount()
-  const cakePrice = usePriceCakeBusd()
+  const invaPrice = usePriceInvaBusd()
 
   const { proxyFarm, shouldUseProxyFarm } = useContext(YieldBoosterStateContext)
   const finalFarm = shouldUseProxyFarm ? proxyFarm : farm
@@ -21,7 +21,7 @@ const ProxyFarmCardContainer = ({ farm }) => {
       key={finalFarm.pid}
       farm={finalFarm}
       displayApr={getDisplayApr(finalFarm.apr, finalFarm.lpRewardsApr)}
-      cakePrice={cakePrice}
+      invaPrice={invaPrice}
       account={account}
       removed={false}
     />
@@ -31,7 +31,7 @@ const ProxyFarmCardContainer = ({ farm }) => {
 const FarmsPage = () => {
   const { address: account } = useAccount()
   const { chosenFarmsMemoized } = useContext(FarmsContext)
-  const cakePrice = usePriceCakeBusd()
+  const invaPrice = usePriceInvaBusd()
   return (
     <>
       {chosenFarmsMemoized.map((farm) =>
@@ -44,7 +44,7 @@ const FarmsPage = () => {
             key={farm.pid}
             farm={farm}
             displayApr={getDisplayApr(farm.apr, farm.lpRewardsApr)}
-            cakePrice={cakePrice}
+            invaPrice={invaPrice}
             account={account}
             removed={false}
           />

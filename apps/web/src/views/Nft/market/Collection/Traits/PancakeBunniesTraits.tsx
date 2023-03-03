@@ -1,9 +1,9 @@
 import { useMemo, useState } from 'react'
-import { Skeleton, Table, Td, Th, Flex, ArrowUpIcon, ArrowDownIcon } from '@pancakeswap/uikit'
+import { Skeleton, Table, Td, Th, Flex, ArrowUpIcon, ArrowDownIcon } from '@spaceinvaders-swap/uikit'
 import times from 'lodash/times'
 import { useRouter } from 'next/router'
-import { formatNumber } from '@pancakeswap/utils/formatBalance'
-import { useTranslation } from '@pancakeswap/localization'
+import { formatNumber } from '@spaceinvaders-swap/utils/formatBalance'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import CollapsibleCard from 'components/CollapsibleCard'
 import orderBy from 'lodash/orderBy'
 import { useGetCollection } from 'state/nftMarket/hooks'
@@ -14,7 +14,7 @@ import { SortType } from '../../types'
 import { ClickableRow, NftName, StyledSortButton, TableWrapper } from './styles'
 import { useGetCollectionDistributionPB } from '../../hooks/useGetCollectionDistribution'
 
-interface PancakeBunniesTraitsProps {
+interface SpaceinvadersBunniesTraitsProps {
   collectionAddress: string
 }
 
@@ -36,7 +36,7 @@ const LowestPriceCell: React.FC<React.PropsWithChildren<{ bunnyId: string }>> = 
   return <BNBAmountLabel justifyContent="flex-end" amount={lowestPrice} width="100px" />
 }
 
-const PancakeBunniesTraits: React.FC<React.PropsWithChildren<PancakeBunniesTraitsProps>> = ({ collectionAddress }) => {
+const SpaceinvadersBunniesTraits: React.FC<React.PropsWithChildren<SpaceinvadersBunniesTraitsProps>> = ({ collectionAddress }) => {
   const [raritySort, setRaritySort] = useState<SortType>('asc')
   const collection = useGetCollection(collectionAddress)
   const totalBunnyCount = Number(collection?.totalSupply)
@@ -143,4 +143,4 @@ const PancakeBunniesTraits: React.FC<React.PropsWithChildren<PancakeBunniesTrait
   )
 }
 
-export default PancakeBunniesTraits
+export default SpaceinvadersBunniesTraits

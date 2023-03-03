@@ -1,8 +1,8 @@
 import { useState, useCallback } from 'react'
 import BigNumber from 'bignumber.js'
 import styled from 'styled-components'
-import { Card, Flex, Text, Skeleton, ExpandableSectionButton, Farm as FarmUI } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Card, Flex, Text, Skeleton, ExpandableSectionButton, Farm as FarmUI } from '@spaceinvaders-swap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import getLiquidityUrlPathParts from 'utils/getLiquidityUrlPathParts'
 import CardHeading from './CardHeading'
 import CardActionsContainer from './CardActionsContainer'
@@ -36,7 +36,7 @@ interface FarmCardProps {
   farm: any
   displayApr: string
   removed: boolean
-  cakePrice?: BigNumber
+  invaPrice?: BigNumber
   account?: string
   originalLiquidity?: BigNumber
 }
@@ -45,7 +45,7 @@ const FarmCard: React.FC<React.PropsWithChildren<FarmCardProps>> = ({
   farm,
   displayApr,
   removed,
-  cakePrice,
+  invaPrice,
   account,
   originalLiquidity,
 }) => {
@@ -62,14 +62,14 @@ const FarmCard: React.FC<React.PropsWithChildren<FarmCardProps>> = ({
       : ''
 
   const lpLabel = farm.lpSymbol
-  const earnLabel = farm.dual ? farm.dual.earnLabel : t('CAKE + Fees')
+  const earnLabel = farm.dual ? farm.dual.earnLabel : t('INVA + Fees')
 
   const liquidityUrlPathParts = getLiquidityUrlPathParts({
     quoteTokenAddress: farm.quoteToken?.address,
     tokenAddress: farm.token?.address,
   })
   const addLiquidityUrl = `/add/${liquidityUrlPathParts}`
-  const isPromotedFarm = farm.token?.symbol === 'CAKE'
+  const isPromotedFarm = farm.token?.symbol === 'INVA'
 
   const toggleExpandableSection = useCallback(() => {
     setShowExpandableSection((prev) => !prev)
@@ -99,7 +99,7 @@ const FarmCard: React.FC<React.PropsWithChildren<FarmCardProps>> = ({
                   multiplier={farm.multiplier}
                   lpLabel={lpLabel}
                   addLiquidityUrl={addLiquidityUrl}
-                  cakePrice={cakePrice}
+                  invaPrice={invaPrice}
                   apr={farm.apr}
                   displayApr={displayApr}
                   lpRewardsApr={farm.lpRewardsApr}

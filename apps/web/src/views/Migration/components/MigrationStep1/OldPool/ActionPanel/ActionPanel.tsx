@@ -2,10 +2,10 @@ import React from 'react'
 import styled, { keyframes, css } from 'styled-components'
 import { VaultKey } from 'state/types'
 import { useVaultPoolByKeyV1 } from 'views/Migration/hook/V1/Pool/useFetchIfoPool'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { getCakeVaultEarnings } from 'views/Pools/helpers'
-import { Token } from '@pancakeswap/sdk'
-import { Pool } from '@pancakeswap/uikit'
+import { BIG_ZERO } from '@spaceinvaders-swap/utils/bigNumber'
+import { getInvaVaultEarnings } from 'views/Pools/helpers'
+import { Token } from '@spaceinvaders-swap/sdk'
+import { Pool } from '@spaceinvaders-swap/uikit'
 
 import Staked from './Stake'
 import AutoEarning from './AutoEarning'
@@ -78,29 +78,29 @@ interface ActionPanelProps {
 
 const ActionPanel: React.FC<React.PropsWithChildren<ActionPanelProps>> = ({ pool, account, expanded }) => {
   const { vaultPoolData } = useVaultPoolByKeyV1(pool.vaultKey)
-  const { totalCakeInVault, pricePerFullShare } = vaultPoolData
-  const { cakeAtLastUserAction, userShares } = vaultPoolData.userData
+  const { totalInvaInVault, pricePerFullShare } = vaultPoolData
+  const { invaAtLastUserAction, userShares } = vaultPoolData.userData
 
   const vaultPools = {
-    [VaultKey.CakeVaultV1]: useVaultPoolByKeyV1(VaultKey.CakeVaultV1).vaultPoolData,
+    [VaultKey.InvaVaultV1]: useVaultPoolByKeyV1(VaultKey.InvaVaultV1).vaultPoolData,
     [VaultKey.IfoPool]: useVaultPoolByKeyV1(VaultKey.IfoPool).vaultPoolData,
   }
-  const cakeInVaults = Object.values(vaultPools).reduce((total, vault) => {
-    return total.plus(vault.totalCakeInVault)
+  const invaInVaults = Object.values(vaultPools).reduce((total, vault) => {
+    return total.plus(vault.totalInvaInVault)
   }, BIG_ZERO)
 
   // Auto Earning
   let earningTokenBalance = 0
   let earningTokenDollarBalance = 0
   if (pricePerFullShare) {
-    const { autoCakeToDisplay, autoUsdToDisplay } = getCakeVaultEarnings(
+    const { autoInvaToDisplay, autoUsdToDisplay } = getInvaVaultEarnings(
       account,
-      cakeAtLastUserAction,
+      invaAtLastUserAction,
       userShares,
       pricePerFullShare,
       pool.earningTokenPrice,
     )
-    earningTokenBalance = autoCakeToDisplay
+    earningTokenBalance = autoInvaToDisplay
     earningTokenDollarBalance = autoUsdToDisplay
   }
 
@@ -118,7 +118,7 @@ const ActionPanel: React.FC<React.PropsWithChildren<ActionPanelProps>> = ({ pool
         )}
         <Staked pool={pool} />
       </ActionContainer>
-      <TotalStaked pool={pool} totalCakeInVault={totalCakeInVault} cakeInVaults={cakeInVaults} />
+      <TotalStaked pool={pool} totalInvaInVault={totalInvaInVault} invaInVaults={invaInVaults} />
     </StyledActionPanel>
   )
 }

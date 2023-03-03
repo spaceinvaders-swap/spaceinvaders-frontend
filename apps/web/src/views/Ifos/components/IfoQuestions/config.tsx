@@ -1,6 +1,6 @@
 import Trans from 'components/Trans'
 import styled from 'styled-components'
-import { Link } from '@pancakeswap/uikit'
+import { Link } from '@spaceinvaders-swap/uikit'
 
 const InlineLink = styled(Link)`
   display: inline;
@@ -13,16 +13,16 @@ const config = [
       <Trans>
         In the current IFO format. There is a brand new Private Sale. To participate, participants will have to meet
         certain requirements presented on the IFO card. Each eligible participant will be able to commit any amount of
-        CAKE up to the maximum commit limit, which is published along with the IFO voting proposal. The Private Sale has
+        INVA up to the maximum commit limit, which is published along with the IFO voting proposal. The Private Sale has
         no participation fee.
       </Trans>,
       <Trans>
-        In the Public Sale, everyone with an active PancakeSwap profile can commit. However the maximum amount of CAKE
-        users can commit, is equal to the number of iCAKE they have.
+        In the Public Sale, everyone with an active SpaceinvadersSwap profile can commit. However the maximum amount of INVA
+        users can commit, is equal to the number of iINVA they have.
       </Trans>,
       <>
-        <Trans>Learn more about iCAKE</Trans>
-        <InlineLink ml="4px" external href="https://docs.pancakeswap.finance/products/ifo-initial-farm-offering/icake">
+        <Trans>Learn more about iINVA</Trans>
+        <InlineLink ml="4px" external href="https://docs.spaceinvaders-swap.finance/products/ifo-initial-farm-offering/iinva">
           <Trans>here</Trans>
         </InlineLink>
       </>,
@@ -37,7 +37,7 @@ const config = [
         We recommend you to check if you are eligible to participate in the Private Sale first. In the Public Sale, if
         the amount you commit is too small, you may not receive a meaningful amount of IFO tokens.
       </Trans>,
-      <Trans>Just remember you need an active PancakeSwap Profile in order to participate.</Trans>,
+      <Trans>Just remember you need an active SpaceinvadersSwap Profile in order to participate.</Trans>,
     ],
   },
   {
@@ -56,12 +56,12 @@ const config = [
   },
   {
     title: <Trans>Where does the participation fee go?</Trans>,
-    description: [<Trans>The CAKE from the participation fee will be burnt as part of the weekly token burn.</Trans>],
+    description: [<Trans>The INVA from the participation fee will be burnt as part of the weekly token burn.</Trans>],
   },
   {
     title: <Trans>How can I get an achievement for participating in the IFO?</Trans>,
     description: [
-      <Trans>You need to contribute a minimum of about 10 USD worth of CAKE to either sale.</Trans>,
+      <Trans>You need to contribute a minimum of about 10 USD worth of INVA to either sale.</Trans>,
       <Trans>
         You can contribute to one or both, it doesn’t matter: only your overall contribution is counted for the
         achievement.
@@ -80,7 +80,7 @@ const config = [
         <InlineLink
           ml="4px"
           external
-          href="https://medium.com/pancakeswap/community-initial-farm-offering-cifo-the-new-ifo-subtype-ac1abacf66be"
+          href="https://medium.com/spaceinvaders-swap/community-initial-farm-offering-cifo-the-new-ifo-subtype-ac1abacf66be"
         >
           <Trans>here</Trans>
         </InlineLink>

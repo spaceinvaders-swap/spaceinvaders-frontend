@@ -1,6 +1,6 @@
 import { createAction } from '@reduxjs/toolkit'
 import { Types } from 'aptos'
-import { ChainId } from '@pancakeswap/aptos-swap-sdk'
+import { ChainId } from '@spaceinvaders-swap/aptos-swap-sdk'
 
 export type TransactionType = 'approve' | 'swap' | 'add-liquidity' | 'remove-liquidity'
 

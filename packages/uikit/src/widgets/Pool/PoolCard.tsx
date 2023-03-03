@@ -1,4 +1,4 @@
-import { useTranslation } from "@pancakeswap/localization";
+import { useTranslation } from "@spaceinvaders-swap/localization";
 import { ReactElement } from "react";
 import { Flex } from "../../components/Box";
 import { CardBody, CardRibbon } from "../../components/Card";
@@ -20,11 +20,11 @@ export function PoolCard<T>({ pool, cardContent, aprRow, isStaked, cardFooter, t
   const { sousId, stakingToken, earningToken, isFinished, totalStaked } = pool;
   const { t } = useTranslation();
 
-  const isCakePool = earningToken?.symbol === "CAKE" && stakingToken?.symbol === "CAKE";
+  const isInvaPool = earningToken?.symbol === "INVA" && stakingToken?.symbol === "INVA";
 
   return (
     <StyledCard
-      isActive={isCakePool}
+      isActive={isInvaPool}
       isFinished={isFinished && sousId !== 0}
       ribbon={isFinished && <CardRibbon variantColor="textDisabled" text={t("Finished")} />}
     >
@@ -32,9 +32,9 @@ export function PoolCard<T>({ pool, cardContent, aprRow, isStaked, cardFooter, t
         {totalStaked && totalStaked.gte(0) ? (
           <>
             <PoolCardHeaderTitle
-              title={isCakePool ? t("Manual") : t("Earn %asset%", { asset: earningToken?.symbol || "" })}
+              title={isInvaPool ? t("Manual") : t("Earn %asset%", { asset: earningToken?.symbol || "" })}
               subTitle={
-                isCakePool ? t("Earn CAKE, stake CAKE") : t("Stake %symbol%", { symbol: stakingToken?.symbol || "" })
+                isInvaPool ? t("Earn INVA, stake INVA") : t("Stake %symbol%", { symbol: stakingToken?.symbol || "" })
               }
             />
             {tokenPairImage}

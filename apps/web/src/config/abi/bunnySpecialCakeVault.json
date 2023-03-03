@@ -3,7 +3,7 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_cakeVault",
+        "name": "_invaVault",
         "type": "address"
       },
       {
@@ -13,7 +13,7 @@
       },
       {
         "internalType": "address",
-        "name": "_pancakeProfile",
+        "name": "_spaceinvadersProfile",
         "type": "address"
       },
       {
@@ -169,10 +169,10 @@
   },
   {
     "inputs": [],
-    "name": "cakeVault",
+    "name": "invaVault",
     "outputs": [
       {
-        "internalType": "contract CakeVault",
+        "internalType": "contract InvaVault",
         "name": "",
         "type": "address"
       }
@@ -331,10 +331,10 @@
   },
   {
     "inputs": [],
-    "name": "pancakeProfile",
+    "name": "spaceinvadersProfile",
     "outputs": [
       {
-        "internalType": "contract PancakeProfile",
+        "internalType": "contract SpaceinvadersProfile",
         "name": "",
         "type": "address"
       }

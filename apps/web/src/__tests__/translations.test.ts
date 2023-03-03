@@ -5,7 +5,7 @@ import teams from 'config/constants/teams'
 import { NftLocation } from 'state/nftMarket/types'
 
 // FIXME: should move this test file inside localization pkg
-import { translations } from '@pancakeswap/localization'
+import { translations } from '@spaceinvaders-swap/localization'
 
 const allTranslationKeys = Object.keys(translations)
 
@@ -20,15 +20,15 @@ const whitelist = [
   'Watch out for Flipsie’s spatula smash!',
   'Do you like chocolate with your syrup? Go long!',
   'Happy Niu Year! This bunny’s excited for the year of the bull (market!)',
-  'Sunny is always cheerful when there are pancakes around. Smile!',
-  `Don't let that dopey smile deceive you... Churro's a master CAKE chef!`,
-  `Nommm... Oh hi, I'm just meditating on the meaning of CAKE.`,
-  `Three guesses what's put that twinkle in those eyes! (Hint: it's CAKE)`,
-  'These bunnies love nothing more than swapping pancakes. Especially on BSC.',
+  'Sunny is always cheerful when there are spaceinvaderss around. Smile!',
+  `Don't let that dopey smile deceive you... Churro's a master INVA chef!`,
+  `Nommm... Oh hi, I'm just meditating on the meaning of INVA.`,
+  `Three guesses what's put that twinkle in those eyes! (Hint: it's INVA)`,
+  'These bunnies love nothing more than swapping spaceinvaderss. Especially on BSC.',
   `It's raining syrup on this bunny, but he doesn't seem to mind. Can you blame him?`,
-  `These bunnies like their pancakes with blueberries. What's your favorite topping?`,
-  "Love makes the world go 'round... but so do pancakes. And these bunnies know it.",
-  `It’s sparkling syrup, pancakes, and even lottery tickets! This bunny really loves it.`,
+  `These bunnies like their spaceinvaderss with blueberries. What's your favorite topping?`,
+  "Love makes the world go 'round... but so do spaceinvaderss. And these bunnies know it.",
+  `It’s sparkling syrup, spaceinvaderss, and even lottery tickets! This bunny really loves it.`,
   'Swap max. %inputAmount% %inputSymbol% for %outputAmount% %outputSymbol%',
   'Swap max. %inputAmount% %inputSymbol% for %outputAmount% %outputSymbol% to %recipientAddress%',
   'Swap %inputAmount% %inputSymbol% for min. %outputAmount% %outputSymbol%',
@@ -50,12 +50,12 @@ const whitelist = [
   'Sort Title A-Z',
   'Sort Title Z-A',
   'All articles',
-  'Learn basics of PancakeSwap',
+  'Learn basics of SpaceinvadersSwap',
   'Learn how',
   'You might also like',
   'Chef’s choice',
   'Recommended Readings by Chef’s',
-  'Latest News about PancakeSwap and more!',
+  'Latest News about SpaceinvadersSwap and more!',
 ]
 
 describe.concurrent('Check translations integrity', () => {

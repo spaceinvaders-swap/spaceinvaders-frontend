@@ -1,12 +1,12 @@
 import { Profile } from 'state/types'
-import { PancakeProfile } from 'config/abi/types/PancakeProfile'
-import profileABI from 'config/abi/pancakeProfile.json'
+import { SpaceinvadersProfile } from 'config/abi/types/SpaceinvadersProfile'
+import profileABI from 'config/abi/spaceinvadersProfile.json'
 import { API_PROFILE } from 'config/constants/endpoints'
 import { getTeam } from 'state/teams/helpers'
 import { NftToken } from 'state/nftMarket/types'
 import { getNftApi } from 'state/nftMarket/helpers'
 import { multicallv2 } from 'utils/multicall'
-import { getPancakeProfileAddress } from 'utils/addressHelpers'
+import { getSpaceinvadersProfileAddress } from 'utils/addressHelpers'
 
 export interface GetProfileResponse {
   hasRegistered: boolean
@@ -14,7 +14,7 @@ export interface GetProfileResponse {
 }
 
 const transformProfileResponse = (
-  profileResponse: Awaited<ReturnType<PancakeProfile['getUserProfile']>>,
+  profileResponse: Awaited<ReturnType<SpaceinvadersProfile['getUserProfile']>>,
 ): Partial<Profile> => {
   const { 0: userId, 1: numberPoints, 2: teamId, 3: collectionAddress, 4: tokenId, 5: isActive } = profileResponse
 
@@ -47,7 +47,7 @@ export const getUsername = async (address: string): Promise<string> => {
 export const getProfile = async (address: string): Promise<GetProfileResponse> => {
   try {
     const profileCalls = ['hasRegistered', 'getUserProfile'].map((method) => {
-      return { address: getPancakeProfileAddress(), name: method, params: [address] }
+      return { address: getSpaceinvadersProfileAddress(), name: method, params: [address] }
     })
     const profileCallsResult = await multicallv2({
       abi: profileABI,

@@ -1,16 +1,16 @@
 import { useState } from 'react'
 import BigNumber from 'bignumber.js'
 import styled from 'styled-components'
-import { useTranslation } from '@pancakeswap/localization'
-import { Flex, CardFooter, ExpandableLabel, HelpIcon, Pool } from '@pancakeswap/uikit'
-import { Token } from '@pancakeswap/sdk'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { Flex, CardFooter, ExpandableLabel, HelpIcon, Pool } from '@spaceinvaders-swap/uikit'
+import { Token } from '@spaceinvaders-swap/sdk'
 import PoolStatsInfo from '../../PoolStatsInfo'
 import PoolTypeTag from '../../PoolTypeTag'
 
 interface FooterProps {
   pool: Pool.DeserializedPool<Token>
   account: string
-  totalCakeInVault?: BigNumber
+  totalInvaInVault?: BigNumber
   defaultExpanded?: boolean
   isLocked?: boolean
 }

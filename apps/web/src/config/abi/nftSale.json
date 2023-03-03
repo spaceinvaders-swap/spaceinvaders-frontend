@@ -3,7 +3,7 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_pancakeSquad",
+        "name": "_spaceinvadersSquad",
         "type": "address"
       },
       {
@@ -18,12 +18,12 @@
       },
       {
         "internalType": "address",
-        "name": "_cakeToken",
+        "name": "_invaToken",
         "type": "address"
       },
       {
         "internalType": "address",
-        "name": "_pancakeProfile",
+        "name": "_spaceinvadersProfile",
         "type": "address"
       },
       {
@@ -277,7 +277,7 @@
   },
   {
     "inputs": [],
-    "name": "cakeToken",
+    "name": "invaToken",
     "outputs": [
       {
         "internalType": "contract IERC20",
@@ -334,7 +334,7 @@
         "type": "address"
       }
     ],
-    "name": "changeOwnershipPancakeSquad",
+    "name": "changeOwnershipSpaceinvadersSquad",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -556,10 +556,10 @@
   },
   {
     "inputs": [],
-    "name": "pancakeProfile",
+    "name": "spaceinvadersProfile",
     "outputs": [
       {
-        "internalType": "contract IPancakeProfile",
+        "internalType": "contract ISpaceinvadersProfile",
         "name": "",
         "type": "address"
       }
@@ -569,10 +569,10 @@
   },
   {
     "inputs": [],
-    "name": "pancakeSquad",
+    "name": "spaceinvadersSquad",
     "outputs": [
       {
-        "internalType": "contract PancakeSquad",
+        "internalType": "contract SpaceinvadersSquad",
         "name": "",
         "type": "address"
       }

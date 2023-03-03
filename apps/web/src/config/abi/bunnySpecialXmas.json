@@ -2,8 +2,8 @@
   {
     "inputs": [
       { "internalType": "address", "name": "_bunnyMintingStationAddress", "type": "address" },
-      { "internalType": "address", "name": "_pancakeProfileAddress", "type": "address" },
-      { "internalType": "uint256", "name": "_pancakeProfileThresholdPoints", "type": "uint256" },
+      { "internalType": "address", "name": "_spaceinvadersProfileAddress", "type": "address" },
+      { "internalType": "uint256", "name": "_spaceinvadersProfileThresholdPoints", "type": "uint256" },
       { "internalType": "uint8", "name": "_nftId", "type": "uint8" },
       { "internalType": "uint256", "name": "_endBlock", "type": "uint256" }
     ],
@@ -29,7 +29,7 @@
   {
     "anonymous": false,
     "inputs": [{ "indexed": false, "internalType": "uint256", "name": "thresholdPoints", "type": "uint256" }],
-    "name": "NewPancakeProfileThresholdPoints",
+    "name": "NewSpaceinvadersProfileThresholdPoints",
     "type": "event"
   },
   {
@@ -92,14 +92,14 @@
   },
   {
     "inputs": [],
-    "name": "pancakeProfile",
-    "outputs": [{ "internalType": "contract IPancakeProfile", "name": "", "type": "address" }],
+    "name": "spaceinvadersProfile",
+    "outputs": [{ "internalType": "contract ISpaceinvadersProfile", "name": "", "type": "address" }],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [],
-    "name": "pancakeProfileThresholdPoints",
+    "name": "spaceinvadersProfileThresholdPoints",
     "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
     "stateMutability": "view",
     "type": "function"

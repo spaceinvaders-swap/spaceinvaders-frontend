@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { Box, Text, Flex, Card, Button, ArrowForwardIcon, Link } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Box, Text, Flex, Card, Button, ArrowForwardIcon, Link } from '@spaceinvaders-swap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 
 const StyledImage = styled('div')`
   position: absolute;
@@ -35,13 +35,13 @@ const HowItWork = () => {
               {t('How does it work?')}
             </Text>
             <Text bold fontSize={['24px', '24px', '40px']} m={['16px 0']} lineHeight="110%">
-              {t('Learn basics of PancakeSwap')}
+              {t('Learn basics of SpaceinvadersSwap')}
             </Text>
             <Text fontSize={['14px', '14px', '16px']} color="textSubtle">
               {t('Trade tokens, earn rewards and play to win!')}
             </Text>
           </Flex>
-          <Link external href="https://docs.pancakeswap.finance/get-started">
+          <Link external href="https://docs.spaceinvaders-swap.finance/get-started">
             <Button endIcon={<ArrowForwardIcon color="currentColor" />}>{t('Learn how')}</Button>
           </Link>
         </Box>

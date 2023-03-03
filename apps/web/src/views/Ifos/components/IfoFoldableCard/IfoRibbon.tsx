@@ -1,5 +1,5 @@
-import { Box, Flex, Heading, Progress, ProgressBar } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Box, Flex, Heading, Progress, ProgressBar } from '@spaceinvaders-swap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import styled from 'styled-components'
 import { PublicIfoData } from '../../types'
 import LiveTimer, { SoonTimer } from './Timer'

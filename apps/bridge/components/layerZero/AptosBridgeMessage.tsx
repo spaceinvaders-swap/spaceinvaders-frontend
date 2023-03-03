@@ -1,4 +1,4 @@
-import { Box, Message, MessageText, WarningIcon, Flex, Link } from '@pancakeswap/uikit'
+import { Box, Message, MessageText, WarningIcon, Flex, Link } from '@spaceinvaders-swap/uikit'
 import styled from 'styled-components'
 
 const InlineLink = styled(Link)`
@@ -17,7 +17,7 @@ const AptosBridgeMessage = () => {
       >
         <Flex flexDirection="column">
           <MessageText>
-            For CAKE bridging, the waiting time is around 3-10 mins. For assets other than CAKE, outbound transfers are
+            For INVA bridging, the waiting time is around 3-10 mins. For assets other than INVA, outbound transfers are
             subject to 500.000 block confirmations, estimated to last ~2 days.
           </MessageText>
           <MessageText mb="5px">
@@ -25,7 +25,7 @@ const AptosBridgeMessage = () => {
             <InlineLink
               ml="4px"
               external
-              href="https://docs.pancakeswap.finance/get-started-aptos/aptos-faq#cake-bridging"
+              href="https://docs.spaceinvaders-swap.finance/get-started-aptos/aptos-faq#inva-bridging"
             >
               FAQ.
             </InlineLink>

@@ -1,13 +1,13 @@
-import { CurrencyAmount, Pair, Currency } from '@pancakeswap/sdk'
+import { CurrencyAmount, Pair, Currency } from '@spaceinvaders-swap/sdk'
 import { useMemo } from 'react'
-import IPancakePairABI from 'config/abi/IPancakePair.json'
+import ISpaceinvadersPairABI from 'config/abi/ISpaceinvadersPair.json'
 import { Interface } from '@ethersproject/abi'
 
 import { useMultipleContractSingleData } from '../state/multicall/hooks'
 import { wrappedCurrency } from '../utils/wrappedCurrency'
 import { useActiveChainId } from './useActiveChainId'
 
-const PAIR_INTERFACE = new Interface(IPancakePairABI)
+const PAIR_INTERFACE = new Interface(ISpaceinvadersPairABI)
 
 export enum PairState {
   LOADING,

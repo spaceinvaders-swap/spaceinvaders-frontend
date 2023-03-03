@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/sdk'
+import { ChainId } from '@spaceinvaders-swap/sdk'
 import { ACCESS_RISK_API } from 'config/constants/endpoints'
 
 import { z } from 'zod'

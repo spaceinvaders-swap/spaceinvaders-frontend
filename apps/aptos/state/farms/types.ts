@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 
 export interface FarmResourcePoolInfo {
-  acc_cake_per_share: string
+  acc_inva_per_share: string
   alloc_point: string
   is_regular: boolean
   last_reward_timestamp: string
@@ -18,9 +18,9 @@ export interface FarmResourceUserInfo {
 export interface MapFarmResource {
   pid?: number
   admin: string
-  cake_per_second: string
-  cake_rate_to_regular: string
-  cake_rate_to_special: string
+  inva_per_second: string
+  inva_rate_to_regular: string
+  inva_rate_to_special: string
   lps: Array<string>
   pool_info: FarmResourcePoolInfo[]
   signer_cap: {

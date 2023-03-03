@@ -1,4 +1,4 @@
-import { BigintIsh, CurrencyAmount, Currency, JSBI, ZERO, Percent } from '@pancakeswap/sdk'
+import { BigintIsh, CurrencyAmount, Currency, JSBI, ZERO, Percent } from '@spaceinvaders-swap/sdk'
 import invariant from 'tiny-invariant'
 
 import { getD } from './amm'

@@ -8,20 +8,20 @@ import {
   Skeleton,
   Text,
   CopyAddress,
-} from '@pancakeswap/uikit'
-import { ChainId, WNATIVE } from '@pancakeswap/sdk'
+} from '@spaceinvaders-swap/uikit'
+import { ChainId, WNATIVE } from '@spaceinvaders-swap/sdk'
 import { FetchStatus } from 'config/constants/types'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import useAuth from 'hooks/useAuth'
 import useNativeCurrency from 'hooks/useNativeCurrency'
-import useTokenBalance, { useGetCakeBalance } from 'hooks/useTokenBalance'
+import useTokenBalance, { useGetInvaBalance } from 'hooks/useTokenBalance'
 import { ChainLogo } from 'components/Logo/ChainLogo'
 
 import { getBlockExploreLink, getBlockExploreName } from 'utils'
-import { formatBigNumber, getFullDisplayBalance } from '@pancakeswap/utils/formatBalance'
+import { formatBigNumber, getFullDisplayBalance } from '@spaceinvaders-swap/utils/formatBalance'
 import { useBalance } from 'wagmi'
-import CakeBenefitsCard from './CakeBenefitsCard'
+import InvaBenefitsCard from './InvaBenefitsCard'
 
 const COLORS = {
   ETH: '#627EEA',
@@ -45,7 +45,7 @@ const WalletInfo: React.FC<WalletInfoProps> = ({ hasLowNativeBalance, onDismiss 
   const wBNBToken = WNATIVE[ChainId.BSC]
   const { balance: wNativeBalance, fetchStatus: wNativeFetchStatus } = useTokenBalance(wNativeToken?.address)
   const { balance: wBNBBalance, fetchStatus: wBNBFetchStatus } = useTokenBalance(wBNBToken?.address, true)
-  const { balance: cakeBalance, fetchStatus: cakeFetchStatus } = useGetCakeBalance()
+  const { balance: invaBalance, fetchStatus: invaFetchStatus } = useGetInvaBalance()
   const { logout } = useAuth()
 
   const handleLogout = () => {
@@ -143,15 +143,15 @@ const WalletInfo: React.FC<WalletInfoProps> = ({ hasLowNativeBalance, onDismiss 
           </Flex>
         )}
         <Flex alignItems="center" justifyContent="space-between">
-          <Text color="textSubtle">{t('CAKE Balance')}</Text>
-          {cakeFetchStatus !== FetchStatus.Fetched ? (
+          <Text color="textSubtle">{t('INVA Balance')}</Text>
+          {invaFetchStatus !== FetchStatus.Fetched ? (
             <Skeleton height="22px" width="60px" />
           ) : (
-            <Text>{formatBigNumber(cakeBalance, 3)}</Text>
+            <Text>{formatBigNumber(invaBalance, 3)}</Text>
           )}
         </Flex>
       </Box>
-      <CakeBenefitsCard onDismiss={onDismiss} />
+      <InvaBenefitsCard onDismiss={onDismiss} />
       <Button variant="secondary" width="100%" minHeight={48} onClick={handleLogout}>
         {t('Disconnect Wallet')}
       </Button>

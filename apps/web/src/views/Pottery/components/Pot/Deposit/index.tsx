@@ -1,17 +1,17 @@
 import styled from 'styled-components'
 import { useMemo } from 'react'
 import BigNumber from 'bignumber.js'
-import { Flex, Box, Text, TooltipText, useTooltip, Balance } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Flex, Box, Text, TooltipText, useTooltip, Balance } from '@spaceinvaders-swap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import { GreyCard } from 'components/Card'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import { useVaultApy } from 'hooks/useVaultApy'
 import { usePotteryData, useLatestVaultAddress } from 'state/pottery/hook'
-import getTimePeriods from '@pancakeswap/utils/getTimePeriods'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import getTimePeriods from '@spaceinvaders-swap/utils/getTimePeriods'
+import { getBalanceNumber } from '@spaceinvaders-swap/utils/formatBalance'
+import { BIG_ZERO } from '@spaceinvaders-swap/utils/bigNumber'
 import { PotteryDepositStatus } from 'state/types'
-import { remainTimeToNextFriday, calculateCakeAmount } from 'views/Pottery/helpers'
+import { remainTimeToNextFriday, calculateInvaAmount } from 'views/Pottery/helpers'
 import { weeksToSeconds } from 'views/Pools/components/utils/formatSecondsToWeeks'
 import { useAccount } from 'wagmi'
 import YourDeposit from '../YourDeposit'
@@ -35,7 +35,7 @@ const Deposit: React.FC<React.PropsWithChildren> = () => {
   const { getLockedApy } = useVaultApy()
   const { publicData, userData } = usePotteryData()
   const lastVaultAddress = useLatestVaultAddress()
-  const { totalSupply, totalLockCake, getStatus, totalLockedValue, maxTotalDeposit } = publicData
+  const { totalSupply, totalLockInva, getStatus, totalLockedValue, maxTotalDeposit } = publicData
 
   const { targetRef, tooltip, tooltipVisible } = useTooltip(t('Pottery draws on each Friday at 12 PM UTC!'), {
     placement: 'bottom-start',
@@ -59,10 +59,10 @@ const Deposit: React.FC<React.PropsWithChildren> = () => {
 
   const totalValueLocked = useMemo(() => {
     if (getStatus === PotteryDepositStatus.LOCK) {
-      return getBalanceNumber(totalLockCake)
+      return getBalanceNumber(totalLockInva)
     }
     return getBalanceNumber(totalLockedValue)
-  }, [getStatus, totalLockCake, totalLockedValue])
+  }, [getStatus, totalLockInva, totalLockedValue])
 
   const currentDeposit = userData.withdrawAbleData.find(
     (data) => data.potteryVaultAddress.toLowerCase() === lastVaultAddress.toLowerCase(),
@@ -76,11 +76,11 @@ const Deposit: React.FC<React.PropsWithChildren> = () => {
 
     if (currentDeposit) {
       const { previewRedeem, shares, status } = currentDeposit
-      return calculateCakeAmount({ status, previewRedeem, shares, totalSupply, totalLockCake })
+      return calculateInvaAmount({ status, previewRedeem, shares, totalSupply, totalLockInva })
     }
 
     return BIG_ZERO
-  }, [userData, getStatus, currentDeposit, totalSupply, totalLockCake])
+  }, [userData, getStatus, currentDeposit, totalSupply, totalLockInva])
 
   return (
     <Box>
@@ -123,11 +123,11 @@ const Deposit: React.FC<React.PropsWithChildren> = () => {
         )}
         <Flex justifyContent="space-between">
           <Text color="textSubtle">{t('Total Value Locked')}</Text>
-          <Balance bold decimals={2} value={totalValueLocked} unit=" CAKE" />
+          <Balance bold decimals={2} value={totalValueLocked} unit=" INVA" />
         </Flex>
         <Flex justifyContent="space-between">
           <Text color="textSubtle">{t('Max. deposit cap')}</Text>
-          <Balance bold decimals={2} value={getBalanceNumber(maxTotalDeposit)} unit=" CAKE" />
+          <Balance bold decimals={2} value={getBalanceNumber(maxTotalDeposit)} unit=" INVA" />
         </Flex>
       </Container>
       <CardAction>

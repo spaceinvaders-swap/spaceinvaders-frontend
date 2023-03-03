@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { Flex, Text, Heading, NftIcon, BunnyPlaceholderIcon } from '@pancakeswap/uikit'
+import { Flex, Text, Heading, NftIcon, BunnyPlaceholderIcon } from '@spaceinvaders-swap/uikit'
 import Image from 'next/image'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import MoboxFlipperBunny from '../../../pngs/mobox-flipper.png'
 
 const StyledFlex = styled(Flex)`
@@ -40,7 +40,7 @@ const MoboxPrizesText = () => {
         <NftIcon width="32px" mr="16px" color="textSubtle" />
         <Text mt="8px">
           {t(
-            '300 Mobox Avatars NFT + 300 PancakeSwap newly designed NFT to the top 100 traders in each of the three teams.',
+            '300 Mobox Avatars NFT + 300 SpaceinvadersSwap newly designed NFT to the top 100 traders in each of the three teams.',
           )}
         </Text>
       </Flex>

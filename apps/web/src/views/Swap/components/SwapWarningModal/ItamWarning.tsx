@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Text, Link } from '@pancakeswap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { Text, Link } from '@spaceinvaders-swap/uikit'
 
 const ItamWarning = () => {
   const { t } = useTranslation()

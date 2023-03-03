@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, ERC20Token, Pair, Percent, Price, Trade, TradeType, JSBI } from '@pancakeswap/sdk'
+import { Currency, CurrencyAmount, ERC20Token, Pair, Percent, Price, Trade, TradeType, JSBI } from '@spaceinvaders-swap/sdk'
 import invariant from 'tiny-invariant'
 
 import { RouteType, RouteWithStableSwap, StableSwapFeeRaw, StableSwapPair, StableSwapFeePercent } from '../types'
@@ -18,7 +18,7 @@ export function createStableSwapPair(
     stableSwapAddress,
     lpAddress,
     infoStableSwapAddress,
-    liquidityToken: new ERC20Token(pair.token0.chainId, lpAddress, 18, 'Stable-LP', 'Pancake StableSwap LPs'),
+    liquidityToken: new ERC20Token(pair.token0.chainId, lpAddress, 18, 'Stable-LP', 'Spaceinvaders StableSwap LPs'),
     // default price & fees are zero, need to get the actual price from chain
     price: new Price(pair.token0, pair.token1, '0', '1'),
     fee: new Percent(0),

@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { IconButton, useTooltip, BridgeIcon } from '@pancakeswap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { IconButton, useTooltip, BridgeIcon } from '@spaceinvaders-swap/uikit'
 
 interface BridgeInfo {
   platform: string
@@ -9,9 +9,9 @@ interface BridgeInfo {
 
 export const bridgeInfo: BridgeInfo[] = [
   {
-    platform: 'Pancake Bridge',
-    symbol: 'CAKE',
-    url: 'https://bridge.pancakeswap.finance/aptos',
+    platform: 'Spaceinvaders Bridge',
+    symbol: 'INVA',
+    url: 'https://bridge.spaceinvaders-swap.finance/aptos',
   },
   {
     platform: 'LayerZero Bridge',

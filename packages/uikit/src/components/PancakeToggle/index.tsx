@@ -1,2 +1,2 @@
-export { default as PancakeToggle } from "./PancakeToggle";
-export type { PancakeToggleProps, Scales as PancakeToggleScales } from "./types";
+export { default as SpaceinvadersToggle } from "./SpaceinvadersToggle";
+export type { SpaceinvadersToggleProps, Scales as SpaceinvadersToggleScales } from "./types";

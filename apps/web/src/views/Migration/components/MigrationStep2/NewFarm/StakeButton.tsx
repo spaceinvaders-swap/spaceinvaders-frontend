@@ -1,4 +1,4 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import {
   AddIcon,
   Button,
@@ -8,7 +8,7 @@ import {
   useModal,
   useToast,
   Farm as FarmUI,
-} from '@pancakeswap/uikit'
+} from '@spaceinvaders-swap/uikit'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import { BASE_ADD_LIQUIDITY_URL } from 'config'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
@@ -17,14 +17,14 @@ import { useERC20 } from 'hooks/useContract'
 import React, { useCallback, useState } from 'react'
 import { useAppDispatch } from 'state'
 import { fetchFarmUserDataAsync } from 'state/farms'
-import { useFarmUser, usePriceCakeBusd, useFarmFromPid } from 'state/farms/hooks'
+import { useFarmUser, usePriceInvaBusd, useFarmFromPid } from 'state/farms/hooks'
 import styled from 'styled-components'
 import getLiquidityUrlPathParts from 'utils/getLiquidityUrlPathParts'
-import { FarmWithStakedValue } from '@pancakeswap/farms'
+import { FarmWithStakedValue } from '@spaceinvaders-swap/farms'
 import useApproveFarm from 'views/Farms/hooks/useApproveFarm'
 import useStakeFarms from 'views/Farms/hooks/useStakeFarms'
 import useUnstakeFarms from 'views/Farms/hooks/useUnstakeFarms'
-import BCakeCalculator from 'views/Farms/components/YieldBooster/components/BCakeCalculator'
+import BInvaCalculator from 'views/Farms/components/YieldBooster/components/BInvaCalculator'
 
 const IconButtonWrapper = styled.div`
   display: flex;
@@ -58,9 +58,9 @@ const StakeButton: React.FC<React.PropsWithChildren<StackedActionProps>> = ({
   const { allowance, tokenBalance, stakedBalance } = useFarmUser(pid)
   const { onStake } = useStakeFarms(stakedPid)
   const { onUnstake } = useUnstakeFarms(stakedPid)
-  const cakePrice = usePriceCakeBusd()
+  const invaPrice = usePriceInvaBusd()
   const { lpTokenStakedAmount } = useFarmFromPid(pid)
-  const [bCakeMultiplier, setBCakeMultiplier] = useState<number | null>(() => null)
+  const [bInvaMultiplier, setBInvaMultiplier] = useState<number | null>(() => null)
 
   const isApproved = account && allowance && allowance.isGreaterThan(0)
 
@@ -101,12 +101,12 @@ const StakeButton: React.FC<React.PropsWithChildren<StackedActionProps>> = ({
     }
   }
 
-  const bCakeCalculatorSlot = (calculatorBalance) => (
-    <BCakeCalculator
+  const bInvaCalculatorSlot = (calculatorBalance) => (
+    <BInvaCalculator
       targetInputBalance={calculatorBalance}
-      earningTokenPrice={cakePrice.toNumber()}
+      earningTokenPrice={invaPrice.toNumber()}
       lpTokenStakedAmount={lpTokenStakedAmount}
-      setBCakeMultiplier={setBCakeMultiplier}
+      setBInvaMultiplier={setBInvaMultiplier}
     />
   )
 
@@ -125,10 +125,10 @@ const StakeButton: React.FC<React.PropsWithChildren<StackedActionProps>> = ({
       tokenName={lpSymbol}
       multiplier={multiplier}
       addLiquidityUrl={addLiquidityUrl}
-      cakePrice={cakePrice}
-      bCakeMultiplier={bCakeMultiplier}
+      invaPrice={invaPrice}
+      bInvaMultiplier={bInvaMultiplier}
       decimals={18}
-      bCakeCalculatorSlot={bCakeCalculatorSlot}
+      bInvaCalculatorSlot={bInvaCalculatorSlot}
     />,
   )
   const [onPresentWithdraw] = useModal(

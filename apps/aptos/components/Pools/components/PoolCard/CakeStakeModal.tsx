@@ -1,15 +1,15 @@
-import { Pool } from '@pancakeswap/uikit'
+import { Pool } from '@spaceinvaders-swap/uikit'
 import { useCallback } from 'react'
 
-import { Coin, ChainId } from '@pancakeswap/aptos-swap-sdk'
+import { Coin, ChainId } from '@spaceinvaders-swap/aptos-swap-sdk'
 import useUnstakeFarms from 'components/Farms/hooks/useUnstakeFarms'
 import useStakeFarms from 'components/Farms/hooks/useStakeFarms'
-import { useQueryClient } from '@pancakeswap/awgmi'
-import cakePoolRelatedQueries from 'components/Pools/utils/cakePoolRelatedQueries'
+import { useQueryClient } from '@spaceinvaders-swap/awgmi'
+import invaPoolRelatedQueries from 'components/Pools/utils/invaPoolRelatedQueries'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import StakeModalContainer from './StakeModalContainer'
 
-const CakeStakeModal = ({ pool, ...rest }: Pool.StakeModalPropsType<Coin>) => {
+const InvaStakeModal = ({ pool, ...rest }: Pool.StakeModalPropsType<Coin>) => {
   const { contractAddress } = pool
   const queryClient = useQueryClient()
   const { account, networkName } = useActiveWeb3React()
@@ -19,7 +19,7 @@ const CakeStakeModal = ({ pool, ...rest }: Pool.StakeModalPropsType<Coin>) => {
 
   const onDone = useCallback(() => {
     queryClient.invalidateQueries({
-      predicate: cakePoolRelatedQueries(account),
+      predicate: invaPoolRelatedQueries(account),
     })
     queryClient.invalidateQueries({
       queryKey: [{ entity: 'accountResources', networkName, address: account }],
@@ -29,4 +29,4 @@ const CakeStakeModal = ({ pool, ...rest }: Pool.StakeModalPropsType<Coin>) => {
   return <StakeModalContainer {...rest} onDone={onDone} onUnstake={onUnstake} onStake={onStake} pool={pool} />
 }
 
-export default CakeStakeModal
+export default InvaStakeModal

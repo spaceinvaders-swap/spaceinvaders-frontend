@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { ChainId } from '@pancakeswap/sdk'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { ChainId } from '@spaceinvaders-swap/sdk'
 import {
   Box,
   Flex,
@@ -7,12 +7,12 @@ import {
   Link,
   Modal,
   ExpertModal,
-  PancakeToggle,
+  SpaceinvadersToggle,
   QuestionHelper,
   Text,
   ThemeSwitcher,
   Toggle,
-} from '@pancakeswap/uikit'
+} from '@spaceinvaders-swap/uikit'
 import { SUPPORT_ZAP } from 'config/constants/supportChains'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import useTheme from 'hooks/useTheme'
@@ -273,12 +273,12 @@ const SettingsModal: React.FC<React.PropsWithChildren<InjectedModalProps>> = ({ 
               <Flex alignItems="center">
                 <Text>{t('Flippy sounds')}</Text>
                 <QuestionHelper
-                  text={t('Fun sounds to make a truly immersive pancake-flipping trading experience')}
+                  text={t('Fun sounds to make a truly immersive spaceinvaders-flipping trading experience')}
                   placement="top-start"
                   ml="4px"
                 />
               </Flex>
-              <PancakeToggle checked={audioPlay} onChange={toggleSetAudioMode} scale="md" />
+              <SpaceinvadersToggle checked={audioPlay} onChange={toggleSetAudioMode} scale="md" />
             </Flex>
             <Flex justifyContent="space-between" alignItems="center" mb="24px">
               <Flex alignItems="center">

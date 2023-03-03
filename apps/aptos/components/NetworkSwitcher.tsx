@@ -1,9 +1,9 @@
-import { useNetwork } from '@pancakeswap/awgmi'
-import { useIsMounted } from '@pancakeswap/hooks'
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Text, UserMenu, UserMenuDivider, UserMenuItem } from '@pancakeswap/uikit'
+import { useNetwork } from '@spaceinvaders-swap/awgmi'
+import { useIsMounted } from '@spaceinvaders-swap/hooks'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { Box, Text, UserMenu, UserMenuDivider, UserMenuItem } from '@spaceinvaders-swap/uikit'
 import { ChainIdName } from 'config/ChainName'
-import { ChainId } from '@pancakeswap/aptos-swap-sdk'
+import { ChainId } from '@spaceinvaders-swap/aptos-swap-sdk'
 import { APEX_DOMAIN } from 'config'
 import { defaultChain } from 'config/chains'
 import Image from 'next/image'
@@ -58,7 +58,7 @@ export const NetworkSwitcher = () => {
     <UserMenu
       mr="8px"
       variant="default"
-      avatarSrc="https://tokens.pancakeswap.finance/images/symbol/apt.png"
+      avatarSrc="https://tokens.spaceinvaders-swap.finance/images/symbol/apt.png"
       avatarClassName={aptosLogoClass({
         isProduction: isMounted && chain?.id === ChainId.MAINNET,
       })}

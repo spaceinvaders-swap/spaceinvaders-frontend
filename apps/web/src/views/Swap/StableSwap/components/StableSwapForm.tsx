@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, Percent } from '@pancakeswap/sdk'
+import { Currency, CurrencyAmount, Percent } from '@spaceinvaders-swap/sdk'
 import {
   ArrowDownIcon,
   ArrowUpDownIcon,
@@ -13,12 +13,12 @@ import {
   Swap as SwapUI,
   Text,
   useModal,
-} from '@pancakeswap/uikit'
-import InfoTooltip from '@pancakeswap/uikit/src/components/Timeline/InfoTooltip'
+} from '@spaceinvaders-swap/uikit'
+import InfoTooltip from '@spaceinvaders-swap/uikit/src/components/Timeline/InfoTooltip'
 import { useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import styled from 'styled-components'
 
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import { useSwapActionHandlers } from 'state/swap/useSwapActionHandlers'
 import { maxAmountSpend } from 'utils/maxAmountSpend'
 
@@ -32,7 +32,7 @@ import { Field } from 'state/swap/actions'
 import { useSwapState } from 'state/swap/hooks'
 import { useExpertModeManager, useUserSlippageTolerance } from 'state/user/hooks'
 
-import replaceBrowserHistory from '@pancakeswap/utils/replaceBrowserHistory'
+import replaceBrowserHistory from '@spaceinvaders-swap/utils/replaceBrowserHistory'
 import { currencyId } from 'utils/currencyId'
 
 import { useStableSwapPairs } from 'state/swap/useStableSwapPairs'

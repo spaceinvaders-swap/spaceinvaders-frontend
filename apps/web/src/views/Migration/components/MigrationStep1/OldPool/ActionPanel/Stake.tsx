@@ -1,14 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useTranslation } from '@pancakeswap/localization'
-import { Flex, Text, Balance, Pool } from '@pancakeswap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { Flex, Text, Balance, Pool } from '@spaceinvaders-swap/uikit'
 import { ActionContainer, ActionContent, ActionTitles } from 'views/Pools/components/PoolsTable/ActionPanel/styles'
 import BigNumber from 'bignumber.js'
 import { useVaultPoolByKeyV1 } from 'views/Migration/hook/V1/Pool/useFetchIfoPool'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
-import { convertSharesToCake } from 'views/Pools/helpers'
-import { Token } from '@pancakeswap/sdk'
+import { BIG_ZERO } from '@spaceinvaders-swap/utils/bigNumber'
+import { getBalanceNumber } from '@spaceinvaders-swap/utils/formatBalance'
+import { convertSharesToInva } from 'views/Pools/helpers'
+import { Token } from '@spaceinvaders-swap/sdk'
 import UnstakeButton from '../UnstakeButton'
 
 const Container = styled(ActionContainer)`
@@ -35,20 +35,20 @@ const Staked: React.FC<React.PropsWithChildren<StackedActionProps>> = ({ pool })
   const { pricePerFullShare } = vaultPoolData
   const { userShares } = vaultPoolData.userData
 
-  let cakeAsBigNumber = BIG_ZERO
-  let cakeAsNumberBalance = 0
+  let invaAsBigNumber = BIG_ZERO
+  let invaAsNumberBalance = 0
   if (pricePerFullShare) {
-    const { cakeAsBigNumber: cakeBigBumber, cakeAsNumberBalance: cakeBalance } = convertSharesToCake(
+    const { invaAsBigNumber: invaBigBumber, invaAsNumberBalance: invaBalance } = convertSharesToInva(
       userShares,
       pricePerFullShare,
     )
-    cakeAsBigNumber = cakeBigBumber
-    cakeAsNumberBalance = cakeBalance
+    invaAsBigNumber = invaBigBumber
+    invaAsNumberBalance = invaBalance
   }
 
-  const stakedAutoDollarValue = getBalanceNumber(cakeAsBigNumber.multipliedBy(stakingTokenPrice), stakingToken.decimals)
+  const stakedAutoDollarValue = getBalanceNumber(invaAsBigNumber.multipliedBy(stakingTokenPrice), stakingToken.decimals)
 
-  const balance = vaultKey ? (Number.isNaN(cakeAsNumberBalance) ? 0 : cakeAsNumberBalance) : stakedTokenBalance
+  const balance = vaultKey ? (Number.isNaN(invaAsNumberBalance) ? 0 : invaAsNumberBalance) : stakedTokenBalance
   const isBalanceZero = balance === 0
 
   return (

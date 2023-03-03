@@ -1,31 +1,31 @@
 import BigNumber from 'bignumber.js'
 import { multicallv2, multicallv3 } from 'utils/multicall'
-import cakeAbi from 'config/abi/cake.json'
-import cakeVaultAbi from 'config/abi/cakeVaultV2.json'
-import { getCakeVaultAddress, getCakeFlexibleSideVaultAddress } from 'utils/addressHelpers'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { ChainId } from '@pancakeswap/sdk'
-import { CAKE } from '@pancakeswap/tokens'
+import invaAbi from 'config/abi/inva.json'
+import invaVaultAbi from 'config/abi/invaVaultV2.json'
+import { getInvaVaultAddress, getInvaFlexibleSideVaultAddress } from 'utils/addressHelpers'
+import { BIG_ZERO } from '@spaceinvaders-swap/utils/bigNumber'
+import { ChainId } from '@spaceinvaders-swap/sdk'
+import { INVA } from '@spaceinvaders-swap/tokens'
 
-const cakeVaultV2 = getCakeVaultAddress()
-const cakeFlexibleSideVaultV2 = getCakeFlexibleSideVaultAddress()
-export const fetchPublicVaultData = async (cakeVaultAddress = cakeVaultV2) => {
+const invaVaultV2 = getInvaVaultAddress()
+const invaFlexibleSideVaultV2 = getInvaFlexibleSideVaultAddress()
+export const fetchPublicVaultData = async (invaVaultAddress = invaVaultV2) => {
   try {
     const calls = ['getPricePerFullShare', 'totalShares', 'totalLockedAmount'].map((method) => ({
-      abi: cakeVaultAbi,
-      address: cakeVaultAddress,
+      abi: invaVaultAbi,
+      address: invaVaultAddress,
       name: method,
     }))
 
-    const cakeBalanceOfCall = {
-      abi: cakeAbi,
-      address: CAKE[ChainId.BSC].address,
+    const invaBalanceOfCall = {
+      abi: invaAbi,
+      address: INVA[ChainId.BSC].address,
       name: 'balanceOf',
-      params: [cakeVaultV2],
+      params: [invaVaultV2],
     }
 
-    const [[sharePrice], [shares], totalLockedAmount, [totalCakeInVault]] = await multicallv3({
-      calls: [...calls, cakeBalanceOfCall],
+    const [[sharePrice], [shares], totalLockedAmount, [totalInvaInVault]] = await multicallv3({
+      calls: [...calls, invaBalanceOfCall],
       allowFailure: true,
     })
 
@@ -36,35 +36,35 @@ export const fetchPublicVaultData = async (cakeVaultAddress = cakeVaultV2) => {
       totalShares: totalSharesAsBigNumber.toJSON(),
       totalLockedAmount: totalLockedAmountAsBigNumber.toJSON(),
       pricePerFullShare: sharePriceAsBigNumber.toJSON(),
-      totalCakeInVault: new BigNumber(totalCakeInVault.toString()).toJSON(),
+      totalInvaInVault: new BigNumber(totalInvaInVault.toString()).toJSON(),
     }
   } catch (error) {
     return {
       totalShares: null,
       totalLockedAmount: null,
       pricePerFullShare: null,
-      totalCakeInVault: null,
+      totalInvaInVault: null,
     }
   }
 }
 
-export const fetchPublicFlexibleSideVaultData = async (cakeVaultAddress = cakeFlexibleSideVaultV2) => {
+export const fetchPublicFlexibleSideVaultData = async (invaVaultAddress = invaFlexibleSideVaultV2) => {
   try {
     const calls = ['getPricePerFullShare', 'totalShares'].map((method) => ({
-      abi: cakeVaultAbi,
-      address: cakeVaultAddress,
+      abi: invaVaultAbi,
+      address: invaVaultAddress,
       name: method,
     }))
 
-    const cakeBalanceOfCall = {
-      abi: cakeAbi,
-      address: CAKE[ChainId.BSC].address,
+    const invaBalanceOfCall = {
+      abi: invaAbi,
+      address: INVA[ChainId.BSC].address,
       name: 'balanceOf',
-      params: [cakeVaultAddress],
+      params: [invaVaultAddress],
     }
 
-    const [[sharePrice], [shares], [totalCakeInVault]] = await multicallv3({
-      calls: [...calls, cakeBalanceOfCall],
+    const [[sharePrice], [shares], [totalInvaInVault]] = await multicallv3({
+      calls: [...calls, invaBalanceOfCall],
       allowFailure: true,
     })
 
@@ -73,25 +73,25 @@ export const fetchPublicFlexibleSideVaultData = async (cakeVaultAddress = cakeFl
     return {
       totalShares: totalSharesAsBigNumber.toJSON(),
       pricePerFullShare: sharePriceAsBigNumber.toJSON(),
-      totalCakeInVault: new BigNumber(totalCakeInVault.toString()).toJSON(),
+      totalInvaInVault: new BigNumber(totalInvaInVault.toString()).toJSON(),
     }
   } catch (error) {
     return {
       totalShares: null,
       pricePerFullShare: null,
-      totalCakeInVault: null,
+      totalInvaInVault: null,
     }
   }
 }
 
-export const fetchVaultFees = async (cakeVaultAddress = cakeVaultV2) => {
+export const fetchVaultFees = async (invaVaultAddress = invaVaultV2) => {
   try {
     const calls = ['performanceFee', 'withdrawFee', 'withdrawFeePeriod'].map((method) => ({
-      address: cakeVaultAddress,
+      address: invaVaultAddress,
       name: method,
     }))
 
-    const [[performanceFee], [withdrawalFee], [withdrawalFeePeriod]] = await multicallv2({ abi: cakeVaultAbi, calls })
+    const [[performanceFee], [withdrawalFee], [withdrawalFeePeriod]] = await multicallv2({ abi: invaVaultAbi, calls })
 
     return {
       performanceFee: performanceFee.toNumber(),

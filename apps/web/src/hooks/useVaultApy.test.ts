@@ -14,7 +14,7 @@ BigNumber.config({
 vi.mock('../state/pools/hooks', () => ({
   // @ts-ignore
   ...vi.importActual('state/pools/hooks'),
-  useCakeVault: vi.fn(),
+  useInvaVault: vi.fn(),
 }))
 
 describe('useVaultApy', () => {
@@ -32,7 +32,7 @@ describe('useVaultApy', () => {
     ],
   ])('should get correct vault apy', (cases, want) => {
     // @ts-ignore
-    PoolHooks.useCakeVault.mockReturnValue({
+    PoolHooks.useInvaVault.mockReturnValue({
       totalShares: cases.totalShares,
       pricePerFullShare: cases.pricePerFullShare,
     })
@@ -47,7 +47,7 @@ describe('useVaultApy', () => {
       },
       {
         wrapper: createSWRWrapper({
-          'masterChef-total-cake-pool-emission': cases.emission,
+          'masterChef-total-inva-pool-emission': cases.emission,
         }),
       },
     )

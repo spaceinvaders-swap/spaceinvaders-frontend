@@ -1,10 +1,10 @@
 import { useState, useMemo } from 'react'
-import { Modal, Box } from '@pancakeswap/uikit'
+import { Modal, Box } from '@spaceinvaders-swap/uikit'
 import useTheme from 'hooks/useTheme'
-import { useBUSDCakeAmount } from 'hooks/useBUSDPrice'
+import { useBUSDInvaAmount } from 'hooks/useBUSDPrice'
 import { VaultKey } from 'state/types'
-import { getDecimalAmount } from '@pancakeswap/utils/formatBalance'
-import { useTranslation } from '@pancakeswap/localization'
+import { getDecimalAmount } from '@spaceinvaders-swap/utils/formatBalance'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import _toNumber from 'lodash/toNumber'
 import BigNumber from 'bignumber.js'
 import { GenericModalProps } from '../types'
@@ -23,9 +23,9 @@ const LockedStakeModal: React.FC<React.PropsWithChildren<GenericModalProps>> = (
   const [lockedAmount, setLockedAmount] = useState('')
   const { t } = useTranslation()
 
-  const usdValueStaked = useBUSDCakeAmount(_toNumber(lockedAmount))
+  const usdValueStaked = useBUSDInvaAmount(_toNumber(lockedAmount))
 
-  const { allowance } = useCheckVaultApprovalStatus(VaultKey.CakeVault)
+  const { allowance } = useCheckVaultApprovalStatus(VaultKey.InvaVault)
   const needApprove = useMemo(() => {
     const amount = getDecimalAmount(new BigNumber(lockedAmount))
     return amount.gt(allowance)
@@ -33,7 +33,7 @@ const LockedStakeModal: React.FC<React.PropsWithChildren<GenericModalProps>> = (
 
   return (
     <RoiCalculatorModalProvider lockedAmount={lockedAmount}>
-      <Modal title={t('Lock CAKE')} onDismiss={onDismiss} headerBackground={theme.colors.gradientCardHeader}>
+      <Modal title={t('Lock INVA')} onDismiss={onDismiss} headerBackground={theme.colors.gradientCardHeader}>
         <Box mb="16px">
           <BalanceField
             stakingAddress={stakingToken.address}

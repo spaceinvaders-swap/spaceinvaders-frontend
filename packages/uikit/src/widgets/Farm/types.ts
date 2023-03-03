@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import BigNumber from "bignumber.js";
-import { Token } from "@pancakeswap/sdk";
+import { Token } from "@spaceinvaders-swap/sdk";
 
 export interface FarmTableEarnedProps {
   earnings: number;
@@ -13,7 +13,7 @@ export interface FarmTableLiquidityProps {
 
 export interface FarmTableMultiplierProps {
   multiplier: string;
-  rewardCakePerSecond?: boolean;
+  rewardInvaPerSecond?: boolean;
 }
 
 export interface FarmTableFarmTokenInfoProps {

@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/sdk'
+import { ChainId } from '@spaceinvaders-swap/sdk'
 import { getChainlinkOracleContract } from 'utils/contractHelpers'
 import { useSWRContract } from 'hooks/useSWRContract'
 import { Zero } from '@ethersproject/constants'

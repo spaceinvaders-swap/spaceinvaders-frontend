@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { getNftSaleAddress } from 'utils/addressHelpers'
-import { getPancakeSquadContract } from 'utils/contractHelpers'
+import { getSpaceinvadersSquadContract } from 'utils/contractHelpers'
 import { multicallv2 } from 'utils/multicall'
 import nftSaleAbi from 'config/abi/nftSale.json'
 
@@ -9,7 +9,7 @@ const useUserInfos = ({ account, refreshCounter, setCallback }) => {
     const fetchUserInfos = async () => {
       try {
         const nftSaleAddress = getNftSaleAddress()
-        const pancakeSquadContract = getPancakeSquadContract()
+        const spaceinvadersSquadContract = getSpaceinvadersSquadContract()
 
         if (account) {
           const calls = [
@@ -32,7 +32,7 @@ const useUserInfos = ({ account, refreshCounter, setCallback }) => {
             [currentTicketsOfUser],
           ] = await multicallv2({ abi: nftSaleAbi, calls })
 
-          const currentNumberTokensOfUser = await pancakeSquadContract.balanceOf(account)
+          const currentNumberTokensOfUser = await spaceinvadersSquadContract.balanceOf(account)
 
           setCallback({
             canClaimForGen0: currentCanClaimForGen0,

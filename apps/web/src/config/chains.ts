@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/sdk'
+import { ChainId } from '@spaceinvaders-swap/sdk'
 import memoize from 'lodash/memoize'
 import invert from 'lodash/invert'
 

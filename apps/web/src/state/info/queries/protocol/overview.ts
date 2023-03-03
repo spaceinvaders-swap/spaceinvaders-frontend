@@ -9,15 +9,15 @@ import { getPercentChange } from 'views/Info/utils/infoDataHelpers'
 import { checkIsStableSwap, getMultiChainQueryEndPointWithStableSwap, MultiChainName } from '../../constant'
 import { useGetChainName } from '../../hooks'
 
-interface PancakeFactory {
+interface SpaceinvadersFactory {
   totalTransactions: string
   totalVolumeUSD: string
   totalLiquidityUSD: string
 }
 
 interface OverviewResponse {
-  pancakeFactories: PancakeFactory[]
-  factories?: PancakeFactory[]
+  spaceinvadersFactories: SpaceinvadersFactory[]
+  factories?: SpaceinvadersFactory[]
 }
 /**
  * Latest Liquidity, Volume and Transaction count
@@ -26,7 +26,7 @@ const getOverviewData = async (
   chainName: MultiChainName,
   block?: number,
 ): Promise<{ data?: OverviewResponse; error: boolean }> => {
-  const factoryString = checkIsStableSwap() ? `factories` : `pancakeFactories`
+  const factoryString = checkIsStableSwap() ? `factories` : `spaceinvadersFactories`
   try {
     const query = gql`query overview {
       ${factoryString}(
@@ -45,9 +45,9 @@ const getOverviewData = async (
   }
 }
 
-const formatPancakeFactoryResponse = (rawPancakeFactory?: PancakeFactory[]) => {
-  if (rawPancakeFactory) {
-    return rawPancakeFactory.reduce(
+const formatSpaceinvadersFactoryResponse = (rawSpaceinvadersFactory?: SpaceinvadersFactory[]) => {
+  if (rawSpaceinvadersFactory) {
+    return rawSpaceinvadersFactory.reduce(
       (acc, cur) => {
         acc.totalLiquidityUSD += parseFloat(cur.totalLiquidityUSD)
         acc.totalTransactions += parseFloat(cur.totalTransactions)
@@ -86,9 +86,9 @@ const useFetchProtocolData = (): ProtocolFetchState => {
         getOverviewData(chainName, block48?.number ?? undefined),
       ])
       const anyError = error || error24 || error48
-      const overviewData = formatPancakeFactoryResponse(data?.pancakeFactories)
-      const overviewData24 = formatPancakeFactoryResponse(data24?.pancakeFactories)
-      const overviewData48 = formatPancakeFactoryResponse(data48?.pancakeFactories)
+      const overviewData = formatSpaceinvadersFactoryResponse(data?.spaceinvadersFactories)
+      const overviewData24 = formatSpaceinvadersFactoryResponse(data24?.spaceinvadersFactories)
+      const overviewData48 = formatSpaceinvadersFactoryResponse(data48?.spaceinvadersFactories)
       const allDataAvailable = overviewData && overviewData24 && overviewData48
       if (anyError || !allDataAvailable) {
         setFetchState({
@@ -137,14 +137,14 @@ export const fetchProtocolData = async (chainName: MultiChainName, block24: Bloc
     getOverviewData(chainName, block24?.number ?? undefined),
     getOverviewData(chainName, block48?.number ?? undefined),
   ])
-  if (data.factories && data.factories.length > 0) data.pancakeFactories = data.factories
-  if (data24.factories && data24.factories.length > 0) data24.pancakeFactories = data24.factories
-  if (data48.factories && data48.factories.length > 0) data48.pancakeFactories = data48.factories
+  if (data.factories && data.factories.length > 0) data.spaceinvadersFactories = data.factories
+  if (data24.factories && data24.factories.length > 0) data24.spaceinvadersFactories = data24.factories
+  if (data48.factories && data48.factories.length > 0) data48.spaceinvadersFactories = data48.factories
 
   // const anyError = error || error24 || error48
-  const overviewData = formatPancakeFactoryResponse(data?.pancakeFactories)
-  const overviewData24 = formatPancakeFactoryResponse(data24?.pancakeFactories)
-  const overviewData48 = formatPancakeFactoryResponse(data48?.pancakeFactories)
+  const overviewData = formatSpaceinvadersFactoryResponse(data?.spaceinvadersFactories)
+  const overviewData24 = formatSpaceinvadersFactoryResponse(data24?.spaceinvadersFactories)
+  const overviewData48 = formatSpaceinvadersFactoryResponse(data48?.spaceinvadersFactories)
   // const allDataAvailable = overviewData && overviewData24 && overviewData48
 
   const [volumeUSD, volumeUSDChange] = getChangeForPeriod(

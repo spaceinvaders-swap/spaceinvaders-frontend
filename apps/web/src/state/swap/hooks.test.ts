@@ -29,7 +29,7 @@ describe('hooks', () => {
       })
     })
 
-    test('should return BNB CAKE pair by default', () => {
+    test('should return BNB INVA pair by default', () => {
       expect(queryParametersToSwapState(parse(''))).toEqual({
         [Field.OUTPUT]: { currencyId: DEFAULT_OUTPUT_CURRENCY },
         [Field.INPUT]: { currencyId: 'BNB' },

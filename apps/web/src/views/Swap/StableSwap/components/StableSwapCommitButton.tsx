@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Text, useModal, Column } from '@pancakeswap/uikit'
-import { Currency, CurrencyAmount } from '@pancakeswap/sdk'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { Text, useModal, Column } from '@spaceinvaders-swap/uikit'
+import { Currency, CurrencyAmount } from '@spaceinvaders-swap/sdk'
 
 import { GreyCard } from 'components/Card'
 import { CommitButton } from 'components/CommitButton'

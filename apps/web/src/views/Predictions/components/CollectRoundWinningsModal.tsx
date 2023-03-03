@@ -1,4 +1,4 @@
-import { Token } from '@pancakeswap/sdk'
+import { Token } from '@spaceinvaders-swap/sdk'
 import {
   AutoRenewIcon,
   Box,
@@ -15,12 +15,12 @@ import {
   Text,
   TrophyGoldIcon,
   useToast,
-} from '@pancakeswap/uikit'
+} from '@spaceinvaders-swap/uikit'
 import { AnyAction, AsyncThunkAction } from '@reduxjs/toolkit'
 import { useEffect } from 'react'
 import styled from 'styled-components'
 
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import { useAccount } from 'wagmi'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import useBUSDPrice from 'hooks/useBUSDPrice'
@@ -30,7 +30,7 @@ import { usePredictionsContract } from 'hooks/useContract'
 import { fetchNodeHistory, markAsCollected } from 'state/predictions'
 import { REWARD_RATE } from 'state/predictions/config'
 import { Bet } from 'state/types'
-import { formatNumber } from '@pancakeswap/utils/formatBalance'
+import { formatNumber } from '@spaceinvaders-swap/utils/formatBalance'
 import { multiplyPriceByAmount } from 'utils/prices'
 import { getPayout } from './History/helpers'
 

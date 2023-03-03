@@ -1,4 +1,4 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import {
   BalanceInput,
   Box,
@@ -11,48 +11,48 @@ import {
   useRoiCalculatorReducer,
   CalculatorMode,
   EditingCurrency,
-} from '@pancakeswap/uikit'
+} from '@spaceinvaders-swap/uikit'
 import { useAccount } from 'wagmi'
 import BigNumber from 'bignumber.js'
 import _toNumber from 'lodash/toNumber'
 import { useEffect, useMemo, useState } from 'react'
 import { DEFAULT_TOKEN_DECIMAL } from 'config'
 import styled, { useTheme } from 'styled-components'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
-import { useBCakeTooltipContent } from 'views/Farms/components/BCakeBoosterCard'
-import { useUserLockedCakeStatus } from 'views/Farms/hooks/useUserLockedCakeStatus'
+import { getBalanceNumber } from '@spaceinvaders-swap/utils/formatBalance'
+import { useBInvaTooltipContent } from 'views/Farms/components/BInvaBoosterCard'
+import { useUserLockedInvaStatus } from 'views/Farms/hooks/useUserLockedInvaStatus'
 import { weeksToSeconds } from 'views/Pools/components/utils/formatSecondsToWeeks'
 import { useGetCalculatorMultiplier } from '../hooks/useGetBoostedAPR'
-import LockDurationField from './BCakeLockedDuration'
+import LockDurationField from './BInvaLockedDuration'
 
-const BCakeBlock = styled.div`
+const BInvaBlock = styled.div`
   background-color: ${({ theme }) => theme.colors.background};
   width: 100%;
   padding: 16px;
   box-sizing: border-box;
   border-radius: 16px;
 `
-interface BCakeCalculatorProps {
+interface BInvaCalculatorProps {
   targetInputBalance: string
   earningTokenPrice: number
   lpTokenStakedAmount: BigNumber
   initialState?: any
   stakingTokenSymbol?: string
-  setBCakeMultiplier: (multiplier: number) => void
+  setBInvaMultiplier: (multiplier: number) => void
 }
 
-const BCakeCalculator: React.FC<React.PropsWithChildren<BCakeCalculatorProps>> = ({
+const BInvaCalculator: React.FC<React.PropsWithChildren<BInvaCalculatorProps>> = ({
   targetInputBalance,
   earningTokenPrice,
   initialState,
-  stakingTokenSymbol = 'CAKE',
+  stakingTokenSymbol = 'INVA',
   lpTokenStakedAmount,
-  setBCakeMultiplier,
+  setBInvaMultiplier,
 }) => {
   const [isShow, setIsShow] = useState(true)
   const { t } = useTranslation()
   const [duration, setDuration] = useState(() => weeksToSeconds(1))
-  const { isLoading, lockedAmount, lockedStart, lockedEnd } = useUserLockedCakeStatus()
+  const { isLoading, lockedAmount, lockedStart, lockedEnd } = useUserLockedInvaStatus()
   const { state, setPrincipalFromUSDValue, setPrincipalFromTokenValue, toggleEditingCurrency, setCalculatorMode } =
     useRoiCalculatorReducer(
       { stakingTokenPrice: earningTokenPrice, earningTokenPrice, autoCompoundFrequency: 0 },
@@ -72,11 +72,11 @@ const BCakeCalculator: React.FC<React.PropsWithChildren<BCakeCalculatorProps>> =
     [principalAsToken],
   )
 
-  const bCakeMultiplier = useGetCalculatorMultiplier(userBalanceInFarm, lpTokenStakedAmount, userLockedAmount, duration)
+  const bInvaMultiplier = useGetCalculatorMultiplier(userBalanceInFarm, lpTokenStakedAmount, userLockedAmount, duration)
 
   useEffect(() => {
-    setBCakeMultiplier(bCakeMultiplier)
-  }, [bCakeMultiplier, setBCakeMultiplier])
+    setBInvaMultiplier(bInvaMultiplier)
+  }, [bInvaMultiplier, setBInvaMultiplier])
 
   const editingUnit = editingCurrency === EditingCurrency.TOKEN ? stakingTokenSymbol : 'USD'
   const editingValue = editingCurrency === EditingCurrency.TOKEN ? principalAsToken : principalAsUSD
@@ -86,7 +86,7 @@ const BCakeCalculator: React.FC<React.PropsWithChildren<BCakeCalculatorProps>> =
 
   const { address: account } = useAccount()
 
-  const tooltipContent = useBCakeTooltipContent()
+  const tooltipContent = useBInvaTooltipContent()
 
   const { targetRef, tooltip, tooltipVisible } = useTooltip(tooltipContent, {
     placement: 'bottom-start',
@@ -96,7 +96,7 @@ const BCakeCalculator: React.FC<React.PropsWithChildren<BCakeCalculatorProps>> =
     targetRef: myBalanceTargetRef,
     tooltip: myBalanceTooltip,
     tooltipVisible: myBalanceTooltipVisible,
-  } = useTooltip(t('Boost multiplier calculation does not include profit from CAKE staking pool'), {
+  } = useTooltip(t('Boost multiplier calculation does not include profit from INVA staking pool'), {
     placement: 'top-end',
     tooltipOffset: [20, 10],
   })
@@ -111,9 +111,9 @@ const BCakeCalculator: React.FC<React.PropsWithChildren<BCakeCalculatorProps>> =
       <Toggle scale="md" checked={isShow} onClick={() => setIsShow(!isShow)} />
       {isShow && (
         <>
-          <BCakeBlock style={{ marginTop: 24 }}>
+          <BInvaBlock style={{ marginTop: 24 }}>
             <Text color="secondary" bold fontSize="12px" textTransform="uppercase">
-              {t('Cake locked')}
+              {t('Inva locked')}
             </Text>
             <BalanceInput
               inputProps={{
@@ -171,13 +171,13 @@ const BCakeCalculator: React.FC<React.PropsWithChildren<BCakeCalculatorProps>> =
               currentDuration={_toNumber(lockedEnd) - _toNumber(lockedStart)}
               isOverMax={false}
             />
-          </BCakeBlock>
-          <BCakeBlock style={{ marginTop: 16 }}>
+          </BInvaBlock>
+          <BInvaBlock style={{ marginTop: 16 }}>
             <Text color="secondary" bold fontSize="12px" textTransform="uppercase">
               <>{t('Boost Multiplier')}</>
             </Text>
             <Text color="text" bold fontSize="20px" textTransform="uppercase">
-              <>{bCakeMultiplier}X</>
+              <>{bInvaMultiplier}X</>
               {tooltipVisible && tooltip}
               <Box ref={targetRef} marginLeft="3px" display="inline-block" position="relative" top="3px">
                 <HelpIcon color={theme.colors.textSubtle} />
@@ -188,19 +188,19 @@ const BCakeCalculator: React.FC<React.PropsWithChildren<BCakeCalculatorProps>> =
                 'The estimated boost multiplier is calculated using live data. The actual boost multiplier may change upon activation.',
               )}
             </Text>
-          </BCakeBlock>
+          </BInvaBlock>
         </>
       )}
     </>
   )
 }
 
-export default BCakeCalculator
+export default BInvaCalculator
 
 const CA = 0.5
 const CB = 3 // TODO: read from SC later
 
-export const getBCakeMultiplier = (
+export const getBInvaMultiplier = (
   userBalanceInFarm: BigNumber,
   userLockAmount: BigNumber,
   userLockDuration: number,

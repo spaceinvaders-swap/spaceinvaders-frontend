@@ -1,7 +1,7 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Button, IfoGetTokenModal, useModal, useToast } from '@pancakeswap/uikit'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { Button, IfoGetTokenModal, useModal, useToast } from '@spaceinvaders-swap/uikit'
+import { BIG_ZERO } from '@spaceinvaders-swap/utils/bigNumber'
+import { getBalanceNumber } from '@spaceinvaders-swap/utils/formatBalance'
 import BigNumber from 'bignumber.js'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import { Ifo, PoolIds } from 'config/constants/types'
@@ -44,7 +44,7 @@ const ContributeButton: React.FC<React.PropsWithChildren<Props>> = ({ poolId, if
     toastSuccess(
       t('Success!'),
       <ToastDescriptionWithTx txHash={txHash}>
-        {t('You have contributed %amount% CAKE to this IFO!', {
+        {t('You have contributed %amount% INVA to this IFO!', {
           amount: getBalanceNumber(amount, ifo.currency.decimals),
         })}
       </ToastDescriptionWithTx>,
@@ -67,7 +67,7 @@ const ContributeButton: React.FC<React.PropsWithChildren<Props>> = ({ poolId, if
     <IfoGetTokenModal
       symbol={ifo.currency.symbol}
       address={ifo.currency.address}
-      imageSrc={`https://tokens.pancakeswap.finance/images/aptos/${ifo.currency.address}.png`}
+      imageSrc={`https://tokens.spaceinvaders-swap.finance/images/aptos/${ifo.currency.address}.png`}
     />,
     false,
   )
@@ -87,7 +87,7 @@ const ContributeButton: React.FC<React.PropsWithChildren<Props>> = ({ poolId, if
       disabled={isDisabled}
     >
       {/* TODO: Text should support another token. */}
-      {isMaxCommitted && status === 'live' ? t('Max. Committed') : t('Commit CAKE')}
+      {isMaxCommitted && status === 'live' ? t('Max. Committed') : t('Commit INVA')}
     </Button>
   )
 }

@@ -1,5 +1,5 @@
-import { Button, Flex, NextLinkFromReactRouter } from '@pancakeswap/uikit'
-import { ContextApi } from '@pancakeswap/localization'
+import { Button, Flex, NextLinkFromReactRouter } from '@spaceinvaders-swap/uikit'
+import { ContextApi } from '@spaceinvaders-swap/localization'
 import { SaleStatusEnum, UserStatusEnum } from '../../types'
 
 type EndEventProps = {

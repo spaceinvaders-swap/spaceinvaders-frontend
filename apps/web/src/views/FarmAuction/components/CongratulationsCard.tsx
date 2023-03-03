@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import { Text, Heading, Card, CardHeader, CardBody, Flex } from '@pancakeswap/uikit'
+import { Text, Heading, Card, CardHeader, CardBody, Flex } from '@spaceinvaders-swap/uikit'
 import { Auction, Bidder } from 'config/constants/types'
-import { useTranslation } from '@pancakeswap/localization'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { getBalanceNumber } from '@spaceinvaders-swap/utils/formatBalance'
 import useCongratulateAuctionWinner from '../hooks/useCongratulateAuctionWinner'
 import WhitelistedBiddersButton from './WhitelistedBiddersButton'
 
@@ -45,7 +45,7 @@ const CongratulationsCard: React.FC<React.PropsWithChildren<{ currentAuction: Au
 
         <Flex justifyContent="space-between" mb="8px">
           <Text color="textSubtle">{t('Your total bid')}</Text>
-          <Text>{getBalanceNumber(amount).toLocaleString()} CAKE</Text>
+          <Text>{getBalanceNumber(amount).toLocaleString()} INVA</Text>
         </Flex>
         <Flex justifyContent="space-between">
           <Text color="textSubtle">{t('Your position')}</Text>

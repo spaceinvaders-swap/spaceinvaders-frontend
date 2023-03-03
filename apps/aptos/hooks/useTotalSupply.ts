@@ -1,6 +1,6 @@
-import { Currency, CurrencyAmount } from '@pancakeswap/aptos-swap-sdk'
-import { useCoin } from '@pancakeswap/awgmi'
-import { FetchCoinResult } from '@pancakeswap/awgmi/core'
+import { Currency, CurrencyAmount } from '@spaceinvaders-swap/aptos-swap-sdk'
+import { useCoin } from '@spaceinvaders-swap/awgmi'
+import { FetchCoinResult } from '@spaceinvaders-swap/awgmi/core'
 import { useMemo } from 'react'
 
 const select = (d: FetchCoinResult) => d.supply

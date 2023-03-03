@@ -1,5 +1,5 @@
 import { useCallback, useState, useRef, useEffect } from 'react'
-import { Currency, Token } from '@pancakeswap/sdk'
+import { Currency, Token } from '@spaceinvaders-swap/sdk'
 import {
   ModalContainer,
   ModalHeader,
@@ -13,14 +13,14 @@ import {
   useMatchBreakpoints,
   MODAL_SWIPE_TO_CLOSE_VELOCITY,
   ImportList,
-} from '@pancakeswap/uikit'
+} from '@spaceinvaders-swap/uikit'
 import styled from 'styled-components'
 import { useListState } from 'state/lists/lists'
 import { useAllLists } from 'state/lists/hooks'
-import { usePreviousValue } from '@pancakeswap/hooks'
-import { TokenList } from '@pancakeswap/token-lists'
-import { useTranslation } from '@pancakeswap/localization'
-import { enableList, removeList, useFetchListCallback } from '@pancakeswap/token-lists/react'
+import { usePreviousValue } from '@spaceinvaders-swap/hooks'
+import { TokenList } from '@spaceinvaders-swap/token-lists'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { enableList, removeList, useFetchListCallback } from '@spaceinvaders-swap/token-lists/react'
 import CurrencySearch from './CurrencySearch'
 import ImportToken from './ImportToken'
 import Manage from './Manage'

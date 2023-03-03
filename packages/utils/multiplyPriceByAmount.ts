@@ -1,4 +1,4 @@
-import { Currency, Price } from '@pancakeswap/swap-sdk-core'
+import { Currency, Price } from '@spaceinvaders-swap/swap-sdk-core'
 /**
  * Helper to multiply a Price object by an arbitrary amount
  */

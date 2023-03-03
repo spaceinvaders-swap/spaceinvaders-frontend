@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, JSBI } from '@pancakeswap/sdk'
+import { Currency, CurrencyAmount, JSBI } from '@spaceinvaders-swap/sdk'
 import { BIG_INT_ZERO, MIN_BNB } from 'config/constants/exchange'
 
 /**

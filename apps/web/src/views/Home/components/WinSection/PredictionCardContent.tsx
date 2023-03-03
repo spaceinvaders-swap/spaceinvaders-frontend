@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { ArrowForwardIcon, Button, Flex, Heading, Skeleton, Text, NextLinkFromReactRouter } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
-import { formatLocalisedCompactNumber } from '@pancakeswap/utils/formatBalance'
-import { useIntersectionObserver } from '@pancakeswap/hooks'
+import { ArrowForwardIcon, Button, Flex, Heading, Skeleton, Text, NextLinkFromReactRouter } from '@spaceinvaders-swap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { formatLocalisedCompactNumber } from '@spaceinvaders-swap/utils/formatBalance'
+import { useIntersectionObserver } from '@spaceinvaders-swap/hooks'
 import { getTotalWon } from 'state/predictions/helpers'
-import { useBNBBusdPrice, useCakeBusdPrice } from 'hooks/useBUSDPrice'
+import { useBNBBusdPrice, useInvaBusdPrice } from 'hooks/useBUSDPrice'
 import { multiplyPriceByAmount } from 'utils/prices'
 import useSWR from 'swr'
 import { SLOW_INTERVAL } from 'config/constants'
@@ -31,17 +31,17 @@ const PredictionCardContent = () => {
   const { observerRef, isIntersecting } = useIntersectionObserver()
   const [loadData, setLoadData] = useState(false)
   const bnbBusdPrice = useBNBBusdPrice({ forceMainnet: true })
-  const cakePriceBusd = useCakeBusdPrice({ forceMainnet: true })
+  const invaPriceBusd = useInvaBusdPrice({ forceMainnet: true })
 
   const { data } = useSWR(loadData ? ['prediction', 'tokenWon'] : null, getTotalWon, {
     refreshInterval: SLOW_INTERVAL,
   })
 
   const bnbWonInUsd = multiplyPriceByAmount(bnbBusdPrice, data?.totalWonBNB || 0)
-  const cakeWonInUsd = multiplyPriceByAmount(cakePriceBusd, data?.totalWonCAKE || 0)
+  const invaWonInUsd = multiplyPriceByAmount(invaPriceBusd, data?.totalWonINVA || 0)
 
-  const localisedBnbUsdString = formatLocalisedCompactNumber(bnbWonInUsd + cakeWonInUsd)
-  const bnbWonText = t('$%wonInUsd% in BNB + CAKE won so far', { wonInUsd: localisedBnbUsdString })
+  const localisedBnbUsdString = formatLocalisedCompactNumber(bnbWonInUsd + invaWonInUsd)
+  const bnbWonText = t('$%wonInUsd% in BNB + INVA won so far', { wonInUsd: localisedBnbUsdString })
   const [pretext, wonSoFar] = bnbWonText.split(localisedBnbUsdString)
 
   useEffect(() => {
@@ -68,7 +68,7 @@ const PredictionCardContent = () => {
           {wonSoFar}
         </Text>
         <Text color="#280D5F" mb="40px">
-          {t('Predict the price trend of BNB or CAKE to win')}
+          {t('Predict the price trend of BNB or INVA to win')}
         </Text>
       </Flex>
       <Flex alignItems="center" justifyContent="center">

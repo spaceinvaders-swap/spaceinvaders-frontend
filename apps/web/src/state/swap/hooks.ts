@@ -1,9 +1,9 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, CurrencyAmount, Price, Trade, TradeType } from '@pancakeswap/sdk'
-import { CAKE, USDC } from '@pancakeswap/tokens'
-import { equalsIgnoreCase } from '@pancakeswap/utils/equalsIgnoreCase'
-import tryParseAmount from '@pancakeswap/utils/tryParseAmount'
-import IPancakePairABI from 'config/abi/IPancakePair.json'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { Currency, CurrencyAmount, Price, Trade, TradeType } from '@spaceinvaders-swap/sdk'
+import { INVA, USDC } from '@spaceinvaders-swap/tokens'
+import { equalsIgnoreCase } from '@spaceinvaders-swap/utils/equalsIgnoreCase'
+import tryParseAmount from '@spaceinvaders-swap/utils/tryParseAmount'
+import ISpaceinvadersPairABI from 'config/abi/ISpaceinvadersPair.json'
 import { DEFAULT_INPUT_CURRENCY, DEFAULT_OUTPUT_CURRENCY } from 'config/constants/exchange'
 import { useTradeExactIn, useTradeExactOut } from 'hooks/Trades'
 import { useActiveChainId } from 'hooks/useActiveChainId'
@@ -254,7 +254,7 @@ export function useDefaultsFromURLSearch():
 
   useEffect(() => {
     if (!chainId || !native) return
-    const parsed = queryParametersToSwapState(query, native.symbol, CAKE[chainId]?.address ?? USDC[chainId]?.address)
+    const parsed = queryParametersToSwapState(query, native.symbol, INVA[chainId]?.address ?? USDC[chainId]?.address)
 
     dispatch(
       replaceSwapState({
@@ -361,7 +361,7 @@ export const useFetchPairPrices = ({
         } else {
           try {
             pairTokenResults = await multicallv2({
-              abi: IPancakePairABI,
+              abi: ISpaceinvadersPairABI,
               calls: [
                 {
                   address: pairId,

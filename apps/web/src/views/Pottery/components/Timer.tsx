@@ -1,7 +1,7 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import styled from 'styled-components'
-import { Flex, Heading, Text } from '@pancakeswap/uikit'
-import getTimePeriods from '@pancakeswap/utils/getTimePeriods'
+import { Flex, Heading, Text } from '@spaceinvaders-swap/uikit'
+import getTimePeriods from '@spaceinvaders-swap/utils/getTimePeriods'
 import { remainTimeToNextFriday } from '../helpers'
 
 const FlexGap = styled(Flex)<{ gap: string }>`

@@ -1,5 +1,5 @@
-import { ChainId } from '@pancakeswap/sdk'
-import { useMatchBreakpoints } from '@pancakeswap/uikit'
+import { ChainId } from '@spaceinvaders-swap/sdk'
+import { useMatchBreakpoints } from '@spaceinvaders-swap/uikit'
 import { useAtom } from 'jotai'
 import atomWithStorageWithErrorCatch from 'utils/atomWithStorageWithErrorCatch'
 import { useActiveChainId } from './useActiveChainId'

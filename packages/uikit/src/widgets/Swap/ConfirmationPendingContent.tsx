@@ -1,4 +1,4 @@
-import { useTranslation } from "@pancakeswap/localization";
+import { useTranslation } from "@spaceinvaders-swap/localization";
 import styled from "styled-components";
 import { AutoColumn, ColumnCenter } from "../../components/Column";
 import { Spinner, Text } from "../../components";

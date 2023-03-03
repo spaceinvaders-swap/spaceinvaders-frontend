@@ -1,6 +1,6 @@
-import { Button, NextLinkFromReactRouter } from '@pancakeswap/uikit'
-import { ContextApi } from '@pancakeswap/localization'
-import { UserStatusEnum } from 'views/PancakeSquad/types'
+import { Button, NextLinkFromReactRouter } from '@spaceinvaders-swap/uikit'
+import { ContextApi } from '@spaceinvaders-swap/localization'
+import { UserStatusEnum } from 'views/SpaceinvadersSquad/types'
 
 type ActivateProfileButtonProps = {
   t: ContextApi['t']

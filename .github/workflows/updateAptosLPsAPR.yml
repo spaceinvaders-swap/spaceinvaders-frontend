@@ -10,7 +10,7 @@ on:
 jobs:
   updateLPsAPRs:
     runs-on: ubuntu-latest
-    if: github.repository == 'pancakeswap/pancake-frontend'
+    if: github.repository == 'spaceinvaders-swap/spaceinvaders-frontend'
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -32,8 +32,8 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
-          author: PancakeSwap Bot <pancakeswap-bot@protonmail.com>
-          token: ${{ secrets.LP_APR_PANCAKE_BOT }}
+          author: SpaceinvadersSwap Bot <spaceinvaders-swap-bot@protonmail.com>
+          token: ${{ secrets.LP_APR_SPACEINVADERS_BOT }}
           delete-branch: true
           commit-message: "chore: Update Aptos LP APRs for Farms"
           title: "chore: Update Aptos LP APRs for Farms"

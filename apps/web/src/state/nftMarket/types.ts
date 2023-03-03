@@ -63,7 +63,7 @@ export interface TokenMarketData {
   transactionHistory?: Transaction[]
 }
 
-// Represents single NFT token, either Squad-like NFT or single PancakeBunny.
+// Represents single NFT token, either Squad-like NFT or single SpaceinvadersBunny.
 export interface NftToken {
   tokenId: string
   name: string

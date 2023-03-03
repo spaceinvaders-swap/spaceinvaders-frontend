@@ -1,5 +1,5 @@
 /* eslint-disable no-nested-ternary */
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import {
   Box,
   Breadcrumbs,
@@ -14,12 +14,12 @@ import {
   Text,
   useMatchBreakpoints,
   NextLinkFromReactRouter,
-} from '@pancakeswap/uikit'
-import { ChainId } from '@pancakeswap/sdk'
+} from '@spaceinvaders-swap/uikit'
+import { ChainId } from '@spaceinvaders-swap/sdk'
 import { NextSeo } from 'next-seo'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { CHAIN_QUERY_NAME } from 'config/chains'
-import truncateHash from '@pancakeswap/utils/truncateHash'
+import truncateHash from '@spaceinvaders-swap/utils/truncateHash'
 import Page from 'components/Layout/Page'
 import { ONE_HOUR_SECONDS } from 'config/constants/info'
 import { Duration } from 'date-fns'

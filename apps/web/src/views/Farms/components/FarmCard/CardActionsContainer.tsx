@@ -1,10 +1,10 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Flex, Skeleton, Text } from '@pancakeswap/uikit'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { Flex, Skeleton, Text } from '@spaceinvaders-swap/uikit'
+import { BIG_ZERO } from '@spaceinvaders-swap/utils/bigNumber'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import { useContext } from 'react'
 import styled from 'styled-components'
-import { FarmWithStakedValue } from '@pancakeswap/farms'
+import { FarmWithStakedValue } from '@spaceinvaders-swap/farms'
 import { HarvestActionContainer, ProxyHarvestActionContainer } from '../FarmTable/Actions/HarvestAction'
 import { ProxyStakedContainer, StakedContainer } from '../FarmTable/Actions/StakedAction'
 import BoostedAction from '../YieldBooster/components/BoostedAction'
@@ -49,7 +49,7 @@ const CardActions: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = ({
     <Action>
       <Flex>
         <Text bold textTransform="uppercase" color="secondary" fontSize="12px" pr="4px">
-          CAKE
+          INVA
         </Text>
         <Text bold textTransform="uppercase" color="textSubtle" fontSize="12px">
           {t('Earned')}

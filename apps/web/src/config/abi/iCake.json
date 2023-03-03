@@ -1,7 +1,7 @@
 [
   {
     "inputs": [
-      { "internalType": "contract ICaKePool", "name": "_cakePool", "type": "address" },
+      { "internalType": "contract IInVaPool", "name": "_invaPool", "type": "address" },
       { "internalType": "address", "name": "_admin", "type": "address" },
       { "internalType": "uint256", "name": "_ceiling", "type": "uint256" }
     ],
@@ -39,8 +39,8 @@
   },
   {
     "inputs": [],
-    "name": "cakePool",
-    "outputs": [{ "internalType": "contract ICaKePool", "name": "", "type": "address" }],
+    "name": "invaPool",
+    "outputs": [{ "internalType": "contract IInVaPool", "name": "", "type": "address" }],
     "stateMutability": "view",
     "type": "function"
   },

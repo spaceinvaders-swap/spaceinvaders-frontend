@@ -1,6 +1,6 @@
-import { Price, Currency } from "@pancakeswap/swap-sdk-core";
-import { SyncAltIcon } from "@pancakeswap/uikit";
-import { AtomBox } from "@pancakeswap/ui/components/AtomBox";
+import { Price, Currency } from "@spaceinvaders-swap/swap-sdk-core";
+import { SyncAltIcon } from "@spaceinvaders-swap/uikit";
+import { AtomBox } from "@spaceinvaders-swap/ui/components/AtomBox";
 import { useState } from "react";
 import { balanceMaxMiniClass } from "./SwapWidget.css";
 import { AutoRenewIcon } from "../../components/Svg";

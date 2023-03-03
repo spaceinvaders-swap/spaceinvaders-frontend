@@ -1,4 +1,4 @@
-# @pancakeswap/token-lists
+# @spaceinvaders-swap/token-lists
 
 ## 0.0.5
 
@@ -22,6 +22,6 @@
 
 ### Patch Changes
 
-- 68440160d: ## PancakeSwap version spec
+- 68440160d: ## SpaceinvadersSwap version spec
   Add `schema` aptos to indentify aptos version of token list
   without schema will default be uniswap version evm validation

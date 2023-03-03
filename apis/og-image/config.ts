@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-export const ASSET_BASE_PATH = 'https://assets.pancakeswap.finance'
+export const ASSET_BASE_PATH = 'https://assets.spaceinvaders-swap.finance'
 
 export const OG_IMAGE_DEFAULT = `${ASSET_BASE_PATH}/web/og` as const
 export const OG_TEMPLATE_IMAGE_DEFAULT = `${ASSET_BASE_PATH}/web/og-template` as const

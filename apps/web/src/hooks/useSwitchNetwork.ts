@@ -1,9 +1,9 @@
 /* eslint-disable consistent-return */
-import { useTranslation } from '@pancakeswap/localization'
-import { ChainId } from '@pancakeswap/sdk'
-import { useToast } from '@pancakeswap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { ChainId } from '@spaceinvaders-swap/sdk'
+import { useToast } from '@spaceinvaders-swap/uikit'
 import { useCallback, useMemo } from 'react'
-import replaceBrowserHistory from '@pancakeswap/utils/replaceBrowserHistory'
+import replaceBrowserHistory from '@spaceinvaders-swap/utils/replaceBrowserHistory'
 import { ConnectorNames } from 'config/wallet'
 import { useAccount, useSwitchNetwork as useSwitchNetworkWallet } from 'wagmi'
 import { CHAIN_QUERY_NAME } from 'config/chains'

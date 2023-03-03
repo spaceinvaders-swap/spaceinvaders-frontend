@@ -1,4 +1,4 @@
-import { Flex, IconButton, CogIcon, useModal } from '@pancakeswap/uikit'
+import { Flex, IconButton, CogIcon, useModal } from '@spaceinvaders-swap/uikit'
 import SettingsModal from './SettingsModal'
 
 type Props = {

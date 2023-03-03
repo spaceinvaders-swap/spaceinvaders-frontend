@@ -1,5 +1,5 @@
-import { Currency, Trade, TradeType } from '@pancakeswap/sdk'
-import { RouteType, TradeWithStableSwap } from '@pancakeswap/smart-router/evm'
+import { Currency, Trade, TradeType } from '@spaceinvaders-swap/sdk'
+import { RouteType, TradeWithStableSwap } from '@spaceinvaders-swap/smart-router/evm'
 
 interface Options {
   trade?: TradeWithStableSwap<Currency, Currency, TradeType> | null

@@ -1,5 +1,5 @@
-import { Flex, lightColors, Text } from '@pancakeswap/uikit'
-import { ContextApi } from '@pancakeswap/localization'
+import { Flex, lightColors, Text } from '@spaceinvaders-swap/uikit'
+import { ContextApi } from '@spaceinvaders-swap/localization'
 
 import { SaleStatusEnum, UserStatusEnum } from '../../types'
 

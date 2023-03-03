@@ -1,8 +1,8 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, CurrencyAmount, TradeType } from '@pancakeswap/sdk'
-import { Button, Text, useModal, confirmPriceImpactWithoutFee, Column } from '@pancakeswap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { Currency, CurrencyAmount, TradeType } from '@spaceinvaders-swap/sdk'
+import { Button, Text, useModal, confirmPriceImpactWithoutFee, Column } from '@spaceinvaders-swap/uikit'
 
-import { TradeWithStableSwap } from '@pancakeswap/smart-router/evm'
+import { TradeWithStableSwap } from '@spaceinvaders-swap/smart-router/evm'
 import { GreyCard } from 'components/Card'
 import { CommitButton } from 'components/CommitButton'
 import ConnectWalletButton from 'components/ConnectWalletButton'

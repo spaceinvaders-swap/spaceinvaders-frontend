@@ -3,18 +3,18 @@ import { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { unstable_serialize, SWRConfig } from 'swr'
 import { getCollections } from 'state/nftMarket/helpers'
 import multicall from 'utils/multicall'
-import PancakeCollectiblesPageRouter from 'views/Profile/components/PancakeCollectiblesPageRouter'
-import profileABI from 'config/abi/pancakeProfile.json'
+import SpaceinvadersCollectiblesPageRouter from 'views/Profile/components/SpaceinvadersCollectiblesPageRouter'
+import profileABI from 'config/abi/spaceinvadersProfile.json'
 import { getProfileContract } from 'utils/contractHelpers'
 
-const PancakeCollectiblesPage = ({ fallback = {} }: InferGetStaticPropsType<typeof getStaticProps>) => {
+const SpaceinvadersCollectiblesPage = ({ fallback = {} }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <SWRConfig
       value={{
         fallback,
       }}
     >
-      <PancakeCollectiblesPageRouter />
+      <SpaceinvadersCollectiblesPageRouter />
     </SWRConfig>
   )
 }
@@ -43,14 +43,14 @@ export const getStaticProps: GetStaticProps = async () => {
     const collectionRolesRaw = await multicall(profileABI, collectionsNftRoleCalls)
     const collectionRoles = collectionRolesRaw.flat()
 
-    const pancakeCollectibles = Object.values(fetchedCollections).filter((collection, index) => {
+    const spaceinvadersCollectibles = Object.values(fetchedCollections).filter((collection, index) => {
       return collectionRoles[index]
     })
 
     return {
       props: {
         fallback: {
-          [unstable_serialize(['pancakeCollectibles'])]: pancakeCollectibles,
+          [unstable_serialize(['spaceinvadersCollectibles'])]: spaceinvadersCollectibles,
         },
       },
       revalidate: 60 * 60 * 12, // 12 hours
@@ -65,4 +65,4 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 }
 
-export default PancakeCollectiblesPage
+export default SpaceinvadersCollectiblesPage

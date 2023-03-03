@@ -1,9 +1,9 @@
-import { ChainId, ERC20Token, WBNB } from '@pancakeswap/sdk'
-import { BUSD_TESTNET, CAKE_TESTNET } from './common'
+import { ChainId, ERC20Token, WBNB } from '@spaceinvaders-swap/sdk'
+import { BUSD_TESTNET, INVA_TESTNET } from './common'
 
 export const bscTestnetTokens = {
   wbnb: WBNB[ChainId.BSC_TESTNET],
-  cake: CAKE_TESTNET,
+  inva: INVA_TESTNET,
   busd: BUSD_TESTNET,
   syrup: new ERC20Token(
     ChainId.BSC_TESTNET,
@@ -11,7 +11,7 @@ export const bscTestnetTokens = {
     18,
     'SYRUP',
     'SyrupBar Token',
-    'https://pancakeswap.finance/',
+    'https://spaceinvaders-swap.finance/',
   ),
   bake: new ERC20Token(
     ChainId.BSC_TESTNET,

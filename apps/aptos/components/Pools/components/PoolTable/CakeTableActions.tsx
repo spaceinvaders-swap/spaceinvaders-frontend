@@ -1,12 +1,12 @@
-import { Pool } from '@pancakeswap/uikit'
-import { Coin } from '@pancakeswap/aptos-swap-sdk'
+import { Pool } from '@spaceinvaders-swap/uikit'
+import { Coin } from '@spaceinvaders-swap/aptos-swap-sdk'
 import { ConnectWalletButton } from 'components/ConnectWalletButton'
 
-import CakeCollectModal from '../PoolCard/CakeCollectModal'
-import CakeStakeModal from '../PoolCard/CakeStakeModal'
+import InvaCollectModal from '../PoolCard/InvaCollectModal'
+import InvaStakeModal from '../PoolCard/InvaStakeModal'
 
-const StakeActions = Pool.withStakeActions(CakeStakeModal)
+const StakeActions = Pool.withStakeActions(InvaStakeModal)
 
 const StakeActionContainer = Pool.withStakeActionContainer(StakeActions, ConnectWalletButton)
 
-export default Pool.withTableActions<Coin>(Pool.withCollectModalTableAction(CakeCollectModal), StakeActionContainer)
+export default Pool.withTableActions<Coin>(Pool.withCollectModalTableAction(InvaCollectModal), StakeActionContainer)

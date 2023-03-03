@@ -1,4 +1,4 @@
-import { useModal, Button, Skeleton } from '@pancakeswap/uikit'
+import { useModal, Button, Skeleton } from '@spaceinvaders-swap/uikit'
 import WhitelistedBiddersModal from './WhitelistedBiddersModal'
 import useWhitelistedAddresses from '../hooks/useWhitelistedAddresses'
 

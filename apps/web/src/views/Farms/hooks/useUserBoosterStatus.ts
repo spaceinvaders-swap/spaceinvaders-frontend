@@ -1,10 +1,10 @@
 import { FetchStatus } from 'config/constants/types'
-import { useBCakeFarmBoosterContract } from 'hooks/useContract'
+import { useBInvaFarmBoosterContract } from 'hooks/useContract'
 import useSWR from 'swr'
 import useSWRImmutable from 'swr/immutable'
 
 export const useUserBoosterStatus = (account: string) => {
-  const farmBoosterContract = useBCakeFarmBoosterContract()
+  const farmBoosterContract = useBInvaFarmBoosterContract()
   const { data: MAX_BOOST_POOL, status: maxBoostStatus } = useSWRImmutable('maxBoostFarm', () =>
     farmBoosterContract.MAX_BOOST_POOL(),
   )

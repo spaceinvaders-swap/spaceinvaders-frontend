@@ -1,4 +1,4 @@
-import { Flex, Loading } from '@pancakeswap/uikit'
+import { Flex, Loading } from '@spaceinvaders-swap/uikit'
 
 const TableLoading = () => {
   return (

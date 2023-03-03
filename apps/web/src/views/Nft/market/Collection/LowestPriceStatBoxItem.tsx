@@ -1,5 +1,5 @@
 import useSWR from 'swr'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import { getLeastMostPriceInCollection } from 'state/nftMarket/helpers'
 import { StatBoxItem, StatBoxItemProps } from '../components/StatBox'
 

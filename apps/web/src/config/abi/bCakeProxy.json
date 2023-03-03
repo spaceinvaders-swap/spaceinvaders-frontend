@@ -48,7 +48,7 @@
   },
   {
     "inputs": [],
-    "name": "cakeToken",
+    "name": "invaToken",
     "outputs": [{ "internalType": "contract IERC20", "name": "", "type": "address" }],
     "stateMutability": "view",
     "type": "function"
@@ -82,7 +82,7 @@
       { "internalType": "address", "name": "_admin", "type": "address" },
       { "internalType": "address", "name": "_farmBooster", "type": "address" },
       { "internalType": "address", "name": "_masterchefV2", "type": "address" },
-      { "internalType": "address", "name": "_cakeToken", "type": "address" }
+      { "internalType": "address", "name": "_invaToken", "type": "address" }
     ],
     "name": "initialize",
     "outputs": [],

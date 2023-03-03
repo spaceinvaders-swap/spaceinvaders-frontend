@@ -11,15 +11,15 @@ import {
   Skeleton,
   InputProps,
   NumericalInput,
-} from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+} from '@spaceinvaders-swap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import BigNumber from 'bignumber.js'
 import { usePotteryData, useLatestVaultAddress } from 'state/pottery/hook'
-import { CAKE } from '@pancakeswap/tokens'
+import { INVA } from '@spaceinvaders-swap/tokens'
 import useTokenBalance from 'hooks/useTokenBalance'
-import { getFullDisplayBalance, getBalanceNumber } from '@pancakeswap/utils/formatBalance'
+import { getFullDisplayBalance, getBalanceNumber } from '@spaceinvaders-swap/utils/formatBalance'
 import { PotteryDepositStatus } from 'state/types'
-import { useUserEnoughCakeValidator } from 'views/Pools/components/LockedPool/hooks/useUserEnoughCakeValidator'
+import { useUserEnoughInvaValidator } from 'views/Pools/components/LockedPool/hooks/useUserEnoughInvaValidator'
 import { DEFAULT_TOKEN_DECIMAL } from 'config'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import EnableButton from './EnableButton'
@@ -53,15 +53,15 @@ const DepositAction: React.FC<React.PropsWithChildren<DepositActionProps>> = ({ 
   const [depositAmount, setDepositAmount] = useState('')
 
   const maxTotalDepositToNumber = getBalanceNumber(publicData.maxTotalDeposit)
-  const remainingCakeCanStake = new BigNumber(maxTotalDepositToNumber).minus(totalValueLockedValue).toString()
+  const remainingInvaCanStake = new BigNumber(maxTotalDepositToNumber).minus(totalValueLockedValue).toString()
 
-  const { balance: userCake } = useTokenBalance(CAKE[chainId]?.address)
-  const userCakeDisplayBalance = getFullDisplayBalance(userCake, 18, 3)
-  const { userNotEnoughCake, notEnoughErrorMessage } = useUserEnoughCakeValidator(depositAmount, userCake)
+  const { balance: userInva } = useTokenBalance(INVA[chainId]?.address)
+  const userInvaDisplayBalance = getFullDisplayBalance(userInva, 18, 3)
+  const { userNotEnoughInva, notEnoughErrorMessage } = useUserEnoughInvaValidator(depositAmount, userInva)
 
   const { targetRef, tooltip, tooltipVisible } = useTooltip(
     t(
-      'CAKE deposit will be diverted to the fixed-term staking pool. Please note that CAKE deposited can ONLY be withdrawn after 10 weeks.',
+      'INVA deposit will be diverted to the fixed-term staking pool. Please note that INVA deposited can ONLY be withdrawn after 10 weeks.',
     ),
     {
       placement: 'bottom',
@@ -69,27 +69,27 @@ const DepositAction: React.FC<React.PropsWithChildren<DepositActionProps>> = ({ 
   )
 
   const onClickMax = () => {
-    const userCakeBalance = userCake.dividedBy(DEFAULT_TOKEN_DECIMAL).toString()
+    const userInvaBalance = userInva.dividedBy(DEFAULT_TOKEN_DECIMAL).toString()
 
-    if (new BigNumber(userCakeBalance).gte(remainingCakeCanStake)) {
-      setDepositAmount(remainingCakeCanStake)
+    if (new BigNumber(userInvaBalance).gte(remainingInvaCanStake)) {
+      setDepositAmount(remainingInvaCanStake)
     } else {
-      setDepositAmount(userCakeBalance)
+      setDepositAmount(userInvaBalance)
     }
   }
 
   const showMaxButton = useMemo(
-    () => new BigNumber(depositAmount).multipliedBy(DEFAULT_TOKEN_DECIMAL).eq(userCake),
-    [depositAmount, userCake],
+    () => new BigNumber(depositAmount).multipliedBy(DEFAULT_TOKEN_DECIMAL).eq(userInva),
+    [depositAmount, userInva],
   )
 
-  const isLessThanOneCake = useMemo(() => new BigNumber(depositAmount).lt(1), [depositAmount])
+  const isLessThanOneInva = useMemo(() => new BigNumber(depositAmount).lt(1), [depositAmount])
 
   const isReachMaxAmount = useMemo(() => {
     return (
-      new BigNumber(totalValueLockedValue).eq(maxTotalDepositToNumber) || new BigNumber(remainingCakeCanStake).lt(1)
+      new BigNumber(totalValueLockedValue).eq(maxTotalDepositToNumber) || new BigNumber(remainingInvaCanStake).lt(1)
     )
-  }, [maxTotalDepositToNumber, totalValueLockedValue, remainingCakeCanStake])
+  }, [maxTotalDepositToNumber, totalValueLockedValue, remainingInvaCanStake])
 
   if (userData.isLoading) {
     return <Skeleton width="100%" height="48px" />
@@ -122,13 +122,13 @@ const DepositAction: React.FC<React.PropsWithChildren<DepositActionProps>> = ({ 
           {t('Deposit')}
         </Text>
         <Text fontSize="12px" ml="4px" color="textSubtle" bold as="span">
-          CAKE
+          INVA
         </Text>
       </Box>
       <InputPanel>
-        <Container isWarning={isLessThanOneCake}>
+        <Container isWarning={isLessThanOneInva}>
           <Text fontSize="14px" color="textSubtle" mb="12px" textAlign="right">
-            {t('Balance: %balance%', { balance: userCakeDisplayBalance })}
+            {t('Balance: %balance%', { balance: userInvaDisplayBalance })}
           </Text>
           <Flex mb="6.5px">
             <NumericalInput
@@ -144,20 +144,20 @@ const DepositAction: React.FC<React.PropsWithChildren<DepositActionProps>> = ({ 
                 </Button>
               )}
               <LogoRoundIcon m="0 4px" width="24px" height="24px" />
-              <Text>CAKE</Text>
+              <Text>INVA</Text>
             </Flex>
           </Flex>
         </Container>
-        {isLessThanOneCake && (
+        {isLessThanOneInva && (
           <Text color="failure" fontSize="14px" textAlign="right">
-            {t('Please deposit at least 1 CAKE to participate in the Pottery')}
+            {t('Please deposit at least 1 INVA to participate in the Pottery')}
           </Text>
         )}
       </InputPanel>
       <Flex>
         <Flex ml="auto">
           <Text fontSize="12px" color="textSubtle">
-            {t('Deposited CAKE will be locked for 10 weeks')}
+            {t('Deposited INVA will be locked for 10 weeks')}
           </Text>
           <Flex ref={targetRef}>
             {tooltipVisible && tooltip}
@@ -165,7 +165,7 @@ const DepositAction: React.FC<React.PropsWithChildren<DepositActionProps>> = ({ 
           </Flex>{' '}
         </Flex>
       </Flex>
-      {userNotEnoughCake ? (
+      {userNotEnoughInva ? (
         <Button disabled mt="10px" width="100%">
           {notEnoughErrorMessage}
         </Button>

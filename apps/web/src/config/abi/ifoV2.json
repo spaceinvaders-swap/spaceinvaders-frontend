@@ -13,7 +13,7 @@
       },
       {
         "internalType": "address",
-        "name": "_pancakeProfileAddress",
+        "name": "_spaceinvadersProfileAddress",
         "type": "address"
       },
       {
@@ -283,10 +283,10 @@
   },
   {
     "inputs": [],
-    "name": "pancakeProfile",
+    "name": "spaceinvadersProfile",
     "outputs": [
       {
-        "internalType": "contract PancakeProfile",
+        "internalType": "contract SpaceinvadersProfile",
         "name": "",
         "type": "address"
       }

@@ -4,16 +4,16 @@ import { BSC_BLOCK_TIME } from 'config'
 import round from 'lodash/round'
 import ifoV2Abi from 'config/abi/ifoV2.json'
 import ifoV3Abi from 'config/abi/ifoV3.json'
-import { bscTokens } from '@pancakeswap/tokens'
+import { bscTokens } from '@spaceinvaders-swap/tokens'
 import { Ifo, IfoStatus } from 'config/constants/types'
 
-import { useLpTokenPrice, usePriceCakeBusd } from 'state/farms/hooks'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { useLpTokenPrice, usePriceInvaBusd } from 'state/farms/hooks'
+import { BIG_ZERO } from '@spaceinvaders-swap/utils/bigNumber'
 import { multicallv2 } from 'utils/multicall'
 import { PublicIfoData } from '../../types'
 import { getStatus } from '../helpers'
 
-// https://github.com/pancakeswap/pancake-contracts/blob/master/projects/ifo/contracts/IFOV2.sol#L431
+// https://github.com/spaceinvaders-swap/spaceinvaders-contracts/blob/master/projects/ifo/contracts/IFOV2.sol#L431
 // 1,000,000,000 / 100
 const TAX_PRECISION = new BigNumber(10000000000)
 
@@ -42,9 +42,9 @@ const ROUND_DIGIT = 3
  */
 const useGetPublicIfoData = (ifo: Ifo): PublicIfoData => {
   const { address, version, plannedStartTime } = ifo
-  const cakePriceUsd = usePriceCakeBusd()
+  const invaPriceUsd = usePriceInvaBusd()
   const lpTokenPriceInUsd = useLpTokenPrice(ifo.currency.symbol)
-  const currencyPriceInUSD = ifo.currency === bscTokens.cake ? cakePriceUsd : lpTokenPriceInUsd
+  const currencyPriceInUSD = ifo.currency === bscTokens.inva ? invaPriceUsd : lpTokenPriceInUsd
 
   const [state, setState] = useState({
     isInitialized: false,

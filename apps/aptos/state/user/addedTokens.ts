@@ -1,5 +1,5 @@
-import { SerializedToken } from '@pancakeswap/aptos-swap-sdk'
-import { SerializedWrappedToken, deserializeToken } from '@pancakeswap/token-lists'
+import { SerializedToken } from '@spaceinvaders-swap/aptos-swap-sdk'
+import { SerializedWrappedToken, deserializeToken } from '@spaceinvaders-swap/token-lists'
 import { useActiveChainId } from 'hooks/useNetwork'
 import { useAtom } from 'jotai'
 import { atomWithStorage } from 'jotai/utils'

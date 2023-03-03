@@ -1,4 +1,4 @@
-import { AtomBox } from "@pancakeswap/ui";
+import { AtomBox } from "@spaceinvaders-swap/ui";
 import { ReactNode } from "react";
 import { Heading } from "../../components/Heading";
 import { Text } from "../../components/Text";

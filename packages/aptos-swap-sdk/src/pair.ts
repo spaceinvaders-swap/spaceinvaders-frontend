@@ -13,7 +13,7 @@ import {
   CurrencyAmount,
   sqrt,
   MINIMUM_LIQUIDITY,
-} from '@pancakeswap/swap-sdk-core'
+} from '@spaceinvaders-swap/swap-sdk-core'
 import { TypeTagParser, TxnBuilderTypes, HexString } from 'aptos'
 
 import { Currency } from './currency'
@@ -72,8 +72,8 @@ export class Pair {
       tokenA.chainId,
       Pair.getAddress(tokenA, tokenB),
       8,
-      'Cake-LP',
-      `Pancake-${token0.symbol}-${token1.symbol}-LP`
+      'Inva-LP',
+      `Spaceinvaders-${token0.symbol}-${token1.symbol}-LP`
     )
   }
 

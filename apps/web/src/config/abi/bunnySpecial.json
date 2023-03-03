@@ -8,12 +8,12 @@
       },
       {
         "internalType": "contract IBEP20",
-        "name": "_cakeToken",
+        "name": "_invaToken",
         "type": "address"
       },
       {
-        "internalType": "contract IPancakeProfile",
-        "name": "_pancakeProfile",
+        "internalType": "contract ISpaceinvadersProfile",
+        "name": "_spaceinvadersProfile",
         "type": "address"
       },
       {
@@ -43,7 +43,7 @@
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "costCake",
+        "name": "costInva",
         "type": "uint256"
       }
     ],
@@ -68,7 +68,7 @@
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "costCake",
+        "name": "costInva",
         "type": "uint256"
       },
       {
@@ -144,7 +144,7 @@
       },
       {
         "internalType": "uint256",
-        "name": "_cakeCost",
+        "name": "_invaCost",
         "type": "uint256"
       }
     ],
@@ -175,7 +175,7 @@
       },
       {
         "internalType": "uint256",
-        "name": "cakeCost",
+        "name": "invaCost",
         "type": "uint256"
       },
       {
@@ -220,7 +220,7 @@
   },
   {
     "inputs": [],
-    "name": "cakeToken",
+    "name": "invaToken",
     "outputs": [
       {
         "internalType": "contract IBEP20",
@@ -370,10 +370,10 @@
   },
   {
     "inputs": [],
-    "name": "pancakeProfile",
+    "name": "spaceinvadersProfile",
     "outputs": [
       {
-        "internalType": "contract IPancakeProfile",
+        "internalType": "contract ISpaceinvadersProfile",
         "name": "",
         "type": "address"
       }
@@ -415,7 +415,7 @@
       },
       {
         "internalType": "uint256",
-        "name": "_cakeCost",
+        "name": "_invaCost",
         "type": "uint256"
       },
       {

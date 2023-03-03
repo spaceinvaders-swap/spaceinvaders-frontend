@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import BigNumber from 'bignumber.js'
-import { useTranslation } from '@pancakeswap/localization'
-import { Heading, Text, Balance } from '@pancakeswap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { Heading, Text, Balance } from '@spaceinvaders-swap/uikit'
 import { ActionContainer, ActionContent, ActionTitles } from 'views/Pools/components/PoolsTable/ActionPanel/styles'
-import { usePriceCakeBusd } from 'state/farms/hooks'
+import { usePriceInvaBusd } from 'state/farms/hooks'
 import { EarnedProps } from 'views/Migration/components/Farm/Cells/Earned'
 import { FarmProps } from 'views/Migration/components/Farm/Cells/Farm'
 import StakeButton from '../StakeButton'
@@ -23,13 +23,13 @@ const Staked: React.FC<React.PropsWithChildren<StakedProps>> = ({ earned, farm }
   const { t } = useTranslation()
   const { earnings } = earned
   const earningsBigNumber = new BigNumber(earnings)
-  const cakePrice = usePriceCakeBusd()
+  const invaPrice = usePriceInvaBusd()
   let earningsBusd = 0
   let displayBalance = earnings.toLocaleString()
 
   // If user didn't connect wallet default balance will be 0
   if (!earningsBigNumber.isZero()) {
-    earningsBusd = earningsBigNumber.multipliedBy(cakePrice).toNumber()
+    earningsBusd = earningsBigNumber.multipliedBy(invaPrice).toNumber()
     displayBalance = earningsBigNumber.toFixed(3, BigNumber.ROUND_DOWN)
   }
 
@@ -37,7 +37,7 @@ const Staked: React.FC<React.PropsWithChildren<StakedProps>> = ({ earned, farm }
     <Container>
       <ActionTitles>
         <Text bold textTransform="uppercase" color="secondary" fontSize="12px" pr="4px">
-          {`CAKE ${t('Earned')}`}
+          {`INVA ${t('Earned')}`}
         </Text>
       </ActionTitles>
       <ActionContent>

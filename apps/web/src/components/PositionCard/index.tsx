@@ -1,5 +1,5 @@
 import { useState, useMemo, useContext } from 'react'
-import { Currency, CurrencyAmount, JSBI, Pair, Percent } from '@pancakeswap/sdk'
+import { Currency, CurrencyAmount, JSBI, Pair, Percent } from '@spaceinvaders-swap/sdk'
 import {
   Button,
   Text,
@@ -15,9 +15,9 @@ import {
   NextLinkFromReactRouter,
   Link,
   AutoColumn,
-} from '@pancakeswap/uikit'
+} from '@spaceinvaders-swap/uikit'
 import styled from 'styled-components'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import useTotalSupply from 'hooks/useTotalSupply'
 import useBUSDPrice from 'hooks/useBUSDPrice'
 import { multiplyPriceByAmount } from 'utils/prices'
@@ -252,7 +252,7 @@ function MinimalPositionCardView({
       ) : (
         <LightCard>
           <Text fontSize="14px" style={{ textAlign: 'center' }}>
-            <span role="img" aria-label="pancake-icon">
+            <span role="img" aria-label="spaceinvaders-icon">
               🥞
             </span>{' '}
             {isStableLP ? (
@@ -264,7 +264,7 @@ function MinimalPositionCardView({
                   style={{ display: 'inline' }}
                   ml="4px"
                   external
-                  href="https://docs.pancakeswap.finance/products/stableswap#stableswap-fees"
+                  href="https://docs.spaceinvaders-swap.finance/products/stableswap#stableswap-fees"
                 >
                   {t('here.')}
                 </Link>

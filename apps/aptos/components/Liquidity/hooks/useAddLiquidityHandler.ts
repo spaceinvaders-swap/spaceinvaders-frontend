@@ -1,6 +1,6 @@
-import { Currency, CurrencyAmount, Router } from '@pancakeswap/aptos-swap-sdk'
-import { SimulateTransactionError, UserRejectedRequestError } from '@pancakeswap/awgmi/core'
-import { useTranslation } from '@pancakeswap/localization'
+import { Currency, CurrencyAmount, Router } from '@spaceinvaders-swap/aptos-swap-sdk'
+import { SimulateTransactionError, UserRejectedRequestError } from '@spaceinvaders-swap/awgmi/core'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import { log } from 'next-axiom'
 import { useCallback, useContext, useMemo, useState } from 'react'
 

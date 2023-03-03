@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
-import { Modal, ModalBody, Text, Button, Flex, InjectedModalProps } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Modal, ModalBody, Text, Button, Flex, InjectedModalProps } from '@spaceinvaders-swap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import isEmpty from 'lodash/isEmpty'
 import groupBy from 'lodash/groupBy'
 import { useAllSortedRecentTransactions } from 'state/transactions/hooks'

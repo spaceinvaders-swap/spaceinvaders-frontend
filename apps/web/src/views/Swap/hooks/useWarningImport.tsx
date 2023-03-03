@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { Token } from '@pancakeswap/sdk'
-import { useModal } from '@pancakeswap/uikit'
+import { Token } from '@spaceinvaders-swap/sdk'
+import { useModal } from '@spaceinvaders-swap/uikit'
 
 import { useRouter } from 'next/router'
 import useSWRImmutable from 'swr/immutable'

@@ -1,10 +1,10 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Text, TooltipText, useModal, useTooltip, Farm as FarmUI, RoiCalculatorModal } from '@pancakeswap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { Text, TooltipText, useModal, useTooltip, Farm as FarmUI, RoiCalculatorModal } from '@spaceinvaders-swap/uikit'
 import BigNumber from 'bignumber.js'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { BIG_ZERO } from '@spaceinvaders-swap/utils/bigNumber'
 import { useFarmUserInfoCache } from 'state/farms/hook'
-import { useAccountBalance } from '@pancakeswap/awgmi'
+import { useAccountBalance } from '@spaceinvaders-swap/awgmi'
 import { FARM_DEFAULT_DECIMALS } from '../../constants'
 
 export interface ApyButtonProps {
@@ -15,7 +15,7 @@ export interface ApyButtonProps {
   lpLabel?: string
   multiplier: string
   lpTokenPrice: BigNumber
-  cakePrice?: BigNumber
+  invaPrice?: BigNumber
   apr?: number
   displayApr?: string
   lpRewardsApr?: number
@@ -31,7 +31,7 @@ const ApyButton: React.FC<React.PropsWithChildren<ApyButtonProps>> = ({
   lpSymbol,
   lpAddress,
   lpTokenPrice,
-  cakePrice = BIG_ZERO,
+  invaPrice = BIG_ZERO,
   apr = 0,
   multiplier,
   displayApr,
@@ -61,7 +61,7 @@ const ApyButton: React.FC<React.PropsWithChildren<ApyButtonProps>> = ({
         {t('APR (incl. LP rewards)')}: <Text style={{ display: 'inline-block' }}>{`${displayApr}%`}</Text>
       </Text>
       <Text ml="5px">
-        *{t('Base APR (CAKE yield only)')}: {`${apr.toFixed(2)}%`}
+        *{t('Base APR (INVA yield only)')}: {`${apr.toFixed(2)}%`}
       </Text>
       <Text ml="5px">
         *{t('LP Rewards APR')}: {lpRewardsApr === 0 ? '-' : lpRewardsApr}%
@@ -81,13 +81,13 @@ const ApyButton: React.FC<React.PropsWithChildren<ApyButtonProps>> = ({
       stakingTokenSymbol={lpSymbol}
       stakingTokenPrice={lpTokenPrice.toNumber()}
       stakingTokenDecimals={FARM_DEFAULT_DECIMALS}
-      earningTokenPrice={cakePrice.toNumber()}
+      earningTokenPrice={invaPrice.toNumber()}
       apr={apr}
       multiplier={multiplier}
       displayApr={displayApr}
       linkHref={addLiquidityUrl}
       isFarm
-      rewardCakePerSecond
+      rewardInvaPerSecond
     />,
     false,
     true,

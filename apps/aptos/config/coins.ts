@@ -1,4 +1,4 @@
-import { AptosCoin, ChainId, Coin } from '@pancakeswap/aptos-swap-sdk'
+import { AptosCoin, ChainId, Coin } from '@spaceinvaders-swap/aptos-swap-sdk'
 
 export const APT = {
   [ChainId.TESTNET]: AptosCoin.onChain(ChainId.TESTNET),
@@ -38,20 +38,20 @@ export const WH_USDC_MAINNET = new Coin(
   'Wormhole - USD Coin',
 )
 
-export const CAKE = {
+export const INVA = {
   [ChainId.MAINNET]: new Coin(
     ChainId.MAINNET,
-    '0x159df6b7689437016108a019fd5bef736bac692b6d4a1f10c941f6fbb9a74ca6::oft::CakeOFT',
+    '0x159df6b7689437016108a019fd5bef736bac692b6d4a1f10c941f6fbb9a74ca6::oft::InvaOFT',
     8,
-    'CAKE',
-    'PancakeSwap Token',
+    'INVA',
+    'SpaceinvadersSwap Token',
   ),
   [ChainId.TESTNET]: new Coin(
     ChainId.TESTNET,
-    '0xe0e5ad285cbcdb873b2ee15bb6bcac73d9d763bcb58395e894255eeecf3992cf::pancake::Cake',
+    '0xe0e5ad285cbcdb873b2ee15bb6bcac73d9d763bcb58395e894255eeecf3992cf::spaceinvaders::Inva',
     8,
-    'CAKE',
-    'PancakeSwap Token',
+    'INVA',
+    'SpaceinvadersSwap Token',
   ),
 }
 

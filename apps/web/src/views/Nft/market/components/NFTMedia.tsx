@@ -1,6 +1,6 @@
-import { Box, BoxProps } from '@pancakeswap/uikit'
+import { Box, BoxProps } from '@spaceinvaders-swap/uikit'
 import { useEffect, useRef } from 'react'
-import { useIntersectionObserver } from '@pancakeswap/hooks'
+import { useIntersectionObserver } from '@spaceinvaders-swap/hooks'
 import { NftToken } from 'state/nftMarket/types'
 import styled from 'styled-components'
 import { useTryVideoNftMedia } from 'state/nftMarket/hooks'

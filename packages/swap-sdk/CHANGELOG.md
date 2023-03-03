@@ -1,4 +1,4 @@
-# @pancakeswap/sdk
+# @spaceinvaders-swap/sdk
 
 ## 3.1.4
 

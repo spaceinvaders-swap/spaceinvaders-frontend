@@ -1,6 +1,6 @@
-# eslint-config-pancake
+# eslint-config-spaceinvaders
 
-Pancake Eslint config with:
+Spaceinvaders Eslint config with:
 
 - Airbnb config
 - Typescript
@@ -9,7 +9,7 @@ Pancake Eslint config with:
 ## Usage
 
 ```
-npx install-peerdeps --dev @pancakeswap/eslint-config-pancake
+npx install-peerdeps --dev @spaceinvaders-swap/eslint-config-spaceinvaders
 ```
 
-Add `"extends": "@pancakeswap/eslint-config-pancake"` to your eslint config file.
+Add `"extends": "@spaceinvaders-swap/eslint-config-spaceinvaders"` to your eslint config file.

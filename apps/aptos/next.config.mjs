@@ -17,13 +17,13 @@ const nextConfig = {
   },
   experimental: {
     transpilePackages: [
-      '@pancakeswap/ui',
-      '@pancakeswap/uikit',
-      '@pancakeswap/localization',
-      '@pancakeswap/hooks',
-      '@pancakeswap/utils',
-      '@pancakeswap/tokens',
-      '@pancakeswap/farms',
+      '@spaceinvaders-swap/ui',
+      '@spaceinvaders-swap/uikit',
+      '@spaceinvaders-swap/localization',
+      '@spaceinvaders-swap/hooks',
+      '@spaceinvaders-swap/utils',
+      '@spaceinvaders-swap/tokens',
+      '@spaceinvaders-swap/farms',
     ],
   },
   async redirects() {

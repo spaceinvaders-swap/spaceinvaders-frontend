@@ -1,4 +1,4 @@
-# @pancakeswap/aptos-swap-sdk
+# @spaceinvaders-swap/aptos-swap-sdk
 
 ## 0.0.2
 

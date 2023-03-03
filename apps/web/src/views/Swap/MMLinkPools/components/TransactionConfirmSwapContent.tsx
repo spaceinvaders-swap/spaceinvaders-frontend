@@ -1,5 +1,5 @@
-import { Currency, CurrencyAmount, TradeType } from '@pancakeswap/sdk'
-import { ConfirmationModalContent } from '@pancakeswap/uikit'
+import { Currency, CurrencyAmount, TradeType } from '@spaceinvaders-swap/sdk'
+import { ConfirmationModalContent } from '@spaceinvaders-swap/uikit'
 import { memo, useCallback, useMemo } from 'react'
 import { Field } from 'state/swap/actions'
 import { maxAmountSpend } from 'utils/maxAmountSpend'

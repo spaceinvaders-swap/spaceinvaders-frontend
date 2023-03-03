@@ -5,14 +5,14 @@ import { MaxUint256 } from '@ethersproject/constants'
 import { useAppDispatch } from 'state'
 import { updateUserAllowance } from 'state/actions'
 import { VaultKey } from 'state/types'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import { useSousChef, useVaultPoolContract } from 'hooks/useContract'
-import { useToast } from '@pancakeswap/uikit'
+import { useToast } from '@spaceinvaders-swap/uikit'
 import { useCallWithGasPrice } from 'hooks/useCallWithGasPrice'
 import useCatchTxError from 'hooks/useCatchTxError'
 import { ToastDescriptionWithTx } from 'components/Toast'
-import useCakeApprovalStatus from 'hooks/useCakeApprovalStatus'
-import useCakeApprove from 'hooks/useCakeApprove'
+import useInvaApprovalStatus from 'hooks/useInvaApprovalStatus'
+import useInvaApprove from 'hooks/useInvaApprove'
 
 export const useApprovePool = (lpContract: Contract, sousId, earningTokenSymbol) => {
   const { toastSuccess } = useToast()
@@ -52,20 +52,20 @@ export const useApprovePool = (lpContract: Contract, sousId, earningTokenSymbol)
   return { handleApprove, pendingTx }
 }
 
-// Approve CAKE auto pool
+// Approve INVA auto pool
 export const useVaultApprove = (vaultKey: VaultKey, setLastUpdated: () => void) => {
   const vaultPoolContract = useVaultPoolContract(vaultKey)
   const { t } = useTranslation()
 
-  return useCakeApprove(
+  return useInvaApprove(
     setLastUpdated,
     vaultPoolContract?.address,
-    t('You can now stake in the %symbol% vault!', { symbol: 'CAKE' }),
+    t('You can now stake in the %symbol% vault!', { symbol: 'INVA' }),
   )
 }
 
 export const useCheckVaultApprovalStatus = (vaultKey: VaultKey) => {
   const vaultPoolContract = useVaultPoolContract(vaultKey)
 
-  return useCakeApprovalStatus(vaultPoolContract?.address)
+  return useInvaApprovalStatus(vaultPoolContract?.address)
 }

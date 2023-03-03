@@ -6,5 +6,5 @@ const SubgraphHealthIndicator = dynamic(() => import('components/SubgraphHealthI
 export const FixedSubgraphHealthIndicator = () => {
   const { pathname } = useRouter()
   const isOnNftPages = pathname.includes('nfts')
-  return isOnNftPages ? <SubgraphHealthIndicator subgraphName="pancakeswap/nft-market" /> : null
+  return isOnNftPages ? <SubgraphHealthIndicator subgraphName="spaceinvaders-swap/nft-market" /> : null
 }

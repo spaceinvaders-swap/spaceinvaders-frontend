@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, useCallback } from 'react'
-import { useLastUpdated } from '@pancakeswap/hooks'
-import isUndefinedOrNull from '@pancakeswap/utils/isUndefinedOrNull'
+import { useLastUpdated } from '@spaceinvaders-swap/hooks'
+import isUndefinedOrNull from '@spaceinvaders-swap/utils/isUndefinedOrNull'
 
 export default function useInterval(
   callback: () => void,

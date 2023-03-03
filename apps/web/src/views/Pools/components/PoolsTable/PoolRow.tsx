@@ -1,8 +1,8 @@
 import { memo, useMemo } from 'react'
-import { useMatchBreakpoints, Pool } from '@pancakeswap/uikit'
+import { useMatchBreakpoints, Pool } from '@spaceinvaders-swap/uikit'
 import { usePool, useDeserializedPoolByVaultKey, useVaultPoolByKey } from 'state/pools/hooks'
 import { VaultKey } from 'state/types'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
+import { getBalanceNumber } from '@spaceinvaders-swap/utils/formatBalance'
 
 import NameCell from './Cells/NameCell'
 import EarningsCell from './Cells/EarningsCell'
@@ -21,13 +21,13 @@ export const VaultPoolRow: React.FC<
   const isLargerScreen = isLg || isXl || isXxl
   const isXLargerScreen = isXl || isXxl
   const pool = useDeserializedPoolByVaultKey(vaultKey)
-  const { totalCakeInVault } = useVaultPoolByKey(vaultKey)
+  const { totalInvaInVault } = useVaultPoolByKey(vaultKey)
 
   const { stakingToken, totalStaked } = pool
 
   const totalStakedBalance = useMemo(() => {
-    return getBalanceNumber(totalCakeInVault, stakingToken.decimals)
-  }, [stakingToken.decimals, totalCakeInVault])
+    return getBalanceNumber(totalInvaInVault, stakingToken.decimals)
+  }, [stakingToken.decimals, totalInvaInVault])
 
   return (
     <Pool.ExpandRow initialActivity={initialActivity} panel={<ActionPanel account={account} pool={pool} expanded />}>

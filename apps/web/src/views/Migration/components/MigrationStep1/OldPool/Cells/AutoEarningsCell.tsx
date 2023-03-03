@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Text, Flex, Box, useMatchBreakpoints, Balance, Pool } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Text, Flex, Box, useMatchBreakpoints, Balance, Pool } from '@spaceinvaders-swap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 
 interface AutoEarningsCellProps {
   hasEarnings: boolean
@@ -22,7 +22,7 @@ const AutoEarningsCell: React.FC<React.PropsWithChildren<AutoEarningsCellProps>>
 }) => {
   const { t } = useTranslation()
   const { isMobile } = useMatchBreakpoints()
-  const labelText = t('Recent CAKE profit')
+  const labelText = t('Recent INVA profit')
 
   return (
     <StyledCell role="cell">

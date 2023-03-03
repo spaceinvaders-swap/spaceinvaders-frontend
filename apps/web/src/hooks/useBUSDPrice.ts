@@ -10,9 +10,9 @@ import {
   WBNB,
   ERC20Token,
   WETH9,
-} from '@pancakeswap/sdk'
+} from '@spaceinvaders-swap/sdk'
 import { FAST_INTERVAL } from 'config/constants'
-import { BUSD, CAKE, USDC } from '@pancakeswap/tokens'
+import { BUSD, INVA, USDC } from '@spaceinvaders-swap/tokens'
 import { useMemo } from 'react'
 import useSWR from 'swr'
 import useSWRImmutable from 'swr/immutable'
@@ -176,23 +176,23 @@ export const useBUSDCurrencyAmount = (currency?: Currency, amount?: number): num
   return undefined
 }
 
-export const useBUSDCakeAmount = (amount: number): number | undefined => {
-  const cakeBusdPrice = useCakeBusdPrice()
-  if (cakeBusdPrice) {
-    return multiplyPriceByAmount(cakeBusdPrice, amount)
+export const useBUSDInvaAmount = (amount: number): number | undefined => {
+  const invaBusdPrice = useInvaBusdPrice()
+  if (invaBusdPrice) {
+    return multiplyPriceByAmount(invaBusdPrice, amount)
   }
   return undefined
 }
 
 // @Note: only fetch from one pair
-export const useCakeBusdPrice = (
+export const useInvaBusdPrice = (
   { forceMainnet } = { forceMainnet: false },
 ): Price<ERC20Token, ERC20Token> | undefined => {
   const { chainId } = useActiveChainId()
   const isTestnet = !forceMainnet && isChainTestnet(chainId)
-  // Return bsc testnet cake if chain is testnet
-  const cake: Token = isTestnet ? CAKE[ChainId.BSC_TESTNET] : CAKE[ChainId.BSC]
-  return usePriceByPairs(BUSD[cake.chainId], cake)
+  // Return bsc testnet inva if chain is testnet
+  const inva: Token = isTestnet ? INVA[ChainId.BSC_TESTNET] : INVA[ChainId.BSC]
+  return usePriceByPairs(BUSD[inva.chainId], inva)
 }
 
 // @Note: only fetch from one pair

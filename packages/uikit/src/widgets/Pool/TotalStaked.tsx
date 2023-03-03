@@ -1,6 +1,6 @@
 import BigNumber from "bignumber.js";
-import { getBalanceNumber } from "@pancakeswap/utils/formatBalance";
-import { useTranslation } from "@pancakeswap/localization";
+import { getBalanceNumber } from "@spaceinvaders-swap/utils/formatBalance";
+import { useTranslation } from "@spaceinvaders-swap/localization";
 import { useTooltip } from "../../hooks";
 import { TooltipText, Balance, Skeleton } from "../../components";
 import { StatWrapper } from "./StatWrapper";

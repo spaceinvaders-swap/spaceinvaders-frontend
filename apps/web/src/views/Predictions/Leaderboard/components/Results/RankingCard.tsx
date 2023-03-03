@@ -13,13 +13,13 @@ import {
   SubMenuItem,
   useModal,
   BscScanIcon,
-} from '@pancakeswap/uikit'
+} from '@spaceinvaders-swap/uikit'
 import { PredictionUser } from 'state/types'
 import { useProfileForAddress } from 'state/profile/hooks'
 import styled from 'styled-components'
 import { getBlockExploreLink } from 'utils'
-import truncateHash from '@pancakeswap/utils/truncateHash'
-import { useTranslation } from '@pancakeswap/localization'
+import truncateHash from '@spaceinvaders-swap/utils/truncateHash'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import { useStatModalProps } from 'state/predictions/hooks'
 import { useConfig } from 'views/Predictions/context/ConfigProvider'
 import WalletStatsModal from '../WalletStatsModal'

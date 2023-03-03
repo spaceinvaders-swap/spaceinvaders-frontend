@@ -2,12 +2,12 @@ import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { useAccount } from 'wagmi'
 import BigNumber from 'bignumber.js'
-import { Button, Flex, InjectedModalProps, Message, MessageText } from '@pancakeswap/uikit'
-import { getPancakeProfileAddress } from 'utils/addressHelpers'
-import { useCake } from 'hooks/useContract'
-import { useGetCakeBalance } from 'hooks/useTokenBalance'
-import { useCakeEnable } from 'hooks/useCakeEnable'
-import { useTranslation } from '@pancakeswap/localization'
+import { Button, Flex, InjectedModalProps, Message, MessageText } from '@spaceinvaders-swap/uikit'
+import { getSpaceinvadersProfileAddress } from 'utils/addressHelpers'
+import { useInva } from 'hooks/useContract'
+import { useGetInvaBalance } from 'hooks/useTokenBalance'
+import { useInvaEnable } from 'hooks/useInvaEnable'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import useGetProfileCosts from 'views/Profile/hooks/useGetProfileCosts'
 import { FetchStatus } from 'config/constants/types'
 import { requiresApproval } from 'utils/requiresApproval'
@@ -46,36 +46,36 @@ const AvatarWrapper = styled.div`
 const StartPage: React.FC<React.PropsWithChildren<StartPageProps>> = ({ goToApprove, goToChange, goToRemove }) => {
   const { t } = useTranslation()
   const { address: account } = useAccount()
-  const { reader: cakeContract } = useCake()
+  const { reader: invaContract } = useInva()
   const { profile } = useProfile()
-  const { balance: cakeBalance, fetchStatus } = useGetCakeBalance()
+  const { balance: invaBalance, fetchStatus } = useGetInvaBalance()
   const {
-    costs: { numberCakeToUpdate, numberCakeToReactivate },
+    costs: { numberInvaToUpdate, numberInvaToReactivate },
     isLoading: isProfileCostsLoading,
   } = useGetProfileCosts()
   const [needsApproval, setNeedsApproval] = useState(null)
-  const minimumCakeRequired = profile?.isActive ? numberCakeToUpdate : numberCakeToReactivate
-  const hasMinimumCakeRequired = fetchStatus === FetchStatus.Fetched && cakeBalance.gte(minimumCakeRequired)
-  const { handleEnable, pendingEnableTx } = useCakeEnable(new BigNumber(minimumCakeRequired.toString()))
-  const [showCakeRequireFlow, setShowCakeRequireFlow] = useState(false)
+  const minimumInvaRequired = profile?.isActive ? numberInvaToUpdate : numberInvaToReactivate
+  const hasMinimumInvaRequired = fetchStatus === FetchStatus.Fetched && invaBalance.gte(minimumInvaRequired)
+  const { handleEnable, pendingEnableTx } = useInvaEnable(new BigNumber(minimumInvaRequired.toString()))
+  const [showInvaRequireFlow, setShowInvaRequireFlow] = useState(false)
 
   useEffect(() => {
-    if (!isProfileCostsLoading && !hasMinimumCakeRequired && !showCakeRequireFlow) {
-      setShowCakeRequireFlow(true)
+    if (!isProfileCostsLoading && !hasMinimumInvaRequired && !showInvaRequireFlow) {
+      setShowInvaRequireFlow(true)
     }
-  }, [isProfileCostsLoading, hasMinimumCakeRequired, showCakeRequireFlow])
+  }, [isProfileCostsLoading, hasMinimumInvaRequired, showInvaRequireFlow])
 
   /**
-   * Check if the wallet has the required CAKE allowance to change their profile pic or reactivate
+   * Check if the wallet has the required INVA allowance to change their profile pic or reactivate
    * If they don't, we send them to the approval screen first
    */
   useEffect(() => {
     const checkApprovalStatus = async () => {
       const approvalNeeded = await requiresApproval(
-        cakeContract,
+        invaContract,
         account,
-        getPancakeProfileAddress(),
-        minimumCakeRequired,
+        getSpaceinvadersProfileAddress(),
+        minimumInvaRequired,
       )
       setNeedsApproval(approvalNeeded)
     }
@@ -83,7 +83,7 @@ const StartPage: React.FC<React.PropsWithChildren<StartPageProps>> = ({ goToAppr
     if (account && !isProfileCostsLoading) {
       checkApprovalStatus()
     }
-  }, [account, minimumCakeRequired, setNeedsApproval, cakeContract, isProfileCostsLoading])
+  }, [account, minimumInvaRequired, setNeedsApproval, invaContract, isProfileCostsLoading])
 
   if (!profile) {
     return null
@@ -99,16 +99,16 @@ const StartPage: React.FC<React.PropsWithChildren<StartPageProps>> = ({ goToAppr
           <Message variant="warning" my="16px">
             <MessageText>
               {t(
-                "Before editing your profile, please make sure you've claimed all the unspent CAKE from previous IFOs!",
+                "Before editing your profile, please make sure you've claimed all the unspent INVA from previous IFOs!",
               )}
             </MessageText>
           </Message>
-          {showCakeRequireFlow ? (
+          {showInvaRequireFlow ? (
             <Flex mb="8px">
               <ApproveConfirmButtons
-                isApproveDisabled={isProfileCostsLoading || hasMinimumCakeRequired}
+                isApproveDisabled={isProfileCostsLoading || hasMinimumInvaRequired}
                 isApproving={pendingEnableTx}
-                isConfirmDisabled={isProfileCostsLoading || !hasMinimumCakeRequired || needsApproval === null}
+                isConfirmDisabled={isProfileCostsLoading || !hasMinimumInvaRequired || needsApproval === null}
                 isConfirming={false}
                 onApprove={handleEnable}
                 onConfirm={needsApproval === true ? goToApprove : goToChange}
@@ -120,7 +120,7 @@ const StartPage: React.FC<React.PropsWithChildren<StartPageProps>> = ({ goToAppr
               width="100%"
               mb="8px"
               onClick={needsApproval === true ? goToApprove : goToChange}
-              disabled={isProfileCostsLoading || !hasMinimumCakeRequired || needsApproval === null}
+              disabled={isProfileCostsLoading || !hasMinimumInvaRequired || needsApproval === null}
             >
               {t('Change Profile Pic')}
             </Button>
@@ -129,12 +129,12 @@ const StartPage: React.FC<React.PropsWithChildren<StartPageProps>> = ({ goToAppr
             {t('Remove Profile Pic')}
           </DangerOutline>
         </>
-      ) : showCakeRequireFlow ? (
+      ) : showInvaRequireFlow ? (
         <Flex mb="8px">
           <ApproveConfirmButtons
-            isApproveDisabled={isProfileCostsLoading || hasMinimumCakeRequired}
+            isApproveDisabled={isProfileCostsLoading || hasMinimumInvaRequired}
             isApproving={pendingEnableTx}
-            isConfirmDisabled={isProfileCostsLoading || !hasMinimumCakeRequired || needsApproval === null}
+            isConfirmDisabled={isProfileCostsLoading || !hasMinimumInvaRequired || needsApproval === null}
             isConfirming={false}
             onApprove={handleEnable}
             onConfirm={needsApproval === true ? goToApprove : goToChange}
@@ -146,7 +146,7 @@ const StartPage: React.FC<React.PropsWithChildren<StartPageProps>> = ({ goToAppr
           width="100%"
           mb="8px"
           onClick={needsApproval === true ? goToApprove : goToChange}
-          disabled={isProfileCostsLoading || !hasMinimumCakeRequired || needsApproval === null}
+          disabled={isProfileCostsLoading || !hasMinimumInvaRequired || needsApproval === null}
         >
           {t('Reactivate Profile')}
         </Button>

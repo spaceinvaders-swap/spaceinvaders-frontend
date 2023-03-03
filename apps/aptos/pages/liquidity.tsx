@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Liquidity as LiquidityUI } from '@pancakeswap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { Liquidity as LiquidityUI } from '@spaceinvaders-swap/uikit'
 import HasAccount from 'components/HasAccount'
 import { ExchangeLayout } from 'components/Layout/ExchangeLayout'
 import { PageMeta } from 'components/Layout/Page'

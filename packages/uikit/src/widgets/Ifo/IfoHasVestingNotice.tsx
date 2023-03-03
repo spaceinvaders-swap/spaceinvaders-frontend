@@ -1,4 +1,4 @@
-import { useTranslation } from "@pancakeswap/localization";
+import { useTranslation } from "@spaceinvaders-swap/localization";
 import { Box, Message, Text } from "../../components";
 import { IfoMessageTextLink } from "./styleds";
 

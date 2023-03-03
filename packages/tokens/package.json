@@ -1,12 +1,12 @@
 {
-  "name": "@pancakeswap/tokens",
+  "name": "@spaceinvaders-swap/tokens",
   "license": "MIT",
   "version": "0.0.1",
-  "description": "Tokens for pancakeswap",
+  "description": "Tokens for spaceinvaders-swap",
   "main": "src/index.ts",
   "private": true,
   "sideEffects": false,
   "dependencies": {
-    "@pancakeswap/sdk": "*"
+    "@spaceinvaders-swap/sdk": "*"
   }
 }

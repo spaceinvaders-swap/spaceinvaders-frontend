@@ -1,6 +1,6 @@
 import { useEffect, useCallback, useState, useMemo, useRef } from 'react'
 import BigNumber from 'bignumber.js'
-import { ChainId } from '@pancakeswap/sdk'
+import { ChainId } from '@spaceinvaders-swap/sdk'
 import { useAccount } from 'wagmi'
 import {
   Image,
@@ -21,14 +21,14 @@ import {
   PageHeader,
   NextLinkFromReactRouter,
   ToggleView,
-} from '@pancakeswap/uikit'
+} from '@spaceinvaders-swap/uikit'
 import styled from 'styled-components'
 import Page from 'components/Layout/Page'
-import { useFarms, usePollFarmsWithUserData, usePriceCakeBusd } from 'state/farms/hooks'
-import { useCakeVaultUserData } from 'state/pools/hooks'
-import { useIntersectionObserver } from '@pancakeswap/hooks'
-import { DeserializedFarm, FarmWithStakedValue, filterFarmsByQuery } from '@pancakeswap/farms'
-import { useTranslation } from '@pancakeswap/localization'
+import { useFarms, usePollFarmsWithUserData, usePriceInvaBusd } from 'state/farms/hooks'
+import { useInvaVaultUserData } from 'state/pools/hooks'
+import { useIntersectionObserver } from '@spaceinvaders-swap/hooks'
+import { DeserializedFarm, FarmWithStakedValue, filterFarmsByQuery } from '@spaceinvaders-swap/farms'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import { getFarmApr } from 'utils/apr'
 import orderBy from 'lodash/orderBy'
 import { useUserFarmStakedOnly, useUserFarmsViewMode } from 'state/user/hooks'
@@ -36,7 +36,7 @@ import { ViewMode } from 'state/user/actions'
 import { useRouter } from 'next/router'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import Table from './components/FarmTable/FarmTable'
-import { BCakeBoosterCard } from './components/BCakeBoosterCard'
+import { BInvaBoosterCard } from './components/BInvaBoosterCard'
 import { FarmTypesFilter } from './components/FarmTypesFilter'
 import { FarmsContext } from './context'
 import useMultiChainHarvestModal from './hooks/useMultiChainHarvestModal'
@@ -156,8 +156,8 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
   const { pathname, query: urlQuery } = useRouter()
   const { t } = useTranslation()
   const { chainId } = useActiveChainId()
-  const { data: farmsLP, userDataLoaded, poolLength, regularCakePerBlock } = useFarms()
-  const cakePrice = usePriceCakeBusd()
+  const { data: farmsLP, userDataLoaded, poolLength, regularInvaPerBlock } = useFarms()
+  const invaPrice = usePriceInvaBusd()
 
   const [_query, setQuery] = useState('')
   const normalizedUrlSearch = useMemo(() => (typeof urlQuery?.search === 'string' ? urlQuery.search : ''), [urlQuery])
@@ -173,7 +173,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
   const isInactive = pathname.includes('history')
   const isActive = !isInactive && !isArchived
 
-  useCakeVaultUserData()
+  useInvaVaultUserData()
 
   usePollFarmsWithUserData()
 
@@ -235,23 +235,23 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
         }
 
         const totalLiquidity = new BigNumber(farm.lpTotalInQuoteToken).times(farm.quoteTokenPriceBusd)
-        const { cakeRewardsApr, lpRewardsApr } = isActive
+        const { invaRewardsApr, lpRewardsApr } = isActive
           ? getFarmApr(
               chainId,
               new BigNumber(farm.poolWeight),
-              cakePrice,
+              invaPrice,
               totalLiquidity,
               farm.lpAddress,
-              regularCakePerBlock,
+              regularInvaPerBlock,
             )
-          : { cakeRewardsApr: 0, lpRewardsApr: 0 }
+          : { invaRewardsApr: 0, lpRewardsApr: 0 }
 
-        return { ...farm, apr: cakeRewardsApr, lpRewardsApr, liquidity: totalLiquidity }
+        return { ...farm, apr: invaRewardsApr, lpRewardsApr, liquidity: totalLiquidity }
       })
 
       return filterFarmsByQuery(farmsToDisplayWithAPR, query)
     },
-    [query, isActive, chainId, cakePrice, regularCakePerBlock],
+    [query, isActive, chainId, invaPrice, regularInvaPerBlock],
   )
 
   const handleChangeQuery = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -374,7 +374,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
           </Box>
           {chainId === ChainId.BSC && (
             <Box>
-              <BCakeBoosterCard />
+              <BInvaBoosterCard />
             </Box>
           )}
         </FarmFlexWrapper>
@@ -465,7 +465,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
                 external
                 color="failure"
                 fontSize={['16px', null, '20px']}
-                href="https://v1-farms.pancakeswap.finance/farms/history"
+                href="https://v1-farms.spaceinvaders-swap.finance/farms/history"
               >
                 {t('check out v1 farms')}.
               </FinishedTextLink>
@@ -473,7 +473,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
           </FinishedTextContainer>
         )}
         {viewMode === ViewMode.TABLE ? (
-          <Table farms={chosenFarmsMemoized} cakePrice={cakePrice} userDataReady={userDataReady} />
+          <Table farms={chosenFarmsMemoized} invaPrice={invaPrice} userDataReady={userDataReady} />
         ) : (
           <FlexLayout>{children}</FlexLayout>
         )}
@@ -483,7 +483,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
           </Flex>
         )}
         {poolLength && <div ref={observerRef} />}
-        <StyledImage src="/images/decorations/3dpan.png" alt="Pancake illustration" width={120} height={103} />
+        <StyledImage src="/images/decorations/3dpan.png" alt="Spaceinvaders illustration" width={120} height={103} />
       </Page>
     </FarmsContext.Provider>
   )

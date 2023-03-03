@@ -1,4 +1,4 @@
-import { Container } from '@pancakeswap/uikit'
+import { Container } from '@spaceinvaders-swap/uikit'
 import { NextSeo } from 'next-seo'
 import styled from 'styled-components'
 

@@ -4,13 +4,13 @@ import { provider } from 'utils/wagmi'
 import { Contract } from '@ethersproject/contracts'
 import poolsConfig from 'config/constants/pools'
 import { PoolCategory } from 'config/constants/types'
-import { CAKE } from '@pancakeswap/tokens'
+import { INVA } from '@spaceinvaders-swap/tokens'
 
 // Addresses
 import {
   getAddress,
-  getPancakeProfileAddress,
-  getPancakeBunniesAddress,
+  getSpaceinvadersProfileAddress,
+  getSpaceinvadersBunniesAddress,
   getBunnyFactoryAddress,
   getBunnySpecialAddress,
   getLotteryV2Address,
@@ -20,26 +20,26 @@ import {
   getClaimRefundAddress,
   getTradingCompetitionAddressEaster,
   getEasterNftAddress,
-  getCakeVaultAddress,
+  getInvaVaultAddress,
   getMulticallAddress,
-  getBunnySpecialCakeVaultAddress,
+  getBunnySpecialInvaVaultAddress,
   getBunnySpecialPredictionAddress,
   getBunnySpecialLotteryAddress,
   getFarmAuctionAddress,
   getAnniversaryAchievement,
   getNftMarketAddress,
   getNftSaleAddress,
-  getPancakeSquadAddress,
+  getSpaceinvadersSquadAddress,
   getTradingCompetitionAddressFanToken,
   getTradingCompetitionAddressMobox,
   getTradingCompetitionAddressMoD,
   getBunnySpecialXmasAddress,
-  getICakeAddress,
+  getIInvaAddress,
   getPotteryDrawAddress,
-  getCakeFlexibleSideVaultAddress,
+  getInvaFlexibleSideVaultAddress,
   getPredictionsV1Address,
-  getBCakeFarmBoosterAddress,
-  getBCakeFarmBoosterProxyFactoryAddress,
+  getBInvaFarmBoosterAddress,
+  getBInvaFarmBoosterProxyFactoryAddress,
   getNonBscVaultAddress,
   getCrossFarmingSenderAddress,
   getCrossFarmingReceiverAddress,
@@ -48,14 +48,14 @@ import {
 } from 'utils/addressHelpers'
 
 // ABI
-import profileABI from 'config/abi/pancakeProfile.json'
-import pancakeBunniesAbi from 'config/abi/pancakeBunnies.json'
+import profileABI from 'config/abi/spaceinvadersProfile.json'
+import spaceinvadersBunniesAbi from 'config/abi/spaceinvadersBunnies.json'
 import bunnyFactoryAbi from 'config/abi/bunnyFactory.json'
 import bunnySpecialAbi from 'config/abi/bunnySpecial.json'
 import bep20Abi from 'config/abi/erc20.json'
 import erc721Abi from 'config/abi/erc721.json'
 import lpTokenAbi from 'config/abi/lpToken.json'
-import cakeAbi from 'config/abi/cake.json'
+import invaAbi from 'config/abi/inva.json'
 import ifoV1Abi from 'config/abi/ifoV1.json'
 import ifoV2Abi from 'config/abi/ifoV2.json'
 import pointCenterIfo from 'config/abi/pointCenterIfo.json'
@@ -71,13 +71,13 @@ import tradingCompetitionFanTokenAbi from 'config/abi/tradingCompetitionFanToken
 import tradingCompetitionMoboxAbi from 'config/abi/tradingCompetitionMobox.json'
 import tradingCompetitionMoDAbi from 'config/abi/tradingCompetitionMoD.json'
 import easterNftAbi from 'config/abi/easterNft.json'
-import cakeVaultV2Abi from 'config/abi/cakeVaultV2.json'
-import cakeFlexibleSideVaultV2Abi from 'config/abi/cakeFlexibleSideVaultV2.json'
+import invaVaultV2Abi from 'config/abi/invaVaultV2.json'
+import invaFlexibleSideVaultV2Abi from 'config/abi/invaFlexibleSideVaultV2.json'
 import predictionsAbi from 'config/abi/predictions.json'
 import predictionsV1Abi from 'config/abi/predictionsV1.json'
 import chainlinkOracleAbi from 'config/abi/chainlinkOracle.json'
 import MultiCallAbi from 'config/abi/Multicall.json'
-import bunnySpecialCakeVaultAbi from 'config/abi/bunnySpecialCakeVault.json'
+import bunnySpecialInvaVaultAbi from 'config/abi/bunnySpecialInvaVault.json'
 import bunnySpecialPredictionAbi from 'config/abi/bunnySpecialPrediction.json'
 import bunnySpecialLotteryAbi from 'config/abi/bunnySpecialLottery.json'
 import bunnySpecialXmasAbi from 'config/abi/bunnySpecialXmas.json'
@@ -85,16 +85,16 @@ import farmAuctionAbi from 'config/abi/farmAuction.json'
 import anniversaryAchievementAbi from 'config/abi/anniversaryAchievement.json'
 import nftMarketAbi from 'config/abi/nftMarket.json'
 import nftSaleAbi from 'config/abi/nftSale.json'
-import pancakeSquadAbi from 'config/abi/pancakeSquad.json'
+import spaceinvadersSquadAbi from 'config/abi/spaceinvadersSquad.json'
 import erc721CollectionAbi from 'config/abi/erc721collection.json'
 import potteryVaultAbi from 'config/abi/potteryVaultAbi.json'
 import potteryDrawAbi from 'config/abi/potteryDrawAbi.json'
-import iCakeAbi from 'config/abi/iCake.json'
+import iInvaAbi from 'config/abi/iInva.json'
 import ifoV3Abi from 'config/abi/ifoV3.json'
-import cakePredictionsAbi from 'config/abi/cakePredictions.json'
-import bCakeFarmBoosterAbi from 'config/abi/bCakeFarmBooster.json'
-import bCakeFarmBoosterProxyFactoryAbi from 'config/abi/bCakeFarmBoosterProxyFactory.json'
-import bCakeProxyAbi from 'config/abi/bCakeProxy.json'
+import invaPredictionsAbi from 'config/abi/invaPredictions.json'
+import bInvaFarmBoosterAbi from 'config/abi/bInvaFarmBooster.json'
+import bInvaFarmBoosterProxyFactoryAbi from 'config/abi/bInvaFarmBoosterProxyFactory.json'
+import bInvaProxyAbi from 'config/abi/bInvaProxy.json'
 import nonBscVault from 'config/abi/nonBscVault.json'
 import crossFarmingSenderAbi from 'config/abi/crossFarmingSender.json'
 import crossFarmingReceiverAbi from 'config/abi/crossFarmingReceiver.json'
@@ -112,10 +112,10 @@ import type {
   IfoV2,
   Erc20,
   Erc721,
-  Cake,
+  Inva,
   BunnyFactory,
-  PancakeBunnies,
-  PancakeProfile,
+  SpaceinvadersBunnies,
+  SpaceinvadersProfile,
   LotteryV2,
   Masterchef,
   MasterchefV1,
@@ -128,25 +128,25 @@ import type {
   TradingCompetitionFanToken,
   EasterNft,
   Multicall,
-  BunnySpecialCakeVault,
+  BunnySpecialInvaVault,
   BunnySpecialPrediction,
   BunnySpecialLottery,
   NftMarket,
   NftSale,
-  PancakeSquad,
+  SpaceinvadersSquad,
   Erc721collection,
   PointCenterIfo,
-  CakeVaultV2,
-  CakeFlexibleSideVaultV2,
+  InvaVaultV2,
+  InvaFlexibleSideVaultV2,
   TradingCompetitionMobox,
-  ICake,
+  IInva,
   TradingCompetitionMoD,
   PotteryVaultAbi,
   PotteryDrawAbi,
   PredictionsV1,
-  BCakeFarmBooster,
-  BCakeFarmBoosterProxyFactory,
-  BCakeProxy,
+  BInvaFarmBooster,
+  BInvaFarmBoosterProxyFactory,
+  BInvaProxy,
   NonBscVault,
   CrossFarmingSender,
   CrossFarmingReceiver,
@@ -154,7 +154,7 @@ import type {
   MmLinkedPool,
   StableSwapNativeHelper,
 } from 'config/abi/types'
-import { ChainId } from '@pancakeswap/sdk'
+import { ChainId } from '@spaceinvaders-swap/sdk'
 
 export const getContract = ({
   abi,
@@ -205,18 +205,18 @@ export const getSouschefV2Contract = (id: number, signer?: Signer | Provider) =>
 export const getPointCenterIfoContract = (signer?: Signer | Provider) => {
   return getContract({ abi: pointCenterIfo, address: getPointCenterIfoAddress(), signer }) as PointCenterIfo
 }
-export const getCakeContract = (signer?: Signer | Provider, chainId?: number) => {
+export const getInvaContract = (signer?: Signer | Provider, chainId?: number) => {
   return getContract({
-    abi: cakeAbi,
-    address: chainId ? CAKE[chainId].address : CAKE[ChainId.BSC].address,
+    abi: invaAbi,
+    address: chainId ? INVA[chainId].address : INVA[ChainId.BSC].address,
     signer,
-  }) as Cake
+  }) as Inva
 }
 export const getProfileContract = (signer?: Signer | Provider) => {
-  return getContract({ abi: profileABI, address: getPancakeProfileAddress(), signer }) as PancakeProfile
+  return getContract({ abi: profileABI, address: getSpaceinvadersProfileAddress(), signer }) as SpaceinvadersProfile
 }
-export const getPancakeBunniesContract = (signer?: Signer | Provider) => {
-  return getContract({ abi: pancakeBunniesAbi, address: getPancakeBunniesAddress(), signer }) as PancakeBunnies
+export const getSpaceinvadersBunniesContract = (signer?: Signer | Provider) => {
+  return getContract({ abi: spaceinvadersBunniesAbi, address: getSpaceinvadersBunniesAddress(), signer }) as SpaceinvadersBunnies
 }
 export const getBunnyFactoryContract = (signer?: Signer | Provider) => {
   return getContract({ abi: bunnyFactoryAbi, address: getBunnyFactoryAddress(), signer }) as BunnyFactory
@@ -270,16 +270,16 @@ export const getTradingCompetitionContractMoD = (signer?: Signer | Provider) => 
 export const getEasterNftContract = (signer?: Signer | Provider) => {
   return getContract({ abi: easterNftAbi, address: getEasterNftAddress(), signer }) as EasterNft
 }
-export const getCakeVaultV2Contract = (signer?: Signer | Provider) => {
-  return getContract({ abi: cakeVaultV2Abi, address: getCakeVaultAddress(), signer }) as CakeVaultV2
+export const getInvaVaultV2Contract = (signer?: Signer | Provider) => {
+  return getContract({ abi: invaVaultV2Abi, address: getInvaVaultAddress(), signer }) as InvaVaultV2
 }
 
-export const getCakeFlexibleSideVaultV2Contract = (signer?: Signer | Provider) => {
+export const getInvaFlexibleSideVaultV2Contract = (signer?: Signer | Provider) => {
   return getContract({
-    abi: cakeFlexibleSideVaultV2Abi,
-    address: getCakeFlexibleSideVaultAddress(),
+    abi: invaFlexibleSideVaultV2Abi,
+    address: getInvaFlexibleSideVaultAddress(),
     signer,
-  }) as CakeFlexibleSideVaultV2
+  }) as InvaFlexibleSideVaultV2
 }
 
 export const getPredictionsContract = (address: string, signer?: Signer | Provider) => {
@@ -290,8 +290,8 @@ export const getPredictionsV1Contract = (signer?: Signer | Provider) => {
   return getContract({ abi: predictionsV1Abi, address: getPredictionsV1Address(), signer }) as PredictionsV1
 }
 
-export const getCakePredictionsContract = (address: string, signer?: Signer | Provider) => {
-  return getContract({ abi: cakePredictionsAbi, address, signer }) as Predictions
+export const getInvaPredictionsContract = (address: string, signer?: Signer | Provider) => {
+  return getContract({ abi: invaPredictionsAbi, address, signer }) as Predictions
 }
 
 export const getChainlinkOracleContract = (address: string, signer?: Signer | Provider, chainId?: number) => {
@@ -300,12 +300,12 @@ export const getChainlinkOracleContract = (address: string, signer?: Signer | Pr
 export const getMulticallContract = (chainId: ChainId) => {
   return getContract({ abi: MultiCallAbi, address: getMulticallAddress(chainId), chainId }) as Multicall
 }
-export const getBunnySpecialCakeVaultContract = (signer?: Signer | Provider) => {
+export const getBunnySpecialInvaVaultContract = (signer?: Signer | Provider) => {
   return getContract({
-    abi: bunnySpecialCakeVaultAbi,
-    address: getBunnySpecialCakeVaultAddress(),
+    abi: bunnySpecialInvaVaultAbi,
+    address: getBunnySpecialInvaVaultAddress(),
     signer,
-  }) as BunnySpecialCakeVault
+  }) as BunnySpecialInvaVault
 }
 export const getBunnySpecialPredictionContract = (signer?: Signer | Provider) => {
   return getContract({
@@ -341,8 +341,8 @@ export const getNftMarketContract = (signer?: Signer | Provider) => {
 export const getNftSaleContract = (signer?: Signer | Provider) => {
   return getContract({ abi: nftSaleAbi, address: getNftSaleAddress(), signer }) as NftSale
 }
-export const getPancakeSquadContract = (signer?: Signer | Provider) => {
-  return getContract({ abi: pancakeSquadAbi, address: getPancakeSquadAddress(), signer }) as PancakeSquad
+export const getSpaceinvadersSquadContract = (signer?: Signer | Provider) => {
+  return getContract({ abi: spaceinvadersSquadAbi, address: getSpaceinvadersSquadAddress(), signer }) as SpaceinvadersSquad
 }
 export const getErc721CollectionContract = (signer?: Signer | Provider, address?: string) => {
   return getContract({ abi: erc721CollectionAbi, address, signer }) as Erc721collection
@@ -357,23 +357,23 @@ export const getPotteryDrawContract = (signer?: Signer | Provider) => {
 }
 
 export const getIfoCreditAddressContract = (signer?: Signer | Provider) => {
-  return getContract({ abi: iCakeAbi, address: getICakeAddress(), signer }) as ICake
+  return getContract({ abi: iInvaAbi, address: getIInvaAddress(), signer }) as IInva
 }
 
-export const getBCakeFarmBoosterContract = (signer?: Signer | Provider) => {
-  return getContract({ abi: bCakeFarmBoosterAbi, address: getBCakeFarmBoosterAddress(), signer }) as BCakeFarmBooster
+export const getBInvaFarmBoosterContract = (signer?: Signer | Provider) => {
+  return getContract({ abi: bInvaFarmBoosterAbi, address: getBInvaFarmBoosterAddress(), signer }) as BInvaFarmBooster
 }
 
-export const getBCakeFarmBoosterProxyFactoryContract = (signer?: Signer | Provider) => {
+export const getBInvaFarmBoosterProxyFactoryContract = (signer?: Signer | Provider) => {
   return getContract({
-    abi: bCakeFarmBoosterProxyFactoryAbi,
-    address: getBCakeFarmBoosterProxyFactoryAddress(),
+    abi: bInvaFarmBoosterProxyFactoryAbi,
+    address: getBInvaFarmBoosterProxyFactoryAddress(),
     signer,
-  }) as BCakeFarmBoosterProxyFactory
+  }) as BInvaFarmBoosterProxyFactory
 }
 
-export const getBCakeProxyContract = (proxyContractAddress: string, signer?: Signer | Provider) => {
-  return getContract({ abi: bCakeProxyAbi, address: proxyContractAddress, signer }) as BCakeProxy
+export const getBInvaProxyContract = (proxyContractAddress: string, signer?: Signer | Provider) => {
+  return getContract({ abi: bInvaProxyAbi, address: proxyContractAddress, signer }) as BInvaProxy
 }
 
 export const getNonBscVaultContract = (signer?: Signer | Provider, chainId?: number) => {

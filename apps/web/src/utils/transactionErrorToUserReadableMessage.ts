@@ -1,4 +1,4 @@
-import { TranslateFunction } from '@pancakeswap/localization'
+import { TranslateFunction } from '@spaceinvaders-swap/localization'
 
 /**
  * This is hacking out the revert reason from the ethers provider thrown error however it can.
@@ -18,18 +18,18 @@ export function transactionErrorToUserReadableMessage(error: any, t: TranslateFu
 
   const formatErrorMessage = (message: string) => [message, `(${reason})`].join(' ')
   switch (reason) {
-    case 'PancakeRouter: EXPIRED':
+    case 'SpaceinvadersRouter: EXPIRED':
       return formatErrorMessage(
         t(
           'The transaction could not be sent because the deadline has passed. Please check that your transaction deadline is not too low.',
         ),
       )
-    case 'PancakeRouter: INSUFFICIENT_OUTPUT_AMOUNT':
-    case 'PancakeRouter: EXCESSIVE_INPUT_AMOUNT':
-    case 'PancakeRouter: INSUFFICIENT_A_AMOUNT':
-    case 'PancakeRouter: INSUFFICIENT_B_AMOUNT':
+    case 'SpaceinvadersRouter: INSUFFICIENT_OUTPUT_AMOUNT':
+    case 'SpaceinvadersRouter: EXCESSIVE_INPUT_AMOUNT':
+    case 'SpaceinvadersRouter: INSUFFICIENT_A_AMOUNT':
+    case 'SpaceinvadersRouter: INSUFFICIENT_B_AMOUNT':
     case 'swapMulti: incorrect user balance':
-    case 'Pancake: K':
+    case 'Spaceinvaders: K':
       return formatErrorMessage(
         t(
           'This transaction will not succeed either due to price movement or fee on transfer. Try increasing your slippage tolerance.',
@@ -37,7 +37,7 @@ export function transactionErrorToUserReadableMessage(error: any, t: TranslateFu
       )
     case 'TransferHelper: TRANSFER_FROM_FAILED':
       return formatErrorMessage(t('The input token cannot be transferred. There may be an issue with the input token.'))
-    case 'Pancake: TRANSFER_FAILED':
+    case 'Spaceinvaders: TRANSFER_FAILED':
       return formatErrorMessage(
         t('The output token cannot be transferred. There may be an issue with the output token.'),
       )

@@ -1,12 +1,12 @@
 import { useMemo } from 'react'
-import { useTranslation } from '@pancakeswap/localization'
-import { Flex, Box, Text, Balance } from '@pancakeswap/uikit'
-import { usePriceCakeBusd } from 'state/farms/hooks'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { Flex, Box, Text, Balance } from '@spaceinvaders-swap/uikit'
+import { usePriceInvaBusd } from 'state/farms/hooks'
 import BigNumber from 'bignumber.js'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
+import { getBalanceNumber } from '@spaceinvaders-swap/utils/formatBalance'
 import { PotteryWithdrawAbleData } from 'state/types'
 import WithdrawButton from 'views/Pottery/components/Pot/Claim/WithdrawButton'
-import { calculateCakeAmount } from 'views/Pottery/helpers'
+import { calculateInvaAmount } from 'views/Pottery/helpers'
 import { getDrawnDate } from 'views/Lottery/helpers'
 import { addDays } from 'date-fns'
 
@@ -19,21 +19,21 @@ const AvailableWithdraw: React.FC<React.PropsWithChildren<AvailableWithdrawProps
     t,
     currentLanguage: { locale },
   } = useTranslation()
-  const cakePriceBusd = usePriceCakeBusd()
-  const { previewRedeem, lockedDate, shares, status, potteryVaultAddress, totalSupply, totalLockCake, balanceOf } =
+  const invaPriceBusd = usePriceInvaBusd()
+  const { previewRedeem, lockedDate, shares, status, potteryVaultAddress, totalSupply, totalLockInva, balanceOf } =
     withdrawData
 
-  const cakeNumber = useMemo(() => new BigNumber(previewRedeem), [previewRedeem])
-  const amountAsBn = calculateCakeAmount({
+  const invaNumber = useMemo(() => new BigNumber(previewRedeem), [previewRedeem])
+  const amountAsBn = calculateInvaAmount({
     status,
     previewRedeem,
     shares,
     totalSupply: new BigNumber(totalSupply),
-    totalLockCake: new BigNumber(totalLockCake),
+    totalLockInva: new BigNumber(totalLockInva),
   })
 
   const amount = getBalanceNumber(amountAsBn)
-  const amountInBusd = new BigNumber(amount).times(cakePriceBusd).toNumber()
+  const amountInBusd = new BigNumber(amount).times(invaPriceBusd).toNumber()
 
   const lockDate = useMemo(() => getDrawnDate(locale, lockedDate?.toString()), [lockedDate, locale])
   const withdrawableDate = addDays(new Date(parseInt(lockedDate, 10) * 1000), 70).getTime()
@@ -64,7 +64,7 @@ const AvailableWithdraw: React.FC<React.PropsWithChildren<AvailableWithdrawProps
         </Box>
         <WithdrawButton
           status={status}
-          cakeNumber={cakeNumber}
+          invaNumber={invaNumber}
           redeemShare={shares}
           potteryVaultAddress={potteryVaultAddress}
           balanceOf={balanceOf}

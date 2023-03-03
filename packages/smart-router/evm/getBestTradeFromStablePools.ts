@@ -1,5 +1,5 @@
 /* eslint-disable no-await-in-loop, no-continue */
-import { Currency, CurrencyAmount, Price, TradeType } from '@pancakeswap/sdk'
+import { Currency, CurrencyAmount, Price, TradeType } from '@spaceinvaders-swap/sdk'
 
 import { BestTradeOptions, Pair, RouteType, StableSwapPair, TradeWithStableSwap } from './types'
 import { getOutputToken, involvesToken } from './utils/pair'

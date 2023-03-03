@@ -11,9 +11,9 @@ import {
   Text,
   WalletFilledIcon,
   Skeleton,
-} from '@pancakeswap/uikit'
-import { Currency, Price } from '@pancakeswap/sdk'
-import { useTranslation } from '@pancakeswap/localization'
+} from '@spaceinvaders-swap/uikit'
+import { Currency, Price } from '@spaceinvaders-swap/sdk'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import { multiplyPriceByAmount } from 'utils/prices'
 import styled from 'styled-components'
 

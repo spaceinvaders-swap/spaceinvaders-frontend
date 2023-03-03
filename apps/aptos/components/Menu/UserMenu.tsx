@@ -1,6 +1,6 @@
-import { useAccount, useAccountBalance, APTOS_COIN } from '@pancakeswap/awgmi'
-import { useIsMounted } from '@pancakeswap/hooks'
-import { Trans, useTranslation } from '@pancakeswap/localization'
+import { useAccount, useAccountBalance, APTOS_COIN } from '@spaceinvaders-swap/awgmi'
+import { useIsMounted } from '@spaceinvaders-swap/hooks'
+import { Trans, useTranslation } from '@spaceinvaders-swap/localization'
 import {
   Box,
   Flex,
@@ -13,7 +13,7 @@ import {
   UserMenuItem,
   UserMenuVariant,
   WarningIcon,
-} from '@pancakeswap/uikit'
+} from '@spaceinvaders-swap/uikit'
 import { LOW_APT } from 'config'
 import { useActiveNetwork } from 'hooks/useNetwork'
 import { useEffect, useState } from 'react'

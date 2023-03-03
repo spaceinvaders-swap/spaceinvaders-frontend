@@ -1,4 +1,4 @@
-import { Box, BoxProps, Card, Flex, Text } from '@pancakeswap/uikit'
+import { Box, BoxProps, Card, Flex, Text } from '@spaceinvaders-swap/uikit'
 import styled from 'styled-components'
 import { HeightProps } from 'styled-system'
 import { ArticleDataType } from 'utils/transformArticle'

@@ -3,7 +3,7 @@ import os from 'os'
 import fetch from 'node-fetch'
 import BigNumber from 'bignumber.js'
 import chunk from 'lodash/chunk'
-import { ChainId, Pair } from '@pancakeswap/aptos-swap-sdk'
+import { ChainId, Pair } from '@spaceinvaders-swap/aptos-swap-sdk'
 import { getFarmConfig } from '../../apps/aptos/config/constants/farms'
 
 interface AprMap {
@@ -28,7 +28,7 @@ interface FarmsOneWeekData {
   }
 }
 
-const CAKE_PID = 0
+const INVA_PID = 0
 const LP_HOLDERS_FEE = 0.0017
 const WEEKS_IN_A_YEAR = 52.1429
 const FETCH_URL = 'https://api.coinmarketcap.com/dexer/v3/platformpage/pair-pages'
@@ -157,7 +157,7 @@ const getAprsForFarmGroup = async (addresses: string[]): Promise<any> => {
 }
 
 const fetchAndUpdateAptosLPsAPR = async () => {
-  const farmsConfig = getFarmConfig(ChainId.MAINNET).filter((i) => i.pid !== CAKE_PID)
+  const farmsConfig = getFarmConfig(ChainId.MAINNET).filter((i) => i.pid !== INVA_PID)
 
   const lowerCaseAddresses = farmsConfig.map((farm) => farm.lpAddress.toLowerCase())
   console.info(`Fetching farm data for ${lowerCaseAddresses.length} addresses`)

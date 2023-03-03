@@ -1,25 +1,25 @@
 import { useMemo } from 'react'
 import { useAccount } from 'wagmi'
-import { useCake } from 'hooks/useContract'
+import { useInva } from 'hooks/useContract'
 import { useSWRContract, UseSWRContractKey } from 'hooks/useSWRContract'
 import BigNumber from 'bignumber.js'
 
 // TODO: refactor as useTokenApprovalStatus for generic use
 
-export const useCakeApprovalStatus = (spender) => {
+export const useInvaApprovalStatus = (spender) => {
   const { address: account } = useAccount()
-  const { reader: cakeContract } = useCake()
+  const { reader: invaContract } = useInva()
 
   const key = useMemo<UseSWRContractKey>(
     () =>
       account && spender
         ? {
-            contract: cakeContract,
+            contract: invaContract,
             methodName: 'allowance',
             params: [account, spender],
           }
         : null,
-    [account, cakeContract, spender],
+    [account, invaContract, spender],
   )
 
   const { data, mutate } = useSWRContract(key)
@@ -31,4 +31,4 @@ export const useCakeApprovalStatus = (spender) => {
   }
 }
 
-export default useCakeApprovalStatus
+export default useInvaApprovalStatus

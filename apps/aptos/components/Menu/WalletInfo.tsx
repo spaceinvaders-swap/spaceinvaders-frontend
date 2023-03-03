@@ -1,6 +1,6 @@
-import { useAccount, useAccountBalance, APTOS_COIN } from '@pancakeswap/awgmi'
+import { useAccount, useAccountBalance, APTOS_COIN } from '@spaceinvaders-swap/awgmi'
 
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import {
   Box,
   Button,
@@ -11,7 +11,7 @@ import {
   Message,
   Skeleton,
   Text,
-} from '@pancakeswap/uikit'
+} from '@spaceinvaders-swap/uikit'
 import { useAuth } from 'hooks/useAuth'
 
 import { useActiveChainId } from 'hooks/useNetwork'

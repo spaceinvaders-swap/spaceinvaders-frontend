@@ -1,10 +1,10 @@
 import Link from 'next/link'
-import { Box, Flex, lightColors, Spinner, Text, Timeline } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
-import { useGetCakeBalance } from 'hooks/useTokenBalance'
+import { Box, Flex, lightColors, Spinner, Text, Timeline } from '@spaceinvaders-swap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { useGetInvaBalance } from 'hooks/useTokenBalance'
 import useTheme from 'hooks/useTheme'
-import { StyledWaveContainer } from 'views/PancakeSquad/styles'
-import { UserStatusEnum } from 'views/PancakeSquad/types'
+import { StyledWaveContainer } from 'views/SpaceinvadersSquad/styles'
+import { UserStatusEnum } from 'views/SpaceinvadersSquad/types'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import HeaderBottomWave from '../../assets/HeaderBottomWave'
 import nftSaleConfigBuilder from '../../config'
@@ -18,12 +18,12 @@ import {
   StyledSquadHeaderContainer,
   StyledSquadTitle,
 } from './styles'
-import { PancakeSquadHeaderType } from './types'
+import { SpaceinvadersSquadHeaderType } from './types'
 
-const DEFAULT_CAKE_COST = 15
+const DEFAULT_INVA_COST = 15
 const DEFAULT_MAX_TICKETS = 10
 
-const PancakeSquadHeader: React.FC<React.PropsWithChildren<PancakeSquadHeaderType>> = ({
+const SpaceinvadersSquadHeader: React.FC<React.PropsWithChildren<SpaceinvadersSquadHeaderType>> = ({
   userInfos,
   eventInfos,
   account,
@@ -32,7 +32,7 @@ const PancakeSquadHeader: React.FC<React.PropsWithChildren<PancakeSquadHeaderTyp
 }) => {
   const { t } = useTranslation()
   const { theme, isDark } = useTheme()
-  const { balance: cakeBalance } = useGetCakeBalance()
+  const { balance: invaBalance } = useGetInvaBalance()
   const displayEventBlock = !!eventInfos || isLoading
   const {
     ticketsOfUser,
@@ -67,7 +67,7 @@ const PancakeSquadHeader: React.FC<React.PropsWithChildren<PancakeSquadHeaderTyp
         </Link>
       </Flex>
       <StyledSquadTitle my="32px" color={lightColors.invertedContrast} bold textAlign="center">
-        {t('Pancake Squad')}
+        {t('Spaceinvaders Squad')}
       </StyledSquadTitle>
       <Text color={lightColors.warning} textAlign="center" bold>
         {`${t('Presale:')} 04:00 UTC, Oct. 7`}
@@ -76,15 +76,15 @@ const PancakeSquadHeader: React.FC<React.PropsWithChildren<PancakeSquadHeaderTyp
         {`${t('Public Sale:')} 08:00 UTC, Oct. 7`}
       </Text>
       <Text color={lightColors.warning} textAlign="center" bold>
-        {t('Mint Cost: %minCost% CAKE each', {
-          minCost: DEFAULT_CAKE_COST,
+        {t('Mint Cost: %minCost% INVA each', {
+          minCost: DEFAULT_INVA_COST,
         })}
       </Text>
       <Text color={lightColors.warning} textAlign="center" bold>
         {t('Max per wallet: %maxPerWallet%', { maxPerWallet: DEFAULT_MAX_TICKETS })}
       </Text>
       <Text color={lightColors.invertedContrast} textAlign="center">
-        {t('PancakeSwap’s first official generative NFT collection.')}
+        {t('SpaceinvadersSwap’s first official generative NFT collection.')}
       </Text>
       <Text color={lightColors.invertedContrast} mb={!displayEventBlock ? '80px' : '32px'} textAlign="center">
         {t('Join the squad.')}
@@ -140,7 +140,7 @@ const PancakeSquadHeader: React.FC<React.PropsWithChildren<PancakeSquadHeaderTyp
                         numberTicketsOfUser={numberTicketsOfUser}
                         numberTicketsUsedForGen0={numberTicketsUsedForGen0}
                         totalSupplyMinted={totalSupplyMinted}
-                        cakeBalance={cakeBalance}
+                        invaBalance={invaBalance}
                         maxPerTransaction={maxPerTransaction}
                         numberTicketsForGen0={numberTicketsForGen0}
                         pricePerTicket={pricePerTicket}
@@ -163,4 +163,4 @@ const PancakeSquadHeader: React.FC<React.PropsWithChildren<PancakeSquadHeaderTyp
   )
 }
 
-export default PancakeSquadHeader
+export default SpaceinvadersSquadHeader

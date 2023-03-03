@@ -3,11 +3,11 @@ import BigNumber from 'bignumber.js'
 import _toNumber from 'lodash/toNumber'
 import _get from 'lodash/get'
 import { FixedNumber } from '@ethersproject/bignumber'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { BIG_ZERO } from '@spaceinvaders-swap/utils/bigNumber'
 import { SECONDS_IN_YEAR } from 'config'
 
-import { CAKE_PID } from 'config/constants'
-import { calcRewardCakePerShare, calcPendingRewardCake } from 'state/farms/utils/pendingCake'
+import { INVA_PID } from 'config/constants'
+import { calcRewardInvaPerShare, calcPendingRewardInva } from 'state/farms/utils/pendingInva'
 
 export const getPoolApr = ({ rewardTokenPrice, stakingTokenPrice, tokenPerSecond, totalStaked }) => {
   const totalRewardPricePerYear = new BigNumber(rewardTokenPrice).times(tokenPerSecond).times(SECONDS_IN_YEAR)
@@ -16,8 +16,8 @@ export const getPoolApr = ({ rewardTokenPrice, stakingTokenPrice, tokenPerSecond
   return apr.isNaN() || !apr.isFinite() ? null : apr.toNumber()
 }
 
-export function getRewardPerSecondOfCakeFarm({
-  cakePerSecond,
+export function getRewardPerSecondOfInvaFarm({
+  invaPerSecond,
   specialRate,
   regularRate,
   allocPoint,
@@ -26,30 +26,30 @@ export function getRewardPerSecondOfCakeFarm({
   const fSpecialRate = FixedNumber.from(specialRate)
   const fRegularRate = FixedNumber.from(regularRate)
 
-  const cakeRate = fSpecialRate.divUnsafe(fSpecialRate.addUnsafe(fRegularRate))
+  const invaRate = fSpecialRate.divUnsafe(fSpecialRate.addUnsafe(fRegularRate))
 
-  return FixedNumber.from(cakePerSecond)
-    .mulUnsafe(cakeRate.mulUnsafe(FixedNumber.from(allocPoint)).divUnsafe(FixedNumber.from(specialAllocPoint)))
+  return FixedNumber.from(invaPerSecond)
+    .mulUnsafe(invaRate.mulUnsafe(FixedNumber.from(allocPoint)).divUnsafe(FixedNumber.from(specialAllocPoint)))
     .toString()
 }
 
-const transformCakePool = ({
+const transformInvaPool = ({
   balances,
-  cakePoolInfo,
+  invaPoolInfo,
   userInfo,
   masterChefData,
-  cakeFarm,
+  invaFarm,
   chainId,
   earningTokenPrice,
   getNow,
 }) => {
   const userStakedAmount = _get(userInfo, 'amount', '0')
 
-  const rewardPerSecond = getRewardPerSecondOfCakeFarm({
-    cakePerSecond: masterChefData.cake_per_second,
-    specialRate: masterChefData.cake_rate_to_special,
-    regularRate: masterChefData.cake_rate_to_regular,
-    allocPoint: cakePoolInfo.alloc_point,
+  const rewardPerSecond = getRewardPerSecondOfInvaFarm({
+    invaPerSecond: masterChefData.inva_per_second,
+    specialRate: masterChefData.inva_rate_to_special,
+    regularRate: masterChefData.inva_rate_to_regular,
+    allocPoint: invaPoolInfo.alloc_point,
     specialAllocPoint: masterChefData.total_special_alloc_point,
   })
 
@@ -61,7 +61,7 @@ const transformCakePool = ({
   }
 
   const foundStakingBalance = balances?.find(
-    (balance) => balance.type === `0x1::coin::CoinStore<${cakeFarm.token.address}>`,
+    (balance) => balance.type === `0x1::coin::CoinStore<${invaFarm.token.address}>`,
   )
 
   const amount = _toNumber(_get(foundStakingBalance, 'data.coin.value', '0'))
@@ -70,13 +70,13 @@ const transformCakePool = ({
     userData = { ...userData, stakingTokenBalance: new BigNumber(amount) }
   }
 
-  const totalStaked = _get(cakePoolInfo, 'total_amount', '0')
+  const totalStaked = _get(invaPoolInfo, 'total_amount', '0')
 
   if (_toNumber(userStakedAmount) && _toNumber(totalStaked)) {
     const rewardDebt = _get(userInfo, 'reward_debt', '0')
 
-    const accCakePerShare = calcRewardCakePerShare(masterChefData, CAKE_PID, getNow)
-    const pendingReward = calcPendingRewardCake(userStakedAmount, rewardDebt, accCakePerShare)
+    const accInvaPerShare = calcRewardInvaPerShare(masterChefData, INVA_PID, getNow)
+    const pendingReward = calcPendingRewardInva(userStakedAmount, rewardDebt, accInvaPerShare)
 
     userData = {
       ...userData,
@@ -93,12 +93,12 @@ const transformCakePool = ({
   })
 
   return {
-    sousId: cakeFarm.pid,
+    sousId: invaFarm.pid,
     contractAddress: {
-      [chainId]: cakeFarm.lpAddress,
+      [chainId]: invaFarm.lpAddress,
     },
-    stakingToken: cakeFarm.token,
-    earningToken: cakeFarm.token,
+    stakingToken: invaFarm.token,
+    earningToken: invaFarm.token,
     apr,
     earningTokenPrice: _toNumber(earningTokenPrice),
     stakingTokenPrice: _toNumber(earningTokenPrice),
@@ -108,7 +108,7 @@ const transformCakePool = ({
     startBlock: 0,
     tokenPerBlock: rewardPerSecond,
     stakingLimit: BIG_ZERO,
-    totalStaked: new BigNumber(cakePoolInfo.total_amount),
+    totalStaked: new BigNumber(invaPoolInfo.total_amount),
 
     userData,
 
@@ -116,4 +116,4 @@ const transformCakePool = ({
   }
 }
 
-export default transformCakePool
+export default transformInvaPool

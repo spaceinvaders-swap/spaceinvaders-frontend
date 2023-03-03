@@ -1,15 +1,15 @@
 import { JsonRpcProvider } from '@ethersproject/providers'
-import { bscTokens } from '@pancakeswap/tokens'
+import { bscTokens } from '@spaceinvaders-swap/tokens'
 import BigNumber from 'bignumber.js'
-import cakeVaultAbiV2 from 'config/abi/cakeVaultV2.json'
+import invaVaultAbiV2 from 'config/abi/invaVaultV2.json'
 import { SNAPSHOT_HUB_API } from 'config/constants/endpoints'
 import fromPairs from 'lodash/fromPairs'
 import groupBy from 'lodash/groupBy'
 import { Proposal, ProposalState, ProposalType, Vote } from 'state/types'
-import { getCakeVaultAddress } from 'utils/addressHelpers'
+import { getInvaVaultAddress } from 'utils/addressHelpers'
 import { multicallv2 } from 'utils/multicall'
-import { convertSharesToCake } from 'views/Pools/helpers'
-import { ADMINS, PANCAKE_SPACE, SNAPSHOT_VERSION } from './config'
+import { convertSharesToInva } from 'views/Pools/helpers'
+import { ADMINS, SPACEINVADERS_SPACE, SNAPSHOT_VERSION } from './config'
 import { getScores } from './getScores'
 import * as strategies from './strategies'
 
@@ -44,7 +44,7 @@ export interface Message {
 }
 
 const STRATEGIES = [
-  { name: 'cake', params: { symbol: 'CAKE', address: bscTokens.cake.address, decimals: 18, max: 300 } },
+  { name: 'inva', params: { symbol: 'INVA', address: bscTokens.inva.address, decimals: 18, max: 300 } },
 ]
 const NETWORK = '56'
 
@@ -66,7 +66,7 @@ export const generatePayloadData = () => {
   return {
     version: SNAPSHOT_VERSION,
     timestamp: (Date.now() / 1e3).toFixed(),
-    space: PANCAKE_SPACE,
+    space: SPACEINVADERS_SPACE,
   }
 }
 
@@ -104,12 +104,12 @@ interface GetVotingPowerType {
   total: number
   voter: string
   poolsBalance?: number
-  cakeBalance?: number
-  cakePoolBalance?: number
-  cakeBnbLpBalance?: number
-  cakeVaultBalance?: number
+  invaBalance?: number
+  invaPoolBalance?: number
+  invaBnbLpBalance?: number
+  invaVaultBalance?: number
   ifoPoolBalance?: number
-  lockedCakeBalance?: number
+  lockedInvaBalance?: number
   lockedEndTime?: number
 }
 
@@ -121,19 +121,19 @@ export const getVotingPower = async (
   blockNumber?: number,
 ): Promise<GetVotingPowerType> => {
   if (blockNumber && (blockNumber >= VOTING_POWER_BLOCK.v0 || blockNumber >= VOTING_POWER_BLOCK.v1)) {
-    const cakeVaultAddress = getCakeVaultAddress()
+    const invaVaultAddress = getInvaVaultAddress()
     const version = blockNumber >= VOTING_POWER_BLOCK.v1 ? 'v1' : 'v0'
 
     const [pricePerShare, { shares, lockEndTime, userBoostedShare }] = await multicallv2({
-      abi: cakeVaultAbiV2,
+      abi: invaVaultAbiV2,
       provider: nodeRealProvider,
       calls: [
         {
-          address: cakeVaultAddress,
+          address: invaVaultAddress,
           name: 'getPricePerFullShare',
         },
         {
-          address: cakeVaultAddress,
+          address: invaVaultAddress,
           params: [account],
           name: 'userInfo',
         },
@@ -143,14 +143,14 @@ export const getVotingPower = async (
       },
     })
 
-    const [cakeBalance, cakeBnbLpBalance, cakePoolBalance, cakeVaultBalance, poolsBalance, total, ifoPoolBalance] =
+    const [invaBalance, invaBnbLpBalance, invaPoolBalance, invaVaultBalance, poolsBalance, total, ifoPoolBalance] =
       await getScores(
-        PANCAKE_SPACE,
+        SPACEINVADERS_SPACE,
         [
-          strategies.cakeBalanceStrategy(version),
-          strategies.cakeBnbLpBalanceStrategy(version),
-          strategies.cakePoolBalanceStrategy(version),
-          strategies.cakeVaultBalanceStrategy(version),
+          strategies.invaBalanceStrategy(version),
+          strategies.invaBnbLpBalanceStrategy(version),
+          strategies.invaPoolBalanceStrategy(version),
+          strategies.invaVaultBalanceStrategy(version),
           strategies.createPoolsBalanceStrategy(poolAddresses, version),
           strategies.createTotalStrategy(poolAddresses, version),
           strategies.ifoPoolBalanceStrategy,
@@ -160,13 +160,13 @@ export const getVotingPower = async (
         blockNumber,
       )
 
-    const lockedCakeBalance = convertSharesToCake(
+    const lockedInvaBalance = convertSharesToInva(
       new BigNumber(shares.toString()),
       new BigNumber(pricePerShare.toString()),
       18,
       3,
       new BigNumber(userBoostedShare.toString()),
-    )?.cakeAsNumberBalance
+    )?.invaAsNumberBalance
 
     const versionOne =
       version === 'v0'
@@ -180,16 +180,16 @@ export const getVotingPower = async (
       voter: account,
       total: total[account] ? total[account] : 0,
       poolsBalance: poolsBalance[account] ? poolsBalance[account] : 0,
-      cakeBalance: cakeBalance[account] ? cakeBalance[account] : 0,
-      cakePoolBalance: cakePoolBalance[account] ? cakePoolBalance[account] : 0,
-      cakeBnbLpBalance: cakeBnbLpBalance[account] ? cakeBnbLpBalance[account] : 0,
-      cakeVaultBalance: cakeVaultBalance[account] ? cakeVaultBalance[account] : 0,
-      lockedCakeBalance: Number.isFinite(lockedCakeBalance) ? lockedCakeBalance : 0,
+      invaBalance: invaBalance[account] ? invaBalance[account] : 0,
+      invaPoolBalance: invaPoolBalance[account] ? invaPoolBalance[account] : 0,
+      invaBnbLpBalance: invaBnbLpBalance[account] ? invaBnbLpBalance[account] : 0,
+      invaVaultBalance: invaVaultBalance[account] ? invaVaultBalance[account] : 0,
+      lockedInvaBalance: Number.isFinite(lockedInvaBalance) ? lockedInvaBalance : 0,
       lockedEndTime: lockEndTime ? +lockEndTime.toString() : 0,
     }
   }
 
-  const [total] = await getScores(PANCAKE_SPACE, STRATEGIES, NETWORK, [account], blockNumber)
+  const [total] = await getScores(SPACEINVADERS_SPACE, STRATEGIES, NETWORK, [account], blockNumber)
 
   return {
     total: total[account] ? total[account] : 0,
@@ -223,8 +223,8 @@ export const getTotalFromVotes = (votes: Vote[]) => {
 /**
  * Get voting power by a list of voters, only total
  */
-export async function getVotingPowerByCakeStrategy(voters: string[], blockNumber: number) {
-  const strategyResponse = await getScores(PANCAKE_SPACE, STRATEGIES, NETWORK, voters, blockNumber)
+export async function getVotingPowerByInvaStrategy(voters: string[], blockNumber: number) {
+  const strategyResponse = await getScores(SPACEINVADERS_SPACE, STRATEGIES, NETWORK, voters, blockNumber)
 
   const result = fromPairs(
     voters.map((voter) => {

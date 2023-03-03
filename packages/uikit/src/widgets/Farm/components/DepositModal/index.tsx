@@ -2,11 +2,11 @@ import BigNumber from "bignumber.js";
 import { useCallback, useMemo, useState } from "react";
 import styled from "styled-components";
 import _toNumber from "lodash/toNumber";
-import { useTranslation } from "@pancakeswap/localization";
-import { getFullDisplayBalance, formatNumber, getDecimalAmount } from "@pancakeswap/utils/formatBalance";
-import { getInterestBreakdown } from "@pancakeswap/utils/compoundApyHelpers";
-import { BIG_ZERO } from "@pancakeswap/utils/bigNumber";
-import { trimTrailZero } from "@pancakeswap/utils/trimTrailZero";
+import { useTranslation } from "@spaceinvaders-swap/localization";
+import { getFullDisplayBalance, formatNumber, getDecimalAmount } from "@spaceinvaders-swap/utils/formatBalance";
+import { getInterestBreakdown } from "@spaceinvaders-swap/utils/compoundApyHelpers";
+import { BIG_ZERO } from "@spaceinvaders-swap/utils/bigNumber";
+import { trimTrailZero } from "@spaceinvaders-swap/utils/trimTrailZero";
 import { Modal, ModalV2, ModalBody, ModalActions, ModalInput } from "../../../Modal/index";
 import { Flex, Box } from "../../../../components/Box";
 import { Text } from "../../../../components/Text";
@@ -41,10 +41,10 @@ interface DepositModalProps {
   apr?: number;
   displayApr?: string;
   addLiquidityUrl?: string;
-  cakePrice?: BigNumber;
+  invaPrice?: BigNumber;
   showActiveBooster?: boolean;
   lpTotalSupply: BigNumber;
-  bCakeMultiplier?: number | null;
+  bInvaMultiplier?: number | null;
   showCrossChainFarmWarning?: boolean;
   crossChainWarningText?: string;
   decimals: number;
@@ -53,7 +53,7 @@ interface DepositModalProps {
   onDismiss?: () => void;
   onConfirm: (amount: string) => void;
   handleApprove?: () => void;
-  bCakeCalculatorSlot?: (stakingTokenBalance: string) => React.ReactNode;
+  bInvaCalculatorSlot?: (stakingTokenBalance: string) => React.ReactNode;
 }
 
 const DepositModal: React.FC<React.PropsWithChildren<DepositModalProps>> = ({
@@ -67,9 +67,9 @@ const DepositModal: React.FC<React.PropsWithChildren<DepositModalProps>> = ({
   lpLabel = "",
   apr = 0,
   addLiquidityUrl = "",
-  cakePrice = BIG_ZERO,
+  invaPrice = BIG_ZERO,
   showActiveBooster,
-  bCakeMultiplier,
+  bInvaMultiplier,
   showCrossChainFarmWarning,
   crossChainWarningText,
   decimals,
@@ -78,7 +78,7 @@ const DepositModal: React.FC<React.PropsWithChildren<DepositModalProps>> = ({
   onConfirm,
   onDismiss,
   handleApprove,
-  bCakeCalculatorSlot,
+  bInvaCalculatorSlot,
 }) => {
   const [val, setVal] = useState("");
   const [valUSDPrice, setValUSDPrice] = useState(BIG_ZERO);
@@ -105,10 +105,10 @@ const DepositModal: React.FC<React.PropsWithChildren<DepositModalProps>> = ({
   const interestBreakdown = getInterestBreakdown({
     principalInUSD: !lpTokensToStake.isNaN() ? usdToStake.toNumber() : 0,
     apr,
-    earningTokenPrice: cakePrice.toNumber(),
+    earningTokenPrice: invaPrice.toNumber(),
   });
 
-  const annualRoi = cakePrice.times(interestBreakdown[3]);
+  const annualRoi = invaPrice.times(interestBreakdown[3]);
   const annualRoiAsNumber = annualRoi.toNumber();
   const formattedAnnualRoi = formatNumber(annualRoiAsNumber, annualRoi.gt(10000) ? 0 : 2, annualRoi.gt(10000) ? 0 : 2);
 
@@ -154,15 +154,15 @@ const DepositModal: React.FC<React.PropsWithChildren<DepositModalProps>> = ({
           stakingTokenDecimals={decimals}
           stakingTokenSymbol={tokenName}
           stakingTokenPrice={lpPrice.toNumber()}
-          earningTokenPrice={cakePrice.toNumber()}
-          apr={bCakeMultiplier ? apr * bCakeMultiplier : apr}
+          earningTokenPrice={invaPrice.toNumber()}
+          apr={bInvaMultiplier ? apr * bInvaMultiplier : apr}
           multiplier={multiplier}
-          displayApr={bCakeMultiplier ? (_toNumber(displayApr) - apr + apr * bCakeMultiplier).toFixed(2) : displayApr}
+          displayApr={bInvaMultiplier ? (_toNumber(displayApr) - apr + apr * bInvaMultiplier).toFixed(2) : displayApr}
           linkHref={addLiquidityUrl}
           isFarm
           initialValue={val}
           onBack={() => setShowRoiCalculator(false)}
-          bCakeCalculatorSlot={bCakeCalculatorSlot}
+          bInvaCalculatorSlot={bInvaCalculatorSlot}
         />
       </ModalV2>
     );

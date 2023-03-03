@@ -1,6 +1,6 @@
-import { ChevronLeftIcon, Flex, Text } from '@pancakeswap/uikit'
+import { ChevronLeftIcon, Flex, Text } from '@spaceinvaders-swap/uikit'
 import Page from 'components/Layout/Page'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import TeamCard from './components/TeamCard'

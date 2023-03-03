@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
-import { useTranslation } from '@pancakeswap/localization'
-import { Pool, useToast } from '@pancakeswap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { Pool, useToast } from '@spaceinvaders-swap/uikit'
 import { useAccount } from 'wagmi'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import useCatchTxError from 'hooks/useCatchTxError'

@@ -1,4 +1,4 @@
-# @pancakeswap/wagmi
+# @spaceinvaders-swap/wagmi
 
 ## 0.1.0
 

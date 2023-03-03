@@ -1,5 +1,5 @@
-import { Flex, Box, Text, Button } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Flex, Box, Text, Button } from '@spaceinvaders-swap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import { Divider } from '../shared/styles'
 
 interface RemoveStageProps {

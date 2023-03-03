@@ -1,10 +1,10 @@
 import { FetchStatus } from 'config/constants/types'
 import { getNftsMarketData, getNftsUpdatedMarketData } from 'state/nftMarket/helpers'
-import { formatBigNumber } from '@pancakeswap/utils/formatBalance'
+import { formatBigNumber } from '@spaceinvaders-swap/utils/formatBalance'
 import { NftToken } from 'state/nftMarket/types'
 import useSWR from 'swr'
 import { isAddress } from 'utils'
-import { pancakeBunniesAddress } from '../constants'
+import { spaceinvadersBunniesAddress } from '../constants'
 
 export interface LowestNftPrice {
   isFetching: boolean
@@ -41,7 +41,7 @@ export const useGetLowestPriceFromBunnyId = (bunnyId?: string): LowestNftPrice =
     if (!response.length) return null
 
     const nftsMarketTokenIds = response.map((marketData) => marketData.tokenId)
-    const lowestPriceUpdatedBunny = await getLowestUpdatedToken(pancakeBunniesAddress.toLowerCase(), nftsMarketTokenIds)
+    const lowestPriceUpdatedBunny = await getLowestUpdatedToken(spaceinvadersBunniesAddress.toLowerCase(), nftsMarketTokenIds)
 
     if (lowestPriceUpdatedBunny) {
       return parseFloat(formatBigNumber(lowestPriceUpdatedBunny.currentAskPrice))
@@ -53,9 +53,9 @@ export const useGetLowestPriceFromBunnyId = (bunnyId?: string): LowestNftPrice =
 }
 
 export const useGetLowestPriceFromNft = (nft: NftToken): LowestNftPrice => {
-  const isPancakeBunny = isAddress(nft.collectionAddress) === pancakeBunniesAddress
+  const isSpaceinvadersBunny = isAddress(nft.collectionAddress) === spaceinvadersBunniesAddress
 
-  const bunnyIdAttr = isPancakeBunny && getBunnyIdFromNft(nft)
+  const bunnyIdAttr = isSpaceinvadersBunny && getBunnyIdFromNft(nft)
 
   return useGetLowestPriceFromBunnyId(bunnyIdAttr)
 }

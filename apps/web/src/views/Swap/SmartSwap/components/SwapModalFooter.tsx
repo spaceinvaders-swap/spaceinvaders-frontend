@@ -1,7 +1,7 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, CurrencyAmount, TradeType } from '@pancakeswap/sdk'
-import { TradeWithStableSwap } from '@pancakeswap/smart-router/evm'
-import { AutoRenewIcon, Button, QuestionHelper, Text, Link, AutoColumn } from '@pancakeswap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { Currency, CurrencyAmount, TradeType } from '@spaceinvaders-swap/sdk'
+import { TradeWithStableSwap } from '@spaceinvaders-swap/smart-router/evm'
+import { AutoRenewIcon, Button, QuestionHelper, Text, Link, AutoColumn } from '@spaceinvaders-swap/uikit'
 import { AutoRow, RowBetween, RowFixed } from 'components/Layout/Row'
 import { BUYBACK_FEE, LP_HOLDERS_FEE, TOTAL_FEE, TREASURY_FEE } from 'config/constants/info'
 import { useMemo, useState } from 'react'
@@ -115,14 +115,14 @@ export default function SwapModalFooter({
                   </Text>
                   <Text>- {t('%amount% to LP token holders', { amount: lpHoldersFeePercent })}</Text>
                   <Text>- {t('%amount% to the Treasury', { amount: treasuryFeePercent })}</Text>
-                  <Text>- {t('%amount% towards CAKE buyback and burn', { amount: buyBackFeePercent })}</Text>
+                  <Text>- {t('%amount% towards INVA buyback and burn', { amount: buyBackFeePercent })}</Text>
                   <Text mt="12px">
                     {t('For each stableswap trade, refer to the fee table')}
                     <Link
                       style={{ display: 'inline' }}
                       ml="4px"
                       external
-                      href="https://docs.pancakeswap.finance/products/stableswap#stableswap-fees"
+                      href="https://docs.spaceinvaders-swap.finance/products/stableswap#stableswap-fees"
                     >
                       {t('here.')}
                     </Link>

@@ -1,9 +1,9 @@
 import styled from 'styled-components'
-import { Box, Flex, Text, SearchIcon, Link } from '@pancakeswap/uikit'
+import { Box, Flex, Text, SearchIcon, Link } from '@spaceinvaders-swap/uikit'
 import { getBlockExploreLink } from 'utils'
-import { formatNumber } from '@pancakeswap/utils/formatBalance'
-import uriToHttp from '@pancakeswap/utils/uriToHttp'
-import { useTranslation } from '@pancakeswap/localization'
+import { formatNumber } from '@spaceinvaders-swap/utils/formatBalance'
+import uriToHttp from '@spaceinvaders-swap/utils/uriToHttp'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import ExpandableCard from './ExpandableCard'
 

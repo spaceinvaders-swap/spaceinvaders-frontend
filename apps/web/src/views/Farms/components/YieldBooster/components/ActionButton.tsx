@@ -9,11 +9,11 @@ import {
   useTooltip,
   LinkExternal,
   useMatchBreakpoints,
-} from '@pancakeswap/uikit'
+} from '@spaceinvaders-swap/uikit'
 import _isEmpty from 'lodash/isEmpty'
 import { ReactNode } from 'react'
 import styled from 'styled-components'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 
 const Container = styled.div`
   margin-right: 4px;
@@ -31,10 +31,10 @@ const BoosterTooltip = () => {
   return (
     <>
       {t(
-        `Boost multiplier is calculated based on the staking conditions from both Farms and fixed-term CAKE syrup pool and will be automatically updated upon user actions.`,
+        `Boost multiplier is calculated based on the staking conditions from both Farms and fixed-term INVA syrup pool and will be automatically updated upon user actions.`,
       )}
       <LinkExternal
-        href="https://docs.pancakeswap.finance/products/yield-farming/bcake/faq#how-are-the-bcake-multipliers-calculated"
+        href="https://docs.spaceinvaders-swap.finance/products/yield-farming/binva/faq#how-are-the-binva-multipliers-calculated"
         external
       >
         {t('Learn More')}

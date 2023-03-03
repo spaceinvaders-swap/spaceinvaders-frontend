@@ -1,12 +1,12 @@
-import { Currency, JSBI, Price, Trade } from '@pancakeswap/aptos-swap-sdk'
-import { L0_USDC, CAKE } from 'config/coins'
+import { Currency, JSBI, Price, Trade } from '@spaceinvaders-swap/aptos-swap-sdk'
+import { L0_USDC, INVA } from 'config/coins'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useMemo } from 'react'
 import useSWRImmutable from 'swr/immutable'
 import BigNumber from 'bignumber.js'
 import { useAllCommonPairs } from 'hooks/Trades'
-import tryParseAmount from '@pancakeswap/utils/tryParseAmount'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import tryParseAmount from '@spaceinvaders-swap/utils/tryParseAmount'
+import { BIG_ZERO } from '@spaceinvaders-swap/utils/bigNumber'
 import useNativeCurrency from './useNativeCurrency'
 import { PairState, usePairs } from './usePairs'
 
@@ -108,20 +108,20 @@ export default function useStablePrice(currency?: Currency): Price<Currency, Cur
   ])
 }
 
-export const useStableCakeAmount = (_amount: number): number | undefined => {
-  // const cakeBusdPrice = useCakeBusdPrice()
-  // if (cakeBusdPrice) {
-  //   return multiplyPriceByAmount(cakeBusdPrice, amount)
+export const useStableInvaAmount = (_amount: number): number | undefined => {
+  // const invaBusdPrice = useInvaBusdPrice()
+  // if (invaBusdPrice) {
+  //   return multiplyPriceByAmount(invaBusdPrice, amount)
   // }
   return undefined
 }
 
-export const useCakePrice = () => {
+export const useInvaPrice = () => {
   return useSWRImmutable(
-    ['cake-usd-price'],
+    ['inva-usd-price'],
     async () => {
-      const cake = await (await fetch('https://farms-api.pancakeswap.com/price/cake')).json()
-      return cake.price
+      const inva = await (await fetch('https://farms-api.spaceinvaders-swap.com/price/inva')).json()
+      return inva.price
     },
     {
       refreshInterval: 1_000 * 10,
@@ -129,10 +129,10 @@ export const useCakePrice = () => {
   )
 }
 
-export const usePriceCakeUsdc = () => {
+export const usePriceInvaUsdc = () => {
   const { chainId } = useActiveWeb3React()
-  const cakePrice = useTokenUsdcPrice(CAKE[chainId])
-  return useMemo(() => (cakePrice ? new BigNumber(cakePrice) : BIG_ZERO), [cakePrice])
+  const invaPrice = useTokenUsdcPrice(INVA[chainId])
+  return useMemo(() => (invaPrice ? new BigNumber(invaPrice) : BIG_ZERO), [invaPrice])
 }
 
 export const useTokenUsdcPrice = (currency?: Currency): BigNumber => {

@@ -1,6 +1,6 @@
-import { Box, PageSection } from '@pancakeswap/uikit'
+import { Box, PageSection } from '@spaceinvaders-swap/uikit'
 import useTheme from 'hooks/useTheme'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import { TeamRanksProps } from '../types'
 import RibbonWithImage from './RibbonWithImage'
 import TeamRanks from './TeamRanks/TeamRanks'

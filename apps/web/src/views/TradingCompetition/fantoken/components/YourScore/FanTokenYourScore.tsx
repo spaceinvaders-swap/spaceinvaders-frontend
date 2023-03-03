@@ -1,12 +1,12 @@
 import styled from 'styled-components'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import ScoreHeader from '../../../components/YourScore/ScoreHeader'
 import RibbonWithImage from '../../../components/RibbonWithImage'
 import { YourScoreProps } from '../../../types'
 import FanTokenUserPrizeGrid from './FanTokenUserPrizeGrid'
 import FlippersShare from '../../../pngs/fan-token-flippers-share.png'
 import StormShare from '../../../pngs/fan-token-storm-share.png'
-import CakersShare from '../../../pngs/fan-token-cakers-share.png'
+import InvarsShare from '../../../pngs/fan-token-invars-share.png'
 import ScoreCard from '../../../components/YourScore/ScoreCard'
 
 const Wrapper = styled.div`
@@ -46,7 +46,7 @@ const FanTokenYourScore: React.FC<React.PropsWithChildren<YourScoreProps>> = ({
       <ScoreCard
         userPrizeGrid={<FanTokenUserPrizeGrid userTradingInformation={userTradingInformation} />}
         flippersShareImage={FlippersShare}
-        cakersShareImage={CakersShare}
+        invarsShareImage={InvarsShare}
         stormShareImage={StormShare}
         hasRegistered={hasRegistered}
         account={account}

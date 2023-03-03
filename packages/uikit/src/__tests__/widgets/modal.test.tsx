@@ -64,11 +64,11 @@ it("renders correctly", () => {
       box-shadow: none;
     }
 
-    .c6:hover:not(:disabled):not(.pancake-button--disabled):not(.pancake-button--disabled):not(:active) {
+    .c6:hover:not(:disabled):not(.spaceinvaders-button--disabled):not(.spaceinvaders-button--disabled):not(:active) {
       opacity: 0.65;
     }
 
-    .c6:active:not(:disabled):not(.pancake-button--disabled):not(.pancake-button--disabled) {
+    .c6:active:not(:disabled):not(.spaceinvaders-button--disabled):not(.spaceinvaders-button--disabled) {
       opacity: 0.85;
       -webkit-transform: translateY(1px);
       -ms-transform: translateY(1px);
@@ -77,7 +77,7 @@ it("renders correctly", () => {
     }
 
     .c6:disabled,
-    .c6.pancake-button--disabled {
+    .c6.spaceinvaders-button--disabled {
       background-color: var(--colors-backgroundDisabled);
       border-color: var(--colors-backgroundDisabled);
       box-shadow: none;

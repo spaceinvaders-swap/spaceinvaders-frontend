@@ -14,17 +14,17 @@ import {
   ModalProps,
   ModalTitle,
   Text,
-} from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+} from '@spaceinvaders-swap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import useTheme from 'hooks/useTheme'
 import { useState } from 'react'
-import { formatBigNumber } from '@pancakeswap/utils/formatBalance'
-import { SaleStatusEnum } from 'views/PancakeSquad/types'
+import { formatBigNumber } from '@spaceinvaders-swap/utils/formatBalance'
+import { SaleStatusEnum } from 'views/SpaceinvadersSquad/types'
 
 interface BuyTicketsModalProps extends ModalProps {
   buyTicketCallBack: ({ ticketsNumber }: { ticketsNumber: number }) => void
   saleStatus: SaleStatusEnum
-  cakeBalance: BigNumber
+  invaBalance: BigNumber
   pricePerTicket: BigNumber
   maxPerAddress: number
   maxPerTransaction: number
@@ -41,7 +41,7 @@ const BuyTicketsModal: React.FC<React.PropsWithChildren<BuyTicketsModalProps>> =
   title,
   headerBackground,
   saleStatus,
-  cakeBalance,
+  invaBalance,
   pricePerTicket,
   maxPerAddress,
   maxPerTransaction,
@@ -56,8 +56,8 @@ const BuyTicketsModal: React.FC<React.PropsWithChildren<BuyTicketsModalProps>> =
   const remainingTickets = isPreSale
     ? numberTicketsForGen0
     : maxPerAddress - (numberTicketsOfUser - numberTicketsUsedForGen0)
-  const isCakeBalanceInsufficient = cakeBalance.lt(pricePerTicket)
-  const maxBuyTickets = Math.min(cakeBalance.div(pricePerTicket).toNumber(), remainingTickets)
+  const isInvaBalanceInsufficient = invaBalance.lt(pricePerTicket)
+  const maxBuyTickets = Math.min(invaBalance.div(pricePerTicket).toNumber(), remainingTickets)
   const totalCost = pricePerTicket.mul(BigNumber.from(ticketsNumber))
   const maxBuyButtons =
     saleStatus === SaleStatusEnum.Presale
@@ -97,14 +97,14 @@ const BuyTicketsModal: React.FC<React.PropsWithChildren<BuyTicketsModalProps>> =
               <Text font-size="14px" color="textSubtle">
                 {t('Cost per Ticket')}
               </Text>
-              <Text font-size="14px">{formatBigNumber(pricePerTicket, 0)} CAKE</Text>
+              <Text font-size="14px">{formatBigNumber(pricePerTicket, 0)} INVA</Text>
             </Flex>
             <Flex mb="8px" justifyContent="space-between">
               <Text font-size="14px" color="textSubtle">
-                {t('Your CAKE Balance')}
+                {t('Your INVA Balance')}
               </Text>
-              <Text font-size="14px" color={isCakeBalanceInsufficient ? 'failure' : 'text'}>
-                {formatBigNumber(cakeBalance, 3)} CAKE
+              <Text font-size="14px" color={isInvaBalanceInsufficient ? 'failure' : 'text'}>
+                {formatBigNumber(invaBalance, 3)} INVA
               </Text>
             </Flex>
             <Flex
@@ -125,7 +125,7 @@ const BuyTicketsModal: React.FC<React.PropsWithChildren<BuyTicketsModalProps>> =
                 {t('Total Cost')}
               </Text>
               <Text font-size="14px" bold>
-                {formatBigNumber(totalCost, 0)} CAKE
+                {formatBigNumber(totalCost, 0)} INVA
               </Text>
             </Flex>
           </Box>
@@ -157,11 +157,11 @@ const BuyTicketsModal: React.FC<React.PropsWithChildren<BuyTicketsModalProps>> =
           </Flex>
           <Box px="16px">
             <Button
-              disabled={isCakeBalanceInsufficient}
+              disabled={isInvaBalanceInsufficient}
               onClick={() => buyTicketCallBack({ ticketsNumber })}
               width="100%"
             >
-              {isCakeBalanceInsufficient ? t('Insufficient Balance') : t('Confirm')}
+              {isInvaBalanceInsufficient ? t('Insufficient Balance') : t('Confirm')}
             </Button>
           </Box>
         </Flex>

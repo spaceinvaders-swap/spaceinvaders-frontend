@@ -1,6 +1,6 @@
-import { Text, Flex, Message, Box, HelpIcon } from '@pancakeswap/uikit'
+import { Text, Flex, Message, Box, HelpIcon } from '@spaceinvaders-swap/uikit'
 import { Auction, ConnectedBidder } from 'config/constants/types'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 
 const NotWhitelistedNotice: React.FC<
   React.PropsWithChildren<{ connectedBidder: ConnectedBidder; auction: Auction }>

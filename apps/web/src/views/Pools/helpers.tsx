@@ -1,40 +1,40 @@
 import BigNumber from 'bignumber.js'
 import { vaultPoolConfig } from 'config/constants/pools'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { getApy } from '@pancakeswap/utils/compoundApyHelpers'
-import { getBalanceNumber, getFullDisplayBalance, getDecimalAmount } from '@pancakeswap/utils/formatBalance'
+import { BIG_ZERO } from '@spaceinvaders-swap/utils/bigNumber'
+import { getApy } from '@spaceinvaders-swap/utils/compoundApyHelpers'
+import { getBalanceNumber, getFullDisplayBalance, getDecimalAmount } from '@spaceinvaders-swap/utils/formatBalance'
 import memoize from 'lodash/memoize'
-import { Token } from '@pancakeswap/sdk'
-import { Pool } from '@pancakeswap/uikit'
+import { Token } from '@spaceinvaders-swap/sdk'
+import { Pool } from '@spaceinvaders-swap/uikit'
 
 // min deposit and withdraw amount
 export const MIN_LOCK_AMOUNT = new BigNumber(10000000000000)
 
 export const ENABLE_EXTEND_LOCK_AMOUNT = new BigNumber(100000000000000)
 
-export const convertSharesToCake = (
+export const convertSharesToInva = (
   shares: BigNumber,
-  cakePerFullShare: BigNumber,
+  invaPerFullShare: BigNumber,
   decimals = 18,
   decimalsToRound = 3,
   fee?: BigNumber,
 ) => {
-  const sharePriceNumber = getBalanceNumber(cakePerFullShare, decimals)
-  const amountInCake = new BigNumber(shares.multipliedBy(sharePriceNumber)).minus(fee || BIG_ZERO)
-  const cakeAsNumberBalance = getBalanceNumber(amountInCake, decimals)
-  const cakeAsBigNumber = getDecimalAmount(new BigNumber(cakeAsNumberBalance), decimals)
-  const cakeAsDisplayBalance = getFullDisplayBalance(amountInCake, decimals, decimalsToRound)
-  return { cakeAsNumberBalance, cakeAsBigNumber, cakeAsDisplayBalance }
+  const sharePriceNumber = getBalanceNumber(invaPerFullShare, decimals)
+  const amountInInva = new BigNumber(shares.multipliedBy(sharePriceNumber)).minus(fee || BIG_ZERO)
+  const invaAsNumberBalance = getBalanceNumber(amountInInva, decimals)
+  const invaAsBigNumber = getDecimalAmount(new BigNumber(invaAsNumberBalance), decimals)
+  const invaAsDisplayBalance = getFullDisplayBalance(amountInInva, decimals, decimalsToRound)
+  return { invaAsNumberBalance, invaAsBigNumber, invaAsDisplayBalance }
 }
 
-export const convertCakeToShares = (
-  cake: BigNumber,
-  cakePerFullShare: BigNumber,
+export const convertInvaToShares = (
+  inva: BigNumber,
+  invaPerFullShare: BigNumber,
   decimals = 18,
   decimalsToRound = 3,
 ) => {
-  const sharePriceNumber = getBalanceNumber(cakePerFullShare, decimals)
-  const amountInShares = new BigNumber(cake.dividedBy(sharePriceNumber))
+  const sharePriceNumber = getBalanceNumber(invaPerFullShare, decimals)
+  const amountInShares = new BigNumber(inva.dividedBy(sharePriceNumber))
   const sharesAsNumberBalance = getBalanceNumber(amountInShares, decimals)
   const sharesAsBigNumber = getDecimalAmount(new BigNumber(sharesAsNumberBalance), decimals)
   const sharesAsDisplayBalance = getFullDisplayBalance(amountInShares, decimals, decimalsToRound)
@@ -58,22 +58,22 @@ export const getAprData = (pool: Pool.DeserializedPool<Token>, performanceFee: n
   return { apr, autoCompoundFrequency }
 }
 
-export const getCakeVaultEarnings = (
+export const getInvaVaultEarnings = (
   account: string,
-  cakeAtLastUserAction: BigNumber,
+  invaAtLastUserAction: BigNumber,
   userShares: BigNumber,
   pricePerFullShare: BigNumber,
   earningTokenPrice: number,
   fee?: BigNumber,
 ) => {
-  const hasAutoEarnings = account && cakeAtLastUserAction?.gt(0) && userShares?.gt(0)
-  const { cakeAsBigNumber } = convertSharesToCake(userShares, pricePerFullShare)
-  const autoCakeProfit = cakeAsBigNumber.minus(fee || BIG_ZERO).minus(cakeAtLastUserAction)
-  const autoCakeToDisplay = autoCakeProfit.gte(0) ? getBalanceNumber(autoCakeProfit, 18) : 0
+  const hasAutoEarnings = account && invaAtLastUserAction?.gt(0) && userShares?.gt(0)
+  const { invaAsBigNumber } = convertSharesToInva(userShares, pricePerFullShare)
+  const autoInvaProfit = invaAsBigNumber.minus(fee || BIG_ZERO).minus(invaAtLastUserAction)
+  const autoInvaToDisplay = autoInvaProfit.gte(0) ? getBalanceNumber(autoInvaProfit, 18) : 0
 
-  const autoUsdProfit = autoCakeProfit.times(earningTokenPrice)
+  const autoUsdProfit = autoInvaProfit.times(earningTokenPrice)
   const autoUsdToDisplay = autoUsdProfit.gte(0) ? getBalanceNumber(autoUsdProfit, 18) : 0
-  return { hasAutoEarnings, autoCakeToDisplay, autoUsdToDisplay }
+  return { hasAutoEarnings, autoInvaToDisplay, autoUsdToDisplay }
 }
 
 export const getPoolBlockInfo = memoize(
@@ -89,7 +89,7 @@ export const getPoolBlockInfo = memoize(
   (pool, currentBlock) => `${pool.startBlock}#${pool.endBlock}#${pool.isFinished}#${currentBlock}`,
 )
 
-export const getICakeWeekDisplay = (ceiling: BigNumber) => {
+export const getIInvaWeekDisplay = (ceiling: BigNumber) => {
   const weeks = new BigNumber(ceiling).div(60).div(60).div(24).div(7)
   return Math.round(weeks.toNumber())
 }

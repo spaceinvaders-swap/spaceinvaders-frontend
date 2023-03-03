@@ -1,10 +1,10 @@
 import { useMemo, useState, useCallback, useEffect } from 'react'
 import styled from 'styled-components'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import Trans from 'components/Trans'
-import { Box, Card, CardBody, CardHeader, Flex, Text, Image, Pool, IfoNotTokens } from '@pancakeswap/uikit'
+import { Box, Card, CardBody, CardHeader, Flex, Text, Image, Pool, IfoNotTokens } from '@spaceinvaders-swap/uikit'
 import { useAccount } from 'wagmi'
-import { Token } from '@pancakeswap/sdk'
+import { Token } from '@spaceinvaders-swap/sdk'
 import { VestingStatus } from './types'
 import TokenInfo from './VestingPeriod/TokenInfo'
 import VestingEnded from './VestingEnded'
@@ -115,7 +115,7 @@ const IfoVesting: React.FC<React.PropsWithChildren<IfoVestingProps>> = () => {
         {cardStatus.status === VestingStatus.NOT_TOKENS_CLAIM && (
           <IfoNotTokens
             participateText={t(
-              'Participate in our next IFO. and remember to lock your CAKE to increase your allocation!',
+              'Participate in our next IFO. and remember to lock your INVA to increase your allocation!',
             )}
           />
         )}

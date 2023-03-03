@@ -1,6 +1,6 @@
-import { useConnect, useDisconnect } from '@pancakeswap/awgmi'
-import { ConnectorNotFoundError } from '@pancakeswap/awgmi/core'
-import { WalletConnectorNotFoundError } from '@pancakeswap/ui-wallets'
+import { useConnect, useDisconnect } from '@spaceinvaders-swap/awgmi'
+import { ConnectorNotFoundError } from '@spaceinvaders-swap/awgmi/core'
+import { WalletConnectorNotFoundError } from '@spaceinvaders-swap/ui-wallets'
 import { ConnectorNames } from 'config/wallets'
 import { useActiveNetwork } from './useNetwork'
 

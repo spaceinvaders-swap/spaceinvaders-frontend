@@ -1,4 +1,4 @@
-import { Flex, Skeleton } from '@pancakeswap/uikit'
+import { Flex, Skeleton } from '@spaceinvaders-swap/uikit'
 
 const SkeletonArticle = () => {
   return (

@@ -1,7 +1,7 @@
-import { Grid } from '@pancakeswap/uikit'
+import { Grid } from '@spaceinvaders-swap/uikit'
 import orderBy from 'lodash/orderBy'
 import { CollectibleLinkCard } from '../../components/CollectibleCard'
-import useAllPancakeBunnyNfts from '../../hooks/useAllPancakeBunnyNfts'
+import useAllSpaceinvadersBunnyNfts from '../../hooks/useAllSpaceinvadersBunnyNfts'
 import GridPlaceholder from '../../components/GridPlaceholder'
 
 interface CollectionNftsProps {
@@ -9,14 +9,14 @@ interface CollectionNftsProps {
   sortBy?: string
 }
 
-const PancakeBunniesCollectionNfts: React.FC<React.PropsWithChildren<CollectionNftsProps>> = ({
+const SpaceinvadersBunniesCollectionNfts: React.FC<React.PropsWithChildren<CollectionNftsProps>> = ({
   address,
   sortBy = 'updatedAt',
 }) => {
-  const allPancakeBunnyNfts = useAllPancakeBunnyNfts(address)
+  const allSpaceinvadersBunnyNfts = useAllSpaceinvadersBunnyNfts(address)
 
-  const sortedNfts = allPancakeBunnyNfts
-    ? orderBy(allPancakeBunnyNfts, (nft) => (nft.meta[sortBy] ? Number(nft?.meta[sortBy]) : 0), [
+  const sortedNfts = allSpaceinvadersBunnyNfts
+    ? orderBy(allSpaceinvadersBunnyNfts, (nft) => (nft.meta[sortBy] ? Number(nft?.meta[sortBy]) : 0), [
         sortBy === 'currentAskPrice' ? 'asc' : 'desc',
       ])
     : []
@@ -40,4 +40,4 @@ const PancakeBunniesCollectionNfts: React.FC<React.PropsWithChildren<CollectionN
   )
 }
 
-export default PancakeBunniesCollectionNfts
+export default SpaceinvadersBunniesCollectionNfts

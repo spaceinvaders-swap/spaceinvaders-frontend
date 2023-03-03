@@ -1,8 +1,8 @@
 import { useRef, useState, useEffect } from 'react'
-import { Modal, Flex, Button, Text, Skeleton, Box } from '@pancakeswap/uikit'
+import { Modal, Flex, Button, Text, Skeleton, Box } from '@spaceinvaders-swap/uikit'
 import { StaticImageData } from 'next/dist/client/image'
 import styled from 'styled-components'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import MedalGold from '../pngs/medals/medal-gold.png'
 import MedalSilver from '../pngs/medals/medal-silver.png'
 import MedalBronze from '../pngs/medals/medal-bronze.png'
@@ -33,7 +33,7 @@ const MobileText = styled(Text)`
 interface ShareImageModalProps extends YourScoreProps {
   flippersShareImage: StaticImageData
   stormShareImage: StaticImageData
-  cakersShareImage: StaticImageData
+  invarsShareImage: StaticImageData
 }
 
 const ShareImageModal: React.FC<React.PropsWithChildren<ShareImageModalProps>> = ({
@@ -42,7 +42,7 @@ const ShareImageModal: React.FC<React.PropsWithChildren<ShareImageModalProps>> =
   userLeaderboardInformation,
   flippersShareImage,
   stormShareImage,
-  cakersShareImage,
+  invarsShareImage,
 }) => {
   const { t } = useTranslation()
   const { global, team, volume } = userLeaderboardInformation
@@ -72,7 +72,7 @@ const ShareImageModal: React.FC<React.PropsWithChildren<ShareImageModalProps>> =
 
   useEffect(() => {
     if (profile) {
-      const bgImages = [stormShareImage.src, flippersShareImage.src, cakersShareImage.src]
+      const bgImages = [stormShareImage.src, flippersShareImage.src, invarsShareImage.src]
       const bgImagEl = new Image()
       bgImagEl.src = bgImages[profile.teamId - 1]
       bgImagEl.onload = () => setBgImage(bgImagEl)
@@ -90,7 +90,7 @@ const ShareImageModal: React.FC<React.PropsWithChildren<ShareImageModalProps>> =
       medalImageEl.src = getMedal(team).src
       medalImageEl.onload = () => setMedalImage(medalImageEl)
     }
-  }, [profile, team, stormShareImage, flippersShareImage, cakersShareImage])
+  }, [profile, team, stormShareImage, flippersShareImage, invarsShareImage])
 
   useEffect(() => {
     const canvasEl = canvas.current

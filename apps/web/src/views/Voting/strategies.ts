@@ -3,7 +3,7 @@ const votePowerAddress = {
   v1: '0x67Dfbb197602FDB9A9D305cC7A43b95fB63a0A56',
 }
 
-export const cakeBalanceStrategy = (version: 'v0' | 'v1') => ({
+export const invaBalanceStrategy = (version: 'v0' | 'v1') => ({
   name: 'contract-call',
   params: {
     address: votePowerAddress[version],
@@ -16,7 +16,7 @@ export const cakeBalanceStrategy = (version: 'v0' | 'v1') => ({
           type: 'address',
         },
       ],
-      name: 'getCakeBalance',
+      name: 'getInvaBalance',
       outputs: [
         {
           internalType: 'uint256',
@@ -30,7 +30,7 @@ export const cakeBalanceStrategy = (version: 'v0' | 'v1') => ({
   },
 })
 
-export const cakeVaultBalanceStrategy = (version: 'v0' | 'v1') => ({
+export const invaVaultBalanceStrategy = (version: 'v0' | 'v1') => ({
   name: 'contract-call',
   params: {
     address: votePowerAddress[version],
@@ -43,7 +43,7 @@ export const cakeVaultBalanceStrategy = (version: 'v0' | 'v1') => ({
           type: 'address',
         },
       ],
-      name: 'getCakeVaultBalance',
+      name: 'getInvaVaultBalance',
       outputs: [
         {
           internalType: 'uint256',
@@ -84,7 +84,7 @@ export const ifoPoolBalanceStrategy = {
   },
 }
 
-export const cakePoolBalanceStrategy = (version: 'v0' | 'v1') => ({
+export const invaPoolBalanceStrategy = (version: 'v0' | 'v1') => ({
   name: 'contract-call',
   params: {
     address: votePowerAddress[version],
@@ -97,7 +97,7 @@ export const cakePoolBalanceStrategy = (version: 'v0' | 'v1') => ({
           type: 'address',
         },
       ],
-      name: 'getCakePoolBalance',
+      name: 'getInvaPoolBalance',
       outputs: [
         {
           internalType: 'uint256',
@@ -111,7 +111,7 @@ export const cakePoolBalanceStrategy = (version: 'v0' | 'v1') => ({
   },
 })
 
-export const cakeBnbLpBalanceStrategy = (version: 'v0' | 'v1') => ({
+export const invaBnbLpBalanceStrategy = (version: 'v0' | 'v1') => ({
   name: 'contract-call',
   params: {
     address: votePowerAddress[version],
@@ -124,7 +124,7 @@ export const cakeBnbLpBalanceStrategy = (version: 'v0' | 'v1') => ({
           type: 'address',
         },
       ],
-      name: 'getCakeBnbLpBalance',
+      name: 'getInvaBnbLpBalance',
       outputs: [
         {
           internalType: 'uint256',
@@ -208,14 +208,14 @@ export function createTotalStrategy(poolAddress, version: 'v0' | 'v1') {
   }
 }
 
-export function lockedCakeUser(
-  cakeVaultAddress,
+export function lockedInvaUser(
+  invaVaultAddress,
   outputName: 'lockedAmount' | 'lockEndTime' | 'shares' | 'userBoostedShare',
 ) {
   return {
     name: 'contract-call',
     params: {
-      address: cakeVaultAddress,
+      address: invaVaultAddress,
       decimals: 0,
       output: outputName,
       args: ['%{address}'],
@@ -241,7 +241,7 @@ export function lockedCakeUser(
           },
           {
             internalType: 'uint256',
-            name: 'cakeAtLastUserAction',
+            name: 'invaAtLastUserAction',
             type: 'uint256',
           },
           {
@@ -282,11 +282,11 @@ export function lockedCakeUser(
   }
 }
 
-export function lockedCakeShare(cakeVaultAddress) {
+export function lockedInvaShare(invaVaultAddress) {
   return {
     name: 'contract-call',
     params: {
-      address: cakeVaultAddress,
+      address: invaVaultAddress,
       decimals: 0,
       methodABI: {
         inputs: [],

@@ -2,8 +2,8 @@
   {
     "inputs": [
       {
-        "internalType": "contract CakeToken",
-        "name": "_cake",
+        "internalType": "contract InvaToken",
+        "name": "_inva",
         "type": "address"
       }
     ],
@@ -242,10 +242,10 @@
   },
   {
     "inputs": [],
-    "name": "cake",
+    "name": "inva",
     "outputs": [
       {
-        "internalType": "contract CakeToken",
+        "internalType": "contract InvaToken",
         "name": "",
         "type": "address"
       }
@@ -590,7 +590,7 @@
         "type": "uint256"
       }
     ],
-    "name": "safeCakeTransfer",
+    "name": "safeInvaTransfer",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"

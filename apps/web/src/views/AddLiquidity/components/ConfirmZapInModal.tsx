@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo } from 'react'
 import { BigNumber } from '@ethersproject/bignumber'
-import { Currency, CurrencyAmount, Fraction, JSBI, Pair, Percent, Token } from '@pancakeswap/sdk'
+import { Currency, CurrencyAmount, Fraction, JSBI, Pair, Percent, Token } from '@spaceinvaders-swap/sdk'
 import {
   InjectedModalProps,
   Text,
@@ -10,8 +10,8 @@ import {
   TransactionErrorContent,
   ConfirmationModalContent,
   AutoColumn,
-} from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+} from '@spaceinvaders-swap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import TransactionConfirmationModal from 'components/TransactionConfirmationModal'
 import { AutoRow, RowFixed } from 'components/Layout/Row'
 import { Field } from 'state/burn/actions'

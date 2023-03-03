@@ -8,9 +8,9 @@ import {
   MoreIcon,
   SwapFillIcon,
   SwapIcon,
-} from '@pancakeswap/uikit'
-import { LinkStatus } from '@pancakeswap/uikit/src/widgets/Menu/types'
-import { ContextApi, useTranslation } from '@pancakeswap/localization'
+} from '@spaceinvaders-swap/uikit'
+import { LinkStatus } from '@spaceinvaders-swap/uikit/src/widgets/Menu/types'
+import { ContextApi, useTranslation } from '@spaceinvaders-swap/localization'
 import { useMenuItemsStatus } from './useMenuItemsStatus'
 
 export type ConfigMenuDropDownItemsType = DropdownMenuItems & { hideSubNav?: boolean }
@@ -37,7 +37,7 @@ const config: (t: ContextApi['t']) => ConfigMenuItemsType[] = (t) => [
       },
       {
         label: t('Bridge'),
-        href: 'https://bridge.pancakeswap.finance/aptos',
+        href: 'https://bridge.spaceinvaders-swap.finance/aptos',
         type: DropdownMenuItemType.EXTERNAL_LINK,
       },
     ],

@@ -261,7 +261,7 @@
   },
   {
     "inputs": [],
-    "name": "calculateHarvestCakeRewards",
+    "name": "calculateHarvestInvaRewards",
     "outputs": [
       {
         "internalType": "uint256",
@@ -274,7 +274,7 @@
   },
   {
     "inputs": [],
-    "name": "calculateTotalPendingCakeRewards",
+    "name": "calculateTotalPendingInvaRewards",
     "outputs": [
       {
         "internalType": "uint256",
@@ -602,7 +602,7 @@
       },
       {
         "internalType": "uint256",
-        "name": "cakeAtLastUserAction",
+        "name": "invaAtLastUserAction",
         "type": "uint256"
       },
       {

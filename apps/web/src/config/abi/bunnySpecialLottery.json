@@ -3,7 +3,7 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_pancakeSwapLotteryAddress",
+        "name": "_spaceinvadersSwapLotteryAddress",
         "type": "address"
       },
       {
@@ -13,7 +13,7 @@
       },
       {
         "internalType": "address",
-        "name": "_pancakeProfileAddress",
+        "name": "_spaceinvadersProfileAddress",
         "type": "address"
       },
       {
@@ -522,10 +522,10 @@
   },
   {
     "inputs": [],
-    "name": "pancakeProfile",
+    "name": "spaceinvadersProfile",
     "outputs": [
       {
-        "internalType": "contract PancakeProfile",
+        "internalType": "contract SpaceinvadersProfile",
         "name": "",
         "type": "address"
       }
@@ -535,10 +535,10 @@
   },
   {
     "inputs": [],
-    "name": "pancakeSwapLottery",
+    "name": "spaceinvadersSwapLottery",
     "outputs": [
       {
-        "internalType": "contract IPancakeSwapLottery",
+        "internalType": "contract ISpaceinvadersSwapLottery",
         "name": "",
         "type": "address"
       }

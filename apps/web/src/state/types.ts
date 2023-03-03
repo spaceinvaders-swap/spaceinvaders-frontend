@@ -1,9 +1,9 @@
 import { BigNumber as EthersBigNumber } from '@ethersproject/bignumber'
 import { parseUnits } from '@ethersproject/units'
-import { SerializedFarmsState } from '@pancakeswap/farms'
-import { Token } from '@pancakeswap/sdk'
-import { SerializedWrappedToken } from '@pancakeswap/token-lists'
-import { Pool } from '@pancakeswap/uikit'
+import { SerializedFarmsState } from '@spaceinvaders-swap/farms'
+import { Token } from '@spaceinvaders-swap/sdk'
+import { SerializedWrappedToken } from '@spaceinvaders-swap/token-lists'
+import { Pool } from '@spaceinvaders-swap/uikit'
 import BigNumber from 'bignumber.js'
 import { CampaignType, FetchStatus, LotteryStatus, LotteryTicket, Team, TranslatableText } from 'config/constants/types'
 import { NftToken } from './nftMarket/types'
@@ -31,9 +31,9 @@ export interface BigNumberToJson {
 export type SerializedBigNumber = string
 
 export enum VaultKey {
-  CakeVaultV1 = 'cakeVaultV1',
-  CakeVault = 'cakeVault',
-  CakeFlexibleSideVault = 'cakeFlexibleSideVault',
+  InvaVaultV1 = 'invaVaultV1',
+  InvaVault = 'invaVault',
+  InvaFlexibleSideVault = 'invaFlexibleSideVault',
   IfoPool = 'ifoPool',
 }
 
@@ -90,7 +90,7 @@ export interface DeserializedVaultFees extends SerializedVaultFees {
 export interface SerializedVaultUser {
   isLoading: boolean
   userShares: SerializedBigNumber
-  cakeAtLastUserAction: SerializedBigNumber
+  invaAtLastUserAction: SerializedBigNumber
   lastDepositedTime: string
   lastUserActionTime: string
 }
@@ -108,13 +108,13 @@ export interface SerializedLockedVaultUser extends SerializedVaultUser {
 export interface DeserializedVaultUser {
   isLoading: boolean
   userShares: BigNumber
-  cakeAtLastUserAction: BigNumber
+  invaAtLastUserAction: BigNumber
   lastDepositedTime: string
   lastUserActionTime: string
   balance: {
-    cakeAsNumberBalance: number
-    cakeAsBigNumber: BigNumber
-    cakeAsDisplayBalance: string
+    invaAsNumberBalance: number
+    invaAsBigNumber: BigNumber
+    invaAsDisplayBalance: string
   }
 }
 
@@ -131,29 +131,29 @@ export interface DeserializedLockedVaultUser extends DeserializedVaultUser {
   currentOverdueFee: BigNumber
 }
 
-export interface DeserializedCakeVault {
+export interface DeserializedInvaVault {
   totalShares?: BigNumber
   totalLockedAmount?: BigNumber
   pricePerFullShare?: BigNumber
-  totalCakeInVault?: BigNumber
+  totalInvaInVault?: BigNumber
   fees?: DeserializedVaultFees
   userData?: DeserializedVaultUser
 }
 
-export interface DeserializedLockedCakeVault extends Omit<DeserializedCakeVault, 'userData'> {
+export interface DeserializedLockedInvaVault extends Omit<DeserializedInvaVault, 'userData'> {
   totalLockedAmount?: BigNumber
   userData?: DeserializedLockedVaultUser
 }
 
-export interface SerializedLockedCakeVault extends Omit<SerializedCakeVault, 'userData'> {
+export interface SerializedLockedInvaVault extends Omit<SerializedInvaVault, 'userData'> {
   totalLockedAmount?: SerializedBigNumber
   userData?: SerializedLockedVaultUser
 }
 
-export interface SerializedCakeVault {
+export interface SerializedInvaVault {
   totalShares?: SerializedBigNumber
   pricePerFullShare?: SerializedBigNumber
-  totalCakeInVault?: SerializedBigNumber
+  totalInvaInVault?: SerializedBigNumber
   fees?: SerializedVaultFees
   userData?: SerializedVaultUser
 }
@@ -170,8 +170,8 @@ export interface PublicIfoData {
 export interface PoolsState {
   data: SerializedPool[]
   ifo: IfoState
-  cakeVault: SerializedLockedCakeVault
-  cakeFlexibleSideVault: SerializedCakeVault
+  invaVault: SerializedLockedInvaVault
+  invaFlexibleSideVault: SerializedInvaVault
   userDataLoaded: boolean
 }
 
@@ -206,7 +206,7 @@ export enum PredictionStatus {
 
 export enum PredictionSupportedSymbol {
   BNB = 'BNB',
-  CAKE = 'CAKE',
+  INVA = 'INVA',
 }
 
 export enum PredictionsChartView {
@@ -464,19 +464,19 @@ interface LotteryRoundGenerics {
 
 export interface LotteryRound extends LotteryRoundGenerics {
   userTickets?: LotteryRoundUserTickets
-  priceTicketInCake: BigNumber
+  priceTicketInInva: BigNumber
   discountDivisor: BigNumber
-  amountCollectedInCake: BigNumber
-  cakePerBracket: string[]
+  amountCollectedInInva: BigNumber
+  invaPerBracket: string[]
   countWinnersPerBracket: string[]
   rewardsBreakdown: string[]
 }
 
 export interface LotteryResponse extends LotteryRoundGenerics {
-  priceTicketInCake: SerializedBigNumber
+  priceTicketInInva: SerializedBigNumber
   discountDivisor: SerializedBigNumber
-  amountCollectedInCake: SerializedBigNumber
-  cakePerBracket: SerializedBigNumber[]
+  amountCollectedInInva: SerializedBigNumber
+  invaPerBracket: SerializedBigNumber[]
   countWinnersPerBracket: SerializedBigNumber[]
   rewardsBreakdown: SerializedBigNumber[]
 }
@@ -504,7 +504,7 @@ export interface LotteryRoundGraphEntity {
 
 export interface LotteryUserGraphEntity {
   account: string
-  totalCake: string
+  totalInva: string
   totalTickets: string
   rounds: UserRound[]
 }
@@ -538,7 +538,7 @@ export interface SerializedPotteryPublicData {
   lastDrawId: string
   totalPrize: string
   getStatus: PotteryDepositStatus
-  totalLockCake: string
+  totalLockInva: string
   totalSupply: string
   lockStartTime: string
   lockTime: number
@@ -551,7 +551,7 @@ export interface DeserializedPublicData {
   lastDrawId: string
   totalPrize: BigNumber
   getStatus: PotteryDepositStatus
-  totalLockCake: BigNumber
+  totalLockInva: BigNumber
   totalSupply: BigNumber
   lockStartTime: string
   lockTime: number
@@ -605,7 +605,7 @@ export interface PotteryWithdrawAbleData {
   status: PotteryDepositStatus
   potteryVaultAddress: string
   totalSupply: string
-  totalLockCake: string
+  totalLockInva: string
   lockedDate: string
   balanceOf: string
 }

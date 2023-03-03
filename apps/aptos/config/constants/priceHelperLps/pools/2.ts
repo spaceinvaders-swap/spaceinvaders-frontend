@@ -1,5 +1,5 @@
-// import { serializeTokens } from '@pancakeswap/tokens/src/helpers'
-import type { SerializedFarmConfig } from '@pancakeswap/farms'
+// import { serializeTokens } from '@spaceinvaders-swap/tokens/src/helpers'
+import type { SerializedFarmConfig } from '@spaceinvaders-swap/farms'
 // import { testnetTokens } from 'config/constants/tokens'
 
 // const serializedTokens = serializeTokens(testnetTokens)

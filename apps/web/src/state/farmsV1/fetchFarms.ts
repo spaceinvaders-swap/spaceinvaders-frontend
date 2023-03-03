@@ -1,7 +1,7 @@
 import { SerializedFarmConfig } from 'config/constants/types'
 import BigNumber from 'bignumber.js'
-import { getFullDecimalMultiplier } from '@pancakeswap/utils/getFullDecimalMultiplier'
-import { BIG_ZERO, BIG_TWO } from '@pancakeswap/utils/bigNumber'
+import { getFullDecimalMultiplier } from '@spaceinvaders-swap/utils/getFullDecimalMultiplier'
+import { BIG_ZERO, BIG_TWO } from '@spaceinvaders-swap/utils/bigNumber'
 import { fetchPublicFarmsData } from './fetchPublicFarmData'
 import { fetchMasterChefData } from './fetchMasterChefData'
 

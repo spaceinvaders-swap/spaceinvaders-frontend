@@ -1,16 +1,16 @@
 import { useState, useCallback, Dispatch, SetStateAction } from 'react'
 import { useAccount } from 'wagmi'
 import { useSWRConfig } from 'swr'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import { useAppDispatch } from 'state'
-import { useBUSDCakeAmount } from 'hooks/useBUSDPrice'
+import { useBUSDInvaAmount } from 'hooks/useBUSDPrice'
 import { useVaultPoolContract } from 'hooks/useContract'
 import BigNumber from 'bignumber.js'
-import { getDecimalAmount } from '@pancakeswap/utils/formatBalance'
-import { useToast } from '@pancakeswap/uikit'
+import { getDecimalAmount } from '@spaceinvaders-swap/utils/formatBalance'
+import { useToast } from '@spaceinvaders-swap/uikit'
 import useCatchTxError from 'hooks/useCatchTxError'
-import { fetchCakeVaultUserData } from 'state/pools'
-import { Token } from '@pancakeswap/sdk'
+import { fetchInvaVaultUserData } from 'state/pools'
+import { Token } from '@spaceinvaders-swap/sdk'
 import { ONE_WEEK_DEFAULT, vaultPoolConfig } from 'config/constants/pools'
 import { VaultKey } from 'state/types'
 
@@ -41,19 +41,19 @@ export default function useLockedPool(hookArgs: HookArgs): HookReturn {
 
   const { address: account } = useAccount()
   const { fetchWithCatchTxError, loading: pendingTx } = useCatchTxError()
-  const vaultPoolContract = useVaultPoolContract(VaultKey.CakeVault)
+  const vaultPoolContract = useVaultPoolContract(VaultKey.InvaVault)
   const { callWithGasPrice } = useCallWithGasPrice()
 
   const { t } = useTranslation()
   const { mutate } = useSWRConfig()
   const { toastSuccess } = useToast()
   const [duration, setDuration] = useState(() => defaultDuration)
-  const usdValueStaked = useBUSDCakeAmount(lockedAmount.toNumber())
+  const usdValueStaked = useBUSDInvaAmount(lockedAmount.toNumber())
 
   const handleDeposit = useCallback(
     async (convertedStakeAmount: BigNumber, lockDuration: number) => {
       const callOptions = {
-        gasLimit: vaultPoolConfig[VaultKey.CakeVault].gasLimit,
+        gasLimit: vaultPoolConfig[VaultKey.InvaVault].gasLimit,
       }
 
       const receipt = await fetchWithCatchTxError(() => {
@@ -71,8 +71,8 @@ export default function useLockedPool(hookArgs: HookArgs): HookReturn {
           </ToastDescriptionWithTx>,
         )
         onDismiss?.()
-        dispatch(fetchCakeVaultUserData({ account }))
-        mutate(['userCakeLockStatus', account])
+        dispatch(fetchInvaVaultUserData({ account }))
+        mutate(['userInvaLockStatus', account])
       }
     },
     [fetchWithCatchTxError, toastSuccess, dispatch, onDismiss, account, vaultPoolContract, t, callWithGasPrice, mutate],

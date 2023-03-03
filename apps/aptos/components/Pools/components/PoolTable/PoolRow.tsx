@@ -1,6 +1,6 @@
 import { memo } from 'react'
-import { useMatchBreakpoints, Pool } from '@pancakeswap/uikit'
-import { Coin } from '@pancakeswap/aptos-swap-sdk'
+import { useMatchBreakpoints, Pool } from '@spaceinvaders-swap/uikit'
+import { Coin } from '@spaceinvaders-swap/aptos-swap-sdk'
 import { TokenPairImage } from 'components/TokenImage'
 import Apr from '../PoolCard/Apr'
 import ActionPanel from './ActionPanel'

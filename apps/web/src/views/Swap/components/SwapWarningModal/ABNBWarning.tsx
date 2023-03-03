@@ -1,5 +1,5 @@
-import { LinkExternal, Text } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { LinkExternal, Text } from '@spaceinvaders-swap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 
 const ABNBWarning = () => {
   const { t } = useTranslation()

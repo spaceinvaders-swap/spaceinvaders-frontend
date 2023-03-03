@@ -8,11 +8,11 @@ import {
   Token,
   Trade,
   TradeType,
-} from '@pancakeswap/aptos-swap-sdk'
-import { useAccount } from '@pancakeswap/awgmi'
-import { parseVmStatusError, SimulateTransactionError, UserRejectedRequestError } from '@pancakeswap/awgmi/core'
-import { useTranslation } from '@pancakeswap/localization'
-import { AtomBox } from '@pancakeswap/ui'
+} from '@spaceinvaders-swap/aptos-swap-sdk'
+import { useAccount } from '@spaceinvaders-swap/awgmi'
+import { parseVmStatusError, SimulateTransactionError, UserRejectedRequestError } from '@spaceinvaders-swap/awgmi/core'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { AtomBox } from '@spaceinvaders-swap/ui'
 import {
   AutoColumn,
   Card,
@@ -27,9 +27,9 @@ import {
   Swap as SwapUI,
   Text,
   useModal,
-} from '@pancakeswap/uikit'
-import replaceBrowserHistory from '@pancakeswap/utils/replaceBrowserHistory'
-import tryParseAmount from '@pancakeswap/utils/tryParseAmount'
+} from '@spaceinvaders-swap/uikit'
+import replaceBrowserHistory from '@spaceinvaders-swap/utils/replaceBrowserHistory'
+import tryParseAmount from '@spaceinvaders-swap/utils/tryParseAmount'
 import { CurrencyInputPanel } from 'components/CurrencyInputPanel'
 import { ExchangeLayout } from 'components/Layout/ExchangeLayout'
 import { PageMeta } from 'components/Layout/Page'

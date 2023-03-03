@@ -1,5 +1,5 @@
-import { BlockIcon, CheckmarkCircleIcon, Flex, Text } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { BlockIcon, CheckmarkCircleIcon, Flex, Text } from '@spaceinvaders-swap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 
 import styled from 'styled-components'
 import { getRewardGroupAchievements, useFanTokenCompetitionRewards } from '../../../helpers'
@@ -18,16 +18,16 @@ const FanTokenUserPrizeGrid: React.FC<React.PropsWithChildren<{ userTradingInfor
   const { t } = useTranslation()
   const {
     userRewardGroup,
-    userCakeRewards,
+    userInvaRewards,
     userLazioRewards,
     userPortoRewards,
     userSantosRewards,
     userPointReward,
     canClaimNFT,
   } = userTradingInformation
-  const { cakeReward, lazioReward, portoReward, santosReward, dollarValueOfTokensReward } =
+  const { invaReward, lazioReward, portoReward, santosReward, dollarValueOfTokensReward } =
     useFanTokenCompetitionRewards({
-      userCakeRewards,
+      userInvaRewards,
       userLazioRewards,
       userPortoRewards,
       userSantosRewards,
@@ -48,7 +48,7 @@ const FanTokenUserPrizeGrid: React.FC<React.PropsWithChildren<{ userTradingInfor
         <tr>
           <BoldTd>
             <Flex flexDirection="column">
-              <Text bold>{cakeReward.toFixed(4)} CAKE</Text>
+              <Text bold>{invaReward.toFixed(4)} INVA</Text>
               <Text bold>{lazioReward.toFixed(4)} LAZIO</Text>
               <Text bold>{portoReward.toFixed(4)} PORTO</Text>
               <Text bold>{santosReward.toFixed(4)} SANTOS</Text>

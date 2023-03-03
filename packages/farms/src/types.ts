@@ -1,6 +1,6 @@
-import { SerializedWrappedToken } from '@pancakeswap/token-lists'
+import { SerializedWrappedToken } from '@spaceinvaders-swap/token-lists'
 import BigNumber from 'bignumber.js'
-import { Token } from '@pancakeswap/swap-sdk-core'
+import { Token } from '@spaceinvaders-swap/swap-sdk-core'
 
 export type FarmsDynamicDataResult = {
   tokenAmountTotal: string
@@ -92,7 +92,7 @@ export interface SerializedFarmsState {
   userDataLoaded: boolean
   loadingKeys: Record<string, boolean>
   poolLength?: number
-  regularCakePerBlock?: number
+  regularInvaPerBlock?: number
 }
 
 export interface DeserializedFarmConfig extends FarmConfigBaseProps {
@@ -137,7 +137,7 @@ export interface DeserializedFarmsState {
   loadArchivedFarmsData: boolean
   userDataLoaded: boolean
   poolLength?: number
-  regularCakePerBlock?: number
+  regularInvaPerBlock?: number
 }
 
 export interface FarmWithStakedValue extends DeserializedFarm {

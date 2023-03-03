@@ -10,9 +10,9 @@ import {
   Message,
   Flex,
   RocketIcon,
-} from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
-import { formatNumber } from '@pancakeswap/utils/formatBalance'
+} from '@spaceinvaders-swap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { formatNumber } from '@spaceinvaders-swap/utils/formatBalance'
 import useCurrentBlockTimestamp from 'hooks/useCurrentBlockTimestamp'
 import TextEllipsis from '../TextEllipsis'
 import { VotingBoxBorder, VotingBoxCardInner, ModalInner } from './styles'
@@ -28,7 +28,7 @@ interface MainViewProps {
   isError: boolean
   total: number
   disabled?: boolean
-  lockedCakeBalance: number
+  lockedInvaBalance: number
   lockedEndTime: number
   onConfirm: () => void
   onViewDetails: () => void
@@ -45,19 +45,19 @@ const MainView: React.FC<React.PropsWithChildren<MainViewProps>> = ({
   onViewDetails,
   onDismiss,
   disabled,
-  lockedCakeBalance,
+  lockedInvaBalance,
   lockedEndTime,
 }) => {
   const { t } = useTranslation()
   const blockTimestamp = useCurrentBlockTimestamp()
 
-  const hasLockedCake = lockedCakeBalance > 0
+  const hasLockedInva = lockedInvaBalance > 0
 
   const isBoostingExpired = useMemo(() => {
     return lockedEndTime !== 0 && new BigNumber(blockTimestamp?.toString()).gte(lockedEndTime)
   }, [blockTimestamp, lockedEndTime])
 
-  const hasBoosted = hasLockedCake && !isBoostingExpired
+  const hasBoosted = hasLockedInva && !isBoostingExpired
 
   return (
     <>
@@ -85,11 +85,11 @@ const MainView: React.FC<React.PropsWithChildren<MainViewProps>> = ({
                   <Text bold fontSize="20px" color={total === 0 ? 'failure' : 'text'}>
                     {formatNumber(total, 0, 3)}
                   </Text>
-                  {hasLockedCake && (
+                  {hasLockedInva && (
                     <Flex>
                       <RocketIcon color={isBoostingExpired ? 'warning' : 'secondary'} width="15px" height="15px" />
                       <Text ml="4px" bold color={isBoostingExpired ? 'warning' : 'secondary'} fontSize="14px">
-                        {isBoostingExpired ? t('Boosting Expired') : t('Boosted by vCAKE')}
+                        {isBoostingExpired ? t('Boosting Expired') : t('Boosted by vINVA')}
                       </Text>
                     </Flex>
                   )}
@@ -103,7 +103,7 @@ const MainView: React.FC<React.PropsWithChildren<MainViewProps>> = ({
               <Message variant="danger" mb="12px">
                 <Text color="danger">
                   {t(
-                    'Hold some CAKE in your wallet or on PancakeSwap at the snapshot block to get voting power for future proposals.',
+                    'Hold some INVA in your wallet or on SpaceinvadersSwap at the snapshot block to get voting power for future proposals.',
                   )}
                 </Text>
               </Message>

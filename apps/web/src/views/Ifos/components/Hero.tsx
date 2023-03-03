@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Button, Container, Flex, Heading, Text, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { Box, Button, Container, Flex, Heading, Text, useMatchBreakpoints } from '@spaceinvaders-swap/uikit'
 import { useRouter } from 'next/router'
 
 const StyledHero = styled(Box)`

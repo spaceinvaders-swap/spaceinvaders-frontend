@@ -1,11 +1,11 @@
 import BigNumber from 'bignumber.js'
-import { Flex, Skeleton, Text, Balance } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
-import { usePriceCakeBusd } from 'state/farms/hooks'
-import { getBalanceNumber, getFullDisplayBalance } from '@pancakeswap/utils/formatBalance'
+import { Flex, Skeleton, Text, Balance } from '@spaceinvaders-swap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { usePriceInvaBusd } from 'state/farms/hooks'
+import { getBalanceNumber, getFullDisplayBalance } from '@spaceinvaders-swap/utils/formatBalance'
 
 interface RewardBracketDetailProps {
-  cakeAmount: BigNumber
+  invaAmount: BigNumber
   rewardBracket?: number
   numberWinners?: string
   isBurn?: boolean
@@ -15,14 +15,14 @@ interface RewardBracketDetailProps {
 
 const RewardBracketDetail: React.FC<React.PropsWithChildren<RewardBracketDetailProps>> = ({
   rewardBracket,
-  cakeAmount,
+  invaAmount,
   numberWinners,
   isHistoricRound,
   isBurn,
   isLoading,
 }) => {
   const { t } = useTranslation()
-  const cakePriceBusd = usePriceCakeBusd()
+  const invaPriceBusd = usePriceInvaBusd()
 
   const getRewardText = () => {
     const numberMatch = rewardBracket + 1
@@ -45,12 +45,12 @@ const RewardBracketDetail: React.FC<React.PropsWithChildren<RewardBracketDetailP
         </Text>
       )}
       <>
-        {isLoading || cakeAmount.isNaN() ? (
+        {isLoading || invaAmount.isNaN() ? (
           <Skeleton my="4px" mr="10px" height={20} width={110} />
         ) : (
-          <Balance fontSize="20px" bold unit=" CAKE" value={getBalanceNumber(cakeAmount)} decimals={0} />
+          <Balance fontSize="20px" bold unit=" INVA" value={getBalanceNumber(invaAmount)} decimals={0} />
         )}
-        {isLoading || cakeAmount.isNaN() ? (
+        {isLoading || invaAmount.isNaN() ? (
           <>
             <Skeleton mt="4px" mb="16px" height={12} width={70} />
           </>
@@ -59,15 +59,15 @@ const RewardBracketDetail: React.FC<React.PropsWithChildren<RewardBracketDetailP
             fontSize="12px"
             color="textSubtle"
             prefix="~$"
-            value={getBalanceNumber(cakeAmount.times(cakePriceBusd))}
+            value={getBalanceNumber(invaAmount.times(invaPriceBusd))}
             decimals={0}
           />
         )}
-        {isHistoricRound && cakeAmount && (
+        {isHistoricRound && invaAmount && (
           <>
             {numberWinners !== '0' && (
               <Text fontSize="12px" color="textSubtle">
-                {getFullDisplayBalance(cakeAmount.div(parseInt(numberWinners, 10)), 18, 2)} CAKE {t('each')}
+                {getFullDisplayBalance(invaAmount.div(parseInt(numberWinners, 10)), 18, 2)} INVA {t('each')}
               </Text>
             )}
             <Text fontSize="12px" color="textSubtle">

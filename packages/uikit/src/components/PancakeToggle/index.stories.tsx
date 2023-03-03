@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import PancakeToggle from "./PancakeToggle";
+import SpaceinvadersToggle from "./SpaceinvadersToggle";
 
 export default {
-  title: "Components/PancakeToggle",
-  component: PancakeToggle,
+  title: "Components/SpaceinvadersToggle",
+  component: SpaceinvadersToggle,
 };
 
 export const Default: React.FC<React.PropsWithChildren> = () => {
@@ -14,13 +14,13 @@ export const Default: React.FC<React.PropsWithChildren> = () => {
   return (
     <>
       <div style={{ marginBottom: "32px" }}>
-        <PancakeToggle checked={isChecked} onChange={toggle} />
+        <SpaceinvadersToggle checked={isChecked} onChange={toggle} />
       </div>
       <div style={{ marginBottom: "32px" }}>
-        <PancakeToggle checked={isChecked} onChange={toggle} scale="md" />
+        <SpaceinvadersToggle checked={isChecked} onChange={toggle} scale="md" />
       </div>
       <div>
-        <PancakeToggle checked={isChecked} onChange={toggle} scale="sm" />
+        <SpaceinvadersToggle checked={isChecked} onChange={toggle} scale="sm" />
       </div>
     </>
   );

@@ -1,19 +1,19 @@
 /* eslint-disable camelcase */
-import { AptosCoin, Coin } from '@pancakeswap/aptos-swap-sdk'
-import { Pool } from '@pancakeswap/uikit'
+import { AptosCoin, Coin } from '@spaceinvaders-swap/aptos-swap-sdk'
+import { Pool } from '@spaceinvaders-swap/uikit'
 import { PoolCategory } from 'config/constants/types'
 import BigNumber from 'bignumber.js'
 import _toNumber from 'lodash/toNumber'
 import _get from 'lodash/get'
 import { FixedNumber } from '@ethersproject/bignumber'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
+import { BIG_ZERO } from '@spaceinvaders-swap/utils/bigNumber'
+import { getBalanceNumber } from '@spaceinvaders-swap/utils/formatBalance'
 
 import { PoolResource } from '../types'
 import getSecondsLeftFromNow from '../utils/getSecondsLeftFromNow'
 import splitTypeTag from '../../../utils/splitTypeTag'
 import getTokenByAddress from '../utils/getTokenByAddress'
-import { getPoolApr } from './transformCakePool'
+import { getPoolApr } from './transformInvaPool'
 
 function calcPendingRewardToken({
   currentTimestamp,

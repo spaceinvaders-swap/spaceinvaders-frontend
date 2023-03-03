@@ -1,8 +1,8 @@
 {
-  "name": "@pancakeswap/swap-sdk-core",
+  "name": "@spaceinvaders-swap/swap-sdk-core",
   "license": "MIT",
   "version": "0.0.1",
-  "description": "🛠 An SDK for building applications on top of Pancakeswap.",
+  "description": "🛠 An SDK for building applications on top of Spaceinvadersswap.",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "files": [
@@ -10,11 +10,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/pancakeswap/pancake-frontend.git",
+    "url": "https://github.com/spaceinvaders-swap/spaceinvaders-frontend.git",
     "directory": "packages/swap-sdk"
   },
   "keywords": [
-    "pancakeswap"
+    "spaceinvaders-swap"
   ],
   "module": "dist/index.mjs",
   "scripts": {

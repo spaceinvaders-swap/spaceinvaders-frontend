@@ -1,6 +1,6 @@
-import { Currency, CurrencyAmount, Fraction, JSBI, Percent, Trade, TradeType } from '@pancakeswap/sdk'
-import IPancakeRouter02ABI from 'config/abi/IPancakeRouter02.json'
-import { IPancakeRouter02 } from 'config/abi/types/IPancakeRouter02'
+import { Currency, CurrencyAmount, Fraction, JSBI, Percent, Trade, TradeType } from '@spaceinvaders-swap/sdk'
+import ISpaceinvadersRouter02ABI from 'config/abi/ISpaceinvadersRouter02.json'
+import { ISpaceinvadersRouter02 } from 'config/abi/types/ISpaceinvadersRouter02'
 import {
   ALLOWED_PRICE_IMPACT_HIGH,
   ALLOWED_PRICE_IMPACT_LOW,
@@ -34,7 +34,7 @@ export function calculateSlippageAmount(value: CurrencyAmount<Currency>, slippag
 
 export function useRouterContract() {
   const { chainId } = useActiveChainId()
-  return useContract<IPancakeRouter02>(ROUTER_ADDRESS[chainId], IPancakeRouter02ABI, true)
+  return useContract<ISpaceinvadersRouter02>(ROUTER_ADDRESS[chainId], ISpaceinvadersRouter02ABI, true)
 }
 
 // computes price breakdown for the trade

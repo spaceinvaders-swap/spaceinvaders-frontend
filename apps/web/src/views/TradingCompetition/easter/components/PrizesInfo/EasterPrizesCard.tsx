@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { Card, CardHeader, Box, Heading, Text } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Card, CardHeader, Box, Heading, Text } from '@spaceinvaders-swap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import EasterPrizesGrid from './PrizesGrid/EasterPrizesGrid'
 
 const StyledCard = styled(Card)`
@@ -27,7 +27,7 @@ const EasterPrizesCard = () => {
       <Box p="24px">
         <Text color="textSubtle" fontSize="14px">
           {t(
-            'Prizes to be distributed in CAKE and shared by all members of a tier. CAKE price in USD to be determined on the day of distribution. Details below.',
+            'Prizes to be distributed in INVA and shared by all members of a tier. INVA price in USD to be determined on the day of distribution. Details below.',
           )}
         </Text>
       </Box>

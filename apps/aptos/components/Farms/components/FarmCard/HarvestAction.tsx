@@ -1,14 +1,14 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Button, Flex, Heading, useToast, Balance } from '@pancakeswap/uikit'
-import { useAccount } from '@pancakeswap/awgmi'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { Button, Flex, Heading, useToast, Balance } from '@spaceinvaders-swap/uikit'
+import { useAccount } from '@spaceinvaders-swap/awgmi'
 import BigNumber from 'bignumber.js'
 import { ToastDescriptionWithTx } from 'components/Toast'
-import { TransactionResponse } from '@pancakeswap/awgmi/core'
+import { TransactionResponse } from '@spaceinvaders-swap/awgmi/core'
 import useCatchTxError from 'hooks/useCatchTxError'
 import { FARM_DEFAULT_DECIMALS } from 'components/Farms/constants'
-import { usePriceCakeUsdc } from 'hooks/useStablePrice'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { getBalanceAmount } from '@pancakeswap/utils/formatBalance'
+import { usePriceInvaUsdc } from 'hooks/useStablePrice'
+import { BIG_ZERO } from '@spaceinvaders-swap/utils/bigNumber'
+import { getBalanceAmount } from '@spaceinvaders-swap/utils/formatBalance'
 
 interface FarmCardActionsProps {
   earnings?: BigNumber
@@ -22,10 +22,10 @@ const HarvestAction: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = (
   const { account } = useAccount()
   const { toastSuccess } = useToast()
   const { fetchWithCatchTxError, loading: pendingTx } = useCatchTxError()
-  const cakePrice = usePriceCakeUsdc()
+  const invaPrice = usePriceInvaUsdc()
   const rawEarningsBalance = account ? getBalanceAmount(earnings as BigNumber, FARM_DEFAULT_DECIMALS) : BIG_ZERO
   const displayBalance = rawEarningsBalance.toFixed(5, BigNumber.ROUND_DOWN)
-  const earningsBusd = rawEarningsBalance ? rawEarningsBalance.times(cakePrice ?? 0).toNumber() : 0
+  const earningsBusd = rawEarningsBalance ? rawEarningsBalance.times(invaPrice ?? 0).toNumber() : 0
 
   const handleHarvest = async () => {
     const receipt = await fetchWithCatchTxError(() => onReward())
@@ -34,7 +34,7 @@ const HarvestAction: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = (
       toastSuccess(
         `${t('Harvested')}!`,
         <ToastDescriptionWithTx txHash={receipt.transactionHash}>
-          {t('Your %symbol% earnings have been sent to your wallet!', { symbol: 'CAKE' })}
+          {t('Your %symbol% earnings have been sent to your wallet!', { symbol: 'INVA' })}
         </ToastDescriptionWithTx>,
       )
       onDone?.()

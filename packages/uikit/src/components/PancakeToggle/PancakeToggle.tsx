@@ -1,23 +1,23 @@
 import React from "react";
-import { PancakeStack, PancakeInput, PancakeLabel } from "./StyledPancakeToggle";
-import { PancakeToggleProps, scales } from "./types";
+import { SpaceinvadersStack, SpaceinvadersInput, SpaceinvadersLabel } from "./StyledSpaceinvadersToggle";
+import { SpaceinvadersToggleProps, scales } from "./types";
 
-const PancakeToggle: React.FC<React.PropsWithChildren<PancakeToggleProps>> = ({
+const SpaceinvadersToggle: React.FC<React.PropsWithChildren<SpaceinvadersToggleProps>> = ({
   checked,
   scale = scales.LG,
   ...props
 }) => (
-  <PancakeStack scale={scale}>
-    <PancakeInput id={props.id || "pancake-toggle"} scale={scale} type="checkbox" checked={checked} {...props} />
-    <PancakeLabel scale={scale} checked={checked} htmlFor={props.id || "pancake-toggle"}>
-      <div className="pancakes">
-        <div className="pancake" />
-        <div className="pancake" />
-        <div className="pancake" />
+  <SpaceinvadersStack scale={scale}>
+    <SpaceinvadersInput id={props.id || "spaceinvaders-toggle"} scale={scale} type="checkbox" checked={checked} {...props} />
+    <SpaceinvadersLabel scale={scale} checked={checked} htmlFor={props.id || "spaceinvaders-toggle"}>
+      <div className="spaceinvaderss">
+        <div className="spaceinvaders" />
+        <div className="spaceinvaders" />
+        <div className="spaceinvaders" />
         <div className="butter" />
       </div>
-    </PancakeLabel>
-  </PancakeStack>
+    </SpaceinvadersLabel>
+  </SpaceinvadersStack>
 );
 
-export default PancakeToggle;
+export default SpaceinvadersToggle;

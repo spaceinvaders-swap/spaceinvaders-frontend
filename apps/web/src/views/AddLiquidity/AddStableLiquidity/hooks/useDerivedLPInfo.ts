@@ -1,7 +1,7 @@
-import { Currency, CurrencyAmount, JSBI, Price } from '@pancakeswap/sdk'
+import { Currency, CurrencyAmount, JSBI, Price } from '@spaceinvaders-swap/sdk'
 import { useContext, useMemo } from 'react'
-import { StableSwap } from '@pancakeswap/smart-router/evm'
-import tryParseAmount from '@pancakeswap/utils/tryParseAmount'
+import { StableSwap } from '@spaceinvaders-swap/smart-router/evm'
+import tryParseAmount from '@spaceinvaders-swap/utils/tryParseAmount'
 
 import { StableConfigContext } from 'views/Swap/StableSwap/hooks/useStableConfig'
 import { useStableSwapInfo } from 'hooks/useStableSwapInfo'

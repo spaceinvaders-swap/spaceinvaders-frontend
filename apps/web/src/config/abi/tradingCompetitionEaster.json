@@ -3,7 +3,7 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_pancakeProfileAddress",
+        "name": "_spaceinvadersProfileAddress",
         "type": "address"
       },
       {
@@ -13,7 +13,7 @@
       },
       {
         "internalType": "address",
-        "name": "_cakeTokenAddress",
+        "name": "_invaTokenAddress",
         "type": "address"
       }
     ],
@@ -144,7 +144,7 @@
   },
   {
     "inputs": [],
-    "name": "cakeToken",
+    "name": "invaToken",
     "outputs": [
       {
         "internalType": "contract IBEP20",
@@ -260,10 +260,10 @@
   },
   {
     "inputs": [],
-    "name": "pancakeProfile",
+    "name": "spaceinvadersProfile",
     "outputs": [
       {
-        "internalType": "contract IPancakeProfile",
+        "internalType": "contract ISpaceinvadersProfile",
         "name": "",
         "type": "address"
       }
@@ -338,7 +338,7 @@
       },
       {
         "internalType": "uint256[5]",
-        "name": "_cakeRewards",
+        "name": "_invaRewards",
         "type": "uint256[5]"
       },
       {
@@ -440,7 +440,7 @@
           },
           {
             "internalType": "uint256[5]",
-            "name": "cakeRewards",
+            "name": "invaRewards",
             "type": "uint256[5]"
           },
           {

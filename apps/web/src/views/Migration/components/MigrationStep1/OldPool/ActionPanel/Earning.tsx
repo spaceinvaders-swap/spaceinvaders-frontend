@@ -1,12 +1,12 @@
 import React from 'react'
-import { Text, Flex, Heading, useMatchBreakpoints, Balance, Pool } from '@pancakeswap/uikit'
+import { Text, Flex, Heading, useMatchBreakpoints, Balance, Pool } from '@spaceinvaders-swap/uikit'
 import styled from 'styled-components'
 import BigNumber from 'bignumber.js'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
-import { useTranslation } from '@pancakeswap/localization'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { getBalanceNumber } from '@spaceinvaders-swap/utils/formatBalance'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { BIG_ZERO } from '@spaceinvaders-swap/utils/bigNumber'
 import { ActionContainer, ActionTitles, ActionContent } from 'views/Pools/components/PoolsTable/ActionPanel/styles'
-import { Token } from '@pancakeswap/sdk'
+import { Token } from '@spaceinvaders-swap/sdk'
 
 const Container = styled(ActionContainer)`
   flex: 2;

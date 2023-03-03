@@ -1,10 +1,10 @@
 {
-  "name": "@pancakeswap/smart-router",
+  "name": "@spaceinvaders-swap/smart-router",
   "version": "0.6.1",
   "description": "A SDK for getting best routes from AMM",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pancakeswap/pancake-frontend.git",
+    "url": "https://github.com/spaceinvaders-swap/spaceinvaders-frontend.git",
     "directory": "packages/smart-router"
   },
   "scripts": {
@@ -14,19 +14,19 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "peerDependencies": {
-    "@pancakeswap/sdk": "^3.1.3"
+    "@spaceinvaders-swap/sdk": "^3.1.3"
   },
   "dependencies": {
     "@ethersproject/providers": "^5.0.0",
     "@ethersproject/bignumber": "^5.0.0",
-    "@pancakeswap/multicall": "^0.0.2",
+    "@spaceinvaders-swap/multicall": "^0.0.2",
     "lodash": "^4.17.21",
     "tiny-invariant": "^1.1.0"
   },
   "devDependencies": {
-    "@pancakeswap/sdk": "^3.1.3",
-    "@pancakeswap/tokens": "*",
-    "@pancakeswap/token-lists": "*",
+    "@spaceinvaders-swap/sdk": "^3.1.3",
+    "@spaceinvaders-swap/tokens": "*",
+    "@spaceinvaders-swap/token-lists": "*",
     "@types/lodash": "^4.14.178",
     "tsconfig": "*",
     "tsup": "^6.6.3",

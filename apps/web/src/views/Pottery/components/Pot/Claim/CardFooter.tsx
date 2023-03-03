@@ -1,11 +1,11 @@
 import { useMemo } from 'react'
 import styled from 'styled-components'
-import { Flex, Box, Text, Balance } from '@pancakeswap/uikit'
+import { Flex, Box, Text, Balance } from '@spaceinvaders-swap/uikit'
 import BigNumber from 'bignumber.js'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import { useVaultApy } from 'hooks/useVaultApy'
 import { weeksToSeconds } from 'views/Pools/components/utils/formatSecondsToWeeks'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
+import { getBalanceNumber } from '@spaceinvaders-swap/utils/formatBalance'
 import { distanceToNowStrictWithUnit } from 'utils/timeHelper'
 import { DeserializedPublicData, DeserializedPotteryUserData, PotteryDepositStatus } from 'state/types'
 
@@ -28,7 +28,7 @@ const CardFooter: React.FC<React.PropsWithChildren<CardFooterProps>> = ({ accoun
   const boostFactor = useMemo(() => getBoostFactor(weeksToSeconds(10)), [getBoostFactor])
   const boostFactorDisplay = useMemo(() => `X${Number(boostFactor).toFixed(2)}`, [boostFactor])
 
-  const totalValueLocked = getBalanceNumber(publicData.totalLockCake)
+  const totalValueLocked = getBalanceNumber(publicData.totalLockInva)
 
   const daysRemaining = useMemo(() => {
     const timerUntil = new BigNumber(publicData.lockStartTime).plus(weeksToSeconds(10)).times(1000).toNumber()
@@ -64,7 +64,7 @@ const CardFooter: React.FC<React.PropsWithChildren<CardFooterProps>> = ({ accoun
                 <Flex>
                   <Balance bold decimals={2} value={totalValueLocked} />
                   <Text ml="4px" color="textSubtle" as="span">
-                    CAKE
+                    INVA
                   </Text>
                 </Flex>
               ) : (

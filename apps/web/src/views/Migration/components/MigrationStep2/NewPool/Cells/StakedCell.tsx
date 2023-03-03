@@ -1,12 +1,12 @@
-import { Box, Flex, Text, useMatchBreakpoints, Balance, Pool } from '@pancakeswap/uikit'
+import { Box, Flex, Text, useMatchBreakpoints, Balance, Pool } from '@spaceinvaders-swap/uikit'
 import BigNumber from 'bignumber.js'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import React from 'react'
 import { useVaultPoolByKey } from 'state/pools/hooks'
 import styled from 'styled-components'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
-import { Token } from '@pancakeswap/sdk'
+import { BIG_ZERO } from '@spaceinvaders-swap/utils/bigNumber'
+import { getBalanceNumber } from '@spaceinvaders-swap/utils/formatBalance'
+import { Token } from '@spaceinvaders-swap/sdk'
 
 interface StakedCellProps {
   pool: Pool.DeserializedPool<Token>
@@ -34,13 +34,13 @@ const StakedCell: React.FC<React.PropsWithChildren<StakedCellProps>> = ({ pool }
   // vault
   const {
     userData: {
-      balance: { cakeAsBigNumber, cakeAsNumberBalance },
+      balance: { invaAsBigNumber, invaAsNumberBalance },
     },
   } = useVaultPoolByKey(pool.vaultKey)
 
   // pool
   const { stakingTokenPrice, stakingToken, userData } = pool
-  const stakedAutoDollarValue = getBalanceNumber(cakeAsBigNumber.multipliedBy(stakingTokenPrice), stakingToken.decimals)
+  const stakedAutoDollarValue = getBalanceNumber(invaAsBigNumber.multipliedBy(stakingTokenPrice), stakingToken.decimals)
   const stakedBalance = userData?.stakedBalance ? new BigNumber(userData.stakedBalance) : BIG_ZERO
   const stakedTokenBalance = getBalanceNumber(stakedBalance, stakingToken.decimals)
   const stakedTokenDollarBalance = getBalanceNumber(
@@ -49,7 +49,7 @@ const StakedCell: React.FC<React.PropsWithChildren<StakedCellProps>> = ({ pool }
   )
 
   const labelText = `${pool.stakingToken.symbol} ${t('Staked')}`
-  const hasStaked = pool.vaultKey ? (Number.isNaN(cakeAsNumberBalance) ? 0 : cakeAsNumberBalance) : stakedTokenBalance
+  const hasStaked = pool.vaultKey ? (Number.isNaN(invaAsNumberBalance) ? 0 : invaAsNumberBalance) : stakedTokenBalance
 
   return (
     <StyledCell role="cell" flex={pool.vaultKey ? '1 0 100px' : '2 0 100px'}>

@@ -54,8 +54,8 @@ export interface DeserializedPool<T> extends DeserializedPoolConfig<T>, CorePool
   };
 }
 
-export type DeserializedPoolVault<T> = DeserializedPool<T> & DeserializedCakeVault;
-export type DeserializedPoolLockedVault<T> = DeserializedPool<T> & DeserializedLockedCakeVault;
+export type DeserializedPoolVault<T> = DeserializedPool<T> & DeserializedInvaVault;
+export type DeserializedPoolLockedVault<T> = DeserializedPool<T> & DeserializedLockedInvaVault;
 
 export interface DeserializedLockedVaultUser extends DeserializedVaultUser {
   lastDepositedTime: string;
@@ -70,7 +70,7 @@ export interface DeserializedLockedVaultUser extends DeserializedVaultUser {
   currentOverdueFee: BigNumber;
 }
 
-export interface DeserializedLockedCakeVault extends Omit<DeserializedCakeVault, "userData"> {
+export interface DeserializedLockedInvaVault extends Omit<DeserializedInvaVault, "userData"> {
   totalLockedAmount?: BigNumber;
   userData?: DeserializedLockedVaultUser;
 }
@@ -88,29 +88,29 @@ export interface DeserializedVaultFees extends SerializedVaultFees {
 export interface DeserializedVaultUser {
   isLoading: boolean;
   userShares: BigNumber;
-  cakeAtLastUserAction: BigNumber;
+  invaAtLastUserAction: BigNumber;
   lastDepositedTime: string;
   lastUserActionTime: string;
   balance: {
-    cakeAsNumberBalance: number;
-    cakeAsBigNumber: BigNumber;
-    cakeAsDisplayBalance: string;
+    invaAsNumberBalance: number;
+    invaAsBigNumber: BigNumber;
+    invaAsDisplayBalance: string;
   };
 }
 
-export interface DeserializedCakeVault {
+export interface DeserializedInvaVault {
   totalShares?: BigNumber;
   totalLockedAmount?: BigNumber;
   pricePerFullShare: BigNumber;
-  totalCakeInVault?: BigNumber;
+  totalInvaInVault?: BigNumber;
   fees?: DeserializedVaultFees;
   userData?: DeserializedVaultUser;
 }
 
 export enum VaultKey {
-  CakeVaultV1 = "cakeVaultV1",
-  CakeVault = "cakeVault",
-  CakeFlexibleSideVault = "cakeFlexibleSideVault",
+  InvaVaultV1 = "invaVaultV1",
+  InvaVault = "invaVault",
+  InvaFlexibleSideVault = "invaFlexibleSideVault",
   IfoPool = "ifoPool",
 }
 

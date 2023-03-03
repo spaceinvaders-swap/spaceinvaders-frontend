@@ -1,6 +1,6 @@
 import React from "react";
 import { SequencePlayer } from "./SequencePlayer";
-import { bnb2CakeImages, cake2BnbImages } from "./constant";
+import { bnb2InvaImages, inva2BnbImages } from "./constant";
 
 export default {
   title: "Components/CoinSwitcher",
@@ -8,18 +8,18 @@ export default {
   argTypes: {},
 };
 
-export const Bnb2Cake: React.FC<React.PropsWithChildren> = () => {
+export const Bnb2Inva: React.FC<React.PropsWithChildren> = () => {
   return (
     <div>
-      <SequencePlayer images={bnb2CakeImages()} />
+      <SequencePlayer images={bnb2InvaImages()} />
     </div>
   );
 };
 
-export const Cake2Bnb: React.FC<React.PropsWithChildren> = () => {
+export const Inva2Bnb: React.FC<React.PropsWithChildren> = () => {
   return (
     <div>
-      <SequencePlayer images={cake2BnbImages()} />
+      <SequencePlayer images={inva2BnbImages()} />
     </div>
   );
 };

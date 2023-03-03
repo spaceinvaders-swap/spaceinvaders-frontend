@@ -8,12 +8,12 @@
       },
       {
         "internalType": "contract IBEP20",
-        "name": "_cakeToken",
+        "name": "_invaToken",
         "type": "address"
       },
       {
-        "internalType": "contract PancakeProfile",
-        "name": "_pancakeProfile",
+        "internalType": "contract SpaceinvadersProfile",
+        "name": "_spaceinvadersProfile",
         "type": "address"
       },
       {
@@ -163,7 +163,7 @@
   },
   {
     "inputs": [],
-    "name": "cakeToken",
+    "name": "invaToken",
     "outputs": [
       {
         "internalType": "contract IBEP20",
@@ -260,10 +260,10 @@
   },
   {
     "inputs": [],
-    "name": "pancakeProfile",
+    "name": "spaceinvadersProfile",
     "outputs": [
       {
-        "internalType": "contract PancakeProfile",
+        "internalType": "contract SpaceinvadersProfile",
         "name": "",
         "type": "address"
       }

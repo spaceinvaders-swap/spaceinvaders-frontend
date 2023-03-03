@@ -1,5 +1,5 @@
-import { Token } from '@pancakeswap/sdk'
-import { bscTokens } from '@pancakeswap/tokens'
+import { Token } from '@spaceinvaders-swap/sdk'
+import { bscTokens } from '@spaceinvaders-swap/tokens'
 import { bscWarningTokens } from 'config/constants/warningTokens'
 
 const { bondly, itam, ccar, bttold, abnbc } = bscTokens

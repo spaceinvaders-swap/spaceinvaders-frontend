@@ -1,12 +1,12 @@
 import { ReactNode } from 'react'
-import { Text, Flex, Box, Skeleton, TooltipText, useTooltip, IfoSkeletonCardDetails } from '@pancakeswap/uikit'
+import { Text, Flex, Box, Skeleton, TooltipText, useTooltip, IfoSkeletonCardDetails } from '@spaceinvaders-swap/uikit'
 import { PublicIfoData, WalletIfoData } from 'views/Ifos/types'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import { Ifo, PoolIds } from 'config/constants/types'
 import BigNumber from 'bignumber.js'
-import { getBalanceNumber, formatNumber } from '@pancakeswap/utils/formatBalance'
+import { getBalanceNumber, formatNumber } from '@spaceinvaders-swap/utils/formatBalance'
 import useStablePrice from 'hooks/useStablePrice'
-import { DAY_IN_SECONDS } from '@pancakeswap/utils/getTimePeriods'
+import { DAY_IN_SECONDS } from '@spaceinvaders-swap/utils/getTimePeriods'
 import { getStatus } from 'views/Ifos/hooks/helpers'
 import { multiplyPriceByAmount } from 'utils/prices'
 import useLedgerTimestamp from 'hooks/useLedgerTimestamp'
@@ -54,12 +54,12 @@ const FooterEntry: React.FC<React.PropsWithChildren<FooterEntryProps>> = ({ labe
 }
 
 const MaxTokenEntry = ({ maxToken, ifo }: { maxToken: number; ifo: Ifo; poolId: PoolIds }) => {
-  const isCurrencyCake = true
+  const isCurrencyInva = true
   const isV3 = ifo.version >= 3
   const { t } = useTranslation()
 
   const basicTooltipContent = t(
-    'For the public sale, each eligible participant will be able to commit any amount of CAKE up to the maximum commit limit, which is published along with the IFO voting proposal.',
+    'For the public sale, each eligible participant will be able to commit any amount of INVA up to the maximum commit limit, which is published along with the IFO voting proposal.',
   )
 
   const tooltipContent = basicTooltipContent
@@ -89,7 +89,7 @@ const MaxTokenEntry = ({ maxToken, ifo }: { maxToken: number; ifo: Ifo; poolId: 
         value={
           <Text small textAlign="right" color={maxToken > 0 ? 'text' : 'failure'}>
             {`${formatNumber(maxToken, 3, 3)} ${
-              !isCurrencyCake ? ifo.currency.symbol : ''
+              !isCurrencyInva ? ifo.currency.symbol : ''
             } ${` ~($${dollarValueOfToken.toFixed(0)})`}`}
           </Text>
         }
@@ -159,7 +159,7 @@ const IfoCardDetails: React.FC<React.PropsWithChildren<IfoCardDetailsProps>> = (
         <>
           {tokenEntry}
           <FooterEntry label={t('Funds to raise:')} value={ifo[poolId].raiseAmount} />
-          {ifo[poolId].cakeToBurn !== '$0' && <FooterEntry label={t('CAKE to burn:')} value={ifo[poolId].cakeToBurn} />}
+          {ifo[poolId].invaToBurn !== '$0' && <FooterEntry label={t('INVA to burn:')} value={ifo[poolId].invaToBurn} />}
           <FooterEntry
             label={t('Price per %symbol%:', { symbol: ifo.token.symbol })}
             value={`$${ifo.tokenOfferingPrice}`}
@@ -221,7 +221,7 @@ const IfoCardDetails: React.FC<React.PropsWithChildren<IfoCardDetailsProps>> = (
           {poolId === PoolIds.poolUnlimited && <FooterEntry label={t('Additional fee:')} value={taxRate} />}
           <FooterEntry label={t('Total committed:')} value={currencyPriceInUSD.gt(0) ? totalCommitted : null} />
           <FooterEntry label={t('Funds to raise:')} value={ifo[poolId].raiseAmount} />
-          {ifo[poolId].cakeToBurn !== '$0' && <FooterEntry label={t('CAKE to burn:')} value={ifo[poolId].cakeToBurn} />}
+          {ifo[poolId].invaToBurn !== '$0' && <FooterEntry label={t('INVA to burn:')} value={ifo[poolId].invaToBurn} />}
           {ifo.version > 1 && (
             <FooterEntry
               label={t('Price per %symbol%:', { symbol: ifo.token.symbol })}

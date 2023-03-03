@@ -1,3 +1,3 @@
-import PancakeSquad from '../views/PancakeSquad'
+import SpaceinvadersSquad from '../views/SpaceinvadersSquad'
 
-export default PancakeSquad
+export default SpaceinvadersSquad

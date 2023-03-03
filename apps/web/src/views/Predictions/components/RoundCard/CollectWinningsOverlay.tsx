@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { Flex, TrophyGoldIcon } from '@pancakeswap/uikit'
+import { Flex, TrophyGoldIcon } from '@spaceinvaders-swap/uikit'
 import { useGetIsClaimable } from 'state/predictions/hooks'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import CollectWinningsButton from '../CollectWinningsButton'
 
 interface CollectWinningsOverlayProps {

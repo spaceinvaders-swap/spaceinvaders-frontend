@@ -1,4 +1,4 @@
-import { ContextApi, useTranslation } from '@pancakeswap/localization'
+import { ContextApi, useTranslation } from '@spaceinvaders-swap/localization'
 import {
   Box,
   Card,
@@ -10,7 +10,7 @@ import {
   useTooltip,
   ExpandableLabel,
   CardFooter,
-} from '@pancakeswap/uikit'
+} from '@spaceinvaders-swap/uikit'
 import { useAccount } from 'wagmi'
 import { Ifo, PoolIds } from 'config/constants/types'
 import { useMemo, useState } from 'react'
@@ -59,8 +59,8 @@ export const cardConfig = (
     case PoolIds.poolBasic:
       if (meta?.version >= 3.1) {
         const MSG_MAP = {
-          needQualifiedNFT: t('Set PancakeSquad NFT as Pancake Profile avatar.'),
-          needQualifiedPoints: t('Reach a certain Pancake Profile Points threshold.'),
+          needQualifiedNFT: t('Set SpaceinvadersSquad NFT as Spaceinvaders Profile avatar.'),
+          needQualifiedPoints: t('Reach a certain Spaceinvaders Profile Points threshold.'),
         }
 
         const msgs = Object.keys(meta)

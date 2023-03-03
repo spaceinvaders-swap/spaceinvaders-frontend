@@ -7,7 +7,7 @@ import {
   JSBI,
   Percent,
   TradeType,
-} from '@pancakeswap/aptos-swap-sdk'
+} from '@spaceinvaders-swap/aptos-swap-sdk'
 import {
   ALLOWED_PRICE_IMPACT_HIGH,
   ALLOWED_PRICE_IMPACT_LOW,

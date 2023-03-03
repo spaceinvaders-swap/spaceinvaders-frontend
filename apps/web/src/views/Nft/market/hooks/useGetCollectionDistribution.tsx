@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react'
 import { getCollectionDistributionApi, getNftsFromCollectionApi } from 'state/nftMarket/helpers'
 import { ApiCollectionDistribution, ApiResponseCollectionTokens, ApiSingleTokenData } from 'state/nftMarket/types'
-import { getPancakeBunniesAddress } from 'utils/addressHelpers'
+import { getSpaceinvadersBunniesAddress } from 'utils/addressHelpers'
 import { multicallv2 } from 'utils/multicall'
-import pancakeBunniesAbi from 'config/abi/pancakeBunnies.json'
+import spaceinvadersBunniesAbi from 'config/abi/spaceinvadersBunnies.json'
 import useSWRImmutable from 'swr/immutable'
 import { FetchStatus } from 'config/constants/types'
 import mapValues from 'lodash/mapValues'
-import { pancakeBunniesAddress } from '../constants'
+import { spaceinvadersBunniesAddress } from '../constants'
 
 const useGetCollectionDistribution = (collectionAddress: string) => {
   const { data, status } = useSWRImmutable(
@@ -34,7 +34,7 @@ export const useGetCollectionDistributionPB = () => {
       setState((prevState) => ({ ...prevState, isFetching: true }))
       let apiResponse: ApiResponseCollectionTokens
       try {
-        apiResponse = await getNftsFromCollectionApi(pancakeBunniesAddress)
+        apiResponse = await getNftsFromCollectionApi(spaceinvadersBunniesAddress)
         if (!apiResponse) {
           setState((prevState) => ({ ...prevState, isFetching: false }))
           return
@@ -46,12 +46,12 @@ export const useGetCollectionDistributionPB = () => {
       // Use on chain data to get most updated totalSupply and bunnyCount data. Nft Api Data not updated frequently.
       const tokenIds = Object.keys(apiResponse.attributesDistribution)
       const bunnyCountCalls = tokenIds.map((tokenId) => ({
-        address: getPancakeBunniesAddress(),
+        address: getSpaceinvadersBunniesAddress(),
         name: 'bunnyCount',
         params: [tokenId],
       }))
       try {
-        const response = await multicallv2({ abi: pancakeBunniesAbi, calls: bunnyCountCalls })
+        const response = await multicallv2({ abi: spaceinvadersBunniesAbi, calls: bunnyCountCalls })
         const tokenListResponse = response.reduce((obj, tokenCount, index) => {
           return {
             ...obj,

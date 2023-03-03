@@ -1,6 +1,6 @@
 // TODO: aptos merge
-import { ChainId, Currency } from '@pancakeswap/aptos-swap-sdk'
-import { useTranslation } from '@pancakeswap/localization'
+import { ChainId, Currency } from '@spaceinvaders-swap/aptos-swap-sdk'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import {
   ArrowUpIcon,
   AutoColumn,
@@ -12,7 +12,7 @@ import {
   Modal,
   ModalProps,
   Text,
-} from '@pancakeswap/uikit'
+} from '@spaceinvaders-swap/uikit'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useCallback } from 'react'
 import styled from 'styled-components'

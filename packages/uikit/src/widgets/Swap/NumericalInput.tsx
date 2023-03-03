@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { memo } from "react";
-import { useTranslation } from "@pancakeswap/localization";
-import { escapeRegExp } from "@pancakeswap/utils/escapeRegExp";
+import { useTranslation } from "@spaceinvaders-swap/localization";
+import { escapeRegExp } from "@spaceinvaders-swap/utils/escapeRegExp";
 import { inputVariants } from "./SwapWidget.css";
 
 const inputRegex = RegExp(`^\\d*(?:\\\\[.])?\\d*$`); // match escaped "." characters via in a non-capturing group

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import Script from 'next/script'
 import styled, { useTheme } from 'styled-components'
-import { Flex, Box } from '@pancakeswap/uikit'
+import { Flex, Box } from '@spaceinvaders-swap/uikit'
 import { LAYER_ZERO_JS } from 'components/layerZero/config'
 import { LayerZeroWidget } from 'components/layerZero/LayerZeroWidget'
 import AptosBridgeMessage from 'components/layerZero/AptosBridgeMessage'
@@ -25,7 +25,7 @@ const AptosBridge = () => {
   useEffect(() => {
     customElements.whenDefined('aptos-bridge').then(() => {
       window.aptosBridge.bridge.setDstNativeAmount('0.05')
-      window.aptosBridge.config.setTokens(['CAKE', 'ETH', 'WETH', 'USDC', 'USDT'])
+      window.aptosBridge.config.setTokens(['INVA', 'ETH', 'WETH', 'USDC', 'USDT'])
       window.aptosBridge.config.setWallets(['MetaMask', 'CoinBase', 'Petra', 'Martian', 'Pontem', 'Fewcha'])
       setShow(true)
     })

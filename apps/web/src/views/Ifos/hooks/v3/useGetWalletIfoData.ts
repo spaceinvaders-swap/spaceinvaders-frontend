@@ -5,10 +5,10 @@ import { Ifo, PoolIds } from 'config/constants/types'
 import { useERC20, useIfoV3Contract } from 'hooks/useContract'
 import { multicallv2 } from 'utils/multicall'
 import ifoV3Abi from 'config/abi/ifoV3.json'
-import { fetchCakeVaultUserData } from 'state/pools'
+import { fetchInvaVaultUserData } from 'state/pools'
 import { useAppDispatch } from 'state'
 import { useIfoCredit } from 'state/pools/hooks'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { BIG_ZERO } from '@spaceinvaders-swap/utils/bigNumber'
 import useIfoAllowance from '../useIfoAllowance'
 import { WalletIfoState, WalletIfoData } from '../../types'
 
@@ -135,7 +135,7 @@ const useGetWalletIfoData = (ifo: Ifo): WalletIfoData => {
           ].filter(Boolean)
         : []
 
-    dispatch(fetchCakeVaultUserData({ account }))
+    dispatch(fetchInvaVaultUserData({ account }))
 
     const [
       userInfo,

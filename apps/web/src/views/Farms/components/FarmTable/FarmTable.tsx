@@ -1,12 +1,12 @@
 import { useRef, useMemo } from 'react'
 import styled from 'styled-components'
-import { RowType, DesktopColumnSchema } from '@pancakeswap/uikit'
+import { RowType, DesktopColumnSchema } from '@spaceinvaders-swap/uikit'
 import BigNumber from 'bignumber.js'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
-import latinise from '@pancakeswap/utils/latinise'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { getBalanceNumber } from '@spaceinvaders-swap/utils/formatBalance'
+import latinise from '@spaceinvaders-swap/utils/latinise'
+import { BIG_ZERO } from '@spaceinvaders-swap/utils/bigNumber'
 import { useRouter } from 'next/router'
-import { FarmWithStakedValue } from '@pancakeswap/farms'
+import { FarmWithStakedValue } from '@spaceinvaders-swap/farms'
 import { getDisplayApr } from '../getDisplayApr'
 
 import Row, { RowProps } from './Row'
@@ -15,7 +15,7 @@ import ProxyFarmContainer from '../YieldBooster/components/ProxyFarmContainer'
 export interface ITableProps {
   farms: FarmWithStakedValue[]
   userDataReady: boolean
-  cakePrice: BigNumber
+  invaPrice: BigNumber
   sortColumn?: string
 }
 
@@ -65,7 +65,7 @@ const TableContainer = styled.div`
   position: relative;
 `
 
-const FarmTable: React.FC<React.PropsWithChildren<ITableProps>> = ({ farms, cakePrice, userDataReady }) => {
+const FarmTable: React.FC<React.PropsWithChildren<ITableProps>> = ({ farms, invaPrice, userDataReady }) => {
   const tableWrapperEl = useRef<HTMLDivElement>(null)
   const { query } = useRouter()
 
@@ -115,7 +115,7 @@ const FarmTable: React.FC<React.PropsWithChildren<ITableProps>> = ({ farms, cake
     const { token, quoteToken } = farm
     const tokenAddress = token.address
     const quoteTokenAddress = quoteToken.address
-    const lpLabel = farm.lpSymbol && farm.lpSymbol.replace(/pancake/gi, '')
+    const lpLabel = farm.lpSymbol && farm.lpSymbol.replace(/spaceinvaders/gi, '')
     const lowercaseQuery = latinise(typeof query?.search === 'string' ? query.search.toLowerCase() : '')
     const initialActivity = latinise(lpLabel?.toLowerCase()) === lowercaseQuery
     const row: RowProps = {
@@ -128,7 +128,7 @@ const FarmTable: React.FC<React.PropsWithChildren<ITableProps>> = ({ farms, cake
         lpTokenPrice: farm.lpTokenPrice,
         tokenAddress,
         quoteTokenAddress,
-        cakePrice,
+        invaPrice,
         lpRewardsApr: farm.lpRewardsApr,
         originalValue: farm.apr,
         stableSwapAddress: farm.stableSwapAddress,

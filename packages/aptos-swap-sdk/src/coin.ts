@@ -1,4 +1,4 @@
-import { Token } from '@pancakeswap/swap-sdk-core'
+import { Token } from '@spaceinvaders-swap/swap-sdk-core'
 import { HexString } from 'aptos'
 import { Currency } from './currency'
 

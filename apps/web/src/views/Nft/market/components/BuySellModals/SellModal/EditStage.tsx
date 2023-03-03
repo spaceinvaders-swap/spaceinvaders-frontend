@@ -1,6 +1,6 @@
-import { Flex, Grid, Text, Button, Link, LinkExternal, BinanceIcon } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
-import { nftsBaseUrl, pancakeBunniesAddress } from 'views/Nft/market/constants'
+import { Flex, Grid, Text, Button, Link, LinkExternal, BinanceIcon } from '@spaceinvaders-swap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { nftsBaseUrl, spaceinvadersBunniesAddress } from 'views/Nft/market/constants'
 import { NftToken } from 'state/nftMarket/types'
 import { getBscScanLinkForNft, isAddress } from 'utils'
 import DELIST_COLLECTIONS from 'config/constants/nftsCollections/delist'
@@ -24,7 +24,7 @@ const EditStage: React.FC<React.PropsWithChildren<EditStageProps>> = ({
 
   const { t } = useTranslation()
   const itemPageUrlId =
-    isAddress(nftToSell.collectionAddress) === pancakeBunniesAddress ? nftToSell.attributes[0].value : nftToSell.tokenId
+    isAddress(nftToSell.collectionAddress) === spaceinvadersBunniesAddress ? nftToSell.attributes[0].value : nftToSell.tokenId
 
   return (
     <>

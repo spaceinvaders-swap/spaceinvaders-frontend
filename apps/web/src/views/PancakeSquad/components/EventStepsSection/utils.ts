@@ -1,6 +1,6 @@
-import { EventStatus, StepStatus } from '@pancakeswap/uikit'
-import { SaleStatusEnum } from 'views/PancakeSquad/types'
-import { getEventStepStatus, getEventStepStatusType } from 'views/PancakeSquad/utils'
+import { EventStatus, StepStatus } from '@spaceinvaders-swap/uikit'
+import { SaleStatusEnum } from 'views/SpaceinvadersSquad/types'
+import { getEventStepStatus, getEventStepStatusType } from 'views/SpaceinvadersSquad/utils'
 
 type getStepperStatusType = getEventStepStatusType & {
   hasProfileActivated: boolean

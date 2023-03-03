@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Button, ButtonProps, useToast } from '@pancakeswap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { Button, ButtonProps, useToast } from '@spaceinvaders-swap/uikit'
 import { memo, useCallback } from 'react'
 
 import { useAccount } from 'wagmi'
@@ -9,7 +9,7 @@ import { useCallWithGasPrice } from 'hooks/useCallWithGasPrice'
 import useCatchTxError from 'hooks/useCatchTxError'
 import { useVaultPoolContract } from 'hooks/useContract'
 import { useAppDispatch } from 'state'
-import { fetchCakeVaultUserData } from 'state/pools'
+import { fetchInvaVaultUserData } from 'state/pools'
 import { VaultKey } from 'state/types'
 import { useSWRConfig } from 'swr'
 
@@ -18,7 +18,7 @@ const ConvertToFlexibleButton: React.FC<React.PropsWithChildren<ButtonProps>> = 
 
   const { address: account } = useAccount()
   const { fetchWithCatchTxError, loading: pendingTx } = useCatchTxError()
-  const vaultPoolContract = useVaultPoolContract(VaultKey.CakeVault)
+  const vaultPoolContract = useVaultPoolContract(VaultKey.InvaVault)
   const { callWithGasPrice } = useCallWithGasPrice()
   const { t } = useTranslation()
   const { mutate } = useSWRConfig()
@@ -26,7 +26,7 @@ const ConvertToFlexibleButton: React.FC<React.PropsWithChildren<ButtonProps>> = 
 
   const handleUnlock = useCallback(async () => {
     const callOptions = {
-      gasLimit: vaultPoolConfig[VaultKey.CakeVault].gasLimit,
+      gasLimit: vaultPoolConfig[VaultKey.InvaVault].gasLimit,
     }
 
     const receipt = await fetchWithCatchTxError(() => {
@@ -41,8 +41,8 @@ const ConvertToFlexibleButton: React.FC<React.PropsWithChildren<ButtonProps>> = 
           {t('Your funds have been staked in the pool')}
         </ToastDescriptionWithTx>,
       )
-      dispatch(fetchCakeVaultUserData({ account }))
-      mutate(['userCakeLockStatus', account])
+      dispatch(fetchInvaVaultUserData({ account }))
+      mutate(['userInvaLockStatus', account])
     }
   }, [t, toastSuccess, account, callWithGasPrice, dispatch, fetchWithCatchTxError, vaultPoolContract, mutate])
 

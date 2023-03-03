@@ -3,7 +3,7 @@ import { renderWithProvider } from "../../testHelpers";
 import Text from "../../components/Text/Text";
 
 it("renders correctly", () => {
-  const { asFragment } = renderWithProvider(<Text>pancake</Text>);
+  const { asFragment } = renderWithProvider(<Text>spaceinvaders</Text>);
   expect(asFragment()).toMatchInlineSnapshot(`
     <DocumentFragment>
       .c0 {
@@ -18,7 +18,7 @@ it("renders correctly", () => {
         color="text"
         font-size="16px"
       >
-        pancake
+        spaceinvaders
       </div>
     </DocumentFragment>
   `);

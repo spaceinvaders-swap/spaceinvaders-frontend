@@ -1,4 +1,4 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import {
   Box,
   Button,
@@ -7,13 +7,13 @@ import {
   InjectedModalProps,
   Input,
   Modal,
-  PancakeToggle,
+  SpaceinvadersToggle,
   QuestionHelper,
   Text,
   ThemeSwitcher,
   Toggle,
-} from '@pancakeswap/uikit'
-import { escapeRegExp } from '@pancakeswap/utils/escapeRegExp'
+} from '@spaceinvaders-swap/uikit'
+import { escapeRegExp } from '@spaceinvaders-swap/utils/escapeRegExp'
 import { useTheme } from 'next-themes'
 import { useCallback, useState } from 'react'
 import { useAudioPlay, useUserSlippage } from 'state/user'
@@ -248,12 +248,12 @@ export const SettingsModal: React.FC<React.PropsWithChildren<InjectedModalProps>
             <Flex alignItems="center">
               <Text>{t('Flippy sounds')}</Text>
               <QuestionHelper
-                text={t('Fun sounds to make a truly immersive pancake-flipping trading experience')}
+                text={t('Fun sounds to make a truly immersive spaceinvaders-flipping trading experience')}
                 placement="top-start"
                 ml="4px"
               />
             </Flex>
-            <PancakeToggle checked={audioPlay} onChange={(e) => setAudioPlay(e.target.checked)} scale="md" />
+            <SpaceinvadersToggle checked={audioPlay} onChange={(e) => setAudioPlay(e.target.checked)} scale="md" />
           </Flex>
         </Flex>
       </ScrollableContainer>

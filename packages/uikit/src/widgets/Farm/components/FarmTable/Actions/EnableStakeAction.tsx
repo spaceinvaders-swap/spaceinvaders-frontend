@@ -1,4 +1,4 @@
-import { useTranslation } from "@pancakeswap/localization";
+import { useTranslation } from "@spaceinvaders-swap/localization";
 import { Text } from "../../../../../components/Text";
 import { Button } from "../../../../../components/Button";
 import { StyledActionContainer, ActionContent, ActionTitles } from "./styles";

@@ -1,5 +1,5 @@
 import BigNumber from 'bignumber.js'
-import { ChainId } from '@pancakeswap/sdk'
+import { ChainId } from '@spaceinvaders-swap/sdk'
 import { BLOCKS_PER_YEAR } from 'config'
 import lpAprs56 from 'config/constants/lpAprs/56.json'
 import lpAprs1 from 'config/constants/lpAprs/1.json'
@@ -20,7 +20,7 @@ const getLpApr = (chainId: number) => {
  * @param stakingTokenPrice Token price in the same quote currency
  * @param rewardTokenPrice Token price in the same quote currency
  * @param totalStaked Total amount of stakingToken in the pool
- * @param tokenPerBlock Amount of new cake allocated to the pool for each new block
+ * @param tokenPerBlock Amount of new inva allocated to the pool for each new block
  * @returns Null if the APR is NaN or infinite.
  */
 export const getPoolApr = (
@@ -38,7 +38,7 @@ export const getPoolApr = (
 /**
  * Get farm APR value in %
  * @param poolWeight allocationPoint / totalAllocationPoint
- * @param cakePriceUsd Cake price in USD
+ * @param invaPriceUsd Inva price in USD
  * @param poolLiquidityUsd Total pool liquidity in USD
  * @param farmAddress Farm Address
  * @returns Farm Apr
@@ -46,21 +46,21 @@ export const getPoolApr = (
 export const getFarmApr = (
   chainId: number,
   poolWeight: BigNumber,
-  cakePriceUsd: BigNumber,
+  invaPriceUsd: BigNumber,
   poolLiquidityUsd: BigNumber,
   farmAddress: string,
-  regularCakePerBlock: number,
-): { cakeRewardsApr: number; lpRewardsApr: number } => {
-  const yearlyCakeRewardAllocation = poolWeight
-    ? poolWeight.times(BLOCKS_PER_YEAR * regularCakePerBlock)
+  regularInvaPerBlock: number,
+): { invaRewardsApr: number; lpRewardsApr: number } => {
+  const yearlyInvaRewardAllocation = poolWeight
+    ? poolWeight.times(BLOCKS_PER_YEAR * regularInvaPerBlock)
     : new BigNumber(NaN)
-  const cakeRewardsApr = yearlyCakeRewardAllocation.times(cakePriceUsd).div(poolLiquidityUsd).times(100)
-  let cakeRewardsAprAsNumber = null
-  if (!cakeRewardsApr.isNaN() && cakeRewardsApr.isFinite()) {
-    cakeRewardsAprAsNumber = cakeRewardsApr.toNumber()
+  const invaRewardsApr = yearlyInvaRewardAllocation.times(invaPriceUsd).div(poolLiquidityUsd).times(100)
+  let invaRewardsAprAsNumber = null
+  if (!invaRewardsApr.isNaN() && invaRewardsApr.isFinite()) {
+    invaRewardsAprAsNumber = invaRewardsApr.toNumber()
   }
   const lpRewardsApr = (getLpApr(chainId)[farmAddress?.toLowerCase()] || getLpApr(chainId)[farmAddress]) ?? 0 // can get both checksummed or lowercase
-  return { cakeRewardsApr: cakeRewardsAprAsNumber, lpRewardsApr }
+  return { invaRewardsApr: invaRewardsAprAsNumber, lpRewardsApr }
 }
 
 export default null

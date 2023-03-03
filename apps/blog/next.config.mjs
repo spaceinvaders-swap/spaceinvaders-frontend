@@ -9,11 +9,11 @@ const nextConfig = {
   swcMinify: true,
   experimental: {
     transpilePackages: [
-      '@pancakeswap/uikit',
-      '@pancakeswap/ui',
-      '@pancakeswap/hooks',
-      '@pancakeswap/localization',
-      '@pancakeswap/utils',
+      '@spaceinvaders-swap/uikit',
+      '@spaceinvaders-swap/ui',
+      '@spaceinvaders-swap/hooks',
+      '@spaceinvaders-swap/localization',
+      '@spaceinvaders-swap/utils',
     ],
   },
   compiler: {

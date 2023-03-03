@@ -1,6 +1,6 @@
 import { TransactionResponse } from '@ethersproject/providers'
-import { useTranslation } from '@pancakeswap/localization'
-import { Skeleton, useToast, useModal, Farm as FarmUI } from '@pancakeswap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { Skeleton, useToast, useModal, Farm as FarmUI } from '@spaceinvaders-swap/uikit'
 import BigNumber from 'bignumber.js'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import useCatchTxError from 'hooks/useCatchTxError'
@@ -10,11 +10,11 @@ import { fetchFarmUserDataAsync } from 'state/farms'
 
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useCallback } from 'react'
-import { usePriceCakeBusd } from 'state/farms/hooks'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { getBalanceAmount } from '@pancakeswap/utils/formatBalance'
+import { usePriceInvaBusd } from 'state/farms/hooks'
+import { BIG_ZERO } from '@spaceinvaders-swap/utils/bigNumber'
+import { getBalanceAmount } from '@spaceinvaders-swap/utils/formatBalance'
 import MultiChainHarvestModal from 'views/Farms/components/MultiChainHarvestModal'
-import { FarmWithStakedValue } from '@pancakeswap/farms'
+import { FarmWithStakedValue } from '@spaceinvaders-swap/farms'
 import useHarvestFarm from '../../../hooks/useHarvestFarm'
 import useProxyStakedActions from '../../YieldBooster/hooks/useProxyStakedActions'
 
@@ -23,7 +23,7 @@ const { FarmTableHarvestAction } = FarmUI.FarmTable
 interface HarvestActionProps extends FarmWithStakedValue {
   userDataReady: boolean
   onReward?: () => Promise<TransactionResponse>
-  proxyCakeBalance?: number
+  proxyInvaBalance?: number
   onDone?: () => void
 }
 
@@ -31,9 +31,9 @@ export const ProxyHarvestActionContainer = ({ children, ...props }) => {
   const { lpAddress } = props
   const lpContract = useERC20(lpAddress)
 
-  const { onReward, onDone, proxyCakeBalance } = useProxyStakedActions(props.pid, lpContract)
+  const { onReward, onDone, proxyInvaBalance } = useProxyStakedActions(props.pid, lpContract)
 
-  return children({ ...props, onReward, proxyCakeBalance, onDone })
+  return children({ ...props, onReward, proxyInvaBalance, onDone })
 }
 
 export const HarvestActionContainer = ({ children, ...props }) => {
@@ -56,7 +56,7 @@ export const HarvestAction: React.FunctionComponent<React.PropsWithChildren<Harv
   vaultPid,
   userData,
   userDataReady,
-  proxyCakeBalance,
+  proxyInvaBalance,
   lpSymbol,
   onReward,
   onDone,
@@ -65,7 +65,7 @@ export const HarvestAction: React.FunctionComponent<React.PropsWithChildren<Harv
   const { toastSuccess } = useToast()
   const { fetchWithCatchTxError, loading: pendingTx } = useCatchTxError()
   const earningsBigNumber = new BigNumber(userData.earnings)
-  const cakePrice = usePriceCakeBusd()
+  const invaPrice = usePriceInvaBusd()
   let earnings = BIG_ZERO
   let earningsBusd = 0
   let displayBalance = userDataReady ? earnings.toFixed(5, BigNumber.ROUND_DOWN) : <Skeleton width={60} />
@@ -73,7 +73,7 @@ export const HarvestAction: React.FunctionComponent<React.PropsWithChildren<Harv
   // If user didn't connect wallet default balance will be 0
   if (!earningsBigNumber.isZero()) {
     earnings = getBalanceAmount(earningsBigNumber)
-    earningsBusd = earnings.multipliedBy(cakePrice).toNumber()
+    earningsBusd = earnings.multipliedBy(invaPrice).toNumber()
     displayBalance = earnings.toFixed(5, BigNumber.ROUND_DOWN)
   }
 
@@ -93,7 +93,7 @@ export const HarvestAction: React.FunctionComponent<React.PropsWithChildren<Harv
       toastSuccess(
         `${t('Harvested')}!`,
         <ToastDescriptionWithTx txHash={receipt.transactionHash}>
-          {t('Your %symbol% earnings have been sent to your wallet!', { symbol: 'CAKE' })}
+          {t('Your %symbol% earnings have been sent to your wallet!', { symbol: 'INVA' })}
         </ToastDescriptionWithTx>,
       )
       onDone?.()
@@ -118,7 +118,7 @@ export const HarvestAction: React.FunctionComponent<React.PropsWithChildren<Harv
       displayBalance={displayBalance}
       pendingTx={pendingTx}
       userDataReady={userDataReady}
-      proxyCakeBalance={proxyCakeBalance}
+      proxyInvaBalance={proxyInvaBalance}
       handleHarvest={onClickHarvestButton}
     />
   )

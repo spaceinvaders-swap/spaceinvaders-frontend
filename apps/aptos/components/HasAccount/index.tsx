@@ -1,5 +1,5 @@
-import { useAccount } from '@pancakeswap/awgmi'
-import { useIsMounted } from '@pancakeswap/hooks'
+import { useAccount } from '@spaceinvaders-swap/awgmi'
+import { useIsMounted } from '@spaceinvaders-swap/hooks'
 
 export default function HasAccount({ fallbackComp, children }) {
   const { account } = useAccount()

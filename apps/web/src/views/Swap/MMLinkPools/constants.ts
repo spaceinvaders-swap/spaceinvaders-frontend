@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/sdk'
+import { ChainId } from '@spaceinvaders-swap/sdk'
 import contract from 'config/constants/contracts'
 import { getAddress } from '@ethersproject/address'
 

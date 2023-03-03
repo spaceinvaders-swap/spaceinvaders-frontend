@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router'
 import { isAddress } from 'utils'
 import Container from 'components/Layout/Container'
-import PancakeBunniesTraits from './PancakeBunniesTraits'
-import { pancakeBunniesAddress } from '../../constants'
+import SpaceinvadersBunniesTraits from './SpaceinvadersBunniesTraits'
+import { spaceinvadersBunniesAddress } from '../../constants'
 import CollectionTraits from './CollectionTraits'
 
 const Traits = () => {
@@ -11,8 +11,8 @@ const Traits = () => {
   return (
     <>
       <Container py="40px">
-        {isAddress(collectionAddress) === pancakeBunniesAddress ? (
-          <PancakeBunniesTraits collectionAddress={collectionAddress} />
+        {isAddress(collectionAddress) === spaceinvadersBunniesAddress ? (
+          <SpaceinvadersBunniesTraits collectionAddress={collectionAddress} />
         ) : (
           <CollectionTraits collectionAddress={collectionAddress} />
         )}

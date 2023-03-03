@@ -26,7 +26,7 @@ export function NFTCollectionOgImage({
           left: '139px',
         }}
         alt="nft-collection-banner"
-        src={`https://static-nft.pancakeswap.com/mainnet/${collectionId}/banner-lg.png`}
+        src={`https://static-nft.spaceinvaders-swap.com/mainnet/${collectionId}/banner-lg.png`}
       />
       <div
         style={{

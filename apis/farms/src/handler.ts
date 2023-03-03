@@ -1,9 +1,9 @@
 import { FixedNumber } from '@ethersproject/bignumber'
 import { Contract } from '@ethersproject/contracts'
 import { formatUnits } from '@ethersproject/units'
-import { getFarmCakeRewardApr, SerializedFarmConfig } from '@pancakeswap/farms'
-import { ChainId, CurrencyAmount, Pair } from '@pancakeswap/sdk'
-import { BUSD, CAKE } from '@pancakeswap/tokens'
+import { getFarmInvaRewardApr, SerializedFarmConfig } from '@spaceinvaders-swap/farms'
+import { ChainId, CurrencyAmount, Pair } from '@spaceinvaders-swap/sdk'
+import { BUSD, INVA } from '@spaceinvaders-swap/tokens'
 import { farmFetcher } from './helper'
 import { FarmKV, FarmResult } from './kv'
 import { updateLPsAPR } from './lpApr'
@@ -35,21 +35,21 @@ const pairAbi = [
   },
 ]
 
-const cakeBusdPairMap = {
+const invaBusdPairMap = {
   [ChainId.BSC]: {
-    address: Pair.getAddress(CAKE[ChainId.BSC], BUSD[ChainId.BSC]),
-    tokenA: CAKE[ChainId.BSC],
+    address: Pair.getAddress(INVA[ChainId.BSC], BUSD[ChainId.BSC]),
+    tokenA: INVA[ChainId.BSC],
     tokenB: BUSD[ChainId.BSC],
   },
   [ChainId.BSC_TESTNET]: {
-    address: Pair.getAddress(CAKE[ChainId.BSC_TESTNET], BUSD[ChainId.BSC_TESTNET]),
-    tokenA: CAKE[ChainId.BSC_TESTNET],
+    address: Pair.getAddress(INVA[ChainId.BSC_TESTNET], BUSD[ChainId.BSC_TESTNET]),
+    tokenA: INVA[ChainId.BSC_TESTNET],
     tokenB: BUSD[ChainId.BSC_TESTNET],
   },
 }
 
-const getCakePrice = async (isTestnet: boolean) => {
-  const pairConfig = cakeBusdPairMap[isTestnet ? ChainId.BSC_TESTNET : ChainId.BSC]
+const getInvaPrice = async (isTestnet: boolean) => {
+  const pairConfig = invaBusdPairMap[isTestnet ? ChainId.BSC_TESTNET : ChainId.BSC]
   const pairContract = new Contract(pairConfig.address, pairAbi, isTestnet ? bscTestnetProvider : bscProvider)
   const reserves = await pairContract.getReserves()
   const { reserve0, reserve1 } = reserves
@@ -83,27 +83,27 @@ export async function saveFarms(chainId: number, event: ScheduledEvent | FetchEv
     if (!farmsConfig) {
       throw new Error(`Farms config not found ${chainId}`)
     }
-    const { farmsWithPrice, poolLength, regularCakePerBlock } = await farmFetcher.fetchFarms({
+    const { farmsWithPrice, poolLength, regularInvaPerBlock } = await farmFetcher.fetchFarms({
       chainId,
       isTestnet,
       farms: farmsConfig.filter((f) => f.pid !== 0).concat(lpPriceHelpers),
     })
 
-    const cakeBusdPrice = await getCakePrice(isTestnet)
+    const invaBusdPrice = await getInvaPrice(isTestnet)
     const lpAprs = await handleLpAprs(chainId, farmsConfig)
 
     const finalFarm = farmsWithPrice.map((f) => {
       return {
         ...f,
         lpApr: lpAprs?.[f.lpAddress.toLowerCase()] || 0,
-        cakeApr: getFarmCakeRewardApr(f, FixedNumber.from(cakeBusdPrice.toSignificant(3)), regularCakePerBlock),
+        invaApr: getFarmInvaRewardApr(f, FixedNumber.from(invaBusdPrice.toSignificant(3)), regularInvaPerBlock),
       }
     }) as FarmResult
 
     const savedFarms = {
       updatedAt: new Date().toISOString(),
       poolLength,
-      regularCakePerBlock,
+      regularInvaPerBlock,
       data: finalFarm,
     }
 
@@ -155,7 +155,7 @@ const chainlinkAbi = [
   },
 ]
 
-export async function fetchCakePrice() {
+export async function fetchInvaPrice() {
   const address = '0xB6064eD41d4f67e353768aA239cA86f4F73665a1'
   const chainlinkOracleContract = new Contract(address, chainlinkAbi, bscProvider)
 

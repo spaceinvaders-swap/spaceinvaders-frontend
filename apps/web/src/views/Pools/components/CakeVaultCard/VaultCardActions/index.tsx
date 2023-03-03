@@ -1,10 +1,10 @@
 import BigNumber from 'bignumber.js'
 
 import styled from 'styled-components'
-import { Flex, Text, Box, Pool } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { Token } from '@pancakeswap/sdk'
+import { Flex, Text, Box, Pool } from '@spaceinvaders-swap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { BIG_ZERO } from '@spaceinvaders-swap/utils/bigNumber'
+import { Token } from '@spaceinvaders-swap/sdk'
 
 import VaultApprovalAction from './VaultApprovalAction'
 import VaultStakeActions from './VaultStakeActions'
@@ -14,7 +14,7 @@ const InlineText = styled(Text)`
   display: inline;
 `
 
-const CakeVaultCardActions: React.FC<
+const InvaVaultCardActions: React.FC<
   React.PropsWithChildren<{
     pool: Pool.DeserializedPool<Token>
     accountHasSharesStaked: boolean
@@ -64,4 +64,4 @@ const CakeVaultCardActions: React.FC<
   )
 }
 
-export default CakeVaultCardActions
+export default InvaVaultCardActions

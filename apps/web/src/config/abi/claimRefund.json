@@ -3,17 +3,17 @@
     "inputs": [
       {
         "internalType": "contract IBEP20",
-        "name": "_cakeToken",
+        "name": "_invaToken",
         "type": "address"
       },
       {
         "internalType": "address",
-        "name": "_pancakeProfileAddress",
+        "name": "_spaceinvadersProfileAddress",
         "type": "address"
       },
       {
         "internalType": "uint256",
-        "name": "_numberCake",
+        "name": "_numberInva",
         "type": "uint256"
       },
       {
@@ -46,7 +46,7 @@
   },
   {
     "inputs": [],
-    "name": "cakeToken",
+    "name": "invaToken",
     "outputs": [
       {
         "internalType": "contract IBEP20",
@@ -91,7 +91,7 @@
   },
   {
     "inputs": [],
-    "name": "getCakeBack",
+    "name": "getInvaBack",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -117,7 +117,7 @@
   },
   {
     "inputs": [],
-    "name": "numberCake",
+    "name": "numberInva",
     "outputs": [
       {
         "internalType": "uint256",

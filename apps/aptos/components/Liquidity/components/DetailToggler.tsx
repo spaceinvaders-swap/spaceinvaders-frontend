@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { RowBetween, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { RowBetween, Text } from '@spaceinvaders-swap/uikit'
 
 // import { useState } from 'react'
 

@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useAccount } from 'wagmi'
-import { useTranslation } from '@pancakeswap/localization'
-import { Text, Button, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { Text, Button, useMatchBreakpoints } from '@spaceinvaders-swap/uikit'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import { ProgressStepsType } from './ProgressSteps'
 
@@ -70,9 +70,9 @@ const MigrationSticky: React.FC<React.PropsWithChildren<MigrationStickyProps>> =
   const { isMobile } = useMatchBreakpoints()
 
   const isStep1: boolean = step === ProgressStepsType.STEP1
-  const title: string = isStep1 ? t('Unstaking LP Tokens and CAKE') : t('Stake in the new contract.')
+  const title: string = isStep1 ? t('Unstaking LP Tokens and INVA') : t('Stake in the new contract.')
   const subTitle: string = isStep1
-    ? t('All the earned CAKE will be harvested to your wallet upon unstake.')
+    ? t('All the earned INVA will be harvested to your wallet upon unstake.')
     : t('Each farm and pool has to be individually enabled before staking.')
   const buttonText: string = isStep1 ? t('Go to Stake') : t('Skip')
 

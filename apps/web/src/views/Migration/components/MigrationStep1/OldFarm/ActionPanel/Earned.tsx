@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import BigNumber from 'bignumber.js'
-import { useTranslation } from '@pancakeswap/localization'
-import { Flex, Heading, Text, useMatchBreakpoints, Balance } from '@pancakeswap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { Flex, Heading, Text, useMatchBreakpoints, Balance } from '@spaceinvaders-swap/uikit'
 import { ActionContainer, ActionContent, ActionTitles } from 'views/Pools/components/PoolsTable/ActionPanel/styles'
-import { usePriceCakeBusd } from 'state/farmsV1/hooks'
+import { usePriceInvaBusd } from 'state/farmsV1/hooks'
 import { EarnedProps } from '../../../Farm/Cells/Earned'
 
 const Container = styled(ActionContainer)`
@@ -17,20 +17,20 @@ const Earned: React.FC<React.PropsWithChildren<EarnedProps>> = ({ earnings }) =>
   const { isMobile } = useMatchBreakpoints()
 
   const earningsBigNumber = new BigNumber(earnings)
-  const cakePrice = usePriceCakeBusd()
+  const invaPrice = usePriceInvaBusd()
   let earningsBusd = 0
   let displayBalance = earnings.toLocaleString()
 
   // If user didn't connect wallet default balance will be 0
   if (!earningsBigNumber.isZero()) {
-    earningsBusd = earningsBigNumber.multipliedBy(cakePrice).toNumber()
+    earningsBusd = earningsBigNumber.multipliedBy(invaPrice).toNumber()
     displayBalance = earningsBigNumber.toFixed(3, BigNumber.ROUND_DOWN)
   }
 
   if (isMobile) {
     return (
       <Flex justifyContent="space-between">
-        <Text>{`CAKE ${t('Earned')}`}</Text>
+        <Text>{`INVA ${t('Earned')}`}</Text>
         <Flex height="20px" alignItems="center">
           {Number(displayBalance) ? (
             <Balance fontSize="16px" value={Number(displayBalance)} />
@@ -46,7 +46,7 @@ const Earned: React.FC<React.PropsWithChildren<EarnedProps>> = ({ earnings }) =>
     <Container>
       <ActionTitles>
         <Text bold textTransform="uppercase" color="secondary" fontSize="12px" pr="4px">
-          {`CAKE ${t('Earned')}`}
+          {`INVA ${t('Earned')}`}
         </Text>
       </ActionTitles>
       <ActionContent>

@@ -1,5 +1,5 @@
 import useSWR from 'swr'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 
 interface ResponseLanguageType {
   code: string

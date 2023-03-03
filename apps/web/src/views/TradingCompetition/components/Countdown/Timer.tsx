@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { Flex, Heading, Text, Link, useTooltip, BscScanIcon } from '@pancakeswap/uikit'
+import { Flex, Heading, Text, Link, useTooltip, BscScanIcon } from '@spaceinvaders-swap/uikit'
 import { getBlockExploreLink } from 'utils'
-import { useTranslation, ContextApi } from '@pancakeswap/localization'
+import { useTranslation, ContextApi } from '@spaceinvaders-swap/localization'
 
 export interface TimerProps {
   prefix?: string

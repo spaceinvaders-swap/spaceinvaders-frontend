@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, CurrencyAmount, NATIVE, Percent } from '@pancakeswap/sdk'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { Currency, CurrencyAmount, NATIVE, Percent } from '@spaceinvaders-swap/sdk'
 import {
   ArrowDownIcon,
   AutoColumn,
@@ -10,7 +10,7 @@ import {
   Skeleton,
   Swap as SwapUI,
   useModal,
-} from '@pancakeswap/uikit'
+} from '@spaceinvaders-swap/uikit'
 import UnsupportedCurrencyFooter from 'components/UnsupportedCurrencyFooter'
 import { useIsTransactionUnsupported } from 'hooks/Trades'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
@@ -31,7 +31,7 @@ import { Field } from 'state/swap/actions'
 import { useDerivedSwapInfo, useSwapState } from 'state/swap/hooks'
 import { useExpertModeManager, useUserSlippageTolerance } from 'state/user/hooks'
 
-import replaceBrowserHistory from '@pancakeswap/utils/replaceBrowserHistory'
+import replaceBrowserHistory from '@spaceinvaders-swap/utils/replaceBrowserHistory'
 import { currencyId } from 'utils/currencyId'
 
 import { useAtomValue } from 'jotai'

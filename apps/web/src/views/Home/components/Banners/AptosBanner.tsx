@@ -1,8 +1,8 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Button, Text, useMatchBreakpoints, Box, OpenNewIcon } from '@pancakeswap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { Button, Text, useMatchBreakpoints, Box, OpenNewIcon } from '@spaceinvaders-swap/uikit'
 import Image from 'next/legacy/image'
 import styled from 'styled-components'
-import { Aptos, AptosXPancakeSwap } from './images'
+import { Aptos, AptosXSpaceinvadersSwap } from './images'
 import * as S from './Styled'
 
 const RightWrapper = styled.div`
@@ -54,14 +54,14 @@ const AptosBanner = () => {
       <S.Inner>
         <S.LeftWrapper>
           <Box marginTop="3px">
-            <Image src={AptosXPancakeSwap} alt="aptosXPancakeSwapImage" width={211} height={18} placeholder="blur" />
+            <Image src={AptosXSpaceinvadersSwap} alt="aptosXSpaceinvadersSwapImage" width={211} height={18} placeholder="blur" />
           </Box>
           <AptosTitle>{t('Hello Aptos Project Teams!')}</AptosTitle>
 
           <Button
             minHeight="48px"
             onClick={() =>
-              window?.open('https://docs.pancakeswap.finance/aptos-deployment', '_blank', 'noopener noreferrer')
+              window?.open('https://docs.spaceinvaders-swap.finance/aptos-deployment', '_blank', 'noopener noreferrer')
             }
           >
             <Text color="invertedContrast" bold fontSize="16px" mr="4px">

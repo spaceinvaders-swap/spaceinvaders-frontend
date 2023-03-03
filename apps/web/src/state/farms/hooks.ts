@@ -1,17 +1,17 @@
 import BigNumber from 'bignumber.js'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { SLOW_INTERVAL } from 'config/constants'
-import { useCakeBusdPrice } from 'hooks/useBUSDPrice'
+import { useInvaBusdPrice } from 'hooks/useBUSDPrice'
 import { useEffect, useMemo } from 'react'
 import { useSelector } from 'react-redux'
 import { useAppDispatch } from 'state'
 import useSWRImmutable from 'swr/immutable'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { useBCakeProxyContractAddress } from 'views/Farms/hooks/useBCakeProxyContractAddress'
+import { BIG_ZERO } from '@spaceinvaders-swap/utils/bigNumber'
+import { useBInvaProxyContractAddress } from 'views/Farms/hooks/useBInvaProxyContractAddress'
 import { getMasterchefContract } from 'utils/contractHelpers'
 import { useFastRefreshEffect } from 'hooks/useRefreshEffect'
-import { getFarmConfig } from '@pancakeswap/farms/constants'
-import { DeserializedFarm, DeserializedFarmsState, DeserializedFarmUserData } from '@pancakeswap/farms'
+import { getFarmConfig } from '@spaceinvaders-swap/farms/constants'
+import { DeserializedFarm, DeserializedFarmsState, DeserializedFarmUserData } from '@spaceinvaders-swap/farms'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { fetchFarmsPublicDataAsync, fetchFarmUserDataAsync, fetchInitialFarmsData } from '.'
 import { State } from '../types'
@@ -39,7 +39,7 @@ export const usePollFarmsWithUserData = () => {
     proxyAddress,
     proxyCreated,
     isLoading: isProxyContractLoading,
-  } = useBCakeProxyContractAddress(account, chainId)
+  } = useBInvaProxyContractAddress(account, chainId)
 
   useSWRImmutable(
     chainId ? ['publicFarmData', chainId] : null,
@@ -74,7 +74,7 @@ export const usePollFarmsWithUserData = () => {
 
 /**
  * Fetches the "core" farm data used globally
- * 2 = CAKE-BNB LP
+ * 2 = INVA-BNB LP
  * 3 = BUSD-BNB LP
  */
 const coreFarmPIDs = {
@@ -139,7 +139,7 @@ export const useLpTokenPrice = (symbol: string) => {
 /**
  * @deprecated use the BUSD hook in /hooks
  */
-export const usePriceCakeBusd = ({ forceMainnet } = { forceMainnet: false }): BigNumber => {
-  const price = useCakeBusdPrice({ forceMainnet })
+export const usePriceInvaBusd = ({ forceMainnet } = { forceMainnet: false }): BigNumber => {
+  const price = useInvaBusdPrice({ forceMainnet })
   return useMemo(() => (price ? new BigNumber(price.toSignificant(6)) : BIG_ZERO), [price])
 }

@@ -12,14 +12,14 @@ import {
   Link,
   TelegramIcon,
   FlexGap,
-} from '@pancakeswap/uikit'
-import { bscTokens } from '@pancakeswap/tokens'
-import { useTranslation } from '@pancakeswap/localization'
+} from '@spaceinvaders-swap/uikit'
+import { bscTokens } from '@spaceinvaders-swap/tokens'
+import { useTranslation } from '@spaceinvaders-swap/localization'
 import { PublicIfoData } from 'views/Ifos/types'
 import { Ifo } from 'config/constants/types'
-import { BIG_TEN } from '@pancakeswap/utils/bigNumber'
+import { BIG_TEN } from '@spaceinvaders-swap/utils/bigNumber'
 import { getBlockExploreLink } from 'utils'
-import { formatBigNumber } from '@pancakeswap/utils/formatBalance'
+import { formatBigNumber } from '@spaceinvaders-swap/utils/formatBalance'
 
 const SmartContractIcon: React.FC<React.PropsWithChildren<SvgProps>> = (props) => {
   return (
@@ -122,7 +122,7 @@ const IfoAchievement: React.FC<React.PropsWithChildren<Props>> = ({ ifo, publicI
             <Text color="textSubtle" fontSize="12px">
               {t('Commit ~%amount% %symbol% in total to earn!', {
                 amount: minLpForAchievement,
-                symbol: ifo.currency === bscTokens.cake ? 'CAKE' : 'LP',
+                symbol: ifo.currency === bscTokens.inva ? 'INVA' : 'LP',
               })}
             </Text>
           ) : (

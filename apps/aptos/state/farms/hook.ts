@@ -1,19 +1,19 @@
 /* eslint-disable camelcase */
-import { ChainId, Coin, Pair, PAIR_RESERVE_TYPE_TAG } from '@pancakeswap/aptos-swap-sdk'
-import { DeserializedFarmsState, deserializeFarm } from '@pancakeswap/farms'
-import { useAccount, useAccountResource, useCoins, useQueries, useQuery } from '@pancakeswap/awgmi'
+import { ChainId, Coin, Pair, PAIR_RESERVE_TYPE_TAG } from '@spaceinvaders-swap/aptos-swap-sdk'
+import { DeserializedFarmsState, deserializeFarm } from '@spaceinvaders-swap/farms'
+import { useAccount, useAccountResource, useCoins, useQueries, useQuery } from '@spaceinvaders-swap/awgmi'
 import {
   FetchCoinResult,
   unwrapTypeArgFromString,
   fetchTableItem,
   FetchAccountResourceResult,
-} from '@pancakeswap/awgmi/core'
-import { getFarmsPrices } from '@pancakeswap/farms/farmPrices'
-import { BIG_TWO, BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { getFullDecimalMultiplier } from '@pancakeswap/utils/getFullDecimalMultiplier'
+} from '@spaceinvaders-swap/awgmi/core'
+import { getFarmsPrices } from '@spaceinvaders-swap/farms/farmPrices'
+import { BIG_TWO, BIG_ZERO } from '@spaceinvaders-swap/utils/bigNumber'
+import { getFullDecimalMultiplier } from '@spaceinvaders-swap/utils/getFullDecimalMultiplier'
 import BigNumber from 'bignumber.js'
 import { APT, L0_USDC } from 'config/coins'
-import { CAKE_PID } from 'config/constants'
+import { INVA_PID } from 'config/constants'
 import { getFarmConfig } from 'config/constants/farms'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useActiveNetwork } from 'hooks/useNetwork'
@@ -26,7 +26,7 @@ import { FarmResource, FarmUserInfoResource } from 'state/farms/types'
 import { FARM_DEFAULT_DECIMALS } from 'components/Farms/constants'
 import priceHelperLpsMainnet from '../../config/constants/priceHelperLps/farms/1'
 import priceHelperLpsTestnet from '../../config/constants/priceHelperLps/farms/2'
-import { calcPendingRewardCake, calcRewardCakePerShare } from './utils/pendingCake'
+import { calcPendingRewardInva, calcRewardInvaPerShare } from './utils/pendingInva'
 
 const farmsPriceHelpLpMap = {
   [ChainId.MAINNET]: priceHelperLpsMainnet,
@@ -82,7 +82,7 @@ export const useFarms = () => {
   const pairReserves = usePairReservesQueries(lpReservesAddresses)
   const lpInfo = useMemo(() => {
     return farmConfig
-      .filter((f) => f.pid !== 0 && f.pid !== CAKE_PID)
+      .filter((f) => f.pid !== 0 && f.pid !== INVA_PID)
       .concat()
       .map((config) => {
         const token = new Coin(config.token.chainId, config.token.address, config.token.decimals, config.token.symbol)
@@ -122,7 +122,7 @@ export const useFarms = () => {
         const poolWeight = totalAlloc ? allocPoint.div(new BigNumber(totalAlloc)) : BIG_ZERO
 
         // tokenPriceVsQuote info for this price helper farm is wrong, opposite way should be used
-        const isAptCakeLp = config.pid === null && config.lpSymbol === 'APT-CAKE LP'
+        const isAptInvaLp = config.pid === null && config.lpSymbol === 'APT-INVA LP'
 
         return {
           ...config,
@@ -132,7 +132,7 @@ export const useFarms = () => {
           lpTotalInQuoteToken: lpTotalInQuoteToken.toFixed(6),
           tokenPriceVsQuote:
             !quoteTokenAmountTotal.isZero() && !tokenAmountTotal.isZero()
-              ? isAptCakeLp
+              ? isAptInvaLp
                 ? tokenAmountTotal.div(quoteTokenAmountTotal).toFixed(6)
                 : quoteTokenAmountTotal.div(tokenAmountTotal).toFixed(6)
               : '0',
@@ -150,11 +150,11 @@ export const useFarms = () => {
   const userInfos = useFarmsUserInfo()
   const getNow = useLedgerTimestamp()
   const currentDate = getNow() / 1000
-  const showCakePerSecond = masterChef?.data && new BigNumber(currentDate).lte(masterChef.data.end_timestamp)
-  const regularCakePerSeconds = showCakePerSecond
-    ? new BigNumber(masterChef?.data?.cake_per_second)
-        .times(masterChef.data.cake_rate_to_regular)
-        .div(new BigNumber(masterChef.data.cake_rate_to_regular).plus(masterChef.data.cake_rate_to_special))
+  const showInvaPerSecond = masterChef?.data && new BigNumber(currentDate).lte(masterChef.data.end_timestamp)
+  const regularInvaPerSeconds = showInvaPerSecond
+    ? new BigNumber(masterChef?.data?.inva_per_second)
+        .times(masterChef.data.inva_rate_to_regular)
+        .div(new BigNumber(masterChef.data.inva_rate_to_regular).plus(masterChef.data.inva_rate_to_special))
         .toNumber()
     : 0
 
@@ -162,18 +162,18 @@ export const useFarms = () => {
     return {
       userDataLoaded: true,
       poolLength,
-      regularCakePerBlock: regularCakePerSeconds,
+      regularInvaPerBlock: regularInvaPerSeconds,
       loadArchivedFarmsData: false,
       data: farmsWithPrices
         .filter((f) => !!f.pid)
         .map(deserializeFarm)
         .map((f) => {
-          const accCakePerShare =
-            masterChef?.data && f.pid ? calcRewardCakePerShare(masterChef.data, String(f.pid), getNow) : 0
-          const earningToken = calcPendingRewardCake(
+          const accInvaPerShare =
+            masterChef?.data && f.pid ? calcRewardInvaPerShare(masterChef.data, String(f.pid), getNow) : 0
+          const earningToken = calcPendingRewardInva(
             userInfos[f.pid]?.amount,
             userInfos[f.pid]?.reward_debt,
-            accCakePerShare,
+            accInvaPerShare,
           )
           const stakedBalance = new BigNumber(userInfos[f.pid]?.amount)
           return {
@@ -185,7 +185,7 @@ export const useFarms = () => {
           }
         }),
     } as DeserializedFarmsState
-  }, [poolLength, regularCakePerSeconds, farmsWithPrices, masterChef, userInfos, getNow])
+  }, [poolLength, regularInvaPerSeconds, farmsWithPrices, masterChef, userInfos, getNow])
 }
 
 export function useFarmsUserInfo() {

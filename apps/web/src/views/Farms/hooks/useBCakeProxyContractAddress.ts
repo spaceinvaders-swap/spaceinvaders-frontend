@@ -1,15 +1,15 @@
 import useSWRImmutable from 'swr/immutable'
 import { NO_PROXY_CONTRACT } from 'config/constants'
-import { useBCakeFarmBoosterContract } from 'hooks/useContract'
+import { useBInvaFarmBoosterContract } from 'hooks/useContract'
 import { FetchStatus } from 'config/constants/types'
-import { bCakeSupportedChainId } from '@pancakeswap/farms/src/index'
+import { bInvaSupportedChainId } from '@spaceinvaders-swap/farms/src/index'
 
-export const useBCakeProxyContractAddress = (account?: string, chainId?: number) => {
-  const bCakeFarmBoosterContract = useBCakeFarmBoosterContract()
-  const isSupportedChain = bCakeSupportedChainId.includes(chainId)
+export const useBInvaProxyContractAddress = (account?: string, chainId?: number) => {
+  const bInvaFarmBoosterContract = useBInvaFarmBoosterContract()
+  const isSupportedChain = bInvaSupportedChainId.includes(chainId)
   const { data, status, mutate } = useSWRImmutable(
     account && isSupportedChain && ['bProxyAddress', account, chainId],
-    async () => bCakeFarmBoosterContract.proxyContract(account),
+    async () => bInvaFarmBoosterContract.proxyContract(account),
   )
   const isLoading = isSupportedChain ? status !== FetchStatus.Fetched : false
 

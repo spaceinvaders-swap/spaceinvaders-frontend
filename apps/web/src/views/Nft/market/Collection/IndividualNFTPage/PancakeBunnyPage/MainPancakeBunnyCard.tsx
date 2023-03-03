@@ -1,7 +1,7 @@
 import { useAccount } from 'wagmi'
-import { Flex, Box, Card, CardBody, Text, Button, BinanceIcon, Skeleton, useModal } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
-import { formatNumber } from '@pancakeswap/utils/formatBalance'
+import { Flex, Box, Card, CardBody, Text, Button, BinanceIcon, Skeleton, useModal } from '@spaceinvaders-swap/uikit'
+import { useTranslation } from '@spaceinvaders-swap/localization'
+import { formatNumber } from '@spaceinvaders-swap/utils/formatBalance'
 import { multiplyPriceByAmount } from 'utils/prices'
 import { NftToken } from 'state/nftMarket/types'
 import NFTMedia from 'views/Nft/market/components/NFTMedia'
@@ -12,13 +12,13 @@ import SellModal from '../../../components/BuySellModals/SellModal'
 import { nftsBaseUrl } from '../../../constants'
 import { Container, CollectionLink } from '../shared/styles'
 
-interface MainPancakeBunnyCardProps {
+interface MainSpaceinvadersBunnyCardProps {
   cheapestNft: NftToken
   nothingForSaleBunny: NftToken
   onSuccessSale: () => void
 }
 
-const MainPancakeBunnyCard: React.FC<React.PropsWithChildren<MainPancakeBunnyCardProps>> = ({
+const MainSpaceinvadersBunnyCard: React.FC<React.PropsWithChildren<MainSpaceinvadersBunnyCardProps>> = ({
   cheapestNft,
   nothingForSaleBunny,
   onSuccessSale,
@@ -98,4 +98,4 @@ const MainPancakeBunnyCard: React.FC<React.PropsWithChildren<MainPancakeBunnyCar
   )
 }
 
-export default MainPancakeBunnyCard
+export default MainSpaceinvadersBunnyCard
