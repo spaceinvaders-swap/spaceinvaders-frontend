@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
-import { Flex, Text, Skeleton, Button, ArrowForwardIcon, Balance, NextLinkFromReactRouter } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
-import { useIntersectionObserver } from '@pancakeswap/hooks'
-import { usePriceCakeBusd } from 'state/farms/hooks'
+import { Flex, Text, Skeleton, Button, ArrowForwardIcon, Balance, NextLinkFromReactRouter } from '@offsideswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
+import { useIntersectionObserver } from '@offsideswap/hooks'
+import { usePriceRotoBusd } from 'state/farms/hooks'
 import styled from 'styled-components'
 import { fetchLottery, fetchCurrentLotteryId } from 'state/lottery/helpers'
-import { getBalanceAmount } from '@pancakeswap/utils/formatBalance'
+import { getBalanceAmount } from '@offsideswap/utils/formatBalance'
 import { SLOW_INTERVAL } from 'config/constants'
 import useSWRImmutable from 'swr/immutable'
 
@@ -23,7 +23,7 @@ const LotteryCardContent = () => {
   const { t } = useTranslation()
   const { observerRef, isIntersecting } = useIntersectionObserver()
   const [loadData, setLoadData] = useState(false)
-  const cakePriceBusd = usePriceCakeBusd({ forceMainnet: true })
+  const rotoPriceBusd = usePriceRotoBusd({ forceMainnet: true })
   const { data: currentLotteryId } = useSWRImmutable(loadData ? ['currentLotteryId'] : null, fetchCurrentLotteryId, {
     refreshInterval: SLOW_INTERVAL,
   })
@@ -35,10 +35,10 @@ const LotteryCardContent = () => {
     },
   )
 
-  const cakePrizesText = t('%cakePrizeInUsd% in CAKE prizes this round', { cakePrizeInUsd: cakePriceBusd.toString() })
-  const [pretext, prizesThisRound] = cakePrizesText.split(cakePriceBusd.toString())
-  const amountCollectedInCake = currentLottery ? parseFloat(currentLottery.amountCollectedInCake) : null
-  const currentLotteryPrize = amountCollectedInCake ? cakePriceBusd.times(amountCollectedInCake) : null
+  const rotoPrizesText = t('%rotoPrizeInUsd% in ROTO prizes this round', { rotoPrizeInUsd: rotoPriceBusd.toString() })
+  const [pretext, prizesThisRound] = rotoPrizesText.split(rotoPriceBusd.toString())
+  const amountCollectedInRoto = currentLottery ? parseFloat(currentLottery.amountCollectedInRoto) : null
+  const currentLotteryPrize = amountCollectedInRoto ? rotoPriceBusd.times(amountCollectedInRoto) : null
 
   useEffect(() => {
     if (isIntersecting) {
@@ -75,7 +75,7 @@ const LotteryCardContent = () => {
           {prizesThisRound}
         </Text>
         <Text color="white" mb="40px">
-          {t('Buy tickets with CAKE, win CAKE if your numbers match')}
+          {t('Buy tickets with ROTO, win ROTO if your numbers match')}
         </Text>
       </Flex>
       <Flex alignItems="center" justifyContent="center">

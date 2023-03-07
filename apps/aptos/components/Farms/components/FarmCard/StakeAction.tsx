@@ -1,16 +1,16 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { AddIcon, Button, Flex, IconButton, MinusIcon, useModal, useToast, Farm as FarmUI } from '@pancakeswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
+import { AddIcon, Button, Flex, IconButton, MinusIcon, useModal, useToast, Farm as FarmUI } from '@offsideswap/uikit'
 import styled from 'styled-components'
 import { useRouter } from 'next/router'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
-import { usePriceCakeUsdc } from 'hooks/useStablePrice'
-import type { DeserializedFarmUserData } from '@pancakeswap/farms'
-import { TransactionResponse } from '@pancakeswap/awgmi/core'
+import { usePriceRotoUsdc } from 'hooks/useStablePrice'
+import type { DeserializedFarmUserData } from '@offsideswap/farms'
+import { TransactionResponse } from '@offsideswap/awgmi/core'
 import useCatchTxError from 'hooks/useCatchTxError'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { BIG_ZERO } from '@offsideswap/utils/bigNumber'
 import { FARM_DEFAULT_DECIMALS } from 'components/Farms/constants'
-import { FarmWithStakedValue } from '@pancakeswap/farms'
+import { FarmWithStakedValue } from '@offsideswap/farms'
 
 const IconButtonWrapper = styled.div`
   display: flex;
@@ -50,7 +50,7 @@ const StakeAction: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = ({
   const { toastSuccess } = useToast()
   const { fetchWithCatchTxError } = useCatchTxError()
   const { stakedBalance, tokenBalance } = (userData as DeserializedFarmUserData) || {}
-  const cakePrice = usePriceCakeUsdc()
+  const rotoPrice = usePriceRotoUsdc()
   const router = useRouter()
 
   const handleStake = async (amount: string) => {
@@ -92,7 +92,7 @@ const StakeAction: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = ({
       apr={apr}
       displayApr={displayApr}
       addLiquidityUrl={addLiquidityUrl}
-      cakePrice={cakePrice}
+      rotoPrice={rotoPrice}
       decimals={FARM_DEFAULT_DECIMALS}
     />,
   )

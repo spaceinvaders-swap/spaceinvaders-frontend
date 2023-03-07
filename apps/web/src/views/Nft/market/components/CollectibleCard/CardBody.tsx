@@ -1,5 +1,5 @@
-import { Box, CardBody, Flex, Text } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Box, CardBody, Flex, Text } from '@offsideswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
 import { useBNBBusdPrice } from 'hooks/useBUSDPrice'
 import { isAddress } from 'utils'
 import PreviewImage from './PreviewImage'
@@ -7,7 +7,7 @@ import { CostLabel, LowestPriceMetaRow, MetaRow } from './styles'
 import LocationTag from './LocationTag'
 import { CollectibleCardProps } from './types'
 import { useGetLowestPriceFromNft } from '../../hooks/useGetLowestPrice'
-import { pancakeBunniesAddress } from '../../constants'
+import { offsideBunniesAddress } from '../../constants'
 import NFTMedia from '../NFTMedia'
 
 const CollectibleCardBody: React.FC<React.PropsWithChildren<CollectibleCardProps>> = ({
@@ -19,7 +19,7 @@ const CollectibleCardBody: React.FC<React.PropsWithChildren<CollectibleCardProps
   const { t } = useTranslation()
   const { name } = nft
   const bnbBusdPrice = useBNBBusdPrice()
-  const isPancakeBunny = isAddress(nft.collectionAddress) === pancakeBunniesAddress
+  const isOffsideBunny = isAddress(nft.collectionAddress) === offsideBunniesAddress
   const { isFetching, lowestPrice } = useGetLowestPriceFromNft(nft)
 
   return (
@@ -37,7 +37,7 @@ const CollectibleCardBody: React.FC<React.PropsWithChildren<CollectibleCardProps
         {name}
       </Text>
       <Box borderTop="1px solid" borderTopColor="cardBorder" pt="8px">
-        {isPancakeBunny && (
+        {isOffsideBunny && (
           <LowestPriceMetaRow lowestPrice={lowestPrice} isFetching={isFetching} bnbBusdPrice={bnbBusdPrice} />
         )}
         {currentAskPrice && (

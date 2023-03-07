@@ -1,4 +1,4 @@
-import { BigintIsh, CurrencyAmount, Currency, JSBI, Percent, ZERO, ONE_HUNDRED_PERCENT } from '@pancakeswap/sdk'
+import { BigintIsh, CurrencyAmount, Currency, JSBI, Percent, ZERO, ONE_HUNDRED_PERCENT } from '@offsideswap/sdk'
 import invariant from 'tiny-invariant'
 
 import { getY } from './amm'

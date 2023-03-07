@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Flex, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
+import { Box, Flex, Text } from '@offsideswap/uikit'
 import NextLink from 'next/link'
 import { useMemo } from 'react'
 import styled from 'styled-components'
@@ -76,7 +76,7 @@ const NewBlog = () => {
               {t('Blog')}
             </Text>
             <Text bold mt="4px" mb={['20px', '20px', '35px']} color="textSubtle" fontSize={['14px', '14px', '16px']}>
-              {t('Latest News about PancakeSwap and more!')}
+              {t('Latest News about OffsideSwap and more!')}
             </Text>
           </Box>
         </Flex>

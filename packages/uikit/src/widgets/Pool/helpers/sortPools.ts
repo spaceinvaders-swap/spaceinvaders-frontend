@@ -5,7 +5,7 @@ import orderBy from "lodash/orderBy";
 
 import { DeserializedPool, DeserializedPoolVault, VaultKey, DeserializedPoolLockedVault } from "../types";
 
-import { getCakeVaultEarnings } from "./getCakeVaultEarnings";
+import { getRotoVaultEarnings } from "./getRotoVaultEarnings";
 
 export function sortPools<T>(account: string, sortOption: string, poolsToSort: DeserializedPool<T>[]) {
   switch (sortOption) {
@@ -25,13 +25,13 @@ export function sortPools<T>(account: string, sortOption: string, poolsToSort: D
             if (!userData || !userData.userShares) {
               return 0;
             }
-            return getCakeVaultEarnings(
+            return getRotoVaultEarnings(
               account,
-              userData.cakeAtLastUserAction,
+              userData.rotoAtLastUserAction,
               userData.userShares,
               pricePerFullShare,
               pool.earningTokenPrice,
-              pool.vaultKey === VaultKey.CakeVault
+              pool.vaultKey === VaultKey.RotoVault
                 ? (pool as DeserializedPoolLockedVault<T>)?.userData?.currentPerformanceFee?.plus(
                     (pool as DeserializedPoolLockedVault<T>)?.userData?.currentOverdueFee || 0
                   )
@@ -49,9 +49,9 @@ export function sortPools<T>(account: string, sortOption: string, poolsToSort: D
           let totalStaked = Number.NaN;
           if (pool.vaultKey) {
             const vault = pool as DeserializedPoolVault<T>;
-            if (pool.stakingTokenPrice && vault?.totalCakeInVault?.isFinite()) {
+            if (pool.stakingTokenPrice && vault?.totalRotoInVault?.isFinite()) {
               totalStaked =
-                +formatUnits(EthersBigNumber.from(vault.totalCakeInVault.toString()), pool?.stakingToken?.decimals) *
+                +formatUnits(EthersBigNumber.from(vault.totalRotoInVault.toString()), pool?.stakingToken?.decimals) *
                 pool.stakingTokenPrice;
             }
           } else if (pool.totalStaked?.isFinite() && pool.stakingTokenPrice) {

@@ -21,17 +21,17 @@ import {
   Text,
   TooltipText,
   useTooltip,
-} from '@pancakeswap/uikit'
+} from '@offsideswap/uikit'
 import { useAccount } from 'wagmi'
 
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@offsideswap/localization'
 import useTokenBalance from 'hooks/useTokenBalance'
 import { useProfile } from 'state/profile/hooks'
 import ConnectWalletButton from 'components/ConnectWalletButton'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
-import { useBUSDCakeAmount } from 'hooks/useBUSDPrice'
+import { getBalanceNumber } from '@offsideswap/utils/formatBalance'
+import { useBUSDRotoAmount } from 'hooks/useBUSDPrice'
 import { useIfoCredit, useIfoCeiling } from 'state/pools/hooks'
-import { getICakeWeekDisplay } from 'views/Pools/helpers'
+import { getIRotoWeekDisplay } from 'views/Pools/helpers'
 
 interface TypeProps {
   ifoCurrencyAddress: string
@@ -66,21 +66,21 @@ const Step1 = ({ hasProfile }: { hasProfile: boolean }) => {
   const { t } = useTranslation()
   const credit = useIfoCredit()
   const ceiling = useIfoCeiling()
-  const creditDollarValue = useBUSDCakeAmount(getBalanceNumber(credit))
-  const weeksDisplay = getICakeWeekDisplay(ceiling)
+  const creditDollarValue = useBUSDRotoAmount(getBalanceNumber(credit))
+  const weeksDisplay = getIRotoWeekDisplay(ceiling)
 
   const { targetRef, tooltip, tooltipVisible } = useTooltip(
     <Box>
       <Text>
         {t(
-          'The number of iCAKE equals the locked staking amount if the staking duration is longer than %weeks% weeks. If the staking duration is less than %weeks% weeks, it will linearly decrease based on the staking duration.',
+          'The number of iROTO equals the locked staking amount if the staking duration is longer than %weeks% weeks. If the staking duration is less than %weeks% weeks, it will linearly decrease based on the staking duration.',
           {
             weeks: weeksDisplay,
           },
         )}
       </Text>
-      <InlineLink external href="https://docs.pancakeswap.finance/products/ifo-initial-farm-offering/icake">
-        {t('Learn more about iCAKE')}
+      <InlineLink external href="https://docs.offsideswap.finance/products/ifo-initial-farm-offering/iroto">
+        {t('Learn more about iROTO')}
       </InlineLink>
     </Box>,
     {},
@@ -90,20 +90,20 @@ const Step1 = ({ hasProfile }: { hasProfile: boolean }) => {
     <CardBody>
       {tooltipVisible && tooltip}
       <Heading as="h4" color="secondary" mb="16px">
-        {t('Lock CAKE in the CAKE pool')}
+        {t('Lock ROTO in the ROTO pool')}
       </Heading>
       <Box>
         <Text mb="4px" color="textSubtle" small>
           {t(
-            'The maximum amount of CAKE you can commit to the Public Sale equals the number of your iCAKE. Lock more CAKE for longer durations to increase the maximum CAKE you can commit to the sale.',
+            'The maximum amount of ROTO you can commit to the Public Sale equals the number of your iROTO. Lock more ROTO for longer durations to increase the maximum ROTO you can commit to the sale.',
           )}
         </Text>
         <TooltipText as="span" fontWeight={700} ref={targetRef} color="textSubtle" small>
-          {t('How does the number of iCAKE calculated?')}
+          {t('How does the number of iROTO calculated?')}
         </TooltipText>
         <Text mt="4px" color="textSubtle" small>
           {t(
-            'Missed this IFO? You will enjoy the same amount of iCAKE for future IFOs if your locked-staking position is not unlocked.',
+            'Missed this IFO? You will enjoy the same amount of iROTO for future IFOs if your locked-staking position is not unlocked.',
           )}
         </Text>
       </Box>
@@ -114,7 +114,7 @@ const Step1 = ({ hasProfile }: { hasProfile: boolean }) => {
               <LogoRoundIcon style={{ alignSelf: 'flex-start' }} width={32} height={32} />
               <Box ml="16px">
                 <Text bold fontSize="12px" textTransform="uppercase" color="secondary">
-                  {t('Your max CAKE entry')}
+                  {t('Your max ROTO entry')}
                 </Text>
                 <Balance fontSize="20px" bold decimals={5} value={getBalanceNumber(credit)} />
                 <Text fontSize="12px" color="textSubtle">
@@ -145,17 +145,17 @@ const Step2 = ({ hasProfile, isLive, isCommitted }: { hasProfile: boolean; isLiv
   return (
     <CardBody>
       <Heading as="h4" color="secondary" mb="16px">
-        {t('Commit CAKE')}
+        {t('Commit ROTO')}
       </Heading>
       <Text color="textSubtle" small>
         {t(
-          'Please note that CAKE in the fixed-term staking positions will remain locked and can not be used for committing to IFO sales. You will need a separate amount of CAKE in your wallet balance to commit to the IFO sales.',
+          'Please note that ROTO in the fixed-term staking positions will remain locked and can not be used for committing to IFO sales. You will need a separate amount of ROTO in your wallet balance to commit to the IFO sales.',
         )}{' '}
         <br />
       </Text>
       {hasProfile && isLive && !isCommitted && (
         <Button as="a" href="#current-ifo" mt="16px">
-          {t('Commit CAKE')}
+          {t('Commit ROTO')}
         </Button>
       )}
     </CardBody>
@@ -216,7 +216,7 @@ const IfoSteps: React.FC<React.PropsWithChildren<TypeProps>> = ({
               {t('Activate your Profile')}
             </Heading>
             <Text color="textSubtle" small mb="16px">
-              {t('You’ll need an active PancakeSwap Profile to take part in an IFO!')}
+              {t('You’ll need an active OffsideSwap Profile to take part in an IFO!')}
             </Text>
             {renderAccountStatus()}
           </CardBody>
@@ -233,7 +233,7 @@ const IfoSteps: React.FC<React.PropsWithChildren<TypeProps>> = ({
             </Heading>
             <Text color="textSubtle" small>
               {t(
-                'After the IFO sales finish, you can claim any IFO tokens that you bought, and any unspent CAKE tokens will be returned to your wallet.',
+                'After the IFO sales finish, you can claim any IFO tokens that you bought, and any unspent ROTO tokens will be returned to your wallet.',
               )}
             </Text>
           </CardBody>

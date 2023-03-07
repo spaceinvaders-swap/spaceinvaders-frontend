@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, CurrencyAmount, TradeType } from '@pancakeswap/sdk'
-import { Button, Column, useModal } from '@pancakeswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
+import { Currency, CurrencyAmount, TradeType } from '@offsideswap/sdk'
+import { Button, Column, useModal } from '@offsideswap/uikit'
 
 import { CommitButton } from 'components/CommitButton'
 import ConnectWalletButton from 'components/ConnectWalletButton'

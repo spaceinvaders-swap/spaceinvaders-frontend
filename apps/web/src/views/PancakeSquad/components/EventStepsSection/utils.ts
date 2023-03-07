@@ -1,6 +1,6 @@
-import { EventStatus, StepStatus } from '@pancakeswap/uikit'
-import { SaleStatusEnum } from 'views/PancakeSquad/types'
-import { getEventStepStatus, getEventStepStatusType } from 'views/PancakeSquad/utils'
+import { EventStatus, StepStatus } from '@offsideswap/uikit'
+import { SaleStatusEnum } from 'views/OffsideSquad/types'
+import { getEventStepStatus, getEventStepStatusType } from 'views/OffsideSquad/utils'
 
 type getStepperStatusType = getEventStepStatusType & {
   hasProfileActivated: boolean

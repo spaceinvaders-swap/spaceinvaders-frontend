@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 import BigNumber from 'bignumber.js'
-import { Text, TokenPairImage as UITokenPairImage, useMatchBreakpoints, Pool } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
-import { Token } from '@pancakeswap/sdk'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { Text, TokenPairImage as UITokenPairImage, useMatchBreakpoints, Pool } from '@offsideswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
+import { Token } from '@offsideswap/sdk'
+import { BIG_ZERO } from '@offsideswap/utils/bigNumber'
 import { vaultPoolConfig } from 'config/constants/pools'
 import { TokenPairImage } from 'components/TokenImage'
 import { useVaultPoolByKeyV1 } from 'views/Migration/hook/V1/Pool/useFetchIfoPool'
@@ -35,7 +35,7 @@ const NameCell: React.FC<React.PropsWithChildren<NameCellProps>> = ({ pool }) =>
 
   const stakedBalance = userData?.stakedBalance ? new BigNumber(userData.stakedBalance) : BIG_ZERO
   const isStaked = stakedBalance.gt(0)
-  const isManualCakePool = sousId === 0
+  const isManualRotoPool = sousId === 0
 
   const showStakedTag = vaultKey ? hasVaultShares : isStaked
 
@@ -46,9 +46,9 @@ const NameCell: React.FC<React.PropsWithChildren<NameCellProps>> = ({ pool }) =>
   if (vaultKey) {
     title = vaultPoolConfig[vaultKey].name
     subtitle = vaultPoolConfig[vaultKey].description
-  } else if (isManualCakePool) {
-    title = t('Manual CAKE')
-    subtitle = `${t('Earn')} CAKE ${t('Stake').toLocaleLowerCase()} CAKE`
+  } else if (isManualRotoPool) {
+    title = t('Manual ROTO')
+    subtitle = `${t('Earn')} ROTO ${t('Stake').toLocaleLowerCase()} ROTO`
   }
 
   return (

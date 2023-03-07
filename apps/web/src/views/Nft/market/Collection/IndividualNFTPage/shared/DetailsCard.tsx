@@ -1,9 +1,9 @@
 import styled from 'styled-components'
-import { Box, Flex, Text, SearchIcon, Link } from '@pancakeswap/uikit'
+import { Box, Flex, Text, SearchIcon, Link } from '@offsideswap/uikit'
 import { getBlockExploreLink } from 'utils'
-import { formatNumber } from '@pancakeswap/utils/formatBalance'
-import uriToHttp from '@pancakeswap/utils/uriToHttp'
-import { useTranslation } from '@pancakeswap/localization'
+import { formatNumber } from '@offsideswap/utils/formatBalance'
+import uriToHttp from '@offsideswap/utils/uriToHttp'
+import { useTranslation } from '@offsideswap/localization'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import ExpandableCard from './ExpandableCard'
 

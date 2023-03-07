@@ -32,7 +32,7 @@ export const infoStableSwapClient = new GraphQLClient(STABLESWAP_SUBGRAPH_CLIENT
 export const infoServerClient = new GraphQLClient(INFO_CLIENT, {
   timeout: 5000,
   headers: {
-    origin: 'https://pancakeswap.finance',
+    origin: 'https://offsideswap.finance',
   },
 })
 

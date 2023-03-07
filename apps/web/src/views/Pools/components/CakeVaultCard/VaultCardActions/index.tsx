@@ -1,10 +1,10 @@
 import BigNumber from 'bignumber.js'
 
 import styled from 'styled-components'
-import { Flex, Text, Box, Pool } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { Token } from '@pancakeswap/sdk'
+import { Flex, Text, Box, Pool } from '@offsideswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
+import { BIG_ZERO } from '@offsideswap/utils/bigNumber'
+import { Token } from '@offsideswap/sdk'
 
 import VaultApprovalAction from './VaultApprovalAction'
 import VaultStakeActions from './VaultStakeActions'
@@ -14,7 +14,7 @@ const InlineText = styled(Text)`
   display: inline;
 `
 
-const CakeVaultCardActions: React.FC<
+const RotoVaultCardActions: React.FC<
   React.PropsWithChildren<{
     pool: Pool.DeserializedPool<Token>
     accountHasSharesStaked: boolean
@@ -64,4 +64,4 @@ const CakeVaultCardActions: React.FC<
   )
 }
 
-export default CakeVaultCardActions
+export default RotoVaultCardActions

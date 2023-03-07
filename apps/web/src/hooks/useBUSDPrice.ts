@@ -10,9 +10,9 @@ import {
   WBNB,
   ERC20Token,
   WETH9,
-} from '@pancakeswap/sdk'
+} from '@offsideswap/sdk'
 import { FAST_INTERVAL } from 'config/constants'
-import { BUSD, CAKE, USDC } from '@pancakeswap/tokens'
+import { BUSD, ROTO, USDC } from '@offsideswap/tokens'
 import { useMemo } from 'react'
 import useSWR from 'swr'
 import useSWRImmutable from 'swr/immutable'
@@ -176,23 +176,23 @@ export const useBUSDCurrencyAmount = (currency?: Currency, amount?: number): num
   return undefined
 }
 
-export const useBUSDCakeAmount = (amount: number): number | undefined => {
-  const cakeBusdPrice = useCakeBusdPrice()
-  if (cakeBusdPrice) {
-    return multiplyPriceByAmount(cakeBusdPrice, amount)
+export const useBUSDRotoAmount = (amount: number): number | undefined => {
+  const rotoBusdPrice = useRotoBusdPrice()
+  if (rotoBusdPrice) {
+    return multiplyPriceByAmount(rotoBusdPrice, amount)
   }
   return undefined
 }
 
 // @Note: only fetch from one pair
-export const useCakeBusdPrice = (
+export const useRotoBusdPrice = (
   { forceMainnet } = { forceMainnet: false },
 ): Price<ERC20Token, ERC20Token> | undefined => {
   const { chainId } = useActiveChainId()
   const isTestnet = !forceMainnet && isChainTestnet(chainId)
-  // Return bsc testnet cake if chain is testnet
-  const cake: Token = isTestnet ? CAKE[ChainId.BSC_TESTNET] : CAKE[ChainId.BSC]
-  return usePriceByPairs(BUSD[cake.chainId], cake)
+  // Return bsc testnet roto if chain is testnet
+  const roto: Token = isTestnet ? ROTO[ChainId.BSC_TESTNET] : ROTO[ChainId.BSC]
+  return usePriceByPairs(BUSD[roto.chainId], roto)
 }
 
 // @Note: only fetch from one pair

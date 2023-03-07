@@ -5,7 +5,7 @@ import teams from 'config/constants/teams'
 import { NftLocation } from 'state/nftMarket/types'
 
 // FIXME: should move this test file inside localization pkg
-import { translations } from '@pancakeswap/localization'
+import { translations } from '@offsideswap/localization'
 
 const allTranslationKeys = Object.keys(translations)
 
@@ -20,15 +20,15 @@ const whitelist = [
   'Watch out for Flipsie’s spatula smash!',
   'Do you like chocolate with your syrup? Go long!',
   'Happy Niu Year! This bunny’s excited for the year of the bull (market!)',
-  'Sunny is always cheerful when there are pancakes around. Smile!',
-  `Don't let that dopey smile deceive you... Churro's a master CAKE chef!`,
-  `Nommm... Oh hi, I'm just meditating on the meaning of CAKE.`,
-  `Three guesses what's put that twinkle in those eyes! (Hint: it's CAKE)`,
-  'These bunnies love nothing more than swapping pancakes. Especially on BSC.',
+  'Sunny is always cheerful when there are offsides around. Smile!',
+  `Don't let that dopey smile deceive you... Churro's a master ROTO chef!`,
+  `Nommm... Oh hi, I'm just meditating on the meaning of ROTO.`,
+  `Three guesses what's put that twinkle in those eyes! (Hint: it's ROTO)`,
+  'These bunnies love nothing more than swapping offsides. Especially on BSC.',
   `It's raining syrup on this bunny, but he doesn't seem to mind. Can you blame him?`,
-  `These bunnies like their pancakes with blueberries. What's your favorite topping?`,
-  "Love makes the world go 'round... but so do pancakes. And these bunnies know it.",
-  `It’s sparkling syrup, pancakes, and even lottery tickets! This bunny really loves it.`,
+  `These bunnies like their offsides with blueberries. What's your favorite topping?`,
+  "Love makes the world go 'round... but so do offsides. And these bunnies know it.",
+  `It’s sparkling syrup, offsides, and even lottery tickets! This bunny really loves it.`,
   'Swap max. %inputAmount% %inputSymbol% for %outputAmount% %outputSymbol%',
   'Swap max. %inputAmount% %inputSymbol% for %outputAmount% %outputSymbol% to %recipientAddress%',
   'Swap %inputAmount% %inputSymbol% for min. %outputAmount% %outputSymbol%',
@@ -50,12 +50,12 @@ const whitelist = [
   'Sort Title A-Z',
   'Sort Title Z-A',
   'All articles',
-  'Learn basics of PancakeSwap',
+  'Learn basics of OffsideSwap',
   'Learn how',
   'You might also like',
   'Chef’s choice',
   'Recommended Readings by Chef’s',
-  'Latest News about PancakeSwap and more!',
+  'Latest News about OffsideSwap and more!',
 ]
 
 describe.concurrent('Check translations integrity', () => {

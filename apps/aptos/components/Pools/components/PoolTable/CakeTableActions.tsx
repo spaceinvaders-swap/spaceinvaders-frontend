@@ -1,12 +1,12 @@
-import { Pool } from '@pancakeswap/uikit'
-import { Coin } from '@pancakeswap/aptos-swap-sdk'
+import { Pool } from '@offsideswap/uikit'
+import { Coin } from '@offsideswap/aptos-swap-sdk'
 import { ConnectWalletButton } from 'components/ConnectWalletButton'
 
-import CakeCollectModal from '../PoolCard/CakeCollectModal'
-import CakeStakeModal from '../PoolCard/CakeStakeModal'
+import RotoCollectModal from '../PoolCard/RotoCollectModal'
+import RotoStakeModal from '../PoolCard/RotoStakeModal'
 
-const StakeActions = Pool.withStakeActions(CakeStakeModal)
+const StakeActions = Pool.withStakeActions(RotoStakeModal)
 
 const StakeActionContainer = Pool.withStakeActionContainer(StakeActions, ConnectWalletButton)
 
-export default Pool.withTableActions<Coin>(Pool.withCollectModalTableAction(CakeCollectModal), StakeActionContainer)
+export default Pool.withTableActions<Coin>(Pool.withCollectModalTableAction(RotoCollectModal), StakeActionContainer)

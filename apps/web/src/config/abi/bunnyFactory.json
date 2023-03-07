@@ -13,7 +13,7 @@
       },
       {
         "internalType": "contract IBEP20",
-        "name": "_cakeToken",
+        "name": "_rotoToken",
         "type": "address"
       },
       {
@@ -107,7 +107,7 @@
   },
   {
     "inputs": [],
-    "name": "cakeToken",
+    "name": "rotoToken",
     "outputs": [
       {
         "internalType": "contract IBEP20",

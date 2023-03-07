@@ -1,5 +1,5 @@
-import { BlockIcon, CheckmarkCircleIcon, Flex, Text } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { BlockIcon, CheckmarkCircleIcon, Flex, Text } from '@offsideswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
 
 import styled from 'styled-components'
 import { getRewardGroupAchievements, useMoboxCompetitionRewards } from '../../../helpers'
@@ -17,10 +17,10 @@ const MoboxUserPrizeGrid: React.FC<React.PropsWithChildren<{ userTradingInformat
   userTradingInformation,
 }) => {
   const { t } = useTranslation()
-  const { userRewardGroup, userCakeRewards, userMoboxRewards, userPointReward, canClaimMysteryBox, canClaimNFT } =
+  const { userRewardGroup, userRotoRewards, userMoboxRewards, userPointReward, canClaimMysteryBox, canClaimNFT } =
     userTradingInformation
-  const { cakeReward, moboxReward, dollarValueOfTokensReward } = useMoboxCompetitionRewards({
-    userCakeRewards,
+  const { rotoReward, moboxReward, dollarValueOfTokensReward } = useMoboxCompetitionRewards({
+    userRotoRewards,
     userMoboxRewards,
   })
 
@@ -40,7 +40,7 @@ const MoboxUserPrizeGrid: React.FC<React.PropsWithChildren<{ userTradingInformat
         <tr>
           <BoldTd>
             <Flex flexDirection="column">
-              <Text bold>{cakeReward.toFixed(4)} CAKE</Text>
+              <Text bold>{rotoReward.toFixed(4)} ROTO</Text>
               <Text bold>{moboxReward.toFixed(4)} MBOX</Text>
               <UserPrizeGridDollar dollarValueOfTokensReward={dollarValueOfTokensReward} />
             </Flex>

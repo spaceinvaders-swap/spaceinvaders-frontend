@@ -1,5 +1,5 @@
-import { Pair, ChainId } from '@pancakeswap/aptos-swap-sdk'
-import type { SerializedFarmConfig } from '@pancakeswap/farms'
+import { Pair, ChainId } from '@offsideswap/aptos-swap-sdk'
+import type { SerializedFarmConfig } from '@offsideswap/farms'
 import { testnetTokens } from '../tokens/index'
 import { L0_USDC } from '../../coins'
 
@@ -9,25 +9,25 @@ const farms: SerializedFarmConfig[] = [
    */
   {
     pid: 1,
-    lpSymbol: testnetTokens.cake.symbol,
-    lpAddress: testnetTokens.cake.address,
-    token: testnetTokens.cake,
-    quoteToken: testnetTokens.cake,
+    lpSymbol: testnetTokens.roto.symbol,
+    lpAddress: testnetTokens.roto.address,
+    token: testnetTokens.roto,
+    quoteToken: testnetTokens.roto,
   },
   {
     pid: 5,
-    lpSymbol: 'USDC-CAKE LP',
+    lpSymbol: 'USDC-ROTO LP',
     lpAddress:
-      '0xc7efb4076dbe143cbcd98cfaaa929ecfc8f299203dfff63b95ccb6bfe19850fa::swap::LPToken<0x8c805723ebc0a7fc5b7d3e7b75d567918e806b3461cb9fa21941a9edc0220bf::devnet_coins::DevnetUSDC, 0xe0e5ad285cbcdb873b2ee15bb6bcac73d9d763bcb58395e894255eeecf3992cf::pancake::Cake>',
-    token: testnetTokens.cake,
+      '0xc7efb4076dbe143cbcd98cfaaa929ecfc8f299203dfff63b95ccb6bfe19850fa::swap::LPToken<0x8c805723ebc0a7fc5b7d3e7b75d567918e806b3461cb9fa21941a9edc0220bf::devnet_coins::DevnetUSDC, 0xe0e5ad285cbcdb873b2ee15bb6bcac73d9d763bcb58395e894255eeecf3992cf::offside::Roto>',
+    token: testnetTokens.roto,
     quoteToken: L0_USDC[ChainId.TESTNET],
   },
   {
     pid: 4,
-    lpSymbol: 'APT-CAKE LP',
+    lpSymbol: 'APT-ROTO LP',
     lpAddress:
-      '0xc7efb4076dbe143cbcd98cfaaa929ecfc8f299203dfff63b95ccb6bfe19850fa::swap::LPToken<0x1::aptos_coin::AptosCoin, 0xe0e5ad285cbcdb873b2ee15bb6bcac73d9d763bcb58395e894255eeecf3992cf::pancake::Cake>',
-    token: testnetTokens.cake,
+      '0xc7efb4076dbe143cbcd98cfaaa929ecfc8f299203dfff63b95ccb6bfe19850fa::swap::LPToken<0x1::aptos_coin::AptosCoin, 0xe0e5ad285cbcdb873b2ee15bb6bcac73d9d763bcb58395e894255eeecf3992cf::offside::Roto>',
+    token: testnetTokens.roto,
     quoteToken: testnetTokens.apt,
   },
   {

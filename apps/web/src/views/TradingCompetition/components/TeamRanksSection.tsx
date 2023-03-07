@@ -1,6 +1,6 @@
-import { Box, PageSection } from '@pancakeswap/uikit'
+import { Box, PageSection } from '@offsideswap/uikit'
 import useTheme from 'hooks/useTheme'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@offsideswap/localization'
 import { TeamRanksProps } from '../types'
 import RibbonWithImage from './RibbonWithImage'
 import TeamRanks from './TeamRanks/TeamRanks'

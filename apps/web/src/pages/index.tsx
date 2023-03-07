@@ -3,8 +3,8 @@ import { getUnixTime, sub } from 'date-fns'
 import { gql } from 'graphql-request'
 import { GetStaticProps } from 'next'
 import { SWRConfig } from 'swr'
-import { getCakeVaultAddress } from 'utils/addressHelpers'
-import { getCakeContract } from 'utils/contractHelpers'
+import { getRotoVaultAddress } from 'utils/addressHelpers'
+import { getRotoContract } from 'utils/contractHelpers'
 import { getBlocksFromTimestamps } from 'utils/getBlocksFromTimestamps'
 import { bitQueryServerClient, infoServerClient } from 'utils/graphql'
 import Home from '../views/Home'
@@ -34,7 +34,7 @@ const tvl = 6082955532.115718
 export const getStaticProps: GetStaticProps = async () => {
   const totalTxQuery = gql`
     query TotalTransactions($block: Block_height) {
-      pancakeFactory(block: $block) {
+      offsideFactory(block: $block) {
         totalTransactions
       }
     }
@@ -63,12 +63,12 @@ export const getStaticProps: GetStaticProps = async () => {
     })
 
     if (
-      totalTx?.pancakeFactory?.totalTransactions &&
-      totalTx30DaysAgo?.pancakeFactory?.totalTransactions &&
-      parseInt(totalTx.pancakeFactory.totalTransactions) > parseInt(totalTx30DaysAgo.pancakeFactory.totalTransactions)
+      totalTx?.offsideFactory?.totalTransactions &&
+      totalTx30DaysAgo?.offsideFactory?.totalTransactions &&
+      parseInt(totalTx.offsideFactory.totalTransactions) > parseInt(totalTx30DaysAgo.offsideFactory.totalTransactions)
     ) {
       results.totalTx30Days =
-        parseInt(totalTx.pancakeFactory.totalTransactions) - parseInt(totalTx30DaysAgo.pancakeFactory.totalTransactions)
+        parseInt(totalTx.offsideFactory.totalTransactions) - parseInt(totalTx30DaysAgo.offsideFactory.totalTransactions)
     }
   } catch (error) {
     if (process.env.NODE_ENV === 'production') {
@@ -79,7 +79,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const usersQuery = gql`
     query userCount($since: ISO8601DateTime, $till: ISO8601DateTime) {
       ethereum(network: bsc) {
-        dexTrades(exchangeName: { in: ["Pancake", "Pancake v2"] }, date: { since: $since, till: $till }) {
+        dexTrades(exchangeName: { in: ["Offside", "Offside v2"] }, date: { since: $since, till: $till }) {
           count(uniq: senders)
         }
       }
@@ -105,17 +105,17 @@ export const getStaticProps: GetStaticProps = async () => {
   try {
     const result = await infoServerClient.request(gql`
       query tvl {
-        pancakeFactories(first: 1) {
+        offsideFactories(first: 1) {
           totalLiquidityUSD
         }
       }
     `)
-    const cake = await (await fetch('https://farms-api.pancakeswap.com/price/cake')).json()
-    const { totalLiquidityUSD } = result.pancakeFactories[0]
-    const cakeVaultV2 = getCakeVaultAddress()
-    const cakeContract = getCakeContract()
-    const totalCakeInVault = await cakeContract.balanceOf(cakeVaultV2)
-    results.tvl = parseFloat(formatEther(totalCakeInVault)) * cake.price + parseFloat(totalLiquidityUSD)
+    const roto = await (await fetch('https://farms-api.offsideswap.com/price/roto')).json()
+    const { totalLiquidityUSD } = result.offsideFactories[0]
+    const rotoVaultV2 = getRotoVaultAddress()
+    const rotoContract = getRotoContract()
+    const totalRotoInVault = await rotoContract.balanceOf(rotoVaultV2)
+    results.tvl = parseFloat(formatEther(totalRotoInVault)) * roto.price + parseFloat(totalLiquidityUSD)
   } catch (error) {
     if (process.env.NODE_ENV === 'production') {
       console.error('Error when fetching tvl stats', error)

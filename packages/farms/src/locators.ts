@@ -1,6 +1,6 @@
-import { ChainId, WBNB } from '@pancakeswap/sdk'
-import { BUSD } from '@pancakeswap/tokens'
-import { equalsIgnoreCase } from '@pancakeswap/utils/equalsIgnoreCase'
+import { ChainId, WBNB } from '@offsideswap/sdk'
+import { BUSD } from '@offsideswap/tokens'
+import { equalsIgnoreCase } from '@offsideswap/utils/equalsIgnoreCase'
 import { FarmData } from './types'
 
 /**

@@ -1,7 +1,7 @@
-import { Flex, Text, Heading } from '@pancakeswap/uikit'
+import { Flex, Text, Heading } from '@offsideswap/uikit'
 import Image from 'next/image'
 import styled from 'styled-components'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@offsideswap/localization'
 import useTheme from 'hooks/useTheme'
 import EasterAllBunniesImage from '../../../pngs/fan-token-all-bunnies.png'
 import { Heading1Text, Heading2Text } from '../../../components/CompetitionHeadingText'
@@ -54,7 +54,7 @@ const EasterBattleBanner = () => {
         {t('$200,000 in Prizes!')}
       </StyledHeading2Text>
       <StyledHeading scale="md" color={theme.isDark ? 'textSubtle' : 'inputSecondary'} mt="16px">
-        {t('Compete with other teams to win CAKE, collectible NFTs, achievements & more!')}
+        {t('Compete with other teams to win ROTO, collectible NFTs, achievements & more!')}
       </StyledHeading>
     </Flex>
   )

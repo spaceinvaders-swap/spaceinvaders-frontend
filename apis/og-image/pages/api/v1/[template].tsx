@@ -97,5 +97,5 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     })
   }
 
-  res.redirect(301, 'https://assets.pancakeswap.finance/web/og/hero.jpg')
+  res.redirect(301, 'https://assets.offsideswap.finance/web/og/hero.jpg')
 }

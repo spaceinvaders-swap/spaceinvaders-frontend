@@ -1,5 +1,5 @@
-import { TokenInfo } from '@pancakeswap/token-lists'
-import { Token } from '@pancakeswap/swap-sdk-core'
+import { TokenInfo } from '@offsideswap/token-lists'
+import { Token } from '@offsideswap/swap-sdk-core'
 
 export function createFilterToken<T extends TokenInfo | Token>(
   search: string,

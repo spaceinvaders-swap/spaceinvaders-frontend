@@ -3,16 +3,16 @@
     "inputs": [
       {
         "internalType": "contract IERC20",
-        "name": "_cake",
+        "name": "_roto",
         "type": "address"
       },
       {
-        "internalType": "contract ICakePool",
-        "name": "_cakePool",
+        "internalType": "contract IRotoPool",
+        "name": "_rotoPool",
         "type": "address"
       },
       {
-        "internalType": "contract IPancakeSwapPotteryDraw",
+        "internalType": "contract IOffsideSwapPotteryDraw",
         "name": "_potteryDraw",
         "type": "address"
       },
@@ -617,7 +617,7 @@
   },
   {
     "inputs": [],
-    "name": "lockCake",
+    "name": "lockRoto",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -953,7 +953,7 @@
   },
   {
     "inputs": [],
-    "name": "totalLockCake",
+    "name": "totalLockRoto",
     "outputs": [
       {
         "internalType": "uint256",
@@ -1045,7 +1045,7 @@
   },
   {
     "inputs": [],
-    "name": "unlockCake",
+    "name": "unlockRoto",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"

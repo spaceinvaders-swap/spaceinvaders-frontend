@@ -28,7 +28,7 @@ const initialState: PotteryState = Object.freeze({
     lastDrawId: '',
     totalPrize: null,
     getStatus: PotteryDepositStatus.BEFORE_LOCK,
-    totalLockCake: null,
+    totalLockRoto: null,
     totalSupply: null,
     lockStartTime: '',
     lockTime: 0,

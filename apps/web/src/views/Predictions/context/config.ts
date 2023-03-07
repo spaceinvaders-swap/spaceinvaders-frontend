@@ -1,8 +1,8 @@
 import addresses from 'config/constants/contracts'
 
-import { GRAPH_API_PREDICTION_CAKE, GRAPH_API_PREDICTION_BNB } from 'config/constants/endpoints'
+import { GRAPH_API_PREDICTION_ROTO, GRAPH_API_PREDICTION_BNB } from 'config/constants/endpoints'
 import { getAddress } from 'utils/addressHelpers'
-import { bscTokens } from '@pancakeswap/tokens'
+import { bscTokens } from '@offsideswap/tokens'
 
 export default {
   BNB: {
@@ -12,11 +12,11 @@ export default {
     displayedDecimals: 4,
     token: bscTokens.bnb,
   },
-  CAKE: {
-    address: getAddress(addresses.predictionsCAKE),
-    api: GRAPH_API_PREDICTION_CAKE,
-    chainlinkOracleAddress: getAddress(addresses.chainlinkOracleCAKE),
+  ROTO: {
+    address: getAddress(addresses.predictionsROTO),
+    api: GRAPH_API_PREDICTION_ROTO,
+    chainlinkOracleAddress: getAddress(addresses.chainlinkOracleROTO),
     displayedDecimals: 4,
-    token: bscTokens.cake,
+    token: bscTokens.roto,
   },
 }

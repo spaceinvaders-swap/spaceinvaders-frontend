@@ -1,4 +1,4 @@
-import { AprMap, FarmWithPrices } from '@pancakeswap/farms'
+import { AprMap, FarmWithPrices } from '@offsideswap/farms'
 
 const KV_PREFIX = {
   lp: 'lp:',
@@ -7,12 +7,12 @@ const KV_PREFIX = {
   farmList: 'farmList:',
 }
 
-export type FarmResult = Array<FarmWithPrices & { cakeApr?: string; lpApr?: number }>
+export type FarmResult = Array<FarmWithPrices & { rotoApr?: string; lpApr?: number }>
 
 export type SavedFarmResult = {
   updatedAt: string
   poolLength: number
-  regularCakePerBlock: number
+  regularRotoPerBlock: number
   data: FarmResult
 }
 

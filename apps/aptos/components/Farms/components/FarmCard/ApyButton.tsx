@@ -1,10 +1,10 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Text, TooltipText, useModal, useTooltip, Farm as FarmUI, RoiCalculatorModal } from '@pancakeswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
+import { Text, TooltipText, useModal, useTooltip, Farm as FarmUI, RoiCalculatorModal } from '@offsideswap/uikit'
 import BigNumber from 'bignumber.js'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { BIG_ZERO } from '@offsideswap/utils/bigNumber'
 import { useFarmUserInfoCache } from 'state/farms/hook'
-import { useAccountBalance } from '@pancakeswap/awgmi'
+import { useAccountBalance } from '@offsideswap/awgmi'
 import { FARM_DEFAULT_DECIMALS } from '../../constants'
 
 export interface ApyButtonProps {
@@ -15,7 +15,7 @@ export interface ApyButtonProps {
   lpLabel?: string
   multiplier: string
   lpTokenPrice: BigNumber
-  cakePrice?: BigNumber
+  rotoPrice?: BigNumber
   apr?: number
   displayApr?: string
   lpRewardsApr?: number
@@ -31,7 +31,7 @@ const ApyButton: React.FC<React.PropsWithChildren<ApyButtonProps>> = ({
   lpSymbol,
   lpAddress,
   lpTokenPrice,
-  cakePrice = BIG_ZERO,
+  rotoPrice = BIG_ZERO,
   apr = 0,
   multiplier,
   displayApr,
@@ -61,7 +61,7 @@ const ApyButton: React.FC<React.PropsWithChildren<ApyButtonProps>> = ({
         {t('APR (incl. LP rewards)')}: <Text style={{ display: 'inline-block' }}>{`${displayApr}%`}</Text>
       </Text>
       <Text ml="5px">
-        *{t('Base APR (CAKE yield only)')}: {`${apr.toFixed(2)}%`}
+        *{t('Base APR (ROTO yield only)')}: {`${apr.toFixed(2)}%`}
       </Text>
       <Text ml="5px">
         *{t('LP Rewards APR')}: {lpRewardsApr === 0 ? '-' : lpRewardsApr}%
@@ -81,13 +81,13 @@ const ApyButton: React.FC<React.PropsWithChildren<ApyButtonProps>> = ({
       stakingTokenSymbol={lpSymbol}
       stakingTokenPrice={lpTokenPrice.toNumber()}
       stakingTokenDecimals={FARM_DEFAULT_DECIMALS}
-      earningTokenPrice={cakePrice.toNumber()}
+      earningTokenPrice={rotoPrice.toNumber()}
       apr={apr}
       multiplier={multiplier}
       displayApr={displayApr}
       linkHref={addLiquidityUrl}
       isFarm
-      rewardCakePerSecond
+      rewardRotoPerSecond
     />,
     false,
     true,

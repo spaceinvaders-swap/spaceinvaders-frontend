@@ -3,7 +3,7 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_pancakeSquad",
+        "name": "_offsideSquad",
         "type": "address"
       },
       {
@@ -18,12 +18,12 @@
       },
       {
         "internalType": "address",
-        "name": "_cakeToken",
+        "name": "_rotoToken",
         "type": "address"
       },
       {
         "internalType": "address",
-        "name": "_pancakeProfile",
+        "name": "_offsideProfile",
         "type": "address"
       },
       {
@@ -277,7 +277,7 @@
   },
   {
     "inputs": [],
-    "name": "cakeToken",
+    "name": "rotoToken",
     "outputs": [
       {
         "internalType": "contract IERC20",
@@ -334,7 +334,7 @@
         "type": "address"
       }
     ],
-    "name": "changeOwnershipPancakeSquad",
+    "name": "changeOwnershipOffsideSquad",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -556,10 +556,10 @@
   },
   {
     "inputs": [],
-    "name": "pancakeProfile",
+    "name": "offsideProfile",
     "outputs": [
       {
-        "internalType": "contract IPancakeProfile",
+        "internalType": "contract IOffsideProfile",
         "name": "",
         "type": "address"
       }
@@ -569,10 +569,10 @@
   },
   {
     "inputs": [],
-    "name": "pancakeSquad",
+    "name": "offsideSquad",
     "outputs": [
       {
-        "internalType": "contract PancakeSquad",
+        "internalType": "contract OffsideSquad",
         "name": "",
         "type": "address"
       }

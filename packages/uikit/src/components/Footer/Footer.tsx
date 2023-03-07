@@ -1,5 +1,5 @@
-import { vars } from "@pancakeswap/ui/css/vars.css";
-import { useIsMounted } from "@pancakeswap/hooks";
+import { vars } from "@offsideswap/ui/css/vars.css";
+import { useIsMounted } from "@offsideswap/hooks";
 import React from "react";
 import { Box, Flex } from "../Box";
 import { Link } from "../Link";
@@ -14,7 +14,7 @@ import {
 } from "./styles";
 
 import { Button } from "../Button";
-import CakePrice from "../CakePrice/CakePrice";
+import RotoPrice from "../RotoPrice/RotoPrice";
 import LangSelector from "../LangSelector/LangSelector";
 import { ArrowForwardIcon, LogoWithTextIcon } from "../Svg";
 import { ThemeSwitcher } from "../ThemeSwitcher";
@@ -28,9 +28,9 @@ const MenuItem: React.FC<React.PropsWithChildren<FooterProps>> = ({
   currentLang,
   langs,
   setLang,
-  cakePriceUsd,
-  buyCakeLabel,
-  buyCakeLink,
+  rotoPriceUsd,
+  buyRotoLabel,
+  buyRotoLink,
   ...props
 }) => {
   const isMounted = useIsMounted();
@@ -101,17 +101,17 @@ const MenuItem: React.FC<React.PropsWithChildren<FooterProps>> = ({
           </Flex>
           <Flex order={[1, null, 2]} mb={["24px", null, "0"]} justifyContent="space-between" alignItems="center">
             <Box mr="20px">
-              <CakePrice cakePriceUsd={cakePriceUsd} color="textSubtle" />
+              <RotoPrice rotoPriceUsd={rotoPriceUsd} color="textSubtle" />
             </Box>
             <Button
               data-theme={isDark ? "dark" : "light"}
               as="a"
-              href={buyCakeLink}
+              href={buyRotoLink}
               target="_blank"
               scale="sm"
               endIcon={<ArrowForwardIcon color="backgroundAlt" />}
             >
-              {buyCakeLabel}
+              {buyRotoLabel}
             </Button>
           </Flex>
         </StyledToolsContainer>

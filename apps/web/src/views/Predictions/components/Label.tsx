@@ -1,5 +1,5 @@
-import { Box, CoinSwitcher, Flex, PocketWatchIcon, Text, CloseIcon } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Box, CoinSwitcher, Flex, PocketWatchIcon, Text, CloseIcon } from '@offsideswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
 import { useRouter } from 'next/router'
 import { useCallback, useState } from 'react'
 import { PREDICTION_TOOLTIP_DISMISS_KEY } from 'config/constants'
@@ -160,16 +160,16 @@ export const PricePairLabel: React.FC<React.PropsWithChildren> = () => {
   }, [])
 
   const onTokenSwitch = useCallback(() => {
-    if (router.query.token === PredictionSupportedSymbol.CAKE) {
+    if (router.query.token === PredictionSupportedSymbol.ROTO) {
       router.query.token = PredictionSupportedSymbol.BNB
-    } else if (router.query.token === undefined && token.symbol === PredictionSupportedSymbol.CAKE) {
+    } else if (router.query.token === undefined && token.symbol === PredictionSupportedSymbol.ROTO) {
       router.query.token = PredictionSupportedSymbol.BNB
     } else if (router.query.token === undefined && token.symbol === PredictionSupportedSymbol.BNB) {
-      router.query.token = PredictionSupportedSymbol.CAKE
+      router.query.token = PredictionSupportedSymbol.ROTO
     } else if (token.symbol === undefined && router.query.token === undefined) {
       router.query.token = PredictionSupportedSymbol.BNB
     } else {
-      router.query.token = PredictionSupportedSymbol.CAKE
+      router.query.token = PredictionSupportedSymbol.ROTO
     }
     if (!dismissTooltip) onDismissTooltip()
 

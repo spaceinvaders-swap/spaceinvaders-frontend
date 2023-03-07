@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Button, useModal, useToast } from '@pancakeswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
+import { Button, useModal, useToast } from '@offsideswap/uikit'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import useCatchTxError from 'hooks/useCatchTxError'
@@ -9,7 +9,7 @@ import { useAppDispatch } from 'state'
 import { fetchFarmUserDataAsync } from 'state/farms'
 import { useFarmFromPid, useFarmUser } from 'state/farms/hooks'
 import useUnstakeFarms from '../../../hooks/useUnstakeFarms'
-import { BCakeMigrateModal } from '../../BCakeMigrateModal'
+import { BRotoMigrateModal } from '../../BRotoMigrateModal'
 
 interface MigrateActionButtonPropsType {
   pid: number
@@ -43,7 +43,7 @@ const MigrateActionButton: React.FunctionComponent<MigrateActionButtonPropsType>
   }
 
   const [onPresentMigrate] = useModal(
-    <BCakeMigrateModal
+    <BRotoMigrateModal
       pid={pid}
       stakedBalance={stakedBalance}
       lpContract={lpContract}

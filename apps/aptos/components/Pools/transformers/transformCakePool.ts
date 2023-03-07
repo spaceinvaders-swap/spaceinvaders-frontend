@@ -3,11 +3,11 @@ import BigNumber from 'bignumber.js'
 import _toNumber from 'lodash/toNumber'
 import _get from 'lodash/get'
 import { FixedNumber } from '@ethersproject/bignumber'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { BIG_ZERO } from '@offsideswap/utils/bigNumber'
 import { SECONDS_IN_YEAR } from 'config'
 
-import { CAKE_PID } from 'config/constants'
-import { calcRewardCakePerShare, calcPendingRewardCake } from 'state/farms/utils/pendingCake'
+import { ROTO_PID } from 'config/constants'
+import { calcRewardRotoPerShare, calcPendingRewardRoto } from 'state/farms/utils/pendingRoto'
 
 export const getPoolApr = ({ rewardTokenPrice, stakingTokenPrice, tokenPerSecond, totalStaked }) => {
   const totalRewardPricePerYear = new BigNumber(rewardTokenPrice).times(tokenPerSecond).times(SECONDS_IN_YEAR)
@@ -16,8 +16,8 @@ export const getPoolApr = ({ rewardTokenPrice, stakingTokenPrice, tokenPerSecond
   return apr.isNaN() || !apr.isFinite() ? null : apr.toNumber()
 }
 
-export function getRewardPerSecondOfCakeFarm({
-  cakePerSecond,
+export function getRewardPerSecondOfRotoFarm({
+  rotoPerSecond,
   specialRate,
   regularRate,
   allocPoint,
@@ -26,30 +26,30 @@ export function getRewardPerSecondOfCakeFarm({
   const fSpecialRate = FixedNumber.from(specialRate)
   const fRegularRate = FixedNumber.from(regularRate)
 
-  const cakeRate = fSpecialRate.divUnsafe(fSpecialRate.addUnsafe(fRegularRate))
+  const rotoRate = fSpecialRate.divUnsafe(fSpecialRate.addUnsafe(fRegularRate))
 
-  return FixedNumber.from(cakePerSecond)
-    .mulUnsafe(cakeRate.mulUnsafe(FixedNumber.from(allocPoint)).divUnsafe(FixedNumber.from(specialAllocPoint)))
+  return FixedNumber.from(rotoPerSecond)
+    .mulUnsafe(rotoRate.mulUnsafe(FixedNumber.from(allocPoint)).divUnsafe(FixedNumber.from(specialAllocPoint)))
     .toString()
 }
 
-const transformCakePool = ({
+const transformRotoPool = ({
   balances,
-  cakePoolInfo,
+  rotoPoolInfo,
   userInfo,
   masterChefData,
-  cakeFarm,
+  rotoFarm,
   chainId,
   earningTokenPrice,
   getNow,
 }) => {
   const userStakedAmount = _get(userInfo, 'amount', '0')
 
-  const rewardPerSecond = getRewardPerSecondOfCakeFarm({
-    cakePerSecond: masterChefData.cake_per_second,
-    specialRate: masterChefData.cake_rate_to_special,
-    regularRate: masterChefData.cake_rate_to_regular,
-    allocPoint: cakePoolInfo.alloc_point,
+  const rewardPerSecond = getRewardPerSecondOfRotoFarm({
+    rotoPerSecond: masterChefData.roto_per_second,
+    specialRate: masterChefData.roto_rate_to_special,
+    regularRate: masterChefData.roto_rate_to_regular,
+    allocPoint: rotoPoolInfo.alloc_point,
     specialAllocPoint: masterChefData.total_special_alloc_point,
   })
 
@@ -61,7 +61,7 @@ const transformCakePool = ({
   }
 
   const foundStakingBalance = balances?.find(
-    (balance) => balance.type === `0x1::coin::CoinStore<${cakeFarm.token.address}>`,
+    (balance) => balance.type === `0x1::coin::CoinStore<${rotoFarm.token.address}>`,
   )
 
   const amount = _toNumber(_get(foundStakingBalance, 'data.coin.value', '0'))
@@ -70,13 +70,13 @@ const transformCakePool = ({
     userData = { ...userData, stakingTokenBalance: new BigNumber(amount) }
   }
 
-  const totalStaked = _get(cakePoolInfo, 'total_amount', '0')
+  const totalStaked = _get(rotoPoolInfo, 'total_amount', '0')
 
   if (_toNumber(userStakedAmount) && _toNumber(totalStaked)) {
     const rewardDebt = _get(userInfo, 'reward_debt', '0')
 
-    const accCakePerShare = calcRewardCakePerShare(masterChefData, CAKE_PID, getNow)
-    const pendingReward = calcPendingRewardCake(userStakedAmount, rewardDebt, accCakePerShare)
+    const accRotoPerShare = calcRewardRotoPerShare(masterChefData, ROTO_PID, getNow)
+    const pendingReward = calcPendingRewardRoto(userStakedAmount, rewardDebt, accRotoPerShare)
 
     userData = {
       ...userData,
@@ -93,12 +93,12 @@ const transformCakePool = ({
   })
 
   return {
-    sousId: cakeFarm.pid,
+    sousId: rotoFarm.pid,
     contractAddress: {
-      [chainId]: cakeFarm.lpAddress,
+      [chainId]: rotoFarm.lpAddress,
     },
-    stakingToken: cakeFarm.token,
-    earningToken: cakeFarm.token,
+    stakingToken: rotoFarm.token,
+    earningToken: rotoFarm.token,
     apr,
     earningTokenPrice: _toNumber(earningTokenPrice),
     stakingTokenPrice: _toNumber(earningTokenPrice),
@@ -108,7 +108,7 @@ const transformCakePool = ({
     startBlock: 0,
     tokenPerBlock: rewardPerSecond,
     stakingLimit: BIG_ZERO,
-    totalStaked: new BigNumber(cakePoolInfo.total_amount),
+    totalStaked: new BigNumber(rotoPoolInfo.total_amount),
 
     userData,
 
@@ -116,4 +116,4 @@ const transformCakePool = ({
   }
 }
 
-export default transformCakePool
+export default transformRotoPool

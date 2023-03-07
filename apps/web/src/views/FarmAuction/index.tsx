@@ -9,9 +9,9 @@ import {
   PageHeader,
   PageSection,
   OpenNewIcon,
-} from '@pancakeswap/uikit'
+} from '@offsideswap/uikit'
 import { useAccount } from 'wagmi'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@offsideswap/localization'
 import useTheme from 'hooks/useTheme'
 import NextLink from 'next/link'
 import FAQs from './components/FAQs'
@@ -23,14 +23,14 @@ import AuctionTimer from './components/AuctionTimer'
 import ReclaimBidCard from './components/ReclaimBidCard'
 import NotWhitelistedNotice from './components/NotWhitelistedNotice'
 import CongratulationsCard from './components/CongratulationsCard'
-import AuctionCakeBurn from './components/AuctionCakeBurn'
+import AuctionRotoBurn from './components/AuctionRotoBurn'
 
 const FAQS_BG_LIGHT = 'linear-gradient(180deg, #CBD7EF 0%, #9A9FD0 100%)'
 const FAQ_BG_DARK = 'linear-gradient(180deg, #434575 0%, #66578D 100%)'
-const CAKE_BURN_BG_LIGHT = 'radial-gradient(50% 79.31% at 50% 50%, #FAF9FA 0%, #EAECF4 100%)'
-const CAKE_BURN_TOP_FILL_LIGHT = 'radial-gradient(ellipse at bottom, #f0f1f6, #EAECF4)'
-const CAKE_BURN_BG_DARK = 'radial-gradient(103.12% 50% at 50% 50%, #152534 0%, #191326 100%)'
-const CAKE_BURN_TOP_FILL_DARK = '#191326'
+const ROTO_BURN_BG_LIGHT = 'radial-gradient(50% 79.31% at 50% 50%, #FAF9FA 0%, #EAECF4 100%)'
+const ROTO_BURN_TOP_FILL_LIGHT = 'radial-gradient(ellipse at bottom, #f0f1f6, #EAECF4)'
+const ROTO_BURN_BG_DARK = 'radial-gradient(103.12% 50% at 50% 50%, #152534 0%, #191326 100%)'
+const ROTO_BURN_TOP_FILL_DARK = '#191326'
 
 const StyledHeader = styled(PageHeader)`
   max-height: max-content;
@@ -104,7 +104,7 @@ const FarmAuction = () => {
               {t('Community Farm Auction')}
             </Heading>
             <Text color="textSubtle" mb="24px">
-              {t('Each week, qualifying projects can bid CAKE for the right to host a 10-day Farm on PancakeSwap.')}
+              {t('Each week, qualifying projects can bid ROTO for the right to host a 10-day Farm on OffsideSwap.')}
             </Text>
             <Text color="textSubtle">{t('This page is for projects to bid for farms.')}</Text>
             <Text color="textSubtle" mb="24px">
@@ -153,18 +153,18 @@ const FarmAuction = () => {
           </AuctionContainer>
         </PageSection>
         <PageSection
-          background={theme.isDark ? CAKE_BURN_BG_DARK : CAKE_BURN_BG_LIGHT}
+          background={theme.isDark ? ROTO_BURN_BG_DARK : ROTO_BURN_BG_LIGHT}
           index={2}
           innerProps={{ style: { width: '100%' } }}
           dividerPosition="top"
-          dividerFill={{ light: CAKE_BURN_TOP_FILL_LIGHT, dark: CAKE_BURN_TOP_FILL_DARK }}
+          dividerFill={{ light: ROTO_BURN_TOP_FILL_LIGHT, dark: ROTO_BURN_TOP_FILL_DARK }}
         >
-          <AuctionCakeBurn />
+          <AuctionRotoBurn />
         </PageSection>
         <PageSection
           background={theme.isDark ? FAQ_BG_DARK : FAQS_BG_LIGHT}
           clipFill={{ light: '#CBD7EF', dark: '#434575' }}
-          dividerFill={{ light: CAKE_BURN_BG_LIGHT, dark: CAKE_BURN_BG_DARK }}
+          dividerFill={{ light: ROTO_BURN_BG_LIGHT, dark: ROTO_BURN_BG_DARK }}
           concaveDivider
           index={3}
           dividerPosition="top"

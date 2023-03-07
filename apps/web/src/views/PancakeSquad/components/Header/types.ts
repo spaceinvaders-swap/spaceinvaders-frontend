@@ -1,6 +1,6 @@
-import { EventInfos, UserInfos, UserStatusEnum } from 'views/PancakeSquad/types'
+import { EventInfos, UserInfos, UserStatusEnum } from 'views/OffsideSquad/types'
 
-export type PancakeSquadHeaderType = {
+export type OffsideSquadHeaderType = {
   account: string
   isLoading: boolean
   eventInfos?: EventInfos

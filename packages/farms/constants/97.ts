@@ -1,5 +1,5 @@
-import { bscTestnetTokens } from '@pancakeswap/tokens'
-import { SerializedFarmConfig } from '@pancakeswap/farms'
+import { bscTestnetTokens } from '@offsideswap/tokens'
+import { SerializedFarmConfig } from '@offsideswap/farms'
 
 const farms: SerializedFarmConfig[] = [
   /**
@@ -7,23 +7,23 @@ const farms: SerializedFarmConfig[] = [
    */
   {
     pid: 0,
-    lpSymbol: 'CAKE',
+    lpSymbol: 'ROTO',
     lpAddress: '0x36e3E4fF6471559b19F66bD10985534d5e214D44',
     token: bscTestnetTokens.syrup,
     quoteToken: bscTestnetTokens.wbnb,
   },
   {
     pid: 3,
-    lpSymbol: 'BUSD-CAKE LP',
+    lpSymbol: 'BUSD-ROTO LP',
     lpAddress: '0xb98C30fA9f5e9cf6749B7021b4DDc0DBFe73b73e',
     token: bscTestnetTokens.busd,
-    quoteToken: bscTestnetTokens.cake,
+    quoteToken: bscTestnetTokens.roto,
   },
   {
     pid: 4,
-    lpSymbol: 'CAKE-BNB LP',
+    lpSymbol: 'ROTO-BNB LP',
     lpAddress: '0xa96818CA65B57bEc2155Ba5c81a70151f63300CD',
-    token: bscTestnetTokens.cake,
+    token: bscTestnetTokens.roto,
     quoteToken: bscTestnetTokens.wbnb,
   },
   {

@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { AutoRenewIcon, Button, useToast } from '@pancakeswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
+import { AutoRenewIcon, Button, useToast } from '@offsideswap/uikit'
 import { HexString } from 'aptos'
 import BigNumber from 'bignumber.js'
 import { ToastDescriptionWithTx } from 'components/Toast'

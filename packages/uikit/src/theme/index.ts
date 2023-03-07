@@ -1,7 +1,7 @@
-import { vars } from "@pancakeswap/ui/css/vars.css";
+import { vars } from "@offsideswap/ui/css/vars.css";
 import { AlertTheme } from "../components/Alert/types";
 import { CardTheme } from "../components/Card/types";
-import { PancakeToggleTheme } from "../components/PancakeToggle/types";
+import { OffsideToggleTheme } from "../components/OffsideToggle/types";
 import { RadioTheme } from "../components/Radio/types";
 import { ToggleTheme } from "../components/Toggle/theme";
 import { TooltipTheme } from "../components/Tooltip/types";
@@ -9,7 +9,7 @@ import { NavThemeType } from "../widgets/Menu/theme";
 import { ModalTheme } from "../widgets/Modal/types";
 import { Breakpoints, MediaQueries, ZIndices } from "./types";
 
-export interface PancakeTheme {
+export interface OffsideTheme {
   siteWidth: number;
   isDark: boolean;
   alert: AlertTheme;
@@ -17,7 +17,7 @@ export interface PancakeTheme {
   card: CardTheme;
   nav: NavThemeType;
   modal: ModalTheme;
-  pancakeToggle: PancakeToggleTheme;
+  offsideToggle: OffsideToggleTheme;
   radio: RadioTheme;
   toggle: ToggleTheme;
   tooltip: TooltipTheme;

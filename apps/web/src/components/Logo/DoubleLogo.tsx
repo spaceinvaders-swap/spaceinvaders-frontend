@@ -1,4 +1,4 @@
-import { Currency } from '@pancakeswap/sdk'
+import { Currency } from '@offsideswap/sdk'
 import styled from 'styled-components'
 import CurrencyLogo from './CurrencyLogo'
 

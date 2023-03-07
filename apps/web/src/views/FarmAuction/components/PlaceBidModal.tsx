@@ -2,22 +2,22 @@ import { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import BigNumber from 'bignumber.js'
 import { MaxUint256 } from '@ethersproject/constants'
-import { Modal, Text, Flex, BalanceInput, Box, Button, LogoRoundIcon, useToast } from '@pancakeswap/uikit'
+import { Modal, Text, Flex, BalanceInput, Box, Button, LogoRoundIcon, useToast } from '@offsideswap/uikit'
 import { useAccount } from 'wagmi'
-import { useTranslation } from '@pancakeswap/localization'
-import { formatNumber, getBalanceAmount, getBalanceNumber } from '@pancakeswap/utils/formatBalance'
+import { useTranslation } from '@offsideswap/localization'
+import { formatNumber, getBalanceAmount, getBalanceNumber } from '@offsideswap/utils/formatBalance'
 import useTheme from 'hooks/useTheme'
 import useTokenBalance from 'hooks/useTokenBalance'
 import useApproveConfirmTransaction from 'hooks/useApproveConfirmTransaction'
-import { useCake, useFarmAuctionContract } from 'hooks/useContract'
+import { useRoto, useFarmAuctionContract } from 'hooks/useContract'
 import { DEFAULT_TOKEN_DECIMAL } from 'config'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import ApproveConfirmButtons, { ButtonArrangement } from 'components/ApproveConfirmButtons'
 import { ConnectedBidder, FetchStatus } from 'config/constants/types'
-import { usePriceCakeBusd } from 'state/farms/hooks'
+import { usePriceRotoBusd } from 'state/farms/hooks'
 import { useCallWithGasPrice } from 'hooks/useCallWithGasPrice'
 import { ToastDescriptionWithTx } from 'components/Toast'
-import { bscTokens } from '@pancakeswap/tokens'
+import { bscTokens } from '@offsideswap/tokens'
 import { requiresApproval } from 'utils/requiresApproval'
 
 const StyledModal = styled(Modal)`
@@ -62,15 +62,15 @@ const PlaceBidModal: React.FC<React.PropsWithChildren<PlaceBidModalProps>> = ({
   const [bid, setBid] = useState('')
   const [isMultipleOfTen, setIsMultipleOfTen] = useState(false)
   const [isMoreThanInitialBidAmount, setIsMoreThanInitialBidAmount] = useState(false)
-  const [userNotEnoughCake, setUserNotEnoughCake] = useState(false)
+  const [userNotEnoughRoto, setUserNotEnoughRoto] = useState(false)
   const [errorText, setErrorText] = useState(null)
 
-  const { balance: userCake, fetchStatus } = useTokenBalance(bscTokens.cake.address)
-  const userCakeBalance = getBalanceAmount(userCake)
+  const { balance: userRoto, fetchStatus } = useTokenBalance(bscTokens.roto.address)
+  const userRotoBalance = getBalanceAmount(userRoto)
 
-  const cakePriceBusd = usePriceCakeBusd()
+  const rotoPriceBusd = usePriceRotoBusd()
   const farmAuctionContract = useFarmAuctionContract()
-  const { reader: cakeContractReader, signer: cakeContractApprover } = useCake()
+  const { reader: rotoContractReader, signer: rotoContractApprover } = useRoto()
 
   const { toastSuccess } = useToast()
 
@@ -82,32 +82,32 @@ const PlaceBidModal: React.FC<React.PropsWithChildren<PlaceBidModalProps>> = ({
   useEffect(() => {
     setIsMoreThanInitialBidAmount(parseFloat(bid) >= initialBidAmount)
     setIsMultipleOfTen(parseFloat(bid) % 10 === 0 && parseFloat(bid) !== 0)
-    if (fetchStatus === FetchStatus.Fetched && userCakeBalance.lt(bid)) {
-      setUserNotEnoughCake(true)
+    if (fetchStatus === FetchStatus.Fetched && userRotoBalance.lt(bid)) {
+      setUserNotEnoughRoto(true)
     } else {
-      setUserNotEnoughCake(false)
+      setUserNotEnoughRoto(false)
     }
-  }, [bid, initialBidAmount, fetchStatus, userCakeBalance])
+  }, [bid, initialBidAmount, fetchStatus, userRotoBalance])
 
   useEffect(() => {
-    if (userNotEnoughCake) {
-      setErrorText(t('Insufficient CAKE balance'))
+    if (userNotEnoughRoto) {
+      setErrorText(t('Insufficient ROTO balance'))
     } else if (!isMoreThanInitialBidAmount && isFirstBid) {
-      setErrorText(t('First bid must be %initialBidAmount% CAKE or more.', { initialBidAmount }))
+      setErrorText(t('First bid must be %initialBidAmount% ROTO or more.', { initialBidAmount }))
     } else if (!isMultipleOfTen) {
       setErrorText(t('Bid must be a multiple of 10'))
     } else {
       setErrorText(null)
     }
-  }, [isMultipleOfTen, isMoreThanInitialBidAmount, userNotEnoughCake, initialBidAmount, t, isFirstBid])
+  }, [isMultipleOfTen, isMoreThanInitialBidAmount, userNotEnoughRoto, initialBidAmount, t, isFirstBid])
 
   const { isApproving, isApproved, isConfirmed, isConfirming, handleApprove, handleConfirm } =
     useApproveConfirmTransaction({
       onRequiresApproval: async () => {
-        return requiresApproval(cakeContractReader, account, farmAuctionContract.address)
+        return requiresApproval(rotoContractReader, account, farmAuctionContract.address)
       },
       onApprove: () => {
-        return callWithGasPrice(cakeContractApprover, 'approve', [farmAuctionContract.address, MaxUint256])
+        return callWithGasPrice(rotoContractApprover, 'approve', [farmAuctionContract.address, MaxUint256])
       },
       onApproveSuccess: async ({ receipt }) => {
         toastSuccess(
@@ -132,7 +132,7 @@ const PlaceBidModal: React.FC<React.PropsWithChildren<PlaceBidModalProps>> = ({
 
   const setPercentageValue = (percentage: number) => {
     const rounding = percentage === 1 ? BigNumber.ROUND_FLOOR : BigNumber.ROUND_CEIL
-    const valueToSet = getBalanceAmount(userCake.times(percentage)).div(10).integerValue(rounding).times(10)
+    const valueToSet = getBalanceAmount(userRoto.times(percentage)).div(10).integerValue(rounding).times(10)
     setBid(valueToSet.toString())
   }
   return (
@@ -140,7 +140,7 @@ const PlaceBidModal: React.FC<React.PropsWithChildren<PlaceBidModalProps>> = ({
       <ExistingInfo>
         <Flex justifyContent="space-between">
           <Text>{t('Your existing bid')}</Text>
-          <Text>{t('%num% CAKE', { num: getBalanceNumber(amount).toLocaleString() })}</Text>
+          <Text>{t('%num% ROTO', { num: getBalanceNumber(amount).toLocaleString() })}</Text>
         </Flex>
         <Flex justifyContent="space-between">
           <Text>{t('Your position')}</Text>
@@ -152,12 +152,12 @@ const PlaceBidModal: React.FC<React.PropsWithChildren<PlaceBidModalProps>> = ({
           <Text>{t('Bid a multiple of 10')}</Text>
           <Flex>
             <LogoRoundIcon width="24px" height="24px" mr="4px" />
-            <Text bold>CAKE</Text>
+            <Text bold>ROTO</Text>
           </Flex>
         </Flex>
         {isFirstBid && (
           <Text pb="8px" small>
-            {t('First bid must be %initialBidAmount% CAKE or more.', { initialBidAmount })}
+            {t('First bid must be %initialBidAmount% ROTO or more.', { initialBidAmount })}
           </Text>
         )}
         <BalanceInput
@@ -166,8 +166,8 @@ const PlaceBidModal: React.FC<React.PropsWithChildren<PlaceBidModalProps>> = ({
           value={bid}
           onUserInput={handleInputChange}
           currencyValue={
-            cakePriceBusd.gt(0) &&
-            `~${bid ? cakePriceBusd.times(new BigNumber(bid)).toNumber().toLocaleString() : '0.00'} USD`
+            rotoPriceBusd.gt(0) &&
+            `~${bid ? rotoPriceBusd.times(new BigNumber(bid)).toNumber().toLocaleString() : '0.00'} USD`
           }
         />
         <Flex justifyContent="flex-end" mt="8px">
@@ -175,7 +175,7 @@ const PlaceBidModal: React.FC<React.PropsWithChildren<PlaceBidModalProps>> = ({
             {t('Balance')}:
           </Text>
           <Text fontSize="12px" color="textSubtle">
-            {formatNumber(userCakeBalance.toNumber(), 3, 3)}
+            {formatNumber(userRotoBalance.toNumber(), 3, 3)}
           </Text>
         </Flex>
         {errorText && (
@@ -234,10 +234,10 @@ const PlaceBidModal: React.FC<React.PropsWithChildren<PlaceBidModalProps>> = ({
               isApproving={isApproving}
               isConfirmDisabled={
                 !isMultipleOfTen ||
-                getBalanceAmount(userCake).lt(bid) ||
+                getBalanceAmount(userRoto).lt(bid) ||
                 isConfirmed ||
                 isInvalidFirstBid ||
-                userNotEnoughCake
+                userNotEnoughRoto
               }
               isConfirming={isConfirming}
               onApprove={handleApprove}
@@ -249,7 +249,7 @@ const PlaceBidModal: React.FC<React.PropsWithChildren<PlaceBidModalProps>> = ({
           )}
         </Flex>
         <Text color="textSubtle" small mt="24px">
-          {t('If your bid is unsuccessful, you’ll be able to reclaim your CAKE after the auction.')}
+          {t('If your bid is unsuccessful, you’ll be able to reclaim your ROTO after the auction.')}
         </Text>
       </InnerContent>
     </StyledModal>

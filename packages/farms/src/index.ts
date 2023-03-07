@@ -1,11 +1,11 @@
 import { formatEther } from '@ethersproject/units'
-import { MultiCallV2 } from '@pancakeswap/multicall'
-import { ChainId } from '@pancakeswap/sdk'
+import { MultiCallV2 } from '@offsideswap/multicall'
+import { ChainId } from '@offsideswap/sdk'
 import { masterChefAddresses } from './const'
 import { farmV2FetchFarms, FetchFarmsParams, fetchMasterChefV2Data } from './fetchFarms'
 
 const supportedChainId = [ChainId.GOERLI, ChainId.BSC, ChainId.BSC_TESTNET, ChainId.ETHEREUM]
-export const bCakeSupportedChainId = [ChainId.BSC, ChainId.BSC_TESTNET]
+export const bRotoSupportedChainId = [ChainId.BSC, ChainId.BSC_TESTNET]
 
 export function createFarmFetcher(multicallv2: MultiCallV2) {
   const fetchFarms = async (
@@ -15,12 +15,12 @@ export function createFarmFetcher(multicallv2: MultiCallV2) {
   ) => {
     const { isTestnet, farms, chainId } = params
     const masterChefAddress = isTestnet ? masterChefAddresses[ChainId.BSC_TESTNET] : masterChefAddresses[ChainId.BSC]
-    const { poolLength, totalRegularAllocPoint, totalSpecialAllocPoint, cakePerBlock } = await fetchMasterChefV2Data({
+    const { poolLength, totalRegularAllocPoint, totalSpecialAllocPoint, rotoPerBlock } = await fetchMasterChefV2Data({
       isTestnet,
       multicallv2,
       masterChefAddress,
     })
-    const regularCakePerBlock = formatEther(cakePerBlock)
+    const regularRotoPerBlock = formatEther(rotoPerBlock)
     const farmsWithPrice = await farmV2FetchFarms({
       multicallv2,
       masterChefAddress,
@@ -34,7 +34,7 @@ export function createFarmFetcher(multicallv2: MultiCallV2) {
     return {
       farmsWithPrice,
       poolLength: poolLength.toNumber(),
-      regularCakePerBlock: +regularCakePerBlock,
+      regularRotoPerBlock: +regularRotoPerBlock,
     }
   }
   return {

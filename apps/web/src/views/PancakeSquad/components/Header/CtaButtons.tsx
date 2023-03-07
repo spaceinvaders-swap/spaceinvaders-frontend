@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
 import { BigNumber } from '@ethersproject/bignumber'
-import { Flex } from '@pancakeswap/uikit'
-import { ContextApi } from '@pancakeswap/localization'
+import { Flex } from '@offsideswap/uikit'
+import { ContextApi } from '@offsideswap/localization'
 import { DefaultTheme } from 'styled-components'
 import { SaleStatusEnum, UserStatusEnum } from '../../types'
 import BuyTicketsButtons from '../Buttons/BuyTickets'
@@ -28,7 +28,7 @@ export type CtaButtonsProps = {
   totalSupplyMinted: number
   numberTokensOfUser: number
   startTimestamp: number
-  cakeBalance: BigNumber
+  rotoBalance: BigNumber
   pricePerTicket: BigNumber
   ticketsOfUser: BigNumber[]
 }
@@ -49,7 +49,7 @@ const CtaButtons: React.FC<React.PropsWithChildren<CtaButtonsProps>> = ({
   startTimestamp,
   maxSupply,
   totalSupplyMinted,
-  cakeBalance,
+  rotoBalance,
   pricePerTicket,
   ticketsOfUser,
 }) => {
@@ -69,7 +69,7 @@ const CtaButtons: React.FC<React.PropsWithChildren<CtaButtonsProps>> = ({
             maxPerAddress={maxPerAddress}
             numberTicketsOfUser={numberTicketsOfUser}
             numberTicketsUsedForGen0={numberTicketsUsedForGen0}
-            cakeBalance={cakeBalance}
+            rotoBalance={rotoBalance}
             maxPerTransaction={maxPerTransaction}
             numberTicketsForGen0={numberTicketsForGen0}
             pricePerTicket={pricePerTicket}

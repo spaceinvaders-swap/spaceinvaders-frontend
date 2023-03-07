@@ -1,12 +1,12 @@
-import { useIsMounted } from "@pancakeswap/hooks";
-import { AtomBox } from "@pancakeswap/ui/components/AtomBox";
+import { useIsMounted } from "@offsideswap/hooks";
+import { AtomBox } from "@offsideswap/ui/components/AtomBox";
 import throttle from "lodash/throttle";
 import React, { useEffect, useRef, useState, useMemo } from "react";
 import styled from "styled-components";
 import BottomNav from "../../components/BottomNav";
 import { Box } from "../../components/Box";
 import Flex from "../../components/Box/Flex";
-import CakePrice from "../../components/CakePrice/CakePrice";
+import RotoPrice from "../../components/RotoPrice/RotoPrice";
 import Footer from "../../components/Footer";
 import LangSelector from "../../components/LangSelector/LangSelector";
 import MenuItems from "../../components/MenuItems/MenuItems";
@@ -76,15 +76,15 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
   toggleTheme,
   currentLang,
   setLang,
-  cakePriceUsd,
+  rotoPriceUsd,
   links,
   subLinks,
   footerLinks,
   activeItem,
   activeSubItem,
   langs,
-  buyCakeLabel,
-  buyCakeLink,
+  buyRotoLabel,
+  buyRotoLink,
   children,
 }) => {
   const { isMobile } = useMatchBreakpoints();
@@ -152,7 +152,7 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
               </Flex>
               <Flex alignItems="center" height="100%">
                 <AtomBox mr="12px" display={{ xs: "none", lg: "block" }}>
-                  <CakePrice showSkeleton={false} cakePriceUsd={cakePriceUsd} />
+                  <RotoPrice showSkeleton={false} rotoPriceUsd={rotoPriceUsd} />
                 </AtomBox>
                 <Box mt="4px">
                   <LangSelector
@@ -200,9 +200,9 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
         langs={langs}
         setLang={setLang}
         currentLang={currentLang}
-        cakePriceUsd={cakePriceUsd}
-        buyCakeLabel={buyCakeLabel}
-        buyCakeLink={buyCakeLink}
+        rotoPriceUsd={rotoPriceUsd}
+        buyRotoLabel={buyRotoLabel}
+        buyRotoLink={buyRotoLink}
         mb={[`${MOBILE_MENU_HEIGHT}px`, null, "0px"]}
       />
       <AtomBox display={{ xs: "block", md: "none" }}>

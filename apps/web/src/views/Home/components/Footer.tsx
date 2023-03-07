@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { Flex, Heading, Text, Link, useMatchBreakpoints, OpenNewIcon } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Flex, Heading, Text, Link, useMatchBreakpoints, OpenNewIcon } from '@offsideswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import Container from 'components/Layout/Container'
 import { useAccount } from 'wagmi'
@@ -35,7 +35,7 @@ const Wrapper = styled(Flex)`
   overflow: hidden;
 `
 
-const FloatingPancakesWrapper = styled(Container)`
+const FloatingOffsidesWrapper = styled(Container)`
   overflow: hidden;
   position: absolute;
   width: 100%;
@@ -63,20 +63,20 @@ const BottomRightImgWrapper = styled(Flex)`
 `
 
 const topLeftImage = {
-  path: '/images/home/flying-pancakes/',
+  path: '/images/home/flying-offsides/',
   attributes: [
-    { src: '1-bottom', alt: 'Pancake flying on the bottom' },
-    { src: '1-left', alt: 'Pancake flying on the left' },
-    { src: '1-top', alt: 'Pancake flying on the top' },
+    { src: '1-bottom', alt: 'Offside flying on the bottom' },
+    { src: '1-left', alt: 'Offside flying on the left' },
+    { src: '1-top', alt: 'Offside flying on the top' },
   ],
 }
 
 const bottomRightImage = {
-  path: '/images/home/flying-pancakes/',
+  path: '/images/home/flying-offsides/',
   attributes: [
-    { src: '2-bottom', alt: 'Pancake flying on the bottom' },
-    { src: '2-top', alt: 'Pancake flying on the top' },
-    { src: '2-right', alt: 'Pancake flying on the right' },
+    { src: '2-bottom', alt: 'Offside flying on the bottom' },
+    { src: '2-top', alt: 'Offside flying on the top' },
+    { src: '2-right', alt: 'Offside flying on the right' },
   ],
 }
 
@@ -93,14 +93,14 @@ const Footer = () => {
         </Flex>
       </BgWrapper>
       {(isTablet || isDesktop) && (
-        <FloatingPancakesWrapper>
+        <FloatingOffsidesWrapper>
           <TopLeftImgWrapper>
             <CompositeImage {...topLeftImage} maxHeight="256px" />
           </TopLeftImgWrapper>
           <BottomRightImgWrapper>
             <CompositeImage {...bottomRightImage} maxHeight="256px" />
           </BottomRightImgWrapper>
-        </FloatingPancakesWrapper>
+        </FloatingOffsidesWrapper>
       )}
       <Wrapper>
         <Heading mb="24px" scale="xl" color="white">
@@ -113,7 +113,7 @@ const Footer = () => {
           {t('No registration needed.')}
         </Text>
 
-        <Link external href="https://docs.pancakeswap.finance/">
+        <Link external href="https://docs.offsideswap.finance/">
           {t('Learn how to start')}
           <OpenNewIcon color="primary" ml="4px" />
         </Link>

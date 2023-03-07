@@ -5,14 +5,14 @@ import { MaxUint256 } from '@ethersproject/constants'
 import { useAppDispatch } from 'state'
 import { updateUserAllowance } from 'state/actions'
 import { VaultKey } from 'state/types'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@offsideswap/localization'
 import { useSousChef, useVaultPoolContract } from 'hooks/useContract'
-import { useToast } from '@pancakeswap/uikit'
+import { useToast } from '@offsideswap/uikit'
 import { useCallWithGasPrice } from 'hooks/useCallWithGasPrice'
 import useCatchTxError from 'hooks/useCatchTxError'
 import { ToastDescriptionWithTx } from 'components/Toast'
-import useCakeApprovalStatus from 'hooks/useCakeApprovalStatus'
-import useCakeApprove from 'hooks/useCakeApprove'
+import useRotoApprovalStatus from 'hooks/useRotoApprovalStatus'
+import useRotoApprove from 'hooks/useRotoApprove'
 
 export const useApprovePool = (lpContract: Contract, sousId, earningTokenSymbol) => {
   const { toastSuccess } = useToast()
@@ -52,20 +52,20 @@ export const useApprovePool = (lpContract: Contract, sousId, earningTokenSymbol)
   return { handleApprove, pendingTx }
 }
 
-// Approve CAKE auto pool
+// Approve ROTO auto pool
 export const useVaultApprove = (vaultKey: VaultKey, setLastUpdated: () => void) => {
   const vaultPoolContract = useVaultPoolContract(vaultKey)
   const { t } = useTranslation()
 
-  return useCakeApprove(
+  return useRotoApprove(
     setLastUpdated,
     vaultPoolContract?.address,
-    t('You can now stake in the %symbol% vault!', { symbol: 'CAKE' }),
+    t('You can now stake in the %symbol% vault!', { symbol: 'ROTO' }),
   )
 }
 
 export const useCheckVaultApprovalStatus = (vaultKey: VaultKey) => {
   const vaultPoolContract = useVaultPoolContract(vaultKey)
 
-  return useCakeApprovalStatus(vaultPoolContract?.address)
+  return useRotoApprovalStatus(vaultPoolContract?.address)
 }

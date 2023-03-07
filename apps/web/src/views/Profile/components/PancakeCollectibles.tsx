@@ -1,8 +1,8 @@
-import { Grid, Heading, PageHeader } from '@pancakeswap/uikit'
+import { Grid, Heading, PageHeader } from '@offsideswap/uikit'
 import useSWR from 'swr'
 import dynamic from 'next/dynamic'
 import { FetchStatus } from 'config/constants/types'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@offsideswap/localization'
 import { Collection } from 'state/nftMarket/types'
 import Page from 'components/Layout/Page'
 import { nftsBaseUrl } from 'views/Nft/market/constants'
@@ -13,15 +13,15 @@ const CollectionCardWithVolume = dynamic(
   { ssr: false },
 )
 
-const PancakeCollectibles = () => {
+const OffsideCollectibles = () => {
   const { t } = useTranslation()
-  const { data: collections, status } = useSWR<Collection[]>(['pancakeCollectibles'])
+  const { data: collections, status } = useSWR<Collection[]>(['offsideCollectibles'])
 
   return (
     <>
       <PageHeader>
         <Heading as="h1" scale="xxl" color="secondary" data-test="nft-collections-title">
-          {t('Pancake Collectibles')}
+          {t('Offside Collectibles')}
         </Heading>
       </PageHeader>
       <Page>
@@ -55,4 +55,4 @@ const PancakeCollectibles = () => {
   )
 }
 
-export default PancakeCollectibles
+export default OffsideCollectibles

@@ -1,7 +1,7 @@
-import { Flex, Skeleton, Text, Balance, Pool } from '@pancakeswap/uikit'
+import { Flex, Skeleton, Text, Balance, Pool } from '@offsideswap/uikit'
 import styled from 'styled-components'
-import { useTranslation } from '@pancakeswap/localization'
-import { Token } from '@pancakeswap/sdk'
+import { useTranslation } from '@offsideswap/localization'
+import { Token } from '@offsideswap/sdk'
 import BigNumber from 'bignumber.js'
 
 interface TotalStakedCellProps {

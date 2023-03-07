@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react'
-import { Currency, CurrencyAmount, Pair, Percent, Token } from '@pancakeswap/aptos-swap-sdk'
+import { Currency, CurrencyAmount, Pair, Percent, Token } from '@offsideswap/aptos-swap-sdk'
 import {
   AddIcon,
   AutoColumn,
@@ -10,8 +10,8 @@ import {
   Text,
   TransactionErrorContent,
   ConfirmationModalContent,
-} from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+} from '@offsideswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
 import TransactionConfirmationModal from 'components/TransactionConfirmationModal'
 import { CurrencyLogo, DoubleCurrencyLogo } from 'components/Logo'
 import { useUserSlippage } from 'state/user'

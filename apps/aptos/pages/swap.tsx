@@ -8,11 +8,11 @@ import {
   Token,
   Trade,
   TradeType,
-} from '@pancakeswap/aptos-swap-sdk'
-import { useAccount } from '@pancakeswap/awgmi'
-import { parseVmStatusError, SimulateTransactionError, UserRejectedRequestError } from '@pancakeswap/awgmi/core'
-import { useTranslation } from '@pancakeswap/localization'
-import { AtomBox } from '@pancakeswap/ui'
+} from '@offsideswap/aptos-swap-sdk'
+import { useAccount } from '@offsideswap/awgmi'
+import { parseVmStatusError, SimulateTransactionError, UserRejectedRequestError } from '@offsideswap/awgmi/core'
+import { useTranslation } from '@offsideswap/localization'
+import { AtomBox } from '@offsideswap/ui'
 import {
   AutoColumn,
   Card,
@@ -27,9 +27,9 @@ import {
   Swap as SwapUI,
   Text,
   useModal,
-} from '@pancakeswap/uikit'
-import replaceBrowserHistory from '@pancakeswap/utils/replaceBrowserHistory'
-import tryParseAmount from '@pancakeswap/utils/tryParseAmount'
+} from '@offsideswap/uikit'
+import replaceBrowserHistory from '@offsideswap/utils/replaceBrowserHistory'
+import tryParseAmount from '@offsideswap/utils/tryParseAmount'
 import { CurrencyInputPanel } from 'components/CurrencyInputPanel'
 import { ExchangeLayout } from 'components/Layout/ExchangeLayout'
 import { PageMeta } from 'components/Layout/Page'

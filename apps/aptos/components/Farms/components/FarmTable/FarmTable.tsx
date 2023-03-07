@@ -1,19 +1,19 @@
 import { useRef, useMemo } from 'react'
 import styled from 'styled-components'
-import { RowType, DesktopColumnSchema } from '@pancakeswap/uikit'
+import { RowType, DesktopColumnSchema } from '@offsideswap/uikit'
 import BigNumber from 'bignumber.js'
 import { useRouter } from 'next/router'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
-import latinise from '@pancakeswap/utils/latinise'
+import { getBalanceNumber } from '@offsideswap/utils/formatBalance'
+import latinise from '@offsideswap/utils/latinise'
 import { FARM_DEFAULT_DECIMALS } from 'components/Farms/constants'
-import { FarmWithStakedValue } from '@pancakeswap/farms'
+import { FarmWithStakedValue } from '@offsideswap/farms'
 import { getDisplayApr } from '../getDisplayApr'
 import Row, { RowProps } from './Row'
 
 export interface ITableProps {
   farms: FarmWithStakedValue[]
   userDataReady: boolean
-  cakePrice: BigNumber
+  rotoPrice: BigNumber
   sortColumn?: string
 }
 
@@ -63,7 +63,7 @@ const TableContainer = styled.div`
   position: relative;
 `
 
-const FarmTable: React.FC<React.PropsWithChildren<ITableProps>> = ({ farms, cakePrice, userDataReady }) => {
+const FarmTable: React.FC<React.PropsWithChildren<ITableProps>> = ({ farms, rotoPrice, userDataReady }) => {
   const tableWrapperEl = useRef<HTMLDivElement>(null)
   const { query } = useRouter()
 
@@ -116,7 +116,7 @@ const FarmTable: React.FC<React.PropsWithChildren<ITableProps>> = ({ farms, cake
         lpTokenPrice: farm.lpTokenPrice,
         tokenAddress,
         quoteTokenAddress,
-        cakePrice,
+        rotoPrice,
         lpRewardsApr: farm.lpRewardsApr,
         originalValue: farm.apr,
       },
@@ -137,7 +137,7 @@ const FarmTable: React.FC<React.PropsWithChildren<ITableProps>> = ({ farms, cake
       },
       multiplier: {
         multiplier: farm.multiplier,
-        rewardCakePerSecond: true,
+        rewardRotoPerSecond: true,
       },
       type: farm.isCommunity ? 'community' : 'core',
       details: farm,

@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Text, Link } from '@pancakeswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
+import { Text, Link } from '@offsideswap/uikit'
 
 const SafemoonWarning = () => {
   const { t } = useTranslation()

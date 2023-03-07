@@ -1,11 +1,11 @@
 import BigNumber from 'bignumber.js'
-import { Flex, Skeleton, Text, Balance } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
-import { usePriceCakeBusd } from 'state/farms/hooks'
-import { getBalanceNumber, getFullDisplayBalance } from '@pancakeswap/utils/formatBalance'
+import { Flex, Skeleton, Text, Balance } from '@offsideswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
+import { usePriceRotoBusd } from 'state/farms/hooks'
+import { getBalanceNumber, getFullDisplayBalance } from '@offsideswap/utils/formatBalance'
 
 interface RewardBracketDetailProps {
-  cakeAmount: BigNumber
+  rotoAmount: BigNumber
   rewardBracket?: number
   numberWinners?: string
   isBurn?: boolean
@@ -15,14 +15,14 @@ interface RewardBracketDetailProps {
 
 const RewardBracketDetail: React.FC<React.PropsWithChildren<RewardBracketDetailProps>> = ({
   rewardBracket,
-  cakeAmount,
+  rotoAmount,
   numberWinners,
   isHistoricRound,
   isBurn,
   isLoading,
 }) => {
   const { t } = useTranslation()
-  const cakePriceBusd = usePriceCakeBusd()
+  const rotoPriceBusd = usePriceRotoBusd()
 
   const getRewardText = () => {
     const numberMatch = rewardBracket + 1
@@ -45,12 +45,12 @@ const RewardBracketDetail: React.FC<React.PropsWithChildren<RewardBracketDetailP
         </Text>
       )}
       <>
-        {isLoading || cakeAmount.isNaN() ? (
+        {isLoading || rotoAmount.isNaN() ? (
           <Skeleton my="4px" mr="10px" height={20} width={110} />
         ) : (
-          <Balance fontSize="20px" bold unit=" CAKE" value={getBalanceNumber(cakeAmount)} decimals={0} />
+          <Balance fontSize="20px" bold unit=" ROTO" value={getBalanceNumber(rotoAmount)} decimals={0} />
         )}
-        {isLoading || cakeAmount.isNaN() ? (
+        {isLoading || rotoAmount.isNaN() ? (
           <>
             <Skeleton mt="4px" mb="16px" height={12} width={70} />
           </>
@@ -59,15 +59,15 @@ const RewardBracketDetail: React.FC<React.PropsWithChildren<RewardBracketDetailP
             fontSize="12px"
             color="textSubtle"
             prefix="~$"
-            value={getBalanceNumber(cakeAmount.times(cakePriceBusd))}
+            value={getBalanceNumber(rotoAmount.times(rotoPriceBusd))}
             decimals={0}
           />
         )}
-        {isHistoricRound && cakeAmount && (
+        {isHistoricRound && rotoAmount && (
           <>
             {numberWinners !== '0' && (
               <Text fontSize="12px" color="textSubtle">
-                {getFullDisplayBalance(cakeAmount.div(parseInt(numberWinners, 10)), 18, 2)} CAKE {t('each')}
+                {getFullDisplayBalance(rotoAmount.div(parseInt(numberWinners, 10)), 18, 2)} ROTO {t('each')}
               </Text>
             )}
             <Text fontSize="12px" color="textSubtle">

@@ -1,6 +1,6 @@
-// import { serializeTokens } from '@pancakeswap/tokens/src/helpers'
-import { ChainId, Pair } from '@pancakeswap/aptos-swap-sdk'
-import type { SerializedFarmConfig } from '@pancakeswap/farms'
+// import { serializeTokens } from '@offsideswap/tokens/src/helpers'
+import { ChainId, Pair } from '@offsideswap/aptos-swap-sdk'
+import type { SerializedFarmConfig } from '@offsideswap/farms'
 import { APT, L0_USDC } from 'config/coins'
 // import { testnetTokens } from 'config/constants/tokens'
 

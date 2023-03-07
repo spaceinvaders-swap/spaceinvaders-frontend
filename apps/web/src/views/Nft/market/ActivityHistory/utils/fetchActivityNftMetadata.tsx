@@ -3,12 +3,12 @@ import { getNftsFromCollectionApi, getNftsFromDifferentCollectionsApi } from 'st
 import uniqBy from 'lodash/uniqBy'
 import partition from 'lodash/partition'
 import { isAddress } from 'utils'
-import { pancakeBunniesAddress } from '../../constants'
+import { offsideBunniesAddress } from '../../constants'
 
 export const fetchActivityNftMetadata = async (activities: Activity[]): Promise<NftToken[]> => {
   const [pbCollections, nonPBCollections] = partition(
     activities,
-    (activity) => isAddress(activity.nft.collection.id) === pancakeBunniesAddress,
+    (activity) => isAddress(activity.nft.collection.id) === offsideBunniesAddress,
   )
 
   const activityNftTokenIds = uniqBy(
@@ -20,7 +20,7 @@ export const fetchActivityNftMetadata = async (activities: Activity[]): Promise<
   )
 
   const [bunniesMetadata, nfts] = await Promise.all([
-    pbCollections.length ? getNftsFromCollectionApi(pancakeBunniesAddress) : Promise.resolve(null),
+    pbCollections.length ? getNftsFromCollectionApi(offsideBunniesAddress) : Promise.resolve(null),
     getNftsFromDifferentCollectionsApi(activityNftTokenIds),
   ])
 

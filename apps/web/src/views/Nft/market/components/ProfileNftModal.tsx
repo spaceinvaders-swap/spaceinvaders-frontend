@@ -1,12 +1,12 @@
-import { InjectedModalProps, Modal, Flex, Text, Button, useModal, Link, Grid, LinkExternal } from '@pancakeswap/uikit'
+import { InjectedModalProps, Modal, Flex, Text, Button, useModal, Link, Grid, LinkExternal } from '@offsideswap/uikit'
 import useTheme from 'hooks/useTheme'
 import styled from 'styled-components'
 import { NftToken } from 'state/nftMarket/types'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@offsideswap/localization'
 import { getBscScanLinkForNft, isAddress } from 'utils'
 import { HorizontalDivider, RoundedImage } from './BuySellModals/shared/styles'
 import EditProfileModal from '../../../Profile/components/EditProfileModal'
-import { nftsBaseUrl, pancakeBunniesAddress } from '../constants'
+import { nftsBaseUrl, offsideBunniesAddress } from '../constants'
 
 export const StyledModal = styled(Modal)`
   & > div:last-child {
@@ -29,7 +29,7 @@ const ProfileNftModal: React.FC<React.PropsWithChildren<ProfileNftModalProps>> =
   const { theme } = useTheme()
 
   const itemPageUrlId =
-    isAddress(nft.collectionAddress) === pancakeBunniesAddress ? nft.attributes[0].value : nft.tokenId
+    isAddress(nft.collectionAddress) === offsideBunniesAddress ? nft.attributes[0].value : nft.tokenId
 
   return (
     <StyledModal title={t('Details')} onDismiss={onDismiss} headerBackground={theme.colors.gradientCardHeader}>
@@ -73,7 +73,7 @@ const ProfileNftModal: React.FC<React.PropsWithChildren<ProfileNftModalProps>> =
           </Flex>
         </Flex>
         <TextWrapper p="24px 16px" flexDirection="column">
-          <Text mb="16px">{t("You're using this NFT as your Pancake Profile picture")}</Text>
+          <Text mb="16px">{t("You're using this NFT as your Offside Profile picture")}</Text>
           <Text color="textSubtle" mb="16px" fontSize="14px">
             {t(
               'Removing it will suspend your profile, and you won’t be able to earn points, participate in team activities, or be eligible for new NFT drops.',

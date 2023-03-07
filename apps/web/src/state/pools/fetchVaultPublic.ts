@@ -1,31 +1,31 @@
 import BigNumber from 'bignumber.js'
 import { multicallv2, multicallv3 } from 'utils/multicall'
-import cakeAbi from 'config/abi/cake.json'
-import cakeVaultAbi from 'config/abi/cakeVaultV2.json'
-import { getCakeVaultAddress, getCakeFlexibleSideVaultAddress } from 'utils/addressHelpers'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { ChainId } from '@pancakeswap/sdk'
-import { CAKE } from '@pancakeswap/tokens'
+import rotoAbi from 'config/abi/roto.json'
+import rotoVaultAbi from 'config/abi/rotoVaultV2.json'
+import { getRotoVaultAddress, getRotoFlexibleSideVaultAddress } from 'utils/addressHelpers'
+import { BIG_ZERO } from '@offsideswap/utils/bigNumber'
+import { ChainId } from '@offsideswap/sdk'
+import { ROTO } from '@offsideswap/tokens'
 
-const cakeVaultV2 = getCakeVaultAddress()
-const cakeFlexibleSideVaultV2 = getCakeFlexibleSideVaultAddress()
-export const fetchPublicVaultData = async (cakeVaultAddress = cakeVaultV2) => {
+const rotoVaultV2 = getRotoVaultAddress()
+const rotoFlexibleSideVaultV2 = getRotoFlexibleSideVaultAddress()
+export const fetchPublicVaultData = async (rotoVaultAddress = rotoVaultV2) => {
   try {
     const calls = ['getPricePerFullShare', 'totalShares', 'totalLockedAmount'].map((method) => ({
-      abi: cakeVaultAbi,
-      address: cakeVaultAddress,
+      abi: rotoVaultAbi,
+      address: rotoVaultAddress,
       name: method,
     }))
 
-    const cakeBalanceOfCall = {
-      abi: cakeAbi,
-      address: CAKE[ChainId.BSC].address,
+    const rotoBalanceOfCall = {
+      abi: rotoAbi,
+      address: ROTO[ChainId.BSC].address,
       name: 'balanceOf',
-      params: [cakeVaultV2],
+      params: [rotoVaultV2],
     }
 
-    const [[sharePrice], [shares], totalLockedAmount, [totalCakeInVault]] = await multicallv3({
-      calls: [...calls, cakeBalanceOfCall],
+    const [[sharePrice], [shares], totalLockedAmount, [totalRotoInVault]] = await multicallv3({
+      calls: [...calls, rotoBalanceOfCall],
       allowFailure: true,
     })
 
@@ -36,35 +36,35 @@ export const fetchPublicVaultData = async (cakeVaultAddress = cakeVaultV2) => {
       totalShares: totalSharesAsBigNumber.toJSON(),
       totalLockedAmount: totalLockedAmountAsBigNumber.toJSON(),
       pricePerFullShare: sharePriceAsBigNumber.toJSON(),
-      totalCakeInVault: new BigNumber(totalCakeInVault.toString()).toJSON(),
+      totalRotoInVault: new BigNumber(totalRotoInVault.toString()).toJSON(),
     }
   } catch (error) {
     return {
       totalShares: null,
       totalLockedAmount: null,
       pricePerFullShare: null,
-      totalCakeInVault: null,
+      totalRotoInVault: null,
     }
   }
 }
 
-export const fetchPublicFlexibleSideVaultData = async (cakeVaultAddress = cakeFlexibleSideVaultV2) => {
+export const fetchPublicFlexibleSideVaultData = async (rotoVaultAddress = rotoFlexibleSideVaultV2) => {
   try {
     const calls = ['getPricePerFullShare', 'totalShares'].map((method) => ({
-      abi: cakeVaultAbi,
-      address: cakeVaultAddress,
+      abi: rotoVaultAbi,
+      address: rotoVaultAddress,
       name: method,
     }))
 
-    const cakeBalanceOfCall = {
-      abi: cakeAbi,
-      address: CAKE[ChainId.BSC].address,
+    const rotoBalanceOfCall = {
+      abi: rotoAbi,
+      address: ROTO[ChainId.BSC].address,
       name: 'balanceOf',
-      params: [cakeVaultAddress],
+      params: [rotoVaultAddress],
     }
 
-    const [[sharePrice], [shares], [totalCakeInVault]] = await multicallv3({
-      calls: [...calls, cakeBalanceOfCall],
+    const [[sharePrice], [shares], [totalRotoInVault]] = await multicallv3({
+      calls: [...calls, rotoBalanceOfCall],
       allowFailure: true,
     })
 
@@ -73,25 +73,25 @@ export const fetchPublicFlexibleSideVaultData = async (cakeVaultAddress = cakeFl
     return {
       totalShares: totalSharesAsBigNumber.toJSON(),
       pricePerFullShare: sharePriceAsBigNumber.toJSON(),
-      totalCakeInVault: new BigNumber(totalCakeInVault.toString()).toJSON(),
+      totalRotoInVault: new BigNumber(totalRotoInVault.toString()).toJSON(),
     }
   } catch (error) {
     return {
       totalShares: null,
       pricePerFullShare: null,
-      totalCakeInVault: null,
+      totalRotoInVault: null,
     }
   }
 }
 
-export const fetchVaultFees = async (cakeVaultAddress = cakeVaultV2) => {
+export const fetchVaultFees = async (rotoVaultAddress = rotoVaultV2) => {
   try {
     const calls = ['performanceFee', 'withdrawFee', 'withdrawFeePeriod'].map((method) => ({
-      address: cakeVaultAddress,
+      address: rotoVaultAddress,
       name: method,
     }))
 
-    const [[performanceFee], [withdrawalFee], [withdrawalFeePeriod]] = await multicallv2({ abi: cakeVaultAbi, calls })
+    const [[performanceFee], [withdrawalFee], [withdrawalFeePeriod]] = await multicallv2({ abi: rotoVaultAbi, calls })
 
     return {
       performanceFee: performanceFee.toNumber(),

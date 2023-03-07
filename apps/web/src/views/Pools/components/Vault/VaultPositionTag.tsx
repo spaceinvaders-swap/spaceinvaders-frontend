@@ -9,12 +9,12 @@ import {
   Box,
   FlexGap,
   FlexGapProps,
-} from '@pancakeswap/uikit'
+} from '@offsideswap/uikit'
 import Trans from 'components/Trans'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@offsideswap/localization'
 import { ReactNode, useMemo } from 'react'
 import { DeserializedLockedVaultUser } from 'state/types'
-import { VaultPosition, getVaultPosition } from 'utils/cakePool'
+import { VaultPosition, getVaultPosition } from 'utils/rotoPool'
 
 const tagConfig: Record<VaultPosition, TagProps> = {
   [VaultPosition.None]: {},

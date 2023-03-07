@@ -1,9 +1,9 @@
-import { useTranslation } from "@pancakeswap/localization";
-import { getApy } from "@pancakeswap/utils/compoundApyHelpers";
+import { useTranslation } from "@offsideswap/localization";
+import { getApy } from "@offsideswap/utils/compoundApyHelpers";
 import { useMemo, useState } from "react";
 import styled from "styled-components";
 
-import { BIG_ONE_HUNDRED } from "@pancakeswap/utils/bigNumber";
+import { BIG_ONE_HUNDRED } from "@offsideswap/utils/bigNumber";
 import { useTooltip } from "../../hooks/useTooltip";
 import { Box, Flex, Grid } from "../Box";
 import { ExpandableLabel } from "../Button";
@@ -44,7 +44,7 @@ interface RoiCalculatorFooterProps {
   linkLabel: string;
   linkHref: string;
   performanceFee: number;
-  rewardCakePerSecond?: boolean;
+  rewardRotoPerSecond?: boolean;
   isLocked?: boolean;
   stableSwapAddress?: string;
   stableLpFee?: number;
@@ -60,7 +60,7 @@ const RoiCalculatorFooter: React.FC<React.PropsWithChildren<RoiCalculatorFooterP
   linkLabel,
   linkHref,
   performanceFee,
-  rewardCakePerSecond,
+  rewardRotoPerSecond,
   isLocked = false,
   stableSwapAddress,
   stableLpFee,
@@ -73,16 +73,16 @@ const RoiCalculatorFooter: React.FC<React.PropsWithChildren<RoiCalculatorFooterP
     tooltipVisible: multiplierTooltipVisible,
   } = useTooltip(
     <>
-      {rewardCakePerSecond ? (
+      {rewardRotoPerSecond ? (
         <>
           <Text>
             {t(
-              "The Multiplier represents the proportion of CAKE rewards each farm receives, as a proportion of the CAKE produced each second."
+              "The Multiplier represents the proportion of ROTO rewards each farm receives, as a proportion of the ROTO produced each second."
             )}
           </Text>
           <Text my="24px">
             {" "}
-            {t("For example, if a 1x farm received 1 CAKE per second, a 40x farm would receive 40 CAKE per second.")}
+            {t("For example, if a 1x farm received 1 ROTO per second, a 40x farm would receive 40 ROTO per second.")}
           </Text>
           <Text>{t("This amount is already included in all APR calculations for the farm.")}</Text>
         </>
@@ -90,22 +90,22 @@ const RoiCalculatorFooter: React.FC<React.PropsWithChildren<RoiCalculatorFooterP
         <>
           <Text>
             {t(
-              "The Multiplier represents the proportion of CAKE rewards each farm receives, as a proportion of the CAKE produced each block."
+              "The Multiplier represents the proportion of ROTO rewards each farm receives, as a proportion of the ROTO produced each block."
             )}
           </Text>
           <Text my="24px">
             {" "}
-            {t("For example, if a 1x farm received 1 CAKE per block, a 40x farm would receive 40 CAKE per block.")}
+            {t("For example, if a 1x farm received 1 ROTO per block, a 40x farm would receive 40 ROTO per block.")}
           </Text>
           <Text>
             {t(
-              "We have recently rebased multipliers by a factor of 10, this is only a visual change and does not affect the amount of CAKE each farm receives."
+              "We have recently rebased multipliers by a factor of 10, this is only a visual change and does not affect the amount of ROTO each farm receives."
             )}
           </Text>
           <Link
             mt="8px"
             display="inline"
-            href="https://medium.com/pancakeswap/farm-mutlipliers-visual-update-1f5f5f615afd"
+            href="https://medium.com/offsideswap/farm-mutlipliers-visual-update-1f5f5f615afd"
             external
           >
             {t("Read more")}
@@ -154,7 +154,7 @@ const RoiCalculatorFooter: React.FC<React.PropsWithChildren<RoiCalculatorFooterP
                   {displayApr}%
                 </Text>
                 <Text color="textSubtle" small>
-                  *{t("Base APR (CAKE yield only)")}
+                  *{t("Base APR (ROTO yield only)")}
                 </Text>
                 <Text small textAlign="right">
                   {apr.toFixed(2)}%

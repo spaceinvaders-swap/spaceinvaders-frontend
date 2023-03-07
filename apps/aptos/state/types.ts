@@ -2,9 +2,9 @@ import BigNumber from 'bignumber.js'
 import { DeserializedPoolConfig } from 'config/constants/types'
 
 export enum VaultKey {
-  CakeVaultV1 = 'cakeVaultV1',
-  CakeVault = 'cakeVault',
-  CakeFlexibleSideVault = 'cakeFlexibleSideVault',
+  RotoVaultV1 = 'rotoVaultV1',
+  RotoVault = 'rotoVault',
+  RotoFlexibleSideVault = 'rotoFlexibleSideVault',
   IfoPool = 'ifoPool',
 }
 

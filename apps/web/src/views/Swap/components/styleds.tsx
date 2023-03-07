@@ -1,4 +1,4 @@
-import { ErrorIcon, Flex, Text, AutoColumn } from '@pancakeswap/uikit'
+import { ErrorIcon, Flex, Text, AutoColumn } from '@offsideswap/uikit'
 import styled, { css } from 'styled-components'
 
 export const Wrapper = styled(Flex)`

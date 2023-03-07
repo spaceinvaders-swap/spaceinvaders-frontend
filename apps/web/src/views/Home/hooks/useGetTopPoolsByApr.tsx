@@ -3,12 +3,12 @@ import { useAppDispatch } from 'state'
 import orderBy from 'lodash/orderBy'
 import partition from 'lodash/partition'
 import { VaultKey } from 'state/types'
-import { fetchCakeVaultFees, fetchPoolsPublicDataAsync, fetchCakeVaultPublicData } from 'state/pools'
+import { fetchRotoVaultFees, fetchPoolsPublicDataAsync, fetchRotoVaultPublicData } from 'state/pools'
 import { usePoolsWithVault } from 'state/pools/hooks'
 import { useInitialBlock } from 'state/block/hooks'
 import { FetchStatus } from 'config/constants/types'
-import { Pool } from '@pancakeswap/uikit'
-import { Token } from '@pancakeswap/sdk'
+import { Pool } from '@offsideswap/uikit'
+import { Token } from '@offsideswap/sdk'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 
 const useGetTopPoolsByApr = (isIntersecting: boolean) => {
@@ -28,8 +28,8 @@ const useGetTopPoolsByApr = (isIntersecting: boolean) => {
       try {
         // It should all be blocking calls since data only fetched once
         await Promise.all([
-          dispatch(fetchCakeVaultFees()),
-          dispatch(fetchCakeVaultPublicData()),
+          dispatch(fetchRotoVaultFees()),
+          dispatch(fetchRotoVaultPublicData()),
           dispatch(fetchPoolsPublicDataAsync(initialBlock, chainId)),
         ])
         setFetchStatus(FetchStatus.Fetched)
@@ -45,11 +45,11 @@ const useGetTopPoolsByApr = (isIntersecting: boolean) => {
   }, [dispatch, setFetchStatus, fetchStatus, topPools, isIntersecting, initialBlock, chainId])
 
   useEffect(() => {
-    const [cakePools, otherPools] = partition(pools, (pool) => pool.sousId === 0)
-    const masterCakePool = cakePools.filter((cakePool) => cakePool.vaultKey === VaultKey.CakeVault)
+    const [rotoPools, otherPools] = partition(pools, (pool) => pool.sousId === 0)
+    const masterRotoPool = rotoPools.filter((rotoPool) => rotoPool.vaultKey === VaultKey.RotoVault)
     const getTopPoolsByApr = (activePools: Pool.DeserializedPool<Token>[]) => {
       const sortedByApr = orderBy(activePools, (pool: Pool.DeserializedPool<Token>) => pool.apr || 0, 'desc')
-      setTopPools([...masterCakePool, ...sortedByApr.slice(0, 4)])
+      setTopPools([...masterRotoPool, ...sortedByApr.slice(0, 4)])
     }
     if (fetchStatus === FetchStatus.Fetched && !topPools[0]) {
       getTopPoolsByApr(otherPools)

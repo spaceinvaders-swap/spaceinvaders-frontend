@@ -1,4 +1,4 @@
-import { CurrencyAmount, Token } from '@pancakeswap/sdk'
+import { CurrencyAmount, Token } from '@offsideswap/sdk'
 import {
   BlockIcon,
   Box,
@@ -18,14 +18,14 @@ import {
   UserMenuItem,
   DropdownMenuItemType,
   DropdownMenu,
-} from '@pancakeswap/uikit'
+} from '@offsideswap/uikit'
 import { useRouter } from 'next/router'
 import { useTheme as useNextTheme } from 'next-themes'
 import Image from 'next/image'
 import NextLink from 'next/link'
 import { useEffect, useReducer, useRef, useState } from 'react'
 import styled, { useTheme } from 'styled-components'
-import getTimePeriods from '@pancakeswap/utils/getTimePeriods'
+import getTimePeriods from '@offsideswap/utils/getTimePeriods'
 import { CHAINS_STARGATE } from './stargate/config'
 import { findChainByStargateId } from './stargate/network'
 
@@ -83,7 +83,7 @@ const MenuConfig = [
     href: '/aptos',
     items: [
       {
-        label: 'CAKE Bridging',
+        label: 'ROTO Bridging',
         href: '/aptos',
       },
       {
@@ -113,7 +113,7 @@ export function Menu() {
   return (
     <Flex height="56px" bg="backgroundAlt" px="16px" alignItems="center" justifyContent="space-between" zIndex={9}>
       <Flex>
-        <Logo href="https://pancakeswap.finance" />
+        <Logo href="https://offsideswap.finance" />
 
         <Flex pl={['10px', null, '50px']}>
           {MenuConfig.map((menu) => (
@@ -133,7 +133,7 @@ export function Menu() {
               )}
             </Flex>
           ))}
-          <a href="https://pancakeswap.finance/swap" target="_blank" rel="noreferrer noopener">
+          <a href="https://offsideswap.finance/swap" target="_blank" rel="noreferrer noopener">
             <StyledMenuItem>Swap</StyledMenuItem>
           </a>
         </Flex>

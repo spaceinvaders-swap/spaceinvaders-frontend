@@ -1,17 +1,17 @@
-import { Box, CardBody, CardProps, Flex, Text, TokenPairImage, FlexGap, Skeleton, Pool } from '@pancakeswap/uikit'
+import { Box, CardBody, CardProps, Flex, Text, TokenPairImage, FlexGap, Skeleton, Pool } from '@offsideswap/uikit'
 import { useAccount } from 'wagmi'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import { vaultPoolConfig } from 'config/constants/pools'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@offsideswap/localization'
 import { useVaultPoolByKey } from 'state/pools/hooks'
-import { VaultKey, DeserializedLockedCakeVault, DeserializedCakeVault } from 'state/types'
+import { VaultKey, DeserializedLockedRotoVault, DeserializedRotoVault } from 'state/types'
 import styled from 'styled-components'
-import { Token } from '@pancakeswap/sdk'
+import { Token } from '@offsideswap/sdk'
 
 import CardFooter from '../PoolCard/CardFooter'
 import { VaultPositionTagWithLabel } from '../Vault/VaultPositionTag'
 import UnstakingFeeCountdownRow from './UnstakingFeeCountdownRow'
-import RecentCakeProfitRow from './RecentCakeProfitRow'
+import RecentRotoProfitRow from './RecentRotoProfitRow'
 import { StakingApy } from './StakingApy'
 import VaultCardActions from './VaultCardActions'
 import LockedStakingApy from '../LockedPool/LockedStakingApy'
@@ -20,51 +20,51 @@ const StyledCardBody = styled(CardBody)<{ isLoading: boolean }>`
   min-height: ${({ isLoading }) => (isLoading ? '0' : '254px')};
 `
 
-interface CakeVaultProps extends CardProps {
+interface RotoVaultProps extends CardProps {
   pool: Pool.DeserializedPool<Token>
   showStakedOnly: boolean
   defaultFooterExpanded?: boolean
-  showICake?: boolean
+  showIRoto?: boolean
   showSkeleton?: boolean
 }
 
-interface CakeVaultDetailProps {
+interface RotoVaultDetailProps {
   isLoading?: boolean
   account: string
   pool: Pool.DeserializedPool<Token>
-  vaultPool: DeserializedCakeVault
+  vaultPool: DeserializedRotoVault
   accountHasSharesStaked: boolean
   defaultFooterExpanded?: boolean
-  showICake?: boolean
+  showIRoto?: boolean
   performanceFeeAsDecimal: number
 }
 
-export const CakeVaultDetail: React.FC<React.PropsWithChildren<CakeVaultDetailProps>> = ({
+export const RotoVaultDetail: React.FC<React.PropsWithChildren<RotoVaultDetailProps>> = ({
   isLoading = false,
   account,
   pool,
   vaultPool,
   accountHasSharesStaked,
-  showICake,
+  showIRoto,
   performanceFeeAsDecimal,
   defaultFooterExpanded,
 }) => {
   const { t } = useTranslation()
 
-  const isLocked = (vaultPool as DeserializedLockedCakeVault).userData.locked
+  const isLocked = (vaultPool as DeserializedLockedRotoVault).userData.locked
 
   return (
     <>
       <StyledCardBody isLoading={isLoading}>
-        {account && pool.vaultKey === VaultKey.CakeVault && (
-          <VaultPositionTagWithLabel userData={(vaultPool as DeserializedLockedCakeVault).userData} />
+        {account && pool.vaultKey === VaultKey.RotoVault && (
+          <VaultPositionTagWithLabel userData={(vaultPool as DeserializedLockedRotoVault).userData} />
         )}
-        {account && pool.vaultKey === VaultKey.CakeVault && isLocked ? (
+        {account && pool.vaultKey === VaultKey.RotoVault && isLocked ? (
           <LockedStakingApy
-            userData={(vaultPool as DeserializedLockedCakeVault).userData}
+            userData={(vaultPool as DeserializedLockedRotoVault).userData}
             stakingToken={pool?.stakingToken}
             stakingTokenBalance={pool?.userData?.stakingTokenBalance}
-            showICake={showICake}
+            showIRoto={showIRoto}
           />
         ) : (
           <>
@@ -76,7 +76,7 @@ export const CakeVaultDetail: React.FC<React.PropsWithChildren<CakeVaultDetailPr
                     <UnstakingFeeCountdownRow vaultKey={pool.vaultKey} />
                   </Box>
                 )}
-                <RecentCakeProfitRow pool={pool} />
+                <RecentRotoProfitRow pool={pool} />
               </Box>
               <Flex flexDirection="column">
                 {account ? (
@@ -104,11 +104,11 @@ export const CakeVaultDetail: React.FC<React.PropsWithChildren<CakeVaultDetailPr
   )
 }
 
-const CakeVaultCard: React.FC<React.PropsWithChildren<CakeVaultProps>> = ({
+const RotoVaultCard: React.FC<React.PropsWithChildren<RotoVaultProps>> = ({
   pool,
   showStakedOnly,
   defaultFooterExpanded,
-  showICake = false,
+  showIRoto = false,
   showSkeleton = true,
   ...props
 }) => {
@@ -150,13 +150,13 @@ const CakeVaultCard: React.FC<React.PropsWithChildren<CakeVaultProps>> = ({
           </Flex>
         )}
       </Pool.PoolCardHeader>
-      <CakeVaultDetail
+      <RotoVaultDetail
         isLoading={isLoading}
         account={account}
         pool={pool}
         vaultPool={vaultPool}
         accountHasSharesStaked={accountHasSharesStaked}
-        showICake={showICake}
+        showIRoto={showIRoto}
         performanceFeeAsDecimal={performanceFeeAsDecimal}
         defaultFooterExpanded={defaultFooterExpanded}
       />
@@ -164,4 +164,4 @@ const CakeVaultCard: React.FC<React.PropsWithChildren<CakeVaultProps>> = ({
   )
 }
 
-export default CakeVaultCard
+export default RotoVaultCard

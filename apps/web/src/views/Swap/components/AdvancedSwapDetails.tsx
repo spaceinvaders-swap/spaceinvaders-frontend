@@ -1,7 +1,7 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, CurrencyAmount, Percent, TradeType } from '@pancakeswap/sdk'
-import { Pair } from '@pancakeswap/smart-router/evm'
-import { Modal, ModalV2, QuestionHelper, SearchIcon, Text, Flex, Link, AutoColumn } from '@pancakeswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
+import { Currency, CurrencyAmount, Percent, TradeType } from '@offsideswap/sdk'
+import { Pair } from '@offsideswap/smart-router/evm'
+import { Modal, ModalV2, QuestionHelper, SearchIcon, Text, Flex, Link, AutoColumn } from '@offsideswap/uikit'
 
 import { RowBetween, RowFixed } from 'components/Layout/Row'
 import { BUYBACK_FEE, LP_HOLDERS_FEE, TOTAL_FEE, TREASURY_FEE } from 'config/constants/info'
@@ -115,7 +115,7 @@ function TradeSummary({
                   </Text>
                   <Text>- {t('%amount% to LP token holders', { amount: lpHoldersFeePercent })}</Text>
                   <Text>- {t('%amount% to the Treasury', { amount: treasuryFeePercent })}</Text>
-                  <Text>- {t('%amount% towards CAKE buyback and burn', { amount: buyBackFeePercent })}</Text>
+                  <Text>- {t('%amount% towards ROTO buyback and burn', { amount: buyBackFeePercent })}</Text>
                   {hasStablePair && (
                     <>
                       <Text mt="12px">
@@ -124,7 +124,7 @@ function TradeSummary({
                           style={{ display: 'inline' }}
                           ml="4px"
                           external
-                          href="https://docs.pancakeswap.finance/products/stableswap#stableswap-fees"
+                          href="https://docs.offsideswap.finance/products/stableswap#stableswap-fees"
                         >
                           {t('here.')}
                         </Link>
@@ -137,7 +137,7 @@ function TradeSummary({
                     </Text>
                     :{' '}
                     {t(
-                      'PancakeSwap does not charge any fees for trades. However, the market makers charge an implied fee of 0.05% (non-stablecoin) / 0.01% (stablecoin) factored into the quotes provided by them.',
+                      'OffsideSwap does not charge any fees for trades. However, the market makers charge an implied fee of 0.05% (non-stablecoin) / 0.01% (stablecoin) factored into the quotes provided by them.',
                     )}
                   </Text>
                 </>

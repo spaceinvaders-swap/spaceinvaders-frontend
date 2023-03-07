@@ -1,10 +1,10 @@
 import { useContext, useState } from 'react'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
-import { useTranslation } from '@pancakeswap/localization'
-import { Text, TooltipText, useModal, useTooltip, Farm as FarmUI, RoiCalculatorModal } from '@pancakeswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
+import { Text, TooltipText, useModal, useTooltip, Farm as FarmUI, RoiCalculatorModal } from '@offsideswap/uikit'
 import BigNumber from 'bignumber.js'
 import _toNumber from 'lodash/toNumber'
-import BCakeCalculator from 'views/Farms/components/YieldBooster/components/BCakeCalculator'
+import BRotoCalculator from 'views/Farms/components/YieldBooster/components/BRotoCalculator'
 import { useFarmFromPid, useFarmUser } from 'state/farms/hooks'
 import { YieldBoosterStateContext } from '../YieldBooster/components/ProxyFarmContainer'
 import useBoostMultiplier from '../YieldBooster/hooks/useBoostMultiplier'
@@ -18,7 +18,7 @@ export interface ApyButtonProps {
   lpTokenPrice: BigNumber
   lpLabel?: string
   multiplier: string
-  cakePrice?: BigNumber
+  rotoPrice?: BigNumber
   apr?: number
   displayApr?: string
   lpRewardsApr?: number
@@ -37,7 +37,7 @@ const ApyButton: React.FC<React.PropsWithChildren<ApyButtonProps>> = ({
   lpLabel,
   lpTokenPrice,
   lpSymbol,
-  cakePrice,
+  rotoPrice,
   apr,
   multiplier,
   displayApr,
@@ -52,7 +52,7 @@ const ApyButton: React.FC<React.PropsWithChildren<ApyButtonProps>> = ({
 }) => {
   const { t } = useTranslation()
   const { account } = useActiveWeb3React()
-  const [bCakeMultiplier, setBCakeMultiplier] = useState<number | null>(() => null)
+  const [bRotoMultiplier, setBRotoMultiplier] = useState<number | null>(() => null)
   const { tokenBalance, stakedBalance, proxy } = useFarmUser(pid)
   const { lpTokenStakedAmount } = useFarmFromPid(pid)
   const { boosterState, proxyAddress } = useContext(YieldBoosterStateContext)
@@ -77,19 +77,19 @@ const ApyButton: React.FC<React.PropsWithChildren<ApyButtonProps>> = ({
       stakingTokenDecimals={18}
       stakingTokenSymbol={lpSymbol}
       stakingTokenPrice={lpTokenPrice.toNumber()}
-      earningTokenPrice={cakePrice.toNumber()}
-      apr={bCakeMultiplier ? apr * bCakeMultiplier : apr}
+      earningTokenPrice={rotoPrice.toNumber()}
+      apr={bRotoMultiplier ? apr * bRotoMultiplier : apr}
       multiplier={multiplier}
-      displayApr={bCakeMultiplier ? (_toNumber(displayApr) - apr + apr * bCakeMultiplier).toFixed(2) : displayApr}
+      displayApr={bRotoMultiplier ? (_toNumber(displayApr) - apr + apr * bRotoMultiplier).toFixed(2) : displayApr}
       linkHref={addLiquidityUrl}
       isFarm
-      bCakeCalculatorSlot={(calculatorBalance) =>
+      bRotoCalculatorSlot={(calculatorBalance) =>
         boosted ? (
-          <BCakeCalculator
+          <BRotoCalculator
             targetInputBalance={calculatorBalance}
-            earningTokenPrice={cakePrice.toNumber()}
+            earningTokenPrice={rotoPrice.toNumber()}
             lpTokenStakedAmount={lpTokenStakedAmount}
-            setBCakeMultiplier={setBCakeMultiplier}
+            setBRotoMultiplier={setBRotoMultiplier}
           />
         ) : null
       }
@@ -115,7 +115,7 @@ const ApyButton: React.FC<React.PropsWithChildren<ApyButtonProps>> = ({
         </Text>
       </Text>
       <Text ml="5px">
-        *{t('Base APR (CAKE yield only)')}:{' '}
+        *{t('Base APR (ROTO yield only)')}:{' '}
         {strikethrough ? (
           <Text style={{ display: 'inline-block' }} color="secondary">{`${(apr * boostMultiplier).toFixed(2)}%`}</Text>
         ) : (
@@ -133,7 +133,7 @@ const ApyButton: React.FC<React.PropsWithChildren<ApyButtonProps>> = ({
           </Text>
         </Text>
       )}
-      {strikethrough && <Text color="secondary">{t('Boost only applies to base APR (CAKE yield)')}</Text>}
+      {strikethrough && <Text color="secondary">{t('Boost only applies to base APR (ROTO yield)')}</Text>}
     </>,
     {
       placement: 'top',

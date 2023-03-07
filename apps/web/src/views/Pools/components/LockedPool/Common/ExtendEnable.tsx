@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
 import ApproveConfirmButtons from 'components/ApproveConfirmButtons'
-import { useCakeEnable } from 'hooks/useCakeEnable'
+import { useRotoEnable } from 'hooks/useRotoEnable'
 import { ENABLE_EXTEND_LOCK_AMOUNT } from '../../../helpers'
 
 interface ExtendEnableProps {
-  hasEnoughCake: boolean
+  hasEnoughRoto: boolean
   handleConfirmClick: () => void
   pendingConfirmTx: boolean
   isValidAmount: boolean
@@ -12,29 +12,29 @@ interface ExtendEnableProps {
 }
 
 const ExtendEnable: React.FC<React.PropsWithChildren<ExtendEnableProps>> = ({
-  hasEnoughCake,
+  hasEnoughRoto,
   handleConfirmClick,
   pendingConfirmTx,
   isValidAmount,
   isValidDuration,
 }) => {
-  const { handleEnable, pendingEnableTx } = useCakeEnable(ENABLE_EXTEND_LOCK_AMOUNT)
+  const { handleEnable, pendingEnableTx } = useRotoEnable(ENABLE_EXTEND_LOCK_AMOUNT)
 
   const [pendingEnableTxWithBalance, setPendingEnableTxWithBalance] = useState(pendingEnableTx)
 
   useEffect(() => {
     if (pendingEnableTx) {
       setPendingEnableTxWithBalance(true)
-    } else if (hasEnoughCake) {
+    } else if (hasEnoughRoto) {
       setPendingEnableTxWithBalance(false)
     }
-  }, [hasEnoughCake, pendingEnableTx])
+  }, [hasEnoughRoto, pendingEnableTx])
 
   return (
     <ApproveConfirmButtons
-      isApproveDisabled={!(isValidAmount && isValidDuration) || hasEnoughCake}
+      isApproveDisabled={!(isValidAmount && isValidDuration) || hasEnoughRoto}
       isApproving={pendingEnableTxWithBalance}
-      isConfirmDisabled={!(isValidAmount && isValidDuration) || !hasEnoughCake}
+      isConfirmDisabled={!(isValidAmount && isValidDuration) || !hasEnoughRoto}
       isConfirming={pendingConfirmTx}
       onApprove={handleEnable}
       onConfirm={handleConfirmClick}

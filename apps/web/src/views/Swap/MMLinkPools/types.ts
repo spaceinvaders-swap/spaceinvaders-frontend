@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, Pair, TradeType } from '@pancakeswap/sdk'
+import { Currency, CurrencyAmount, Pair, TradeType } from '@offsideswap/sdk'
 import { z } from 'zod'
 import { MutableRefObject } from 'react'
 import { Field } from '../../../state/swap/actions'

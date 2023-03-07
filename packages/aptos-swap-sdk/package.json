@@ -1,8 +1,8 @@
 {
-  "name": "@pancakeswap/aptos-swap-sdk",
+  "name": "@offsideswap/aptos-swap-sdk",
   "license": "MIT",
-  "version": "0.0.2",
-  "description": "🛠 An SDK for building applications on top of Pancakeswap Aptos.",
+  "version": "1.0.0",
+  "description": "🛠 An SDK for building applications on top of Offsideswap Aptos.",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "module": "dist/index.mjs",
@@ -11,11 +11,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/pancakeswap/pancake-frontend.git",
+    "url": "git+https://github.com/offsideswap/offside-frontend.git",
     "directory": "packages/atpos-swap-sdk"
   },
   "keywords": [
-    "pancakeswap",
+    "offsideswap",
     "aptos"
   ],
   "scripts": {
@@ -27,7 +27,7 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "dependencies": {
-    "@pancakeswap/swap-sdk-core": "*"
+    "@offsideswap/swap-sdk-core": "*"
   },
   "peerDependencies": {
     "aptos": "^1.3.14"
@@ -47,5 +47,10 @@
     "printWidth": 120,
     "semi": false,
     "singleQuote": true
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/offsideswap/offside-frontend/issues"
+  },
+  "homepage": "https://github.com/offsideswap/offside-frontend#readme",
+  "author": ""
 }

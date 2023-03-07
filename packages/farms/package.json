@@ -1,6 +1,6 @@
 {
-  "name": "@pancakeswap/farms",
-  "version": "0.0.1",
+  "name": "@offsideswap/farms",
+  "version": "1.0.0",
   "sideEffects": false,
   "private": true,
   "scripts": {
@@ -11,10 +11,10 @@
     "tsx": "^3.12.1"
   },
   "dependencies": {
-    "@pancakeswap/sdk": "*",
-    "@pancakeswap/tokens": "*",
-    "@pancakeswap/token-lists": "*",
-    "@pancakeswap/multicall": "*",
-    "@pancakeswap/utils": "*"
+    "@offsideswap/sdk": "*",
+    "@offsideswap/tokens": "*",
+    "@offsideswap/token-lists": "*",
+    "@offsideswap/multicall": "*",
+    "@offsideswap/utils": "*"
   }
 }

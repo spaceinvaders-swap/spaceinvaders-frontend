@@ -1,5 +1,5 @@
 import { CallOverrides } from '@ethersproject/contracts'
-import { createMulticall, Call } from '@pancakeswap/multicall'
+import { createMulticall, Call } from '@offsideswap/multicall'
 import { provider } from './wagmi'
 
 export type { Call }

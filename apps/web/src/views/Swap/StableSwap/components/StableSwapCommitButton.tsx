@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Text, useModal, Column } from '@pancakeswap/uikit'
-import { Currency, CurrencyAmount } from '@pancakeswap/sdk'
+import { useTranslation } from '@offsideswap/localization'
+import { Text, useModal, Column } from '@offsideswap/uikit'
+import { Currency, CurrencyAmount } from '@offsideswap/sdk'
 
 import { GreyCard } from 'components/Card'
 import { CommitButton } from 'components/CommitButton'

@@ -157,7 +157,7 @@ it("renders correctly", () => {
 
 it("renders correctly with unit prop", () => {
   const { asFragment } = renderWithProvider(
-    <BalanceInput value="14" currencyValue="15 USD" unit="CAKE" onUserInput={handleChange} />
+    <BalanceInput value="14" currencyValue="15 USD" unit="ROTO" onUserInput={handleChange} />
   );
   expect(asFragment()).toMatchInlineSnapshot(`
     <DocumentFragment>
@@ -310,7 +310,7 @@ it("renders correctly with unit prop", () => {
                 color="text"
                 font-size="16px"
               >
-                CAKE
+                ROTO
               </div>
             </div>
             <div
@@ -332,7 +332,7 @@ it("renders correctly with unit prop and switchEditingUnits", () => {
     <BalanceInput
       value="14"
       currencyValue="15 USD"
-      unit="CAKE"
+      unit="ROTO"
       switchEditingUnits={vi.fn()}
       onUserInput={handleChange}
     />
@@ -401,11 +401,11 @@ it("renders correctly with unit prop and switchEditingUnits", () => {
       box-shadow: none;
     }
 
-    .c9:hover:not(:disabled):not(.pancake-button--disabled):not(.pancake-button--disabled):not(:active) {
+    .c9:hover:not(:disabled):not(.offside-button--disabled):not(.offside-button--disabled):not(:active) {
       opacity: 0.65;
     }
 
-    .c9:active:not(:disabled):not(.pancake-button--disabled):not(.pancake-button--disabled) {
+    .c9:active:not(:disabled):not(.offside-button--disabled):not(.offside-button--disabled) {
       opacity: 0.85;
       -webkit-transform: translateY(1px);
       -ms-transform: translateY(1px);
@@ -414,7 +414,7 @@ it("renders correctly with unit prop and switchEditingUnits", () => {
     }
 
     .c9:disabled,
-    .c9.pancake-button--disabled {
+    .c9.offside-button--disabled {
       background-color: var(--colors-backgroundDisabled);
       border-color: var(--colors-backgroundDisabled);
       box-shadow: none;
@@ -576,7 +576,7 @@ it("renders correctly with unit prop and switchEditingUnits", () => {
                 color="text"
                 font-size="16px"
               >
-                CAKE
+                ROTO
               </div>
             </div>
             <div

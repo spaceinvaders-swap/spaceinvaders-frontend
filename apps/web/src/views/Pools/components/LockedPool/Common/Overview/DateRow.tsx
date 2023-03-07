@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Text, Flex, TooltipText, useTooltip } from '@pancakeswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
+import { Text, Flex, TooltipText, useTooltip } from '@offsideswap/uikit'
 import { format } from 'date-fns'
 
 interface PropsType {
@@ -11,7 +11,7 @@ interface PropsType {
 const DateRow: React.FC<React.PropsWithChildren<PropsType>> = ({ title, value, color }) => {
   const { t } = useTranslation()
   const tooltipContent = t(
-    'You will be able to withdraw the staked CAKE and profit only when the staking position is unlocked, i.e. when the staking period ends.',
+    'You will be able to withdraw the staked ROTO and profit only when the staking position is unlocked, i.e. when the staking period ends.',
   )
   const { targetRef, tooltip, tooltipVisible } = useTooltip(tooltipContent, { placement: 'bottom-start' })
 

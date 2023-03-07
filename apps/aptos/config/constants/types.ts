@@ -1,4 +1,4 @@
-import { ChainId, Coin, Currency } from '@pancakeswap/aptos-swap-sdk'
+import { ChainId, Coin, Currency } from '@offsideswap/aptos-swap-sdk'
 
 // a list of tokens by chain
 export type ChainMap<T> = {
@@ -17,7 +17,7 @@ export type IfoStatus = 'idle' | 'coming_soon' | 'live' | 'finished'
 interface IfoPoolInfo {
   saleAmount: string
   raiseAmount: string
-  cakeToBurn: string
+  rotoToBurn: string
   distributionRatio: number // Range [0-1]
 }
 

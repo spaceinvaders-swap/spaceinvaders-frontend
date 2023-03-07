@@ -1,6 +1,6 @@
-import { Card, Heading, PageHeader } from '@pancakeswap/uikit'
+import { Card, Heading, PageHeader } from '@offsideswap/uikit'
 import Page from 'components/Layout/Page'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@offsideswap/localization'
 import ActivityHistory from '../ActivityHistory/ActivityHistory'
 
 const Activity = () => {

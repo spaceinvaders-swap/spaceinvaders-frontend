@@ -1,5 +1,5 @@
-import { Box, lightColors, Progress, Text } from '@pancakeswap/uikit'
-import { ContextApi } from '@pancakeswap/localization'
+import { Box, lightColors, Progress, Text } from '@offsideswap/uikit'
+import { ContextApi } from '@offsideswap/localization'
 import { SaleStatusEnum, UserStatusEnum } from '../../types'
 
 type PreEventProps = {
@@ -56,7 +56,7 @@ const SaleProgress: React.FC<React.PropsWithChildren<PreEventProps>> = ({
       )}
       <Text color={lightColors.invertedContrast} mb="24px" bold>
         {isMintCompleted
-          ? t('All 10,000 Pancake Squad NFTs have now been minted!')
+          ? t('All 10,000 Offside Squad NFTs have now been minted!')
           : saleProgressTextMapping(t, saleStatus, remainingTickets.toString(), maxSupply.toString())}
       </Text>
       {!isMintCompleted && (

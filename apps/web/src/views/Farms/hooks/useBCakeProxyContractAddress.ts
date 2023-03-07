@@ -1,15 +1,15 @@
 import useSWRImmutable from 'swr/immutable'
 import { NO_PROXY_CONTRACT } from 'config/constants'
-import { useBCakeFarmBoosterContract } from 'hooks/useContract'
+import { useBRotoFarmBoosterContract } from 'hooks/useContract'
 import { FetchStatus } from 'config/constants/types'
-import { bCakeSupportedChainId } from '@pancakeswap/farms/src/index'
+import { bRotoSupportedChainId } from '@offsideswap/farms/src/index'
 
-export const useBCakeProxyContractAddress = (account?: string, chainId?: number) => {
-  const bCakeFarmBoosterContract = useBCakeFarmBoosterContract()
-  const isSupportedChain = bCakeSupportedChainId.includes(chainId)
+export const useBRotoProxyContractAddress = (account?: string, chainId?: number) => {
+  const bRotoFarmBoosterContract = useBRotoFarmBoosterContract()
+  const isSupportedChain = bRotoSupportedChainId.includes(chainId)
   const { data, status, mutate } = useSWRImmutable(
     account && isSupportedChain && ['bProxyAddress', account, chainId],
-    async () => bCakeFarmBoosterContract.proxyContract(account),
+    async () => bRotoFarmBoosterContract.proxyContract(account),
   )
   const isLoading = isSupportedChain ? status !== FetchStatus.Fetched : false
 

@@ -1,8 +1,8 @@
-import '@pancakeswap/ui/css/reset.css'
+import '@offsideswap/ui/css/reset.css'
 import '../css/theme.css'
 
 import BigNumber from 'bignumber.js'
-import { PancakeTheme, ResetCSS, ToastListener } from '@pancakeswap/uikit'
+import { OffsideTheme, ResetCSS, ToastListener } from '@offsideswap/uikit'
 import { Analytics } from '@vercel/analytics/react'
 import { Menu } from 'components/Menu'
 import Providers from 'components/Providers'
@@ -26,7 +26,7 @@ BigNumber.config({
 
 declare module 'styled-components' {
   /* eslint-disable @typescript-eslint/no-empty-interface */
-  export interface DefaultTheme extends PancakeTheme {}
+  export interface DefaultTheme extends OffsideTheme {}
 }
 
 function Updaters() {

@@ -1,6 +1,6 @@
-import { Box, Breadcrumbs, Card, Flex, Heading, Text } from '@pancakeswap/uikit'
+import { Box, Breadcrumbs, Card, Flex, Heading, Text } from '@offsideswap/uikit'
 import Link from 'next/link'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@offsideswap/localization'
 import Container from 'components/Layout/Container'
 import useSWR from 'swr'
 import { ProposalState, ProposalType } from 'state/types'

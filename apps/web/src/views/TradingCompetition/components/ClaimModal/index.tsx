@@ -1,6 +1,6 @@
-import { AutoRenewIcon, Button, Flex, Heading, Modal, Text, useToast } from '@pancakeswap/uikit'
+import { AutoRenewIcon, Button, Flex, Heading, Modal, Text, useToast } from '@offsideswap/uikit'
 import { ToastDescriptionWithTx } from 'components/Toast'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@offsideswap/localization'
 import { useCallWithGasPrice } from 'hooks/useCallWithGasPrice'
 import useCatchTxError from 'hooks/useCatchTxError'
 import { useTradingCompetitionContractMoD } from 'hooks/useContract'
@@ -33,9 +33,9 @@ const ClaimModal: React.FC<React.PropsWithChildren<CompetitionProps>> = ({
   const { fetchWithCatchTxError, loading: isConfirming } = useCatchTxError()
   const { t } = useTranslation()
 
-  const { userRewardGroup, userCakeRewards, userDarRewards, userPointReward, canClaimNFT } = userTradingInformation
-  const { cakeReward, darReward } = useModCompetitionRewards({
-    userCakeRewards,
+  const { userRewardGroup, userRotoRewards, userDarRewards, userPointReward, canClaimNFT } = userTradingInformation
+  const { rotoReward, darReward } = useModCompetitionRewards({
+    userRotoRewards,
     userDarRewards,
   })
   const achievement = getRewardGroupAchievements(modPrizes, userRewardGroup, userPointReward)
@@ -72,7 +72,7 @@ const ClaimModal: React.FC<React.PropsWithChildren<CompetitionProps>> = ({
         </Flex>
         {/* tokens */}
         <Heading mt="16px" scale="md" mb={canClaimNFT ? '16px' : '0px'}>
-          {cakeReward.toFixed(4)} CAKE
+          {rotoReward.toFixed(4)} ROTO
         </Heading>
         <Heading mt="16px" scale="md" mb={canClaimNFT ? '16px' : '0px'}>
           {darReward.toFixed(4)} DAR
@@ -91,7 +91,7 @@ const ClaimModal: React.FC<React.PropsWithChildren<CompetitionProps>> = ({
             <ImageWrapper>
               <Image src={MoDAllBunnies} alt="achievement-claim-pcs" width={128} height={95} />
             </ImageWrapper>
-            <Text mt="8px">{t('PancakeSwap NFT')}</Text>
+            <Text mt="8px">{t('OffsideSwap NFT')}</Text>
             <Text color="textSubtle" mt="8px" fontSize="12px" textAlign="center">
               {t(
                 'Your Mines of Dalarnia - Bunny Helmet NFT will be airdropped to your wallet before 00:00 UTC on 2nd June.',

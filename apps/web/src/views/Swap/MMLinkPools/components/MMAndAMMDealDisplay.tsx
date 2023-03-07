@@ -1,6 +1,6 @@
-import { Currency, Trade, TradeType } from '@pancakeswap/sdk'
-import { TradeWithStableSwap } from '@pancakeswap/smart-router/evm'
-import { Box, Text } from '@pancakeswap/uikit'
+import { Currency, Trade, TradeType } from '@offsideswap/sdk'
+import { TradeWithStableSwap } from '@offsideswap/smart-router/evm'
+import { Box, Text } from '@offsideswap/uikit'
 import { useRouter } from 'next/router'
 
 import { Field } from 'state/swap/actions'

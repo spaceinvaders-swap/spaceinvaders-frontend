@@ -1,4 +1,4 @@
-import { useTranslation } from "@pancakeswap/localization";
+import { useTranslation } from "@offsideswap/localization";
 import BigNumber from "bignumber.js";
 import { Button } from "../../../../../components/Button";
 import { Heading } from "../../../../../components/Heading";
@@ -15,7 +15,7 @@ interface HarvestActionProps {
   displayBalance: string | JSX.Element;
   pendingTx: boolean;
   userDataReady: boolean;
-  proxyCakeBalance?: number;
+  proxyRotoBalance?: number;
   handleHarvest: () => void;
 }
 
@@ -25,7 +25,7 @@ const HarvestAction: React.FunctionComponent<React.PropsWithChildren<HarvestActi
   displayBalance,
   pendingTx,
   userDataReady,
-  proxyCakeBalance,
+  proxyRotoBalance,
   handleHarvest,
 }) => {
   const { t } = useTranslation();
@@ -40,7 +40,7 @@ const HarvestAction: React.FunctionComponent<React.PropsWithChildren<HarvestActi
 
   const { targetRef, tooltip, tooltipVisible } = useTooltip(
     `${toolTipBalance} ${t(
-      `CAKE has been harvested to the farm booster contract and will be automatically sent to your wallet upon the next harvest.`
+      `ROTO has been harvested to the farm booster contract and will be automatically sent to your wallet upon the next harvest.`
     )}`,
     {
       placement: "bottom",
@@ -51,7 +51,7 @@ const HarvestAction: React.FunctionComponent<React.PropsWithChildren<HarvestActi
     <ActionContainer style={{ minHeight: 124.5 }}>
       <ActionTitles>
         <Text bold textTransform="uppercase" color="secondary" fontSize="12px" pr="4px">
-          CAKE
+          ROTO
         </Text>
         <Text bold textTransform="uppercase" color="textSubtle" fontSize="12px">
           {t("Earned")}
@@ -59,7 +59,7 @@ const HarvestAction: React.FunctionComponent<React.PropsWithChildren<HarvestActi
       </ActionTitles>
       <ActionContent>
         <div>
-          {proxyCakeBalance ? (
+          {proxyRotoBalance ? (
             <>
               <TooltipText ref={targetRef} decorationColor="secondary">
                 <Heading>{displayBalance}</Heading>

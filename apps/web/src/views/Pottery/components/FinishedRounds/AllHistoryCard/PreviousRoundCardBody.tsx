@@ -1,11 +1,11 @@
 /* eslint-disable react/no-array-index-key */
 import { useMemo } from 'react'
 import styled from 'styled-components'
-import { Box, Flex, Text, CardBody, CardRibbon, LinkExternal, Skeleton, Balance } from '@pancakeswap/uikit'
+import { Box, Flex, Text, CardBody, CardRibbon, LinkExternal, Skeleton, Balance } from '@offsideswap/uikit'
 import BigNumber from 'bignumber.js'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
-import { useTranslation } from '@pancakeswap/localization'
-import { usePriceCakeBusd } from 'state/farms/hooks'
+import { getBalanceNumber } from '@offsideswap/utils/formatBalance'
+import { useTranslation } from '@offsideswap/localization'
+import { usePriceRotoBusd } from 'state/farms/hooks'
 import { PotteryRoundInfo } from 'state/types'
 import Divider from 'components/Divider'
 import { getDrawnDate } from 'views/Lottery/helpers'
@@ -58,11 +58,11 @@ const PreviousRoundCardBody: React.FC<React.PropsWithChildren<PreviousRoundCardB
     currentLanguage: { locale },
   } = useTranslation()
   const { isFetched, roundId, prizePot, totalPlayers, txid, winners, lockDate } = finishedRoundInfo
-  const cakePriceBusd = usePriceCakeBusd()
+  const rotoPriceBusd = usePriceRotoBusd()
 
   const prizeAsBn = new BigNumber(prizePot)
   const prize = getBalanceNumber(prizeAsBn)
-  const prizeInBusd = new BigNumber(prize).times(cakePriceBusd).toNumber()
+  const prizeInBusd = new BigNumber(prize).times(rotoPriceBusd).toNumber()
 
   const isLatest = useMemo(() => new BigNumber(latestRoundId).minus(1).eq(roundId), [latestRoundId, roundId])
 
@@ -101,7 +101,7 @@ const PreviousRoundCardBody: React.FC<React.PropsWithChildren<PreviousRoundCardB
           value={prizeInBusd}
         />
         <Balance
-          unit=" CAKE"
+          unit=" ROTO"
           mb="18px"
           fontSize="14px"
           color="textSubtle"

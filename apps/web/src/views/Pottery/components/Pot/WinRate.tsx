@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
-import { Flex, Box, Button, useModal, Text, Tag, CalculateIcon } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Flex, Box, Button, useModal, Text, Tag, CalculateIcon } from '@offsideswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
 import WinRateModal from 'views/Pottery/components/WinRateModal'
 import { usePotteryData } from 'state/pottery/hook'
 

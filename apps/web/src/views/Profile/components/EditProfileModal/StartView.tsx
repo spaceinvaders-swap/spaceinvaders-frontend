@@ -2,12 +2,12 @@ import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { useAccount } from 'wagmi'
 import BigNumber from 'bignumber.js'
-import { Button, Flex, InjectedModalProps, Message, MessageText } from '@pancakeswap/uikit'
-import { getPancakeProfileAddress } from 'utils/addressHelpers'
-import { useCake } from 'hooks/useContract'
-import { useGetCakeBalance } from 'hooks/useTokenBalance'
-import { useCakeEnable } from 'hooks/useCakeEnable'
-import { useTranslation } from '@pancakeswap/localization'
+import { Button, Flex, InjectedModalProps, Message, MessageText } from '@offsideswap/uikit'
+import { getOffsideProfileAddress } from 'utils/addressHelpers'
+import { useRoto } from 'hooks/useContract'
+import { useGetRotoBalance } from 'hooks/useTokenBalance'
+import { useRotoEnable } from 'hooks/useRotoEnable'
+import { useTranslation } from '@offsideswap/localization'
 import useGetProfileCosts from 'views/Profile/hooks/useGetProfileCosts'
 import { FetchStatus } from 'config/constants/types'
 import { requiresApproval } from 'utils/requiresApproval'
@@ -46,36 +46,36 @@ const AvatarWrapper = styled.div`
 const StartPage: React.FC<React.PropsWithChildren<StartPageProps>> = ({ goToApprove, goToChange, goToRemove }) => {
   const { t } = useTranslation()
   const { address: account } = useAccount()
-  const { reader: cakeContract } = useCake()
+  const { reader: rotoContract } = useRoto()
   const { profile } = useProfile()
-  const { balance: cakeBalance, fetchStatus } = useGetCakeBalance()
+  const { balance: rotoBalance, fetchStatus } = useGetRotoBalance()
   const {
-    costs: { numberCakeToUpdate, numberCakeToReactivate },
+    costs: { numberRotoToUpdate, numberRotoToReactivate },
     isLoading: isProfileCostsLoading,
   } = useGetProfileCosts()
   const [needsApproval, setNeedsApproval] = useState(null)
-  const minimumCakeRequired = profile?.isActive ? numberCakeToUpdate : numberCakeToReactivate
-  const hasMinimumCakeRequired = fetchStatus === FetchStatus.Fetched && cakeBalance.gte(minimumCakeRequired)
-  const { handleEnable, pendingEnableTx } = useCakeEnable(new BigNumber(minimumCakeRequired.toString()))
-  const [showCakeRequireFlow, setShowCakeRequireFlow] = useState(false)
+  const minimumRotoRequired = profile?.isActive ? numberRotoToUpdate : numberRotoToReactivate
+  const hasMinimumRotoRequired = fetchStatus === FetchStatus.Fetched && rotoBalance.gte(minimumRotoRequired)
+  const { handleEnable, pendingEnableTx } = useRotoEnable(new BigNumber(minimumRotoRequired.toString()))
+  const [showRotoRequireFlow, setShowRotoRequireFlow] = useState(false)
 
   useEffect(() => {
-    if (!isProfileCostsLoading && !hasMinimumCakeRequired && !showCakeRequireFlow) {
-      setShowCakeRequireFlow(true)
+    if (!isProfileCostsLoading && !hasMinimumRotoRequired && !showRotoRequireFlow) {
+      setShowRotoRequireFlow(true)
     }
-  }, [isProfileCostsLoading, hasMinimumCakeRequired, showCakeRequireFlow])
+  }, [isProfileCostsLoading, hasMinimumRotoRequired, showRotoRequireFlow])
 
   /**
-   * Check if the wallet has the required CAKE allowance to change their profile pic or reactivate
+   * Check if the wallet has the required ROTO allowance to change their profile pic or reactivate
    * If they don't, we send them to the approval screen first
    */
   useEffect(() => {
     const checkApprovalStatus = async () => {
       const approvalNeeded = await requiresApproval(
-        cakeContract,
+        rotoContract,
         account,
-        getPancakeProfileAddress(),
-        minimumCakeRequired,
+        getOffsideProfileAddress(),
+        minimumRotoRequired,
       )
       setNeedsApproval(approvalNeeded)
     }
@@ -83,7 +83,7 @@ const StartPage: React.FC<React.PropsWithChildren<StartPageProps>> = ({ goToAppr
     if (account && !isProfileCostsLoading) {
       checkApprovalStatus()
     }
-  }, [account, minimumCakeRequired, setNeedsApproval, cakeContract, isProfileCostsLoading])
+  }, [account, minimumRotoRequired, setNeedsApproval, rotoContract, isProfileCostsLoading])
 
   if (!profile) {
     return null
@@ -99,16 +99,16 @@ const StartPage: React.FC<React.PropsWithChildren<StartPageProps>> = ({ goToAppr
           <Message variant="warning" my="16px">
             <MessageText>
               {t(
-                "Before editing your profile, please make sure you've claimed all the unspent CAKE from previous IFOs!",
+                "Before editing your profile, please make sure you've claimed all the unspent ROTO from previous IFOs!",
               )}
             </MessageText>
           </Message>
-          {showCakeRequireFlow ? (
+          {showRotoRequireFlow ? (
             <Flex mb="8px">
               <ApproveConfirmButtons
-                isApproveDisabled={isProfileCostsLoading || hasMinimumCakeRequired}
+                isApproveDisabled={isProfileCostsLoading || hasMinimumRotoRequired}
                 isApproving={pendingEnableTx}
-                isConfirmDisabled={isProfileCostsLoading || !hasMinimumCakeRequired || needsApproval === null}
+                isConfirmDisabled={isProfileCostsLoading || !hasMinimumRotoRequired || needsApproval === null}
                 isConfirming={false}
                 onApprove={handleEnable}
                 onConfirm={needsApproval === true ? goToApprove : goToChange}
@@ -120,7 +120,7 @@ const StartPage: React.FC<React.PropsWithChildren<StartPageProps>> = ({ goToAppr
               width="100%"
               mb="8px"
               onClick={needsApproval === true ? goToApprove : goToChange}
-              disabled={isProfileCostsLoading || !hasMinimumCakeRequired || needsApproval === null}
+              disabled={isProfileCostsLoading || !hasMinimumRotoRequired || needsApproval === null}
             >
               {t('Change Profile Pic')}
             </Button>
@@ -129,12 +129,12 @@ const StartPage: React.FC<React.PropsWithChildren<StartPageProps>> = ({ goToAppr
             {t('Remove Profile Pic')}
           </DangerOutline>
         </>
-      ) : showCakeRequireFlow ? (
+      ) : showRotoRequireFlow ? (
         <Flex mb="8px">
           <ApproveConfirmButtons
-            isApproveDisabled={isProfileCostsLoading || hasMinimumCakeRequired}
+            isApproveDisabled={isProfileCostsLoading || hasMinimumRotoRequired}
             isApproving={pendingEnableTx}
-            isConfirmDisabled={isProfileCostsLoading || !hasMinimumCakeRequired || needsApproval === null}
+            isConfirmDisabled={isProfileCostsLoading || !hasMinimumRotoRequired || needsApproval === null}
             isConfirming={false}
             onApprove={handleEnable}
             onConfirm={needsApproval === true ? goToApprove : goToChange}
@@ -146,7 +146,7 @@ const StartPage: React.FC<React.PropsWithChildren<StartPageProps>> = ({ goToAppr
           width="100%"
           mb="8px"
           onClick={needsApproval === true ? goToApprove : goToChange}
-          disabled={isProfileCostsLoading || !hasMinimumCakeRequired || needsApproval === null}
+          disabled={isProfileCostsLoading || !hasMinimumRotoRequired || needsApproval === null}
         >
           {t('Reactivate Profile')}
         </Button>

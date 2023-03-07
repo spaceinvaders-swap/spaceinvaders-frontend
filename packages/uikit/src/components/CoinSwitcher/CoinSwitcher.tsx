@@ -1,6 +1,6 @@
 import { memo, useCallback, useState, useMemo } from "react";
 import styled from "styled-components";
-import { bnb2CakeImages, cake2BnbImages } from "./constant";
+import { bnb2RotoImages, roto2BnbImages } from "./constant";
 import { SequencePlayer } from "./SequencePlayer";
 
 export const CoinSwitcherWrapper = styled.div`
@@ -44,13 +44,13 @@ export const CoinSwitcher: React.FC<React.PropsWithChildren<{ isDefaultBnb: bool
 const Inner: React.FC<React.PropsWithChildren<{ isDefaultBnb: boolean; onTokenSwitch: () => void }>> = memo(
   ({ isDefaultBnb, onTokenSwitch }) => {
     const [isBnb, setIsBnb] = useState(isDefaultBnb);
-    const bnb2Cake = useMemo(() => bnb2CakeImages(), []);
-    const cake2Bnb = useMemo(() => cake2BnbImages(), []);
+    const bnb2Roto = useMemo(() => bnb2RotoImages(), []);
+    const roto2Bnb = useMemo(() => roto2BnbImages(), []);
     return (
       <CoinSwitcherWrapper>
         <SequenceWrapper className={!isBnb ? "hidden" : undefined}>
           <SequencePlayer
-            images={bnb2Cake}
+            images={bnb2Roto}
             onPlayStart={onTokenSwitch}
             onPlayFinish={() => {
               setIsBnb(false);
@@ -59,7 +59,7 @@ const Inner: React.FC<React.PropsWithChildren<{ isDefaultBnb: boolean; onTokenSw
         </SequenceWrapper>
         <SequenceWrapper className={isBnb ? "hidden" : undefined}>
           <SequencePlayer
-            images={cake2Bnb}
+            images={roto2Bnb}
             onPlayStart={onTokenSwitch}
             onPlayFinish={() => {
               setIsBnb(true);

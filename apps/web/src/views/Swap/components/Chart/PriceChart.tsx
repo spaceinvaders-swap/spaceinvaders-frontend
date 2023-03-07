@@ -1,4 +1,4 @@
-import { ExpandIcon, Flex, IconButton, ShrinkIcon, SyncAltIcon, Text } from '@pancakeswap/uikit'
+import { ExpandIcon, Flex, IconButton, ShrinkIcon, SyncAltIcon, Text } from '@offsideswap/uikit'
 import { CurrencyLogo, DoubleCurrencyLogo } from 'components/Logo'
 import { ChartViewMode } from 'state/user/actions'
 import { useExchangeChartViewManager } from 'state/user/hooks'

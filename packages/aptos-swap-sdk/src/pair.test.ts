@@ -1,4 +1,4 @@
-import { CurrencyAmount } from '@pancakeswap/swap-sdk-core'
+import { CurrencyAmount } from '@offsideswap/swap-sdk-core'
 import { AptosCoin } from './aptosCoin'
 import { Coin } from './coin'
 import { ChainId } from './constants'
@@ -48,9 +48,9 @@ describe('Pair', () => {
         "decimals": 8,
         "isNative": false,
         "isToken": true,
-        "name": "Pancake-BTC-SOL-LP",
+        "name": "Offside-BTC-SOL-LP",
         "projectLink": undefined,
-        "symbol": "Cake-LP",
+        "symbol": "Roto-LP",
       }
     `)
   })

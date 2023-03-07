@@ -1,5 +1,5 @@
-import { Flex, Text, Button, ArrowUpIcon, LinkExternal } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Flex, Text, Button, ArrowUpIcon, LinkExternal } from '@offsideswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
 import { getBlockExploreLink } from 'utils'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { Divider } from './styles'

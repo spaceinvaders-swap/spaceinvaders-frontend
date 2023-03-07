@@ -12,19 +12,19 @@
 
 import { Router } from 'itty-router'
 import { error, json, missing } from 'itty-router-extras'
-import { wrapCorsHeader, handleCors, CORS_ALLOW } from '@pancakeswap/worker-utils'
-import { fetchCakePrice, saveFarms, saveLPsAPR } from './handler'
+import { wrapCorsHeader, handleCors, CORS_ALLOW } from '@offsideswap/worker-utils'
+import { fetchRotoPrice, saveFarms, saveLPsAPR } from './handler'
 import { farmFetcher, requireChainId } from './helper'
 import { FarmKV } from './kv'
 
 const router = Router()
 
-router.get('/price/cake', async (_, event) => {
+router.get('/price/roto', async (_, event) => {
   const cache = caches.default
   const cacheResponse = await cache.match(event.request)
   let response
   if (!cacheResponse) {
-    const price = await fetchCakePrice()
+    const price = await fetchRotoPrice()
     response = json(
       { price, updatedAt: new Date().toISOString() },
       {

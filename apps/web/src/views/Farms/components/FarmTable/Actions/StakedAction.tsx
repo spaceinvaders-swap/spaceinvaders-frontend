@@ -1,6 +1,6 @@
 import { TransactionResponse } from '@ethersproject/providers'
-import { useTranslation } from '@pancakeswap/localization'
-import { useModal, useToast, Farm as FarmUI } from '@pancakeswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
+import { useModal, useToast, Farm as FarmUI } from '@offsideswap/uikit'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import { BASE_ADD_LIQUIDITY_URL, DEFAULT_TOKEN_DECIMAL } from 'config'
@@ -14,17 +14,17 @@ import { fetchFarmUserDataAsync } from 'state/farms'
 import { useTransactionAdder, useNonBscFarmPendingTransaction } from 'state/transactions/hooks'
 import { FarmTransactionStatus, NonBscFarmStepType } from 'state/transactions/actions'
 import { pickFarmTransactionTx } from 'state/global/actions'
-import { usePriceCakeBusd, useFarmFromPid } from 'state/farms/hooks'
-import BCakeCalculator from 'views/Farms/components/YieldBooster/components/BCakeCalculator'
+import { usePriceRotoBusd, useFarmFromPid } from 'state/farms/hooks'
+import BRotoCalculator from 'views/Farms/components/YieldBooster/components/BRotoCalculator'
 import getLiquidityUrlPathParts from 'utils/getLiquidityUrlPathParts'
 import BigNumber from 'bignumber.js'
 import useNativeCurrency from 'hooks/useNativeCurrency'
-import { formatLpBalance } from '@pancakeswap/utils/formatBalance'
-import { ChainId, WNATIVE, NATIVE } from '@pancakeswap/sdk'
+import { formatLpBalance } from '@offsideswap/utils/formatBalance'
+import { ChainId, WNATIVE, NATIVE } from '@offsideswap/sdk'
 import WalletModal, { WalletView } from 'components/Menu/UserMenu/WalletModal'
 import { useAccount } from 'wagmi'
 import { useIsBloctoETH } from 'views/Farms'
-import { FarmWithStakedValue } from '@pancakeswap/farms'
+import { FarmWithStakedValue } from '@offsideswap/farms'
 import useApproveFarm from '../../../hooks/useApproveFarm'
 import useStakeFarms from '../../../hooks/useStakeFarms'
 import useUnstakeFarms from '../../../hooks/useUnstakeFarms'
@@ -148,8 +148,8 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
   const { tokenBalance, stakedBalance, allowance } = userData || {}
 
   const router = useRouter()
-  const cakePrice = usePriceCakeBusd()
-  const [bCakeMultiplier, setBCakeMultiplier] = useState<number | null>(() => null)
+  const rotoPrice = usePriceRotoBusd()
+  const [bRotoMultiplier, setBRotoMultiplier] = useState<number | null>(() => null)
 
   const liquidityUrlPathParts = getLiquidityUrlPathParts({
     quoteTokenAddress: quoteToken.address,
@@ -164,7 +164,7 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
 
   const crossChainWarningText = useMemo(() => {
     return isFirstTime
-      ? t('A small amount of %nativeToken% is required for the first-time setup of cross-chain CAKE farming.', {
+      ? t('A small amount of %nativeToken% is required for the first-time setup of cross-chain ROTO farming.', {
           nativeToken: native.symbol,
         })
       : t('For safety, cross-chain transactions will take around 30 minutes to confirm.')
@@ -293,12 +293,12 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
     }
   }
 
-  const bCakeCalculatorSlot = (calculatorBalance) => (
-    <BCakeCalculator
+  const bRotoCalculatorSlot = (calculatorBalance) => (
+    <BRotoCalculator
       targetInputBalance={calculatorBalance}
-      earningTokenPrice={cakePrice.toNumber()}
+      earningTokenPrice={rotoPrice.toNumber()}
       lpTokenStakedAmount={lpTokenStakedAmount}
-      setBCakeMultiplier={setBCakeMultiplier}
+      setBRotoMultiplier={setBRotoMultiplier}
     />
   )
 
@@ -324,9 +324,9 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
       tokenName={lpSymbol}
       multiplier={multiplier}
       addLiquidityUrl={addLiquidityUrl}
-      cakePrice={cakePrice}
+      rotoPrice={rotoPrice}
       showActiveBooster={boosterState === YieldBoosterState.ACTIVE}
-      bCakeMultiplier={bCakeMultiplier}
+      bRotoMultiplier={bRotoMultiplier}
       showCrossChainFarmWarning={chainId !== ChainId.BSC && chainId !== ChainId.BSC_TESTNET}
       crossChainWarningText={crossChainWarningText}
       decimals={18}
@@ -334,7 +334,7 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
       enablePendingTx={pendingTx}
       onConfirm={handleStake}
       handleApprove={handleApprove}
-      bCakeCalculatorSlot={bCakeCalculatorSlot}
+      bRotoCalculatorSlot={bRotoCalculatorSlot}
     />,
     true,
     true,

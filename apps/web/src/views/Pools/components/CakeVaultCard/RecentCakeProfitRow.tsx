@@ -1,25 +1,25 @@
-import { Flex, Pool, Text } from '@pancakeswap/uikit'
+import { Flex, Pool, Text } from '@offsideswap/uikit'
 import { useAccount } from 'wagmi'
-import { useTranslation } from '@pancakeswap/localization'
-import { usePriceCakeBusd } from 'state/farms/hooks'
+import { useTranslation } from '@offsideswap/localization'
+import { usePriceRotoBusd } from 'state/farms/hooks'
 import { useVaultPoolByKey } from 'state/pools/hooks'
 import { VaultKey, DeserializedLockedVaultUser } from 'state/types'
-import { Token } from '@pancakeswap/sdk'
-import { getCakeVaultEarnings } from 'views/Pools/helpers'
-import RecentCakeProfitBalance from './RecentCakeProfitBalance'
+import { Token } from '@offsideswap/sdk'
+import { getRotoVaultEarnings } from 'views/Pools/helpers'
+import RecentRotoProfitBalance from './RecentRotoProfitBalance'
 
-const RecentCakeProfitCountdownRow = ({ pool }: { pool: Pool.DeserializedPool<Token> }) => {
+const RecentRotoProfitCountdownRow = ({ pool }: { pool: Pool.DeserializedPool<Token> }) => {
   const { t } = useTranslation()
   const { address: account } = useAccount()
   const { pricePerFullShare, userData } = useVaultPoolByKey(pool.vaultKey)
-  const cakePriceBusd = usePriceCakeBusd()
-  const { hasAutoEarnings, autoCakeToDisplay } = getCakeVaultEarnings(
+  const rotoPriceBusd = usePriceRotoBusd()
+  const { hasAutoEarnings, autoRotoToDisplay } = getRotoVaultEarnings(
     account,
-    userData.cakeAtLastUserAction,
+    userData.rotoAtLastUserAction,
     userData.userShares,
     pricePerFullShare,
-    cakePriceBusd.toNumber(),
-    pool.vaultKey === VaultKey.CakeVault
+    rotoPriceBusd.toNumber(),
+    pool.vaultKey === VaultKey.RotoVault
       ? (userData as DeserializedLockedVaultUser).currentPerformanceFee.plus(
           (userData as DeserializedLockedVaultUser).currentOverdueFee,
         )
@@ -32,10 +32,10 @@ const RecentCakeProfitCountdownRow = ({ pool }: { pool: Pool.DeserializedPool<To
 
   return (
     <Flex alignItems="center" justifyContent="space-between">
-      <Text fontSize="14px">{`${t('Recent CAKE profit')}:`}</Text>
-      {hasAutoEarnings && <RecentCakeProfitBalance cakeToDisplay={autoCakeToDisplay} pool={pool} account={account} />}
+      <Text fontSize="14px">{`${t('Recent ROTO profit')}:`}</Text>
+      {hasAutoEarnings && <RecentRotoProfitBalance rotoToDisplay={autoRotoToDisplay} pool={pool} account={account} />}
     </Flex>
   )
 }
 
-export default RecentCakeProfitCountdownRow
+export default RecentRotoProfitCountdownRow

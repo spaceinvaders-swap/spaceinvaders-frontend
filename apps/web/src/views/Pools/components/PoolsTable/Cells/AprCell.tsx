@@ -1,8 +1,8 @@
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { Text, useMatchBreakpoints, Pool } from '@pancakeswap/uikit'
+import { BIG_ZERO } from '@offsideswap/utils/bigNumber'
+import { Text, useMatchBreakpoints, Pool } from '@offsideswap/uikit'
 import BigNumber from 'bignumber.js'
-import { useTranslation } from '@pancakeswap/localization'
-import { Token } from '@pancakeswap/sdk'
+import { useTranslation } from '@offsideswap/localization'
+import { Token } from '@offsideswap/sdk'
 
 import Apr from '../../Apr'
 

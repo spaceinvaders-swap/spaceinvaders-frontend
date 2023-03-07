@@ -1,5 +1,5 @@
-import { useAccount, useProvider } from '@pancakeswap/awgmi'
-import { useIsMounted } from '@pancakeswap/hooks'
+import { useAccount, useProvider } from '@offsideswap/awgmi'
+import { useIsMounted } from '@offsideswap/hooks'
 import { useActiveChainId, useActiveNetwork } from './useNetwork'
 
 export default function useActiveWeb3React() {

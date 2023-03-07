@@ -1,5 +1,5 @@
-import { Heading, Button, Text } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Heading, Button, Text } from '@offsideswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
 import { CompetitionProps } from 'views/TradingCompetition/types'
 import { useAccount } from 'wagmi'
 import { useRouter } from 'next/router'
@@ -20,7 +20,7 @@ const ReactivateProfile: React.FC<React.PropsWithChildren<CompetitionProps>> = (
         {t('Reactivate your profile!')}
       </Heading>
       <Text color="textSubtle">
-        {t('It looks like you’ve disabled your account by removing your Pancake Collectible (NFT) profile picture.')}
+        {t('It looks like you’ve disabled your account by removing your Offside Collectible (NFT) profile picture.')}
       </Text>
       <Text>
         {t('You need to reactivate your profile by replacing your profile picture in order to join the competition.')}

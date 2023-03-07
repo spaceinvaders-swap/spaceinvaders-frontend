@@ -2,7 +2,7 @@ import { useAccount } from 'wagmi'
 import { batch, useSelector } from 'react-redux'
 import { useAppDispatch } from 'state'
 import { useFastRefreshEffect } from 'hooks/useRefreshEffect'
-import { fetchCakeVaultPublicData, fetchCakeVaultUserData } from 'state/pools'
+import { fetchRotoVaultPublicData, fetchRotoVaultUserData } from 'state/pools'
 import { fetchLastVaultAddressAsync, fetchPublicPotteryDataAsync, fetchPotteryUserDataAsync } from './index'
 import { potteryDataSelector } from './selectors'
 import { State } from '../types'
@@ -17,11 +17,11 @@ export const usePotteryFetch = () => {
 
     if (potteryVaultAddress) {
       batch(() => {
-        dispatch(fetchCakeVaultPublicData())
+        dispatch(fetchRotoVaultPublicData())
         dispatch(fetchPublicPotteryDataAsync())
         if (account) {
           dispatch(fetchPotteryUserDataAsync(account))
-          dispatch(fetchCakeVaultUserData({ account }))
+          dispatch(fetchRotoVaultUserData({ account }))
         }
       })
     }

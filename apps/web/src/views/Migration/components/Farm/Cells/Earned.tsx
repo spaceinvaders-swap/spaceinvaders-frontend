@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Flex, Text, useMatchBreakpoints, Pool } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Flex, Text, useMatchBreakpoints, Pool } from '@offsideswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
 
 const StyledCell = styled(Pool.BaseCell)`
   display: none;
@@ -20,7 +20,7 @@ export interface EarnedProps {
 const Earned: React.FC<React.PropsWithChildren<EarnedProps>> = ({ earnings }) => {
   const { t } = useTranslation()
   const { isMobile } = useMatchBreakpoints()
-  const labelText = t('%asset% Earned', { asset: 'CAKE' })
+  const labelText = t('%asset% Earned', { asset: 'ROTO' })
 
   return (
     <StyledCell role="cell">

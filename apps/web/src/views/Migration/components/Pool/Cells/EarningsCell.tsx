@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Text, Flex, useMatchBreakpoints, Balance, Pool } from '@pancakeswap/uikit'
+import { Text, Flex, useMatchBreakpoints, Balance, Pool } from '@offsideswap/uikit'
 import BigNumber from 'bignumber.js'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
-import { useTranslation } from '@pancakeswap/localization'
-import { Token } from '@pancakeswap/sdk'
+import { BIG_ZERO } from '@offsideswap/utils/bigNumber'
+import { getBalanceNumber } from '@offsideswap/utils/formatBalance'
+import { useTranslation } from '@offsideswap/localization'
+import { Token } from '@offsideswap/sdk'
 
 interface EarningsCellProps {
   pool: Pool.DeserializedPool<Token>

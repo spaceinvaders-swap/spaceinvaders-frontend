@@ -1,10 +1,10 @@
-import '@pancakeswap/ui/css/reset.css'
-import { PancakeTheme, ResetCSS, dark, light, ModalProvider, UIKitProvider } from '@pancakeswap/uikit'
+import '@offsideswap/ui/css/reset.css'
+import { OffsideTheme, ResetCSS, dark, light, ModalProvider, UIKitProvider } from '@offsideswap/uikit'
 import { AppProps } from 'next/app'
 import Script from 'next/script'
 import { Analytics } from '@vercel/analytics/react'
 import { Provider as WrapBalancerProvider } from 'react-wrap-balancer'
-import { LanguageProvider } from '@pancakeswap/localization'
+import { LanguageProvider } from '@offsideswap/localization'
 import { createGlobalStyle } from 'styled-components'
 import { ThemeProvider as NextThemeProvider, useTheme as useNextTheme } from 'next-themes'
 import Head from 'next/head'
@@ -14,7 +14,7 @@ import Menu from '../components/Menu'
 
 declare module 'styled-components' {
   /* eslint-disable @typescript-eslint/no-empty-interface */
-  export interface DefaultTheme extends PancakeTheme {}
+  export interface DefaultTheme extends OffsideTheme {}
 }
 
 const StyledThemeProvider: React.FC<React.PropsWithChildren> = (props) => {

@@ -2,7 +2,7 @@
   {
     "inputs": [
       { "internalType": "address", "name": "_WETHAddress", "type": "address" },
-      { "internalType": "address", "name": "_pancakeswapV2", "type": "address" },
+      { "internalType": "address", "name": "_offsideswapV2", "type": "address" },
       { "internalType": "address", "name": "_stableswapFactory", "type": "address" }
     ],
     "stateMutability": "nonpayable",
@@ -67,7 +67,7 @@
   },
   {
     "inputs": [],
-    "name": "pancakeswapV2",
+    "name": "offsideswapV2",
     "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
     "stateMutability": "view",
     "type": "function"
@@ -93,7 +93,7 @@
       { "internalType": "contract IERC20", "name": "dstToken", "type": "address" },
       { "internalType": "uint256", "name": "amount", "type": "uint256" },
       { "internalType": "uint256", "name": "minReturn", "type": "uint256" },
-      { "internalType": "enum PancakeSwapSmartRouter.FLAG", "name": "flag", "type": "uint8" }
+      { "internalType": "enum OffsideSwapSmartRouter.FLAG", "name": "flag", "type": "uint8" }
     ],
     "name": "swap",
     "outputs": [{ "internalType": "uint256", "name": "returnAmount", "type": "uint256" }],
@@ -105,7 +105,7 @@
       { "internalType": "contract IERC20[]", "name": "tokens", "type": "address[]" },
       { "internalType": "uint256", "name": "amount", "type": "uint256" },
       { "internalType": "uint256", "name": "minReturn", "type": "uint256" },
-      { "internalType": "enum PancakeSwapSmartRouter.FLAG[]", "name": "flags", "type": "uint8[]" }
+      { "internalType": "enum OffsideSwapSmartRouter.FLAG[]", "name": "flags", "type": "uint8[]" }
     ],
     "name": "swapMulti",
     "outputs": [{ "internalType": "uint256", "name": "returnAmount", "type": "uint256" }],

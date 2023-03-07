@@ -1,8 +1,8 @@
 /* eslint-disable camelcase */
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { BIG_ZERO } from '@offsideswap/utils/bigNumber'
 import BigNumber from 'bignumber.js'
 import { Ifo } from 'config/constants/types'
-import { useCakePrice } from 'hooks/useStablePrice'
+import { useRotoPrice } from 'hooks/useStablePrice'
 import { useMemo } from 'react'
 import { IFO_RESOURCE_ACCOUNT_TYPE_METADATA, IFO_RESOURCE_ACCOUNT_TYPE_POOL_STORE } from 'views/Ifos/constants'
 import { RootObject as IFOPool } from 'views/Ifos/generated/IFOPool'
@@ -57,10 +57,10 @@ const initState = {
 export const useGetPublicIfoData = (ifo: Ifo): PublicIfoData => {
   const resources = useIfoResources(ifo)
 
-  // TODO: Currently we only support CAKE Price
-  const { data: cakePrice } = useCakePrice()
+  // TODO: Currently we only support ROTO Price
+  const { data: rotoPrice } = useRotoPrice()
 
-  const currencyPriceInUSD = useMemo(() => new BigNumber(cakePrice), [cakePrice])
+  const currencyPriceInUSD = useMemo(() => new BigNumber(rotoPrice), [rotoPrice])
 
   const finalState = useMemo(() => {
     if (

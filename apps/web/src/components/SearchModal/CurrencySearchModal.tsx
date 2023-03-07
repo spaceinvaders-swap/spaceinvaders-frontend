@@ -1,5 +1,5 @@
 import { useCallback, useState, useRef, useEffect } from 'react'
-import { Currency, Token } from '@pancakeswap/sdk'
+import { Currency, Token } from '@offsideswap/sdk'
 import {
   ModalContainer,
   ModalHeader,
@@ -13,14 +13,14 @@ import {
   useMatchBreakpoints,
   MODAL_SWIPE_TO_CLOSE_VELOCITY,
   ImportList,
-} from '@pancakeswap/uikit'
+} from '@offsideswap/uikit'
 import styled from 'styled-components'
 import { useListState } from 'state/lists/lists'
 import { useAllLists } from 'state/lists/hooks'
-import { usePreviousValue } from '@pancakeswap/hooks'
-import { TokenList } from '@pancakeswap/token-lists'
-import { useTranslation } from '@pancakeswap/localization'
-import { enableList, removeList, useFetchListCallback } from '@pancakeswap/token-lists/react'
+import { usePreviousValue } from '@offsideswap/hooks'
+import { TokenList } from '@offsideswap/token-lists'
+import { useTranslation } from '@offsideswap/localization'
+import { enableList, removeList, useFetchListCallback } from '@offsideswap/token-lists/react'
 import CurrencySearch from './CurrencySearch'
 import ImportToken from './ImportToken'
 import Manage from './Manage'

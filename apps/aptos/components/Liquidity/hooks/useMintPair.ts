@@ -1,5 +1,5 @@
-import { Currency, CurrencyAmount, JSBI, Pair } from '@pancakeswap/aptos-swap-sdk'
-import { useTranslation } from '@pancakeswap/localization'
+import { Currency, CurrencyAmount, JSBI, Pair } from '@offsideswap/aptos-swap-sdk'
+import { useTranslation } from '@offsideswap/localization'
 import { useCurrencyBalance } from 'hooks/Balances'
 import { PairState, usePair } from 'hooks/usePairs'
 import useTotalSupply from 'hooks/useTotalSupply'

@@ -1,10 +1,10 @@
 import styled from 'styled-components'
-import { Flex, Link, Skeleton, Text, TimerIcon, Balance, Pool } from '@pancakeswap/uikit'
+import { Flex, Link, Skeleton, Text, TimerIcon, Balance, Pool } from '@offsideswap/uikit'
 import { getBlockExploreLink } from 'utils'
 import { useCurrentBlock } from 'state/block/hooks'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@offsideswap/localization'
 import { getPoolBlockInfo } from 'views/Pools/helpers'
-import { Token } from '@pancakeswap/sdk'
+import { Token } from '@offsideswap/sdk'
 
 interface FinishCellProps {
   pool: Pool.DeserializedPool<Token>
@@ -22,7 +22,7 @@ const EndsInCell: React.FC<React.PropsWithChildren<FinishCellProps>> = ({ pool }
   const { shouldShowBlockCountdown, blocksUntilStart, blocksRemaining, hasPoolStarted, blocksToDisplay } =
     getPoolBlockInfo(pool, currentBlock)
 
-  const isCakePool = sousId === 0
+  const isRotoPool = sousId === 0
 
   const renderBlocks = shouldShowBlockCountdown ? (
     <Flex alignItems="center">
@@ -51,7 +51,7 @@ const EndsInCell: React.FC<React.PropsWithChildren<FinishCellProps>> = ({ pool }
   // anywhere else
   const isLoadingBlockData = !currentBlock || (!blocksRemaining && !blocksUntilStart)
   const isLoadingPublicData = hasPoolStarted ? !totalStaked.gt(0) || isLoadingBlockData : isLoadingBlockData
-  const showLoading = isLoadingPublicData && !isCakePool && !isFinished
+  const showLoading = isLoadingPublicData && !isRotoPool && !isFinished
   return (
     <StyledCell role="cell">
       <Pool.CellContent>

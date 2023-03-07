@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react'
-import { Currency, CurrencyAmount, Pair, Percent, Token } from '@pancakeswap/sdk'
+import { Currency, CurrencyAmount, Pair, Percent, Token } from '@offsideswap/sdk'
 import {
   AddIcon,
   Button,
@@ -8,8 +8,8 @@ import {
   TransactionErrorContent,
   ConfirmationModalContent,
   AutoColumn,
-} from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+} from '@offsideswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
 import TransactionConfirmationModal from 'components/TransactionConfirmationModal'
 import { RowBetween, RowFixed } from 'components/Layout/Row'
 import { Field } from 'state/burn/actions'

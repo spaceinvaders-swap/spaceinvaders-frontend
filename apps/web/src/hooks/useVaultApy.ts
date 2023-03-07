@@ -4,10 +4,10 @@ import _toString from 'lodash/toString'
 import { BLOCKS_PER_YEAR } from 'config'
 import masterChefAbi from 'config/abi/masterchef.json'
 import { useCallback, useMemo } from 'react'
-import { useCakeVault } from 'state/pools/hooks'
+import { useRotoVault } from 'state/pools/hooks'
 import useSWRImmutable from 'swr/immutable'
 import { getMasterChefAddress } from 'utils/addressHelpers'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { BIG_ZERO } from '@offsideswap/utils/bigNumber'
 import { BOOST_WEIGHT, DURATION_FACTOR, MAX_LOCK_DURATION } from 'config/constants/pools'
 import { multicallv2 } from '../utils/multicall'
 
@@ -19,11 +19,11 @@ const DEFAULT_PERFORMANCE_FEE_DECIMALS = 2
 const PRECISION_FACTOR = BigNumber.from('1000000000000')
 
 const getFlexibleApy = (
-  totalCakePoolEmissionPerYear: FixedNumber,
+  totalRotoPoolEmissionPerYear: FixedNumber,
   pricePerFullShare: FixedNumber,
   totalShares: FixedNumber,
 ) =>
-  totalCakePoolEmissionPerYear
+  totalRotoPoolEmissionPerYear
     .mulUnsafe(FixedNumber.from(WeiPerEther))
     .divUnsafe(pricePerFullShare)
     .divUnsafe(totalShares)
@@ -39,29 +39,29 @@ const _getBoostFactor = (boostWeight: BigNumber, duration: number, durationFacto
 const getLockedApy = (flexibleApy: string, boostFactor: FixedNumber) =>
   FixedNumber.from(flexibleApy).mulUnsafe(boostFactor.addUnsafe(FixedNumber.from('1')))
 
-const cakePoolPID = 0
+const rotoPoolPID = 0
 
 export function useVaultApy({ duration = MAX_LOCK_DURATION }: { duration?: number } = {}) {
   const {
     totalShares = BIG_ZERO,
     pricePerFullShare = BIG_ZERO,
     fees: { performanceFeeAsDecimal } = { performanceFeeAsDecimal: DEFAULT_PERFORMANCE_FEE_DECIMALS },
-  } = useCakeVault()
+  } = useRotoVault()
 
   const totalSharesAsEtherBN = useMemo(() => FixedNumber.from(totalShares.toString()), [totalShares])
   const pricePerFullShareAsEtherBN = useMemo(() => FixedNumber.from(pricePerFullShare.toString()), [pricePerFullShare])
 
-  const { data: totalCakePoolEmissionPerYear } = useSWRImmutable('masterChef-total-cake-pool-emission', async () => {
+  const { data: totalRotoPoolEmissionPerYear } = useSWRImmutable('masterChef-total-roto-pool-emission', async () => {
     const calls = [
       {
         address: masterChefAddress,
-        name: 'cakePerBlock',
+        name: 'rotoPerBlock',
         params: [false],
       },
       {
         address: masterChefAddress,
         name: 'poolInfo',
-        params: [cakePoolPID],
+        params: [rotoPoolPID],
       },
       {
         address: masterChefAddress,
@@ -69,26 +69,26 @@ export function useVaultApy({ duration = MAX_LOCK_DURATION }: { duration?: numbe
       },
     ]
 
-    const [[specialFarmsPerBlock], cakePoolInfo, [totalSpecialAllocPoint]] = await multicallv2({
+    const [[specialFarmsPerBlock], rotoPoolInfo, [totalSpecialAllocPoint]] = await multicallv2({
       abi: masterChefAbi,
       calls,
     })
 
-    const cakePoolSharesInSpecialFarms = FixedNumber.from(cakePoolInfo.allocPoint).divUnsafe(
+    const rotoPoolSharesInSpecialFarms = FixedNumber.from(rotoPoolInfo.allocPoint).divUnsafe(
       FixedNumber.from(totalSpecialAllocPoint),
     )
     return FixedNumber.from(specialFarmsPerBlock)
       .mulUnsafe(FixedNumber.from(BLOCKS_PER_YEAR))
-      .mulUnsafe(cakePoolSharesInSpecialFarms)
+      .mulUnsafe(rotoPoolSharesInSpecialFarms)
   })
 
   const flexibleApy = useMemo(
     () =>
-      totalCakePoolEmissionPerYear &&
+      totalRotoPoolEmissionPerYear &&
       !pricePerFullShareAsEtherBN.isZero() &&
       !totalSharesAsEtherBN.isZero() &&
-      getFlexibleApy(totalCakePoolEmissionPerYear, pricePerFullShareAsEtherBN, totalSharesAsEtherBN).toString(),
-    [pricePerFullShareAsEtherBN, totalCakePoolEmissionPerYear, totalSharesAsEtherBN],
+      getFlexibleApy(totalRotoPoolEmissionPerYear, pricePerFullShareAsEtherBN, totalSharesAsEtherBN).toString(),
+    [pricePerFullShareAsEtherBN, totalRotoPoolEmissionPerYear, totalSharesAsEtherBN],
   )
 
   const boostFactor = useMemo(() => _getBoostFactor(BOOST_WEIGHT, duration, DURATION_FACTOR), [duration])

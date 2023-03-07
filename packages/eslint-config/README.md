@@ -1,6 +1,6 @@
-# eslint-config-pancake
+# eslint-config-offside
 
-Pancake Eslint config with:
+Offside Eslint config with:
 
 - Airbnb config
 - Typescript
@@ -9,7 +9,7 @@ Pancake Eslint config with:
 ## Usage
 
 ```
-npx install-peerdeps --dev @pancakeswap/eslint-config-pancake
+npx install-peerdeps --dev @offsideswap/eslint-config-offside
 ```
 
-Add `"extends": "@pancakeswap/eslint-config-pancake"` to your eslint config file.
+Add `"extends": "@offsideswap/eslint-config-offside"` to your eslint config file.

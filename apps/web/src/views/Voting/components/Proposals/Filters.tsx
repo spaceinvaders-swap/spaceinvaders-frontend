@@ -1,7 +1,7 @@
 import { ChangeEvent } from 'react'
-import { Flex, Radio, Text } from '@pancakeswap/uikit'
+import { Flex, Radio, Text } from '@offsideswap/uikit'
 import styled from 'styled-components'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@offsideswap/localization'
 import { ProposalState } from 'state/types'
 
 interface FiltersProps {

@@ -13,17 +13,17 @@ import {
   useMatchBreakpoints,
   MessageText,
   Message,
-} from '@pancakeswap/uikit'
+} from '@offsideswap/uikit'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import ConnectWalletButton from 'components/ConnectWalletButton'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@offsideswap/localization'
 import Image from 'next/legacy/image'
 import NextLink from 'next/link'
 import styled, { useTheme } from 'styled-components'
-import { useBCakeProxyContractAddress } from '../hooks/useBCakeProxyContractAddress'
-import useBCakeProxyBalance from '../hooks/useBCakeProxyBalance'
+import { useBRotoProxyContractAddress } from '../hooks/useBRotoProxyContractAddress'
+import useBRotoProxyBalance from '../hooks/useBRotoProxyBalance'
 import { useUserBoosterStatus } from '../hooks/useUserBoosterStatus'
-import { useUserLockedCakeStatus } from '../hooks/useUserLockedCakeStatus'
+import { useUserLockedRotoStatus } from '../hooks/useUserLockedRotoStatus'
 import boosterCardImage from '../images/boosterCardImage.png'
 import CreateProxyButton from './YieldBooster/components/CreateProxyButton'
 
@@ -70,33 +70,33 @@ const StyledCardFooter = styled(CardFooter)`
   }
 `
 
-export const BCakeProxyCakeBalanceCard = () => {
+export const BRotoProxyRotoBalanceCard = () => {
   const { t } = useTranslation()
-  const { bCakeProxyBalance, bCakeProxyDisplayBalance, isLoading } = useBCakeProxyBalance()
-  return !isLoading && bCakeProxyBalance > 0 ? (
+  const { bRotoProxyBalance, bRotoProxyDisplayBalance, isLoading } = useBRotoProxyBalance()
+  return !isLoading && bRotoProxyBalance > 0 ? (
     <Message marginBottom="8px" variant="warning">
       <MessageText>
         {t(
-          'There is %amount% CAKE in the proxy booster contract. In order to harvest that amount you should withdraw, deposit or harvest one of the boosted farms.',
-          { amount: bCakeProxyDisplayBalance },
+          'There is %amount% ROTO in the proxy booster contract. In order to harvest that amount you should withdraw, deposit or harvest one of the boosted farms.',
+          { amount: bRotoProxyDisplayBalance },
         )}
       </MessageText>
     </Message>
   ) : null
 }
 
-export const useBCakeTooltipContent = () => {
+export const useBRotoTooltipContent = () => {
   const { t } = useTranslation()
   const tooltipContent = (
     <>
       <Box mb="20px">
         {t(
-          'Yield Boosters allow you to boost your farming yields by locking CAKE in the fixed-term staking CAKE pool. The more CAKE you lock, and the longer you lock them, the higher the boost you will receive.',
+          'Yield Boosters allow you to boost your farming yields by locking ROTO in the fixed-term staking ROTO pool. The more ROTO you lock, and the longer you lock them, the higher the boost you will receive.',
         )}
       </Box>
       <Box>
         {t('To learn more, check out the')}
-        <Link target="_blank" href="https://medium.com/pancakeswap/introducing-bcake-farm-yield-boosters-b27b7a6f0f84">
+        <Link target="_blank" href="https://medium.com/offsideswap/introducing-broto-farm-yield-boosters-b27b7a6f0f84">
           {t('Medium Article')}
         </Link>
       </Box>
@@ -105,12 +105,12 @@ export const useBCakeTooltipContent = () => {
   return tooltipContent
 }
 
-export const BCakeBoosterCard = () => {
+export const BRotoBoosterCard = () => {
   const { t } = useTranslation()
   const theme = useTheme()
   const { isMobile } = useMatchBreakpoints()
 
-  const tooltipContent = useBCakeTooltipContent()
+  const tooltipContent = useBRotoTooltipContent()
 
   const { targetRef, tooltip, tooltipVisible } = useTooltip(tooltipContent, {
     placement: 'bottom-start',
@@ -133,7 +133,7 @@ export const BCakeBoosterCard = () => {
           </Box>
         </StyledCardBody>
         <StyledCardFooter>
-          <BCakeProxyCakeBalanceCard />
+          <BRotoProxyRotoBalanceCard />
           <CardContent />
         </StyledCardFooter>
       </Card>
@@ -144,9 +144,9 @@ export const BCakeBoosterCard = () => {
 const CardContent: React.FC = () => {
   const { t } = useTranslation()
   const { account, chainId } = useActiveWeb3React()
-  const { proxyCreated, refreshProxyAddress } = useBCakeProxyContractAddress(account, chainId)
+  const { proxyCreated, refreshProxyAddress } = useBRotoProxyContractAddress(account, chainId)
   const { maxBoostCounts, remainingCounts } = useUserBoosterStatus(account)
-  const { locked, lockedEnd } = useUserLockedCakeStatus()
+  const { locked, lockedEnd } = useUserLockedRotoStatus()
   const theme = useTheme()
 
   if (!account)
@@ -156,7 +156,7 @@ const CardContent: React.FC = () => {
           {t('Connect wallet to view booster')}
         </Text>
         <Text color="textSubtle" fontSize={12} mb="16px">
-          {t('An active fixed-term CAKE staking position is required for activating farm yield boosters.')}
+          {t('An active fixed-term ROTO staking position is required for activating farm yield boosters.')}
         </Text>
         <ConnectWalletButton width="100%" style={{ backgroundColor: theme.colors.textSubtle }} />
       </Box>
@@ -165,10 +165,10 @@ const CardContent: React.FC = () => {
     return (
       <Box width="100%">
         <Text color="textSubtle" fontSize={12} bold>
-          {t('No CAKE locked')}
+          {t('No ROTO locked')}
         </Text>
         <Text color="textSubtle" fontSize={12} mb="16px">
-          {t('An active fixed-term CAKE staking position is required for activating farm yield boosters.')}
+          {t('An active fixed-term ROTO staking position is required for activating farm yield boosters.')}
         </Text>
         <NextLink href="/pools" passHref>
           <Button width="100%" style={{ backgroundColor: theme.colors.textSubtle }}>
@@ -184,7 +184,7 @@ const CardContent: React.FC = () => {
           {t('Locked staking is ended')}
         </Text>
         <Text color="textSubtle" fontSize={12} mb="16px">
-          {t('An active fixed-term CAKE staking position is required for activating farm yield boosters.')}
+          {t('An active fixed-term ROTO staking position is required for activating farm yield boosters.')}
         </Text>
         <NextLink href="/pools" passHref>
           <Button width="100%" style={{ backgroundColor: theme.colors.textSubtle }}>

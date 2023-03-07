@@ -29,23 +29,23 @@ export const remainTimeToNextFriday = (): number => {
   return secondsRemaining
 }
 
-interface CalculateCakeAmount {
+interface CalculateRotoAmount {
   status: PotteryDepositStatus
   previewRedeem: string
   shares: string
   totalSupply: BigNumber
-  totalLockCake: BigNumber
+  totalLockRoto: BigNumber
 }
 
-export const calculateCakeAmount = ({
+export const calculateRotoAmount = ({
   status,
   previewRedeem,
   shares,
   totalSupply,
-  totalLockCake,
-}: CalculateCakeAmount): BigNumber => {
+  totalLockRoto,
+}: CalculateRotoAmount): BigNumber => {
   if (status === PotteryDepositStatus.LOCK) {
-    return new BigNumber(shares).div(totalSupply).times(totalLockCake)
+    return new BigNumber(shares).div(totalSupply).times(totalLockRoto)
   }
 
   return new BigNumber(previewRedeem)

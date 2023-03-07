@@ -9,15 +9,15 @@ import { getPercentChange } from 'views/Info/utils/infoDataHelpers'
 import { checkIsStableSwap, getMultiChainQueryEndPointWithStableSwap, MultiChainName } from '../../constant'
 import { useGetChainName } from '../../hooks'
 
-interface PancakeFactory {
+interface OffsideFactory {
   totalTransactions: string
   totalVolumeUSD: string
   totalLiquidityUSD: string
 }
 
 interface OverviewResponse {
-  pancakeFactories: PancakeFactory[]
-  factories?: PancakeFactory[]
+  offsideFactories: OffsideFactory[]
+  factories?: OffsideFactory[]
 }
 /**
  * Latest Liquidity, Volume and Transaction count
@@ -26,7 +26,7 @@ const getOverviewData = async (
   chainName: MultiChainName,
   block?: number,
 ): Promise<{ data?: OverviewResponse; error: boolean }> => {
-  const factoryString = checkIsStableSwap() ? `factories` : `pancakeFactories`
+  const factoryString = checkIsStableSwap() ? `factories` : `offsideFactories`
   try {
     const query = gql`query overview {
       ${factoryString}(
@@ -45,9 +45,9 @@ const getOverviewData = async (
   }
 }
 
-const formatPancakeFactoryResponse = (rawPancakeFactory?: PancakeFactory[]) => {
-  if (rawPancakeFactory) {
-    return rawPancakeFactory.reduce(
+const formatOffsideFactoryResponse = (rawOffsideFactory?: OffsideFactory[]) => {
+  if (rawOffsideFactory) {
+    return rawOffsideFactory.reduce(
       (acc, cur) => {
         acc.totalLiquidityUSD += parseFloat(cur.totalLiquidityUSD)
         acc.totalTransactions += parseFloat(cur.totalTransactions)
@@ -86,9 +86,9 @@ const useFetchProtocolData = (): ProtocolFetchState => {
         getOverviewData(chainName, block48?.number ?? undefined),
       ])
       const anyError = error || error24 || error48
-      const overviewData = formatPancakeFactoryResponse(data?.pancakeFactories)
-      const overviewData24 = formatPancakeFactoryResponse(data24?.pancakeFactories)
-      const overviewData48 = formatPancakeFactoryResponse(data48?.pancakeFactories)
+      const overviewData = formatOffsideFactoryResponse(data?.offsideFactories)
+      const overviewData24 = formatOffsideFactoryResponse(data24?.offsideFactories)
+      const overviewData48 = formatOffsideFactoryResponse(data48?.offsideFactories)
       const allDataAvailable = overviewData && overviewData24 && overviewData48
       if (anyError || !allDataAvailable) {
         setFetchState({
@@ -137,14 +137,14 @@ export const fetchProtocolData = async (chainName: MultiChainName, block24: Bloc
     getOverviewData(chainName, block24?.number ?? undefined),
     getOverviewData(chainName, block48?.number ?? undefined),
   ])
-  if (data.factories && data.factories.length > 0) data.pancakeFactories = data.factories
-  if (data24.factories && data24.factories.length > 0) data24.pancakeFactories = data24.factories
-  if (data48.factories && data48.factories.length > 0) data48.pancakeFactories = data48.factories
+  if (data.factories && data.factories.length > 0) data.offsideFactories = data.factories
+  if (data24.factories && data24.factories.length > 0) data24.offsideFactories = data24.factories
+  if (data48.factories && data48.factories.length > 0) data48.offsideFactories = data48.factories
 
   // const anyError = error || error24 || error48
-  const overviewData = formatPancakeFactoryResponse(data?.pancakeFactories)
-  const overviewData24 = formatPancakeFactoryResponse(data24?.pancakeFactories)
-  const overviewData48 = formatPancakeFactoryResponse(data48?.pancakeFactories)
+  const overviewData = formatOffsideFactoryResponse(data?.offsideFactories)
+  const overviewData24 = formatOffsideFactoryResponse(data24?.offsideFactories)
+  const overviewData48 = formatOffsideFactoryResponse(data48?.offsideFactories)
   // const allDataAvailable = overviewData && overviewData24 && overviewData48
 
   const [volumeUSD, volumeUSDChange] = getChangeForPeriod(

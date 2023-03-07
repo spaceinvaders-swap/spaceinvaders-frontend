@@ -9,8 +9,8 @@ describe('getFarmPrices tests', () => {
         token: {
           chainId: 56,
           address: '0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82',
-          symbol: 'Cake',
-          name: 'PancakeSwap Token',
+          symbol: 'Roto',
+          name: 'OffsideSwap Token',
           decimals: 18,
         },
         quoteToken: {
@@ -20,7 +20,7 @@ describe('getFarmPrices tests', () => {
           name: 'Wrapped BNB',
           decimals: 18,
         },
-        lpSymbol: 'Cake-BNB LP',
+        lpSymbol: 'Roto-BNB LP',
         tokenAmountTotal: '21398955.65471099848053452',
         quoteTokenAmountTotal: '303254.751655462107052393',
         lpTotalSupply: '2411378689295081937737335.0',

@@ -1,9 +1,9 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, CurrencyAmount, Price, Trade, TradeType } from '@pancakeswap/sdk'
-import { CAKE, USDC } from '@pancakeswap/tokens'
-import { equalsIgnoreCase } from '@pancakeswap/utils/equalsIgnoreCase'
-import tryParseAmount from '@pancakeswap/utils/tryParseAmount'
-import IPancakePairABI from 'config/abi/IPancakePair.json'
+import { useTranslation } from '@offsideswap/localization'
+import { Currency, CurrencyAmount, Price, Trade, TradeType } from '@offsideswap/sdk'
+import { ROTO, USDC } from '@offsideswap/tokens'
+import { equalsIgnoreCase } from '@offsideswap/utils/equalsIgnoreCase'
+import tryParseAmount from '@offsideswap/utils/tryParseAmount'
+import IOffsidePairABI from 'config/abi/IOffsidePair.json'
 import { DEFAULT_INPUT_CURRENCY, DEFAULT_OUTPUT_CURRENCY } from 'config/constants/exchange'
 import { useTradeExactIn, useTradeExactOut } from 'hooks/Trades'
 import { useActiveChainId } from 'hooks/useActiveChainId'
@@ -254,7 +254,7 @@ export function useDefaultsFromURLSearch():
 
   useEffect(() => {
     if (!chainId || !native) return
-    const parsed = queryParametersToSwapState(query, native.symbol, CAKE[chainId]?.address ?? USDC[chainId]?.address)
+    const parsed = queryParametersToSwapState(query, native.symbol, ROTO[chainId]?.address ?? USDC[chainId]?.address)
 
     dispatch(
       replaceSwapState({
@@ -361,7 +361,7 @@ export const useFetchPairPrices = ({
         } else {
           try {
             pairTokenResults = await multicallv2({
-              abi: IPancakePairABI,
+              abi: IOffsidePairABI,
               calls: [
                 {
                   address: pairId,

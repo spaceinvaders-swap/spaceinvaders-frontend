@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { IconButton, useTooltip, BridgeIcon } from '@pancakeswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
+import { IconButton, useTooltip, BridgeIcon } from '@offsideswap/uikit'
 
 interface BridgeInfo {
   platform: string
@@ -9,9 +9,9 @@ interface BridgeInfo {
 
 export const bridgeInfo: BridgeInfo[] = [
   {
-    platform: 'Pancake Bridge',
-    symbol: 'CAKE',
-    url: 'https://bridge.pancakeswap.finance/aptos',
+    platform: 'Offside Bridge',
+    symbol: 'ROTO',
+    url: 'https://bridge.offsideswap.finance/aptos',
   },
   {
     platform: 'LayerZero Bridge',

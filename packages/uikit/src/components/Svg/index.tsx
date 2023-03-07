@@ -98,7 +98,7 @@ export { default as NftIcon } from "./Icons/Nft";
 export { default as NoProfileAvatarIcon } from "./Icons/NoProfileAvatar";
 export { default as OpenNewIcon } from "./Icons/OpenNew";
 export { default as OperaIcon } from "./Icons/Opera";
-export { default as PancakeRoundIcon } from "./Icons/PancakeRound";
+export { default as OffsideRoundIcon } from "./Icons/OffsideRound";
 export { default as PencilIcon } from "./Icons/Pencil";
 export { default as PlayCircleOutlineIcon } from "./Icons/PlayCircleOutline";
 export { default as PocketWatchIcon } from "./Icons/PocketWatch";

@@ -1,5 +1,5 @@
 import getLpAddress from 'utils/getLpAddress'
-import { bscTokens } from '@pancakeswap/tokens'
+import { bscTokens } from '@offsideswap/tokens'
 import { FarmAuctionBidderConfig } from './types'
 
 export const whitelistedBidders: FarmAuctionBidderConfig[] = [
@@ -151,11 +151,11 @@ export const whitelistedBidders: FarmAuctionBidderConfig[] = [
   },
   {
     account: '0x1bA962acab22Be9e49C4cEBE7710c9201A72dFcc',
-    farmName: 'BABYCAKE-BNB',
+    farmName: 'BABYROTO-BNB',
     tokenAddress: '0xdB8D30b74bf098aF214e862C90E647bbB1fcC58c',
     quoteToken: bscTokens.wbnb,
-    tokenName: 'Babycake',
-    projectSite: 'https://babycake.app/',
+    tokenName: 'Babyroto',
+    projectSite: 'https://babyroto.app/',
   },
   {
     account: '0xCCcC0b22799E82A79007814Dbc6A194410DCcEA5',
@@ -799,9 +799,9 @@ export const whitelistedBidders: FarmAuctionBidderConfig[] = [
   },
   {
     account: '0x6a2d41c87c3F28C2C0b466424DE8e08FC2E23eDc',
-    farmName: 'AOG-CAKE',
+    farmName: 'AOG-ROTO',
     tokenAddress: '0x40C8225329Bd3e28A043B029E0D07a5344d2C27C',
-    quoteToken: bscTokens.cake,
+    quoteToken: bscTokens.roto,
     tokenName: 'AOG',
     projectSite: 'https://ageofgods.net/',
   },

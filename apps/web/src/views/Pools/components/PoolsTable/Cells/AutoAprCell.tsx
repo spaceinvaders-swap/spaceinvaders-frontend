@@ -11,17 +11,17 @@ import {
   Pool,
   useTooltip,
   TooltipText,
-} from '@pancakeswap/uikit'
+} from '@offsideswap/uikit'
 import styled from 'styled-components'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@offsideswap/localization'
 import { useVaultApy } from 'hooks/useVaultApy'
 import { useVaultPoolByKey } from 'state/pools/hooks'
 import { DeserializedLockedVaultUser, VaultKey } from 'state/types'
 import { MAX_LOCK_DURATION } from 'config/constants/pools'
-import { getVaultPosition, VaultPosition, isLocked } from 'utils/cakePool'
-import { Token } from '@pancakeswap/sdk'
+import { getVaultPosition, VaultPosition, isLocked } from 'utils/rotoPool'
+import { Token } from '@offsideswap/sdk'
 import { useMemo } from 'react'
-import { getFullDisplayBalance } from '@pancakeswap/utils/formatBalance'
+import { getFullDisplayBalance } from '@offsideswap/utils/formatBalance'
 
 import { VaultRoiCalculatorModal } from '../../Vault/VaultRoiCalculatorModal'
 import LockedAprTooltipContent from '../../LockedPool/Common/LockedAprTooltipContent'
@@ -58,17 +58,17 @@ const AutoAprCell: React.FC<React.PropsWithChildren<AprCellProps>> = ({ pool }) 
     <VaultRoiCalculatorModal pool={pool} initialView={1} />,
     true,
     true,
-    pool.vaultKey === VaultKey.CakeVault ? 'LockedVaultRoiCalculatorModal' : 'FlexibleSideVaultRoiCalculatorModal',
+    pool.vaultKey === VaultKey.RotoVault ? 'LockedVaultRoiCalculatorModal' : 'FlexibleSideVaultRoiCalculatorModal',
   )
 
   const boostedYieldAmount = useMemo(() => {
-    return isLock ? getFullDisplayBalance(userData?.cakeAtLastUserAction, 18, 5) : 0
-  }, [isLock, userData?.cakeAtLastUserAction])
+    return isLock ? getFullDisplayBalance(userData?.rotoAtLastUserAction, 18, 5) : 0
+  }, [isLock, userData?.rotoAtLastUserAction])
 
   const tooltipContent = <LockedAprTooltipContent boostedYieldAmount={boostedYieldAmount} />
   const { targetRef, tooltip, tooltipVisible } = useTooltip(tooltipContent, { placement: 'bottom-start' })
 
-  if (pool.vaultKey === VaultKey.CakeVault && vaultPosition === VaultPosition.None) {
+  if (pool.vaultKey === VaultKey.RotoVault && vaultPosition === VaultPosition.None) {
     return (
       <>
         <Pool.BaseCell role="cell" flex={['1 0 50px', '4.5', '1 0 120px', null, '2 0 100px']}>

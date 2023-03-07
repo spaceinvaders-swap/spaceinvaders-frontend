@@ -1,12 +1,12 @@
-import { Box, Flex, Text, useMatchBreakpoints, Balance, Pool } from '@pancakeswap/uikit'
+import { Box, Flex, Text, useMatchBreakpoints, Balance, Pool } from '@offsideswap/uikit'
 import BigNumber from 'bignumber.js'
-import { useTranslation } from '@pancakeswap/localization'
-import { Token } from '@pancakeswap/sdk'
+import { useTranslation } from '@offsideswap/localization'
+import { Token } from '@offsideswap/sdk'
 import React from 'react'
 import styled from 'styled-components'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
-import { convertSharesToCake } from 'views/Pools/helpers'
+import { BIG_ZERO } from '@offsideswap/utils/bigNumber'
+import { getBalanceNumber } from '@offsideswap/utils/formatBalance'
+import { convertSharesToRoto } from 'views/Pools/helpers'
 import { useVaultPoolByKeyV1 } from 'views/Migration/hook/V1/Pool/useFetchIfoPool'
 
 interface StakedCellProps {
@@ -41,10 +41,10 @@ const StakedCell: React.FC<React.PropsWithChildren<StakedCellProps>> = ({ pool }
   const hasSharesStaked = userShares?.gt(0)
   const isVaultWithShares = pool.vaultKey && hasSharesStaked
 
-  let cakeAsNumberBalance = 0
+  let rotoAsNumberBalance = 0
   if (pricePerFullShare) {
-    const { cakeAsNumberBalance: cakeBalance } = convertSharesToCake(userShares, pricePerFullShare)
-    cakeAsNumberBalance = cakeBalance
+    const { rotoAsNumberBalance: rotoBalance } = convertSharesToRoto(userShares, pricePerFullShare)
+    rotoAsNumberBalance = rotoBalance
   }
 
   // pool
@@ -69,7 +69,7 @@ const StakedCell: React.FC<React.PropsWithChildren<StakedCellProps>> = ({ pool }
               fontSize={isMobile ? '14px' : '16px'}
               color={hasStaked ? 'text' : 'textDisabled'}
               decimals={hasStaked ? 5 : 1}
-              value={pool.vaultKey ? (Number.isNaN(cakeAsNumberBalance) ? 0 : cakeAsNumberBalance) : stakedTokenBalance}
+              value={pool.vaultKey ? (Number.isNaN(rotoAsNumberBalance) ? 0 : rotoAsNumberBalance) : stakedTokenBalance}
             />
           </Box>
         </Flex>

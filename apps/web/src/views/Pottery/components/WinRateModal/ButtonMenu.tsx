@@ -1,17 +1,17 @@
 import BigNumber from 'bignumber.js'
-import { useTranslation } from '@pancakeswap/localization'
-import { Button, Flex, HelpIcon, useTooltip } from '@pancakeswap/uikit'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
+import { useTranslation } from '@offsideswap/localization'
+import { Button, Flex, HelpIcon, useTooltip } from '@offsideswap/uikit'
+import { getBalanceNumber } from '@offsideswap/utils/formatBalance'
 import { useAccount } from 'wagmi'
 
 interface ButtonMenuProps {
-  cakePrice: BigNumber
+  rotoPrice: BigNumber
   stakingTokenBalance: BigNumber
   setPrincipalFromUSDValue: (amount: string) => void
 }
 
 const ButtonMenu: React.FC<React.PropsWithChildren<ButtonMenuProps>> = ({
-  cakePrice,
+  rotoPrice,
   stakingTokenBalance,
   setPrincipalFromUSDValue,
 }) => {
@@ -20,7 +20,7 @@ const ButtonMenu: React.FC<React.PropsWithChildren<ButtonMenuProps>> = ({
 
   const { targetRef, tooltip, tooltipVisible } = useTooltip(
     t(
-      'Your chance of winning is proportional to the CAKE you deposit relative to the total CAKE deposit for Pottery. Currently, there is a cap to the total CAKE deposit size during the beta release.',
+      'Your chance of winning is proportional to the ROTO you deposit relative to the total ROTO deposit for Pottery. Currently, there is a cap to the total ROTO deposit size during the beta release.',
     ),
     {
       placement: 'top-end',
@@ -43,7 +43,7 @@ const ButtonMenu: React.FC<React.PropsWithChildren<ButtonMenuProps>> = ({
         variant="tertiary"
         style={{ textTransform: 'uppercase' }}
         disabled={!stakingTokenBalance.isFinite() || stakingTokenBalance.lte(0) || !account}
-        onClick={() => setPrincipalFromUSDValue(getBalanceNumber(stakingTokenBalance.times(cakePrice)).toString())}
+        onClick={() => setPrincipalFromUSDValue(getBalanceNumber(stakingTokenBalance.times(rotoPrice)).toString())}
       >
         {t('My Balance')}
       </Button>

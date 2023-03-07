@@ -1,5 +1,5 @@
-import { Currency, Trade, TradeType } from '@pancakeswap/sdk'
-import { RouteType, TradeWithStableSwap } from '@pancakeswap/smart-router/evm'
+import { Currency, Trade, TradeType } from '@offsideswap/sdk'
+import { RouteType, TradeWithStableSwap } from '@offsideswap/smart-router/evm'
 
 interface Options {
   trade?: TradeWithStableSwap<Currency, Currency, TradeType> | null

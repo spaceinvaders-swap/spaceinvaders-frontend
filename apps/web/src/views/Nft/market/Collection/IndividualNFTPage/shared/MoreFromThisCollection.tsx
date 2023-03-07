@@ -6,15 +6,15 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 // eslint-disable-next-line import/no-unresolved
 import 'swiper/css/bundle'
 import SwiperCore from 'swiper'
-import { ArrowBackIcon, ArrowForwardIcon, Box, IconButton, Text, Flex, useMatchBreakpoints } from '@pancakeswap/uikit'
+import { ArrowBackIcon, ArrowForwardIcon, Box, IconButton, Text, Flex, useMatchBreakpoints } from '@offsideswap/uikit'
 import { isAddress } from 'utils'
 import useSWRImmutable from 'swr/immutable'
 import { getNftsFromCollectionApi, getMarketDataForTokenIds } from 'state/nftMarket/helpers'
 import { NftToken } from 'state/nftMarket/types'
 import Trans from 'components/Trans'
-import { pancakeBunniesAddress } from '../../../constants'
+import { offsideBunniesAddress } from '../../../constants'
 import { CollectibleLinkCard } from '../../../components/CollectibleCard'
-import useAllPancakeBunnyNfts from '../../../hooks/useAllPancakeBunnyNfts'
+import useAllOffsideBunnyNfts from '../../../hooks/useAllOffsideBunnyNfts'
 
 const INITIAL_SLIDE = 4
 
@@ -49,9 +49,9 @@ const MoreFromThisCollection: React.FC<React.PropsWithChildren<MoreFromThisColle
   const [swiperRef, setSwiperRef] = useState<SwiperCore>(null)
   const [activeIndex, setActiveIndex] = useState(1)
   const { isMobile, isMd, isLg } = useMatchBreakpoints()
-  const allPancakeBunnyNfts = useAllPancakeBunnyNfts(collectionAddress)
+  const allOffsideBunnyNfts = useAllOffsideBunnyNfts(collectionAddress)
 
-  const isPBCollection = isAddress(collectionAddress) === pancakeBunniesAddress
+  const isPBCollection = isAddress(collectionAddress) === offsideBunniesAddress
   const checkSummedCollectionAddress = isAddress(collectionAddress) || collectionAddress
 
   const { data: collectionNfts } = useSWRImmutable<NftToken[]>(
@@ -93,11 +93,11 @@ const MoreFromThisCollection: React.FC<React.PropsWithChildren<MoreFromThisColle
 
   let nftsToShow = useMemo(() => {
     return shuffle(
-      allPancakeBunnyNfts
-        ? allPancakeBunnyNfts.filter((nft) => nft.name !== currentTokenName)
+      allOffsideBunnyNfts
+        ? allOffsideBunnyNfts.filter((nft) => nft.name !== currentTokenName)
         : collectionNfts?.filter((nft) => nft.name !== currentTokenName && nft.marketData?.isTradable),
     )
-  }, [allPancakeBunnyNfts, collectionNfts, currentTokenName])
+  }, [allOffsideBunnyNfts, collectionNfts, currentTokenName])
 
   if (!nftsToShow || nftsToShow.length === 0) {
     return null
@@ -117,7 +117,7 @@ const MoreFromThisCollection: React.FC<React.PropsWithChildren<MoreFromThisColle
   }
 
   if (isPBCollection) {
-    // PancakeBunnies should display 1 card per bunny id
+    // OffsideBunnies should display 1 card per bunny id
     nftsToShow = nftsToShow.reduce((nftArray, current) => {
       const bunnyId = current.attributes[0].value
       if (!nftArray.find((nft) => nft.attributes[0].value === bunnyId)) {

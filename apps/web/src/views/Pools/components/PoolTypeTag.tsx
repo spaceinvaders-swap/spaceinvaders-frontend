@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { useTooltip, Farm as FarmUI } from '@pancakeswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
+import { useTooltip, Farm as FarmUI } from '@offsideswap/uikit'
 
 const { CompoundingPoolTag, ManualPoolTag, LockedPoolTag, LockedOrAutoPoolTag } = FarmUI.Tags
 

@@ -1,8 +1,8 @@
 {
-  "name": "@pancakeswap/swap-sdk-core",
+  "name": "@offsideswap/swap-sdk-core",
   "license": "MIT",
-  "version": "0.0.1",
-  "description": "🛠 An SDK for building applications on top of Pancakeswap.",
+  "version": "1.0.0",
+  "description": "🛠 An SDK for building applications on top of Offsideswap.",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "files": [
@@ -10,11 +10,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/pancakeswap/pancake-frontend.git",
+    "url": "git+https://github.com/offsideswap/offside-frontend.git",
     "directory": "packages/swap-sdk"
   },
   "keywords": [
-    "pancakeswap"
+    "offsideswap"
   ],
   "module": "dist/index.mjs",
   "scripts": {
@@ -49,5 +49,13 @@
     "printWidth": 120,
     "semi": false,
     "singleQuote": true
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/offsideswap/offside-frontend/issues"
+  },
+  "homepage": "https://github.com/offsideswap/offside-frontend#readme",
+  "directories": {
+    "test": "test"
+  },
+  "author": ""
 }

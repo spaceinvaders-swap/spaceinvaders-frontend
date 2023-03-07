@@ -1,5 +1,5 @@
 import { Contract } from '@ethersproject/contracts'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@offsideswap/localization'
 import {
   AutoRenewIcon,
   Box,
@@ -11,16 +11,16 @@ import {
   Text,
   useToast,
   useTooltip,
-} from '@pancakeswap/uikit'
+} from '@offsideswap/uikit'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import BigNumber from 'bignumber.js'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import useCatchTxError from 'hooks/useCatchTxError'
-import { useBCakeProxyContract } from 'hooks/useContract'
+import { useBRotoProxyContract } from 'hooks/useContract'
 import { useEffect, useMemo, useState } from 'react'
 import styled from 'styled-components'
-import { getFullDisplayBalance } from '@pancakeswap/utils/formatBalance'
-import { useBCakeProxyContractAddress } from '../hooks/useBCakeProxyContractAddress'
+import { getFullDisplayBalance } from '@offsideswap/utils/formatBalance'
+import { useBRotoProxyContractAddress } from '../hooks/useBRotoProxyContractAddress'
 import useProxyStakedActions from './YieldBooster/hooks/useProxyStakedActions'
 
 export const StepperCircle = styled.div`
@@ -122,7 +122,7 @@ export const InfoIconBox = styled.div`
   justify-content: center;
   align-items: center;
 `
-interface BCakeMigrateModalProps {
+interface BRotoMigrateModalProps {
   lpContract: Contract
   stakedBalance: BigNumber
   onUnStack: (amount: string, callback: () => void) => void
@@ -136,7 +136,7 @@ enum Steps {
   'Stake',
 }
 
-export const BCakeMigrateModal: React.FC<BCakeMigrateModalProps> = ({
+export const BRotoMigrateModal: React.FC<BRotoMigrateModalProps> = ({
   lpContract,
   stakedBalance,
   onDismiss,
@@ -168,10 +168,10 @@ export const BCakeMigrateModal: React.FC<BCakeMigrateModalProps> = ({
   const fullBalance = useMemo(() => {
     return getFullDisplayBalance(stakedBalance)
   }, [stakedBalance])
-  const { proxyAddress } = useBCakeProxyContractAddress(account, chainId)
+  const { proxyAddress } = useBRotoProxyContractAddress(account, chainId)
   const { onApprove, onDone, onStake } = useProxyStakedActions(pid, lpContract)
 
-  const bCakeProxy = useBCakeProxyContract(proxyAddress)
+  const bRotoProxy = useBRotoProxyContract(proxyAddress)
   const { fetchWithCatchTxError, loading } = useCatchTxError()
   const { toastSuccess } = useToast()
 
@@ -187,11 +187,11 @@ export const BCakeMigrateModal: React.FC<BCakeMigrateModalProps> = ({
   )
 
   useEffect(() => {
-    if (!bCakeProxy) return
-    bCakeProxy.lpApproved(lpContract.address).then((enabled) => {
+    if (!bRotoProxy) return
+    bRotoProxy.lpApproved(lpContract.address).then((enabled) => {
       setIsApproved(enabled)
     })
-  }, [lpContract, bCakeProxy])
+  }, [lpContract, bRotoProxy])
 
   const onStepChange = async () => {
     if (activatedState === Steps.Unstake) {

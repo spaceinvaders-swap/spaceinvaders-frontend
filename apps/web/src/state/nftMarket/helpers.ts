@@ -1,5 +1,5 @@
 import { BigNumber } from '@ethersproject/bignumber'
-import { formatBigNumber } from '@pancakeswap/utils/formatBalance'
+import { formatBigNumber } from '@offsideswap/utils/formatBalance'
 import erc721Abi from 'config/abi/erc721.json'
 import nftMarketAbi from 'config/abi/nftMarket.json'
 import { NOT_ON_SALE_SELLER } from 'config/constants'
@@ -17,7 +17,7 @@ import { isAddress } from 'utils'
 import { getNftMarketAddress } from 'utils/addressHelpers'
 import { getNftMarketContract } from 'utils/contractHelpers'
 import { multicallv2 } from 'utils/multicall'
-import { pancakeBunniesAddress } from 'views/Nft/market/constants'
+import { offsideBunniesAddress } from 'views/Nft/market/constants'
 import { baseNftFields, baseTransactionFields, collectionBaseFields } from './queries'
 import {
   ApiCollection,
@@ -163,7 +163,7 @@ export const getNftsFromCollectionApi = async (
   size = 100,
   page = 1,
 ): Promise<ApiResponseCollectionTokens> => {
-  const isPBCollection = isAddress(collectionAddress) === pancakeBunniesAddress
+  const isPBCollection = isAddress(collectionAddress) === offsideBunniesAddress
   const requestPath = `${API_NFT}/collections/${collectionAddress}/tokens${
     !isPBCollection ? `?page=${page}&size=${size}` : ``
   }`
@@ -301,7 +301,7 @@ export const getNftsFromCollectionSg = async (
   skip = 0,
 ): Promise<TokenMarketData[]> => {
   // Squad to be sorted by tokenId as this matches the order of the paginated API return. For PBs - get the most recent,
-  const isPBCollection = isAddress(collectionAddress) === pancakeBunniesAddress
+  const isPBCollection = isAddress(collectionAddress) === offsideBunniesAddress
 
   try {
     const res = await request(
@@ -326,7 +326,7 @@ export const getNftsFromCollectionSg = async (
 }
 
 /**
- * Fetch market data for PancakeBunnies NFTs by bunny id using the Subgraph
+ * Fetch market data for OffsideBunnies NFTs by bunny id using the Subgraph
  * @param bunnyId - bunny id to query
  * @param existingTokenIds - tokens that are already loaded into redux
  * @returns
@@ -351,7 +351,7 @@ export const getNftsByBunnyIdSg = async (
         }
       `,
       {
-        collectionAddress: pancakeBunniesAddress.toLowerCase(),
+        collectionAddress: offsideBunniesAddress.toLowerCase(),
         where,
         orderDirection,
       },
@@ -364,7 +364,7 @@ export const getNftsByBunnyIdSg = async (
 }
 
 /**
- * Fetch market data for PancakeBunnies NFTs by bunny id using the Subgraph
+ * Fetch market data for OffsideBunnies NFTs by bunny id using the Subgraph
  * @param bunnyId - bunny id to query
  * @param existingTokenIds - tokens that are already loaded into redux
  * @returns
@@ -543,9 +543,9 @@ export const getNftsMarketData = async (
   }
 }
 
-export const getAllPancakeBunniesLowestPrice = async (bunnyIds: string[]): Promise<Record<string, number>> => {
+export const getAllOffsideBunniesLowestPrice = async (bunnyIds: string[]): Promise<Record<string, number>> => {
   try {
-    const singlePancakeBunnySubQueries = bunnyIds.map(
+    const singleOffsideBunnySubQueries = bunnyIds.map(
       (
         bunnyId,
       ) => `b${bunnyId}:nfts(first: 1, where: { otherId: ${bunnyId}, isTradable: true }, orderBy: currentAskPrice, orderDirection: asc) {
@@ -556,8 +556,8 @@ export const getAllPancakeBunniesLowestPrice = async (bunnyIds: string[]): Promi
     const rawResponse: Record<string, { currentAskPrice: string }[]> = await request(
       GRAPH_API_NFTMARKET,
       gql`
-        query getAllPancakeBunniesLowestPrice {
-          ${singlePancakeBunnySubQueries}
+        query getAllOffsideBunniesLowestPrice {
+          ${singleOffsideBunnySubQueries}
         }
       `,
     )
@@ -571,14 +571,14 @@ export const getAllPancakeBunniesLowestPrice = async (bunnyIds: string[]): Promi
       }),
     )
   } catch (error) {
-    console.error('Failed to fetch PancakeBunnies lowest prices', error)
+    console.error('Failed to fetch OffsideBunnies lowest prices', error)
     return {}
   }
 }
 
-export const getAllPancakeBunniesRecentUpdatedAt = async (bunnyIds: string[]): Promise<Record<string, number>> => {
+export const getAllOffsideBunniesRecentUpdatedAt = async (bunnyIds: string[]): Promise<Record<string, number>> => {
   try {
-    const singlePancakeBunnySubQueries = bunnyIds.map(
+    const singleOffsideBunnySubQueries = bunnyIds.map(
       (
         bunnyId,
       ) => `b${bunnyId}:nfts(first: 1, where: { otherId: ${bunnyId}, isTradable: true }, orderBy: updatedAt, orderDirection: desc) {
@@ -589,8 +589,8 @@ export const getAllPancakeBunniesRecentUpdatedAt = async (bunnyIds: string[]): P
     const rawResponse: Record<string, { updatedAt: string }[]> = await request(
       GRAPH_API_NFTMARKET,
       gql`
-        query getAllPancakeBunniesLowestPrice {
-          ${singlePancakeBunnySubQueries}
+        query getAllOffsideBunniesLowestPrice {
+          ${singleOffsideBunnySubQueries}
         }
       `,
     )
@@ -604,7 +604,7 @@ export const getAllPancakeBunniesRecentUpdatedAt = async (bunnyIds: string[]): P
       }),
     )
   } catch (error) {
-    console.error('Failed to fetch PancakeBunnies latest market updates', error)
+    console.error('Failed to fetch OffsideBunnies latest market updates', error)
     return {}
   }
 }
@@ -895,7 +895,7 @@ export const getMetadataWithFallback = (apiMetadata: ApiResponseCollectionTokens
     apiMetadata[bunnyId] ?? {
       name: '',
       description: '',
-      collection: { name: 'Pancake Bunnies' },
+      collection: { name: 'Offside Bunnies' },
       image: {
         original: '',
         thumbnail: '',
@@ -904,7 +904,7 @@ export const getMetadataWithFallback = (apiMetadata: ApiResponseCollectionTokens
   )
 }
 
-export const getPancakeBunniesAttributesField = (bunnyId: string) => {
+export const getOffsideBunniesAttributesField = (bunnyId: string) => {
   // Generating attributes field that is not returned by API
   // but can be "faked" since objects are keyed with bunny id
   return [
@@ -926,7 +926,7 @@ export const combineApiAndSgResponseToNftToken = (
     name: apiMetadata.name,
     description: apiMetadata.description,
     collectionName: apiMetadata.collection.name,
-    collectionAddress: pancakeBunniesAddress,
+    collectionAddress: offsideBunniesAddress,
     image: apiMetadata.image,
     marketData,
     attributes,

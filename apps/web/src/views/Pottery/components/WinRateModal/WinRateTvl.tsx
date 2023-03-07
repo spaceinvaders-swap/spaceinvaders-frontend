@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import Trans from 'components/Trans'
-import { useTranslation } from '@pancakeswap/localization'
-import { Text, Button, Flex, Box, Balance } from '@pancakeswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
+import { Text, Button, Flex, Box, Balance } from '@offsideswap/uikit'
 import { WinRateCalculatorState } from 'views/Pottery/hooks/useWinRateCalculator'
 
 const StyledBox = styled(Box)`
@@ -63,7 +63,7 @@ const WinRateTvl: React.FC<React.PropsWithChildren<WinRateTvlProps>> = ({
         <Flex justifyContent="flex-end" mb="2px">
           <Balance textAlign="right" decimals={2} value={totalLockValue} />
           <Text ml="4px" color="textSubtle">
-            CAKE
+            ROTO
           </Text>
         </Flex>
         <Balance

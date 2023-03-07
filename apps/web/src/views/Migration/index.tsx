@@ -1,14 +1,14 @@
 import React, { memo, useState, useRef, useMemo } from 'react'
 import { useRouter } from 'next/router'
 import { useAccount } from 'wagmi'
-import { Heading, Text, Button, ArrowForwardIcon, Link, PageHeader, Pool } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Heading, Text, Button, ArrowForwardIcon, Link, PageHeader, Pool } from '@offsideswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
 import { usePollFarmsV1WithUserData } from 'state/farmsV1/hooks'
 import { VaultKey } from 'state/types'
 import { useFetchUserPools } from 'views/Migration/hook/V1/Pool/useFetchUserPools'
 import { useFetchPublicPoolsData } from 'views/Migration/hook/V1/Pool/useFetchPublicPoolsData'
 import Page from 'components/Layout/Page'
-import { Token } from '@pancakeswap/sdk'
+import { Token } from '@offsideswap/sdk'
 import ProgressSteps, { Step, ProgressStepsType } from './components/ProgressSteps'
 import MigrationSticky from './components/MigrationSticky'
 import OldPool from './components/MigrationStep1/OldPool'
@@ -26,12 +26,12 @@ const MigrationPage: React.FC<React.PropsWithChildren> = () => {
     {
       stepId: ProgressStepsType.STEP1,
       canHover: true,
-      text: t('Unstake LP tokens and CAKE from the old MasterChef contract.'),
+      text: t('Unstake LP tokens and ROTO from the old MasterChef contract.'),
     },
     {
       stepId: ProgressStepsType.STEP2,
       canHover: true,
-      text: t('Stake LP tokens and CAKE to the new MasterChef v2 contract.'),
+      text: t('Stake LP tokens and ROTO to the new MasterChef v2 contract.'),
     },
   ]
 
@@ -40,15 +40,15 @@ const MigrationPage: React.FC<React.PropsWithChildren> = () => {
 
   // v1 Pools
   useFetchPublicPoolsData()
-  const { data: cakePool, userDataLoaded } = useFetchUserPools(account)
+  const { data: rotoPool, userDataLoaded } = useFetchUserPools(account)
 
   const v1Pools = useMemo(() => {
-    const ifoPoolVault = { ...cakePool, vaultKey: VaultKey.IfoPool }
-    const cakeAutoVault = { ...cakePool, vaultKey: VaultKey.CakeVaultV1 }
+    const ifoPoolVault = { ...rotoPool, vaultKey: VaultKey.IfoPool }
+    const rotoAutoVault = { ...rotoPool, vaultKey: VaultKey.RotoVaultV1 }
 
-    return [ifoPoolVault, cakeAutoVault, cakePool]
+    return [ifoPoolVault, rotoAutoVault, rotoPool]
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cakePool]) as Pool.DeserializedPool<Token>[]
+  }, [rotoPool]) as Pool.DeserializedPool<Token>[]
 
   const scrollToTop = (): void => {
     window.scrollTo({
@@ -75,7 +75,7 @@ const MigrationPage: React.FC<React.PropsWithChildren> = () => {
         <Heading scale="lg" color="text">
           {t('Migrate your stakings to the new MasterChef contract.')}
         </Heading>
-        <Link href="https://docs.pancakeswap.finance/code/migration/migrate-your-stakings" external>
+        <Link href="https://docs.offsideswap.finance/code/migration/migrate-your-stakings" external>
           <Button p="0" variant="text">
             <Text color="primary" bold fontSize="16px" mr="4px">
               {t('Learn more')}

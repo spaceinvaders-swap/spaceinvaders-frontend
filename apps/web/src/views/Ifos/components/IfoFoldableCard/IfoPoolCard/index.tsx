@@ -1,4 +1,4 @@
-import { ContextApi, useTranslation } from '@pancakeswap/localization'
+import { ContextApi, useTranslation } from '@offsideswap/localization'
 import {
   Box,
   Card,
@@ -10,7 +10,7 @@ import {
   useTooltip,
   ExpandableLabel,
   CardFooter,
-} from '@pancakeswap/uikit'
+} from '@offsideswap/uikit'
 import { useAccount } from 'wagmi'
 import { Ifo, PoolIds } from 'config/constants/types'
 import { useMemo, useState } from 'react'
@@ -59,8 +59,8 @@ export const cardConfig = (
     case PoolIds.poolBasic:
       if (meta?.version >= 3.1) {
         const MSG_MAP = {
-          needQualifiedNFT: t('Set PancakeSquad NFT as Pancake Profile avatar.'),
-          needQualifiedPoints: t('Reach a certain Pancake Profile Points threshold.'),
+          needQualifiedNFT: t('Set OffsideSquad NFT as Offside Profile avatar.'),
+          needQualifiedPoints: t('Reach a certain Offside Profile Points threshold.'),
         }
 
         const msgs = Object.keys(meta)

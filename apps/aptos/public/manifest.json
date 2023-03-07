@@ -1,8 +1,8 @@
 {
-  "short_name": "PancakeSwap",
-  "name": "PancakeSwap",
-  "description": "Farm CAKE with Pancake LP Tokens",
-  "homepage_url": "https://aptos.pancakeswap.finance",
+  "short_name": "OffsideSwap",
+  "name": "OffsideSwap",
+  "description": "Farm ROTO with Offside LP Tokens",
+  "homepage_url": "https://aptos.offsideswap.finance",
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#1FC7D4",
@@ -20,5 +20,5 @@
       "sizes": "256x256"
     }
   ],
-  "iconPath": "/images/cake.svg"
+  "iconPath": "/images/roto.svg"
 }

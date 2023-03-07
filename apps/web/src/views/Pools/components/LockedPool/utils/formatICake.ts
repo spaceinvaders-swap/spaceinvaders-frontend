@@ -1,12 +1,12 @@
 import BigNumber from 'bignumber.js'
 
-interface FormatiCake {
+interface FormatiRoto {
   lockedAmount: any
   duration: number
   ceiling: BigNumber
 }
 
-export default function formatiCake({ lockedAmount, duration, ceiling }: FormatiCake) {
+export default function formatiRoto({ lockedAmount, duration, ceiling }: FormatiRoto) {
   const durationAsBn = new BigNumber(duration)
   if (durationAsBn.gte(ceiling)) {
     return new BigNumber(lockedAmount).toNumber()

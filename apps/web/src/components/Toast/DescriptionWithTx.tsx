@@ -1,8 +1,8 @@
-import { Link, Text, BscScanIcon } from '@pancakeswap/uikit'
-import { ChainId } from '@pancakeswap/sdk'
+import { Link, Text, BscScanIcon } from '@offsideswap/uikit'
+import { ChainId } from '@offsideswap/sdk'
 import { getBlockExploreLink, getBlockExploreName } from 'utils'
-import { useTranslation } from '@pancakeswap/localization'
-import truncateHash from '@pancakeswap/utils/truncateHash'
+import { useTranslation } from '@offsideswap/localization'
+import truncateHash from '@offsideswap/utils/truncateHash'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 
 interface DescriptionWithTxProps {

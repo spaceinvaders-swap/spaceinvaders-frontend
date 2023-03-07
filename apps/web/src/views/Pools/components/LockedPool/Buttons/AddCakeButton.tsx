@@ -1,12 +1,12 @@
 import { useCallback, memo } from 'react'
-import { Button, useModal, Skeleton } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Button, useModal, Skeleton } from '@offsideswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
 import { usePool } from 'state/pools/hooks'
 import AddAmountModal from '../Modals/AddAmountModal'
 import { AddButtonProps } from '../types'
 import NotEnoughTokensModal from '../../Modals/NotEnoughTokensModal'
 
-const AddCakeButton: React.FC<React.PropsWithChildren<AddButtonProps>> = ({
+const AddRotoButton: React.FC<React.PropsWithChildren<AddButtonProps>> = ({
   currentBalance,
   stakingToken,
   currentLockedAmount,
@@ -42,11 +42,11 @@ const AddCakeButton: React.FC<React.PropsWithChildren<AddButtonProps>> = ({
 
   return userDataLoaded ? (
     <Button onClick={handleClicked} width="100%" style={{ whiteSpace: 'nowrap', paddingLeft: 0, paddingRight: 0 }}>
-      {t('Add CAKE')}
+      {t('Add ROTO')}
     </Button>
   ) : (
     <Skeleton height={48} />
   )
 }
 
-export default memo(AddCakeButton)
+export default memo(AddRotoButton)

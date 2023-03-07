@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import styled from 'styled-components'
-import { Breadcrumbs, Heading, Text, Link, Button } from '@pancakeswap/uikit'
-import { useTranslation, TranslateFunction } from '@pancakeswap/localization'
+import { Breadcrumbs, Heading, Text, Link, Button } from '@offsideswap/uikit'
+import { useTranslation, TranslateFunction } from '@offsideswap/localization'
 import { ProfileCreationContext } from './contexts/ProfileCreationProvider'
 
 const Wrapper = styled.div`
@@ -31,7 +31,7 @@ const Header: React.FC<React.PropsWithChildren> = () => {
         {t('Show off your stats and collectibles with your unique profile')}
       </Heading>
       <Text color="textSubtle" mb="8px">
-        {t('Total cost: 1.5 CAKE')}
+        {t('Total cost: 1.5 ROTO')}
       </Text>
       <Link href="/profile">
         <Button mb="24px" scale="sm" variant="secondary">

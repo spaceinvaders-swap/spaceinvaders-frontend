@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
-import { Box, Card, Text, IfoGenericIfoCard, BunnyKnownPlaceholder } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Box, Card, Text, IfoGenericIfoCard, BunnyKnownPlaceholder } from '@offsideswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
 import styled from 'styled-components'
 import { PoolIds } from 'config/constants/types'
 

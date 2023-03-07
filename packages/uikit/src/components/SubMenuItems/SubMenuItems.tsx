@@ -1,4 +1,4 @@
-import { AtomBox } from "@pancakeswap/ui/components/AtomBox";
+import { AtomBox } from "@offsideswap/ui/components/AtomBox";
 import { useIsomorphicLayoutEffect } from "framer-motion";
 import debounce from "lodash/debounce";
 import React, { useCallback, useRef } from "react";

@@ -1,18 +1,18 @@
 import BigNumber from 'bignumber.js'
 import {
   SerializedPool,
-  SerializedCakeVault,
-  DeserializedCakeVault,
-  SerializedLockedCakeVault,
+  SerializedRotoVault,
+  DeserializedRotoVault,
+  SerializedLockedRotoVault,
   VaultKey,
 } from 'state/types'
-import { SerializedFarm } from '@pancakeswap/farms'
-import { deserializeToken } from '@pancakeswap/token-lists'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { SerializedFarm } from '@offsideswap/farms'
+import { deserializeToken } from '@offsideswap/token-lists'
+import { BIG_ZERO } from '@offsideswap/utils/bigNumber'
 import { isAddress } from 'utils'
-import { convertSharesToCake } from 'views/Pools/helpers'
-import { Token } from '@pancakeswap/sdk'
-import { Pool } from '@pancakeswap/uikit'
+import { convertSharesToRoto } from 'views/Pools/helpers'
+import { Token } from '@offsideswap/sdk'
+import { Pool } from '@offsideswap/uikit'
 
 type UserData =
   | Pool.DeserializedPool<Token>['userData']
@@ -69,7 +69,7 @@ export const transformPool = (pool: SerializedPool): Pool.DeserializedPool<Token
   }
 }
 
-export const transformVault = (vaultKey: VaultKey, vault: SerializedCakeVault): DeserializedCakeVault => {
+export const transformVault = (vaultKey: VaultKey, vault: SerializedRotoVault): DeserializedRotoVault => {
   const {
     totalShares: totalSharesAsString,
     pricePerFullShare: pricePerFullShareAsString,
@@ -77,7 +77,7 @@ export const transformVault = (vaultKey: VaultKey, vault: SerializedCakeVault): 
     userData: {
       isLoading,
       userShares: userSharesAsString,
-      cakeAtLastUserAction: cakeAtLastUserActionAsString,
+      rotoAtLastUserAction: rotoAtLastUserActionAsString,
       lastDepositedTime,
       lastUserActionTime,
     },
@@ -86,12 +86,12 @@ export const transformVault = (vaultKey: VaultKey, vault: SerializedCakeVault): 
   const totalShares = totalSharesAsString ? new BigNumber(totalSharesAsString) : BIG_ZERO
   const pricePerFullShare = pricePerFullShareAsString ? new BigNumber(pricePerFullShareAsString) : BIG_ZERO
   const userShares = new BigNumber(userSharesAsString)
-  const cakeAtLastUserAction = new BigNumber(cakeAtLastUserActionAsString)
+  const rotoAtLastUserAction = new BigNumber(rotoAtLastUserActionAsString)
   let userDataExtra
   let publicDataExtra
-  if (vaultKey === VaultKey.CakeVault) {
+  if (vaultKey === VaultKey.RotoVault) {
     const {
-      totalCakeInVault: totalCakeInVaultAsString,
+      totalRotoInVault: totalRotoInVaultAsString,
       totalLockedAmount: totalLockedAmountAsString,
       userData: {
         userBoostedShare: userBoostedShareAsString,
@@ -102,9 +102,9 @@ export const transformVault = (vaultKey: VaultKey, vault: SerializedCakeVault): 
         currentOverdueFee: currentOverdueFeeAsString,
         currentPerformanceFee: currentPerformanceFeeAsString,
       },
-    } = vault as SerializedLockedCakeVault
+    } = vault as SerializedLockedRotoVault
 
-    const totalCakeInVault = new BigNumber(totalCakeInVaultAsString)
+    const totalRotoInVault = new BigNumber(totalRotoInVaultAsString)
     const totalLockedAmount = new BigNumber(totalLockedAmountAsString)
     const lockedAmount = new BigNumber(lockedAmountAsString)
     const userBoostedShare = new BigNumber(userBoostedShareAsString)
@@ -113,7 +113,7 @@ export const transformVault = (vaultKey: VaultKey, vault: SerializedCakeVault): 
       ? new BigNumber(currentPerformanceFeeAsString)
       : BIG_ZERO
 
-    const balance = convertSharesToCake(
+    const balance = convertSharesToRoto(
       userShares,
       pricePerFullShare,
       undefined,
@@ -130,12 +130,12 @@ export const transformVault = (vaultKey: VaultKey, vault: SerializedCakeVault): 
       currentPerformanceFee,
       balance,
     }
-    publicDataExtra = { totalLockedAmount, totalCakeInVault }
+    publicDataExtra = { totalLockedAmount, totalRotoInVault }
   } else {
-    const balance = convertSharesToCake(userShares, pricePerFullShare)
-    const { cakeAsBigNumber } = convertSharesToCake(totalShares, pricePerFullShare)
+    const balance = convertSharesToRoto(userShares, pricePerFullShare)
+    const { rotoAsBigNumber } = convertSharesToRoto(totalShares, pricePerFullShare)
     userDataExtra = { balance }
-    publicDataExtra = { totalCakeInVault: cakeAsBigNumber }
+    publicDataExtra = { totalRotoInVault: rotoAsBigNumber }
   }
 
   const performanceFeeAsDecimal = performanceFee && performanceFee / 100
@@ -148,7 +148,7 @@ export const transformVault = (vaultKey: VaultKey, vault: SerializedCakeVault): 
     userData: {
       isLoading,
       userShares,
-      cakeAtLastUserAction,
+      rotoAtLastUserAction,
       lastDepositedTime,
       lastUserActionTime,
       ...userDataExtra,

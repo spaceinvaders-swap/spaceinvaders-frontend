@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
-import { useTranslation } from '@pancakeswap/localization'
-import { Button, AutoRenewIcon } from '@pancakeswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
+import { Button, AutoRenewIcon } from '@offsideswap/uikit'
 import BigNumber from 'bignumber.js'
 import { useDepositPottery } from 'views/Pottery/hooks/useDepositPottery'
 import { PotteryDepositStatus } from 'state/types'
@@ -37,7 +37,7 @@ const DepositButton: React.FC<React.PropsWithChildren<DepositButtonProps>> = ({
       endIcon={isPending ? <AutoRenewIcon spin color="currentColor" /> : null}
       onClick={onClickDeposit}
     >
-      {t('Deposit CAKE')}
+      {t('Deposit ROTO')}
     </Button>
   )
 }

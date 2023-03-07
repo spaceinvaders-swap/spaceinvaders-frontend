@@ -1,10 +1,10 @@
 /* eslint-disable no-continue */
 /* eslint-disable no-await-in-loop */
-import { TokenList, TokenInfo } from '@pancakeswap/token-lists'
-import uriToHttp from '@pancakeswap/utils/uriToHttp'
+import { TokenList, TokenInfo } from '@offsideswap/token-lists'
+import uriToHttp from '@offsideswap/utils/uriToHttp'
 import remove from 'lodash/remove'
 import Ajv from 'ajv'
-import schema from '../schema/pancakeswap.json'
+import schema from '../schema/offsideswap.json'
 
 export const tokenListValidator = new Ajv({ allErrors: true }).compile(schema)
 

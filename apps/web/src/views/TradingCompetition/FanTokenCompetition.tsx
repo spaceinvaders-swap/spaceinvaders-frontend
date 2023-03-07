@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useProfile } from 'state/profile/hooks'
-import { Box, useMatchBreakpoints, PageSection } from '@pancakeswap/uikit'
+import { Box, useMatchBreakpoints, PageSection } from '@offsideswap/uikit'
 import { useTradingCompetitionContractFanToken } from 'hooks/useContract'
 import useTheme from 'hooks/useTheme'
 import { API_PROFILE } from 'config/constants/endpoints'
@@ -14,7 +14,7 @@ import {
   REGISTRATION,
 } from 'config/constants/trading-competition/phases'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
-import { ChainId } from '@pancakeswap/sdk'
+import { ChainId } from '@offsideswap/sdk'
 import { DARKBG, MIDBLUEBG, MIDBLUEBG_DARK } from './pageSectionStyles'
 import Countdown from './components/Countdown'
 import FanTokenStormBunny from './pngs/fan-token-storm.png'
@@ -24,7 +24,7 @@ import { CompetitionPage, BannerFlex } from './styles'
 import FanTokenBattleBanner from './fantoken/components/BattleBanner/FanTokenBattleBanner'
 import FanTokenYourScore from './fantoken/components/YourScore/FanTokenYourScore'
 import FanTokenPrizesInfo from './fantoken/components/PrizesInfo/FanTokenPrizesInfo'
-import FanTokenCakerBunny from './pngs/fan-token-cakers.png'
+import FanTokenRotorBunny from './pngs/fan-token-rotors.png'
 import { useTeamInformation } from './useTeamInformation'
 import { useRegistrationClaimStatus } from './useRegistrationClaimStatus'
 import Footer from './Footer'
@@ -45,7 +45,7 @@ const FanTokenCompetition = () => {
     hasRegistered: false,
     hasUserClaimed: false,
     userRewardGroup: '0',
-    userCakeRewards: '0',
+    userRotoRewards: '0',
     userLazioRewards: '0',
     userPortoRewards: '0',
     userSantosRewards: '0',
@@ -72,7 +72,7 @@ const FanTokenCompetition = () => {
 
   const {
     hasUserClaimed,
-    userCakeRewards,
+    userRotoRewards,
     userLazioRewards,
     userPortoRewards,
     userSantosRewards,
@@ -83,7 +83,7 @@ const FanTokenCompetition = () => {
   const userCanClaimPrizes =
     currentPhase.state === CLAIM &&
     !hasUserClaimed &&
-    (userCakeRewards !== '0' ||
+    (userRotoRewards !== '0' ||
       userLazioRewards !== '0' ||
       userPortoRewards !== '0' ||
       userSantosRewards !== '0' ||
@@ -107,7 +107,7 @@ const FanTokenCompetition = () => {
           hasRegistered: user[0],
           hasUserClaimed: user[1],
           userRewardGroup: user[2].toString(),
-          userCakeRewards: user[3].toString(),
+          userRotoRewards: user[3].toString(),
           userLazioRewards: user[4].toString(),
           userPortoRewards: user[5].toString(),
           userSantosRewards: user[6].toString(),
@@ -131,7 +131,7 @@ const FanTokenCompetition = () => {
           hasRegistered: false,
           hasUserClaimed: false,
           userRewardGroup: '0',
-          userCakeRewards: '0',
+          userRotoRewards: '0',
           userLazioRewards: '0',
           userPortoRewards: '0',
           userSantosRewards: '0',
@@ -226,7 +226,7 @@ const FanTokenCompetition = () => {
           </Box>
         </PageSection>
         <TeamRanksSection
-          image={FanTokenCakerBunny}
+          image={FanTokenRotorBunny}
           team1LeaderboardInformation={team1LeaderboardInformation}
           team2LeaderboardInformation={team2LeaderboardInformation}
           team3LeaderboardInformation={team3LeaderboardInformation}

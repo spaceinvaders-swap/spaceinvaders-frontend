@@ -1,15 +1,15 @@
-import { ChainId, Pair, ERC20Token } from '@pancakeswap/sdk'
-import { deserializeToken } from '@pancakeswap/token-lists'
+import { ChainId, Pair, ERC20Token } from '@offsideswap/sdk'
+import { deserializeToken } from '@offsideswap/token-lists'
 import { differenceInDays } from 'date-fns'
 import flatMap from 'lodash/flatMap'
-import { getFarmConfig } from '@pancakeswap/farms/constants'
+import { getFarmConfig } from '@offsideswap/farms/constants'
 import { useCallback, useMemo } from 'react'
 import { useSelector } from 'react-redux'
 import { BASES_TO_TRACK_LIQUIDITY_FOR, PINNED_PAIRS } from 'config/constants/exchange'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import useSWRImmutable from 'swr/immutable'
 import { useOfficialsAndUserAddedTokens } from 'hooks/Tokens'
-import { useWeb3LibraryContext } from '@pancakeswap/wagmi'
+import { useWeb3LibraryContext } from '@offsideswap/wagmi'
 import useSWR from 'swr'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { isAddress } from 'utils'
@@ -503,7 +503,7 @@ export function usePairAdder(): (pair: Pair) => void {
  * @param tokenB the other token
  */
 export function toV2LiquidityToken([tokenA, tokenB]: [ERC20Token, ERC20Token]): ERC20Token {
-  return new ERC20Token(tokenA.chainId, Pair.getAddress(tokenA, tokenB), 18, 'Cake-LP', 'Pancake LPs')
+  return new ERC20Token(tokenA.chainId, Pair.getAddress(tokenA, tokenB), 18, 'Roto-LP', 'Offside LPs')
 }
 
 /**

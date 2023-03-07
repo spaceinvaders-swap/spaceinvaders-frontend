@@ -9,9 +9,9 @@ import {
   TeamPlayerIcon,
   TrophyGoldIcon,
   Skeleton,
-} from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
-import { useCompetitionCakeRewards, getEasterRewardGroupAchievements } from '../../../helpers'
+} from '@offsideswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
+import { useCompetitionRotoRewards, getEasterRewardGroupAchievements } from '../../../helpers'
 import { BoldTd, Td, StyledPrizeTable } from '../../../components/StyledPrizeTable'
 
 const StyledThead = styled.thead`
@@ -22,15 +22,15 @@ const EasterUserPrizeGrid: React.FC<React.PropsWithChildren<{ userTradingInforma
   userTradingInformation,
 }) => {
   const { t } = useTranslation()
-  const { userRewardGroup, userCakeRewards, userPointReward, canClaimNFT } = userTradingInformation
-  const { cakeReward, dollarValueOfCakeReward } = useCompetitionCakeRewards(userCakeRewards)
+  const { userRewardGroup, userRotoRewards, userPointReward, canClaimNFT } = userTradingInformation
+  const { rotoReward, dollarValueOfRotoReward } = useCompetitionRotoRewards(userRotoRewards)
   const { champion, teamPlayer } = getEasterRewardGroupAchievements(userRewardGroup)
 
   return (
     <StyledPrizeTable>
       <StyledThead>
         <tr>
-          <th>{t('CAKE Prizes')}</th>
+          <th>{t('ROTO Prizes')}</th>
           <th>{t('Achievements')}</th>
           <th>{t('NFT')}</th>
         </tr>
@@ -39,10 +39,10 @@ const EasterUserPrizeGrid: React.FC<React.PropsWithChildren<{ userTradingInforma
         <tr>
           <BoldTd>
             <Flex flexDirection="column">
-              <Text bold>{cakeReward.toFixed(2)}</Text>
-              {dollarValueOfCakeReward ? (
+              <Text bold>{rotoReward.toFixed(2)}</Text>
+              {dollarValueOfRotoReward ? (
                 <Text fontSize="12px" color="textSubtle">
-                  ~{dollarValueOfCakeReward} USD
+                  ~{dollarValueOfRotoReward} USD
                 </Text>
               ) : (
                 <Skeleton height={24} width={80} />

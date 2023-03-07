@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from 'react'
-import { Box, Button, RocketIcon, CurrencyIcon, Flex, Text, InlineMenu, Toggle } from '@pancakeswap/uikit'
+import { Box, Button, RocketIcon, CurrencyIcon, Flex, Text, InlineMenu, Toggle } from '@offsideswap/uikit'
 import styled from 'styled-components'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@offsideswap/localization'
 
 interface FarmTypesFilterProps {
   boostedOnly: boolean

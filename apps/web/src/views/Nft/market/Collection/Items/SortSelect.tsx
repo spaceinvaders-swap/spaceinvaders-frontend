@@ -1,5 +1,5 @@
-import { Select, OptionProps } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Select, OptionProps } from '@offsideswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
 import { useNftStorage } from 'state/nftMarket/storage'
 import { useGetNftOrdering } from 'state/nftMarket/hooks'
 

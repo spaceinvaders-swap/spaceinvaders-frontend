@@ -1,10 +1,10 @@
 import { useMemo } from 'react'
-import { Box, Text, Flex, MessageText, Message } from '@pancakeswap/uikit'
+import { Box, Text, Flex, MessageText, Message } from '@offsideswap/uikit'
 
 import { LightGreyCard } from 'components/Card'
 import { addSeconds } from 'date-fns'
 import { useVaultApy } from 'hooks/useVaultApy'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@offsideswap/localization'
 import _toNumber from 'lodash/toNumber'
 import { convertTimeToSeconds } from 'utils/timeHelper'
 import formatSecondsToWeeks from '../../../utils/formatSecondsToWeeks'
@@ -12,7 +12,7 @@ import TextRow from './TextRow'
 import BalanceRow from './BalanceRow'
 import DateRow from './DateRow'
 import formatRoi from '../../utils/formatRoi'
-import formatiCake from '../../utils/formatICake'
+import formatiRoto from '../../utils/formatIRoto'
 import { OverviewPropsType } from '../../types'
 import CalculatorButton from '../../Buttons/CalculatorButton'
 
@@ -52,15 +52,15 @@ const Overview: React.FC<React.PropsWithChildren<OverviewPropsType>> = ({
     ? new Date(convertTimeToSeconds(lockEndTime))
     : addSeconds(now, duration)
 
-  const formattediCake = useMemo(() => {
-    return formatiCake({ lockedAmount, duration, ceiling })
+  const formattediRoto = useMemo(() => {
+    return formatiRoto({ lockedAmount, duration, ceiling })
   }, [lockedAmount, duration, ceiling])
 
-  const newFormattediCake = useMemo(() => {
+  const newFormattediRoto = useMemo(() => {
     const amount = Number(newLockedAmount) ? newLockedAmount : lockedAmount
     const lockDuration = Number(newDuration) ? newDuration : duration
 
-    return formatiCake({ lockedAmount: amount, duration: lockDuration, ceiling })
+    return formatiRoto({ lockedAmount: amount, duration: lockDuration, ceiling })
   }, [lockedAmount, newLockedAmount, duration, newDuration, ceiling])
 
   return (
@@ -75,8 +75,8 @@ const Overview: React.FC<React.PropsWithChildren<OverviewPropsType>> = ({
           </Text>
         </Flex>
         <LightGreyCard>
-          <BalanceRow title={t('Cake to be locked')} value={lockedAmount} newValue={newLockedAmount} decimals={2} />
-          <BalanceRow title="iCake" decimals={2} value={formattediCake} newValue={newFormattediCake} />
+          <BalanceRow title={t('Roto to be locked')} value={lockedAmount} newValue={newLockedAmount} decimals={2} />
+          <BalanceRow title="iRoto" decimals={2} value={formattediRoto} newValue={newFormattediRoto} />
           <BalanceRow
             title="apr"
             unit="%"
@@ -124,7 +124,7 @@ const Overview: React.FC<React.PropsWithChildren<OverviewPropsType>> = ({
         <Box mt="16px" maxWidth="370px">
           <Message variant="warning">
             <MessageText>
-              {t('You will be able to withdraw the staked CAKE and profit only when the staking position is unlocked')}
+              {t('You will be able to withdraw the staked ROTO and profit only when the staking position is unlocked')}
             </MessageText>
           </Message>
         </Box>

@@ -1,10 +1,10 @@
 import { useEffect, useCallback, useState, useMemo, useRef, createContext } from 'react'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@offsideswap/localization'
 import BigNumber from 'bignumber.js'
 import { useRouter } from 'next/router'
-import { useAccount } from '@pancakeswap/awgmi'
+import { useAccount } from '@offsideswap/awgmi'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
-import { usePriceCakeUsdc } from 'hooks/useStablePrice'
+import { usePriceRotoUsdc } from 'hooks/useStablePrice'
 import {
   Image,
   Heading,
@@ -20,7 +20,7 @@ import {
   SearchInput,
   Farm as FarmUI,
   ToggleView,
-} from '@pancakeswap/uikit'
+} from '@offsideswap/uikit'
 import styled from 'styled-components'
 import orderBy from 'lodash/orderBy'
 import Page from 'components/Layout/Page'
@@ -28,10 +28,10 @@ import { useFarmViewMode, ViewMode, useFarmsStakedOnly } from 'state/user'
 import NoSSR from 'components/NoSSR'
 
 import { useFarms } from 'state/farms/hook'
-import { useIntersectionObserver } from '@pancakeswap/hooks'
+import { useIntersectionObserver } from '@offsideswap/hooks'
 import { getFarmApr } from 'utils/farmApr'
-import type { DeserializedFarm } from '@pancakeswap/farms'
-import { FarmWithStakedValue, filterFarmsByQuery } from '@pancakeswap/farms'
+import type { DeserializedFarm } from '@offsideswap/farms'
+import { FarmWithStakedValue, filterFarmsByQuery } from '@offsideswap/farms'
 import Table from './FarmTable/FarmTable'
 
 const ControlContainer = styled.div`
@@ -134,12 +134,12 @@ const NUMBER_OF_FARMS_VISIBLE = 12
 const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
   const { t } = useTranslation()
   const { chainId } = useActiveWeb3React()
-  const cakePrice = usePriceCakeUsdc()
+  const rotoPrice = usePriceRotoUsdc()
   const { pathname, query: urlQuery } = useRouter()
   const [viewMode, setViewMode] = useFarmViewMode()
   const [stakedOnly, setStakedOnly] = useFarmsStakedOnly()
   const [numberOfFarmsVisible, setNumberOfFarmsVisible] = useState(NUMBER_OF_FARMS_VISIBLE)
-  const { data: farmsLP, userDataLoaded, poolLength, regularCakePerBlock } = useFarms()
+  const { data: farmsLP, userDataLoaded, poolLength, regularRotoPerBlock } = useFarms()
 
   const [_query, setQuery] = useState('')
   const normalizedUrlSearch = useMemo(() => (typeof urlQuery?.search === 'string' ? urlQuery.search : ''), [urlQuery])
@@ -183,23 +183,23 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
           return farm
         }
         const totalLiquidity = new BigNumber(farm.lpTotalInQuoteToken).times(farm.quoteTokenPriceBusd)
-        const { cakeRewardsApr, lpRewardsApr } = isActive
+        const { rotoRewardsApr, lpRewardsApr } = isActive
           ? getFarmApr(
               chainId,
               new BigNumber(farm.poolWeight ?? 0),
-              cakePrice,
+              rotoPrice,
               totalLiquidity,
               farm.lpAddress,
-              regularCakePerBlock ?? 0,
+              regularRotoPerBlock ?? 0,
             )
-          : { cakeRewardsApr: 0, lpRewardsApr: 0 }
+          : { rotoRewardsApr: 0, lpRewardsApr: 0 }
 
-        return { ...farm, apr: cakeRewardsApr, lpRewardsApr, liquidity: totalLiquidity }
+        return { ...farm, apr: rotoRewardsApr, lpRewardsApr, liquidity: totalLiquidity }
       })
 
       return filterFarmsByQuery(farmsToDisplayWithAPR, query)
     },
-    [query, isActive, chainId, cakePrice, regularCakePerBlock],
+    [query, isActive, chainId, rotoPrice, regularRotoPerBlock],
   )
 
   const handleChangeQuery = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -352,7 +352,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
         </ControlContainer>
         <NoSSR>
           {viewMode === ViewMode.TABLE ? (
-            <Table farms={chosenFarmsMemoized} cakePrice={cakePrice} userDataReady={userDataReady} />
+            <Table farms={chosenFarmsMemoized} rotoPrice={rotoPrice} userDataReady={userDataReady} />
           ) : (
             <FlexLayout>{children}</FlexLayout>
           )}
@@ -363,7 +363,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
           )}
           {poolLength && <div ref={observerRef} />}
         </NoSSR>
-        <StyledImage src="/images/decorations/3dpan.png" alt="Pancake illustration" width={120} height={103} />
+        <StyledImage src="/images/decorations/3dpan.png" alt="Offside illustration" width={120} height={103} />
       </Page>
     </FarmsContext.Provider>
   )

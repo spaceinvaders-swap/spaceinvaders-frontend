@@ -1,6 +1,6 @@
 import { useAccount } from 'wagmi'
-import { useIsomorphicEffect } from '@pancakeswap/uikit'
-import { usePreviousValue } from '@pancakeswap/hooks'
+import { useIsomorphicEffect } from '@offsideswap/uikit'
+import { usePreviousValue } from '@offsideswap/hooks'
 import useLocalDispatch from 'contexts/LocalRedux/useLocalDispatch'
 import { useGetSortedRoundsCurrentEpoch } from 'state/predictions/hooks'
 import useSwiper from './useSwiper'

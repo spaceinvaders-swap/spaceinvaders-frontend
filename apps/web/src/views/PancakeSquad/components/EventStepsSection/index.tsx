@@ -1,9 +1,9 @@
 import Link from 'next/link'
-import { Box, Button, Card, CardBody, Flex, Step, Stepper, Text } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
-import { StyledWaveContainer, LandingBodyWrapper } from 'views/PancakeSquad/styles'
+import { Box, Button, Card, CardBody, Flex, Step, Stepper, Text } from '@offsideswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
+import { StyledWaveContainer, LandingBodyWrapper } from 'views/OffsideSquad/styles'
 import useTheme from 'hooks/useTheme'
-import { useGetCakeBalance } from 'hooks/useTokenBalance'
+import { useGetRotoBalance } from 'hooks/useTokenBalance'
 import EventStepsBottomWave from '../../assets/EventStepsBottomWave'
 import EventStepsTopWave from '../../assets/EventStepsTopWave'
 import stepsConfigBuilder from './config'
@@ -19,8 +19,8 @@ const EventStepsSection: React.FC<React.PropsWithChildren<EventStepsProps>> = ({
 }) => {
   const { t } = useTranslation()
   const { theme, isDark } = useTheme()
-  const { balance: cakeBalance } = useGetCakeBalance()
-  const stepsConfig = stepsConfigBuilder({ t, eventInfos, userInfos, userStatus, account, theme, cakeBalance })
+  const { balance: rotoBalance } = useGetRotoBalance()
+  const stepsConfig = stepsConfigBuilder({ t, eventInfos, userInfos, userStatus, account, theme, rotoBalance })
   const isMintingFinished = userInfos && eventInfos && eventInfos.maxSupply === eventInfos.totalSupplyMinted
   return (
     <StyledEventStepsSectionContainer justifyContent="center" $isDark={isDark}>
@@ -78,7 +78,7 @@ const EventStepsSection: React.FC<React.PropsWithChildren<EventStepsProps>> = ({
       </LandingBodyWrapper>
       <StyledWaveContainer bottom="-3px">
         <Flex justifyContent="center">
-          <StyledBunniesSquadImg src="/images/pancakeSquad/squadRow.png" alt="pancake bunnies squad" />
+          <StyledBunniesSquadImg src="/images/offsideSquad/squadRow.png" alt="offside bunnies squad" />
         </Flex>
         <EventStepsBottomWave isDark={isDark} />
       </StyledWaveContainer>

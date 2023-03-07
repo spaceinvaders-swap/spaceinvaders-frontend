@@ -1,9 +1,9 @@
 export const CORS_ALLOW = [
-  /\.pancake\.run$/,
-  /\.pancakeswap\.finance$/,
-  /\.pancakeswap\.com$/,
-  'https://pancakeswap.finance',
-  'https://pancakeswap.com',
+  /\.offside\.run$/,
+  /\.offsideswap\.finance$/,
+  /\.offsideswap\.com$/,
+  'https://offsideswap.finance',
+  'https://offsideswap.com',
   /^http:\/\/localhost(:\d+)?$/,
 ]
 

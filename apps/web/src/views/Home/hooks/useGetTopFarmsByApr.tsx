@@ -1,21 +1,21 @@
 import { useState, useEffect } from 'react'
-import { useFarms, usePriceCakeBusd } from 'state/farms/hooks'
+import { useFarms, usePriceRotoBusd } from 'state/farms/hooks'
 import { useAppDispatch } from 'state'
 import { fetchFarmsPublicDataAsync } from 'state/farms'
 import { getFarmApr } from 'utils/apr'
 import orderBy from 'lodash/orderBy'
-import { DeserializedFarm, FarmWithStakedValue } from '@pancakeswap/farms'
+import { DeserializedFarm, FarmWithStakedValue } from '@offsideswap/farms'
 import { FetchStatus } from 'config/constants/types'
-import { getFarmConfig } from '@pancakeswap/farms/constants'
+import { getFarmConfig } from '@offsideswap/farms/constants'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 
 const useGetTopFarmsByApr = (isIntersecting: boolean) => {
   const dispatch = useAppDispatch()
-  const { data: farms, regularCakePerBlock } = useFarms()
+  const { data: farms, regularRotoPerBlock } = useFarms()
   const [fetchStatus, setFetchStatus] = useState(FetchStatus.Idle)
   const [fetched, setFetched] = useState(false)
   const [topFarms, setTopFarms] = useState<FarmWithStakedValue[]>([null, null, null, null, null])
-  const cakePriceBusd = usePriceCakeBusd()
+  const rotoPriceBusd = usePriceRotoBusd()
   const { chainId } = useActiveChainId()
 
   useEffect(() => {
@@ -49,15 +49,15 @@ const useGetTopFarmsByApr = (isIntersecting: boolean) => {
       )
       const farmsWithApr: FarmWithStakedValue[] = farmsWithPrices.map((farm) => {
         const totalLiquidity = farm.lpTotalInQuoteToken.times(farm.quoteTokenPriceBusd)
-        const { cakeRewardsApr, lpRewardsApr } = getFarmApr(
+        const { rotoRewardsApr, lpRewardsApr } = getFarmApr(
           chainId,
           farm.poolWeight,
-          cakePriceBusd,
+          rotoPriceBusd,
           totalLiquidity,
           farm.lpAddress,
-          regularCakePerBlock,
+          regularRotoPerBlock,
         )
-        return { ...farm, apr: cakeRewardsApr, lpRewardsApr }
+        return { ...farm, apr: rotoRewardsApr, lpRewardsApr }
       })
 
       const sortedByApr = orderBy(farmsWithApr, (farm) => farm.apr + farm.lpRewardsApr, 'desc')
@@ -68,7 +68,7 @@ const useGetTopFarmsByApr = (isIntersecting: boolean) => {
     if (fetchStatus === FetchStatus.Fetched && !topFarms[0] && farms?.length > 0) {
       getTopFarmsByApr(farms)
     }
-  }, [setTopFarms, farms, fetchStatus, cakePriceBusd, topFarms, regularCakePerBlock, chainId])
+  }, [setTopFarms, farms, fetchStatus, rotoPriceBusd, topFarms, regularRotoPerBlock, chainId])
 
   return { topFarms, fetched }
 }

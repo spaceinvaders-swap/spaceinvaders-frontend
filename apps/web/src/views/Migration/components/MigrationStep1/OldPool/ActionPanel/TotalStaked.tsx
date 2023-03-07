@@ -1,10 +1,10 @@
 import React, { useMemo } from 'react'
-import { Flex, Text, Balance, Pool } from '@pancakeswap/uikit'
+import { Flex, Text, Balance, Pool } from '@offsideswap/uikit'
 import styled from 'styled-components'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@offsideswap/localization'
 import BigNumber from 'bignumber.js'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
-import { Token } from '@pancakeswap/sdk'
+import { getBalanceNumber } from '@offsideswap/utils/formatBalance'
+import { Token } from '@offsideswap/sdk'
 
 const Containter = styled(Flex)`
   margin-top: 12px;
@@ -18,26 +18,26 @@ const Containter = styled(Flex)`
 
 interface TotalStakedProps {
   pool: Pool.DeserializedPool<Token>
-  totalCakeInVault: BigNumber
-  cakeInVaults: BigNumber
+  totalRotoInVault: BigNumber
+  rotoInVaults: BigNumber
 }
 
-const TotalStaked: React.FC<React.PropsWithChildren<TotalStakedProps>> = ({ pool, totalCakeInVault, cakeInVaults }) => {
+const TotalStaked: React.FC<React.PropsWithChildren<TotalStakedProps>> = ({ pool, totalRotoInVault, rotoInVaults }) => {
   const { t } = useTranslation()
   const { sousId, stakingToken, totalStaked, vaultKey } = pool
 
-  const isManualCakePool = sousId === 0
+  const isManualRotoPool = sousId === 0
 
   const totalStakedBalance = useMemo(() => {
     if (vaultKey) {
-      return getBalanceNumber(totalCakeInVault, stakingToken.decimals)
+      return getBalanceNumber(totalRotoInVault, stakingToken.decimals)
     }
-    if (isManualCakePool) {
-      const manualCakeTotalMinusAutoVault = new BigNumber(totalStaked).minus(cakeInVaults)
-      return getBalanceNumber(manualCakeTotalMinusAutoVault, stakingToken.decimals)
+    if (isManualRotoPool) {
+      const manualRotoTotalMinusAutoVault = new BigNumber(totalStaked).minus(rotoInVaults)
+      return getBalanceNumber(manualRotoTotalMinusAutoVault, stakingToken.decimals)
     }
     return getBalanceNumber(totalStaked, stakingToken.decimals)
-  }, [vaultKey, totalCakeInVault, isManualCakePool, totalStaked, stakingToken.decimals, cakeInVaults])
+  }, [vaultKey, totalRotoInVault, isManualRotoPool, totalStaked, stakingToken.decimals, rotoInVaults])
 
   return (
     <Containter justifyContent="space-between">

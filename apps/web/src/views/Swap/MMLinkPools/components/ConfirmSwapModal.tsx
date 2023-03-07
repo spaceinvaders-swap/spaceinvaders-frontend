@@ -1,12 +1,12 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, CurrencyAmount, TradeType } from '@pancakeswap/sdk'
+import { useTranslation } from '@offsideswap/localization'
+import { Currency, CurrencyAmount, TradeType } from '@offsideswap/sdk'
 import {
   ConfirmationPendingContent,
   InjectedModalProps,
   LinkExternal,
   Text,
   TransactionErrorContent,
-} from '@pancakeswap/uikit'
+} from '@offsideswap/uikit'
 import { TransactionSubmittedContent } from 'components/TransactionConfirmationModal'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { memo, useCallback, useMemo } from 'react'
@@ -15,11 +15,11 @@ import ConfirmSwapModalContainer from '../../components/ConfirmSwapModalContaine
 import { TradeWithMM } from '../types'
 import TransactionConfirmSwapContentWithSmartRouter from './TransactionConfirmSwapContent'
 
-const PancakeRouterSlippageErrorMsg =
+const OffsideRouterSlippageErrorMsg =
   'This transaction will not succeed either due to price movement or fee on transfer. Try increasing your slippage tolerance.'
 
 const SwapTransactionErrorContent = ({ onDismiss, message, openSettingModal }) => {
-  const isSlippagedErrorMsg = message?.includes(PancakeRouterSlippageErrorMsg)
+  const isSlippagedErrorMsg = message?.includes(OffsideRouterSlippageErrorMsg)
 
   const handleErrorDismiss = useCallback(() => {
     onDismiss?.()
@@ -42,7 +42,7 @@ const SwapTransactionErrorContent = ({ onDismiss, message, openSettingModal }) =
             </Text>
           </Text>
           <LinkExternal
-            href="https://docs.pancakeswap.finance/products/pancakeswap-exchange/trade-guide"
+            href="https://docs.offsideswap.finance/products/offsideswap-exchange/trade-guide"
             style={{ width: '100%', justifyContent: 'center' }}
           >
             {t('What are the potential issues with the token?')}

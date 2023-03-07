@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import BigNumber from "bignumber.js";
-import { Token } from "@pancakeswap/sdk";
+import { Token } from "@offsideswap/sdk";
 
 export interface FarmTableEarnedProps {
   earnings: number;
@@ -13,7 +13,7 @@ export interface FarmTableLiquidityProps {
 
 export interface FarmTableMultiplierProps {
   multiplier: string;
-  rewardCakePerSecond?: boolean;
+  rewardRotoPerSecond?: boolean;
 }
 
 export interface FarmTableFarmTokenInfoProps {

@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Text } from '@pancakeswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
+import { Box, Text } from '@offsideswap/uikit'
 import { useMemo } from 'react'
 import { ifosConfig } from 'config/constants'
 import { PoolIds } from 'config/constants/types'

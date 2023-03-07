@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
-import { Coin, Currency, CurrencyAmount, Token } from '@pancakeswap/aptos-swap-sdk'
-import { APTOS_COIN, useAccount, useAccountResources, useCoin, useCoins as useCoins_ } from '@pancakeswap/awgmi'
-import { coinStoreResourcesFilter, unwrapTypeFromString } from '@pancakeswap/awgmi/core'
+import { Coin, Currency, CurrencyAmount, Token } from '@offsideswap/aptos-swap-sdk'
+import { APTOS_COIN, useAccount, useAccountResources, useCoin, useCoins as useCoins_ } from '@offsideswap/awgmi'
+import { coinStoreResourcesFilter, unwrapTypeFromString } from '@offsideswap/awgmi/core'
 import { useAtomValue } from 'jotai'
 import fromPairs from 'lodash/fromPairs'
 import { useCallback, useMemo } from 'react'

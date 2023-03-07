@@ -1,6 +1,6 @@
 import BigNumber from 'bignumber.js'
-import { bscTokens } from '@pancakeswap/tokens'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { bscTokens } from '@offsideswap/tokens'
+import { BIG_ZERO } from '@offsideswap/utils/bigNumber'
 import { getBep20Contract, getPotteryVaultContract, getPotteryDrawContract } from 'utils/contractHelpers'
 import { request, gql } from 'graphql-request'
 import { GRAPH_API_POTTERY } from 'config/constants/endpoints'
@@ -12,7 +12,7 @@ const potteryDrawContract = getPotteryDrawContract()
 
 export const fetchPotterysAllowance = async (account: string, potteryVaultAddress: string) => {
   try {
-    const contract = getBep20Contract(bscTokens.cake.address)
+    const contract = getBep20Contract(bscTokens.roto.address)
     const allowances = await contract.allowance(account, potteryVaultAddress)
     return new BigNumber(allowances.toString()).toJSON()
   } catch (error) {
@@ -90,7 +90,7 @@ export const fetchWithdrawAbleData = async (account: string) => {
           },
           {
             address: vault.id,
-            name: 'totalLockCake',
+            name: 'totalLockRoto',
           },
           {
             address: vault.id,
@@ -98,7 +98,7 @@ export const fetchWithdrawAbleData = async (account: string) => {
             params: [account],
           },
         ]
-        const [[previewRedeem], [totalSupply], [totalLockCake], [balanceOf]] = await multicallv2({
+        const [[previewRedeem], [totalSupply], [totalLockRoto], [balanceOf]] = await multicallv2({
           abi: potteryVaultAbi,
           calls,
         })
@@ -111,7 +111,7 @@ export const fetchWithdrawAbleData = async (account: string) => {
           status: PotteryDepositStatus[vault.status],
           potteryVaultAddress: vault.id,
           totalSupply: new BigNumber(totalSupply.toString()).toJSON(),
-          totalLockCake: new BigNumber(totalLockCake.toString()).toJSON(),
+          totalLockRoto: new BigNumber(totalLockRoto.toString()).toJSON(),
           lockedDate: vault.lockDate,
           balanceOf: new BigNumber(balanceOf.toString()).toJSON(),
         }

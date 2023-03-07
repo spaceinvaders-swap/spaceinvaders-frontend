@@ -1,22 +1,22 @@
 import { UserResponse, BetResponse, RoundResponse } from './responseType'
 
-export interface UserResponseCAKE extends UserResponse<BetResponseCAKE> {
-  totalCAKE: string
-  totalCAKEBull: string
-  totalCAKEBear: string
-  averageCAKE: string
-  totalCAKEClaimed: string
-  netCAKE: string
+export interface UserResponseROTO extends UserResponse<BetResponseROTO> {
+  totalROTO: string
+  totalROTOBull: string
+  totalROTOBear: string
+  averageROTO: string
+  totalROTOClaimed: string
+  netROTO: string
 }
 
-export interface BetResponseCAKE extends BetResponse {
-  claimedCAKE: string
-  claimedNetCAKE: string
-  user?: UserResponseCAKE
-  round?: RoundResponseCAKE
+export interface BetResponseROTO extends BetResponse {
+  claimedROTO: string
+  claimedNetROTO: string
+  user?: UserResponseROTO
+  round?: RoundResponseROTO
 }
 
-export type RoundResponseCAKE = RoundResponse<BetResponseCAKE>
+export type RoundResponseROTO = RoundResponse<BetResponseROTO>
 
 /**
  * Base fields are the all the top-level fields available in the api. Used in multiple queries
@@ -56,8 +56,8 @@ export const betBaseFields = `
  claimedAt
  claimedHash
  claimedBlock
- claimedCAKE
- claimedNetCAKE
+ claimedROTO
+ claimedNetROTO
  createdAt
  updatedAt
 `
@@ -70,12 +70,12 @@ export const userBaseFields = `
   totalBets
   totalBetsBull
   totalBetsBear
-  totalCAKE
-  totalCAKEBull
-  totalCAKEBear
+  totalROTO
+  totalROTOBull
+  totalROTOBear
   totalBetsClaimed
-  totalCAKEClaimed
+  totalROTOClaimed
   winRate
-  averageCAKE
-  netCAKE
+  averageROTO
+  netROTO
 `

@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import { AutoRenewIcon, Button, Checkbox, Flex, InjectedModalProps, Text, useToast } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { AutoRenewIcon, Button, Checkbox, Flex, InjectedModalProps, Text, useToast } from '@offsideswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
 import useGetProfileCosts from 'views/Profile/hooks/useGetProfileCosts'
 import { useProfile } from 'state/profile/hooks'
-import { formatBigNumber } from '@pancakeswap/utils/formatBalance'
+import { formatBigNumber } from '@offsideswap/utils/formatBalance'
 import { useProfileContract } from 'hooks/useContract'
 import { useCallWithGasPrice } from 'hooks/useCallWithGasPrice'
 import useCatchTxError from 'hooks/useCatchTxError'
@@ -17,10 +17,10 @@ const PauseProfilePage: React.FC<React.PropsWithChildren<PauseProfilePageProps>>
   const [isAcknowledged, setIsAcknowledged] = useState(false)
   const { profile, refresh: refreshProfile } = useProfile()
   const {
-    costs: { numberCakeToReactivate },
+    costs: { numberRotoToReactivate },
   } = useGetProfileCosts()
   const { t } = useTranslation()
-  const pancakeProfileContract = useProfileContract()
+  const offsideProfileContract = useProfileContract()
   const { callWithGasPrice } = useCallWithGasPrice()
   const { toastSuccess } = useToast()
   const { fetchWithCatchTxError, loading: isConfirming } = useCatchTxError()
@@ -29,7 +29,7 @@ const PauseProfilePage: React.FC<React.PropsWithChildren<PauseProfilePageProps>>
 
   const handleDeactivateProfile = async () => {
     const receipt = await fetchWithCatchTxError(() => {
-      return callWithGasPrice(pancakeProfileContract, 'pauseProfile')
+      return callWithGasPrice(offsideProfileContract, 'pauseProfile')
     })
     if (receipt?.status) {
       // Re-fetch profile
@@ -55,7 +55,7 @@ const PauseProfilePage: React.FC<React.PropsWithChildren<PauseProfilePageProps>>
         )}
       </Text>
       <Text as="p" color="textSubtle" mb="24px">
-        {t('Cost to reactivate in the future: %cost% CAKE', { cost: formatBigNumber(numberCakeToReactivate) })}
+        {t('Cost to reactivate in the future: %cost% ROTO', { cost: formatBigNumber(numberRotoToReactivate) })}
       </Text>
       <label htmlFor="acknowledgement" style={{ cursor: 'pointer', display: 'block', marginBottom: '24px' }}>
         <Flex alignItems="center">

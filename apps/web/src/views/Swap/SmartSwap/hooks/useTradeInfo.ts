@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
-import { ChainId, Currency, CurrencyAmount, Percent, Price, Trade, TradeType } from '@pancakeswap/sdk'
-import { Pair, RouteType, Trade as SmartRouterTrade, TradeWithStableSwap } from '@pancakeswap/smart-router/evm'
+import { ChainId, Currency, CurrencyAmount, Percent, Price, Trade, TradeType } from '@offsideswap/sdk'
+import { Pair, RouteType, Trade as SmartRouterTrade, TradeWithStableSwap } from '@offsideswap/smart-router/evm'
 
 import { Field } from 'state/swap/actions'
 import { ROUTER_ADDRESS } from 'config/constants/exchange'

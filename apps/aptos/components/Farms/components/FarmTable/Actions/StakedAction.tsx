@@ -1,21 +1,21 @@
-import { useAccountBalance } from '@pancakeswap/awgmi'
-import { TransactionResponse } from '@pancakeswap/awgmi/core'
-import type { DeserializedFarmUserData } from '@pancakeswap/farms'
-import { useTranslation } from '@pancakeswap/localization'
-import { Farm as FarmUI, useModal, useToast } from '@pancakeswap/uikit'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { useAccountBalance } from '@offsideswap/awgmi'
+import { TransactionResponse } from '@offsideswap/awgmi/core'
+import type { DeserializedFarmUserData } from '@offsideswap/farms'
+import { useTranslation } from '@offsideswap/localization'
+import { Farm as FarmUI, useModal, useToast } from '@offsideswap/uikit'
+import { BIG_ZERO } from '@offsideswap/utils/bigNumber'
 import BigNumber from 'bignumber.js'
 import { ConnectWalletButton } from 'components/ConnectWalletButton'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import { BASE_ADD_LIQUIDITY_URL } from 'config'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import useCatchTxError from 'hooks/useCatchTxError'
-import { usePriceCakeUsdc } from 'hooks/useStablePrice'
+import { usePriceRotoUsdc } from 'hooks/useStablePrice'
 import { useRouter } from 'next/router'
 import { useMemo } from 'react'
 import { FARM_DEFAULT_DECIMALS } from 'components/Farms/constants'
 import getLiquidityUrlPathParts from 'utils/getLiquidityUrlPathParts'
-import { FarmWithStakedValue } from '@pancakeswap/farms'
+import { FarmWithStakedValue } from '@offsideswap/farms'
 import useStakeFarms from '../../../hooks/useStakeFarms'
 import useUnstakeFarms from '../../../hooks/useUnstakeFarms'
 
@@ -89,7 +89,7 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
   const { stakedBalance, tokenBalance } = (userData as DeserializedFarmUserData) || {}
 
   const router = useRouter()
-  const cakePrice = usePriceCakeUsdc()
+  const rotoPrice = usePriceRotoUsdc()
 
   const liquidityUrlPathParts = getLiquidityUrlPathParts({
     quoteTokenAddress: quoteToken?.address,
@@ -140,7 +140,7 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
       tokenName={lpSymbol}
       multiplier={multiplier}
       addLiquidityUrl={addLiquidityUrl}
-      cakePrice={cakePrice}
+      rotoPrice={rotoPrice}
       decimals={FARM_DEFAULT_DECIMALS}
     />,
   )

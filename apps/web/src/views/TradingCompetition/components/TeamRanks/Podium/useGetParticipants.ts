@@ -16,7 +16,7 @@ const useGetParticipants = (subgraphAddress: string): string[] => {
               flippers: team(id: "2") {
                 userCount
               }
-              cakers: team(id: "3") {
+              rotors: team(id: "3") {
                 userCount
               }
             }
@@ -24,12 +24,12 @@ const useGetParticipants = (subgraphAddress: string): string[] => {
         )
         const storm = parseInt(response.storm.userCount, 10)
         const flippers = parseInt(response.flippers.userCount, 10)
-        const cakers = parseInt(response.cakers.userCount, 10)
-        const totalParticipants = storm + flippers + cakers
+        const rotors = parseInt(response.rotors.userCount, 10)
+        const totalParticipants = storm + flippers + rotors
         setParticipants([
           storm.toLocaleString(),
           flippers.toLocaleString(),
-          cakers.toLocaleString(),
+          rotors.toLocaleString(),
           totalParticipants.toString(),
         ])
       } catch (error) {

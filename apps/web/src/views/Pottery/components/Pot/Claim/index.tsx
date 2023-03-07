@@ -1,10 +1,10 @@
 import styled from 'styled-components'
-import { Flex, Box } from '@pancakeswap/uikit'
+import { Flex, Box } from '@offsideswap/uikit'
 import { GreyCard } from 'components/Card'
 import { usePotteryData } from 'state/pottery/hook'
-import { calculateCakeAmount } from 'views/Pottery/helpers'
+import { calculateRotoAmount } from 'views/Pottery/helpers'
 import BigNumber from 'bignumber.js'
-import { BIG_ONE } from '@pancakeswap/utils/bigNumber'
+import { BIG_ONE } from '@offsideswap/utils/bigNumber'
 import SubgraphHealthIndicator from 'components/SubgraphHealthIndicator'
 import { useAccount } from 'wagmi'
 import YourDeposit from '../YourDeposit'
@@ -24,13 +24,13 @@ const Claim: React.FC<React.PropsWithChildren> = () => {
 
   const allDeposit = userData.withdrawAbleData
     .map((data) => {
-      const { status, shares, previewRedeem, totalSupply, totalLockCake } = data
-      return calculateCakeAmount({
+      const { status, shares, previewRedeem, totalSupply, totalLockRoto } = data
+      return calculateRotoAmount({
         status,
         previewRedeem,
         shares,
         totalSupply: new BigNumber(totalSupply),
-        totalLockCake: new BigNumber(totalLockCake),
+        totalLockRoto: new BigNumber(totalLockRoto),
       })
     })
     .reduce((previousValue, currentValue) => previousValue.plus(currentValue), BIG_ONE)
@@ -40,7 +40,7 @@ const Claim: React.FC<React.PropsWithChildren> = () => {
       {account ? (
         <Container>
           <GreyCard>
-            <SubgraphHealthIndicator inline subgraphName="pancakeswap/pottery" />
+            <SubgraphHealthIndicator inline subgraphName="offsideswap/pottery" />
             <Flex justifyContent="space-between" mb="20px">
               <YourDeposit depositBalance={allDeposit} />
             </Flex>

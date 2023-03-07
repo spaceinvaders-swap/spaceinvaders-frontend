@@ -1,6 +1,6 @@
 import { Fragment, memo } from 'react'
-import { Trade, Currency, TradeType } from '@pancakeswap/aptos-swap-sdk'
-import { Text, Flex, ChevronRightIcon } from '@pancakeswap/uikit'
+import { Trade, Currency, TradeType } from '@offsideswap/aptos-swap-sdk'
+import { Text, Flex, ChevronRightIcon } from '@offsideswap/uikit'
 
 export default memo(function SwapRoute({ trade }: { trade: Trade<Currency, Currency, TradeType> }) {
   return (

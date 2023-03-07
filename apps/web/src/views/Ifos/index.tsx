@@ -1,5 +1,5 @@
-import { SubMenuItems } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { SubMenuItems } from '@offsideswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
 import { useRouter } from 'next/router'
 import { useFetchIfo } from 'state/pools/hooks'
 import Hero from './components/Hero'

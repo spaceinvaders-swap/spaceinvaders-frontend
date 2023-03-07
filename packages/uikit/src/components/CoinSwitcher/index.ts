@@ -1,2 +1,2 @@
 export { CoinSwitcher } from "./CoinSwitcher";
-export { bnb2CakeImages, cake2BnbImages } from "./constant";
+export { bnb2RotoImages, roto2BnbImages } from "./constant";

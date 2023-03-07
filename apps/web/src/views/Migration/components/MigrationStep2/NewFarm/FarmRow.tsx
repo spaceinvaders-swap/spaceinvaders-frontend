@@ -5,8 +5,8 @@ import Staked from 'views/Migration/components/Farm/Cells/Staked'
 import Multiplier from 'views/Migration/components/Farm/Cells/Multiplier'
 import Liquidity from 'views/Migration/components/Farm/Cells/Liquidity'
 import { useFarmUser } from 'state/farms/hooks'
-import { useMatchBreakpoints } from '@pancakeswap/uikit'
-import { useDelayedUnmount } from '@pancakeswap/hooks'
+import { useMatchBreakpoints } from '@offsideswap/uikit'
+import { useDelayedUnmount } from '@offsideswap/hooks'
 import AprCell from './Cells/AprCell'
 import StakeButtonCells from './Cells/StakeButtonCells'
 import StakeButton from './StakeButton'
@@ -56,7 +56,7 @@ const FarmRow: React.FunctionComponent<React.PropsWithChildren<RowProps>> = ({
   const isLargerScreen = isXl || isXxl
   const [expanded, setExpanded] = useState(false)
   const shouldRenderActionPanel = useDelayedUnmount(expanded, 300)
-  const lpLabel = farm.lpSymbol && farm.lpSymbol.replace(/pancake/gi, '')
+  const lpLabel = farm.lpSymbol && farm.lpSymbol.replace(/offside/gi, '')
 
   const { stakedBalance } = useFarmUser(farm.pid)
 

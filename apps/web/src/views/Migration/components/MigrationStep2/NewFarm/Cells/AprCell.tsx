@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Flex, Text, Pool } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Flex, Text, Pool } from '@offsideswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
 import Apr, { AprProps } from 'views/Farms/components/FarmTable/Apr'
 
 const StyledCell = styled(Pool.BaseCell)`

@@ -62,7 +62,7 @@
   },
   {
     "inputs": [],
-    "name": "CAKE",
+    "name": "ROTO",
     "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
     "stateMutability": "view",
     "type": "function"
@@ -150,7 +150,7 @@
   {
     "inputs": [
       { "internalType": "address", "name": "_user", "type": "address" },
-      { "internalType": "address", "name": "_cake", "type": "address" },
+      { "internalType": "address", "name": "_roto", "type": "address" },
       { "internalType": "contract IMasterChefV2", "name": "_mcv2", "type": "address" }
     ],
     "name": "initialize",

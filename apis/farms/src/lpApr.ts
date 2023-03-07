@@ -1,11 +1,11 @@
 /* eslint-disable no-restricted-syntax */
-import { ChainId } from '@pancakeswap/sdk'
+import { ChainId } from '@offsideswap/sdk'
 import chunk from 'lodash/chunk'
 import BigNumber from 'bignumber.js'
 import { gql, GraphQLClient } from 'graphql-request'
 import getUnixTime from 'date-fns/getUnixTime'
 import sub from 'date-fns/sub'
-import { AprMap } from '@pancakeswap/farms'
+import { AprMap } from '@offsideswap/farms'
 import _toLower from 'lodash/toLower'
 
 interface BlockResponse {
@@ -14,21 +14,21 @@ interface BlockResponse {
   }[]
 }
 
-const STABLESWAP_SUBGRAPH_ENDPOINT = 'https://api.thegraph.com/subgraphs/name/pancakeswap/exchange-stableswap'
+const STABLESWAP_SUBGRAPH_ENDPOINT = 'https://api.thegraph.com/subgraphs/name/offsideswap/exchange-stableswap'
 
 const LP_HOLDERS_FEE = 0.0017
 const WEEKS_IN_A_YEAR = 52.1429
 
 const BLOCKS_CLIENT_WITH_CHAIN = {
-  [ChainId.BSC]: 'https://api.thegraph.com/subgraphs/name/pancakeswap/blocks',
+  [ChainId.BSC]: 'https://api.thegraph.com/subgraphs/name/offsideswap/blocks',
   [ChainId.ETHEREUM]: 'https://api.thegraph.com/subgraphs/name/blocklytics/ethereum-blocks',
   [ChainId.BSC_TESTNET]: '',
   [ChainId.GOERLI]: '',
 }
 
 const INFO_CLIENT_WITH_CHAIN = {
-  [ChainId.BSC]: 'https://proxy-worker.pancake-swap.workers.dev/bsc-exchange',
-  [ChainId.ETHEREUM]: 'https://api.thegraph.com/subgraphs/name/pancakeswap/exhange-eth',
+  [ChainId.BSC]: 'https://proxy-worker.offside-swap.workers.dev/bsc-exchange',
+  [ChainId.ETHEREUM]: 'https://api.thegraph.com/subgraphs/name/offsideswap/exhange-eth',
   [ChainId.BSC_TESTNET]: '',
   [ChainId.GOERLI]: '',
 }

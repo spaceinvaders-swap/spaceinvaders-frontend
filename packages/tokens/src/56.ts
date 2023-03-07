@@ -1,5 +1,5 @@
-import { ChainId, WBNB, ERC20Token } from '@pancakeswap/sdk'
-import { BUSD_BSC, CAKE_MAINNET, USDT_BSC } from './common'
+import { ChainId, WBNB, ERC20Token } from '@offsideswap/sdk'
+import { BUSD_BSC, ROTO_MAINNET, USDT_BSC } from './common'
 
 export const bscTokens = {
   wbnb: WBNB[ChainId.BSC],
@@ -12,7 +12,7 @@ export const bscTokens = {
     'BNB',
     'https://www.binance.com/',
   ),
-  cake: CAKE_MAINNET,
+  roto: ROTO_MAINNET,
   gmi: new ERC20Token(
     ChainId.BSC,
     '0x93D8d25E3C9A847a5Da79F79ecaC89461FEcA846',
@@ -221,7 +221,7 @@ export const bscTokens = {
     18,
     'SYRUP',
     'SyrupBar Token',
-    'https://pancakeswap.finance/',
+    'https://offsideswap.finance/',
   ),
   pha: new ERC20Token(
     ChainId.BSC,
@@ -231,13 +231,13 @@ export const bscTokens = {
     'Phala Token',
     'https://phala.network',
   ),
-  babycake: new ERC20Token(
+  babyroto: new ERC20Token(
     ChainId.BSC,
     '0xdB8D30b74bf098aF214e862C90E647bbB1fcC58c',
     18,
-    'BABYCAKE',
-    'Baby Cake Token',
-    'https://babycake.app/',
+    'BABYROTO',
+    'Baby Roto Token',
+    'https://babyroto.app/',
   ),
   bmon: new ERC20Token(
     ChainId.BSC,
@@ -404,8 +404,8 @@ export const bscTokens = {
     '0xC9849E6fdB743d08fAeE3E34dd2D1bc69EA11a51',
     18,
     'BUNNY',
-    'Pancakebunny Token',
-    'https://pancakebunny.finance/',
+    'Offsidebunny Token',
+    'https://offsidebunny.finance/',
   ),
   alice: new ERC20Token(
     ChainId.BSC,

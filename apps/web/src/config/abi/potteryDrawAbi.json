@@ -3,12 +3,12 @@
     "inputs": [
       {
         "internalType": "contract IERC20",
-        "name": "_cake",
+        "name": "_roto",
         "type": "address"
       },
       {
-        "internalType": "contract ICakePool",
-        "name": "_cakePool",
+        "internalType": "contract IRotoPool",
+        "name": "_rotoPool",
         "type": "address"
       }
     ],
@@ -438,7 +438,7 @@
             "type": "uint256"
           },
           {
-            "internalType": "contract IPancakeSwapPotteryVault",
+            "internalType": "contract IOffsideSwapPotteryVault",
             "name": "vault",
             "type": "address"
           },

@@ -1,10 +1,10 @@
 import { useMemo } from 'react'
 import BigNumber from 'bignumber.js'
-import { Flex, LinkExternal, Text, Box, HelpIcon, useTooltip, RocketIcon, Link } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Flex, LinkExternal, Text, Box, HelpIcon, useTooltip, RocketIcon, Link } from '@offsideswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
 import styled from 'styled-components'
 import { getBlockExploreLink } from 'utils'
-import { formatNumber } from '@pancakeswap/utils/formatBalance'
+import { formatNumber } from '@offsideswap/utils/formatBalance'
 import useCurrentBlockTimestamp from 'hooks/useCurrentBlockTimestamp'
 import { ModalInner, VotingBoxBorder, VotingBoxCardInner } from './styles'
 
@@ -51,26 +51,26 @@ const StyleLink = styled(Link)`
 
 interface DetailsViewProps {
   total: number
-  cakeBalance?: number
-  cakeVaultBalance?: number
-  cakePoolBalance?: number
+  rotoBalance?: number
+  rotoVaultBalance?: number
+  rotoPoolBalance?: number
   poolsBalance?: number
-  cakeBnbLpBalance?: number
+  rotoBnbLpBalance?: number
   ifoPoolBalance?: number
-  lockedCakeBalance?: number
+  lockedRotoBalance?: number
   lockedEndTime?: number
   block: number
 }
 
 const DetailsView: React.FC<React.PropsWithChildren<DetailsViewProps>> = ({
   total,
-  cakeBalance,
-  cakeVaultBalance,
-  cakePoolBalance,
+  rotoBalance,
+  rotoVaultBalance,
+  rotoPoolBalance,
   poolsBalance,
-  cakeBnbLpBalance,
+  rotoBnbLpBalance,
   ifoPoolBalance,
-  lockedCakeBalance,
+  lockedRotoBalance,
   lockedEndTime,
   block,
 }) => {
@@ -83,19 +83,19 @@ const DetailsView: React.FC<React.PropsWithChildren<DetailsViewProps>> = ({
 
   const { targetRef, tooltip, tooltipVisible } = useTooltip(
     <>
-      {Number.isFinite(lockedCakeBalance) && (
+      {Number.isFinite(lockedRotoBalance) && (
         <Box>
           <Text>
             {isBoostingExpired
               ? t(
-                  'Your vCAKE boosting was expired at the snapshot block. Renew your fixed-term staking position to activate the boost for future voting proposals.',
+                  'Your vROTO boosting was expired at the snapshot block. Renew your fixed-term staking position to activate the boost for future voting proposals.',
                 )
               : t(
-                  'Voting power is calculated using the staking amount and remaining staking duration of the fixed-term CAKE staking position at the block.',
+                  'Voting power is calculated using the staking amount and remaining staking duration of the fixed-term ROTO staking position at the block.',
                 )}
           </Text>
           <Text bold m="10px 0">
-            {`${t('CAKE locked:')} ${formatNumber(lockedCakeBalance, 0, 2)}`}
+            {`${t('ROTO locked:')} ${formatNumber(lockedRotoBalance, 0, 2)}`}
           </Text>
           <StyleLink href="/pools">{t('Go to Pools')}</StyleLink>
         </Box>
@@ -110,7 +110,7 @@ const DetailsView: React.FC<React.PropsWithChildren<DetailsViewProps>> = ({
     <ModalInner mb="0">
       <Text as="p" mb="24px" fontSize="14px" color="textSubtle">
         {t(
-          'Your voting power is determined by the amount of CAKE you held and the remaining duration on the fixed-term staking position (if you have one) at the block detailed below. CAKE held in other places does not contribute to your voting power.',
+          'Your voting power is determined by the amount of ROTO you held and the remaining duration on the fixed-term staking position (if you have one) at the block detailed below. ROTO held in other places does not contribute to your voting power.',
         )}
       </Text>
       <Text color="secondary" textTransform="uppercase" mb="4px" bold fontSize="14px">
@@ -130,29 +130,29 @@ const DetailsView: React.FC<React.PropsWithChildren<DetailsViewProps>> = ({
           {block}
         </StyledLinkExternal>
       </Text>
-      {Number.isFinite(cakeBalance) && (
+      {Number.isFinite(rotoBalance) && (
         <Flex alignItems="center" justifyContent="space-between" mb="4px">
           <Text color="textSubtle" fontSize="16px">
             {t('Wallet')}
           </Text>
-          <Text textAlign="right">{formatNumber(cakeBalance, 0, 3)}</Text>
+          <Text textAlign="right">{formatNumber(rotoBalance, 0, 3)}</Text>
         </Flex>
       )}
-      {Number.isFinite(cakeVaultBalance) && (
+      {Number.isFinite(rotoVaultBalance) && (
         <Flex alignItems="center" justifyContent="space-between" mb="4px">
           <Text color="textSubtle" fontSize="16px">
-            {t('Flexible CAKE Staking')}
+            {t('Flexible ROTO Staking')}
           </Text>
-          <Text textAlign="right">{formatNumber(cakeVaultBalance, 0, 3)}</Text>
+          <Text textAlign="right">{formatNumber(rotoVaultBalance, 0, 3)}</Text>
         </Flex>
       )}
-      {Number.isFinite(cakePoolBalance) && (
+      {Number.isFinite(rotoPoolBalance) && (
         <>
-          {lockedCakeBalance === 0 ? (
+          {lockedRotoBalance === 0 ? (
             <Flex alignItems="center" justifyContent="space-between" mb="4px">
               <Flex>
                 <Text color="textSubtle" fontSize="16px">
-                  {t('Fixed Term CAKE Staking')}
+                  {t('Fixed Term ROTO Staking')}
                 </Text>
                 {tooltipVisible && tooltip}
                 <Flex ref={targetRef}>
@@ -160,7 +160,7 @@ const DetailsView: React.FC<React.PropsWithChildren<DetailsViewProps>> = ({
                 </Flex>
               </Flex>
               <Text color="failure" textAlign="right">
-                {formatNumber(cakePoolBalance, 0, 3)}
+                {formatNumber(rotoPoolBalance, 0, 3)}
               </Text>
             </Flex>
           ) : (
@@ -168,7 +168,7 @@ const DetailsView: React.FC<React.PropsWithChildren<DetailsViewProps>> = ({
               <FixedTermCardInner expired={isBoostingExpired}>
                 <Flex>
                   <Text color="textSubtle" fontSize="16px" mr="auto">
-                    {t('Fixed Term CAKE Staking')}
+                    {t('Fixed Term ROTO Staking')}
                   </Text>
                   {tooltipVisible && tooltip}
                   <Flex ref={targetRef}>
@@ -177,12 +177,12 @@ const DetailsView: React.FC<React.PropsWithChildren<DetailsViewProps>> = ({
                 </Flex>
                 <Flex mt="10px" flexDirection="column" alignItems="flex-end">
                   <Text bold color={isBoostingExpired ? 'warning' : 'secondary'} fontSize="16px">
-                    {formatNumber(cakePoolBalance, 0, 3)}
+                    {formatNumber(rotoPoolBalance, 0, 3)}
                   </Text>
                   <Flex>
                     <RocketIcon color={isBoostingExpired ? 'warning' : 'secondary'} width="15px" height="15px" />
                     <Text ml="4px" color={isBoostingExpired ? 'warning' : 'secondary'} fontSize="12px">
-                      {isBoostingExpired ? t('Boosting Expired') : t('Boosted by vCAKE')}
+                      {isBoostingExpired ? t('Boosting Expired') : t('Boosted by vROTO')}
                     </Text>
                   </Flex>
                 </Flex>
@@ -207,12 +207,12 @@ const DetailsView: React.FC<React.PropsWithChildren<DetailsViewProps>> = ({
           <Text textAlign="right">{formatNumber(poolsBalance, 0, 3)}</Text>
         </Flex>
       )}
-      {Number.isFinite(cakeBnbLpBalance) && (
+      {Number.isFinite(rotoBnbLpBalance) && (
         <Flex alignItems="center" justifyContent="space-between" mb="4px">
           <Text color="textSubtle" fontSize="16px">
-            {t('CAKE BNB LP')}
+            {t('ROTO BNB LP')}
           </Text>
-          <Text textAlign="right">{formatNumber(cakeBnbLpBalance, 0, 3)}</Text>
+          <Text textAlign="right">{formatNumber(rotoBnbLpBalance, 0, 3)}</Text>
         </Flex>
       )}
     </ModalInner>

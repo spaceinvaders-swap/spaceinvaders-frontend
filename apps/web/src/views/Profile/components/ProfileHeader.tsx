@@ -11,11 +11,11 @@ import {
   VisibilityOff,
   VisibilityOn,
   NextLinkFromReactRouter as ReactRouterLink,
-} from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+} from '@offsideswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
 import { getBlockExploreLink, isAddress } from 'utils'
-import { formatNumber } from '@pancakeswap/utils/formatBalance'
-import truncateHash from '@pancakeswap/utils/truncateHash'
+import { formatNumber } from '@offsideswap/utils/formatBalance'
+import truncateHash from '@offsideswap/utils/truncateHash'
 import { Achievement, Profile } from 'state/types'
 import { useAccount } from 'wagmi'
 import { useMemo } from 'react'
@@ -89,7 +89,7 @@ const ProfileHeader: React.FC<React.PropsWithChildren<HeaderProps>> = ({
       case 2:
         return `${imagePath}/flippers-banner.png`
       case 3:
-        return `${imagePath}/cakers-banner.png`
+        return `${imagePath}/rotors-banner.png`
       default:
         break
     }

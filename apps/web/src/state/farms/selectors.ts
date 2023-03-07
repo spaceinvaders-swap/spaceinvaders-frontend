@@ -1,11 +1,11 @@
 import BigNumber from 'bignumber.js'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { getBalanceAmount } from '@pancakeswap/utils/formatBalance'
+import { BIG_ZERO } from '@offsideswap/utils/bigNumber'
+import { getBalanceAmount } from '@offsideswap/utils/formatBalance'
 import { createSelector } from '@reduxjs/toolkit'
-import { deserializeFarm, deserializeFarmUserData } from '@pancakeswap/farms'
+import { deserializeFarm, deserializeFarmUserData } from '@offsideswap/farms'
 import { State } from '../types'
 
-const selectCakeFarm = (state: State) => state.farms.data.find((f) => f.pid === 2)
+const selectRotoFarm = (state: State) => state.farms.data.find((f) => f.pid === 2)
 const selectFarmByKey = (key: string, value: string | number) => (state: State) =>
   state.farms.data.find((f) => f[key] === value)
 
@@ -29,9 +29,9 @@ export const makeUserFarmFromPidSelector = (pid: number) =>
     }
   })
 
-export const priceCakeFromPidSelector = createSelector([selectCakeFarm], (cakeBnbFarm) => {
-  const cakePriceBusdAsString = cakeBnbFarm?.tokenPriceBusd
-  return new BigNumber(cakePriceBusdAsString)
+export const priceRotoFromPidSelector = createSelector([selectRotoFarm], (rotoBnbFarm) => {
+  const rotoPriceBusdAsString = rotoBnbFarm?.tokenPriceBusd
+  return new BigNumber(rotoPriceBusdAsString)
 })
 
 export const farmFromLpSymbolSelector = (lpSymbol: string) =>
@@ -65,14 +65,14 @@ export const farmSelector = (chainId: number) =>
     (state: State) => state.farms,
     (farms) => {
       const deserializedFarmsData = farms.data.map(deserializeFarm).filter((farm) => farm.token.chainId === chainId)
-      const { loadArchivedFarmsData, userDataLoaded, poolLength, regularCakePerBlock } = farms
+      const { loadArchivedFarmsData, userDataLoaded, poolLength, regularRotoPerBlock } = farms
 
       return {
         loadArchivedFarmsData,
         userDataLoaded,
         data: deserializedFarmsData,
         poolLength,
-        regularCakePerBlock,
+        regularRotoPerBlock,
       }
     },
   )

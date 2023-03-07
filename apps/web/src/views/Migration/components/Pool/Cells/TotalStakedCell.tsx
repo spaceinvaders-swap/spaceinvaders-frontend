@@ -1,15 +1,15 @@
 import React, { useMemo } from 'react'
-import { Flex, Text, Skeleton, Balance, Pool } from '@pancakeswap/uikit'
+import { Flex, Text, Skeleton, Balance, Pool } from '@offsideswap/uikit'
 import styled from 'styled-components'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@offsideswap/localization'
 import BigNumber from 'bignumber.js'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
-import { Token } from '@pancakeswap/sdk'
+import { getBalanceNumber } from '@offsideswap/utils/formatBalance'
+import { Token } from '@offsideswap/sdk'
 
 interface TotalStakedCellProps {
   pool: Pool.DeserializedPool<Token>
-  totalCakeInVault: BigNumber
-  cakeInVaults: BigNumber
+  totalRotoInVault: BigNumber
+  rotoInVaults: BigNumber
 }
 
 const StyledCell = styled(Pool.BaseCell)`
@@ -22,24 +22,24 @@ const StyledCell = styled(Pool.BaseCell)`
 
 const TotalStakedCell: React.FC<React.PropsWithChildren<TotalStakedCellProps>> = ({
   pool,
-  totalCakeInVault,
-  cakeInVaults,
+  totalRotoInVault,
+  rotoInVaults,
 }) => {
   const { t } = useTranslation()
   const { sousId, stakingToken, totalStaked, vaultKey } = pool
 
-  const isManualCakePool = sousId === 0
+  const isManualRotoPool = sousId === 0
 
   const totalStakedBalance = useMemo(() => {
     if (vaultKey) {
-      return getBalanceNumber(totalCakeInVault, stakingToken.decimals)
+      return getBalanceNumber(totalRotoInVault, stakingToken.decimals)
     }
-    if (isManualCakePool) {
-      const manualCakeTotalMinusAutoVault = new BigNumber(totalStaked).minus(cakeInVaults)
-      return getBalanceNumber(manualCakeTotalMinusAutoVault, stakingToken.decimals)
+    if (isManualRotoPool) {
+      const manualRotoTotalMinusAutoVault = new BigNumber(totalStaked).minus(rotoInVaults)
+      return getBalanceNumber(manualRotoTotalMinusAutoVault, stakingToken.decimals)
     }
     return getBalanceNumber(totalStaked, stakingToken.decimals)
-  }, [vaultKey, totalCakeInVault, isManualCakePool, totalStaked, stakingToken.decimals, cakeInVaults])
+  }, [vaultKey, totalRotoInVault, isManualRotoPool, totalStaked, stakingToken.decimals, rotoInVaults])
 
   return (
     <StyledCell role="cell">
@@ -48,7 +48,7 @@ const TotalStakedCell: React.FC<React.PropsWithChildren<TotalStakedCellProps>> =
           {t('Total staked')}
         </Text>
         <Flex height="20px" alignItems="center">
-          {totalCakeInVault && totalCakeInVault.gte(0) ? (
+          {totalRotoInVault && totalRotoInVault.gte(0) ? (
             <Balance fontSize="16px" value={totalStakedBalance} decimals={0} unit={` ${stakingToken.symbol}`} />
           ) : (
             <Skeleton width="80px" height="16px" />

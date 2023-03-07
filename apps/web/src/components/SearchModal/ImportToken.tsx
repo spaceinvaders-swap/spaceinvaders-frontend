@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Token, Currency, ChainId } from '@pancakeswap/sdk'
+import { Token, Currency, ChainId } from '@offsideswap/sdk'
 import {
   Button,
   Text,
@@ -15,16 +15,16 @@ import {
   useTooltip,
   HelpIcon,
   AutoColumn,
-} from '@pancakeswap/uikit'
+} from '@offsideswap/uikit'
 import { useAddUserToken } from 'state/user/hooks'
 import { getBlockExploreLink, getBlockExploreName } from 'utils'
 import useSWRImmutable from 'swr/immutable'
-import truncateHash from '@pancakeswap/utils/truncateHash'
+import truncateHash from '@offsideswap/utils/truncateHash'
 import { useCombinedInactiveList } from 'state/lists/hooks'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@offsideswap/localization'
 import { chains } from 'utils/wagmi'
 import { useActiveChainId } from 'hooks/useActiveChainId'
-import { WrappedTokenInfo } from '@pancakeswap/token-lists'
+import { WrappedTokenInfo } from '@offsideswap/token-lists'
 import AccessRisk from 'views/Swap/components/AccessRisk'
 import { SUPPORT_ONLY_BSC } from 'config/constants/supportChains'
 import { fetchRiskToken, TOKEN_RISK } from 'views/Swap/hooks/fetchTokenRisk'

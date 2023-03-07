@@ -1,4 +1,4 @@
-import { SerializedFarmConfig } from '@pancakeswap/farms'
+import { SerializedFarmConfig } from '@offsideswap/farms'
 
 const priceHelperLps: SerializedFarmConfig[] = []
 

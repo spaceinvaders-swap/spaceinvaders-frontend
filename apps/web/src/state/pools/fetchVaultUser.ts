@@ -1,23 +1,23 @@
 import BigNumber from 'bignumber.js'
 import { SerializedLockedVaultUser, SerializedVaultUser } from 'state/types'
-import { getCakeVaultAddress } from 'utils/addressHelpers'
-import cakeVaultAbi from 'config/abi/cakeVaultV2.json'
+import { getRotoVaultAddress } from 'utils/addressHelpers'
+import rotoVaultAbi from 'config/abi/rotoVaultV2.json'
 import { multicallv2 } from 'utils/multicall'
-import { getCakeFlexibleSideVaultV2Contract } from '../../utils/contractHelpers'
+import { getRotoFlexibleSideVaultV2Contract } from '../../utils/contractHelpers'
 
-const cakeVaultAddress = getCakeVaultAddress()
-const flexibleSideVaultContract = getCakeFlexibleSideVaultV2Contract()
+const rotoVaultAddress = getRotoVaultAddress()
+const flexibleSideVaultContract = getRotoFlexibleSideVaultV2Contract()
 
 export const fetchVaultUser = async (account: string): Promise<SerializedLockedVaultUser> => {
   try {
     const calls = ['userInfo', 'calculatePerformanceFee', 'calculateOverdueFee'].map((method) => ({
-      address: cakeVaultAddress,
+      address: rotoVaultAddress,
       name: method,
       params: [account],
     }))
 
     const [userContractResponse, [currentPerformanceFee], [currentOverdueFee]] = await multicallv2({
-      abi: cakeVaultAbi,
+      abi: rotoVaultAbi,
       calls,
     })
     return {
@@ -25,7 +25,7 @@ export const fetchVaultUser = async (account: string): Promise<SerializedLockedV
       userShares: new BigNumber(userContractResponse.shares.toString()).toJSON(),
       lastDepositedTime: userContractResponse.lastDepositedTime.toString(),
       lastUserActionTime: userContractResponse.lastUserActionTime.toString(),
-      cakeAtLastUserAction: new BigNumber(userContractResponse.cakeAtLastUserAction.toString()).toJSON(),
+      rotoAtLastUserAction: new BigNumber(userContractResponse.rotoAtLastUserAction.toString()).toJSON(),
       userBoostedShare: new BigNumber(userContractResponse.userBoostedShare.toString()).toJSON(),
       locked: userContractResponse.locked,
       lockEndTime: userContractResponse.lockEndTime.toString(),
@@ -40,7 +40,7 @@ export const fetchVaultUser = async (account: string): Promise<SerializedLockedV
       userShares: null,
       lastDepositedTime: null,
       lastUserActionTime: null,
-      cakeAtLastUserAction: null,
+      rotoAtLastUserAction: null,
       userBoostedShare: null,
       lockEndTime: null,
       lockStartTime: null,
@@ -60,7 +60,7 @@ export const fetchFlexibleSideVaultUser = async (account: string): Promise<Seria
       userShares: new BigNumber(userContractResponse.shares.toString()).toJSON(),
       lastDepositedTime: userContractResponse.lastDepositedTime.toString(),
       lastUserActionTime: userContractResponse.lastUserActionTime.toString(),
-      cakeAtLastUserAction: new BigNumber(userContractResponse.cakeAtLastUserAction.toString()).toJSON(),
+      rotoAtLastUserAction: new BigNumber(userContractResponse.rotoAtLastUserAction.toString()).toJSON(),
     }
   } catch (error) {
     return {
@@ -68,7 +68,7 @@ export const fetchFlexibleSideVaultUser = async (account: string): Promise<Seria
       userShares: null,
       lastDepositedTime: null,
       lastUserActionTime: null,
-      cakeAtLastUserAction: null,
+      rotoAtLastUserAction: null,
     }
   }
 }

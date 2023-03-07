@@ -1,6 +1,6 @@
-import { AutoRenewIcon, Box, Button, Flex, InjectedModalProps, Modal, Text } from '@pancakeswap/uikit'
+import { AutoRenewIcon, Box, Button, Flex, InjectedModalProps, Modal, Text } from '@offsideswap/uikit'
 import confetti from 'canvas-confetti'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@offsideswap/localization'
 import delay from 'lodash/delay'
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'

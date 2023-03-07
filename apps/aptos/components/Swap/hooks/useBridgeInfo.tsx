@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
-import { useAccount, useAccountBalance } from '@pancakeswap/awgmi'
-import { Currency } from '@pancakeswap/aptos-swap-sdk'
+import { useAccount, useAccountBalance } from '@offsideswap/awgmi'
+import { Currency } from '@offsideswap/aptos-swap-sdk'
 import { bridgeInfo } from 'components/Swap/BridgeButton'
 
 const useBridgeInfo = ({ currency }: { currency?: Currency }) => {

@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
-import { Flex, useTooltip } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Flex, useTooltip } from '@offsideswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
 import CountdownCircle from './CountdownCircle'
 
-const UpdateIndicator: React.FC<React.PropsWithChildren<{ isFetchingPancakeBunnies: boolean }>> = ({
-  isFetchingPancakeBunnies,
+const UpdateIndicator: React.FC<React.PropsWithChildren<{ isFetchingOffsideBunnies: boolean }>> = ({
+  isFetchingOffsideBunnies,
 }) => {
   const { t } = useTranslation()
   const [secondsRemaining, setSecondsRemaining] = useState(10)
@@ -23,14 +23,14 @@ const UpdateIndicator: React.FC<React.PropsWithChildren<{ isFetchingPancakeBunni
   }, [])
 
   useEffect(() => {
-    if (!isFetchingPancakeBunnies) {
+    if (!isFetchingOffsideBunnies) {
       setSecondsRemaining(10)
     }
-  }, [isFetchingPancakeBunnies])
+  }, [isFetchingOffsideBunnies])
 
   return (
     <Flex justifyContent="center" ref={targetRef}>
-      <CountdownCircle secondsRemaining={secondsRemaining} isUpdating={isFetchingPancakeBunnies} />
+      <CountdownCircle secondsRemaining={secondsRemaining} isUpdating={isFetchingOffsideBunnies} />
       {tooltipVisible && tooltip}
     </Flex>
   )

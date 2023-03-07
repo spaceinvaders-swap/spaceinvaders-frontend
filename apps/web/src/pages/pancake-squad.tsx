@@ -1,3 +1,3 @@
-import PancakeSquad from '../views/PancakeSquad'
+import OffsideSquad from '../views/OffsideSquad'
 
-export default PancakeSquad
+export default OffsideSquad

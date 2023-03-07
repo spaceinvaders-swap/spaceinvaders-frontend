@@ -1,5 +1,5 @@
-import { ChainId } from '@pancakeswap/sdk'
-import { Pool } from '@pancakeswap/uikit'
+import { ChainId } from '@offsideswap/sdk'
+import { Pool } from '@offsideswap/uikit'
 import addresses from 'config/constants/contracts'
 import { VaultKey } from 'state/types'
 
@@ -19,11 +19,11 @@ export const getMulticallAddress = (chainId?: number) => {
 export const getLotteryV2Address = () => {
   return getAddress(addresses.lotteryV2)
 }
-export const getPancakeProfileAddress = () => {
-  return getAddress(addresses.pancakeProfile)
+export const getOffsideProfileAddress = () => {
+  return getAddress(addresses.offsideProfile)
 }
-export const getPancakeBunniesAddress = () => {
-  return getAddress(addresses.pancakeBunnies)
+export const getOffsideBunniesAddress = () => {
+  return getAddress(addresses.offsideBunnies)
 }
 export const getBunnyFactoryAddress = () => {
   return getAddress(addresses.bunnyFactory)
@@ -66,16 +66,16 @@ export const getVaultPoolAddress = (vaultKey: VaultKey) => {
   return getAddress(addresses[vaultKey])
 }
 
-export const getCakeVaultAddress = () => {
-  return getAddress(addresses.cakeVault)
+export const getRotoVaultAddress = () => {
+  return getAddress(addresses.rotoVault)
 }
 
-export const getCakeFlexibleSideVaultAddress = () => {
-  return getAddress(addresses.cakeFlexibleSideVault)
+export const getRotoFlexibleSideVaultAddress = () => {
+  return getAddress(addresses.rotoFlexibleSideVault)
 }
 
-export const getBunnySpecialCakeVaultAddress = () => {
-  return getAddress(addresses.bunnySpecialCakeVault)
+export const getBunnySpecialRotoVaultAddress = () => {
+  return getAddress(addresses.bunnySpecialRotoVault)
 }
 export const getBunnySpecialPredictionAddress = () => {
   return getAddress(addresses.bunnySpecialPrediction)
@@ -99,8 +99,8 @@ export const getNftMarketAddress = () => {
 export const getNftSaleAddress = () => {
   return getAddress(addresses.nftSale)
 }
-export const getPancakeSquadAddress = () => {
-  return getAddress(addresses.pancakeSquad)
+export const getOffsideSquadAddress = () => {
+  return getAddress(addresses.offsideSquad)
 }
 export const getPotteryDrawAddress = () => {
   return getAddress(addresses.potteryDraw)
@@ -109,16 +109,16 @@ export const getPotteryDrawAddress = () => {
 export const getZapAddress = (chainId?: number) => {
   return getAddress(addresses.zap, chainId)
 }
-export const getICakeAddress = () => {
-  return getAddress(addresses.iCake)
+export const getIRotoAddress = () => {
+  return getAddress(addresses.iRoto)
 }
 
-export const getBCakeFarmBoosterAddress = () => {
-  return getAddress(addresses.bCakeFarmBooster)
+export const getBRotoFarmBoosterAddress = () => {
+  return getAddress(addresses.bRotoFarmBooster)
 }
 
-export const getBCakeFarmBoosterProxyFactoryAddress = () => {
-  return getAddress(addresses.bCakeFarmBoosterProxyFactory)
+export const getBRotoFarmBoosterProxyFactoryAddress = () => {
+  return getAddress(addresses.bRotoFarmBoosterProxyFactory)
 }
 
 export const getNonBscVaultAddress = (chainId?: number) => {

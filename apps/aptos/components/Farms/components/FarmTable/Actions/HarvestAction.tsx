@@ -1,14 +1,14 @@
-import { TransactionResponse } from '@pancakeswap/awgmi/core'
-import { useTranslation } from '@pancakeswap/localization'
-import { Skeleton, useToast, Farm as FarmUI } from '@pancakeswap/uikit'
+import { TransactionResponse } from '@offsideswap/awgmi/core'
+import { useTranslation } from '@offsideswap/localization'
+import { Skeleton, useToast, Farm as FarmUI } from '@offsideswap/uikit'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import useCatchTxError from 'hooks/useCatchTxError'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { getBalanceAmount } from '@pancakeswap/utils/formatBalance'
+import { BIG_ZERO } from '@offsideswap/utils/bigNumber'
+import { getBalanceAmount } from '@offsideswap/utils/formatBalance'
 import BigNumber from 'bignumber.js'
-import { usePriceCakeUsdc } from 'hooks/useStablePrice'
+import { usePriceRotoUsdc } from 'hooks/useStablePrice'
 import { FARM_DEFAULT_DECIMALS } from 'components/Farms/constants'
-import { FarmWithStakedValue } from '@pancakeswap/farms'
+import { FarmWithStakedValue } from '@offsideswap/farms'
 import useHarvestFarm from '../../../hooks/useHarvestFarm'
 
 const { FarmTableHarvestAction } = FarmUI.FarmTable
@@ -33,7 +33,7 @@ export const HarvestAction: React.FunctionComponent<React.PropsWithChildren<Harv
   const { toastSuccess } = useToast()
   const { fetchWithCatchTxError, loading: pendingTx } = useCatchTxError()
   const earningsBigNumber = userData?.earnings ? new BigNumber(userData.earnings) : BIG_ZERO
-  const cakePrice = usePriceCakeUsdc()
+  const rotoPrice = usePriceRotoUsdc()
   let earnings = BIG_ZERO
   let earningsBusd = 0
   let displayBalance = userDataReady ? earnings.toFixed(5, BigNumber.ROUND_DOWN) : <Skeleton width={60} />
@@ -41,7 +41,7 @@ export const HarvestAction: React.FunctionComponent<React.PropsWithChildren<Harv
   // If user didn't connect wallet default balance will be 0
   if (!earningsBigNumber.isZero()) {
     earnings = getBalanceAmount(earningsBigNumber, FARM_DEFAULT_DECIMALS)
-    earningsBusd = earnings.multipliedBy(cakePrice).toNumber()
+    earningsBusd = earnings.multipliedBy(rotoPrice).toNumber()
     displayBalance = earnings.toFixed(5, BigNumber.ROUND_DOWN)
   }
 
@@ -51,7 +51,7 @@ export const HarvestAction: React.FunctionComponent<React.PropsWithChildren<Harv
       toastSuccess(
         `${t('Harvested')}!`,
         <ToastDescriptionWithTx txHash={receipt.transactionHash}>
-          {t('Your %symbol% earnings have been sent to your wallet!', { symbol: 'CAKE' })}
+          {t('Your %symbol% earnings have been sent to your wallet!', { symbol: 'ROTO' })}
         </ToastDescriptionWithTx>,
       )
     }

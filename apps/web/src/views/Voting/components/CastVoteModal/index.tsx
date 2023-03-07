@@ -1,11 +1,11 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Modal, useToast } from '@pancakeswap/uikit'
-import { useWeb3LibraryContext } from '@pancakeswap/wagmi'
+import { useTranslation } from '@offsideswap/localization'
+import { Box, Modal, useToast } from '@offsideswap/uikit'
+import { useWeb3LibraryContext } from '@offsideswap/wagmi'
 import { useAccount } from 'wagmi'
 import snapshot from '@snapshot-labs/snapshot.js'
 import useTheme from 'hooks/useTheme'
 import { useState } from 'react'
-import { PANCAKE_SPACE } from 'views/Voting/config'
+import { OFFSIDE_SPACE } from 'views/Voting/config'
 import useGetVotingPower from '../../hooks/useGetVotingPower'
 import DetailsView from './DetailsView'
 import MainView from './MainView'
@@ -32,13 +32,13 @@ const CastVoteModal: React.FC<React.PropsWithChildren<CastVoteModalProps>> = ({
     isLoading,
     isError,
     total,
-    cakeBalance,
-    cakeVaultBalance,
-    cakePoolBalance,
+    rotoBalance,
+    rotoVaultBalance,
+    rotoPoolBalance,
     poolsBalance,
-    cakeBnbLpBalance,
+    rotoBnbLpBalance,
     ifoPoolBalance,
-    lockedCakeBalance,
+    lockedRotoBalance,
     lockedEndTime,
   } = useGetVotingPower(block)
 
@@ -60,7 +60,7 @@ const CastVoteModal: React.FC<React.PropsWithChildren<CastVoteModalProps>> = ({
       setIsPending(true)
 
       await client.vote(library as any, account, {
-        space: PANCAKE_SPACE,
+        space: OFFSIDE_SPACE,
         choice: vote.value,
         reason: '',
         type: 'single-choice',
@@ -95,7 +95,7 @@ const CastVoteModal: React.FC<React.PropsWithChildren<CastVoteModalProps>> = ({
             isLoading={isLoading}
             isPending={isPending}
             total={total}
-            lockedCakeBalance={lockedCakeBalance}
+            lockedRotoBalance={lockedRotoBalance}
             lockedEndTime={lockedEndTime}
             onConfirm={handleConfirmVote}
             onViewDetails={handleViewDetails}
@@ -105,14 +105,14 @@ const CastVoteModal: React.FC<React.PropsWithChildren<CastVoteModalProps>> = ({
         {view === ConfirmVoteView.DETAILS && (
           <DetailsView
             total={total}
-            cakeBalance={cakeBalance}
+            rotoBalance={rotoBalance}
             ifoPoolBalance={ifoPoolBalance}
-            cakeVaultBalance={cakeVaultBalance}
-            cakePoolBalance={cakePoolBalance}
+            rotoVaultBalance={rotoVaultBalance}
+            rotoPoolBalance={rotoPoolBalance}
             poolsBalance={poolsBalance}
-            cakeBnbLpBalance={cakeBnbLpBalance}
+            rotoBnbLpBalance={rotoBnbLpBalance}
             block={block}
-            lockedCakeBalance={lockedCakeBalance}
+            lockedRotoBalance={lockedRotoBalance}
             lockedEndTime={lockedEndTime}
           />
         )}

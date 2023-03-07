@@ -42,11 +42,11 @@ it("renders correctly", () => {
       color: var(--colors-invertedContrast);
     }
 
-    .c0:hover:not(:disabled):not(.pancake-button--disabled):not(.pancake-button--disabled):not(:active) {
+    .c0:hover:not(:disabled):not(.offside-button--disabled):not(.offside-button--disabled):not(:active) {
       opacity: 0.65;
     }
 
-    .c0:active:not(:disabled):not(.pancake-button--disabled):not(.pancake-button--disabled) {
+    .c0:active:not(:disabled):not(.offside-button--disabled):not(.offside-button--disabled) {
       opacity: 0.85;
       -webkit-transform: translateY(1px);
       -ms-transform: translateY(1px);
@@ -55,7 +55,7 @@ it("renders correctly", () => {
     }
 
     .c0:disabled,
-    .c0.pancake-button--disabled {
+    .c0.offside-button--disabled {
       background-color: var(--colors-backgroundDisabled);
       border-color: var(--colors-backgroundDisabled);
       box-shadow: none;

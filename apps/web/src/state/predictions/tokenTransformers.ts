@@ -1,7 +1,7 @@
 import numberOrNull from 'utils/numberOrNull'
 import { BetPosition, Bet, Round, PredictionUser } from '../types'
 import { RoundResponse } from './responseType'
-import { BetResponseCAKE } from './cakeQueries'
+import { BetResponseROTO } from './rotoQueries'
 import { BetResponseBNB } from './bnbQueries'
 
 const getRoundPosition = (positionResponse: string) => {
@@ -21,7 +21,7 @@ const getRoundPosition = (positionResponse: string) => {
 }
 
 export const transformRoundResponseToken = (
-  roundResponse: RoundResponse<BetResponseCAKE | BetResponseBNB>,
+  roundResponse: RoundResponse<BetResponseROTO | BetResponseBNB>,
   transformBetResponse: (betResponse: any) => Bet,
 ): Round => {
   const {

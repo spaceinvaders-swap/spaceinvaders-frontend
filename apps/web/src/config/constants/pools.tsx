@@ -1,9 +1,9 @@
 import { BigNumber } from '@ethersproject/bignumber'
-import { Pool } from '@pancakeswap/uikit'
-import { SerializedWrappedToken } from '@pancakeswap/token-lists'
+import { Pool } from '@offsideswap/uikit'
+import { SerializedWrappedToken } from '@offsideswap/token-lists'
 import Trans from 'components/Trans'
 import { VaultKey } from 'state/types'
-import { bscTokens } from '@pancakeswap/tokens'
+import { bscTokens } from '@offsideswap/tokens'
 import { PoolCategory } from './types'
 
 export const MAX_LOCK_DURATION = 31536000
@@ -13,43 +13,43 @@ export const BOOST_WEIGHT = BigNumber.from('20000000000000')
 export const DURATION_FACTOR = BigNumber.from('31536000')
 
 export const vaultPoolConfig = {
-  [VaultKey.CakeVaultV1]: {
-    name: <Trans>Auto CAKE</Trans>,
+  [VaultKey.RotoVaultV1]: {
+    name: <Trans>Auto ROTO</Trans>,
     description: <Trans>Automatic restaking</Trans>,
     autoCompoundFrequency: 5000,
     gasLimit: 380000,
     tokenImage: {
-      primarySrc: `/images/tokens/${bscTokens.cake.address}.svg`,
+      primarySrc: `/images/tokens/${bscTokens.roto.address}.svg`,
       secondarySrc: '/images/tokens/autorenew.svg',
     },
   },
-  [VaultKey.CakeVault]: {
-    name: <Trans>Stake CAKE</Trans>,
+  [VaultKey.RotoVault]: {
+    name: <Trans>Stake ROTO</Trans>,
     description: <Trans>Stake, Earn – And more!</Trans>,
     autoCompoundFrequency: 5000,
     gasLimit: 600000,
     tokenImage: {
-      primarySrc: `/images/tokens/${bscTokens.cake.address}.svg`,
+      primarySrc: `/images/tokens/${bscTokens.roto.address}.svg`,
       secondarySrc: '/images/tokens/autorenew.svg',
     },
   },
-  [VaultKey.CakeFlexibleSideVault]: {
-    name: <Trans>Flexible CAKE</Trans>,
+  [VaultKey.RotoFlexibleSideVault]: {
+    name: <Trans>Flexible ROTO</Trans>,
     description: <Trans>Flexible staking on the side.</Trans>,
     autoCompoundFrequency: 5000,
     gasLimit: 500000,
     tokenImage: {
-      primarySrc: `/images/tokens/${bscTokens.cake.address}.svg`,
+      primarySrc: `/images/tokens/${bscTokens.roto.address}.svg`,
       secondarySrc: '/images/tokens/autorenew.svg',
     },
   },
   [VaultKey.IfoPool]: {
-    name: 'IFO CAKE',
-    description: <Trans>Stake CAKE to participate in IFOs</Trans>,
+    name: 'IFO ROTO',
+    description: <Trans>Stake ROTO to participate in IFOs</Trans>,
     autoCompoundFrequency: 1,
     gasLimit: 500000,
     tokenImage: {
-      primarySrc: `/images/tokens/${bscTokens.cake.address}.svg`,
+      primarySrc: `/images/tokens/${bscTokens.roto.address}.svg`,
       secondarySrc: `/images/tokens/ifo-pool-icon.svg`,
     },
   },
@@ -58,8 +58,8 @@ export const vaultPoolConfig = {
 export const livePools: Pool.SerializedPoolConfig<SerializedWrappedToken>[] = [
   {
     sousId: 0,
-    stakingToken: bscTokens.cake,
-    earningToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
+    earningToken: bscTokens.roto,
     contractAddress: {
       97: '0xB4A466911556e39210a6bB2FaECBB59E4eB7E43d',
       56: '0xa5f8C5Dbd5F286960b9d90548680aE5ebFf07652',
@@ -70,7 +70,7 @@ export const livePools: Pool.SerializedPoolConfig<SerializedWrappedToken>[] = [
   },
   {
     sousId: 322,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.pstake,
     contractAddress: {
       56: '0x98AC153577d65f2eEF2256f3AeF8ba9D7E4B756B',
@@ -82,7 +82,7 @@ export const livePools: Pool.SerializedPoolConfig<SerializedWrappedToken>[] = [
   },
   {
     sousId: 321,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.csix,
     contractAddress: {
       56: '0x8BD7b0d392D2dE8F682704A3186A48467FcDC7AC',
@@ -94,7 +94,7 @@ export const livePools: Pool.SerializedPoolConfig<SerializedWrappedToken>[] = [
   },
   {
     sousId: 320,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.axlusdc,
     contractAddress: {
       56: '0x08287F4942A7B68DDb87D20Becd4fdadF4aE206e',
@@ -106,7 +106,7 @@ export const livePools: Pool.SerializedPoolConfig<SerializedWrappedToken>[] = [
   },
   {
     sousId: 310,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.champ,
     contractAddress: {
       56: '0x3B48325b7CA831ca7D5b649B074fF697c66166c3',
@@ -118,7 +118,7 @@ export const livePools: Pool.SerializedPoolConfig<SerializedWrappedToken>[] = [
   },
   {
     sousId: 306,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.squad,
     contractAddress: {
       56: '0x08C9d626a2F0CC1ed9BD07eBEdeF8929F45B83d3',
@@ -138,7 +138,7 @@ export const livePools: Pool.SerializedPoolConfig<SerializedWrappedToken>[] = [
 const finishedPools = [
   {
     sousId: 303,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.mgp,
     contractAddress: {
       56: '0x365F744c8b7608253697cA2Ed561537B65a3438B',
@@ -150,7 +150,7 @@ const finishedPools = [
   },
   {
     sousId: 309,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.arena,
     contractAddress: {
       56: '0xDe9FC6485b5f4A1905d8011fcd201EB78CF34073',
@@ -162,7 +162,7 @@ const finishedPools = [
   },
   {
     sousId: 307,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.zbc,
     contractAddress: {
       56: '0xa683C30d47BCd31fB1399b80A4475bc960b903e3',
@@ -174,7 +174,7 @@ const finishedPools = [
   },
   {
     sousId: 308,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.primal,
     contractAddress: {
       56: '0x7cE7A5C3241629763899474500D8db1fDFf1dab6',
@@ -186,7 +186,7 @@ const finishedPools = [
   },
   {
     sousId: 304,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.xcad,
     contractAddress: {
       56: '0x68Cc90351a79A4c10078FE021bE430b7a12aaA09',
@@ -198,7 +198,7 @@ const finishedPools = [
   },
   {
     sousId: 302,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.wmx,
     contractAddress: {
       56: '0xaEd58Af2c98dbF05d26B3E5b3cc809fc70D203ce',
@@ -210,7 +210,7 @@ const finishedPools = [
   },
   {
     sousId: 305,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.hft,
     contractAddress: {
       56: '0x92465602f35bb0F22aA1Cf2102B17B563B0a26Dd',
@@ -222,7 +222,7 @@ const finishedPools = [
   },
   {
     sousId: 301,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.krs,
     contractAddress: {
       56: '0x067F926EB8f2a95f260327B01C29B2034A785029',
@@ -234,7 +234,7 @@ const finishedPools = [
   },
   {
     sousId: 299,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.co,
     contractAddress: {
       56: '0x31736A52bBdda4eaf0117B17736306Bbecb711ca',
@@ -246,7 +246,7 @@ const finishedPools = [
   },
   {
     sousId: 298,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.hoop,
     contractAddress: {
       56: '0x6C254E3AB3e4B909A2CfAA3E0b9d2B3F7887CFae',
@@ -258,7 +258,7 @@ const finishedPools = [
   },
   {
     sousId: 297,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.moni,
     contractAddress: {
       56: '0xB5e36D441016016f251223EBD5E946cdeFe0E2E1',
@@ -270,7 +270,7 @@ const finishedPools = [
   },
   {
     sousId: 296,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.gq,
     contractAddress: {
       56: '0x983A241Bfe910fcFa3E70744AA21AAe5f45861f0',
@@ -282,7 +282,7 @@ const finishedPools = [
   },
   {
     sousId: 300,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.arv,
     contractAddress: {
       56: '0x420Cd06440d8845FBcde9a396d9Aa211FE78C03d',
@@ -294,7 +294,7 @@ const finishedPools = [
   },
   {
     sousId: 295,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.wom,
     contractAddress: {
       56: '0xf78DB5b635bA108212C9D84c124a52D7B1596b97',
@@ -306,7 +306,7 @@ const finishedPools = [
   },
   {
     sousId: 294,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.ankr,
     contractAddress: {
       56: '0x985a20998c7c59e98005c556393215e39c9a4978',
@@ -318,7 +318,7 @@ const finishedPools = [
   },
   {
     sousId: 293,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.hay,
     contractAddress: {
       56: '0x8cBCf2f2be93D154be5135f465369Ee6dD84314B',
@@ -330,7 +330,7 @@ const finishedPools = [
   },
   {
     sousId: 292,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.sfund,
     contractAddress: {
       56: '0x449EC6B2779A3F63E6c2527CBB162A38Ef199d7D',
@@ -342,7 +342,7 @@ const finishedPools = [
   },
   {
     sousId: 291,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.pstake,
     contractAddress: {
       56: '0x56D6955Ba6404647191DD7A5D65A5c9Fe43905e1',
@@ -354,7 +354,7 @@ const finishedPools = [
   },
   {
     sousId: 290,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.peel,
     contractAddress: {
       56: '0x288d1aD79c113552B618765B4986f7DE679367Da',
@@ -366,7 +366,7 @@ const finishedPools = [
   },
   {
     sousId: 289,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.shell,
     contractAddress: {
       56: '0x595B7AF4F1828AB4953792482b01B2AFC4A46b72',
@@ -378,7 +378,7 @@ const finishedPools = [
   },
   {
     sousId: 288,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.high,
     contractAddress: {
       56: '0x28cc814bE3B994187B7f8Bfed10516A84A671119',
@@ -390,7 +390,7 @@ const finishedPools = [
   },
   {
     sousId: 287,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.ole,
     contractAddress: {
       56: '0xda6F750be1331963E5772BEe757062f6bddcEA4C',
@@ -402,7 +402,7 @@ const finishedPools = [
   },
   {
     sousId: 286,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.trivia,
     contractAddress: {
       56: '0x86471019Bf3f403083390AC47643062e15B0256e',
@@ -414,7 +414,7 @@ const finishedPools = [
   },
   {
     sousId: 285,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.sdao,
     contractAddress: {
       56: '0x168eF2e470bfeAEB32BE52FB218A41483904851c',
@@ -426,7 +426,7 @@ const finishedPools = [
   },
   {
     sousId: 284,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.antex,
     contractAddress: {
       97: '',
@@ -438,7 +438,7 @@ const finishedPools = [
   },
   {
     sousId: 283,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.xcn,
     contractAddress: {
       97: '',
@@ -450,7 +450,7 @@ const finishedPools = [
   },
   {
     sousId: 282,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.chr,
     contractAddress: {
       97: '',
@@ -462,7 +462,7 @@ const finishedPools = [
   },
   {
     sousId: 281,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.MIX,
     contractAddress: {
       97: '',
@@ -474,7 +474,7 @@ const finishedPools = [
   },
   {
     sousId: 280,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.metis,
     contractAddress: {
       97: '',
@@ -486,7 +486,7 @@ const finishedPools = [
   },
   {
     sousId: 279,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.gal,
     contractAddress: {
       97: '',
@@ -498,7 +498,7 @@ const finishedPools = [
   },
   {
     sousId: 278,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.rpg,
     contractAddress: {
       97: '',
@@ -510,7 +510,7 @@ const finishedPools = [
   },
   {
     sousId: 277,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.ankr,
     contractAddress: {
       97: '',
@@ -522,7 +522,7 @@ const finishedPools = [
   },
   {
     sousId: 276,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.ceek,
     contractAddress: {
       97: '',
@@ -534,7 +534,7 @@ const finishedPools = [
   },
   {
     sousId: 275,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.tinc,
     contractAddress: {
       97: '',
@@ -546,7 +546,7 @@ const finishedPools = [
   },
   {
     sousId: 274,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.pex,
     contractAddress: {
       97: '',
@@ -558,7 +558,7 @@ const finishedPools = [
   },
   {
     sousId: 273,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.gmi,
     contractAddress: {
       97: '',
@@ -570,7 +570,7 @@ const finishedPools = [
   },
   {
     sousId: 272,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.froyo,
     contractAddress: {
       97: '',
@@ -582,7 +582,7 @@ const finishedPools = [
   },
   {
     sousId: 271,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.bsw,
     contractAddress: {
       97: '',
@@ -594,7 +594,7 @@ const finishedPools = [
   },
   {
     sousId: 270,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.duet,
     contractAddress: {
       97: '',
@@ -606,7 +606,7 @@ const finishedPools = [
   },
   {
     sousId: 269,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.gmt,
     contractAddress: {
       97: '',
@@ -618,7 +618,7 @@ const finishedPools = [
   },
   {
     sousId: 268,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.xwg,
     contractAddress: {
       97: '',
@@ -630,7 +630,7 @@ const finishedPools = [
   },
   {
     sousId: 267,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.high,
     contractAddress: {
       97: '',
@@ -642,7 +642,7 @@ const finishedPools = [
   },
   {
     sousId: 266,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.thg,
     contractAddress: {
       97: '',
@@ -654,7 +654,7 @@ const finishedPools = [
   },
   {
     sousId: 265,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.era,
     contractAddress: {
       97: '',
@@ -666,7 +666,7 @@ const finishedPools = [
   },
   {
     sousId: 264,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.btt,
     contractAddress: {
       97: '',
@@ -677,7 +677,7 @@ const finishedPools = [
   },
   {
     sousId: 263,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.ach,
     contractAddress: {
       97: '',
@@ -688,7 +688,7 @@ const finishedPools = [
   },
   {
     sousId: 261,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.sfund,
     contractAddress: {
       97: '',
@@ -699,7 +699,7 @@ const finishedPools = [
   },
   {
     sousId: 260,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.raca,
     contractAddress: {
       97: '',
@@ -710,7 +710,7 @@ const finishedPools = [
   },
   {
     sousId: 259,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.ertha,
     contractAddress: {
       97: '',
@@ -721,7 +721,7 @@ const finishedPools = [
   },
   {
     sousId: 258,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.fuse,
     contractAddress: {
       97: '',
@@ -732,7 +732,7 @@ const finishedPools = [
   },
   {
     sousId: 257,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.froyo,
     contractAddress: {
       97: '',
@@ -743,7 +743,7 @@ const finishedPools = [
   },
   {
     sousId: 256,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.aog,
     contractAddress: {
       97: '',
@@ -754,7 +754,7 @@ const finishedPools = [
   },
   {
     sousId: 255,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.apx,
     contractAddress: {
       97: '',
@@ -765,7 +765,7 @@ const finishedPools = [
   },
   {
     sousId: 254,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.bcoin,
     contractAddress: {
       97: '',
@@ -776,7 +776,7 @@ const finishedPools = [
   },
   {
     sousId: 253,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.bcoin,
     contractAddress: {
       97: '',
@@ -787,7 +787,7 @@ const finishedPools = [
   },
   {
     sousId: 252,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.insur,
     contractAddress: {
       97: '',
@@ -798,7 +798,7 @@ const finishedPools = [
   },
   {
     sousId: 251,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.gm,
     contractAddress: {
       97: '',
@@ -809,7 +809,7 @@ const finishedPools = [
   },
   {
     sousId: 250,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.woop,
     contractAddress: {
       97: '',
@@ -820,7 +820,7 @@ const finishedPools = [
   },
   {
     sousId: 249,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.high,
     contractAddress: {
       97: '',
@@ -831,7 +831,7 @@ const finishedPools = [
   },
   {
     sousId: 247,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.dpt,
     contractAddress: {
       97: '',
@@ -842,7 +842,7 @@ const finishedPools = [
   },
   {
     sousId: 246,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.thg,
     contractAddress: {
       97: '',
@@ -853,7 +853,7 @@ const finishedPools = [
   },
   {
     sousId: 245,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.idia,
     contractAddress: {
       97: '',
@@ -864,7 +864,7 @@ const finishedPools = [
   },
   {
     sousId: 244,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.xcv,
     contractAddress: {
       97: '',
@@ -875,7 +875,7 @@ const finishedPools = [
   },
   {
     sousId: 243,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.nabox,
     contractAddress: {
       97: '',
@@ -886,7 +886,7 @@ const finishedPools = [
   },
   {
     sousId: 242,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.santos,
     contractAddress: {
       97: '',
@@ -897,7 +897,7 @@ const finishedPools = [
   },
   {
     sousId: 241,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.quidd,
     contractAddress: {
       97: '',
@@ -908,7 +908,7 @@ const finishedPools = [
   },
   {
     sousId: 240,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.zoo,
     contractAddress: {
       97: '',
@@ -919,7 +919,7 @@ const finishedPools = [
   },
   {
     sousId: 239,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.sfund,
     contractAddress: {
       97: '',
@@ -930,7 +930,7 @@ const finishedPools = [
   },
   {
     sousId: 238,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.qi,
     contractAddress: {
       97: '',
@@ -941,7 +941,7 @@ const finishedPools = [
   },
   {
     sousId: 237,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.kart,
     contractAddress: {
       97: '',
@@ -952,7 +952,7 @@ const finishedPools = [
   },
   {
     sousId: 236,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.porto,
     contractAddress: {
       97: '',
@@ -963,7 +963,7 @@ const finishedPools = [
   },
   {
     sousId: 235,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.dvi,
     contractAddress: {
       97: '',
@@ -974,7 +974,7 @@ const finishedPools = [
   },
   {
     sousId: 234,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.jgn,
     contractAddress: {
       97: '',
@@ -985,7 +985,7 @@ const finishedPools = [
   },
   {
     sousId: 232,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.xwg,
     contractAddress: {
       97: '',
@@ -996,7 +996,7 @@ const finishedPools = [
   },
   {
     sousId: 231,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.dar,
     contractAddress: {
       97: '',
@@ -1007,7 +1007,7 @@ const finishedPools = [
   },
   {
     sousId: 230,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.fina,
     contractAddress: {
       97: '',
@@ -1018,7 +1018,7 @@ const finishedPools = [
   },
   {
     sousId: 229,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.bmon,
     contractAddress: {
       97: '',
@@ -1029,7 +1029,7 @@ const finishedPools = [
   },
   {
     sousId: 228,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.dkt,
     contractAddress: {
       97: '',
@@ -1040,7 +1040,7 @@ const finishedPools = [
   },
   {
     sousId: 227,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.ramp,
     contractAddress: {
       97: '',
@@ -1051,7 +1051,7 @@ const finishedPools = [
   },
   {
     sousId: 226,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.lazio,
     contractAddress: {
       97: '',
@@ -1062,7 +1062,7 @@ const finishedPools = [
   },
   {
     sousId: 225,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.sps,
     contractAddress: {
       97: '',
@@ -1073,7 +1073,7 @@ const finishedPools = [
   },
   {
     sousId: 224,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.mcb,
     contractAddress: {
       97: '',
@@ -1084,7 +1084,7 @@ const finishedPools = [
   },
   {
     sousId: 223,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.rpg,
     contractAddress: {
       97: '',
@@ -1095,7 +1095,7 @@ const finishedPools = [
   },
   {
     sousId: 222,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.beta,
     contractAddress: {
       97: '',
@@ -1106,7 +1106,7 @@ const finishedPools = [
   },
   {
     sousId: 233,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.eternal,
     contractAddress: {
       97: '',
@@ -1117,7 +1117,7 @@ const finishedPools = [
   },
   {
     sousId: 221,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.nft,
     contractAddress: {
       97: '',
@@ -1128,7 +1128,7 @@ const finishedPools = [
   },
   {
     sousId: 220,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.chess,
     contractAddress: {
       97: '',
@@ -1139,7 +1139,7 @@ const finishedPools = [
   },
   {
     sousId: 219,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.tlos,
     contractAddress: {
       97: '',
@@ -1150,7 +1150,7 @@ const finishedPools = [
   },
   {
     sousId: 218,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.stephero,
     contractAddress: {
       97: '',
@@ -1161,7 +1161,7 @@ const finishedPools = [
   },
   {
     sousId: 217,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.bp,
     contractAddress: {
       97: '',
@@ -1172,7 +1172,7 @@ const finishedPools = [
   },
   {
     sousId: 216,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.cvp,
     contractAddress: {
       97: '',
@@ -1183,7 +1183,7 @@ const finishedPools = [
   },
   {
     sousId: 215,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.qbt,
     contractAddress: {
       97: '',
@@ -1194,7 +1194,7 @@ const finishedPools = [
   },
   {
     sousId: 214,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.naos,
     contractAddress: {
       97: '',
@@ -1205,7 +1205,7 @@ const finishedPools = [
   },
   {
     sousId: 213,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.pha,
     contractAddress: {
       97: '',
@@ -1216,7 +1216,7 @@ const finishedPools = [
   },
   {
     sousId: 212,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.bel,
     contractAddress: {
       97: '',
@@ -1227,7 +1227,7 @@ const finishedPools = [
   },
   {
     sousId: 211,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.ramp,
     contractAddress: {
       97: '',
@@ -1238,7 +1238,7 @@ const finishedPools = [
   },
   {
     sousId: 210,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.pots,
     contractAddress: {
       97: '',
@@ -1249,7 +1249,7 @@ const finishedPools = [
   },
   {
     sousId: 209,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.tusd,
     contractAddress: {
       97: '',
@@ -1260,7 +1260,7 @@ const finishedPools = [
   },
   {
     sousId: 208,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.revv,
     contractAddress: {
       97: '',
@@ -1271,7 +1271,7 @@ const finishedPools = [
   },
   {
     sousId: 207,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.bttold,
     contractAddress: {
       97: '',
@@ -1282,7 +1282,7 @@ const finishedPools = [
   },
   {
     sousId: 206,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.skill,
     contractAddress: {
       97: '',
@@ -1293,7 +1293,7 @@ const finishedPools = [
   },
   {
     sousId: 205,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.win,
     contractAddress: {
       97: '',
@@ -1304,7 +1304,7 @@ const finishedPools = [
   },
   {
     sousId: 204,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.if,
     contractAddress: {
       97: '',
@@ -1315,7 +1315,7 @@ const finishedPools = [
   },
   {
     sousId: 203,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.sps,
     contractAddress: {
       97: '',
@@ -1326,7 +1326,7 @@ const finishedPools = [
   },
   {
     sousId: 202,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.c98,
     contractAddress: {
       97: '',
@@ -1337,7 +1337,7 @@ const finishedPools = [
   },
   {
     sousId: 201,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.axs,
     contractAddress: {
       97: '',
@@ -1349,7 +1349,7 @@ const finishedPools = [
   {
     sousId: 200,
     stakingToken: bscTokens.axs,
-    earningToken: bscTokens.cake,
+    earningToken: bscTokens.roto,
     contractAddress: {
       97: '',
       56: '0x583A36816F3b8401C4fdf682203E0caDA6997740',
@@ -1359,7 +1359,7 @@ const finishedPools = [
   },
   {
     sousId: 199,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.pmon,
     contractAddress: {
       97: '',
@@ -1370,7 +1370,7 @@ const finishedPools = [
   },
   {
     sousId: 198,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.trx,
     contractAddress: {
       97: '',
@@ -1381,7 +1381,7 @@ const finishedPools = [
   },
   {
     sousId: 197,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.chess,
     contractAddress: {
       97: '',
@@ -1392,7 +1392,7 @@ const finishedPools = [
   },
   {
     sousId: 196,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.titan,
     contractAddress: {
       97: '',
@@ -1403,7 +1403,7 @@ const finishedPools = [
   },
   {
     sousId: 195,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.harmony,
     contractAddress: {
       97: '',
@@ -1414,7 +1414,7 @@ const finishedPools = [
   },
   {
     sousId: 194,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.mask,
     contractAddress: {
       97: '',
@@ -1425,7 +1425,7 @@ const finishedPools = [
   },
   {
     sousId: 193,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.dvi,
     contractAddress: {
       97: '',
@@ -1436,7 +1436,7 @@ const finishedPools = [
   },
   {
     sousId: 192,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.gum,
     contractAddress: {
       97: '',
@@ -1447,7 +1447,7 @@ const finishedPools = [
   },
   {
     sousId: 191,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.adx,
     contractAddress: {
       97: '',
@@ -1458,7 +1458,7 @@ const finishedPools = [
   },
   {
     sousId: 190,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.suter,
     contractAddress: {
       97: '',
@@ -1469,7 +1469,7 @@ const finishedPools = [
   },
   {
     sousId: 189,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.bscpad,
     contractAddress: {
       97: '',
@@ -1480,7 +1480,7 @@ const finishedPools = [
   },
   {
     sousId: 188,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.rabbit,
     contractAddress: {
       97: '',
@@ -1491,7 +1491,7 @@ const finishedPools = [
   },
   {
     sousId: 187,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.waultx,
     contractAddress: {
       97: '',
@@ -1502,7 +1502,7 @@ const finishedPools = [
   },
   {
     sousId: 186,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.wex,
     contractAddress: {
       97: '',
@@ -1513,7 +1513,7 @@ const finishedPools = [
   },
   {
     sousId: 185,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.form,
     contractAddress: {
       97: '',
@@ -1524,7 +1524,7 @@ const finishedPools = [
   },
   {
     sousId: 184,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.orbs,
     contractAddress: {
       97: '',
@@ -1535,7 +1535,7 @@ const finishedPools = [
   },
   {
     sousId: 183,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.$dg,
     contractAddress: {
       97: '',
@@ -1546,7 +1546,7 @@ const finishedPools = [
   },
   {
     sousId: 182,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.woo,
     contractAddress: {
       97: '',
@@ -1557,7 +1557,7 @@ const finishedPools = [
   },
   {
     sousId: 181,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.woo,
     contractAddress: {
       97: '',
@@ -1568,7 +1568,7 @@ const finishedPools = [
   },
   {
     sousId: 180,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.htb,
     contractAddress: {
       97: '',
@@ -1579,7 +1579,7 @@ const finishedPools = [
   },
   {
     sousId: 179,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.jgn,
     contractAddress: {
       97: '',
@@ -1590,7 +1590,7 @@ const finishedPools = [
   },
   {
     sousId: 178,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.dft,
     contractAddress: {
       97: '',
@@ -1601,7 +1601,7 @@ const finishedPools = [
   },
   {
     sousId: 177,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.hai,
     contractAddress: {
       97: '',
@@ -1612,7 +1612,7 @@ const finishedPools = [
   },
   {
     sousId: 176,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.o3,
     contractAddress: {
       97: '',
@@ -1623,7 +1623,7 @@ const finishedPools = [
   },
   {
     sousId: 175,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.ampl,
     contractAddress: {
       97: '',
@@ -1634,7 +1634,7 @@ const finishedPools = [
   },
   {
     sousId: 174,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.oddz,
     contractAddress: {
       97: '',
@@ -1645,7 +1645,7 @@ const finishedPools = [
   },
   {
     sousId: 173,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.bondly,
     contractAddress: {
       97: '',
@@ -1656,7 +1656,7 @@ const finishedPools = [
   },
   {
     sousId: 172,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.marsh,
     contractAddress: {
       97: '',
@@ -1667,7 +1667,7 @@ const finishedPools = [
   },
   {
     sousId: 171,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.mbox,
     contractAddress: {
       97: '',
@@ -1678,7 +1678,7 @@ const finishedPools = [
   },
   {
     sousId: 170,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.ata,
     contractAddress: {
       97: '',
@@ -1689,7 +1689,7 @@ const finishedPools = [
   },
   {
     sousId: 169,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.mx,
     contractAddress: {
       97: '',
@@ -1700,7 +1700,7 @@ const finishedPools = [
   },
   {
     sousId: 168,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.bcfx,
     contractAddress: {
       97: '',
@@ -1711,7 +1711,7 @@ const finishedPools = [
   },
   {
     sousId: 167,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.qkc,
     contractAddress: {
       97: '',
@@ -1722,7 +1722,7 @@ const finishedPools = [
   },
   {
     sousId: 166,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.ktn,
     contractAddress: {
       97: '',
@@ -1733,7 +1733,7 @@ const finishedPools = [
   },
   {
     sousId: 165,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.mtrg,
     contractAddress: {
       97: '',
@@ -1744,7 +1744,7 @@ const finishedPools = [
   },
   {
     sousId: 164,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.tusd,
     contractAddress: {
       97: '',
@@ -1755,7 +1755,7 @@ const finishedPools = [
   },
   {
     sousId: 163,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.vrt,
     contractAddress: {
       97: '',
@@ -1766,7 +1766,7 @@ const finishedPools = [
   },
   {
     sousId: 162,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.kalm,
     contractAddress: {
       97: '',
@@ -1777,7 +1777,7 @@ const finishedPools = [
   },
   {
     sousId: 161,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.ez,
     contractAddress: {
       97: '',
@@ -1788,7 +1788,7 @@ const finishedPools = [
   },
   {
     sousId: 160,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.kalm,
     contractAddress: {
       97: '',
@@ -1799,7 +1799,7 @@ const finishedPools = [
   },
   {
     sousId: 159,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.popen,
     contractAddress: {
       97: '',
@@ -1810,7 +1810,7 @@ const finishedPools = [
   },
   {
     sousId: 158,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.lien,
     contractAddress: {
       97: '',
@@ -1821,7 +1821,7 @@ const finishedPools = [
   },
   {
     sousId: 157,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.well,
     contractAddress: {
       97: '',
@@ -1832,7 +1832,7 @@ const finishedPools = [
   },
   {
     sousId: 156,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.deri,
     contractAddress: {
       97: '',
@@ -1843,7 +1843,7 @@ const finishedPools = [
   },
   {
     sousId: 155,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.chr,
     contractAddress: {
       97: '',
@@ -1854,7 +1854,7 @@ const finishedPools = [
   },
   {
     sousId: 154,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.cyc,
     contractAddress: {
       97: '',
@@ -1865,7 +1865,7 @@ const finishedPools = [
   },
   {
     sousId: 153,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.xend,
     contractAddress: {
       97: '',
@@ -1876,7 +1876,7 @@ const finishedPools = [
   },
   {
     sousId: 152,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.hget,
     contractAddress: {
       97: '',
@@ -1887,7 +1887,7 @@ const finishedPools = [
   },
   {
     sousId: 151,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.hotcross,
     contractAddress: {
       97: '',
@@ -1898,7 +1898,7 @@ const finishedPools = [
   },
   {
     sousId: 150,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.rfox,
     contractAddress: {
       97: '',
@@ -1909,7 +1909,7 @@ const finishedPools = [
   },
   {
     sousId: 149,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.wmass,
     contractAddress: {
       97: '',
@@ -1920,7 +1920,7 @@ const finishedPools = [
   },
   {
     sousId: 148,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.ubxt,
     contractAddress: {
       97: '',
@@ -1931,7 +1931,7 @@ const finishedPools = [
   },
   {
     sousId: 147,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.btr,
     contractAddress: {
       97: '',
@@ -1942,7 +1942,7 @@ const finishedPools = [
   },
   {
     sousId: 146,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.τdoge,
     contractAddress: {
       97: '',
@@ -1953,7 +1953,7 @@ const finishedPools = [
   },
   {
     sousId: 145,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.pmon,
     contractAddress: {
       97: '',
@@ -1964,7 +1964,7 @@ const finishedPools = [
   },
   {
     sousId: 144,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.one,
     contractAddress: {
       97: '',
@@ -1975,7 +1975,7 @@ const finishedPools = [
   },
   {
     sousId: 143,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.fine,
     contractAddress: {
       97: '',
@@ -1987,7 +1987,7 @@ const finishedPools = [
   {
     sousId: 142,
     stakingToken: bscTokens.doge,
-    earningToken: bscTokens.cake,
+    earningToken: bscTokens.roto,
     contractAddress: {
       97: '',
       56: '0xbebd44824631b55991fa5f2bf5c7a4ec96ff805b',
@@ -1997,7 +1997,7 @@ const finishedPools = [
   },
   {
     sousId: 141,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.bmxx,
     contractAddress: {
       97: '',
@@ -2008,7 +2008,7 @@ const finishedPools = [
   },
   {
     sousId: 140,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.oin,
     contractAddress: {
       97: '',
@@ -2019,7 +2019,7 @@ const finishedPools = [
   },
   {
     sousId: 139,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.hyfi,
     contractAddress: {
       97: '',
@@ -2030,7 +2030,7 @@ const finishedPools = [
   },
   {
     sousId: 138,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.kun,
     contractAddress: {
       97: '',
@@ -2041,7 +2041,7 @@ const finishedPools = [
   },
   {
     sousId: 137,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.math,
     contractAddress: {
       97: '',
@@ -2052,7 +2052,7 @@ const finishedPools = [
   },
   {
     sousId: 136,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.ust,
     contractAddress: {
       97: '',
@@ -2063,7 +2063,7 @@ const finishedPools = [
   },
   {
     sousId: 135,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.win,
     contractAddress: {
       97: '',
@@ -2074,7 +2074,7 @@ const finishedPools = [
   },
   {
     sousId: 134,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.trx,
     contractAddress: {
       97: '',
@@ -2085,7 +2085,7 @@ const finishedPools = [
   },
   {
     sousId: 133,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.bttold,
     contractAddress: {
       97: '',
@@ -2096,7 +2096,7 @@ const finishedPools = [
   },
   {
     sousId: 132,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.lmt,
     contractAddress: {
       97: '',
@@ -2107,7 +2107,7 @@ const finishedPools = [
   },
   {
     sousId: 131,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.pnt,
     contractAddress: {
       97: '',
@@ -2118,7 +2118,7 @@ const finishedPools = [
   },
   {
     sousId: 130,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.xmark,
     contractAddress: {
       97: '',
@@ -2129,7 +2129,7 @@ const finishedPools = [
   },
   {
     sousId: 129,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.ramp,
     contractAddress: {
       97: '',
@@ -2141,7 +2141,7 @@ const finishedPools = [
   },
   {
     sousId: 128,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.hakka,
     contractAddress: {
       97: '',
@@ -2152,7 +2152,7 @@ const finishedPools = [
   },
   {
     sousId: 127,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.pbtc,
     contractAddress: {
       97: '',
@@ -2163,7 +2163,7 @@ const finishedPools = [
   },
   {
     sousId: 126,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.lien,
     contractAddress: {
       97: '',
@@ -2174,7 +2174,7 @@ const finishedPools = [
   },
   {
     sousId: 125,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.bbadger,
     contractAddress: {
       97: '',
@@ -2185,7 +2185,7 @@ const finishedPools = [
   },
   {
     sousId: 124,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.bdigg,
     contractAddress: {
       97: '',
@@ -2196,7 +2196,7 @@ const finishedPools = [
   },
   {
     sousId: 123,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.bondly,
     contractAddress: {
       97: '',
@@ -2207,7 +2207,7 @@ const finishedPools = [
   },
   {
     sousId: 122,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.xed,
     contractAddress: {
       97: '',
@@ -2218,7 +2218,7 @@ const finishedPools = [
   },
   {
     sousId: 121,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.cgg,
     contractAddress: {
       97: '',
@@ -2229,7 +2229,7 @@ const finishedPools = [
   },
   {
     sousId: 120,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.perl,
     contractAddress: {
       97: '',
@@ -2240,7 +2240,7 @@ const finishedPools = [
   },
   {
     sousId: 119,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.arpa,
     contractAddress: {
       97: '',
@@ -2251,7 +2251,7 @@ const finishedPools = [
   },
   {
     sousId: 118,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.oddz,
     contractAddress: {
       97: '',
@@ -2262,7 +2262,7 @@ const finishedPools = [
   },
   {
     sousId: 117,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.dexe,
     contractAddress: {
       97: '',
@@ -2274,7 +2274,7 @@ const finishedPools = [
   },
   {
     sousId: 116,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.dfd,
     contractAddress: {
       97: '',
@@ -2285,7 +2285,7 @@ const finishedPools = [
   },
   {
     sousId: 115,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.alpaca,
     contractAddress: {
       97: '',
@@ -2296,7 +2296,7 @@ const finishedPools = [
   },
   {
     sousId: 114,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.τbtc,
     contractAddress: {
       97: '',
@@ -2307,7 +2307,7 @@ const finishedPools = [
   },
   {
     sousId: 113,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.τbtc,
     contractAddress: {
       97: '',
@@ -2319,7 +2319,7 @@ const finishedPools = [
   },
   {
     sousId: 112,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.swingby,
     contractAddress: {
       97: '',
@@ -2330,7 +2330,7 @@ const finishedPools = [
   },
   {
     sousId: 111,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.xed,
     contractAddress: {
       97: '',
@@ -2343,7 +2343,7 @@ const finishedPools = [
   },
   {
     sousId: 110,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.hakka,
     contractAddress: {
       97: '',
@@ -2356,7 +2356,7 @@ const finishedPools = [
   },
   {
     sousId: 109,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.cgg,
     contractAddress: {
       97: '',
@@ -2369,7 +2369,7 @@ const finishedPools = [
   },
   {
     sousId: 108,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.mix,
     contractAddress: {
       97: '',
@@ -2380,7 +2380,7 @@ const finishedPools = [
   },
   {
     sousId: 107,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.suter,
     contractAddress: {
       97: '',
@@ -2391,7 +2391,7 @@ const finishedPools = [
   },
   {
     sousId: 106,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.broobee,
     contractAddress: {
       97: '',
@@ -2402,7 +2402,7 @@ const finishedPools = [
   },
   {
     sousId: 105,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.hzn,
     contractAddress: {
       97: '',
@@ -2413,7 +2413,7 @@ const finishedPools = [
   },
   {
     sousId: 104,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.alpa,
     contractAddress: {
       97: '',
@@ -2424,7 +2424,7 @@ const finishedPools = [
   },
   {
     sousId: 103,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.perl,
     contractAddress: {
       97: '',
@@ -2437,7 +2437,7 @@ const finishedPools = [
   },
   {
     sousId: 102,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.tlm,
     contractAddress: {
       97: '',
@@ -2448,7 +2448,7 @@ const finishedPools = [
   },
   {
     sousId: 101,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.jgn,
     contractAddress: {
       97: '',
@@ -2459,7 +2459,7 @@ const finishedPools = [
   },
   {
     sousId: 100,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.eps,
     contractAddress: {
       97: '',
@@ -2470,7 +2470,7 @@ const finishedPools = [
   },
   {
     sousId: 99,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.arpa,
     contractAddress: {
       97: '',
@@ -2483,7 +2483,7 @@ const finishedPools = [
   },
   {
     sousId: 98,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.itam,
     contractAddress: {
       97: '',
@@ -2494,7 +2494,7 @@ const finishedPools = [
   },
   {
     sousId: 97,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.bondly,
     contractAddress: {
       97: '',
@@ -2507,7 +2507,7 @@ const finishedPools = [
   },
   {
     sousId: 96,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.tko,
     contractAddress: {
       97: '',
@@ -2518,7 +2518,7 @@ const finishedPools = [
   },
   {
     sousId: 95,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.apys,
     contractAddress: {
       97: '',
@@ -2529,7 +2529,7 @@ const finishedPools = [
   },
   {
     sousId: 94,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.hoo,
     contractAddress: {
       97: '',
@@ -2540,7 +2540,7 @@ const finishedPools = [
   },
   {
     sousId: 93,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.oddz,
     contractAddress: {
       97: '',
@@ -2553,7 +2553,7 @@ const finishedPools = [
   },
   {
     sousId: 92,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.easy,
     contractAddress: {
       97: '',
@@ -2564,7 +2564,7 @@ const finishedPools = [
   },
   {
     sousId: 91,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.nrv,
     contractAddress: {
       97: '',
@@ -2575,7 +2575,7 @@ const finishedPools = [
   },
   {
     sousId: 90,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.dego,
     contractAddress: {
       97: '',
@@ -2586,7 +2586,7 @@ const finishedPools = [
   },
   {
     sousId: 89,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.gum,
     contractAddress: {
       97: '',
@@ -2597,7 +2597,7 @@ const finishedPools = [
   },
   {
     sousId: 88,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.pbtc,
     contractAddress: {
       97: '',
@@ -2610,7 +2610,7 @@ const finishedPools = [
   },
   {
     sousId: 87,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.dft,
     contractAddress: {
       97: '',
@@ -2621,7 +2621,7 @@ const finishedPools = [
   },
   {
     sousId: 86,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.swth,
     contractAddress: {
       97: '',
@@ -2632,7 +2632,7 @@ const finishedPools = [
   },
   {
     sousId: 85,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.lien,
     contractAddress: {
       97: '',
@@ -2645,7 +2645,7 @@ const finishedPools = [
   },
   {
     sousId: 84,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.zil,
     contractAddress: {
       97: '',
@@ -2656,7 +2656,7 @@ const finishedPools = [
   },
   {
     sousId: 83,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.pcws,
     contractAddress: {
       97: '',
@@ -2667,7 +2667,7 @@ const finishedPools = [
   },
   {
     sousId: 82,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.bbadger,
     contractAddress: {
       97: '',
@@ -2680,7 +2680,7 @@ const finishedPools = [
   },
   {
     sousId: 81,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.bdigg,
     contractAddress: {
       97: '',
@@ -2693,7 +2693,7 @@ const finishedPools = [
   },
   {
     sousId: 80,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.lto,
     contractAddress: {
       97: '',
@@ -2704,7 +2704,7 @@ const finishedPools = [
   },
   {
     sousId: 79,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.mir,
     contractAddress: {
       97: '',
@@ -2715,7 +2715,7 @@ const finishedPools = [
   },
   {
     sousId: 78,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.mir,
     contractAddress: {
       97: '',
@@ -2728,7 +2728,7 @@ const finishedPools = [
   },
   {
     sousId: 77,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.trade,
     contractAddress: {
       97: '',
@@ -2739,7 +2739,7 @@ const finishedPools = [
   },
   {
     sousId: 76,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.dusk,
     contractAddress: {
       97: '',
@@ -2750,7 +2750,7 @@ const finishedPools = [
   },
   {
     sousId: 75,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.bifi,
     contractAddress: {
       97: '',
@@ -2761,7 +2761,7 @@ const finishedPools = [
   },
   {
     sousId: 74,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.txl,
     contractAddress: {
       97: '',
@@ -2772,7 +2772,7 @@ const finishedPools = [
   },
   {
     sousId: 73,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.cos,
     contractAddress: {
       97: '',
@@ -2783,7 +2783,7 @@ const finishedPools = [
   },
   {
     sousId: 72,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.bunny,
     contractAddress: {
       97: '',
@@ -2794,7 +2794,7 @@ const finishedPools = [
   },
   {
     sousId: 71,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.alice,
     contractAddress: {
       97: '',
@@ -2805,7 +2805,7 @@ const finishedPools = [
   },
   {
     sousId: 70,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.for,
     contractAddress: {
       97: '',
@@ -2816,7 +2816,7 @@ const finishedPools = [
   },
   {
     sousId: 69,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.bux,
     contractAddress: {
       97: '',
@@ -2827,7 +2827,7 @@ const finishedPools = [
   },
   {
     sousId: 68,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.nuls,
     contractAddress: {
       97: '',
@@ -2838,7 +2838,7 @@ const finishedPools = [
   },
   {
     sousId: 67,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.belt,
     contractAddress: {
       97: '',
@@ -2850,7 +2850,7 @@ const finishedPools = [
   },
   {
     sousId: 66,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.ramp,
     contractAddress: {
       97: '',
@@ -2863,7 +2863,7 @@ const finishedPools = [
   },
   {
     sousId: 65,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.bfi,
     contractAddress: {
       97: '',
@@ -2874,7 +2874,7 @@ const finishedPools = [
   },
   {
     sousId: 64,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.dexe,
     contractAddress: {
       97: '',
@@ -2887,7 +2887,7 @@ const finishedPools = [
   },
   {
     sousId: 63,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.bel,
     contractAddress: {
       97: '',
@@ -2899,7 +2899,7 @@ const finishedPools = [
   {
     sousId: 62,
     stakingToken: bscTokens.tpt,
-    earningToken: bscTokens.cake,
+    earningToken: bscTokens.roto,
     contractAddress: {
       97: '',
       56: '0x0c3D6892aa3b23811Af3bd1bbeA8b0740E8e4528',
@@ -2910,7 +2910,7 @@ const finishedPools = [
   },
   {
     sousId: 61,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.tpt,
     contractAddress: {
       97: '',
@@ -2922,7 +2922,7 @@ const finishedPools = [
   },
   {
     sousId: 60,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.watch,
     contractAddress: {
       97: '',
@@ -2934,7 +2934,7 @@ const finishedPools = [
   },
   {
     sousId: 59,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.xmark,
     contractAddress: {
       97: '',
@@ -2946,7 +2946,7 @@ const finishedPools = [
   },
   {
     sousId: 58,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.bmxx,
     contractAddress: {
       97: '',
@@ -2958,7 +2958,7 @@ const finishedPools = [
   },
   {
     sousId: 57,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.iotx,
     contractAddress: {
       97: '',
@@ -2970,7 +2970,7 @@ const finishedPools = [
   },
   {
     sousId: 56,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.bor,
     contractAddress: {
       97: '',
@@ -2982,7 +2982,7 @@ const finishedPools = [
   },
   {
     sousId: 55,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.bopen,
     contractAddress: {
       97: '',
@@ -2995,7 +2995,7 @@ const finishedPools = [
   {
     sousId: 54,
     stakingToken: bscTokens.sushi,
-    earningToken: bscTokens.cake,
+    earningToken: bscTokens.roto,
     contractAddress: {
       97: '',
       56: '0xb69b6e390cba1F68442A886bC89E955048DAe7E3',
@@ -3006,7 +3006,7 @@ const finishedPools = [
   },
   {
     sousId: 53,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.dodo,
     contractAddress: {
       97: '',
@@ -3018,7 +3018,7 @@ const finishedPools = [
   },
   {
     sousId: 52,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.swingby,
     contractAddress: {
       97: '',
@@ -3030,7 +3030,7 @@ const finishedPools = [
   },
   {
     sousId: 51,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.bry,
     contractAddress: {
       97: '',
@@ -3042,7 +3042,7 @@ const finishedPools = [
   },
   {
     sousId: 50,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.zee,
     contractAddress: {
       97: '',
@@ -3054,7 +3054,7 @@ const finishedPools = [
   },
   {
     sousId: 49,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.swgb,
     contractAddress: {
       97: '',
@@ -3067,7 +3067,7 @@ const finishedPools = [
   {
     sousId: 48,
     stakingToken: bscTokens.comp,
-    earningToken: bscTokens.cake,
+    earningToken: bscTokens.roto,
     contractAddress: {
       97: '',
       56: '0xE0565fBb109A3f3f8097D8A9D931277bfd795072',
@@ -3079,7 +3079,7 @@ const finishedPools = [
   {
     sousId: 47,
     stakingToken: bscTokens.comp,
-    earningToken: bscTokens.cake,
+    earningToken: bscTokens.roto,
     contractAddress: {
       97: '',
       56: '0xc3693e3cbc3514d5d07EA5b27A721F184F617900',
@@ -3090,7 +3090,7 @@ const finishedPools = [
   },
   {
     sousId: 46,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.sfp,
     contractAddress: {
       97: '',
@@ -3102,7 +3102,7 @@ const finishedPools = [
   },
   {
     sousId: 45,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.lina,
     contractAddress: {
       97: '',
@@ -3114,7 +3114,7 @@ const finishedPools = [
   },
   {
     sousId: 44,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.lina,
     contractAddress: {
       97: '',
@@ -3126,7 +3126,7 @@ const finishedPools = [
   },
   {
     sousId: 43,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.lit,
     contractAddress: {
       97: '',
@@ -3138,7 +3138,7 @@ const finishedPools = [
   },
   {
     sousId: 42,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.hget,
     contractAddress: {
       97: '',
@@ -3150,7 +3150,7 @@ const finishedPools = [
   },
   {
     sousId: 41,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.bdo,
     contractAddress: {
       97: '',
@@ -3162,7 +3162,7 @@ const finishedPools = [
   },
   {
     sousId: 40,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.egld,
     contractAddress: {
       97: '',
@@ -3174,7 +3174,7 @@ const finishedPools = [
   },
   {
     sousId: 39,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.ust,
     contractAddress: {
       97: '',
@@ -3186,7 +3186,7 @@ const finishedPools = [
   },
   {
     sousId: 38,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.wsote,
     contractAddress: {
       97: '',
@@ -3198,7 +3198,7 @@ const finishedPools = [
   },
   {
     sousId: 37,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.front,
     contractAddress: {
       97: '',
@@ -3210,7 +3210,7 @@ const finishedPools = [
   },
   {
     sousId: 36,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.helmet,
     contractAddress: {
       97: '',
@@ -3222,7 +3222,7 @@ const finishedPools = [
   },
   {
     sousId: 35,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.btcst,
     contractAddress: {
       97: '',
@@ -3234,7 +3234,7 @@ const finishedPools = [
   },
   {
     sousId: 34,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.bscx,
     contractAddress: {
       97: '',
@@ -3246,7 +3246,7 @@ const finishedPools = [
   },
   {
     sousId: 33,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.ten,
     contractAddress: {
       97: '',
@@ -3258,7 +3258,7 @@ const finishedPools = [
   },
   {
     sousId: 32,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.balbt,
     contractAddress: {
       97: '',
@@ -3270,7 +3270,7 @@ const finishedPools = [
   },
   {
     sousId: 31,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.asr,
     contractAddress: {
       97: '',
@@ -3282,7 +3282,7 @@ const finishedPools = [
   },
   {
     sousId: 30,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.atm,
     contractAddress: {
       97: '',
@@ -3294,7 +3294,7 @@ const finishedPools = [
   },
   {
     sousId: 29,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.og,
     contractAddress: {
       97: '',
@@ -3306,7 +3306,7 @@ const finishedPools = [
   },
   {
     sousId: 28,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.reef,
     contractAddress: {
       97: '',
@@ -3318,7 +3318,7 @@ const finishedPools = [
   },
   {
     sousId: 27,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.ditto,
     contractAddress: {
       97: '',
@@ -3330,7 +3330,7 @@ const finishedPools = [
   {
     sousId: 26,
     stakingToken: bscTokens.twt,
-    earningToken: bscTokens.cake,
+    earningToken: bscTokens.roto,
     contractAddress: {
       97: '',
       56: '0x0554a5D083Abf2f056ae3F6029e1714B9A655174',
@@ -3341,7 +3341,7 @@ const finishedPools = [
   },
   {
     sousId: 24,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.juv,
     contractAddress: {
       97: '',
@@ -3353,7 +3353,7 @@ const finishedPools = [
   },
   {
     sousId: 25,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.psg,
     contractAddress: {
       97: '',
@@ -3365,7 +3365,7 @@ const finishedPools = [
   },
   {
     sousId: 21,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.vai,
     contractAddress: {
       97: '',
@@ -3378,7 +3378,7 @@ const finishedPools = [
   {
     sousId: 20,
     stakingToken: bscTokens.bnb,
-    earningToken: bscTokens.cake,
+    earningToken: bscTokens.roto,
     contractAddress: {
       97: '',
       56: '0x555Ea72d7347E82C614C16f005fA91cAf06DCB5a',
@@ -3389,7 +3389,7 @@ const finishedPools = [
   },
   {
     sousId: 19,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.bnb,
     contractAddress: {
       97: '',
@@ -3401,7 +3401,7 @@ const finishedPools = [
   },
   {
     sousId: 18,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.blink,
     contractAddress: {
       97: '',
@@ -3413,7 +3413,7 @@ const finishedPools = [
   },
   {
     sousId: 17,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.blink,
     contractAddress: {
       97: '',
@@ -3426,7 +3426,7 @@ const finishedPools = [
   },
   {
     sousId: 16,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.unfi,
     contractAddress: {
       97: '',
@@ -3438,7 +3438,7 @@ const finishedPools = [
   },
   {
     sousId: 15,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.twt,
     contractAddress: {
       97: '',
@@ -3450,7 +3450,7 @@ const finishedPools = [
   },
   {
     sousId: 14,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.hard,
     contractAddress: {
       97: '',
@@ -3462,7 +3462,7 @@ const finishedPools = [
   },
   {
     sousId: 13,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.broobee,
     contractAddress: {
       97: '',
@@ -3474,7 +3474,7 @@ const finishedPools = [
   },
   {
     sousId: 12,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.stax,
     contractAddress: {
       97: '',
@@ -3486,7 +3486,7 @@ const finishedPools = [
   },
   {
     sousId: 11,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.nar,
     contractAddress: {
       97: '',
@@ -3498,7 +3498,7 @@ const finishedPools = [
   },
   {
     sousId: 10,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.nya,
     contractAddress: {
       97: '',
@@ -3510,7 +3510,7 @@ const finishedPools = [
   },
   {
     sousId: 9,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.ctk,
     contractAddress: {
       97: '',
@@ -3522,7 +3522,7 @@ const finishedPools = [
   },
   {
     sousId: 8,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.twt,
     contractAddress: {
       97: '',
@@ -3534,7 +3534,7 @@ const finishedPools = [
   },
   {
     sousId: 7,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.inj,
     contractAddress: {
       97: '',
@@ -3546,7 +3546,7 @@ const finishedPools = [
   },
   {
     sousId: 248,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.ccar,
     contractAddress: {
       97: '',
@@ -3557,7 +3557,7 @@ const finishedPools = [
   },
   {
     sousId: 262,
-    stakingToken: bscTokens.cake,
+    stakingToken: bscTokens.roto,
     earningToken: bscTokens.ach,
     contractAddress: {
       97: '',

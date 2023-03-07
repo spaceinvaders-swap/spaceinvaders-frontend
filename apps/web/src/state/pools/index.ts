@@ -6,20 +6,20 @@ import {
   PoolsState,
   SerializedPool,
   SerializedVaultFees,
-  SerializedCakeVault,
+  SerializedRotoVault,
   SerializedLockedVaultUser,
   PublicIfoData,
   SerializedVaultUser,
-  SerializedLockedCakeVault,
+  SerializedLockedRotoVault,
 } from 'state/types'
 import { getPoolApr } from 'utils/apr'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import cakeAbi from 'config/abi/cake.json'
-import { getCakeVaultAddress, getCakeFlexibleSideVaultAddress } from 'utils/addressHelpers'
+import { BIG_ZERO } from '@offsideswap/utils/bigNumber'
+import rotoAbi from 'config/abi/roto.json'
+import { getRotoVaultAddress, getRotoFlexibleSideVaultAddress } from 'utils/addressHelpers'
 import { multicallv2 } from 'utils/multicall'
-import { bscTokens } from '@pancakeswap/tokens'
+import { bscTokens } from '@offsideswap/tokens'
 import { isAddress } from 'utils'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
+import { getBalanceNumber } from '@offsideswap/utils/formatBalance'
 import { bscRpcProvider } from 'utils/providers'
 import { getPoolsPriceHelperLpFiles } from 'config/constants/priceHelperLps/index'
 import fetchFarms from '../farms/fetchFarms'
@@ -46,7 +46,7 @@ export const initialPoolVaultState = Object.freeze({
   totalShares: null,
   totalLockedAmount: null,
   pricePerFullShare: null,
-  totalCakeInVault: null,
+  totalRotoInVault: null,
   fees: {
     performanceFee: null,
     withdrawalFee: null,
@@ -55,7 +55,7 @@ export const initialPoolVaultState = Object.freeze({
   userData: {
     isLoading: true,
     userShares: null,
-    cakeAtLastUserAction: null,
+    rotoAtLastUserAction: null,
     lastDepositedTime: null,
     lastUserActionTime: null,
     credit: null,
@@ -78,23 +78,23 @@ export const initialIfoState = Object.freeze({
 const initialState: PoolsState = {
   data: [...poolsConfig],
   userDataLoaded: false,
-  cakeVault: initialPoolVaultState,
+  rotoVault: initialPoolVaultState,
   ifo: initialIfoState,
-  cakeFlexibleSideVault: initialPoolVaultState,
+  rotoFlexibleSideVault: initialPoolVaultState,
 }
 
-const cakeVaultAddress = getCakeVaultAddress()
+const rotoVaultAddress = getRotoVaultAddress()
 
-export const fetchCakePoolPublicDataAsync = () => async (dispatch, getState) => {
+export const fetchRotoPoolPublicDataAsync = () => async (dispatch, getState) => {
   const farmsData = getState().farms.data
   const prices = getTokenPricesFromFarm(farmsData)
 
-  const cakePool = poolsConfig.filter((p) => p.sousId === 0)[0]
+  const rotoPool = poolsConfig.filter((p) => p.sousId === 0)[0]
 
-  const stakingTokenAddress = isAddress(cakePool.stakingToken.address)
+  const stakingTokenAddress = isAddress(rotoPool.stakingToken.address)
   const stakingTokenPrice = stakingTokenAddress ? prices[stakingTokenAddress] : 0
 
-  const earningTokenAddress = isAddress(cakePool.earningToken.address)
+  const earningTokenAddress = isAddress(rotoPool.earningToken.address)
   const earningTokenPrice = earningTokenAddress ? prices[earningTokenAddress] : 0
 
   dispatch(
@@ -108,19 +108,19 @@ export const fetchCakePoolPublicDataAsync = () => async (dispatch, getState) => 
   )
 }
 
-export const fetchCakePoolUserDataAsync = (account: string) => async (dispatch) => {
+export const fetchRotoPoolUserDataAsync = (account: string) => async (dispatch) => {
   const allowanceCall = {
-    address: bscTokens.cake.address,
+    address: bscTokens.roto.address,
     name: 'allowance',
-    params: [account, cakeVaultAddress],
+    params: [account, rotoVaultAddress],
   }
   const balanceOfCall = {
-    address: bscTokens.cake.address,
+    address: bscTokens.roto.address,
     name: 'balanceOf',
     params: [account],
   }
-  const cakeContractCalls = [allowanceCall, balanceOfCall]
-  const [[allowance], [stakingTokenBalance]] = await multicallv2({ abi: cakeAbi, calls: cakeContractCalls })
+  const rotoContractCalls = [allowanceCall, balanceOfCall]
+  const [[allowance], [stakingTokenBalance]] = await multicallv2({ abi: rotoAbi, calls: rotoContractCalls })
 
   dispatch(
     setPoolUserData({
@@ -301,37 +301,37 @@ export const updateUserPendingReward = createAsyncThunk<
   return { sousId, field: 'pendingReward', value: pendingRewards[sousId] }
 })
 
-export const fetchCakeVaultPublicData = createAsyncThunk<SerializedLockedCakeVault>(
-  'cakeVault/fetchPublicData',
+export const fetchRotoVaultPublicData = createAsyncThunk<SerializedLockedRotoVault>(
+  'rotoVault/fetchPublicData',
   async () => {
     const publicVaultInfo = await fetchPublicVaultData()
     return publicVaultInfo
   },
 )
 
-export const fetchCakeFlexibleSideVaultPublicData = createAsyncThunk<SerializedCakeVault>(
-  'cakeFlexibleSideVault/fetchPublicData',
+export const fetchRotoFlexibleSideVaultPublicData = createAsyncThunk<SerializedRotoVault>(
+  'rotoFlexibleSideVault/fetchPublicData',
   async () => {
     const publicVaultInfo = await fetchPublicFlexibleSideVaultData()
     return publicVaultInfo
   },
 )
 
-export const fetchCakeVaultFees = createAsyncThunk<SerializedVaultFees>('cakeVault/fetchFees', async () => {
-  const vaultFees = await fetchVaultFees(getCakeVaultAddress())
+export const fetchRotoVaultFees = createAsyncThunk<SerializedVaultFees>('rotoVault/fetchFees', async () => {
+  const vaultFees = await fetchVaultFees(getRotoVaultAddress())
   return vaultFees
 })
 
-export const fetchCakeFlexibleSideVaultFees = createAsyncThunk<SerializedVaultFees>(
-  'cakeFlexibleSideVault/fetchFees',
+export const fetchRotoFlexibleSideVaultFees = createAsyncThunk<SerializedVaultFees>(
+  'rotoFlexibleSideVault/fetchFees',
   async () => {
-    const vaultFees = await fetchVaultFees(getCakeFlexibleSideVaultAddress())
+    const vaultFees = await fetchVaultFees(getRotoFlexibleSideVaultAddress())
     return vaultFees
   },
 )
 
-export const fetchCakeVaultUserData = createAsyncThunk<SerializedLockedVaultUser, { account: string }>(
-  'cakeVault/fetchUser',
+export const fetchRotoVaultUserData = createAsyncThunk<SerializedLockedVaultUser, { account: string }>(
+  'rotoVault/fetchUser',
   async ({ account }) => {
     const userData = await fetchVaultUser(account)
     return userData
@@ -351,8 +351,8 @@ export const fetchUserIfoCreditDataAsync = (account: string) => async (dispatch)
     console.error('[Ifo Credit Action] Error fetching user Ifo credit data', error)
   }
 }
-export const fetchCakeFlexibleSideVaultUserData = createAsyncThunk<SerializedVaultUser, { account: string }>(
-  'cakeFlexibleSideVault/fetchUser',
+export const fetchRotoFlexibleSideVaultUserData = createAsyncThunk<SerializedVaultUser, { account: string }>(
+  'rotoFlexibleSideVault/fetchUser',
   async ({ account }) => {
     const userData = await fetchFlexibleSideVaultUser(account)
     return userData
@@ -401,8 +401,8 @@ export const PoolsSlice = createSlice({
         return { ...pool }
       })
       state.userDataLoaded = false
-      state.cakeVault = { ...state.cakeVault, userData: initialPoolVaultState.userData }
-      state.cakeFlexibleSideVault = { ...state.cakeFlexibleSideVault, userData: initialPoolVaultState.userData }
+      state.rotoVault = { ...state.rotoVault, userData: initialPoolVaultState.userData }
+      state.rotoFlexibleSideVault = { ...state.rotoFlexibleSideVault, userData: initialPoolVaultState.userData }
     })
     builder.addCase(
       fetchPoolsUserDataAsync.fulfilled,
@@ -426,28 +426,28 @@ export const PoolsSlice = createSlice({
       console.error('[Pools Action] Error fetching pool user data', action.payload)
     })
     // Vault public data that updates frequently
-    builder.addCase(fetchCakeVaultPublicData.fulfilled, (state, action: PayloadAction<SerializedLockedCakeVault>) => {
-      state.cakeVault = { ...state.cakeVault, ...action.payload }
+    builder.addCase(fetchRotoVaultPublicData.fulfilled, (state, action: PayloadAction<SerializedLockedRotoVault>) => {
+      state.rotoVault = { ...state.rotoVault, ...action.payload }
     })
     builder.addCase(
-      fetchCakeFlexibleSideVaultPublicData.fulfilled,
-      (state, action: PayloadAction<SerializedCakeVault>) => {
-        state.cakeFlexibleSideVault = { ...state.cakeFlexibleSideVault, ...action.payload }
+      fetchRotoFlexibleSideVaultPublicData.fulfilled,
+      (state, action: PayloadAction<SerializedRotoVault>) => {
+        state.rotoFlexibleSideVault = { ...state.rotoFlexibleSideVault, ...action.payload }
       },
     )
     // Vault fees
-    builder.addCase(fetchCakeVaultFees.fulfilled, (state, action: PayloadAction<SerializedVaultFees>) => {
+    builder.addCase(fetchRotoVaultFees.fulfilled, (state, action: PayloadAction<SerializedVaultFees>) => {
       const fees = action.payload
-      state.cakeVault = { ...state.cakeVault, fees }
+      state.rotoVault = { ...state.rotoVault, fees }
     })
-    builder.addCase(fetchCakeFlexibleSideVaultFees.fulfilled, (state, action: PayloadAction<SerializedVaultFees>) => {
+    builder.addCase(fetchRotoFlexibleSideVaultFees.fulfilled, (state, action: PayloadAction<SerializedVaultFees>) => {
       const fees = action.payload
-      state.cakeFlexibleSideVault = { ...state.cakeFlexibleSideVault, fees }
+      state.rotoFlexibleSideVault = { ...state.rotoFlexibleSideVault, fees }
     })
     // Vault user data
-    builder.addCase(fetchCakeVaultUserData.fulfilled, (state, action: PayloadAction<SerializedLockedVaultUser>) => {
+    builder.addCase(fetchRotoVaultUserData.fulfilled, (state, action: PayloadAction<SerializedLockedVaultUser>) => {
       const userData = action.payload
-      state.cakeVault = { ...state.cakeVault, userData }
+      state.rotoVault = { ...state.rotoVault, userData }
     })
     // IFO
     builder.addCase(fetchIfoPublicDataAsync.fulfilled, (state, action: PayloadAction<PublicIfoData>) => {
@@ -455,10 +455,10 @@ export const PoolsSlice = createSlice({
       state.ifo = { ...state.ifo, ceiling }
     })
     builder.addCase(
-      fetchCakeFlexibleSideVaultUserData.fulfilled,
+      fetchRotoFlexibleSideVaultUserData.fulfilled,
       (state, action: PayloadAction<SerializedVaultUser>) => {
         const userData = action.payload
-        state.cakeFlexibleSideVault = { ...state.cakeFlexibleSideVault, userData }
+        state.rotoFlexibleSideVault = { ...state.rotoFlexibleSideVault, userData }
       },
     )
     builder.addMatcher(

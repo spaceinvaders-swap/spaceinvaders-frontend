@@ -1,6 +1,6 @@
-// import { CAKE_PID } from 'config/constants'
+// import { ROTO_PID } from 'config/constants'
 
-// const isVaultPool = (pool) => pool?.sousId === CAKE_PID
+// const isVaultPool = (pool) => pool?.sousId === ROTO_PID
 
 const isVaultPool = () => false
 

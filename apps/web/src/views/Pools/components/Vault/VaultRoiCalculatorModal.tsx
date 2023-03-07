@@ -6,15 +6,15 @@ import {
   RoiCalculatorModalProps,
   CalculatorMode,
   Pool,
-} from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+} from '@offsideswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
 import { useVaultApy } from 'hooks/useVaultApy'
 import { useEffect, useState, useMemo } from 'react'
 import { VaultKey } from 'state/types'
 import { useVaultPoolByKey } from 'state/pools/hooks'
-import { getRoi } from '@pancakeswap/utils/compoundApyHelpers'
+import { getRoi } from '@offsideswap/utils/compoundApyHelpers'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
-import { Token } from '@pancakeswap/sdk'
+import { Token } from '@offsideswap/sdk'
 
 import LockDurationField from '../LockedPool/Common/LockDurationField'
 import { weeksToSeconds } from '../utils/formatSecondsToWeeks'
@@ -26,7 +26,7 @@ export const VaultRoiCalculatorModal = ({
 }: { pool: Pool.DeserializedPool<Token>; initialView?: number } & Partial<RoiCalculatorModalProps>) => {
   const {
     userData: {
-      balance: { cakeAsBigNumber },
+      balance: { rotoAsBigNumber },
     },
   } = useVaultPoolByKey(pool.vaultKey)
 
@@ -34,7 +34,7 @@ export const VaultRoiCalculatorModal = ({
   const { t } = useTranslation()
   const { account } = useActiveWeb3React()
 
-  const [cakeVaultView, setCakeVaultView] = useState(initialView || 0)
+  const [rotoVaultView, setRotoVaultView] = useState(initialView || 0)
 
   const [duration, setDuration] = useState(() => weeksToSeconds(1))
 
@@ -47,14 +47,14 @@ export const VaultRoiCalculatorModal = ({
   )
 
   const apy = useMemo(() => {
-    return cakeVaultView === 0 ? flexibleApy : getLockedApy(duration)
-  }, [cakeVaultView, getLockedApy, flexibleApy, duration])
+    return rotoVaultView === 0 ? flexibleApy : getLockedApy(duration)
+  }, [rotoVaultView, getLockedApy, flexibleApy, duration])
 
   const [isMaxSelected, setIsMaxSelected] = useState(false)
 
   return (
     <RoiCalculatorModal
-      isLocked={cakeVaultView === 1}
+      isLocked={rotoVaultView === 1}
       account={account}
       stakingTokenSymbol={pool.stakingToken.symbol}
       apy={+apy}
@@ -68,12 +68,12 @@ export const VaultRoiCalculatorModal = ({
       earningTokenPrice={pool.earningTokenPrice}
       stakingTokenPrice={pool.stakingTokenPrice}
       stakingTokenBalance={
-        pool.userData?.stakingTokenBalance ? cakeAsBigNumber.plus(pool.userData?.stakingTokenBalance) : cakeAsBigNumber
+        pool.userData?.stakingTokenBalance ? rotoAsBigNumber.plus(pool.userData?.stakingTokenBalance) : rotoAsBigNumber
       }
       stakingTokenDecimals={pool.stakingToken.decimals}
       autoCompoundFrequency={1}
       strategy={
-        cakeVaultView
+        rotoVaultView
           ? (state, dispatch) => (
               <LockedRoiStrategy
                 state={state}
@@ -86,14 +86,14 @@ export const VaultRoiCalculatorModal = ({
           : null
       }
       header={
-        pool.vaultKey === VaultKey.CakeVault ? (
+        pool.vaultKey === VaultKey.RotoVault ? (
           <ButtonMenu
             mb="24px"
             fullWidth
             scale="sm"
             variant="subtle"
-            activeIndex={cakeVaultView}
-            onItemClick={setCakeVaultView}
+            activeIndex={rotoVaultView}
+            onItemClick={setRotoVaultView}
           >
             {buttonMenuItems}
           </ButtonMenu>
@@ -103,7 +103,7 @@ export const VaultRoiCalculatorModal = ({
       }
       {...rest}
     >
-      {cakeVaultView && (
+      {rotoVaultView && (
         <Box mt="16px">
           <LockDurationField
             duration={duration}

@@ -3,17 +3,17 @@
     "inputs": [
       {
         "internalType": "contract IBEP20",
-        "name": "_cakeToken",
+        "name": "_rotoToken",
         "type": "address"
       },
       {
         "internalType": "address",
-        "name": "_pancakeProfileAddress",
+        "name": "_offsideProfileAddress",
         "type": "address"
       },
       {
         "internalType": "uint256",
-        "name": "_numberCake",
+        "name": "_numberRoto",
         "type": "uint256"
       },
       {
@@ -46,7 +46,7 @@
   },
   {
     "inputs": [],
-    "name": "cakeToken",
+    "name": "rotoToken",
     "outputs": [
       {
         "internalType": "contract IBEP20",
@@ -91,7 +91,7 @@
   },
   {
     "inputs": [],
-    "name": "getCakeBack",
+    "name": "getRotoBack",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -117,7 +117,7 @@
   },
   {
     "inputs": [],
-    "name": "numberCake",
+    "name": "numberRoto",
     "outputs": [
       {
         "internalType": "uint256",

@@ -1,4 +1,15 @@
-# @pancakeswap/token-lists
+# @offsideswap/token-lists
+
+## 1.0.0
+
+### Major Changes
+
+- 485d513cc: This is the first major upgrade for the system
+
+### Patch Changes
+
+- Updated dependencies [485d513cc]
+  - @offsideswap/swap-sdk-core@1.0.0
 
 ## 0.0.5
 
@@ -22,6 +33,6 @@
 
 ### Patch Changes
 
-- 68440160d: ## PancakeSwap version spec
+- 68440160d: ## OffsideSwap version spec
   Add `schema` aptos to indentify aptos version of token list
   without schema will default be uniswap version evm validation

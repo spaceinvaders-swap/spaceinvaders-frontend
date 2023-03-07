@@ -1,5 +1,5 @@
-import { useAccount, useNetwork } from '@pancakeswap/awgmi'
-import { equalsIgnoreCase } from '@pancakeswap/utils/equalsIgnoreCase'
+import { useAccount, useNetwork } from '@offsideswap/awgmi'
+import { equalsIgnoreCase } from '@offsideswap/utils/equalsIgnoreCase'
 import { chains, defaultChain } from 'config/chains'
 import { atom, useAtomValue } from 'jotai'
 import { useRouter } from 'next/router'

@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Button, AutoRenewIcon } from '@pancakeswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
+import { Button, AutoRenewIcon } from '@offsideswap/uikit'
 import { useWithdrawPottery } from 'views/Pottery/hooks/useWithdrawPottery'
 import { PotteryDepositStatus } from 'state/types'
 import BigNumber from 'bignumber.js'
@@ -7,7 +7,7 @@ import { useMemo } from 'react'
 
 interface WithdrawButtonProps {
   status: PotteryDepositStatus
-  cakeNumber: BigNumber
+  rotoNumber: BigNumber
   redeemShare: string
   potteryVaultAddress: string
   balanceOf: string
@@ -15,7 +15,7 @@ interface WithdrawButtonProps {
 
 const WithdrawButton: React.FC<React.PropsWithChildren<WithdrawButtonProps>> = ({
   status,
-  cakeNumber,
+  rotoNumber,
   redeemShare,
   potteryVaultAddress,
   balanceOf,
@@ -26,12 +26,12 @@ const WithdrawButton: React.FC<React.PropsWithChildren<WithdrawButtonProps>> = (
   const isDisabled = useMemo(() => {
     return (
       isPending ||
-      cakeNumber.lte(0) ||
-      cakeNumber.isNaN() ||
+      rotoNumber.lte(0) ||
+      rotoNumber.isNaN() ||
       new BigNumber(balanceOf).lte(0) ||
       status !== PotteryDepositStatus.UNLOCK
     )
-  }, [isPending, cakeNumber, balanceOf, status])
+  }, [isPending, rotoNumber, balanceOf, status])
 
   return (
     <Button

@@ -1,7 +1,7 @@
 import {
-  Cake,
-  CakeFlexibleSideVaultV2,
-  CakeVaultV2,
+  Roto,
+  RotoFlexibleSideVaultV2,
+  RotoVaultV2,
   Erc20,
   Erc20Bytes32,
   Erc721collection,
@@ -15,20 +15,20 @@ import { useMemo } from 'react'
 import { getMulticallAddress, getPredictionsV1Address, getZapAddress } from 'utils/addressHelpers'
 import {
   getAnniversaryAchievementContract,
-  getBCakeFarmBoosterContract,
-  getBCakeFarmBoosterProxyFactoryContract,
-  getBCakeProxyContract,
+  getBRotoFarmBoosterContract,
+  getBRotoFarmBoosterProxyFactoryContract,
+  getBRotoProxyContract,
   getBep20Contract,
   getBunnyFactoryContract,
-  getBunnySpecialCakeVaultContract,
+  getBunnySpecialRotoVaultContract,
   getBunnySpecialContract,
   getBunnySpecialLotteryContract,
   getBunnySpecialPredictionContract,
   getBunnySpecialXmasContract,
-  getCakeContract,
-  getCakeFlexibleSideVaultV2Contract,
-  getCakePredictionsContract,
-  getCakeVaultV2Contract,
+  getRotoContract,
+  getRotoFlexibleSideVaultV2Contract,
+  getRotoPredictionsContract,
+  getRotoVaultV2Contract,
   getChainlinkOracleContract,
   getClaimRefundContract,
   getCrossFarmingProxyContract,
@@ -46,8 +46,8 @@ import {
   getNftMarketContract,
   getNftSaleContract,
   getNonBscVaultContract,
-  getPancakeBunniesContract,
-  getPancakeSquadContract,
+  getOffsideBunniesContract,
+  getOffsideSquadContract,
   getPointCenterIfoContract,
   getPotteryDrawContract,
   getPotteryVaultContract,
@@ -65,15 +65,15 @@ import { useSigner } from 'wagmi'
 
 // Imports below migrated from Exchange useContract.ts
 import { Contract } from '@ethersproject/contracts'
-import { WNATIVE } from '@pancakeswap/sdk'
+import { WNATIVE } from '@offsideswap/sdk'
 import { ERC20_BYTES32_ABI } from 'config/abi/erc20'
 import ERC20_ABI from 'config/abi/erc20.json'
-import IPancakePairABI from 'config/abi/IPancakePair.json'
+import IOffsidePairABI from 'config/abi/IOffsidePair.json'
 import multiCallAbi from 'config/abi/Multicall.json'
 import WETH_ABI from 'config/abi/weth.json'
 import { getContract } from 'utils'
 
-import { IPancakePair } from 'config/abi/types/IPancakePair'
+import { IOffsidePair } from 'config/abi/types/IOffsidePair'
 import { VaultKey } from 'state/types'
 import { useActiveChainId } from './useActiveChainId'
 
@@ -109,12 +109,12 @@ export const useERC721 = (address: string, withSignerIfPossible = true) => {
   return useMemo(() => getErc721Contract(address, providerOrSigner), [address, providerOrSigner])
 }
 
-export const useCake = (): { reader: Cake; signer: Cake } => {
+export const useRoto = (): { reader: Roto; signer: Roto } => {
   const providerOrSigner = useProviderOrSigner(true, true)
   return useMemo(
     () => ({
-      reader: getCakeContract(null),
-      signer: getCakeContract(providerOrSigner),
+      reader: getRotoContract(null),
+      signer: getRotoContract(providerOrSigner),
     }),
     [providerOrSigner],
   )
@@ -125,9 +125,9 @@ export const useBunnyFactory = () => {
   return useMemo(() => getBunnyFactoryContract(signer), [signer])
 }
 
-export const usePancakeBunnies = () => {
+export const useOffsideBunnies = () => {
   const { data: signer } = useSigner()
-  return useMemo(() => getPancakeBunniesContract(signer), [signer])
+  return useMemo(() => getOffsideBunniesContract(signer), [signer])
 }
 
 export const useProfileContract = (withSignerIfPossible = true) => {
@@ -196,22 +196,22 @@ export const useEasterNftContract = () => {
   return useMemo(() => getEasterNftContract(signer), [signer])
 }
 
-export const useVaultPoolContract = (vaultKey: VaultKey): CakeVaultV2 | CakeFlexibleSideVaultV2 => {
+export const useVaultPoolContract = (vaultKey: VaultKey): RotoVaultV2 | RotoFlexibleSideVaultV2 => {
   const { data: signer } = useSigner()
   return useMemo(() => {
-    if (vaultKey === VaultKey.CakeVault) {
-      return getCakeVaultV2Contract(signer)
+    if (vaultKey === VaultKey.RotoVault) {
+      return getRotoVaultV2Contract(signer)
     }
-    if (vaultKey === VaultKey.CakeFlexibleSideVault) {
-      return getCakeFlexibleSideVaultV2Contract(signer)
+    if (vaultKey === VaultKey.RotoFlexibleSideVault) {
+      return getRotoFlexibleSideVaultV2Contract(signer)
     }
     return null
   }, [signer, vaultKey])
 }
 
-export const useCakeVaultContract = (withSignerIfPossible = true) => {
+export const useRotoVaultContract = (withSignerIfPossible = true) => {
   const providerOrSigner = useProviderOrSigner(withSignerIfPossible)
-  return useMemo(() => getCakeVaultV2Contract(providerOrSigner), [providerOrSigner])
+  return useMemo(() => getRotoVaultV2Contract(providerOrSigner), [providerOrSigner])
 }
 
 export const useIfoCreditAddressContract = () => {
@@ -224,7 +224,7 @@ export const usePredictionsContract = (address: string, tokenSymbol: string) => 
     if (address === getPredictionsV1Address()) {
       return getPredictionsV1Contract(signer)
     }
-    const getPredContract = tokenSymbol === 'CAKE' ? getCakePredictionsContract : getPredictionsContract
+    const getPredContract = tokenSymbol === 'ROTO' ? getRotoPredictionsContract : getPredictionsContract
 
     return getPredContract(address, signer)
   }, [address, tokenSymbol, signer])
@@ -235,9 +235,9 @@ export const useChainlinkOracleContract = (address, withSignerIfPossible = true)
   return useMemo(() => getChainlinkOracleContract(address, providerOrSigner), [providerOrSigner, address])
 }
 
-export const useSpecialBunnyCakeVaultContract = () => {
+export const useSpecialBunnyRotoVaultContract = () => {
   const { data: signer } = useSigner()
-  return useMemo(() => getBunnySpecialCakeVaultContract(signer), [signer])
+  return useMemo(() => getBunnySpecialRotoVaultContract(signer), [signer])
 }
 
 export const useSpecialBunnyPredictionContract = () => {
@@ -265,9 +265,9 @@ export const useNftSaleContract = () => {
   return useMemo(() => getNftSaleContract(signer), [signer])
 }
 
-export const usePancakeSquadContract = () => {
+export const useOffsideSquadContract = () => {
   const { data: signer } = useSigner()
-  return useMemo(() => getPancakeSquadContract(signer), [signer])
+  return useMemo(() => getOffsideSquadContract(signer), [signer])
 }
 
 export const useFarmAuctionContract = (withSignerIfPossible = true) => {
@@ -329,8 +329,8 @@ export function useBytes32TokenContract(tokenAddress?: string, withSignerIfPossi
   return useContract<Erc20Bytes32>(tokenAddress, ERC20_BYTES32_ABI, withSignerIfPossible)
 }
 
-export function usePairContract(pairAddress?: string, withSignerIfPossible?: boolean): IPancakePair | null {
-  return useContract(pairAddress, IPancakePairABI, withSignerIfPossible)
+export function usePairContract(pairAddress?: string, withSignerIfPossible?: boolean): IOffsidePair | null {
+  return useContract(pairAddress, IOffsidePairABI, withSignerIfPossible)
 }
 
 export function useMulticallContract() {
@@ -353,20 +353,20 @@ export function useZapContract(withSignerIfPossible = true) {
   return useContract<Zap>(getZapAddress(chainId), zapAbi, withSignerIfPossible)
 }
 
-export function useBCakeFarmBoosterContract(withSignerIfPossible = true) {
+export function useBRotoFarmBoosterContract(withSignerIfPossible = true) {
   const providerOrSigner = useProviderOrSigner(withSignerIfPossible, true)
-  return useMemo(() => getBCakeFarmBoosterContract(providerOrSigner), [providerOrSigner])
+  return useMemo(() => getBRotoFarmBoosterContract(providerOrSigner), [providerOrSigner])
 }
 
-export function useBCakeFarmBoosterProxyFactoryContract(withSignerIfPossible = true) {
+export function useBRotoFarmBoosterProxyFactoryContract(withSignerIfPossible = true) {
   const providerOrSigner = useProviderOrSigner(withSignerIfPossible, true)
-  return useMemo(() => getBCakeFarmBoosterProxyFactoryContract(providerOrSigner), [providerOrSigner])
+  return useMemo(() => getBRotoFarmBoosterProxyFactoryContract(providerOrSigner), [providerOrSigner])
 }
 
-export function useBCakeProxyContract(proxyContractAddress: string, withSignerIfPossible = true) {
+export function useBRotoProxyContract(proxyContractAddress: string, withSignerIfPossible = true) {
   const providerOrSigner = useProviderOrSigner(withSignerIfPossible, true)
   return useMemo(
-    () => proxyContractAddress && getBCakeProxyContract(proxyContractAddress, providerOrSigner),
+    () => proxyContractAddress && getBRotoProxyContract(proxyContractAddress, providerOrSigner),
     [providerOrSigner, proxyContractAddress],
   )
 }

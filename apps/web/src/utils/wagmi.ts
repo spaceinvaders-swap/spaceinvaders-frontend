@@ -1,6 +1,6 @@
-import { BinanceWalletConnector } from '@pancakeswap/wagmi/connectors/binanceWallet'
-import { BloctoConnector } from '@pancakeswap/wagmi/connectors/blocto'
-import { TrustWalletConnector } from '@pancakeswap/wagmi/connectors/trustWallet'
+import { BinanceWalletConnector } from '@offsideswap/wagmi/connectors/binanceWallet'
+import { BloctoConnector } from '@offsideswap/wagmi/connectors/blocto'
+import { TrustWalletConnector } from '@offsideswap/wagmi/connectors/trustWallet'
 import { bsc, bscTestnet, goerli, mainnet } from 'wagmi/chains'
 import { configureChains, createClient } from 'wagmi'
 import memoize from 'lodash/memoize'
@@ -69,8 +69,8 @@ export const injectedConnector = new InjectedConnector({
 export const coinbaseConnector = new CoinbaseWalletConnector({
   chains,
   options: {
-    appName: 'PancakeSwap',
-    appLogoUrl: 'https://pancakeswap.com/logo.png',
+    appName: 'OffsideSwap',
+    appLogoUrl: 'https://offsideswap.com/logo.png',
   },
 })
 

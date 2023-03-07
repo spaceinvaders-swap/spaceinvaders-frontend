@@ -1,14 +1,14 @@
 import styled from 'styled-components'
 import { useMemo } from 'react'
-import { Flex, Box, Text, Balance, SkeletonV2 } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
-import { usePriceCakeBusd } from 'state/farms/hooks'
+import { Flex, Box, Text, Balance, SkeletonV2 } from '@offsideswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
+import { usePriceRotoBusd } from 'state/farms/hooks'
 import StakeToWinButton from 'views/Pottery/components/Banner/StakeToWinButton'
 import { BannerTimer, LockTimer } from 'views/Pottery/components/Timer'
 import { PotteryDepositStatus } from 'state/types'
 import { OutlineText, DarkTextStyle } from 'views/Pottery/components/TextStyle'
 import TicketsDecorations from 'views/Pottery/components/Banner/TicketsDecorations'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
+import { getBalanceNumber } from '@offsideswap/utils/formatBalance'
 import { useVaultApy } from 'hooks/useVaultApy'
 import { weeksToSeconds } from 'views/Pools/components/utils/formatSecondsToWeeks'
 import { usePotteryData } from 'state/pottery/hook'
@@ -70,11 +70,11 @@ interface BannerProps {
 
 const Banner: React.FC<React.PropsWithChildren<BannerProps>> = ({ handleScroll }) => {
   const { t } = useTranslation()
-  const cakePriceBusd = usePriceCakeBusd()
+  const rotoPriceBusd = usePriceRotoBusd()
   const { publicData } = usePotteryData()
   const { getLockedApy } = useVaultApy()
 
-  const prizeInBusd = publicData.totalPrize.times(cakePriceBusd)
+  const prizeInBusd = publicData.totalPrize.times(rotoPriceBusd)
   const prizeTotal = getBalanceNumber(prizeInBusd)
 
   const apy = useMemo(() => +getLockedApy(weeksToSeconds(10)), [getLockedApy])
@@ -103,7 +103,7 @@ const Banner: React.FC<React.PropsWithChildren<BannerProps>> = ({ handleScroll }
               bold
               defaultType
             >
-              {t('The PancakeSwap')}
+              {t('The OffsideSwap')}
             </OutlineText>
             <OutlineText fontSize={['24px', '24px', '24px', '24px', '32px']} bold ml="4px">
               {t('Pottery')}
@@ -125,7 +125,7 @@ const Banner: React.FC<React.PropsWithChildren<BannerProps>> = ({ handleScroll }
           ) : null}
           <Box style={{ marginTop: '30px' }}>
             <Text color="white" bold as="span">
-              {t('Deposit CAKE for')}
+              {t('Deposit ROTO for')}
             </Text>
             <DarkTextStyle ml="3px" bold as="span">
               {t('10 Weeks')}

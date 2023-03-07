@@ -1,8 +1,8 @@
 import { memo, useState } from 'react'
-import { JSBI, Percent } from '@pancakeswap/swap-sdk-core'
+import { JSBI, Percent } from '@offsideswap/swap-sdk-core'
 import styled from 'styled-components'
-import { useTranslation } from '@pancakeswap/localization'
-import { Pair, Currency, CurrencyAmount } from '@pancakeswap/aptos-swap-sdk'
+import { useTranslation } from '@offsideswap/localization'
+import { Pair, Currency, CurrencyAmount } from '@offsideswap/aptos-swap-sdk'
 import { CurrencyLogo, DoubleCurrencyLogo } from 'components/Logo'
 
 import {
@@ -20,10 +20,10 @@ import {
   RowFixed,
   Button,
   AddIcon,
-} from '@pancakeswap/uikit/src/components'
+} from '@offsideswap/uikit/src/components'
 
-import { useTooltip } from '@pancakeswap/uikit/src/hooks'
-import { NextLinkFromReactRouter } from '@pancakeswap/uikit/src/components/NextLink'
+import { useTooltip } from '@offsideswap/uikit/src/hooks'
+import { NextLinkFromReactRouter } from '@offsideswap/uikit/src/components/NextLink'
 import formatAmountDisplay from 'utils/formatAmountDisplay'
 
 const FixedHeightRow = styled(RowBetween)`
@@ -151,7 +151,7 @@ function MinimalPositionCardView({
       ) : (
         <LightCard padding="24px">
           <Text fontSize="14px" style={{ textAlign: 'center' }}>
-            <span role="img" aria-label="pancake-icon">
+            <span role="img" aria-label="offside-icon">
               🥞
             </span>{' '}
             {t(

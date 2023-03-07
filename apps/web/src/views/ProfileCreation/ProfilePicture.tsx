@@ -10,11 +10,11 @@ import {
   Text,
   useToast,
   NextLinkFromReactRouter,
-} from '@pancakeswap/uikit'
+} from '@offsideswap/uikit'
 import { useAccount, useSigner } from 'wagmi'
-import { getPancakeProfileAddress } from 'utils/addressHelpers'
+import { getOffsideProfileAddress } from 'utils/addressHelpers'
 import { getErc721Contract } from 'utils/contractHelpers'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@offsideswap/localization'
 import { useProfileContract } from 'hooks/useContract'
 import { useCallWithGasPrice } from 'hooks/useCallWithGasPrice'
 import useCatchTxError from 'hooks/useCatchTxError'
@@ -25,7 +25,7 @@ import SelectionCard from './SelectionCard'
 import NextStepButton from './NextStepButton'
 import { ProfileCreationContext } from './contexts/ProfileCreationProvider'
 import multicall from '../../utils/multicall'
-import profileABI from '../../config/abi/pancakeProfile.json'
+import profileABI from '../../config/abi/offsideProfile.json'
 import { useNftsForAddress } from '../Nft/market/hooks/useNftsForAddress'
 
 const Link = styled(NextLinkFromReactRouter)`
@@ -47,7 +47,7 @@ const ProfilePicture: React.FC = () => {
   const { nfts, isLoading: isUserNftLoading } = useNftsForAddress(account, profile, isProfileLoading)
 
   useEffect(() => {
-    const fetchUserPancakeCollectibles = async () => {
+    const fetchUserOffsideCollectibles = async () => {
       try {
         const nftsByCollection = Array.from(
           nfts.reduce((acc, value) => {
@@ -82,7 +82,7 @@ const ProfilePicture: React.FC = () => {
     }
     if (!isUserNftLoading) {
       setIsProfileNftsLoading(true)
-      fetchUserPancakeCollectibles()
+      fetchUserOffsideCollectibles()
     }
   }, [nfts, profileContract, isUserNftLoading])
 
@@ -95,7 +95,7 @@ const ProfilePicture: React.FC = () => {
   const handleApprove = async () => {
     const contract = getErc721Contract(selectedNft.collectionAddress, signer)
     const receipt = await fetchWithCatchTxError(() => {
-      return callWithGasPrice(contract, 'approve', [getPancakeProfileAddress(), selectedNft.tokenId])
+      return callWithGasPrice(contract, 'approve', [getOffsideProfileAddress(), selectedNft.tokenId])
     })
     if (receipt?.status) {
       toastSuccess(t('Enabled'), t('Please progress to the next step.'))
@@ -110,17 +110,17 @@ const ProfilePicture: React.FC = () => {
           {t('Oops!')}
         </Heading>
         <Text bold fontSize="20px" mb="24px">
-          {t('We couldn’t find any Pancake Collectibles in your wallet.')}
+          {t('We couldn’t find any Offside Collectibles in your wallet.')}
         </Text>
         <Text as="p" mb="24px">
-          {t('Only approved Pancake Collectibles can be used.')}
-          <Link to={`${nftsBaseUrl}/profile/pancake-collectibles`} style={{ marginLeft: '4px' }}>
+          {t('Only approved Offside Collectibles can be used.')}
+          <Link to={`${nftsBaseUrl}/profile/offside-collectibles`} style={{ marginLeft: '4px' }}>
             {t('See the list >')}
           </Link>
         </Text>
         <Text as="p">
           {t(
-            'You need a Pancake Collectible to finish setting up your profile. If you sold or transferred your starter collectible to another wallet, you’ll need to get it back or acquire a new one somehow. You can’t make a new starter with this wallet address.',
+            'You need a Offside Collectible to finish setting up your profile. If you sold or transferred your starter collectible to another wallet, you’ll need to get it back or acquire a new one somehow. You can’t make a new starter with this wallet address.',
           )}
         </Text>
       </>
@@ -144,7 +144,7 @@ const ProfilePicture: React.FC = () => {
             {t('Choose a profile picture from the eligible collectibles (NFT) in your wallet, shown below.')}
           </Text>
           <Text as="p" color="textSubtle" mb="24px">
-            {t('Only approved Pancake Collectibles can be used.')}
+            {t('Only approved Offside Collectibles can be used.')}
             <Link to={`${nftsBaseUrl}/collections`} style={{ marginLeft: '4px' }}>
               {t('See the list >')}
             </Link>

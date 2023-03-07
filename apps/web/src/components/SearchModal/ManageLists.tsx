@@ -1,4 +1,4 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@offsideswap/localization'
 import {
   Button,
   CheckmarkIcon,
@@ -11,8 +11,8 @@ import {
   useTooltip,
   AutoColumn,
   Column,
-} from '@pancakeswap/uikit'
-import { TokenList, Version } from '@pancakeswap/token-lists'
+} from '@offsideswap/uikit'
+import { TokenList, Version } from '@offsideswap/token-lists'
 import Card from 'components/Card'
 import { BSC_URLS, ETH_URLS, UNSUPPORTED_LIST_URLS } from 'config/constants/lists'
 import { useAtomValue } from 'jotai'
@@ -25,9 +25,9 @@ import {
   disableList,
   enableList,
   removeList,
-} from '@pancakeswap/token-lists/react'
-import uriToHttp from '@pancakeswap/utils/uriToHttp'
-import { ChainId } from '@pancakeswap/sdk'
+} from '@offsideswap/token-lists/react'
+import uriToHttp from '@offsideswap/utils/uriToHttp'
+import { ChainId } from '@offsideswap/sdk'
 
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { selectorByUrlsAtom, useActiveListUrls, useAllLists, useIsListActive } from '../../state/lists/hooks'
@@ -234,8 +234,8 @@ function ManageLists({
         }
 
         if (l1 && l2) {
-          // Always make PancakeSwap list in top.
-          const keyword = 'pancakeswap'
+          // Always make OffsideSwap list in top.
+          const keyword = 'offsideswap'
           if (!l1.name.toLowerCase().includes(keyword) && l2.name.toLowerCase().includes(keyword)) {
             return 1
           }

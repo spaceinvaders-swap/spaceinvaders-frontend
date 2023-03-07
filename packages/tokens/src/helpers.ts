@@ -1,5 +1,5 @@
-import { ChainId } from '@pancakeswap/sdk'
-import { TokenAddressMap } from '@pancakeswap/token-lists'
+import { ChainId } from '@offsideswap/sdk'
+import { TokenAddressMap } from '@offsideswap/token-lists'
 
 /**
  * An empty result, useful as a default.

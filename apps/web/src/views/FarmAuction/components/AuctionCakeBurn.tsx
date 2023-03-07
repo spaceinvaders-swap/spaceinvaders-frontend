@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
-import { Text, Flex, Skeleton, Image, Balance } from '@pancakeswap/uikit'
+import { Text, Flex, Skeleton, Image, Balance } from '@offsideswap/uikit'
 import { useFarmAuctionContract } from 'hooks/useContract'
-import { useIntersectionObserver } from '@pancakeswap/hooks'
-import { useTranslation } from '@pancakeswap/localization'
-import { usePriceCakeBusd } from 'state/farms/hooks'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
-import { ethersToBigNumber } from '@pancakeswap/utils/bigNumber'
+import { useIntersectionObserver } from '@offsideswap/hooks'
+import { useTranslation } from '@offsideswap/localization'
+import { usePriceRotoBusd } from 'state/farms/hooks'
+import { getBalanceNumber } from '@offsideswap/utils/formatBalance'
+import { ethersToBigNumber } from '@offsideswap/utils/bigNumber'
 import styled from 'styled-components'
 
 const BurnedText = styled(Text)`
@@ -16,34 +16,34 @@ const BurnedText = styled(Text)`
   }
 `
 
-const AuctionCakeBurn: React.FC<React.PropsWithChildren> = () => {
-  const [burnedCakeAmount, setBurnedCakeAmount] = useState(0)
+const AuctionRotoBurn: React.FC<React.PropsWithChildren> = () => {
+  const [burnedRotoAmount, setBurnedRotoAmount] = useState(0)
   const { t } = useTranslation()
   const farmAuctionContract = useFarmAuctionContract(false)
   const { observerRef, isIntersecting } = useIntersectionObserver()
-  const cakePriceBusd = usePriceCakeBusd()
+  const rotoPriceBusd = usePriceRotoBusd()
 
-  const burnedAmountAsUSD = cakePriceBusd.times(burnedCakeAmount)
+  const burnedAmountAsUSD = rotoPriceBusd.times(burnedRotoAmount)
 
   useEffect(() => {
-    const fetchBurnedCakeAmount = async () => {
+    const fetchBurnedRotoAmount = async () => {
       try {
         const amount = await farmAuctionContract.totalCollected()
         const amountAsBN = ethersToBigNumber(amount)
-        setBurnedCakeAmount(getBalanceNumber(amountAsBN))
+        setBurnedRotoAmount(getBalanceNumber(amountAsBN))
       } catch (error) {
-        console.error('Failed to fetch burned auction cake', error)
+        console.error('Failed to fetch burned auction roto', error)
       }
     }
-    if (isIntersecting && burnedCakeAmount === 0) {
-      fetchBurnedCakeAmount()
+    if (isIntersecting && burnedRotoAmount === 0) {
+      fetchBurnedRotoAmount()
     }
-  }, [isIntersecting, burnedCakeAmount, farmAuctionContract])
+  }, [isIntersecting, burnedRotoAmount, farmAuctionContract])
   return (
     <Flex flexDirection={['column-reverse', null, 'row']}>
       <Flex flexDirection="column" flex="2" ref={observerRef}>
-        {burnedCakeAmount !== 0 ? (
-          <Balance fontSize="64px" bold value={burnedCakeAmount} decimals={0} unit=" CAKE" />
+        {burnedRotoAmount !== 0 ? (
+          <Balance fontSize="64px" bold value={burnedRotoAmount} decimals={0} unit=" ROTO" />
         ) : (
           <Skeleton width="256px" height="64px" />
         )}
@@ -61,9 +61,9 @@ const AuctionCakeBurn: React.FC<React.PropsWithChildren> = () => {
           <Skeleton width="128px" />
         )}
       </Flex>
-      <Image width={350} height={320} src="/images/burnt-cake.png" alt={t('Burnt CAKE')} />
+      <Image width={350} height={320} src="/images/burnt-roto.png" alt={t('Burnt ROTO')} />
     </Flex>
   )
 }
 
-export default AuctionCakeBurn
+export default AuctionRotoBurn

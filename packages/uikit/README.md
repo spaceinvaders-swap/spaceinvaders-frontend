@@ -1,22 +1,22 @@
-# 🥞 Pancake UIkit
+# 🥞 Offside UIkit
 
-Pancake UIkit is a set of React components and hooks used to build pages on Pancake's apps. It also contains a theme file for dark and light mode.
+Offside UIkit is a set of React components and hooks used to build pages on Offside's apps. It also contains a theme file for dark and light mode.
 
 ## Install
 
-`yarn add @pancakeswap/uikit`
+`yarn add @offsideswap/uikit`
 
-***Note**: In case you want to use the older version of the Pancake UIkit, you should install @pancakeswap-libs/uikit, instead, but we recommend using the latest version of the UIkit.*
+***Note**: In case you want to use the older version of the Offside UIkit, you should install @offsideswap-libs/uikit, instead, but we recommend using the latest version of the UIkit.*
 
 
 ## Setup
 
 ### Providers
 
-Before using Pancake UIkit, you need to provide the theme file to uikit provider.
+Before using Offside UIkit, you need to provide the theme file to uikit provider.
 
 ```
-import { UIKitProvider, light, dark } from '@pancakeswap/uikit'
+import { UIKitProvider, light, dark } from '@offsideswap/uikit'
 ...
 <UIKitProvider theme={isDark ? dark : light}>...</UIKitProvider>
 ```
@@ -26,8 +26,8 @@ import { UIKitProvider, light, dark } from '@pancakeswap/uikit'
 A reset CSS is available as a global styled component.
 
 ```
-import '@pancakeswap/ui/css/reset.css'
-import { ResetCSS } from '@pancakeswap/uikit'
+import '@offsideswap/ui/css/reset.css'
+import { ResetCSS } from '@offsideswap/uikit'
 ...
 <ResetCSS />
 ```
@@ -38,4 +38,4 @@ This project is built with Typescript and export all the relevant types.
 
 ## How to use the UIkit
 
-If you want to use components from the UIkit, check the [Storybook documentation](https://uikit.pancake.run)
+If you want to use components from the UIkit, check the [Storybook documentation](https://uikit.offside.run)

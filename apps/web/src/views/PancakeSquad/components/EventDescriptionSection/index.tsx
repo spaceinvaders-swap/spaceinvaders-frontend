@@ -1,6 +1,6 @@
-import { Box, Button, Flex, Link, Text } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
-import { LandingBodyWrapper } from 'views/PancakeSquad/styles'
+import { Box, Button, Flex, Link, Text } from '@offsideswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
+import { LandingBodyWrapper } from 'views/OffsideSquad/styles'
 import eventDescriptionConfigBuilder from './config'
 import {
   StyledBodyTextElement,

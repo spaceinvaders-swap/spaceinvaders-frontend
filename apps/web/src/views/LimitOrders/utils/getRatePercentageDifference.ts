@@ -1,4 +1,4 @@
-import { Percent, Price, Currency } from '@pancakeswap/sdk'
+import { Percent, Price, Currency } from '@offsideswap/sdk'
 
 const getRatePercentageDifference = (
   currentMarketRate: Price<Currency, Currency>,

@@ -1,5 +1,5 @@
-import { Box, Flex, InjectedModalProps, Modal, Button, Spinner } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Box, Flex, InjectedModalProps, Modal, Button, Spinner } from '@offsideswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
 import useTheme from 'hooks/useTheme'
 import useGetVotingPower from '../hooks/useGetVotingPower'
 import DetailsView from './CastVoteModal/DetailsView'
@@ -13,13 +13,13 @@ const VoteDetailsModal: React.FC<React.PropsWithChildren<VoteDetailsModalProps>>
   const {
     isLoading,
     total,
-    cakeBalance,
-    cakeVaultBalance,
-    cakePoolBalance,
+    rotoBalance,
+    rotoVaultBalance,
+    rotoPoolBalance,
     poolsBalance,
-    cakeBnbLpBalance,
+    rotoBnbLpBalance,
     ifoPoolBalance,
-    lockedCakeBalance,
+    lockedRotoBalance,
     lockedEndTime,
   } = useGetVotingPower(block)
   const { theme } = useTheme()
@@ -39,13 +39,13 @@ const VoteDetailsModal: React.FC<React.PropsWithChildren<VoteDetailsModalProps>>
           <>
             <DetailsView
               total={total}
-              cakeBalance={cakeBalance}
-              cakeVaultBalance={cakeVaultBalance}
-              cakePoolBalance={cakePoolBalance}
+              rotoBalance={rotoBalance}
+              rotoVaultBalance={rotoVaultBalance}
+              rotoPoolBalance={rotoPoolBalance}
               poolsBalance={poolsBalance}
               ifoPoolBalance={ifoPoolBalance}
-              cakeBnbLpBalance={cakeBnbLpBalance}
-              lockedCakeBalance={lockedCakeBalance}
+              rotoBnbLpBalance={rotoBnbLpBalance}
+              lockedRotoBalance={lockedRotoBalance}
               lockedEndTime={lockedEndTime}
               block={block}
             />

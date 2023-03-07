@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useTranslation } from '@pancakeswap/localization'
-import { Flex, Text, HelpIcon, useTooltip, Pool, Link } from '@pancakeswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
+import { Flex, Text, HelpIcon, useTooltip, Pool, Link } from '@offsideswap/uikit'
 
 const StyledCell = styled(Pool.BaseCell)`
   display: none;
@@ -38,21 +38,21 @@ const Multiplier: React.FC<React.PropsWithChildren<MultiplierProps>> = ({ multip
     <>
       <Text>
         {t(
-          'The Multiplier represents the proportion of CAKE rewards each farm receives, as a proportion of the CAKE produced each block.',
+          'The Multiplier represents the proportion of ROTO rewards each farm receives, as a proportion of the ROTO produced each block.',
         )}
       </Text>
       <Text my="24px">
-        {t('For example, if a 1x farm received 1 CAKE per block, a 40x farm would receive 40 CAKE per block.')}
+        {t('For example, if a 1x farm received 1 ROTO per block, a 40x farm would receive 40 ROTO per block.')}
       </Text>
       <Text>
         {t(
-          'We have recently rebased multipliers by a factor of 10, this is only a visual change and does not affect the amount of CAKE each farm receives.',
+          'We have recently rebased multipliers by a factor of 10, this is only a visual change and does not affect the amount of ROTO each farm receives.',
         )}
       </Text>
       <Link
         mt="8px"
         display="inline"
-        href="https://medium.com/pancakeswap/farm-mutlipliers-visual-update-1f5f5f615afd"
+        href="https://medium.com/offsideswap/farm-mutlipliers-visual-update-1f5f5f615afd"
         external
       >
         {t('Read more')}

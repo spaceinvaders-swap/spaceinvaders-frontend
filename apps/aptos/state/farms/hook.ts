@@ -1,19 +1,19 @@
 /* eslint-disable camelcase */
-import { ChainId, Coin, Pair, PAIR_RESERVE_TYPE_TAG } from '@pancakeswap/aptos-swap-sdk'
-import { DeserializedFarmsState, deserializeFarm } from '@pancakeswap/farms'
-import { useAccount, useAccountResource, useCoins, useQueries, useQuery } from '@pancakeswap/awgmi'
+import { ChainId, Coin, Pair, PAIR_RESERVE_TYPE_TAG } from '@offsideswap/aptos-swap-sdk'
+import { DeserializedFarmsState, deserializeFarm } from '@offsideswap/farms'
+import { useAccount, useAccountResource, useCoins, useQueries, useQuery } from '@offsideswap/awgmi'
 import {
   FetchCoinResult,
   unwrapTypeArgFromString,
   fetchTableItem,
   FetchAccountResourceResult,
-} from '@pancakeswap/awgmi/core'
-import { getFarmsPrices } from '@pancakeswap/farms/farmPrices'
-import { BIG_TWO, BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { getFullDecimalMultiplier } from '@pancakeswap/utils/getFullDecimalMultiplier'
+} from '@offsideswap/awgmi/core'
+import { getFarmsPrices } from '@offsideswap/farms/farmPrices'
+import { BIG_TWO, BIG_ZERO } from '@offsideswap/utils/bigNumber'
+import { getFullDecimalMultiplier } from '@offsideswap/utils/getFullDecimalMultiplier'
 import BigNumber from 'bignumber.js'
 import { APT, L0_USDC } from 'config/coins'
-import { CAKE_PID } from 'config/constants'
+import { ROTO_PID } from 'config/constants'
 import { getFarmConfig } from 'config/constants/farms'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useActiveNetwork } from 'hooks/useNetwork'
@@ -26,7 +26,7 @@ import { FarmResource, FarmUserInfoResource } from 'state/farms/types'
 import { FARM_DEFAULT_DECIMALS } from 'components/Farms/constants'
 import priceHelperLpsMainnet from '../../config/constants/priceHelperLps/farms/1'
 import priceHelperLpsTestnet from '../../config/constants/priceHelperLps/farms/2'
-import { calcPendingRewardCake, calcRewardCakePerShare } from './utils/pendingCake'
+import { calcPendingRewardRoto, calcRewardRotoPerShare } from './utils/pendingRoto'
 
 const farmsPriceHelpLpMap = {
   [ChainId.MAINNET]: priceHelperLpsMainnet,
@@ -82,7 +82,7 @@ export const useFarms = () => {
   const pairReserves = usePairReservesQueries(lpReservesAddresses)
   const lpInfo = useMemo(() => {
     return farmConfig
-      .filter((f) => f.pid !== 0 && f.pid !== CAKE_PID)
+      .filter((f) => f.pid !== 0 && f.pid !== ROTO_PID)
       .concat()
       .map((config) => {
         const token = new Coin(config.token.chainId, config.token.address, config.token.decimals, config.token.symbol)
@@ -122,7 +122,7 @@ export const useFarms = () => {
         const poolWeight = totalAlloc ? allocPoint.div(new BigNumber(totalAlloc)) : BIG_ZERO
 
         // tokenPriceVsQuote info for this price helper farm is wrong, opposite way should be used
-        const isAptCakeLp = config.pid === null && config.lpSymbol === 'APT-CAKE LP'
+        const isAptRotoLp = config.pid === null && config.lpSymbol === 'APT-ROTO LP'
 
         return {
           ...config,
@@ -132,7 +132,7 @@ export const useFarms = () => {
           lpTotalInQuoteToken: lpTotalInQuoteToken.toFixed(6),
           tokenPriceVsQuote:
             !quoteTokenAmountTotal.isZero() && !tokenAmountTotal.isZero()
-              ? isAptCakeLp
+              ? isAptRotoLp
                 ? tokenAmountTotal.div(quoteTokenAmountTotal).toFixed(6)
                 : quoteTokenAmountTotal.div(tokenAmountTotal).toFixed(6)
               : '0',
@@ -150,11 +150,11 @@ export const useFarms = () => {
   const userInfos = useFarmsUserInfo()
   const getNow = useLedgerTimestamp()
   const currentDate = getNow() / 1000
-  const showCakePerSecond = masterChef?.data && new BigNumber(currentDate).lte(masterChef.data.end_timestamp)
-  const regularCakePerSeconds = showCakePerSecond
-    ? new BigNumber(masterChef?.data?.cake_per_second)
-        .times(masterChef.data.cake_rate_to_regular)
-        .div(new BigNumber(masterChef.data.cake_rate_to_regular).plus(masterChef.data.cake_rate_to_special))
+  const showRotoPerSecond = masterChef?.data && new BigNumber(currentDate).lte(masterChef.data.end_timestamp)
+  const regularRotoPerSeconds = showRotoPerSecond
+    ? new BigNumber(masterChef?.data?.roto_per_second)
+        .times(masterChef.data.roto_rate_to_regular)
+        .div(new BigNumber(masterChef.data.roto_rate_to_regular).plus(masterChef.data.roto_rate_to_special))
         .toNumber()
     : 0
 
@@ -162,18 +162,18 @@ export const useFarms = () => {
     return {
       userDataLoaded: true,
       poolLength,
-      regularCakePerBlock: regularCakePerSeconds,
+      regularRotoPerBlock: regularRotoPerSeconds,
       loadArchivedFarmsData: false,
       data: farmsWithPrices
         .filter((f) => !!f.pid)
         .map(deserializeFarm)
         .map((f) => {
-          const accCakePerShare =
-            masterChef?.data && f.pid ? calcRewardCakePerShare(masterChef.data, String(f.pid), getNow) : 0
-          const earningToken = calcPendingRewardCake(
+          const accRotoPerShare =
+            masterChef?.data && f.pid ? calcRewardRotoPerShare(masterChef.data, String(f.pid), getNow) : 0
+          const earningToken = calcPendingRewardRoto(
             userInfos[f.pid]?.amount,
             userInfos[f.pid]?.reward_debt,
-            accCakePerShare,
+            accRotoPerShare,
           )
           const stakedBalance = new BigNumber(userInfos[f.pid]?.amount)
           return {
@@ -185,7 +185,7 @@ export const useFarms = () => {
           }
         }),
     } as DeserializedFarmsState
-  }, [poolLength, regularCakePerSeconds, farmsWithPrices, masterChef, userInfos, getNow])
+  }, [poolLength, regularRotoPerSeconds, farmsWithPrices, masterChef, userInfos, getNow])
 }
 
 export function useFarmsUserInfo() {

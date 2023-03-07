@@ -1,9 +1,9 @@
-export const getDisplayApr = (cakeRewardsApr?: number, lpRewardsApr?: number) => {
-  if (cakeRewardsApr && lpRewardsApr) {
-    return (cakeRewardsApr + lpRewardsApr).toLocaleString('en-US', { maximumFractionDigits: 2 })
+export const getDisplayApr = (rotoRewardsApr?: number, lpRewardsApr?: number) => {
+  if (rotoRewardsApr && lpRewardsApr) {
+    return (rotoRewardsApr + lpRewardsApr).toLocaleString('en-US', { maximumFractionDigits: 2 })
   }
-  if (cakeRewardsApr) {
-    return cakeRewardsApr.toLocaleString('en-US', { maximumFractionDigits: 2 })
+  if (rotoRewardsApr) {
+    return rotoRewardsApr.toLocaleString('en-US', { maximumFractionDigits: 2 })
   }
   return null
 }

@@ -1,35 +1,35 @@
-import { AutoRenewIcon, Button, Flex, InjectedModalProps, Text } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
-import { useCake } from 'hooks/useContract'
+import { AutoRenewIcon, Button, Flex, InjectedModalProps, Text } from '@offsideswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
+import { useRoto } from 'hooks/useContract'
 import useCatchTxError from 'hooks/useCatchTxError'
 import { useProfile } from 'state/profile/hooks'
-import { getPancakeProfileAddress } from 'utils/addressHelpers'
-import { formatBigNumber } from '@pancakeswap/utils/formatBalance'
+import { getOffsideProfileAddress } from 'utils/addressHelpers'
+import { formatBigNumber } from '@offsideswap/utils/formatBalance'
 import useGetProfileCosts from 'views/Profile/hooks/useGetProfileCosts'
 import { UseEditProfileResponse } from './reducer'
 
-interface ApproveCakePageProps extends InjectedModalProps {
+interface ApproveRotoPageProps extends InjectedModalProps {
   goToChange: UseEditProfileResponse['goToChange']
 }
 
-const ApproveCakePage: React.FC<React.PropsWithChildren<ApproveCakePageProps>> = ({ goToChange, onDismiss }) => {
+const ApproveRotoPage: React.FC<React.PropsWithChildren<ApproveRotoPageProps>> = ({ goToChange, onDismiss }) => {
   const { profile } = useProfile()
   const { t } = useTranslation()
   const { fetchWithCatchTxError, loading: isApproving } = useCatchTxError()
   const {
-    costs: { numberCakeToUpdate, numberCakeToReactivate },
+    costs: { numberRotoToUpdate, numberRotoToReactivate },
   } = useGetProfileCosts()
-  const { signer: cakeContract } = useCake()
+  const { signer: rotoContract } = useRoto()
 
   if (!profile) {
     return null
   }
 
-  const cost = profile.isActive ? numberCakeToUpdate : numberCakeToReactivate
+  const cost = profile.isActive ? numberRotoToUpdate : numberRotoToReactivate
 
   const handleApprove = async () => {
     const receipt = await fetchWithCatchTxError(() => {
-      return cakeContract.approve(getPancakeProfileAddress(), cost.mul(2).toString())
+      return rotoContract.approve(getOffsideProfileAddress(), cost.mul(2).toString())
     })
     if (receipt?.status) {
       goToChange()
@@ -40,7 +40,7 @@ const ApproveCakePage: React.FC<React.PropsWithChildren<ApproveCakePageProps>> =
     <Flex flexDirection="column">
       <Flex alignItems="center" justifyContent="space-between" mb="24px">
         <Text>{profile.isActive ? t('Cost to update:') : t('Cost to reactivate:')}</Text>
-        <Text>{formatBigNumber(cost)} CAKE</Text>
+        <Text>{formatBigNumber(cost)} ROTO</Text>
       </Flex>
       <Button
         disabled={isApproving}
@@ -59,4 +59,4 @@ const ApproveCakePage: React.FC<React.PropsWithChildren<ApproveCakePageProps>> =
   )
 }
 
-export default ApproveCakePage
+export default ApproveRotoPage

@@ -1,32 +1,32 @@
 import { useMemo, memo } from 'react'
-import { getVaultPosition, VaultPosition } from 'utils/cakePool'
+import { getVaultPosition, VaultPosition } from 'utils/rotoPool'
 
-import { Flex, Text, Box, TooltipText, useTooltip, HelpIcon, BalanceWithLoading } from '@pancakeswap/uikit'
+import { Flex, Text, Box, TooltipText, useTooltip, HelpIcon, BalanceWithLoading } from '@offsideswap/uikit'
 import { LightGreyCard } from 'components/Card'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@offsideswap/localization'
 import { useVaultApy } from 'hooks/useVaultApy'
 import Divider from 'components/Divider'
-import { useBUSDCakeAmount } from 'hooks/useBUSDPrice'
-import isUndefinedOrNull from '@pancakeswap/utils/isUndefinedOrNull'
-import { getBalanceNumber, getFullDisplayBalance } from '@pancakeswap/utils/formatBalance'
+import { useBUSDRotoAmount } from 'hooks/useBUSDPrice'
+import isUndefinedOrNull from '@offsideswap/utils/isUndefinedOrNull'
+import { getBalanceNumber, getFullDisplayBalance } from '@offsideswap/utils/formatBalance'
 import BurningCountDown from './Common/BurningCountDown'
 import LockedActions from './Common/LockedActions'
 import YieldBoostRow from './Common/YieldBoostRow'
 import LockDurationRow from './Common/LockDurationRow'
-import IfoCakeRow from './Common/IfoCakeRow'
+import IfoRotoRow from './Common/IfoRotoRow'
 import useUserDataInVaultPresenter from './hooks/useUserDataInVaultPresenter'
 import { LockedStakingApyPropsType } from './types'
 import LockedAprTooltipContent from './Common/LockedAprTooltipContent'
 
 interface LockedStakingApyProps extends LockedStakingApyPropsType {
-  showICake?: boolean
+  showIRoto?: boolean
 }
 
 const LockedStakingApy: React.FC<React.PropsWithChildren<LockedStakingApyProps>> = ({
   stakingToken,
   stakingTokenBalance,
   userData,
-  showICake,
+  showIRoto,
 }) => {
   const { t } = useTranslation()
   const position = useMemo(
@@ -40,12 +40,12 @@ const LockedStakingApy: React.FC<React.PropsWithChildren<LockedStakingApyProps>>
   )
 
   const currentLockedAmountAsBigNumber = useMemo(() => {
-    return userData?.balance?.cakeAsBigNumber
-  }, [userData?.balance?.cakeAsBigNumber])
+    return userData?.balance?.rotoAsBigNumber
+  }, [userData?.balance?.rotoAsBigNumber])
 
   const currentLockedAmount = getBalanceNumber(currentLockedAmountAsBigNumber)
 
-  const usdValueStaked = useBUSDCakeAmount(currentLockedAmount)
+  const usdValueStaked = useBUSDRotoAmount(currentLockedAmount)
 
   const { weekDuration, lockEndDate, secondDuration, remainingTime, burnStartTime } = useUserDataInVaultPresenter({
     lockStartTime: userData?.lockStartTime,
@@ -57,12 +57,12 @@ const LockedStakingApy: React.FC<React.PropsWithChildren<LockedStakingApyProps>>
 
   // earningTokenBalance includes overdue fee if any
   const earningTokenBalance = useMemo(() => {
-    return getBalanceNumber(currentLockedAmountAsBigNumber.minus(userData?.cakeAtLastUserAction))
-  }, [currentLockedAmountAsBigNumber, userData?.cakeAtLastUserAction])
+    return getBalanceNumber(currentLockedAmountAsBigNumber.minus(userData?.rotoAtLastUserAction))
+  }, [currentLockedAmountAsBigNumber, userData?.rotoAtLastUserAction])
 
   const boostedYieldAmount = useMemo(() => {
-    return getFullDisplayBalance(userData?.cakeAtLastUserAction, 18, 5)
-  }, [userData?.cakeAtLastUserAction])
+    return getFullDisplayBalance(userData?.rotoAtLastUserAction, 18, 5)
+  }, [userData?.rotoAtLastUserAction])
 
   const tooltipContent = <LockedAprTooltipContent boostedYieldAmount={boostedYieldAmount} />
   const { targetRef, tooltip, tooltipVisible } = useTooltip(tooltipContent, { placement: 'bottom-start' })
@@ -84,7 +84,7 @@ const LockedStakingApy: React.FC<React.PropsWithChildren<LockedStakingApyProps>>
       <Flex justifyContent="space-between" mb="16px">
         <Box>
           <Text color="textSubtle" textTransform="uppercase" bold fontSize="12px">
-            {t('CAKE locked')}
+            {t('ROTO locked')}
           </Text>
           <BalanceWithLoading color="text" bold fontSize="16px" value={currentLockedAmount} decimals={5} />
           <BalanceWithLoading
@@ -141,7 +141,7 @@ const LockedStakingApy: React.FC<React.PropsWithChildren<LockedStakingApyProps>>
       )}
       <Flex alignItems="center" justifyContent="space-between">
         <Text color="textSubtle" textTransform="uppercase" bold fontSize="12px">
-          {t('Recent CAKE profit')}
+          {t('Recent ROTO profit')}
         </Text>
         <BalanceWithLoading color="text" bold fontSize="16px" value={earningTokenBalance} decimals={5} />
       </Flex>
@@ -167,7 +167,7 @@ const LockedStakingApy: React.FC<React.PropsWithChildren<LockedStakingApyProps>>
           </Text>
         </Flex>
       )}
-      {showICake && <IfoCakeRow />}
+      {showIRoto && <IfoRotoRow />}
     </LightGreyCard>
   )
 }

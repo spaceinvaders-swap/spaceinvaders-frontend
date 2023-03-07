@@ -1,4 +1,4 @@
-import { getPancakeBunniesAddress } from 'utils/addressHelpers'
+import { getOffsideBunniesAddress } from 'utils/addressHelpers'
 
 export const nftsBaseUrl = '/nfts'
-export const pancakeBunniesAddress = getPancakeBunniesAddress()
+export const offsideBunniesAddress = getOffsideBunniesAddress()

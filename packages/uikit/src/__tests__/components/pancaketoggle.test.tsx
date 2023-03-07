@@ -1,11 +1,11 @@
 import { vi } from "vitest";
 import { renderWithProvider } from "../../testHelpers";
-import PancakeToggle from "../../components/PancakeToggle/PancakeToggle";
+import OffsideToggle from "../../components/OffsideToggle/OffsideToggle";
 
 const handleChange = vi.fn();
 
 it("renders correctly", () => {
-  const { asFragment } = renderWithProvider(<PancakeToggle checked onChange={handleChange} scale="md" />);
+  const { asFragment } = renderWithProvider(<OffsideToggle checked onChange={handleChange} scale="md" />);
   expect(asFragment()).toMatchInlineSnapshot(`
     <DocumentFragment>
       .c0 {
@@ -17,13 +17,13 @@ it("renders correctly", () => {
       content: none;
     }
 
-    .c0 .pancakes {
+    .c0 .offsides {
       position: absolute;
       -webkit-transition: 0.6s cubic-bezier(0.175,0.885,0.32,1.275);
       transition: 0.6s cubic-bezier(0.175,0.885,0.32,1.275);
     }
 
-    .c0 .pancake {
+    .c0 .offside {
       background: #e27c31;
       border-radius: 50%;
       width: 24px;
@@ -36,12 +36,12 @@ it("renders correctly", () => {
       box-shadow: 0 1.5px 0 1.5px #fbbe7c;
     }
 
-    .c0 .pancake:nth-child(1) {
+    .c0 .offside:nth-child(1) {
       background: var(--colors-backgroundAlt);
       box-shadow: 0 1.5px 0 1.5px var(--colors-textDisabled);
     }
 
-    .c0 .pancake:nth-child(2) {
+    .c0 .offside:nth-child(2) {
       left: 0;
       top: -1px;
       -webkit-transform: scale(0);
@@ -51,7 +51,7 @@ it("renders correctly", () => {
       transition: 0.2s ease 0.2s;
     }
 
-    .c0 .pancake:nth-child(3) {
+    .c0 .offside:nth-child(3) {
       top: -6px;
       -webkit-transform: scale(0);
       -ms-transform: scale(0);
@@ -60,8 +60,8 @@ it("renders correctly", () => {
       transition: 0.2s ease 0.2s;
     }
 
-    .c0 .pancake:nth-child(3):before,
-    .c0 .pancake:nth-child(3):after {
+    .c0 .offside:nth-child(3):before,
+    .c0 .offside:nth-child(3):after {
       content: "";
       position: absolute;
       background: #ef8927;
@@ -70,12 +70,12 @@ it("renders correctly", () => {
       height: 20%;
     }
 
-    .c0 .pancake:nth-child(3):before {
+    .c0 .offside:nth-child(3):before {
       top: 15px;
       left: 3.75px;
     }
 
-    .c0 .pancake:nth-child(3):after {
+    .c0 .offside:nth-child(3):after {
       top: 16px;
       right: 3.75px;
     }
@@ -109,20 +109,20 @@ it("renders correctly", () => {
       box-shadow: var(--shadows-focus);
     }
 
-    .c1:checked + label .pancakes {
+    .c1:checked + label .offsides {
       -webkit-transform: translateX(24px);
       -ms-transform: translateX(24px);
       transform: translateX(24px);
     }
 
-    .c1:checked + label .pancake:nth-child(1) {
+    .c1:checked + label .offside:nth-child(1) {
       background: #e27c31;
       box-shadow: 0 1.5px 0 1.5px #fbbe7c;
       -webkit-transition-delay: 0.2s;
       transition-delay: 0.2s;
     }
 
-    .c1:checked + label .pancake:nth-child(2) {
+    .c1:checked + label .offside:nth-child(2) {
       -webkit-transform: scale(1);
       -ms-transform: scale(1);
       transform: scale(1);
@@ -130,7 +130,7 @@ it("renders correctly", () => {
       transition-delay: 0.2s;
     }
 
-    .c1:checked + label .pancake:nth-child(3) {
+    .c1:checked + label .offside:nth-child(3) {
       -webkit-transform: scale(1);
       -ms-transform: scale(1);
       transform: scale(1);
@@ -169,26 +169,26 @@ it("renders correctly", () => {
         <input
           checked=""
           class="c1"
-          id="pancake-toggle"
+          id="offside-toggle"
           scale="md"
           type="checkbox"
         />
         <label
           class="c2"
-          for="pancake-toggle"
+          for="offside-toggle"
           scale="md"
         >
           <div
-            class="pancakes"
+            class="offsides"
           >
             <div
-              class="pancake"
+              class="offside"
             />
             <div
-              class="pancake"
+              class="offside"
             />
             <div
-              class="pancake"
+              class="offside"
             />
             <div
               class="butter"
@@ -201,7 +201,7 @@ it("renders correctly", () => {
 });
 
 it("renders correctly scale sm", () => {
-  const { asFragment } = renderWithProvider(<PancakeToggle checked onChange={handleChange} scale="sm" />);
+  const { asFragment } = renderWithProvider(<OffsideToggle checked onChange={handleChange} scale="sm" />);
   expect(asFragment()).toMatchInlineSnapshot(`
     <DocumentFragment>
       .c0 {
@@ -213,13 +213,13 @@ it("renders correctly scale sm", () => {
       content: none;
     }
 
-    .c0 .pancakes {
+    .c0 .offsides {
       position: absolute;
       -webkit-transition: 0.6s cubic-bezier(0.175,0.885,0.32,1.275);
       transition: 0.6s cubic-bezier(0.175,0.885,0.32,1.275);
     }
 
-    .c0 .pancake {
+    .c0 .offside {
       background: #e27c31;
       border-radius: 50%;
       width: 14px;
@@ -232,12 +232,12 @@ it("renders correctly scale sm", () => {
       box-shadow: 0 1px 0 1px #fbbe7c;
     }
 
-    .c0 .pancake:nth-child(1) {
+    .c0 .offside:nth-child(1) {
       background: var(--colors-backgroundAlt);
       box-shadow: 0 1px 0 1px var(--colors-textDisabled);
     }
 
-    .c0 .pancake:nth-child(2) {
+    .c0 .offside:nth-child(2) {
       left: 0;
       top: 0px;
       -webkit-transform: scale(0);
@@ -247,7 +247,7 @@ it("renders correctly scale sm", () => {
       transition: 0.2s ease 0.2s;
     }
 
-    .c0 .pancake:nth-child(3) {
+    .c0 .offside:nth-child(3) {
       top: -3px;
       -webkit-transform: scale(0);
       -ms-transform: scale(0);
@@ -256,8 +256,8 @@ it("renders correctly scale sm", () => {
       transition: 0.2s ease 0.2s;
     }
 
-    .c0 .pancake:nth-child(3):before,
-    .c0 .pancake:nth-child(3):after {
+    .c0 .offside:nth-child(3):before,
+    .c0 .offside:nth-child(3):after {
       content: "";
       position: absolute;
       background: #ef8927;
@@ -266,12 +266,12 @@ it("renders correctly scale sm", () => {
       height: 20%;
     }
 
-    .c0 .pancake:nth-child(3):before {
+    .c0 .offside:nth-child(3):before {
       top: 10px;
       left: 2.5px;
     }
 
-    .c0 .pancake:nth-child(3):after {
+    .c0 .offside:nth-child(3):after {
       top: 11px;
       right: 2.5px;
     }
@@ -305,20 +305,20 @@ it("renders correctly scale sm", () => {
       box-shadow: var(--shadows-focus);
     }
 
-    .c1:checked + label .pancakes {
+    .c1:checked + label .offsides {
       -webkit-transform: translateX(14px);
       -ms-transform: translateX(14px);
       transform: translateX(14px);
     }
 
-    .c1:checked + label .pancake:nth-child(1) {
+    .c1:checked + label .offside:nth-child(1) {
       background: #e27c31;
       box-shadow: 0 1px 0 1px #fbbe7c;
       -webkit-transition-delay: 0.2s;
       transition-delay: 0.2s;
     }
 
-    .c1:checked + label .pancake:nth-child(2) {
+    .c1:checked + label .offside:nth-child(2) {
       -webkit-transform: scale(1);
       -ms-transform: scale(1);
       transform: scale(1);
@@ -326,7 +326,7 @@ it("renders correctly scale sm", () => {
       transition-delay: 0.2s;
     }
 
-    .c1:checked + label .pancake:nth-child(3) {
+    .c1:checked + label .offside:nth-child(3) {
       -webkit-transform: scale(1);
       -ms-transform: scale(1);
       transform: scale(1);
@@ -365,26 +365,26 @@ it("renders correctly scale sm", () => {
         <input
           checked=""
           class="c1"
-          id="pancake-toggle"
+          id="offside-toggle"
           scale="sm"
           type="checkbox"
         />
         <label
           class="c2"
-          for="pancake-toggle"
+          for="offside-toggle"
           scale="sm"
         >
           <div
-            class="pancakes"
+            class="offsides"
           >
             <div
-              class="pancake"
+              class="offside"
             />
             <div
-              class="pancake"
+              class="offside"
             />
             <div
-              class="pancake"
+              class="offside"
             />
             <div
               class="butter"

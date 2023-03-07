@@ -1,9 +1,9 @@
 [
   {
     "inputs": [
-      { "internalType": "address", "name": "_pancakeProfile", "type": "address" },
-      { "internalType": "bool", "name": "_pancakeProfileIsRequested", "type": "bool" },
-      { "internalType": "uint256", "name": "_pancakeProfileThresholdPoints", "type": "uint256" }
+      { "internalType": "address", "name": "_offsideProfile", "type": "address" },
+      { "internalType": "bool", "name": "_offsideProfileIsRequested", "type": "bool" },
+      { "internalType": "uint256", "name": "_offsideProfileThresholdPoints", "type": "uint256" }
     ],
     "stateMutability": "nonpayable",
     "type": "constructor"
@@ -185,21 +185,21 @@
   },
   {
     "inputs": [],
-    "name": "pancakeProfile",
-    "outputs": [{ "internalType": "contract IPancakeProfile", "name": "", "type": "address" }],
+    "name": "offsideProfile",
+    "outputs": [{ "internalType": "contract IOffsideProfile", "name": "", "type": "address" }],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [],
-    "name": "pancakeProfileIsRequested",
+    "name": "offsideProfileIsRequested",
     "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [],
-    "name": "pancakeProfileThresholdPoints",
+    "name": "offsideProfileThresholdPoints",
     "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
     "stateMutability": "view",
     "type": "function"

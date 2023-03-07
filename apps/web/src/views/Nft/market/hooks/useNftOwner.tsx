@@ -2,7 +2,7 @@ import { useAccount } from 'wagmi'
 import { useEffect, useState } from 'react'
 import { useErc721CollectionContract } from 'hooks/useContract'
 import { NftToken } from 'state/nftMarket/types'
-import { getPancakeProfileAddress } from 'utils/addressHelpers'
+import { getOffsideProfileAddress } from 'utils/addressHelpers'
 import { NOT_ON_SALE_SELLER } from 'config/constants'
 import useSWR from 'swr'
 import { isAddress } from 'utils'
@@ -13,7 +13,7 @@ const useNftOwner = (nft: NftToken, isOwnNft = false) => {
   const [isLoadingOwner, setIsLoadingOwner] = useState(true)
   const { reader: collectionContract } = useErc721CollectionContract(nft.collectionAddress)
   const currentSeller = nft.marketData?.currentSeller
-  const pancakeProfileAddress = getPancakeProfileAddress()
+  const offsideProfileAddress = getOffsideProfileAddress()
   const { collectionAddress, tokenId } = nft
   const { data: tokenOwner } = useSWR(
     collectionContract ? ['nft', 'ownerOf', collectionAddress, tokenId] : null,
@@ -25,7 +25,7 @@ const useNftOwner = (nft: NftToken, isOwnNft = false) => {
       try {
         if (isOwnNft && account) {
           setOwner(account)
-        } else if (tokenOwner && isAddress(tokenOwner) !== isAddress(pancakeProfileAddress)) {
+        } else if (tokenOwner && isAddress(tokenOwner) !== isAddress(offsideProfileAddress)) {
           setOwner(tokenOwner)
         } else {
           setOwner(null)
@@ -43,7 +43,7 @@ const useNftOwner = (nft: NftToken, isOwnNft = false) => {
     } else {
       getOwner()
     }
-  }, [account, isOwnNft, currentSeller, collectionContract, tokenId, tokenOwner, pancakeProfileAddress])
+  }, [account, isOwnNft, currentSeller, collectionContract, tokenId, tokenOwner, offsideProfileAddress])
 
   return { owner, isLoadingOwner }
 }

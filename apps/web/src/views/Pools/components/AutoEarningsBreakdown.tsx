@@ -1,10 +1,10 @@
-import { Text, Box, Pool } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Text, Box, Pool } from '@offsideswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
 import { differenceInHours } from 'date-fns'
 import { useVaultPoolByKey } from 'state/pools/hooks'
 import { VaultKey, DeserializedLockedVaultUser } from 'state/types'
-import { Token } from '@pancakeswap/sdk'
-import { getCakeVaultEarnings } from '../helpers'
+import { Token } from '@offsideswap/sdk'
+import { getRotoVaultEarnings } from '../helpers'
 
 interface AutoEarningsBreakdownProps {
   pool: Pool.DeserializedPool<Token>
@@ -18,13 +18,13 @@ const AutoEarningsBreakdown: React.FC<React.PropsWithChildren<AutoEarningsBreakd
   } = useTranslation()
   const { earningTokenPrice } = pool
   const { pricePerFullShare, userData } = useVaultPoolByKey(pool.vaultKey)
-  const { autoCakeToDisplay, autoUsdToDisplay } = getCakeVaultEarnings(
+  const { autoRotoToDisplay, autoUsdToDisplay } = getRotoVaultEarnings(
     account,
-    userData.cakeAtLastUserAction,
+    userData.rotoAtLastUserAction,
     userData.userShares,
     pricePerFullShare,
     earningTokenPrice,
-    pool.vaultKey === VaultKey.CakeVault
+    pool.vaultKey === VaultKey.RotoVault
       ? (userData as DeserializedLockedVaultUser).currentPerformanceFee
           .plus((userData as DeserializedLockedVaultUser).currentOverdueFee)
           .plus((userData as DeserializedLockedVaultUser).userBoostedShare)
@@ -33,7 +33,7 @@ const AutoEarningsBreakdown: React.FC<React.PropsWithChildren<AutoEarningsBreakd
 
   const lastActionInMs = userData.lastUserActionTime ? parseInt(userData.lastUserActionTime) * 1000 : 0
   const hourDiffSinceLastAction = differenceInHours(Date.now(), lastActionInMs)
-  const earnedCakePerHour = hourDiffSinceLastAction ? autoCakeToDisplay / hourDiffSinceLastAction : 0
+  const earnedRotoPerHour = hourDiffSinceLastAction ? autoRotoToDisplay / hourDiffSinceLastAction : 0
   const earnedUsdPerHour = hourDiffSinceLastAction ? autoUsdToDisplay / hourDiffSinceLastAction : 0
 
   return (
@@ -53,7 +53,7 @@ const AutoEarningsBreakdown: React.FC<React.PropsWithChildren<AutoEarningsBreakd
         <Box mt="12px">
           <Text>{t('Hourly Average')}:</Text>
           <Text bold>
-            {earnedCakePerHour < 0.01 ? '<0.01' : earnedCakePerHour.toFixed(2)} CAKE
+            {earnedRotoPerHour < 0.01 ? '<0.01' : earnedRotoPerHour.toFixed(2)} ROTO
             <Text display="inline-block" ml="5px">
               ({earnedUsdPerHour < 0.01 ? '<0.01' : `~${earnedUsdPerHour.toFixed(2)}`} USD)
             </Text>

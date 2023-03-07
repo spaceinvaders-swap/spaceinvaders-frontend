@@ -1,4 +1,16 @@
-# @pancakeswap/smart-router
+# @offsideswap/smart-router
+
+## 1.0.0
+
+### Major Changes
+
+- 485d513cc: This is the first major upgrade for the system
+
+### Patch Changes
+
+- Updated dependencies [485d513cc]
+  - @offsideswap/multicall@1.0.0
+  - @offsideswap/sdk@4.0.0
 
 ## 0.6.1
 
@@ -6,7 +18,7 @@
 
 - d83530d6b: Remove duplicate isTradeBetter util
 - Updated dependencies [d83530d6b]
-  - @pancakeswap/sdk@3.1.3
+  - @offsideswap/sdk@3.1.3
 
 ## 0.6.0
 
@@ -38,7 +50,7 @@
 
 - 1e4a4b27c: Fix missing dependencies
 - Updated dependencies [1e4a4b27c]
-  - @pancakeswap/multicall@0.0.2
+  - @offsideswap/multicall@0.0.2
 
 ## 0.2.0
 

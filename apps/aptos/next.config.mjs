@@ -17,13 +17,13 @@ const nextConfig = {
   },
   experimental: {
     transpilePackages: [
-      '@pancakeswap/ui',
-      '@pancakeswap/uikit',
-      '@pancakeswap/localization',
-      '@pancakeswap/hooks',
-      '@pancakeswap/utils',
-      '@pancakeswap/tokens',
-      '@pancakeswap/farms',
+      '@offsideswap/ui',
+      '@offsideswap/uikit',
+      '@offsideswap/localization',
+      '@offsideswap/hooks',
+      '@offsideswap/utils',
+      '@offsideswap/tokens',
+      '@offsideswap/farms',
     ],
   },
   async redirects() {

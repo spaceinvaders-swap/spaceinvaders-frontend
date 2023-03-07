@@ -1,12 +1,12 @@
 import { useMemo, useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
-import { Button, AutoRenewIcon, Box, Flex, Message, MessageText, Text } from '@pancakeswap/uikit'
+import { Button, AutoRenewIcon, Box, Flex, Message, MessageText, Text } from '@offsideswap/uikit'
 import _noop from 'lodash/noop'
-import { useTranslation } from '@pancakeswap/localization'
-import isUndefinedOrNull from '@pancakeswap/utils/isUndefinedOrNull'
+import { useTranslation } from '@offsideswap/localization'
+import isUndefinedOrNull from '@offsideswap/utils/isUndefinedOrNull'
 import { MAX_LOCK_DURATION } from 'config/constants/pools'
 import BigNumber from 'bignumber.js'
-import { getBalanceAmount, getDecimalAmount } from '@pancakeswap/utils/formatBalance'
+import { getBalanceAmount, getDecimalAmount } from '@offsideswap/utils/formatBalance'
 import { useIfoCeiling } from 'state/pools/hooks'
 import { VaultKey } from 'state/types'
 
@@ -58,17 +58,17 @@ const LockedModalBody: React.FC<React.PropsWithChildren<LockedModalBodyPropsType
         }
   }, [validator, currentBalance, lockedAmount, duration])
 
-  const cakeNeeded = useMemo(
+  const rotoNeeded = useMemo(
     () => isValidDuration && currentDuration && currentDuration + duration > MAX_LOCK_DURATION,
     [isValidDuration, currentDuration, duration],
   )
 
   const hasEnoughBalanceToExtend = useMemo(() => currentBalance?.gte(ENABLE_EXTEND_LOCK_AMOUNT), [currentBalance])
 
-  const needsEnable = useMemo(() => cakeNeeded && !hasEnoughBalanceToExtend, [cakeNeeded, hasEnoughBalanceToExtend])
+  const needsEnable = useMemo(() => rotoNeeded && !hasEnoughBalanceToExtend, [rotoNeeded, hasEnoughBalanceToExtend])
 
-  const { allowance, setLastUpdated } = useCheckVaultApprovalStatus(VaultKey.CakeVault)
-  const { handleApprove, pendingTx: approvePendingTx } = useVaultApprove(VaultKey.CakeVault, setLastUpdated)
+  const { allowance, setLastUpdated } = useCheckVaultApprovalStatus(VaultKey.RotoVault)
+  const { handleApprove, pendingTx: approvePendingTx } = useVaultApprove(VaultKey.RotoVault, setLastUpdated)
   const [showApproveWarning, setShowApproveWarning] = useState(false)
 
   const needsApprove = useMemo(() => {
@@ -134,14 +134,14 @@ const LockedModalBody: React.FC<React.PropsWithChildren<LockedModalBodyPropsType
         />
       )}
 
-      {!needsApprove && cakeNeeded ? (
+      {!needsApprove && rotoNeeded ? (
         hasEnoughBalanceToExtend ? (
           <Text fontSize="12px" mt="24px">
-            {t('0.0001 CAKE will be spent to extend')}
+            {t('0.0001 ROTO will be spent to extend')}
           </Text>
         ) : (
           <Message variant="warning" mt="24px">
-            <MessageText maxWidth="200px">{t('0.0001 CAKE required for enabling extension')}</MessageText>
+            <MessageText maxWidth="200px">{t('0.0001 ROTO required for enabling extension')}</MessageText>
           </Message>
         )
       ) : null}
@@ -164,7 +164,7 @@ const LockedModalBody: React.FC<React.PropsWithChildren<LockedModalBodyPropsType
           </Button>
         ) : showEnableConfirmButtons ? (
           <ExtendEnable
-            hasEnoughCake={hasEnoughBalanceToExtend}
+            hasEnoughRoto={hasEnoughBalanceToExtend}
             handleConfirmClick={handleConfirmClick}
             pendingConfirmTx={pendingTx}
             isValidAmount={isValidAmount}

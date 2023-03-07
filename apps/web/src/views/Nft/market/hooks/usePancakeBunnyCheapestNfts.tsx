@@ -4,13 +4,13 @@ import useSWR from 'swr'
 import {
   getNftsMarketData,
   getMetadataWithFallback,
-  getPancakeBunniesAttributesField,
+  getOffsideBunniesAttributesField,
   combineApiAndSgResponseToNftToken,
 } from 'state/nftMarket/helpers'
 import { FAST_INTERVAL } from 'config/constants'
 import { FetchStatus } from 'config/constants/types'
-import { formatBigNumber } from '@pancakeswap/utils/formatBalance'
-import { pancakeBunniesAddress } from '../constants'
+import { formatBigNumber } from '@offsideswap/utils/formatBalance'
+import { offsideBunniesAddress } from '../constants'
 import { getLowestUpdatedToken } from './useGetLowestPrice'
 
 type WhereClause = Record<string, string | number | boolean | string[]>
@@ -24,13 +24,13 @@ const fetchCheapestBunny = async (
   if (!nftsMarket.length) return null
 
   const nftsMarketTokenIds = nftsMarket.map((marketData) => marketData.tokenId)
-  const lowestPriceUpdatedBunny = await getLowestUpdatedToken(pancakeBunniesAddress.toLowerCase(), nftsMarketTokenIds)
+  const lowestPriceUpdatedBunny = await getLowestUpdatedToken(offsideBunniesAddress.toLowerCase(), nftsMarketTokenIds)
 
   const cheapestBunnyOfAccount = nftsMarket
     .filter((marketData) => marketData.tokenId === lowestPriceUpdatedBunny?.tokenId)
     .map((marketData) => {
       const apiMetadata = getMetadataWithFallback(nftMetadata.data, marketData.otherId)
-      const attributes = getPancakeBunniesAttributesField(marketData.otherId)
+      const attributes = getOffsideBunniesAttributesField(marketData.otherId)
       const bunnyToken = combineApiAndSgResponseToNftToken(apiMetadata, marketData, attributes)
       const updatedPrice = formatBigNumber(lowestPriceUpdatedBunny.currentAskPrice)
       return {
@@ -41,13 +41,13 @@ const fetchCheapestBunny = async (
   return cheapestBunnyOfAccount.length > 0 ? cheapestBunnyOfAccount[0] : null
 }
 
-export const usePancakeBunnyCheapestNft = (bunnyId: string, nftMetadata: ApiResponseCollectionTokens) => {
+export const useOffsideBunnyCheapestNft = (bunnyId: string, nftMetadata: ApiResponseCollectionTokens) => {
   const { address: account } = useAccount()
   const { data, status, mutate } = useSWR(
     nftMetadata && bunnyId ? ['cheapestBunny', bunnyId, account] : null,
     async () => {
       const allCheapestBunnyClause = {
-        collection: pancakeBunniesAddress.toLowerCase(),
+        collection: offsideBunniesAddress.toLowerCase(),
         otherId: bunnyId,
         isTradable: true,
       }
@@ -56,7 +56,7 @@ export const usePancakeBunnyCheapestNft = (bunnyId: string, nftMetadata: ApiResp
       }
 
       const cheapestBunnyOtherSellersClause = {
-        collection: pancakeBunniesAddress.toLowerCase(),
+        collection: offsideBunniesAddress.toLowerCase(),
         currentSeller_not: account.toLowerCase(),
         otherId: bunnyId,
         isTradable: true,

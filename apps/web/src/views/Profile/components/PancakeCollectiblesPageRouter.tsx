@@ -1,15 +1,15 @@
 import { useRouter } from 'next/router'
 import PageLoader from 'components/Loader/PageLoader'
-import PancakeCollectibles from './PancakeCollectibles'
+import OffsideCollectibles from './OffsideCollectibles'
 
-const PancakeCollectiblesPageRouter = () => {
+const OffsideCollectiblesPageRouter = () => {
   const router = useRouter()
 
   if (router.isFallback) {
     return <PageLoader />
   }
 
-  return <PancakeCollectibles />
+  return <OffsideCollectibles />
 }
 
-export default PancakeCollectiblesPageRouter
+export default OffsideCollectiblesPageRouter

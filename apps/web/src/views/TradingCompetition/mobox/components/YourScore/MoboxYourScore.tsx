@@ -1,12 +1,12 @@
-import { Skeleton, Heading, Text } from '@pancakeswap/uikit'
+import { Skeleton, Heading, Text } from '@offsideswap/uikit'
 import styled from 'styled-components'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@offsideswap/localization'
 import ScoreHeader from '../../../components/YourScore/ScoreHeader'
 import RibbonWithImage from '../../../components/RibbonWithImage'
 import { YourScoreProps } from '../../../types'
 import FlippersShare from '../../../pngs/mobox-flippers-share.png'
 import StormShare from '../../../pngs/mobox-storm-share.png'
-import CakersShare from '../../../pngs/mobox-cakers-share.png'
+import RotorsShare from '../../../pngs/mobox-rotors-share.png'
 import ScoreCard from '../../../components/YourScore/ScoreCard'
 import UserRankBox from '../../../components/YourScore/UserRankBox'
 import { LIVE } from '../../../../../config/constants/trading-competition/phases'
@@ -47,7 +47,7 @@ const MoboxYourScore: React.FC<React.PropsWithChildren<YourScoreProps>> = ({
         </RibbonWithImage>
       )}
       <ScoreCard
-        subgraphName="pancakeswap/trading-competition-v3"
+        subgraphName="offsideswap/trading-competition-v3"
         userPrizeGrid={<MoboxUserPrizeGrid userTradingInformation={userTradingInformation} />}
         extraUserRankBox={
           <UserRankBox
@@ -76,7 +76,7 @@ const MoboxYourScore: React.FC<React.PropsWithChildren<YourScoreProps>> = ({
           </UserRankBox>
         }
         flippersShareImage={FlippersShare}
-        cakersShareImage={CakersShare}
+        rotorsShareImage={RotorsShare}
         stormShareImage={StormShare}
         hasRegistered={hasRegistered}
         account={account}

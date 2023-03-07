@@ -1,9 +1,9 @@
 [
   {
     "inputs": [
-      { "internalType": "address", "name": "_pancakeProfileAddress", "type": "address" },
+      { "internalType": "address", "name": "_offsideProfileAddress", "type": "address" },
       { "internalType": "address", "name": "_bunnyStationAddress", "type": "address" },
-      { "internalType": "address", "name": "_cakeTokenAddress", "type": "address" },
+      { "internalType": "address", "name": "_rotoTokenAddress", "type": "address" },
       { "internalType": "address", "name": "_moboxTokenAddress", "type": "address" },
       { "internalType": "address", "name": "_moboxMisteryBoxTokenAddress", "type": "address" },
       { "internalType": "uint256", "name": "_competitionId", "type": "uint256" }
@@ -100,14 +100,14 @@
   },
   {
     "inputs": [],
-    "name": "cakeToken",
+    "name": "rotoToken",
     "outputs": [{ "internalType": "contract IBEP20", "name": "", "type": "address" }],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [{ "internalType": "uint256", "name": "_amount", "type": "uint256" }],
-    "name": "claimCakeRemainder",
+    "name": "claimRotoRemainder",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -214,8 +214,8 @@
   },
   {
     "inputs": [],
-    "name": "pancakeProfile",
-    "outputs": [{ "internalType": "contract IPancakeProfile", "name": "", "type": "address" }],
+    "name": "offsideProfile",
+    "outputs": [{ "internalType": "contract IOffsideProfile", "name": "", "type": "address" }],
     "stateMutability": "view",
     "type": "function"
   },
@@ -246,7 +246,7 @@
     "inputs": [
       { "internalType": "uint256", "name": "_teamId", "type": "uint256" },
       { "internalType": "uint256[5]", "name": "_userCampaignIds", "type": "uint256[5]" },
-      { "internalType": "uint256[5]", "name": "_cakeRewards", "type": "uint256[5]" },
+      { "internalType": "uint256[5]", "name": "_rotoRewards", "type": "uint256[5]" },
       { "internalType": "uint256[5]", "name": "_moboxRewards", "type": "uint256[5]" },
       { "internalType": "uint256[5]", "name": "_pointRewards", "type": "uint256[5]" }
     ],
@@ -306,7 +306,7 @@
       {
         "components": [
           { "internalType": "uint256[5]", "name": "userCampaignId", "type": "uint256[5]" },
-          { "internalType": "uint256[5]", "name": "cakeRewards", "type": "uint256[5]" },
+          { "internalType": "uint256[5]", "name": "rotoRewards", "type": "uint256[5]" },
           { "internalType": "uint256[5]", "name": "moboxRewards", "type": "uint256[5]" },
           { "internalType": "uint256[5]", "name": "pointUsers", "type": "uint256[5]" }
         ],

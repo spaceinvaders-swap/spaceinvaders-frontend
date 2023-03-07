@@ -1,21 +1,21 @@
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useSWRContract } from 'hooks/useSWRContract'
-import { getCakeContract } from 'utils/contractHelpers'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
-import { useBCakeProxyContractAddress } from 'views/Farms/hooks/useBCakeProxyContractAddress'
+import { getRotoContract } from 'utils/contractHelpers'
+import { getBalanceNumber } from '@offsideswap/utils/formatBalance'
+import { useBRotoProxyContractAddress } from 'views/Farms/hooks/useBRotoProxyContractAddress'
 import BigNumber from 'bignumber.js'
 
-const useProxyCAKEBalance = () => {
+const useProxyROTOBalance = () => {
   const { account, chainId } = useActiveWeb3React()
-  const { proxyAddress } = useBCakeProxyContractAddress(account, chainId)
-  const cakeContract = getCakeContract()
+  const { proxyAddress } = useBRotoProxyContractAddress(account, chainId)
+  const rotoContract = getRotoContract()
 
-  const { data, mutate } = useSWRContract([cakeContract, 'balanceOf', [proxyAddress]])
+  const { data, mutate } = useSWRContract([rotoContract, 'balanceOf', [proxyAddress]])
 
   return {
-    refreshProxyCakeBalance: mutate,
-    proxyCakeBalance: data ? getBalanceNumber(new BigNumber(data.toString())) : 0,
+    refreshProxyRotoBalance: mutate,
+    proxyRotoBalance: data ? getBalanceNumber(new BigNumber(data.toString())) : 0,
   }
 }
 
-export default useProxyCAKEBalance
+export default useProxyROTOBalance

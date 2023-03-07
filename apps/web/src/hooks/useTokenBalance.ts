@@ -1,15 +1,15 @@
 import { useAccount } from 'wagmi'
 import BigNumber from 'bignumber.js'
-import { CAKE } from '@pancakeswap/tokens'
+import { ROTO } from '@offsideswap/tokens'
 import { FAST_INTERVAL } from 'config/constants'
 import { BigNumber as EthersBigNumber } from '@ethersproject/bignumber'
 import { Zero } from '@ethersproject/constants'
-import { ChainId } from '@pancakeswap/sdk'
+import { ChainId } from '@offsideswap/sdk'
 import { useMemo } from 'react'
 import useSWR from 'swr'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import { BIG_ZERO } from '@offsideswap/utils/bigNumber'
 import { bscRpcProvider } from 'utils/providers'
-import { useWeb3React } from '@pancakeswap/wagmi'
+import { useWeb3React } from '@offsideswap/wagmi'
 import { useTokenContract } from './useContract'
 import { useSWRContract } from './useSWRContract'
 
@@ -50,9 +50,9 @@ export const useGetBnbBalance = () => {
   return { balance: data || Zero, fetchStatus: status, refresh: mutate }
 }
 
-export const useGetCakeBalance = () => {
+export const useGetRotoBalance = () => {
   const { chainId } = useWeb3React()
-  const { balance, fetchStatus } = useTokenBalance(CAKE[chainId]?.address || CAKE[ChainId.BSC]?.address, true)
+  const { balance, fetchStatus } = useTokenBalance(ROTO[chainId]?.address || ROTO[ChainId.BSC]?.address, true)
 
   // TODO: Remove ethers conversion once useTokenBalance is converted to ethers.BigNumber
   return { balance: EthersBigNumber.from(balance.toString()), fetchStatus }

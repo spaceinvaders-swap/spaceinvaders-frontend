@@ -58,40 +58,40 @@ export const Default: React.FC<React.PropsWithChildren> = () => {
 };
 
 export const UnitDisplay: React.FC<React.PropsWithChildren> = () => {
-  const CAKE_PRICE = 69;
-  const [cakeValue, setCakeValue] = useState("1006.086956");
+  const ROTO_PRICE = 69;
+  const [rotoValue, setRotoValue] = useState("1006.086956");
 
-  const cakeToUSD = (input: string) => {
-    const convertedToUSD = parseFloat(input) * CAKE_PRICE;
+  const rotoToUSD = (input: string) => {
+    const convertedToUSD = parseFloat(input) * ROTO_PRICE;
     return `~${convertedToUSD.toLocaleString(undefined, {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
     })} USD`;
   };
 
-  const handleCakeChange = (input: string) => {
-    setCakeValue(input);
+  const handleRotoChange = (input: string) => {
+    setRotoValue(input);
   };
 
   return (
     <>
       <Box width="300px" mb="24px">
         <BalanceInput
-          onUserInput={handleCakeChange}
-          value={cakeValue}
-          currencyValue={cakeToUSD(cakeValue)}
+          onUserInput={handleRotoChange}
+          value={rotoValue}
+          currencyValue={rotoToUSD(rotoValue)}
           placeholder="0.0"
-          unit="CAKE"
+          unit="ROTO"
         />
       </Box>
       {/* Long token names with spaces */}
       <Box width="300px">
         <BalanceInput
-          onUserInput={handleCakeChange}
-          value={cakeValue}
+          onUserInput={handleRotoChange}
+          value={rotoValue}
           currencyValue="2854.66 BADGER-HOTCROSS LP"
           placeholder="0.0"
-          unit="CAKE-BNB LP"
+          unit="ROTO-BNB LP"
         />
       </Box>
     </>
@@ -99,12 +99,12 @@ export const UnitDisplay: React.FC<React.PropsWithChildren> = () => {
 };
 
 export const SwitchUnits: React.FC<React.PropsWithChildren> = () => {
-  const CAKE_PRICE = 69;
-  const [editingUnit, setEditingUnit] = useState<"CAKE" | "USD">("CAKE");
-  const conversionUnit = editingUnit === "CAKE" ? "USD" : "CAKE";
+  const ROTO_PRICE = 69;
+  const [editingUnit, setEditingUnit] = useState<"ROTO" | "USD">("ROTO");
+  const conversionUnit = editingUnit === "ROTO" ? "USD" : "ROTO";
   const [values, setValues] = useState({
-    CAKE: "1006.086957",
-    USD: `${1006.086957 * CAKE_PRICE}`,
+    ROTO: "1006.086957",
+    USD: `${1006.086957 * ROTO_PRICE}`,
   });
 
   const currencyValue = !Number.isNaN(parseFloat(values[conversionUnit]))
@@ -115,7 +115,7 @@ export const SwitchUnits: React.FC<React.PropsWithChildren> = () => {
     : "0.00";
 
   const switchEditingUnits = () => {
-    const editingUnitAfterChange = editingUnit === "CAKE" ? "USD" : "CAKE";
+    const editingUnitAfterChange = editingUnit === "ROTO" ? "USD" : "ROTO";
     // This is needed to persist same value as shown for currencyValue after switching
     // otherwise user will see lots of decimals
     const valuesAfterChange = { ...values };
@@ -126,16 +126,16 @@ export const SwitchUnits: React.FC<React.PropsWithChildren> = () => {
     setEditingUnit(editingUnitAfterChange);
   };
 
-  const handleCakeChange = (input: string) => {
+  const handleRotoChange = (input: string) => {
     const inputAsFloat = parseFloat(input);
-    if (editingUnit === "CAKE") {
+    if (editingUnit === "ROTO") {
       setValues({
-        CAKE: input,
-        USD: Number.isNaN(inputAsFloat) ? "" : `${inputAsFloat * CAKE_PRICE}`,
+        ROTO: input,
+        USD: Number.isNaN(inputAsFloat) ? "" : `${inputAsFloat * ROTO_PRICE}`,
       });
     } else {
       setValues({
-        CAKE: Number.isNaN(inputAsFloat) ? "" : `${inputAsFloat / CAKE_PRICE}`,
+        ROTO: Number.isNaN(inputAsFloat) ? "" : `${inputAsFloat / ROTO_PRICE}`,
         USD: input,
       });
     }
@@ -144,7 +144,7 @@ export const SwitchUnits: React.FC<React.PropsWithChildren> = () => {
   return (
     <Box width="300px">
       <BalanceInput
-        onUserInput={handleCakeChange}
+        onUserInput={handleRotoChange}
         value={values[editingUnit]}
         currencyValue={`~${currencyValue} ${conversionUnit}`}
         placeholder="0.0"

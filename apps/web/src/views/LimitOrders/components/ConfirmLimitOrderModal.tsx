@@ -1,4 +1,4 @@
-import { Currency } from '@pancakeswap/sdk'
+import { Currency } from '@offsideswap/sdk'
 import {
   ArrowDownIcon,
   Button,
@@ -11,10 +11,10 @@ import {
   Text,
   useMatchBreakpoints,
   TransactionErrorContent,
-} from '@pancakeswap/uikit'
+} from '@offsideswap/uikit'
 import { CurrencyLogo } from 'components/Logo'
 import { TransactionSubmittedContent } from 'components/TransactionConfirmationModal'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@offsideswap/localization'
 import useTheme from 'hooks/useTheme'
 import { memo } from 'react'
 import styled from 'styled-components'

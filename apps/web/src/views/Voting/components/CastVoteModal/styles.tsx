@@ -1,4 +1,4 @@
-import { Box, BoxProps } from '@pancakeswap/uikit'
+import { Box, BoxProps } from '@offsideswap/uikit'
 import styled from 'styled-components'
 
 export const VotingBoxBorder = styled(Box)<{ hasBoosted?: boolean }>`

@@ -1,9 +1,9 @@
 import BigNumber from "bignumber.js";
 import { useCallback, useMemo, useState } from "react";
-import { useTranslation } from "@pancakeswap/localization";
-import { getFullDisplayBalance } from "@pancakeswap/utils/formatBalance";
-import { trimTrailZero } from "@pancakeswap/utils/trimTrailZero";
-import { BIG_ZERO } from "@pancakeswap/utils/bigNumber";
+import { useTranslation } from "@offsideswap/localization";
+import { getFullDisplayBalance } from "@offsideswap/utils/formatBalance";
+import { trimTrailZero } from "@offsideswap/utils/trimTrailZero";
+import { BIG_ZERO } from "@offsideswap/utils/bigNumber";
 import { Button } from "../../../../components/Button";
 import { AutoRenewIcon } from "../../../../components/Svg";
 import { Message, MessageText } from "../../../../components/Message";

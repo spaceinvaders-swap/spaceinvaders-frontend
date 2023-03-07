@@ -26,10 +26,10 @@ export interface NavProps {
   activeSubItem?: string;
   isDark: boolean;
   toggleTheme: (isDark: boolean) => void;
-  cakePriceUsd?: number;
+  rotoPriceUsd?: number;
   currentLang: string;
-  buyCakeLabel: string;
-  buyCakeLink: string;
+  buyRotoLabel: string;
+  buyRotoLink: string;
   langs: Language[];
   setLang: (lang: Language) => void;
 }

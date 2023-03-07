@@ -1,19 +1,19 @@
 import BigNumber from 'bignumber.js'
 import _toNumber from 'lodash/toNumber'
 import { useMemo } from 'react'
-import { useCakeVaultPublicData, useCakeVaultUserData } from 'state/pools/hooks'
-import { getBCakeMultiplier } from 'views/Farms/components/YieldBooster/components/BCakeCalculator'
-import { useUserLockedCakeStatus } from 'views/Farms/hooks/useUserLockedCakeStatus'
+import { useRotoVaultPublicData, useRotoVaultUserData } from 'state/pools/hooks'
+import { getBRotoMultiplier } from 'views/Farms/components/YieldBooster/components/BRotoCalculator'
+import { useUserLockedRotoStatus } from 'views/Farms/hooks/useUserLockedRotoStatus'
 import useAvgLockDuration from 'views/Pools/components/LockedPool/hooks/useAvgLockDuration'
 import { secondsToDays } from 'views/Pools/components/utils/formatSecondsToWeeks'
 
 export const useGetBoostedMultiplier = (userBalanceInFarm: BigNumber, lpTokenStakedAmount: BigNumber) => {
-  useCakeVaultPublicData()
-  useCakeVaultUserData()
+  useRotoVaultPublicData()
+  useRotoVaultUserData()
   const { avgLockDurationsInSeconds } = useAvgLockDuration()
-  const { isLoading, lockedAmount, totalLockedAmount, lockedStart, lockedEnd } = useUserLockedCakeStatus()
-  const bCakeMultiplier = useMemo(() => {
-    const result = getBCakeMultiplier(
+  const { isLoading, lockedAmount, totalLockedAmount, lockedStart, lockedEnd } = useUserLockedRotoStatus()
+  const bRotoMultiplier = useMemo(() => {
+    const result = getBRotoMultiplier(
       userBalanceInFarm, // userBalanceInFarm,
       lockedAmount, // userLockAmount
       secondsToDays(_toNumber(lockedEnd) - _toNumber(lockedStart)), // userLockDuration
@@ -32,7 +32,7 @@ export const useGetBoostedMultiplier = (userBalanceInFarm: BigNumber, lpTokenSta
     lockedStart,
     isLoading,
   ])
-  return _toNumber(bCakeMultiplier)
+  return _toNumber(bRotoMultiplier)
 }
 
 export const useGetCalculatorMultiplier = (
@@ -41,12 +41,12 @@ export const useGetCalculatorMultiplier = (
   lockedAmount: BigNumber,
   userLockDuration: number,
 ) => {
-  useCakeVaultPublicData()
-  useCakeVaultUserData()
+  useRotoVaultPublicData()
+  useRotoVaultUserData()
   const { avgLockDurationsInSeconds } = useAvgLockDuration()
-  const { isLoading, totalLockedAmount } = useUserLockedCakeStatus()
-  const bCakeMultiplier = useMemo(() => {
-    const result = getBCakeMultiplier(
+  const { isLoading, totalLockedAmount } = useUserLockedRotoStatus()
+  const bRotoMultiplier = useMemo(() => {
+    const result = getBRotoMultiplier(
       userBalanceInFarm, // userBalanceInFarm,
       lockedAmount, // userLockAmount
       secondsToDays(userLockDuration), // userLockDuration
@@ -64,7 +64,7 @@ export const useGetCalculatorMultiplier = (
     isLoading,
     userLockDuration,
   ])
-  return _toNumber(bCakeMultiplier)
+  return _toNumber(bRotoMultiplier)
 }
 
 const useGetBoostedAPR = (
@@ -73,8 +73,8 @@ const useGetBoostedAPR = (
   apr: number,
   lpRewardsApr: number,
 ) => {
-  const bCakeMultiplier = useGetBoostedMultiplier(userBalanceInFarm, lpTokenStakedAmount)
-  return (apr * bCakeMultiplier + lpRewardsApr).toFixed(2)
+  const bRotoMultiplier = useGetBoostedMultiplier(userBalanceInFarm, lpTokenStakedAmount)
+  return (apr * bRotoMultiplier + lpRewardsApr).toFixed(2)
 }
 
 export default useGetBoostedAPR

@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import { useRouter } from 'next/router'
-import { Box, Flex, Text, Select, OptionProps } from '@pancakeswap/uikit'
+import { Box, Flex, Text, Select, OptionProps } from '@offsideswap/uikit'
 import { useGetCollection } from 'state/nftMarket/hooks'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@offsideswap/localization'
 import Container from 'components/Layout/Container'
 import { isAddress } from 'utils'
-import { pancakeBunniesAddress } from '../../constants'
-import PancakeBunniesCollectionNfts from './PancakeBunniesCollectionNfts'
+import { offsideBunniesAddress } from '../../constants'
+import OffsideBunniesCollectionNfts from './OffsideBunniesCollectionNfts'
 import CollectionWrapper from './CollectionWrapper'
 
 const Items = () => {
@@ -14,7 +14,7 @@ const Items = () => {
   const [sortBy, setSortBy] = useState('updatedAt')
   const { t } = useTranslation()
   const collection = useGetCollection(collectionAddress)
-  const isPBCollection = isAddress(collectionAddress) === pancakeBunniesAddress
+  const isPBCollection = isAddress(collectionAddress) === offsideBunniesAddress
 
   const sortByItems = [
     { label: t('Recently listed'), value: 'updatedAt' },
@@ -37,7 +37,7 @@ const Items = () => {
               <Select options={sortByItems} onOptionChange={handleChange} />
             </Box>
           </Flex>
-          <PancakeBunniesCollectionNfts address={collection?.address} sortBy={sortBy} />
+          <OffsideBunniesCollectionNfts address={collection?.address} sortBy={sortBy} />
         </Container>
       ) : (
         <CollectionWrapper collection={collection} />

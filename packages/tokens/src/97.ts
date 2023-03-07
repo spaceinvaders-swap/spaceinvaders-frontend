@@ -1,9 +1,9 @@
-import { ChainId, ERC20Token, WBNB } from '@pancakeswap/sdk'
-import { BUSD_TESTNET, CAKE_TESTNET } from './common'
+import { ChainId, ERC20Token, WBNB } from '@offsideswap/sdk'
+import { BUSD_TESTNET, ROTO_TESTNET } from './common'
 
 export const bscTestnetTokens = {
   wbnb: WBNB[ChainId.BSC_TESTNET],
-  cake: CAKE_TESTNET,
+  roto: ROTO_TESTNET,
   busd: BUSD_TESTNET,
   syrup: new ERC20Token(
     ChainId.BSC_TESTNET,
@@ -11,7 +11,7 @@ export const bscTestnetTokens = {
     18,
     'SYRUP',
     'SyrupBar Token',
-    'https://pancakeswap.finance/',
+    'https://offsideswap.finance/',
   ),
   bake: new ERC20Token(
     ChainId.BSC_TESTNET,

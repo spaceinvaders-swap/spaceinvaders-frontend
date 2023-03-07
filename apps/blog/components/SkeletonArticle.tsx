@@ -1,4 +1,4 @@
-import { Flex, Skeleton } from '@pancakeswap/uikit'
+import { Flex, Skeleton } from '@offsideswap/uikit'
 
 const SkeletonArticle = () => {
   return (

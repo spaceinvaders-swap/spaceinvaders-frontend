@@ -1,8 +1,8 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, CurrencyAmount, TradeType } from '@pancakeswap/sdk'
-import { Button, Text, useModal, confirmPriceImpactWithoutFee, Column } from '@pancakeswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
+import { Currency, CurrencyAmount, TradeType } from '@offsideswap/sdk'
+import { Button, Text, useModal, confirmPriceImpactWithoutFee, Column } from '@offsideswap/uikit'
 
-import { TradeWithStableSwap } from '@pancakeswap/smart-router/evm'
+import { TradeWithStableSwap } from '@offsideswap/smart-router/evm'
 import { GreyCard } from 'components/Card'
 import { CommitButton } from 'components/CommitButton'
 import ConnectWalletButton from 'components/ConnectWalletButton'

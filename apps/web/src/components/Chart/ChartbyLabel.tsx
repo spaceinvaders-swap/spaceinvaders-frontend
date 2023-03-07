@@ -1,5 +1,5 @@
-import { Flex, FlexProps, Link, Text, LinkProps } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Flex, FlexProps, Link, Text, LinkProps } from '@offsideswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
 
 export const ChartByLabel = ({
   symbol,

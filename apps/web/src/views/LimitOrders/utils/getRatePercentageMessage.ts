@@ -1,5 +1,5 @@
-import { Percent } from '@pancakeswap/sdk'
-import { TranslateFunction } from '@pancakeswap/localization'
+import { Percent } from '@offsideswap/sdk'
+import { TranslateFunction } from '@offsideswap/localization'
 
 export enum PercentageDirection {
   ABOVE = 'above',

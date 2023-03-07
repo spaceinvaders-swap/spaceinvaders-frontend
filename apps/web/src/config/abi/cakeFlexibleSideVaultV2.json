@@ -7,8 +7,8 @@
         "type": "address"
       },
       {
-        "internalType": "contract ICakePool",
-        "name": "_cakePool",
+        "internalType": "contract IRotoPool",
+        "name": "_rotoPool",
         "type": "address"
       },
       {
@@ -97,7 +97,7 @@
         "type": "uint256"
       }
     ],
-    "name": "DepositCake",
+    "name": "DepositRoto",
     "type": "event"
   },
   {
@@ -392,10 +392,10 @@
   },
   {
     "inputs": [],
-    "name": "cakePool",
+    "name": "rotoPool",
     "outputs": [
       {
-        "internalType": "contract ICakePool",
+        "internalType": "contract IRotoPool",
         "name": "",
         "type": "address"
       }
@@ -674,7 +674,7 @@
       },
       {
         "internalType": "uint256",
-        "name": "cakeAtLastUserAction",
+        "name": "rotoAtLastUserAction",
         "type": "uint256"
       },
       {

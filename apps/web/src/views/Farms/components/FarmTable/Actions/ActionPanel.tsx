@@ -1,4 +1,4 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@offsideswap/localization'
 import {
   Farm as FarmUI,
   FarmTableLiquidityProps,
@@ -7,9 +7,9 @@ import {
   Text,
   useMatchBreakpoints,
   Flex,
-} from '@pancakeswap/uikit'
+} from '@offsideswap/uikit'
 
-import { FarmWithStakedValue } from '@pancakeswap/farms'
+import { FarmWithStakedValue } from '@offsideswap/farms'
 import { CHAIN_QUERY_NAME } from 'config/chains'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { useContext, useMemo } from 'react'
@@ -141,7 +141,7 @@ const ActionPanel: React.FunctionComponent<React.PropsWithChildren<ActionPanelPr
   } = useTranslation()
   const isActive = farm.multiplier !== '0X'
   const { quoteToken, token, stableSwapAddress } = farm
-  const lpLabel = farm.lpSymbol && farm.lpSymbol.replace(/pancake/gi, '')
+  const lpLabel = farm.lpSymbol && farm.lpSymbol.replace(/offside/gi, '')
   const liquidityUrlPathParts = getLiquidityUrlPathParts({
     quoteTokenAddress: quoteToken.address,
     tokenAddress: token.address,

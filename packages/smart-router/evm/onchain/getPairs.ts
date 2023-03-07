@@ -1,9 +1,9 @@
-import { ChainId, Currency, CurrencyAmount, Pair, Token } from '@pancakeswap/sdk'
+import { ChainId, Currency, CurrencyAmount, Pair, Token } from '@offsideswap/sdk'
 import { BigNumber } from '@ethersproject/bignumber'
-import { createMulticall, Call } from '@pancakeswap/multicall'
+import { createMulticall, Call } from '@offsideswap/multicall'
 
 import { wrappedCurrency } from '../utils/currency'
-import IPancakePairABI from '../abis/IPancakePair.json'
+import IOffsidePairABI from '../abis/IOffsidePair.json'
 import { Provider } from '../types'
 
 type CurrencyPair = [Currency, Currency]
@@ -42,7 +42,7 @@ export async function getPairs(currencyPairs: CurrencyPair[], { provider, chainI
   }))
 
   const results = await multicallv2<PairReserve[]>({
-    abi: IPancakePairABI,
+    abi: IOffsidePairABI,
     calls: reserveCalls,
     chainId,
     options: {

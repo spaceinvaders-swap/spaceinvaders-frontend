@@ -1,8 +1,8 @@
 import { Interface, Fragment } from '@ethersproject/abi'
 import { CallOverrides, Contract } from '@ethersproject/contracts'
 import { Provider } from '@ethersproject/providers'
-import { ChainId } from '@pancakeswap/sdk'
-import type { Multicallv2Typed, Multicallv3Typed } from '@pancakeswap/utils/abitype'
+import { ChainId } from '@offsideswap/sdk'
+import type { Multicallv2Typed, Multicallv3Typed } from '@offsideswap/utils/abitype'
 
 import multicallAbi from './Multicall.json'
 

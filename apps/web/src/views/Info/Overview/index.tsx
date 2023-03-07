@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Card, Flex, Heading } from '@pancakeswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
+import { Card, Flex, Heading } from '@offsideswap/uikit'
 import Page from 'components/Layout/Page'
 import { useMemo } from 'react'
 import {
@@ -65,7 +65,7 @@ const Overview: React.FC<React.PropsWithChildren> = () => {
   return (
     <Page>
       <Heading scale="lg" mb="16px" id="info-overview-title">
-        {t('PancakeSwap Info & Analytics')}
+        {t('OffsideSwap Info & Analytics')}
       </Heading>
       <ChartCardsContainer>
         <Card>

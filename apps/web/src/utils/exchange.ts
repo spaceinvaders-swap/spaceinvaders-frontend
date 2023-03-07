@@ -1,6 +1,6 @@
-import { Currency, CurrencyAmount, Fraction, JSBI, Percent, Trade, TradeType } from '@pancakeswap/sdk'
-import IPancakeRouter02ABI from 'config/abi/IPancakeRouter02.json'
-import { IPancakeRouter02 } from 'config/abi/types/IPancakeRouter02'
+import { Currency, CurrencyAmount, Fraction, JSBI, Percent, Trade, TradeType } from '@offsideswap/sdk'
+import IOffsideRouter02ABI from 'config/abi/IOffsideRouter02.json'
+import { IOffsideRouter02 } from 'config/abi/types/IOffsideRouter02'
 import {
   ALLOWED_PRICE_IMPACT_HIGH,
   ALLOWED_PRICE_IMPACT_LOW,
@@ -34,7 +34,7 @@ export function calculateSlippageAmount(value: CurrencyAmount<Currency>, slippag
 
 export function useRouterContract() {
   const { chainId } = useActiveChainId()
-  return useContract<IPancakeRouter02>(ROUTER_ADDRESS[chainId], IPancakeRouter02ABI, true)
+  return useContract<IOffsideRouter02>(ROUTER_ADDRESS[chainId], IOffsideRouter02ABI, true)
 }
 
 // computes price breakdown for the trade

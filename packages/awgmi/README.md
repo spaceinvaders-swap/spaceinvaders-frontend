@@ -1,4 +1,4 @@
-# @pancakeswap/awgmi
+# @offsideswap/awgmi
 
 Connect to Aptos with similar [wagmi](https://github.com/wagmi-dev/wagmi) React hooks.
 
@@ -18,14 +18,14 @@ import {
   useConnect,
   getDefaultProviders,
   defaultChains,
-} from '@pancakeswap/awgmi';
-import { PetraConnector } from '@pancakeswap/awgmi/connectors/petra'
-import { MartianConnector } from '@pancakeswap/awgmi/connectors/martain'
-import { SafePalConnector } from '@pancakeswap/awgmi/connectors/safePal'
-import { BloctoConnector } from '@pancakeswap/awgmi/connectors/blocto'
-import { FewchaConnector } from '@pancakeswap/awgmi/connectors/fewcha'
+} from '@offsideswap/awgmi';
+import { PetraConnector } from '@offsideswap/awgmi/connectors/petra'
+import { MartianConnector } from '@offsideswap/awgmi/connectors/martain'
+import { SafePalConnector } from '@offsideswap/awgmi/connectors/safePal'
+import { BloctoConnector } from '@offsideswap/awgmi/connectors/blocto'
+import { FewchaConnector } from '@offsideswap/awgmi/connectors/fewcha'
 
- // import { mainnet, testnet } from '@pancakeswap/awgmi/core'
+ // import { mainnet, testnet } from '@offsideswap/awgmi/core'
 const chains = defaultChains // mainnet, testnet, devnet
 
 export const client = createClient({
@@ -54,7 +54,7 @@ function App() {
 
 ## Connector
 ```jsx
-import { useConnect, useDisconnect } from '@pancakeswap/awgmi'
+import { useConnect, useDisconnect } from '@offsideswap/awgmi'
 
 function ConnectButton() {
   const { connect, connectors } = useConnect()
@@ -85,7 +85,7 @@ import {
   useSendTransaction,
   useSimulateTransaction,
   useTableItem,
-} from '@pancakeswap/awgmi'
+} from '@offsideswap/awgmi'
 ```
 
 ### Balance
@@ -99,7 +99,7 @@ const { data } = useAccountBalance({
 
 ### Send Transaction
 ```js
-import { UserRejectedRequestError } from '@pancakeswap/awgmi'
+import { UserRejectedRequestError } from '@offsideswap/awgmi'
 
 const { sendTransactionAsync } = useSendTransaction()
 

@@ -1,11 +1,11 @@
 import { useMemo } from 'react'
-import { Flex, Box } from '@pancakeswap/uikit'
+import { Flex, Box } from '@offsideswap/uikit'
 import BigNumber from 'bignumber.js'
-import { getVaultPosition, VaultPosition } from 'utils/cakePool'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { useTranslation } from '@pancakeswap/localization'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
-import AddCakeButton from '../Buttons/AddCakeButton'
+import { getVaultPosition, VaultPosition } from 'utils/rotoPool'
+import { BIG_ZERO } from '@offsideswap/utils/bigNumber'
+import { useTranslation } from '@offsideswap/localization'
+import { getBalanceNumber } from '@offsideswap/utils/formatBalance'
+import AddRotoButton from '../Buttons/AddRotoButton'
 import ExtendButton from '../Buttons/ExtendDurationButton'
 import AfterLockedActions from './AfterLockedActions'
 import { LockedActionsPropsType } from '../types'
@@ -40,7 +40,7 @@ const LockedActions: React.FC<React.PropsWithChildren<LockedActionsPropsType>> =
     return (
       <Flex>
         <Box width="100%" mr="4px">
-          <AddCakeButton
+          <AddRotoButton
             lockEndTime={lockEndTime}
             lockStartTime={lockStartTime}
             currentLockedAmount={lockedAmount}

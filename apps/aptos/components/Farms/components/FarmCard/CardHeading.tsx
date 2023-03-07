@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { Tag, Flex, Heading, Box, Skeleton, Farm as FarmUI } from '@pancakeswap/uikit'
-import { Token } from '@pancakeswap/aptos-swap-sdk'
+import { Tag, Flex, Heading, Box, Skeleton, Farm as FarmUI } from '@offsideswap/uikit'
+import { Token } from '@offsideswap/aptos-swap-sdk'
 import { TokenPairImage } from 'components/TokenImage'
 
 const { FarmAuctionTag, CoreTag } = FarmUI.Tags

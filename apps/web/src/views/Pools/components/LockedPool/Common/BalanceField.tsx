@@ -1,11 +1,11 @@
-import { BalanceInput, Button, Flex, Image, Slider, Text } from '@pancakeswap/uikit'
+import { BalanceInput, Button, Flex, Image, Slider, Text } from '@offsideswap/uikit'
 import BigNumber from 'bignumber.js'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@offsideswap/localization'
 import { Dispatch, useMemo, memo, SetStateAction, useCallback } from 'react'
 import styled from 'styled-components'
-import { getFullDisplayBalance } from '@pancakeswap/utils/formatBalance'
-import { getFullDecimalMultiplier } from '@pancakeswap/utils/getFullDecimalMultiplier'
-import { useUserEnoughCakeValidator } from '../hooks/useUserEnoughCakeValidator'
+import { getFullDisplayBalance } from '@offsideswap/utils/formatBalance'
+import { getFullDecimalMultiplier } from '@offsideswap/utils/getFullDecimalMultiplier'
+import { useUserEnoughRotoValidator } from '../hooks/useUserEnoughRotoValidator'
 
 const StyledButton = styled(Button)`
   flex-grow: 1;
@@ -35,7 +35,7 @@ const BalanceField: React.FC<React.PropsWithChildren<PropsType>> = ({
   needApprove,
 }) => {
   const { t } = useTranslation()
-  const { userNotEnoughCake, notEnoughErrorMessage } = useUserEnoughCakeValidator(lockedAmount, stakingTokenBalance)
+  const { userNotEnoughRoto, notEnoughErrorMessage } = useUserEnoughRotoValidator(lockedAmount, stakingTokenBalance)
 
   const percent = useMemo(() => {
     const amount = new BigNumber(lockedAmount)
@@ -72,7 +72,7 @@ const BalanceField: React.FC<React.PropsWithChildren<PropsType>> = ({
     <>
       <Flex alignItems="center" justifyContent="space-between" mb="8px">
         <Text color="textSubtle" textTransform="uppercase" bold fontSize="12px">
-          {t('CAKE to lock')}
+          {t('ROTO to lock')}
         </Text>
         <Flex alignItems="center" minWidth="70px">
           <Image src={`/images/tokens/${stakingAddress}.png`} width={24} height={24} alt={stakingSymbol} />
@@ -82,20 +82,20 @@ const BalanceField: React.FC<React.PropsWithChildren<PropsType>> = ({
         </Flex>
       </Flex>
       <BalanceInput
-        isWarning={userNotEnoughCake || needApprove}
+        isWarning={userNotEnoughRoto || needApprove}
         value={lockedAmount}
         onUserInput={handleStakeInputChange}
         currencyValue={`~${usedValueStaked || 0} USD`}
         decimals={stakingDecimals}
       />
-      {needApprove && !userNotEnoughCake ? (
+      {needApprove && !userNotEnoughRoto ? (
         <Text color="failure" textAlign="right" fontSize="12px" mt="8px">
           {t('Insufficient token allowance. Click "Enable" to approve.')}
         </Text>
       ) : null}
       <Flex alignItems="center" justifyContent="flex-end" mt="4px" mb="12px">
         <Flex justifyContent="flex-end" flexDirection="column">
-          {userNotEnoughCake && (
+          {userNotEnoughRoto && (
             <Text fontSize="12px" color="failure">
               {notEnoughErrorMessage}
             </Text>

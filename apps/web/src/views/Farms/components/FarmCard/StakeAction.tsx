@@ -1,26 +1,26 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { AddIcon, Button, Flex, IconButton, MinusIcon, useModal, useToast, Farm as FarmUI } from '@pancakeswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
+import { AddIcon, Button, Flex, IconButton, MinusIcon, useModal, useToast, Farm as FarmUI } from '@offsideswap/uikit'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import useCatchTxError from 'hooks/useCatchTxError'
-import BCakeCalculator from 'views/Farms/components/YieldBooster/components/BCakeCalculator'
+import BRotoCalculator from 'views/Farms/components/YieldBooster/components/BRotoCalculator'
 import { useCallback, useContext, useState, useMemo } from 'react'
 import styled from 'styled-components'
 import { TransactionResponse } from '@ethersproject/providers'
 import { useRouter } from 'next/router'
-import { usePriceCakeBusd, useFarmFromPid } from 'state/farms/hooks'
+import { usePriceRotoBusd, useFarmFromPid } from 'state/farms/hooks'
 import { useAppDispatch } from 'state'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
-import { ChainId, WNATIVE, NATIVE } from '@pancakeswap/sdk'
+import { ChainId, WNATIVE, NATIVE } from '@offsideswap/sdk'
 import BigNumber from 'bignumber.js'
 import { useIsBloctoETH } from 'views/Farms'
 import { DEFAULT_TOKEN_DECIMAL } from 'config'
 import useNativeCurrency from 'hooks/useNativeCurrency'
-import { formatLpBalance } from '@pancakeswap/utils/formatBalance'
+import { formatLpBalance } from '@offsideswap/utils/formatBalance'
 import { pickFarmTransactionTx } from 'state/global/actions'
 import { useTransactionAdder, useNonBscFarmPendingTransaction } from 'state/transactions/hooks'
 import { FarmTransactionStatus, NonBscFarmStepType } from 'state/transactions/actions'
 import WalletModal, { WalletView } from 'components/Menu/UserMenu/WalletModal'
-import { FarmWithStakedValue } from '@pancakeswap/farms'
+import { FarmWithStakedValue } from '@offsideswap/farms'
 import { YieldBoosterStateContext } from '../YieldBooster/components/ProxyFarmContainer'
 import { YieldBoosterState } from '../YieldBooster/hooks/useYieldBoosterState'
 import { useFirstTimeCrossFarming } from '../../hooks/useFirstTimeCrossFarming'
@@ -72,20 +72,20 @@ const StakeAction: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = ({
   const { account, chainId } = useActiveWeb3React()
   const native = useNativeCurrency()
   const { tokenBalance, stakedBalance, allowance } = userData
-  const cakePrice = usePriceCakeBusd()
+  const rotoPrice = usePriceRotoBusd()
   const router = useRouter()
   const { lpTokenStakedAmount } = useFarmFromPid(pid)
   const { toastSuccess } = useToast()
   const { fetchWithCatchTxError, fetchTxResponse, loading: pendingTx } = useCatchTxError()
   const { boosterState } = useContext(YieldBoosterStateContext)
-  const [bCakeMultiplier, setBCakeMultiplier] = useState<number | null>(() => null)
+  const [bRotoMultiplier, setBRotoMultiplier] = useState<number | null>(() => null)
   const pendingFarm = useNonBscFarmPendingTransaction(lpAddress)
   const { isFirstTime, refresh: refreshFirstTime } = useFirstTimeCrossFarming(vaultPid)
   const isBloctoETH = useIsBloctoETH()
 
   const crossChainWarningText = useMemo(() => {
     return isFirstTime
-      ? t('A small amount of %nativeToken% is required for the first-time setup of cross-chain CAKE farming.', {
+      ? t('A small amount of %nativeToken% is required for the first-time setup of cross-chain ROTO farming.', {
           nativeToken: native.symbol,
         })
       : t('For safety, cross-chain transactions will take around 30 minutes to confirm.')
@@ -227,12 +227,12 @@ const StakeAction: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = ({
     }
   }, [onApprove, t, toastSuccess, fetchWithCatchTxError, onDone])
 
-  const bCakeCalculatorSlot = (calculatorBalance) => (
-    <BCakeCalculator
+  const bRotoCalculatorSlot = (calculatorBalance) => (
+    <BRotoCalculator
       targetInputBalance={calculatorBalance}
-      earningTokenPrice={cakePrice.toNumber()}
+      earningTokenPrice={rotoPrice.toNumber()}
       lpTokenStakedAmount={lpTokenStakedAmount}
-      setBCakeMultiplier={setBCakeMultiplier}
+      setBRotoMultiplier={setBRotoMultiplier}
     />
   )
 
@@ -250,9 +250,9 @@ const StakeAction: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = ({
       apr={apr}
       displayApr={displayApr}
       addLiquidityUrl={addLiquidityUrl}
-      cakePrice={cakePrice}
+      rotoPrice={rotoPrice}
       showActiveBooster={boosterState === YieldBoosterState.ACTIVE}
-      bCakeMultiplier={bCakeMultiplier}
+      bRotoMultiplier={bRotoMultiplier}
       showCrossChainFarmWarning={chainId !== ChainId.BSC && chainId !== ChainId.BSC_TESTNET}
       crossChainWarningText={crossChainWarningText}
       decimals={18}
@@ -260,7 +260,7 @@ const StakeAction: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = ({
       enablePendingTx={pendingTx}
       onConfirm={handleStake}
       handleApprove={handleApprove}
-      bCakeCalculatorSlot={bCakeCalculatorSlot}
+      bRotoCalculatorSlot={bRotoCalculatorSlot}
     />,
     true,
     true,

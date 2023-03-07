@@ -1,9 +1,9 @@
 import { useCallback, useMemo } from 'react'
 import Cookie from 'js-cookie'
-import { ChainId, Token } from '@pancakeswap/sdk'
+import { ChainId, Token } from '@offsideswap/sdk'
 import { BigNumber } from 'bignumber.js'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@offsideswap/localization'
 import { useSwitchNetwork } from 'hooks/useSwitchNetwork'
 import useCatchTxError from 'hooks/useCatchTxError'
 import styled from 'styled-components'
@@ -22,9 +22,9 @@ import {
   useToast,
   FlexGap,
   Balance,
-} from '@pancakeswap/uikit'
+} from '@offsideswap/uikit'
 import { ChainLogo } from 'components/Logo/ChainLogo'
-import { getBalanceAmount } from '@pancakeswap/utils/formatBalance'
+import { getBalanceAmount } from '@offsideswap/utils/formatBalance'
 import { LightGreyCard } from 'components/Card'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import { useFarmCProxyAddress } from 'views/Farms/hooks/useFarmCProxyAddress'
@@ -93,7 +93,7 @@ const MultiChainHarvestModal: React.FC<MultiChainHarvestModalProp> = ({
       toastSuccess(
         `${t('Harvested')}!`,
         <ToastDescriptionWithTx txHash={receipt.transactionHash}>
-          {t('Your %symbol% earnings have been sent to your wallet!', { symbol: 'CAKE' })}
+          {t('Your %symbol% earnings have been sent to your wallet!', { symbol: 'ROTO' })}
         </ToastDescriptionWithTx>,
       )
       handleCancel()
@@ -137,7 +137,7 @@ const MultiChainHarvestModal: React.FC<MultiChainHarvestModalProp> = ({
         <LightGreyCard padding="16px">
           <Box mb="8px">
             <Text fontSize="12px" color="secondary" bold as="span">
-              {t('CAKE')}
+              {t('ROTO')}
             </Text>
             <Text fontSize="12px" color="textSubtle" ml="4px" bold as="span">
               {t('Earned')}

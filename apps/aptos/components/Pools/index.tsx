@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Flex, Heading, PageHeader, Pool, Text, FlexLayout, ViewMode } from '@pancakeswap/uikit'
-import { Coin } from '@pancakeswap/aptos-swap-sdk'
+import { useTranslation } from '@offsideswap/localization'
+import { Flex, Heading, PageHeader, Pool, Text, FlexLayout, ViewMode } from '@offsideswap/uikit'
+import { Coin } from '@offsideswap/aptos-swap-sdk'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import styled from 'styled-components'
 
@@ -14,7 +14,7 @@ import CardActions from './components/PoolCard/CardActions'
 import Apr from './components/PoolCard/Apr'
 import CardFooter from './components/PoolCard/CardFooter'
 import PoolStatsInfo from './components/PoolCard/PoolStatsInfo'
-import CakeCardActions from './components/PoolCard/CakeCardActions'
+import RotoCardActions from './components/PoolCard/RotoCardActions'
 import PoolRow from './components/PoolTable/PoolRow'
 import { usePoolsList } from './hooks/usePoolsList'
 import isVaultPool from './utils/isVaultPool'
@@ -59,7 +59,7 @@ const PoolsPage: React.FC<React.PropsWithChildren> = () => {
                       cardContent={
                         account ? (
                           isVaultPool() ? (
-                            <CakeCardActions
+                            <RotoCardActions
                               hideLocateAddress
                               pool={pool}
                               stakedBalance={pool?.userData?.stakedBalance}

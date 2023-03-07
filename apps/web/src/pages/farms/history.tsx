@@ -3,13 +3,13 @@ import { SUPPORT_FARMS } from 'config/constants/supportChains'
 import { FarmsPageLayout, FarmsContext } from 'views/Farms'
 import FarmCard from 'views/Farms/components/FarmCard/FarmCard'
 import { getDisplayApr } from 'views/Farms/components/getDisplayApr'
-import { usePriceCakeBusd } from 'state/farms/hooks'
+import { usePriceRotoBusd } from 'state/farms/hooks'
 import { useAccount } from 'wagmi'
 
 const FarmsHistoryPage = () => {
   const { address: account } = useAccount()
   const { chosenFarmsMemoized } = useContext(FarmsContext)
-  const cakePrice = usePriceCakeBusd()
+  const rotoPrice = usePriceRotoBusd()
 
   return (
     <>
@@ -18,7 +18,7 @@ const FarmsHistoryPage = () => {
           key={farm.pid}
           farm={farm}
           displayApr={getDisplayApr(farm.apr, farm.lpRewardsApr)}
-          cakePrice={cakePrice}
+          rotoPrice={rotoPrice}
           account={account}
           removed
         />

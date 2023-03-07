@@ -1,5 +1,5 @@
-import { getVersionUpgrade, VersionUpgrade } from '@pancakeswap/token-lists'
-import { acceptListUpdate, updateListVersion, useFetchListCallback } from '@pancakeswap/token-lists/react'
+import { getVersionUpgrade, VersionUpgrade } from '@offsideswap/token-lists'
+import { acceptListUpdate, updateListVersion, useFetchListCallback } from '@offsideswap/token-lists/react'
 import { UNSUPPORTED_LIST_URLS } from 'config/constants/lists'
 import { useEffect } from 'react'
 import { useAllLists } from 'state/lists/hooks'

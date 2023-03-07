@@ -1,8 +1,8 @@
 import BigNumber from 'bignumber.js'
 import { SECONDS_IN_YEAR } from 'config'
-import { ChainId } from '@pancakeswap/aptos-swap-sdk'
+import { ChainId } from '@offsideswap/aptos-swap-sdk'
 import mainnetLpAprs from 'config/constants/lpAprs/1.json'
-import { BIG_TEN } from '@pancakeswap/utils/bigNumber'
+import { BIG_TEN } from '@offsideswap/utils/bigNumber'
 import { FARM_DEFAULT_DECIMALS } from 'components/Farms/constants'
 
 const getLpApr = (chainId: number) => {
@@ -17,7 +17,7 @@ const getLpApr = (chainId: number) => {
 /**
  * Get farm APR value in %
  * @param poolWeight allocationPoint / totalAllocationPoint
- * @param cakePriceUsd Cake price in USD
+ * @param rotoPriceUsd Roto price in USD
  * @param poolLiquidityUsd Total pool liquidity in USD
  * @param farmAddress Farm Address
  * @returns Farm Apr
@@ -25,21 +25,21 @@ const getLpApr = (chainId: number) => {
 export const getFarmApr = (
   chainId: number,
   poolWeight: BigNumber,
-  cakePriceUsd: BigNumber,
+  rotoPriceUsd: BigNumber,
   poolLiquidityUsd: BigNumber,
   farmAddress: string,
-  regularCakePerSeconds: number,
-): { cakeRewardsApr: number; lpRewardsApr: number } => {
-  const yearlyCakeRewardAllocation = poolWeight
-    ? poolWeight.times(SECONDS_IN_YEAR * regularCakePerSeconds)
+  regularRotoPerSeconds: number,
+): { rotoRewardsApr: number; lpRewardsApr: number } => {
+  const yearlyRotoRewardAllocation = poolWeight
+    ? poolWeight.times(SECONDS_IN_YEAR * regularRotoPerSeconds)
     : new BigNumber(NaN)
-  const cakeRewardsApr = yearlyCakeRewardAllocation.times(cakePriceUsd).div(poolLiquidityUsd).times(100)
-  let cakeRewardsAprAsNumber: null | number = null
-  if (!cakeRewardsApr.isNaN() && cakeRewardsApr.isFinite()) {
-    cakeRewardsAprAsNumber = cakeRewardsApr.div(BIG_TEN.pow(FARM_DEFAULT_DECIMALS)).toNumber()
+  const rotoRewardsApr = yearlyRotoRewardAllocation.times(rotoPriceUsd).div(poolLiquidityUsd).times(100)
+  let rotoRewardsAprAsNumber: null | number = null
+  if (!rotoRewardsApr.isNaN() && rotoRewardsApr.isFinite()) {
+    rotoRewardsAprAsNumber = rotoRewardsApr.div(BIG_TEN.pow(FARM_DEFAULT_DECIMALS)).toNumber()
   }
   const lpRewardsApr = getLpApr(chainId)[farmAddress?.toLowerCase()] ?? 0
-  return { cakeRewardsApr: cakeRewardsAprAsNumber as number, lpRewardsApr }
+  return { rotoRewardsApr: rotoRewardsAprAsNumber as number, lpRewardsApr }
 }
 
 export default null

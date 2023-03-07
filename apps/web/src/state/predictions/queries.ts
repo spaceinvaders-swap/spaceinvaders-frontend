@@ -4,15 +4,15 @@ import {
   userBaseFields as userBaseFieldsBNB,
 } from './bnbQueries'
 import {
-  roundBaseFields as roundBaseFieldsCAKE,
-  betBaseFields as betBaseFieldsCAKE,
-  userBaseFields as userBaseFieldsCAKE,
-} from './cakeQueries'
+  roundBaseFields as roundBaseFieldsROTO,
+  betBaseFields as betBaseFieldsROTO,
+  userBaseFields as userBaseFieldsROTO,
+} from './rotoQueries'
 
 export const getRoundBaseFields = (tokenSymbol: string) =>
-  tokenSymbol === 'CAKE' ? roundBaseFieldsCAKE : roundBaseFieldsBNB
+  tokenSymbol === 'ROTO' ? roundBaseFieldsROTO : roundBaseFieldsBNB
 
-export const getBetBaseFields = (tokenSymbol: string) => (tokenSymbol === 'CAKE' ? betBaseFieldsCAKE : betBaseFieldsBNB)
+export const getBetBaseFields = (tokenSymbol: string) => (tokenSymbol === 'ROTO' ? betBaseFieldsROTO : betBaseFieldsBNB)
 
 export const getUserBaseFields = (tokenSymbol: string) =>
-  tokenSymbol === 'CAKE' ? userBaseFieldsCAKE : userBaseFieldsBNB
+  tokenSymbol === 'ROTO' ? userBaseFieldsROTO : userBaseFieldsBNB

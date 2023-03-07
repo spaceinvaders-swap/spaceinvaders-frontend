@@ -1,8 +1,8 @@
 import { useMemo, useState } from 'react'
 import styled from 'styled-components'
-import { Trade, TradeType, CurrencyAmount, Currency } from '@pancakeswap/sdk'
-import { Button, Text, AutoRenewIcon, QuestionHelper, AutoColumn } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Trade, TradeType, CurrencyAmount, Currency } from '@offsideswap/sdk'
+import { Button, Text, AutoRenewIcon, QuestionHelper, AutoColumn } from '@offsideswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
 import { Field } from 'state/swap/actions'
 import { computeTradePriceBreakdown, formatExecutionPrice, warningSeverity } from 'utils/exchange'
 import { AutoRow, RowBetween, RowFixed } from 'components/Layout/Row'
@@ -111,7 +111,7 @@ export default function SwapModalFooter({
                   <Text mb="12px">{t('For each trade a %amount% fee is paid', { amount: totalFeePercent })}</Text>
                   <Text>- {t('%amount% to LP token holders', { amount: lpHoldersFeePercent })}</Text>
                   <Text>- {t('%amount% to the Treasury', { amount: treasuryFeePercent })}</Text>
-                  <Text>- {t('%amount% towards CAKE buyback and burn', { amount: buyBackFeePercent })}</Text>
+                  <Text>- {t('%amount% towards ROTO buyback and burn', { amount: buyBackFeePercent })}</Text>
                 </>
               }
               ml="4px"

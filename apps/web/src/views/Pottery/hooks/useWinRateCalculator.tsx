@@ -31,11 +31,11 @@ const defaultState = {
 }
 
 interface WinRateCalculatorProps {
-  cakePrice: BigNumber
+  rotoPrice: BigNumber
   totalSupply: BigNumber
 }
 
-const useWinRateCalculator = ({ cakePrice, totalSupply }: WinRateCalculatorProps) => {
+const useWinRateCalculator = ({ rotoPrice, totalSupply }: WinRateCalculatorProps) => {
   const [state, setState] = useState<WinRateCalculatorState>(defaultState)
 
   const totalLockValue = useMemo(() => {
@@ -44,8 +44,8 @@ const useWinRateCalculator = ({ cakePrice, totalSupply }: WinRateCalculatorProps
   }, [totalSupply, state])
 
   const totalLockValueAsUSD = useMemo(() => {
-    return new BigNumber(totalLockValue).times(cakePrice).toNumber()
-  }, [totalLockValue, cakePrice])
+    return new BigNumber(totalLockValue).times(rotoPrice).toNumber()
+  }, [totalLockValue, rotoPrice])
 
   const winRate = useMemo(() => {
     const { principalAsToken } = state.data
@@ -54,7 +54,7 @@ const useWinRateCalculator = ({ cakePrice, totalSupply }: WinRateCalculatorProps
   }, [state, totalLockValue])
 
   const setPrincipalFromTokenValue = (amount: string) => {
-    const principalAsUsdBN = new BigNumber(amount).times(cakePrice)
+    const principalAsUsdBN = new BigNumber(amount).times(rotoPrice)
     const principalAsUsdString = principalAsUsdBN.gt(0) ? principalAsUsdBN.toFixed(USD_PRECISION) : '0.00'
     const data = {
       ...state.data,
@@ -65,7 +65,7 @@ const useWinRateCalculator = ({ cakePrice, totalSupply }: WinRateCalculatorProps
   }
 
   const setPrincipalFromUSDValue = (amount: string) => {
-    const principalAsTokenBN = new BigNumber(amount).div(cakePrice)
+    const principalAsTokenBN = new BigNumber(amount).div(rotoPrice)
     const principalAsToken = principalAsTokenBN.gt(0) ? principalAsTokenBN.toFixed(TOKEN_PRECISION) : '0.00'
     const data = {
       ...state.data,
@@ -93,9 +93,9 @@ const useWinRateCalculator = ({ cakePrice, totalSupply }: WinRateCalculatorProps
   }
 
   const setTargetWinRate = (percentage: string) => {
-    const cakeAmount = new BigNumber(percentage).dividedBy(100).times(totalLockValue)
-    const principalAsToken = cakeAmount.gt(0) ? cakeAmount.toFixed(TOKEN_PRECISION) : '0.00'
-    const principalAsUsdBN = new BigNumber(cakeAmount).times(cakePrice)
+    const rotoAmount = new BigNumber(percentage).dividedBy(100).times(totalLockValue)
+    const principalAsToken = rotoAmount.gt(0) ? rotoAmount.toFixed(TOKEN_PRECISION) : '0.00'
+    const principalAsUsdBN = new BigNumber(rotoAmount).times(rotoPrice)
     const principalAsUsdString = principalAsUsdBN.gt(0) ? principalAsUsdBN.toFixed(USD_PRECISION) : '0.00'
 
     const data = {

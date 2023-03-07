@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import BigNumber from 'bignumber.js'
-import { Flex, Skeleton, Heading, Box, Text, Balance } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Flex, Skeleton, Heading, Box, Text, Balance } from '@offsideswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
 import { LotteryRound, LotteryRoundGraphEntity } from 'state/types'
-import { usePriceCakeBusd } from 'state/farms/hooks'
+import { usePriceRotoBusd } from 'state/farms/hooks'
 import { useGetLotteryGraphDataById } from 'state/lottery/hooks'
 import { getGraphLotteries } from 'state/lottery/getLotteriesData'
-import { formatNumber, getBalanceNumber } from '@pancakeswap/utils/formatBalance'
+import { formatNumber, getBalanceNumber } from '@offsideswap/utils/formatBalance'
 import RewardBrackets from '../RewardBrackets'
 
 const NextDrawWrapper = styled(Flex)`
@@ -26,7 +26,7 @@ const PreviousRoundCardFooter: React.FC<
   const { t } = useTranslation()
   const [fetchedLotteryGraphData, setFetchedLotteryGraphData] = useState<LotteryRoundGraphEntity>()
   const lotteryGraphDataFromState = useGetLotteryGraphDataById(lotteryId)
-  const cakePriceBusd = usePriceCakeBusd()
+  const rotoPriceBusd = usePriceRotoBusd()
 
   useEffect(() => {
     const getGraphData = async () => {
@@ -40,8 +40,8 @@ const PreviousRoundCardFooter: React.FC<
 
   let prizeInBusd = new BigNumber(NaN)
   if (lotteryNodeData) {
-    const { amountCollectedInCake } = lotteryNodeData
-    prizeInBusd = amountCollectedInCake.times(cakePriceBusd)
+    const { amountCollectedInRoto } = lotteryNodeData
+    prizeInBusd = amountCollectedInRoto.times(rotoPriceBusd)
   }
 
   const getTotalUsers = (): string => {
@@ -72,8 +72,8 @@ const PreviousRoundCardFooter: React.FC<
           <Balance
             fontSize="14px"
             color="textSubtle"
-            unit=" CAKE"
-            value={getBalanceNumber(lotteryNodeData?.amountCollectedInCake)}
+            unit=" ROTO"
+            value={getBalanceNumber(lotteryNodeData?.amountCollectedInRoto)}
             decimals={0}
           />
         )}

@@ -1,4 +1,4 @@
-import { SignMessageArgs, SignMessageResult, signMessage as signMessage_ } from '@pancakeswap/awgmi/core'
+import { SignMessageArgs, SignMessageResult, signMessage as signMessage_ } from '@offsideswap/awgmi/core'
 import * as React from 'react'
 
 import { MutationConfig } from '../types'

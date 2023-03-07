@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 import { useState, useCallback, useMemo } from 'react'
-import { Flex, Box, Card, Text, useMatchBreakpoints, Balance, ButtonTabMenu } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
-import { usePriceCakeBusd } from 'state/farms/hooks'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
+import { Flex, Box, Card, Text, useMatchBreakpoints, Balance, ButtonTabMenu } from '@offsideswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
+import { usePriceRotoBusd } from 'state/farms/hooks'
+import { getBalanceNumber } from '@offsideswap/utils/formatBalance'
 import { usePotteryData } from 'state/pottery/hook'
 import Deposit from './Deposit/index'
 import Claim from './Claim/index'
@@ -66,14 +66,14 @@ const BalanceStyle = styled(Balance)`
 
 const Pot: React.FC<React.PropsWithChildren> = () => {
   const { t } = useTranslation()
-  const cakePriceBusd = usePriceCakeBusd()
+  const rotoPriceBusd = usePriceRotoBusd()
   const { isMobile } = useMatchBreakpoints()
   const { publicData } = usePotteryData()
 
   const [activeTab, setIndex] = useState<POT_CATEGORY>(POT_CATEGORY.Deposit)
   const handleClick = useCallback((tabType: POT_CATEGORY) => setIndex(tabType), [])
 
-  const prizeInBusd = publicData.totalPrize.times(cakePriceBusd)
+  const prizeInBusd = publicData.totalPrize.times(rotoPriceBusd)
   const prizeTotal = getBalanceNumber(prizeInBusd)
 
   const tabMenuItems = useMemo(() => {
@@ -105,7 +105,7 @@ const Pot: React.FC<React.PropsWithChildren> = () => {
               <Box>
                 <CardHeader
                   title={t('Pottery')}
-                  subTitle={t('Stake CAKE, Earn CAKE, Win CAKE')}
+                  subTitle={t('Stake ROTO, Earn ROTO, Win ROTO')}
                   primarySrc="/images/tokens/0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82.svg"
                   secondarySrc="/images/tokens/pot-icon.svg"
                 />

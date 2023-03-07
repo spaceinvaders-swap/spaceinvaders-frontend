@@ -1,6 +1,6 @@
 {
-  "name": "@pancakeswap/token-lists",
-  "version": "0.0.5",
+  "name": "@offsideswap/token-lists",
+  "version": "1.0.0",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -13,7 +13,7 @@
   "dependencies": {
     "ajv": "^6.12.3",
     "lodash": "^4.17.21",
-    "@pancakeswap/swap-sdk-core": "*"
+    "@offsideswap/swap-sdk-core": "*"
   },
   "peerDependencies": {
     "@reduxjs/toolkit": "^1.9.1",

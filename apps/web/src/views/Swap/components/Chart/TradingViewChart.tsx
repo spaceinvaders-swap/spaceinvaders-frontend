@@ -1,7 +1,7 @@
-import { Box, BunnyPlaceholderIcon, Flex, Text } from '@pancakeswap/uikit'
+import { Box, BunnyPlaceholderIcon, Flex, Text } from '@offsideswap/uikit'
 import TradingView, { useTradingViewEvent } from 'components/TradingView'
-import { useTranslation } from '@pancakeswap/localization'
-import { useDebounce } from '@pancakeswap/hooks'
+import { useTranslation } from '@offsideswap/localization'
+import { useDebounce } from '@offsideswap/hooks'
 import { useCallback, useEffect, useMemo, useState, memo } from 'react'
 import styled from 'styled-components'
 import { BarChartLoader } from 'components/ChartLoaders'
@@ -33,7 +33,7 @@ const LoadingWrapper = styled.div<{ $isDark: boolean }>`
 const bnbToWBNBSymbol = (sym: string) => (sym === 'BNB' ? 'WBNB' : sym)
 
 const ID = 'TV_SWAP_CHART'
-const SYMBOL_PREFIX = 'PANCAKESWAP:'
+const SYMBOL_PREFIX = 'OFFSIDESWAP:'
 
 const TradingViewChart = ({ outputSymbol, inputSymbol, isDark, onTwChartSymbol }: TradingViewChartProps) => {
   const [isLoading, setIsLoading] = useState(true)

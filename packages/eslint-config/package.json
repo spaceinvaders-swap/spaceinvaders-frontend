@@ -1,12 +1,12 @@
 {
-  "name": "@pancakeswap/eslint-config-pancake",
+  "name": "@offsideswap/eslint-config-offside",
   "version": "1.2.0",
-  "description": "Eslint config for PancakeSwap",
+  "description": "Eslint config for OffsideSwap",
   "main": "lib/index.js",
   "files": [
     "lib"
   ],
-  "repository": "https://github.com/pancakeswap/pancake-toolkit/tree/master/packages/eslint-config-pancake",
+  "repository": "https://github.com/offsideswap/offside-toolkit/tree/master/packages/eslint-config-offside",
   "license": "MIT",
   "author": "RabbitDoge",
   "private": true,

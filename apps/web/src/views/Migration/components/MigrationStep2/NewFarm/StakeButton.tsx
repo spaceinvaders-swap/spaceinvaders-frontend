@@ -1,4 +1,4 @@
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@offsideswap/localization'
 import {
   AddIcon,
   Button,
@@ -8,7 +8,7 @@ import {
   useModal,
   useToast,
   Farm as FarmUI,
-} from '@pancakeswap/uikit'
+} from '@offsideswap/uikit'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import { BASE_ADD_LIQUIDITY_URL } from 'config'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
@@ -17,14 +17,14 @@ import { useERC20 } from 'hooks/useContract'
 import React, { useCallback, useState } from 'react'
 import { useAppDispatch } from 'state'
 import { fetchFarmUserDataAsync } from 'state/farms'
-import { useFarmUser, usePriceCakeBusd, useFarmFromPid } from 'state/farms/hooks'
+import { useFarmUser, usePriceRotoBusd, useFarmFromPid } from 'state/farms/hooks'
 import styled from 'styled-components'
 import getLiquidityUrlPathParts from 'utils/getLiquidityUrlPathParts'
-import { FarmWithStakedValue } from '@pancakeswap/farms'
+import { FarmWithStakedValue } from '@offsideswap/farms'
 import useApproveFarm from 'views/Farms/hooks/useApproveFarm'
 import useStakeFarms from 'views/Farms/hooks/useStakeFarms'
 import useUnstakeFarms from 'views/Farms/hooks/useUnstakeFarms'
-import BCakeCalculator from 'views/Farms/components/YieldBooster/components/BCakeCalculator'
+import BRotoCalculator from 'views/Farms/components/YieldBooster/components/BRotoCalculator'
 
 const IconButtonWrapper = styled.div`
   display: flex;
@@ -58,9 +58,9 @@ const StakeButton: React.FC<React.PropsWithChildren<StackedActionProps>> = ({
   const { allowance, tokenBalance, stakedBalance } = useFarmUser(pid)
   const { onStake } = useStakeFarms(stakedPid)
   const { onUnstake } = useUnstakeFarms(stakedPid)
-  const cakePrice = usePriceCakeBusd()
+  const rotoPrice = usePriceRotoBusd()
   const { lpTokenStakedAmount } = useFarmFromPid(pid)
-  const [bCakeMultiplier, setBCakeMultiplier] = useState<number | null>(() => null)
+  const [bRotoMultiplier, setBRotoMultiplier] = useState<number | null>(() => null)
 
   const isApproved = account && allowance && allowance.isGreaterThan(0)
 
@@ -101,12 +101,12 @@ const StakeButton: React.FC<React.PropsWithChildren<StackedActionProps>> = ({
     }
   }
 
-  const bCakeCalculatorSlot = (calculatorBalance) => (
-    <BCakeCalculator
+  const bRotoCalculatorSlot = (calculatorBalance) => (
+    <BRotoCalculator
       targetInputBalance={calculatorBalance}
-      earningTokenPrice={cakePrice.toNumber()}
+      earningTokenPrice={rotoPrice.toNumber()}
       lpTokenStakedAmount={lpTokenStakedAmount}
-      setBCakeMultiplier={setBCakeMultiplier}
+      setBRotoMultiplier={setBRotoMultiplier}
     />
   )
 
@@ -125,10 +125,10 @@ const StakeButton: React.FC<React.PropsWithChildren<StackedActionProps>> = ({
       tokenName={lpSymbol}
       multiplier={multiplier}
       addLiquidityUrl={addLiquidityUrl}
-      cakePrice={cakePrice}
-      bCakeMultiplier={bCakeMultiplier}
+      rotoPrice={rotoPrice}
+      bRotoMultiplier={bRotoMultiplier}
       decimals={18}
-      bCakeCalculatorSlot={bCakeCalculatorSlot}
+      bRotoCalculatorSlot={bRotoCalculatorSlot}
     />,
   )
   const [onPresentWithdraw] = useModal(

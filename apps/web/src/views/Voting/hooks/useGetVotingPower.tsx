@@ -1,4 +1,4 @@
-import { ChainId } from '@pancakeswap/sdk'
+import { ChainId } from '@offsideswap/sdk'
 import { useAccount } from 'wagmi'
 import { FetchStatus } from 'config/constants/types'
 import useSWRImmutable from 'swr/immutable'
@@ -8,14 +8,14 @@ import { bscRpcProvider } from 'utils/providers'
 import { getVotingPower } from '../helpers'
 
 interface State {
-  cakeBalance?: number
-  cakeVaultBalance?: number
-  cakePoolBalance?: number
+  rotoBalance?: number
+  rotoVaultBalance?: number
+  rotoPoolBalance?: number
   poolsBalance?: number
-  cakeBnbLpBalance?: number
+  rotoBnbLpBalance?: number
   ifoPoolBalance?: number
   total: number
-  lockedCakeBalance?: number
+  lockedRotoBalance?: number
   lockedEndTime?: number
 }
 
@@ -26,25 +26,25 @@ const useGetVotingPower = (block?: number): State & { isLoading: boolean; isErro
     const eligiblePools = await getActivePools(blockNumber)
     const poolAddresses = eligiblePools.map(({ contractAddress }) => getAddress(contractAddress, ChainId.BSC))
     const {
-      cakeBalance,
-      cakeBnbLpBalance,
-      cakePoolBalance,
+      rotoBalance,
+      rotoBnbLpBalance,
+      rotoPoolBalance,
       total,
       poolsBalance,
-      cakeVaultBalance,
+      rotoVaultBalance,
       ifoPoolBalance,
-      lockedCakeBalance,
+      lockedRotoBalance,
       lockedEndTime,
     } = await getVotingPower(account, poolAddresses, blockNumber)
     return {
-      cakeBalance,
-      cakeBnbLpBalance,
-      cakePoolBalance,
+      rotoBalance,
+      rotoBnbLpBalance,
+      rotoPoolBalance,
       poolsBalance,
-      cakeVaultBalance,
+      rotoVaultBalance,
       ifoPoolBalance,
       total,
-      lockedCakeBalance,
+      lockedRotoBalance,
       lockedEndTime,
     }
   })

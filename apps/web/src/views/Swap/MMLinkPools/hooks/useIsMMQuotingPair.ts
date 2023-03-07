@@ -1,5 +1,5 @@
-import { ChainId, Currency } from '@pancakeswap/sdk'
-import { PANCAKE_BSC_MM, PANCAKE_ETH_MM } from 'config/constants/lists'
+import { ChainId, Currency } from '@offsideswap/sdk'
+import { OFFSIDE_BSC_MM, OFFSIDE_ETH_MM } from 'config/constants/lists'
 import { ConnectorNames } from 'config/wallet'
 import { ExtendEthereum } from 'global'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
@@ -11,8 +11,8 @@ import { IS_SUPPORT_NATIVE_TOKEN, MM_STABLE_TOKENS_WHITE_LIST, NATIVE_CURRENCY_A
 import { useIsMMSupportChain } from './useIsMMSupportChain'
 
 const QUOTING_WHITE_LIST = {
-  1: PANCAKE_ETH_MM,
-  56: PANCAKE_BSC_MM,
+  1: OFFSIDE_ETH_MM,
+  56: OFFSIDE_BSC_MM,
 }
 
 export const useTokenList = (url?: string): Record<string, string> => {

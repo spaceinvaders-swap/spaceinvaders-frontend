@@ -1,5 +1,5 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Box, Card, Flex, Text, NextLinkFromReactRouter } from '@pancakeswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
+import { Box, Card, Flex, Text, NextLinkFromReactRouter } from '@offsideswap/uikit'
 import { useEffect, useMemo, useRef } from 'react'
 import { useAllTokenDataSWR, useGetChainName, useMultiChainPath } from 'state/info/hooks'
 import { TokenData } from 'state/info/types'

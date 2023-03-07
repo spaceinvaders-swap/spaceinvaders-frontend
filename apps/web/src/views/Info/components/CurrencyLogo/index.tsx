@@ -1,4 +1,4 @@
-import { Token } from '@pancakeswap/sdk'
+import { Token } from '@offsideswap/sdk'
 import { useMemo } from 'react'
 import { multiChainId } from 'state/info/constant'
 import styled from 'styled-components'

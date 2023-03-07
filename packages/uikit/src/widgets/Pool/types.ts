@@ -54,8 +54,8 @@ export interface DeserializedPool<T> extends DeserializedPoolConfig<T>, CorePool
   };
 }
 
-export type DeserializedPoolVault<T> = DeserializedPool<T> & DeserializedCakeVault;
-export type DeserializedPoolLockedVault<T> = DeserializedPool<T> & DeserializedLockedCakeVault;
+export type DeserializedPoolVault<T> = DeserializedPool<T> & DeserializedRotoVault;
+export type DeserializedPoolLockedVault<T> = DeserializedPool<T> & DeserializedLockedRotoVault;
 
 export interface DeserializedLockedVaultUser extends DeserializedVaultUser {
   lastDepositedTime: string;
@@ -70,7 +70,7 @@ export interface DeserializedLockedVaultUser extends DeserializedVaultUser {
   currentOverdueFee: BigNumber;
 }
 
-export interface DeserializedLockedCakeVault extends Omit<DeserializedCakeVault, "userData"> {
+export interface DeserializedLockedRotoVault extends Omit<DeserializedRotoVault, "userData"> {
   totalLockedAmount?: BigNumber;
   userData?: DeserializedLockedVaultUser;
 }
@@ -88,29 +88,29 @@ export interface DeserializedVaultFees extends SerializedVaultFees {
 export interface DeserializedVaultUser {
   isLoading: boolean;
   userShares: BigNumber;
-  cakeAtLastUserAction: BigNumber;
+  rotoAtLastUserAction: BigNumber;
   lastDepositedTime: string;
   lastUserActionTime: string;
   balance: {
-    cakeAsNumberBalance: number;
-    cakeAsBigNumber: BigNumber;
-    cakeAsDisplayBalance: string;
+    rotoAsNumberBalance: number;
+    rotoAsBigNumber: BigNumber;
+    rotoAsDisplayBalance: string;
   };
 }
 
-export interface DeserializedCakeVault {
+export interface DeserializedRotoVault {
   totalShares?: BigNumber;
   totalLockedAmount?: BigNumber;
   pricePerFullShare: BigNumber;
-  totalCakeInVault?: BigNumber;
+  totalRotoInVault?: BigNumber;
   fees?: DeserializedVaultFees;
   userData?: DeserializedVaultUser;
 }
 
 export enum VaultKey {
-  CakeVaultV1 = "cakeVaultV1",
-  CakeVault = "cakeVault",
-  CakeFlexibleSideVault = "cakeFlexibleSideVault",
+  RotoVaultV1 = "rotoVaultV1",
+  RotoVault = "rotoVault",
+  RotoFlexibleSideVault = "rotoFlexibleSideVault",
   IfoPool = "ifoPool",
 }
 

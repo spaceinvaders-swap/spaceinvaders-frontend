@@ -1,16 +1,16 @@
 import { useAccount } from 'wagmi'
-import { ChainId } from '@pancakeswap/sdk'
+import { ChainId } from '@offsideswap/sdk'
 import BigNumber from 'bignumber.js'
-import { getFarmConfig } from '@pancakeswap/farms/constants'
+import { getFarmConfig } from '@offsideswap/farms/constants'
 import { useFastRefreshEffect, useSlowRefreshEffect } from 'hooks/useRefreshEffect'
 import { useMemo } from 'react'
 import { useSelector } from 'react-redux'
 import { useAppDispatch } from 'state'
-import { useCakeBusdPrice } from 'hooks/useBUSDPrice'
-import { deserializeToken } from '@pancakeswap/token-lists'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { getBalanceAmount } from '@pancakeswap/utils/formatBalance'
-import { DeserializedFarm, DeserializedFarmsState, DeserializedFarmUserData, SerializedFarm } from '@pancakeswap/farms'
+import { useRotoBusdPrice } from 'hooks/useBUSDPrice'
+import { deserializeToken } from '@offsideswap/token-lists'
+import { BIG_ZERO } from '@offsideswap/utils/bigNumber'
+import { getBalanceAmount } from '@offsideswap/utils/formatBalance'
+import { DeserializedFarm, DeserializedFarmsState, DeserializedFarmUserData, SerializedFarm } from '@offsideswap/farms'
 import { fetchFarmsPublicDataAsync, fetchFarmUserDataAsync } from '.'
 import { State } from '../types'
 
@@ -65,7 +65,7 @@ export const usePollFarmsV1WithUserData = () => {
 
 /**
  * Fetches the "core" farm data used globally
- * 251 = CAKE-BNB LP
+ * 251 = ROTO-BNB LP
  * 252 = BUSD-BNB LP
  */
 export const usePollCoreFarmData = () => {
@@ -140,7 +140,7 @@ export const useLpTokenPrice = (symbol: string) => {
 /**
  * @deprecated use the BUSD hook in /hooks
  */
-export const usePriceCakeBusd = (): BigNumber => {
-  const price = useCakeBusdPrice()
+export const usePriceRotoBusd = (): BigNumber => {
+  const price = useRotoBusdPrice()
   return useMemo(() => (price ? new BigNumber(price.toSignificant(6)) : BIG_ZERO), [price])
 }

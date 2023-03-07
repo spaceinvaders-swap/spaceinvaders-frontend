@@ -1,6 +1,6 @@
-import { Button, NextLinkFromReactRouter } from '@pancakeswap/uikit'
-import { ContextApi } from '@pancakeswap/localization'
-import { UserStatusEnum } from 'views/PancakeSquad/types'
+import { Button, NextLinkFromReactRouter } from '@offsideswap/uikit'
+import { ContextApi } from '@offsideswap/localization'
+import { UserStatusEnum } from 'views/OffsideSquad/types'
 
 type ActivateProfileButtonProps = {
   t: ContextApi['t']

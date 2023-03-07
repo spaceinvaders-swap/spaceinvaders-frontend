@@ -1,6 +1,6 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, Trade, TradeType } from '@pancakeswap/aptos-swap-sdk'
-import { QuestionHelper, Text, RowBetween, RowFixed, AutoColumn } from '@pancakeswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
+import { Currency, Trade, TradeType } from '@offsideswap/aptos-swap-sdk'
+import { QuestionHelper, Text, RowBetween, RowFixed, AutoColumn } from '@offsideswap/uikit'
 import { BUYBACK_FEE, LP_HOLDERS_FEE, TOTAL_FEE, TREASURY_FEE } from 'config/constants/info'
 import { Field } from 'state/swap'
 import { useUserSlippage } from 'state/user'
@@ -74,7 +74,7 @@ function TradeSummary({
                 <Text mb="12px">{t('For each trade a %amount% fee is paid', { amount: totalFeePercent })}</Text>
                 <Text>- {t('%amount% to LP token holders', { amount: lpHoldersFeePercent })}</Text>
                 <Text>- {t('%amount% to the Treasury', { amount: treasuryFeePercent })}</Text>
-                <Text>- {t('%amount% towards CAKE buyback and burn', { amount: buyBackFeePercent })}</Text>
+                <Text>- {t('%amount% towards ROTO buyback and burn', { amount: buyBackFeePercent })}</Text>
               </>
             }
             ml="4px"

@@ -1,15 +1,15 @@
-import { Token } from '@pancakeswap/sdk'
-import { TooltipText, useTooltip, Balance, Pool } from '@pancakeswap/uikit'
+import { Token } from '@offsideswap/sdk'
+import { TooltipText, useTooltip, Balance, Pool } from '@offsideswap/uikit'
 import AutoEarningsBreakdown from '../AutoEarningsBreakdown'
 
-interface RecentCakeProfitBalanceProps {
-  cakeToDisplay: number
+interface RecentRotoProfitBalanceProps {
+  rotoToDisplay: number
   pool: Pool.DeserializedPool<Token>
   account: string
 }
 
-const RecentCakeProfitBalance: React.FC<React.PropsWithChildren<RecentCakeProfitBalanceProps>> = ({
-  cakeToDisplay,
+const RecentRotoProfitBalance: React.FC<React.PropsWithChildren<RecentRotoProfitBalanceProps>> = ({
+  rotoToDisplay,
   pool,
   account,
 }) => {
@@ -21,10 +21,10 @@ const RecentCakeProfitBalance: React.FC<React.PropsWithChildren<RecentCakeProfit
     <>
       {tooltipVisible && tooltip}
       <TooltipText ref={targetRef} small>
-        <Balance fontSize="14px" value={cakeToDisplay} />
+        <Balance fontSize="14px" value={rotoToDisplay} />
       </TooltipText>
     </>
   )
 }
 
-export default RecentCakeProfitBalance
+export default RecentRotoProfitBalance

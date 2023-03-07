@@ -1,8 +1,8 @@
 [
   {
     "inputs": [
-      { "internalType": "address", "name": "_cake", "type": "address" },
-      { "internalType": "address", "name": "_cakePool", "type": "address" },
+      { "internalType": "address", "name": "_roto", "type": "address" },
+      { "internalType": "address", "name": "_rotoPool", "type": "address" },
       { "internalType": "address", "name": "_v2", "type": "address" },
       { "internalType": "uint256", "name": "_max", "type": "uint256" },
       { "internalType": "uint256", "name": "_cA", "type": "uint256" },
@@ -101,7 +101,7 @@
       { "indexed": false, "internalType": "uint256", "name": "totalLockedAmount", "type": "uint256" },
       { "indexed": false, "internalType": "uint256", "name": "maxLockDuration", "type": "uint256" }
     ],
-    "name": "UpdateCakePool",
+    "name": "UpdateRotoPool",
     "type": "event"
   },
   {
@@ -151,14 +151,14 @@
   },
   {
     "inputs": [],
-    "name": "CAKE",
+    "name": "ROTO",
     "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [],
-    "name": "CAKE_POOL",
+    "name": "ROTO_POOL",
     "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
     "stateMutability": "view",
     "type": "function"
@@ -289,7 +289,7 @@
       { "internalType": "uint256", "name": "_totalLockedAmount", "type": "uint256" },
       { "internalType": "uint256", "name": "_maxLockDuration", "type": "uint256" }
     ],
-    "name": "onCakePoolUpdate",
+    "name": "onRotoPoolUpdate",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"

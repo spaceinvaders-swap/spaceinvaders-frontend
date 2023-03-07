@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { Card, CardBody, Heading, ArrowBackIcon, IconButton } from '@pancakeswap/uikit'
+import { Card, CardBody, Heading, ArrowBackIcon, IconButton } from '@offsideswap/uikit'
 import { useRouter } from 'next/router'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@offsideswap/localization'
 import { PredictionSupportedSymbol } from 'state/types'
 import { useConfig } from 'views/Predictions/context/ConfigProvider'
 
@@ -57,10 +57,10 @@ const Notification: React.FC<React.PropsWithChildren<NotificationProps>> = ({ ti
         <BackButton />
         <BunnyDecoration
           onClick={() => {
-            if (token.symbol === PredictionSupportedSymbol.CAKE) {
+            if (token.symbol === PredictionSupportedSymbol.ROTO) {
               router.query.token = PredictionSupportedSymbol.BNB
             } else if (token.symbol === PredictionSupportedSymbol.BNB) {
-              router.query.token = PredictionSupportedSymbol.CAKE
+              router.query.token = PredictionSupportedSymbol.ROTO
             }
 
             router.push(router)

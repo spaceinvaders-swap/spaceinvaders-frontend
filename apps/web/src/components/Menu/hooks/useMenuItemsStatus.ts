@@ -1,6 +1,6 @@
-import { ChainId } from '@pancakeswap/sdk'
+import { ChainId } from '@offsideswap/sdk'
 import { useActiveIfoWithBlocks } from 'hooks/useActiveIfoWithBlocks'
-import { useUserCakeLockStatus } from 'hooks/useUserCakeLockStatus'
+import { useUserRotoLockStatus } from 'hooks/useUserRotoLockStatus'
 import { useMemo } from 'react'
 import { useChainCurrentBlock } from 'state/block/hooks'
 import { PotteryDepositStatus } from 'state/types'
@@ -15,7 +15,7 @@ export const useMenuItemsStatus = (): Record<string, string> => {
   const competitionStatus = useCompetitionStatus()
   const potteryStatus = usePotteryStatus()
   const votingStatus = useVotingStatus()
-  const isUserLocked = useUserCakeLockStatus()
+  const isUserLocked = useUserRotoLockStatus()
 
   const ifoStatus =
     currentBlock && activeIfo && activeIfo.endBlock > currentBlock

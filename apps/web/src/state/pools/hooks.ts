@@ -6,26 +6,26 @@ import { useAppDispatch } from 'state'
 import { useFastRefreshEffect, useSlowRefreshEffect } from 'hooks/useRefreshEffect'
 import { FAST_INTERVAL } from 'config/constants'
 import useSWRImmutable from 'swr/immutable'
-import { getFarmConfig } from '@pancakeswap/farms/constants'
+import { getFarmConfig } from '@offsideswap/farms/constants'
 import { livePools } from 'config/constants/pools'
-import { Pool } from '@pancakeswap/uikit'
-import { Token } from '@pancakeswap/sdk'
+import { Pool } from '@offsideswap/uikit'
+import { Token } from '@offsideswap/sdk'
 
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import {
   fetchPoolsPublicDataAsync,
   fetchPoolsUserDataAsync,
-  fetchCakeVaultPublicData,
-  fetchCakeVaultUserData,
-  fetchCakeVaultFees,
+  fetchRotoVaultPublicData,
+  fetchRotoVaultUserData,
+  fetchRotoVaultFees,
   fetchPoolsStakingLimitsAsync,
   fetchUserIfoCreditDataAsync,
   fetchIfoPublicDataAsync,
-  fetchCakeFlexibleSideVaultPublicData,
-  fetchCakeFlexibleSideVaultUserData,
-  fetchCakeFlexibleSideVaultFees,
-  fetchCakePoolUserDataAsync,
-  fetchCakePoolPublicDataAsync,
+  fetchRotoFlexibleSideVaultPublicData,
+  fetchRotoFlexibleSideVaultUserData,
+  fetchRotoFlexibleSideVaultFees,
+  fetchRotoPoolUserDataAsync,
+  fetchRotoPoolPublicDataAsync,
 } from '.'
 import { VaultKey } from '../types'
 import { fetchFarmsPublicDataAsync } from '../farms'
@@ -47,7 +47,7 @@ const getActiveFarms = async (chainId: number) => {
     .filter(
       ({ token, pid, quoteToken }) =>
         pid !== 0 &&
-        ((token.symbol === 'CAKE' && quoteToken.symbol === 'WBNB') ||
+        ((token.symbol === 'ROTO' && quoteToken.symbol === 'WBNB') ||
           (token.symbol === 'BUSD' && quoteToken.symbol === 'WBNB') ||
           (token.symbol === 'USDT' && quoteToken.symbol === 'BUSD') ||
           lPoolAddresses.find((poolAddress) => poolAddress === token.address)),
@@ -55,13 +55,13 @@ const getActiveFarms = async (chainId: number) => {
     .map((farm) => farm.pid)
 }
 
-const getCakePriceFarms = async (chainId: number) => {
+const getRotoPriceFarms = async (chainId: number) => {
   const farmsConfig = await getFarmConfig(chainId)
   return farmsConfig
     .filter(
       ({ token, pid, quoteToken }) =>
         pid !== 0 &&
-        ((token.symbol === 'CAKE' && quoteToken.symbol === 'WBNB') ||
+        ((token.symbol === 'ROTO' && quoteToken.symbol === 'WBNB') ||
           (token.symbol === 'BUSD' && quoteToken.symbol === 'WBNB')),
     )
     .map((farm) => farm.pid)
@@ -111,40 +111,40 @@ export const usePoolsPageFetch = () => {
 
   useFastRefreshEffect(() => {
     batch(() => {
-      dispatch(fetchCakeVaultPublicData())
-      dispatch(fetchCakeFlexibleSideVaultPublicData())
+      dispatch(fetchRotoVaultPublicData())
+      dispatch(fetchRotoFlexibleSideVaultPublicData())
       dispatch(fetchIfoPublicDataAsync())
       if (account) {
         dispatch(fetchPoolsUserDataAsync(account))
-        dispatch(fetchCakeVaultUserData({ account }))
-        dispatch(fetchCakeFlexibleSideVaultUserData({ account }))
+        dispatch(fetchRotoVaultUserData({ account }))
+        dispatch(fetchRotoFlexibleSideVaultUserData({ account }))
       }
     })
   }, [account, dispatch])
 
   useEffect(() => {
     batch(() => {
-      dispatch(fetchCakeVaultFees())
-      dispatch(fetchCakeFlexibleSideVaultFees())
+      dispatch(fetchRotoVaultFees())
+      dispatch(fetchRotoFlexibleSideVaultFees())
     })
   }, [dispatch])
 }
 
-export const useCakeVaultUserData = () => {
+export const useRotoVaultUserData = () => {
   const { address: account } = useAccount()
   const dispatch = useAppDispatch()
 
   useFastRefreshEffect(() => {
     if (account) {
-      dispatch(fetchCakeVaultUserData({ account }))
+      dispatch(fetchRotoVaultUserData({ account }))
     }
   }, [account, dispatch])
 }
 
-export const useCakeVaultPublicData = () => {
+export const useRotoVaultPublicData = () => {
   const dispatch = useAppDispatch()
   useFastRefreshEffect(() => {
-    dispatch(fetchCakeVaultPublicData())
+    dispatch(fetchRotoVaultPublicData())
   }, [dispatch])
 }
 
@@ -155,11 +155,11 @@ export const useFetchIfo = () => {
   useSWRImmutable(
     'fetchIfoPublicData',
     async () => {
-      const cakePriceFarms = await getCakePriceFarms(chainId)
-      await dispatch(fetchFarmsPublicDataAsync({ pids: cakePriceFarms, chainId }))
+      const rotoPriceFarms = await getRotoPriceFarms(chainId)
+      await dispatch(fetchFarmsPublicDataAsync({ pids: rotoPriceFarms, chainId }))
       batch(() => {
-        dispatch(fetchCakePoolPublicDataAsync())
-        dispatch(fetchCakeVaultPublicData())
+        dispatch(fetchRotoPoolPublicDataAsync())
+        dispatch(fetchRotoVaultPublicData())
         dispatch(fetchIfoPublicDataAsync())
       })
     },
@@ -172,8 +172,8 @@ export const useFetchIfo = () => {
     account && ['fetchIfoUserData', account],
     async () => {
       batch(() => {
-        dispatch(fetchCakePoolUserDataAsync(account))
-        dispatch(fetchCakeVaultUserData({ account }))
+        dispatch(fetchRotoPoolUserDataAsync(account))
+        dispatch(fetchRotoVaultUserData({ account }))
         dispatch(fetchUserIfoCreditDataAsync(account))
       })
     },
@@ -182,13 +182,13 @@ export const useFetchIfo = () => {
     },
   )
 
-  useSWRImmutable('fetchCakeVaultFees', async () => {
-    dispatch(fetchCakeVaultFees())
+  useSWRImmutable('fetchRotoVaultFees', async () => {
+    dispatch(fetchRotoVaultFees())
   })
 }
 
-export const useCakeVault = () => {
-  return useVaultPoolByKey(VaultKey.CakeVault)
+export const useRotoVault = () => {
+  return useVaultPoolByKey(VaultKey.RotoVault)
 }
 
 export const useVaultPoolByKey = (key: VaultKey) => {

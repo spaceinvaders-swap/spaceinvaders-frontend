@@ -1,6 +1,6 @@
-import { RowBetween, Text } from '@pancakeswap/uikit'
+import { RowBetween, Text } from '@offsideswap/uikit'
 import { LightCard } from 'components/Card'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@offsideswap/localization'
 
 export default function PricePoolShareSection({ farmPriceBar, noLiquidity }) {
   const { t } = useTranslation()

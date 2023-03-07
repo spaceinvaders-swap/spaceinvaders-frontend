@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import PancakeToggle from "./PancakeToggle";
+import OffsideToggle from "./OffsideToggle";
 
 export default {
-  title: "Components/PancakeToggle",
-  component: PancakeToggle,
+  title: "Components/OffsideToggle",
+  component: OffsideToggle,
 };
 
 export const Default: React.FC<React.PropsWithChildren> = () => {
@@ -14,13 +14,13 @@ export const Default: React.FC<React.PropsWithChildren> = () => {
   return (
     <>
       <div style={{ marginBottom: "32px" }}>
-        <PancakeToggle checked={isChecked} onChange={toggle} />
+        <OffsideToggle checked={isChecked} onChange={toggle} />
       </div>
       <div style={{ marginBottom: "32px" }}>
-        <PancakeToggle checked={isChecked} onChange={toggle} scale="md" />
+        <OffsideToggle checked={isChecked} onChange={toggle} scale="md" />
       </div>
       <div>
-        <PancakeToggle checked={isChecked} onChange={toggle} scale="sm" />
+        <OffsideToggle checked={isChecked} onChange={toggle} scale="sm" />
       </div>
     </>
   );

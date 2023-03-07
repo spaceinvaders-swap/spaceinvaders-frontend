@@ -1,37 +1,37 @@
 import BigNumber from 'bignumber.js'
-import { convertSharesToCake } from 'views/Pools/helpers'
+import { convertSharesToRoto } from 'views/Pools/helpers'
 import { multicallv2 } from 'utils/multicall'
-import cakeVaultAbi from 'config/abi/cakeVaultV2.json'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import rotoVaultAbi from 'config/abi/rotoVaultV2.json'
+import { BIG_ZERO } from '@offsideswap/utils/bigNumber'
 
-export const fetchPublicVaultData = async (cakeVaultAddress: string) => {
+export const fetchPublicVaultData = async (rotoVaultAddress: string) => {
   try {
     const calls = ['getPricePerFullShare', 'totalShares', 'totalLockedAmount'].map((method) => ({
-      address: cakeVaultAddress,
+      address: rotoVaultAddress,
       name: method,
     }))
     const [[sharePrice], [shares], totalLockedAmount] = await multicallv2({
-      abi: cakeVaultAbi,
+      abi: rotoVaultAbi,
       calls,
       options: { requireSuccess: false },
     })
     const totalSharesAsBigNumber = shares ? new BigNumber(shares.toString()) : BIG_ZERO
     const totalLockedAmountAsBigNumber = totalLockedAmount ? new BigNumber(totalLockedAmount[0].toString()) : BIG_ZERO
     const sharePriceAsBigNumber = sharePrice ? new BigNumber(sharePrice.toString()) : BIG_ZERO
-    const totalCakeInVaultEstimate = convertSharesToCake(totalSharesAsBigNumber, sharePriceAsBigNumber)
+    const totalRotoInVaultEstimate = convertSharesToRoto(totalSharesAsBigNumber, sharePriceAsBigNumber)
 
     return {
       totalShares: totalSharesAsBigNumber.toJSON(),
       totalLockedAmount: totalLockedAmountAsBigNumber.toJSON(),
       pricePerFullShare: sharePriceAsBigNumber.toJSON(),
-      totalCakeInVault: totalCakeInVaultEstimate.cakeAsBigNumber.toJSON(),
+      totalRotoInVault: totalRotoInVaultEstimate.rotoAsBigNumber.toJSON(),
     }
   } catch (error) {
     return {
       totalShares: null,
       totalLockedAmount: null,
       pricePerFullShare: null,
-      totalCakeInVault: null,
+      totalRotoInVault: null,
     }
   }
 }

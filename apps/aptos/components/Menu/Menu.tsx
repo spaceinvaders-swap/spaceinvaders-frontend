@@ -1,9 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { languageList, useTranslation } from '@pancakeswap/localization'
-import { Menu as UIMenu, NextLinkFromReactRouter, footerLinks } from '@pancakeswap/uikit'
+import { languageList, useTranslation } from '@offsideswap/localization'
+import { Menu as UIMenu, NextLinkFromReactRouter, footerLinks } from '@offsideswap/uikit'
 import { NetworkSwitcher } from 'components/NetworkSwitcher'
 import PhishingWarningBanner from 'components/PhishingWarningBanner'
-import { useCakePrice } from 'hooks/useStablePrice'
+import { useRotoPrice } from 'hooks/useStablePrice'
 import orderBy from 'lodash/orderBy'
 import { useTheme } from 'next-themes'
 import { useRouter } from 'next/router'
@@ -46,7 +46,7 @@ export const Menu = ({ children }: { children: ReactNode }) => {
   const { setTheme, resolvedTheme } = useTheme()
   const [show] = usePhishingBanner()
 
-  const { data: cakePrice } = useCakePrice()
+  const { data: rotoPrice } = useRotoPrice()
 
   const isDark = resolvedTheme === 'dark'
 
@@ -78,13 +78,13 @@ export const Menu = ({ children }: { children: ReactNode }) => {
       footerLinks={getFooterLinks}
       currentLang={currentLanguage.code}
       langs={languageList}
-      cakePriceUsd={cakePrice ? Number(cakePrice) : undefined}
+      rotoPriceUsd={rotoPrice ? Number(rotoPrice) : undefined}
       // @ts-ignore
       subLinks={activeMenuItem?.hideSubNav || activeSubMenuItem?.hideSubNav ? [] : activeMenuItem?.items}
       activeSubItem={activeSubMenuItem?.href}
       toggleTheme={toggleTheme}
-      buyCakeLabel={t('Buy CAKE')}
-      buyCakeLink="https://aptos.pancakeswap.finance/swap?outputCurrency=0x159df6b7689437016108a019fd5bef736bac692b6d4a1f10c941f6fbb9a74ca6::oft::CakeOFT"
+      buyRotoLabel={t('Buy ROTO')}
+      buyRotoLink="https://aptos.offsideswap.finance/swap?outputCurrency=0x159df6b7689437016108a019fd5bef736bac692b6d4a1f10c941f6fbb9a74ca6::oft::RotoOFT"
     >
       {children}
     </UIMenu>

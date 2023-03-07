@@ -83,7 +83,7 @@ export interface TeamRanksProps {
 export interface UserRewardsProps {
   userCanClaim?: boolean
   userRewards?: {
-    cakeToClaim?: string
+    rotoToClaim?: string
     pointsToClaim?: string
   }
 }
@@ -105,7 +105,7 @@ export const initialUserTradingInformation = {
   isUserActive: false,
   hasUserClaimed: false,
   userRewardGroup: '0',
-  userCakeRewards: '0',
+  userRotoRewards: '0',
   userMoboxRewards: '0',
   userDarRewards: '0',
   userPointReward: '0',
@@ -120,7 +120,7 @@ export interface UserTradingInformation {
   isUserActive?: boolean
   hasUserClaimed?: boolean
   userRewardGroup?: string
-  userCakeRewards?: string
+  userRotoRewards?: string
   userPointReward?: string
   userMoboxRewards?: string
   userDarRewards?: string

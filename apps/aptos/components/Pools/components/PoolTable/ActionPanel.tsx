@@ -1,14 +1,14 @@
 import styled, { keyframes, css } from 'styled-components'
-import { Box, Flex, Text, useMatchBreakpoints, Pool, Farm, HelpIcon, useTooltip } from '@pancakeswap/uikit'
+import { Box, Flex, Text, useMatchBreakpoints, Pool, Farm, HelpIcon, useTooltip } from '@offsideswap/uikit'
 import BigNumber from 'bignumber.js'
-import { Coin } from '@pancakeswap/aptos-swap-sdk'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { useTranslation } from '@pancakeswap/localization'
+import { Coin } from '@offsideswap/aptos-swap-sdk'
+import { BIG_ZERO } from '@offsideswap/utils/bigNumber'
+import { useTranslation } from '@offsideswap/localization'
 import isVaultPool from 'components/Pools/utils/isVaultPool'
 
 import PoolStatsInfo from '../PoolCard/PoolStatsInfo'
 import TableActions from './TableActions'
-import CakeTableActions from './CakeTableActions'
+import RotoTableActions from './RotoTableActions'
 
 const { ManualPoolTag } = Farm.Tags
 
@@ -105,7 +105,7 @@ const ActionPanel: React.FC<React.PropsWithChildren<ActionPanelProps>> = ({ acco
     placement: 'bottom',
   })
 
-  const Actions = isVaultPool() ? CakeTableActions : TableActions
+  const Actions = isVaultPool() ? RotoTableActions : TableActions
 
   return (
     <StyledActionPanel expanded={expanded}>

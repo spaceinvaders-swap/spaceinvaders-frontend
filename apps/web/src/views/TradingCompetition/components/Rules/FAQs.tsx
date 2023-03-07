@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { Card, CardBody, CardHeader, Heading, Text, Flex } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { Card, CardBody, CardHeader, Heading, Text, Flex } from '@offsideswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
 import FoldableText from 'components/FoldableSection/FoldableText'
 
 const Wrapper = styled(Flex)`
@@ -35,7 +35,7 @@ const FAQ = () => {
           <FoldableText title={t('Eligible trading pairs')} mt="24px">
             <Text fontSize="14px" color="textSubtle">
               {t(
-                'Only trades on DAR/BNB, CAKE/BNB, and CAKE/BUSD pairs will be included in volume calculations. Please note that the volume from limit orders will not be included.',
+                'Only trades on DAR/BNB, ROTO/BNB, and ROTO/BUSD pairs will be included in volume calculations. Please note that the volume from limit orders will not be included.',
               )}
             </Text>
           </FoldableText>
@@ -57,13 +57,13 @@ const FAQ = () => {
             <Text fontSize="14px" color="textSubtle">
               -{' '}
               {t(
-                'Prizes to be distributed in CAKE and DAR in a distribution of 1:5 and shared by all members of each respective tier.',
+                'Prizes to be distributed in ROTO and DAR in a distribution of 1:5 and shared by all members of each respective tier.',
               )}
             </Text>
             <Text fontSize="14px" color="textSubtle">
               -{' '}
               {t(
-                'The price of token prizes ($CAKE and $DAR) in USD will be determined as per their BUSD pair price during the tally period.',
+                'The price of token prizes ($ROTO and $DAR) in USD will be determined as per their BUSD pair price during the tally period.',
               )}
             </Text>
             <Text fontSize="14px" color="textSubtle">
@@ -74,13 +74,13 @@ const FAQ = () => {
             <Text fontSize="14px" color="textSubtle">
               -{' '}
               {t(
-                'In the event of a disagreement concerning the final winning team or rank, PancakeSwap will have the final say.',
+                'In the event of a disagreement concerning the final winning team or rank, OffsideSwap will have the final say.',
               )}
             </Text>
             <Text fontSize="14px" color="textSubtle">
               -{' '}
               {t(
-                'PancakeSwap can and will disqualify any team or specific members that are proven to have taken malicious action or attempt to “cheat” in any way.',
+                'OffsideSwap can and will disqualify any team or specific members that are proven to have taken malicious action or attempt to “cheat” in any way.',
               )}
             </Text>
           </FoldableText>

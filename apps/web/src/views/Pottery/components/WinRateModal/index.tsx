@@ -1,10 +1,10 @@
 import { useRef, useEffect } from 'react'
 import styled from 'styled-components'
 import BigNumber from 'bignumber.js'
-import { useTranslation } from '@pancakeswap/localization'
-import { Modal, Text, Box, Flex, BalanceInput } from '@pancakeswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
+import { Modal, Text, Box, Flex, BalanceInput } from '@offsideswap/uikit'
 import useWinRateCalculator from 'views/Pottery/hooks/useWinRateCalculator'
-import { usePriceCakeBusd } from 'state/farms/hooks'
+import { usePriceRotoBusd } from 'state/farms/hooks'
 import { useVaultApy } from 'hooks/useVaultApy'
 import { weeksToSeconds } from 'views/Pools/components/utils/formatSecondsToWeeks'
 import { CalculatorMode, EditingCurrency } from '../../types'
@@ -47,7 +47,7 @@ const WinRateModal: React.FC<React.PropsWithChildren<WinRateModalProps>> = ({
   totalSupply,
 }) => {
   const { t } = useTranslation()
-  const cakePrice = usePriceCakeBusd()
+  const rotoPrice = usePriceRotoBusd()
   const { getLockedApy } = useVaultApy()
   const balanceInputRef = useRef<HTMLInputElement | null>(null)
   const apy = getLockedApy(weeksToSeconds(10))
@@ -63,7 +63,7 @@ const WinRateModal: React.FC<React.PropsWithChildren<WinRateModalProps>> = ({
     toggleEditingCurrency,
     setCalculatorMode,
     setTargetWinRate,
-  } = useWinRateCalculator({ cakePrice, totalSupply })
+  } = useWinRateCalculator({ rotoPrice, totalSupply })
 
   const { principalAsUSD, principalAsToken } = state.data
   const { editingCurrency } = state.controls
@@ -79,9 +79,9 @@ const WinRateModal: React.FC<React.PropsWithChildren<WinRateModalProps>> = ({
     setCalculatorMode(CalculatorMode.WIN_RATE_BASED_ON_PRINCIPAL)
   }
 
-  const editingUnit = editingCurrency === EditingCurrency.TOKEN ? 'CAKE' : 'USD'
+  const editingUnit = editingCurrency === EditingCurrency.TOKEN ? 'ROTO' : 'USD'
   const editingValue = editingCurrency === EditingCurrency.TOKEN ? principalAsToken : principalAsUSD
-  const conversionUnit = editingCurrency === EditingCurrency.TOKEN ? 'USD' : 'CAKE'
+  const conversionUnit = editingCurrency === EditingCurrency.TOKEN ? 'USD' : 'ROTO'
   const conversionValue = editingCurrency === EditingCurrency.TOKEN ? principalAsUSD : principalAsToken
   const onUserInput = editingCurrency === EditingCurrency.TOKEN ? setPrincipalFromTokenValue : setPrincipalFromUSDValue
 
@@ -96,7 +96,7 @@ const WinRateModal: React.FC<React.PropsWithChildren<WinRateModalProps>> = ({
         <Flex flexDirection="column" mb="8px">
           <Box>
             <Text color="secondary" bold fontSize="12px" textTransform="uppercase" as="span">
-              Cake
+              Roto
             </Text>
             <Text color="textSubtle" ml="4px" bold fontSize="12px" textTransform="uppercase" as="span">
               {t('Deposit')}
@@ -114,7 +114,7 @@ const WinRateModal: React.FC<React.PropsWithChildren<WinRateModalProps>> = ({
             switchEditingUnits={toggleEditingCurrency}
           />
           <ButtonMenu
-            cakePrice={cakePrice}
+            rotoPrice={rotoPrice}
             stakingTokenBalance={stakingTokenBalance}
             setPrincipalFromUSDValue={setPrincipalFromUSDValue}
           />

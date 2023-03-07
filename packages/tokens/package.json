@@ -1,12 +1,12 @@
 {
-  "name": "@pancakeswap/tokens",
+  "name": "@offsideswap/tokens",
   "license": "MIT",
-  "version": "0.0.1",
-  "description": "Tokens for pancakeswap",
+  "version": "1.0.0",
+  "description": "Tokens for offsideswap",
   "main": "src/index.ts",
   "private": true,
   "sideEffects": false,
   "dependencies": {
-    "@pancakeswap/sdk": "*"
+    "@offsideswap/sdk": "*"
   }
 }

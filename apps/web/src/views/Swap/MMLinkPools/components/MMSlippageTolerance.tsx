@@ -1,5 +1,5 @@
-import { useTooltip, Text, InfoIcon } from '@pancakeswap/uikit'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTooltip, Text, InfoIcon } from '@offsideswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
 import { memo } from 'react'
 
 export const MMSlippageTolerance = memo(() => {

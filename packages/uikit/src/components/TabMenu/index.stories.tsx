@@ -28,7 +28,7 @@ export const Default: React.FC<React.PropsWithChildren> = () => {
       <Row>
         <TabMenu activeIndex={index} onItemClick={handleClick}>
           <Tab>Total</Tab>
-          <Tab>Cakers</Tab>
+          <Tab>Rotors</Tab>
           <Tab>Flippers</Tab>
           <Tab>Storm</Tab>
         </TabMenu>

@@ -1,7 +1,7 @@
-import { Currency } from '@pancakeswap/aptos-swap-sdk'
-import { useSendTransaction } from '@pancakeswap/awgmi'
-import { useTranslation } from '@pancakeswap/localization'
-import { IconButton, Loading, useToast, useTooltip, WalletRegisterIcon } from '@pancakeswap/uikit'
+import { Currency } from '@offsideswap/aptos-swap-sdk'
+import { useSendTransaction } from '@offsideswap/awgmi'
+import { useTranslation } from '@offsideswap/localization'
+import { IconButton, Loading, useToast, useTooltip, WalletRegisterIcon } from '@offsideswap/uikit'
 import useCatchTxError from 'hooks/useCatchTxError'
 import { ToastDescriptionWithTx } from './Toast'
 

@@ -1,9 +1,9 @@
-import { Pool } from '@pancakeswap/uikit'
-import { Coin } from '@pancakeswap/aptos-swap-sdk'
-import CakeCollectModal from './CakeCollectModal'
-import CakeStakeModal from './CakeStakeModal'
+import { Pool } from '@offsideswap/uikit'
+import { Coin } from '@offsideswap/aptos-swap-sdk'
+import RotoCollectModal from './RotoCollectModal'
+import RotoStakeModal from './RotoStakeModal'
 
-const HarvestActions = Pool.withCollectModalCardAction(CakeCollectModal)
-const StakeActions = Pool.withStakeActions(CakeStakeModal)
+const HarvestActions = Pool.withCollectModalCardAction(RotoCollectModal)
+const StakeActions = Pool.withStakeActions(RotoStakeModal)
 
 export default Pool.withCardActions<Coin>(HarvestActions, StakeActions)

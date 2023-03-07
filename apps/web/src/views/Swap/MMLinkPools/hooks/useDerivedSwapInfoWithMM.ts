@@ -1,5 +1,5 @@
-import { useDebounce } from '@pancakeswap/hooks'
-import { Currency } from '@pancakeswap/sdk'
+import { useDebounce } from '@offsideswap/hooks'
+import { Currency } from '@offsideswap/sdk'
 import { Field } from 'state/swap/actions'
 import { useMMTrade } from './useMMOrderBookTrade'
 import { useIsTradeWithMMBetter } from './useIsMMTradeBetter'

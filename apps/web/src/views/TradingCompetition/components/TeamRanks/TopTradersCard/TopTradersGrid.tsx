@@ -1,9 +1,9 @@
-import { Box, Skeleton } from '@pancakeswap/uikit'
+import { Box, Skeleton } from '@offsideswap/uikit'
 import styled from 'styled-components'
 import { LeaderboardDataItem } from '../../../types'
 import GridItem from './GridItem'
 import ExpandedGridItem from './ExpandedGridItem'
-import { LeaderboardStorm, LeaderboardFlippers, LeaderboardCakers } from '../../../svgs'
+import { LeaderboardStorm, LeaderboardFlippers, LeaderboardRotors } from '../../../svgs'
 
 const SkeletonLoader = () => {
   return (
@@ -41,7 +41,7 @@ const TopTradersGrid: React.FC<React.PropsWithChildren<{ data?: LeaderboardDataI
 }) => {
   const topFive = data && data.slice(0, 5)
   const nextTwenty = data && data.slice(5, 20)
-  const teamImages = [<LeaderboardStorm />, <LeaderboardFlippers />, <LeaderboardCakers />]
+  const teamImages = [<LeaderboardStorm />, <LeaderboardFlippers />, <LeaderboardRotors />]
 
   return (
     <Box>

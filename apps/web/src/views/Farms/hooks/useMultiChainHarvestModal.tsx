@@ -1,7 +1,7 @@
 import Cookie from 'js-cookie'
-import { Token } from '@pancakeswap/swap-sdk-core'
+import { Token } from '@offsideswap/swap-sdk-core'
 import { useEffect, useState } from 'react'
-import { useModal } from '@pancakeswap/uikit'
+import { useModal } from '@offsideswap/uikit'
 import BigNumber from 'bignumber.js'
 import MultiChainHarvestModal from '../components/MultiChainHarvestModal'
 

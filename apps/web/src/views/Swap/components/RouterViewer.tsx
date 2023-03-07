@@ -1,7 +1,7 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency } from '@pancakeswap/sdk'
-import { isStableSwapPair, Pair } from '@pancakeswap/smart-router/evm'
-import { Box, Flex, Text, useTooltip } from '@pancakeswap/uikit'
+import { useTranslation } from '@offsideswap/localization'
+import { Currency } from '@offsideswap/sdk'
+import { isStableSwapPair, Pair } from '@offsideswap/smart-router/evm'
+import { Box, Flex, Text, useTooltip } from '@offsideswap/uikit'
 import { CurrencyLogo } from 'components/Logo'
 import styled from 'styled-components'
 

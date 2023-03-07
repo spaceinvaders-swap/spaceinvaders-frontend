@@ -1,5 +1,5 @@
-import { useTranslation } from "@pancakeswap/localization";
-import { useIsMounted } from "@pancakeswap/hooks";
+import { useTranslation } from "@offsideswap/localization";
+import { useIsMounted } from "@offsideswap/hooks";
 import { PropsWithChildren, ReactNode } from "react";
 import { AutoColumn, RowBetween, Text, TextProps, IconButton, PencilIcon } from "../../components";
 

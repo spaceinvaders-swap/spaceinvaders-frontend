@@ -10,15 +10,15 @@ import {
   TokenPairImage as UITokenPairImage,
   Balance,
   Pool,
-} from '@pancakeswap/uikit'
+} from '@offsideswap/uikit'
 import { useVaultPoolByKey, useIfoCredit } from 'state/pools/hooks'
-import { useTranslation } from '@pancakeswap/localization'
+import { useTranslation } from '@offsideswap/localization'
 import { vaultPoolConfig } from 'config/constants/pools'
 import { VaultKey } from 'state/types'
-import { getBalanceNumber } from '@pancakeswap/utils/formatBalance'
+import { getBalanceNumber } from '@offsideswap/utils/formatBalance'
 import { useConfig } from 'views/Ifos/contexts/IfoContext'
-import { CakeVaultDetail } from 'views/Pools/components/CakeVaultCard'
-import { Token } from '@pancakeswap/sdk'
+import { RotoVaultDetail } from 'views/Pools/components/RotoVaultCard'
+import { Token } from '@offsideswap/sdk'
 
 const StyledCardMobile = styled(Card)`
   max-width: 400px;
@@ -41,7 +41,7 @@ const IfoPoolVaultCardMobile: React.FC<React.PropsWithChildren<IfoPoolVaultCardM
   const { address: account } = useAccount()
   const credit = useIfoCredit()
   const { isExpanded, setIsExpanded } = useConfig()
-  const cakeAsNumberBalance = getBalanceNumber(credit)
+  const rotoAsNumberBalance = getBalanceNumber(credit)
 
   const vaultPool = useVaultPoolByKey(pool.vaultKey)
 
@@ -58,28 +58,28 @@ const IfoPoolVaultCardMobile: React.FC<React.PropsWithChildren<IfoPoolVaultCardM
       <CardHeader p="16px">
         <Flex justifyContent="space-between" alignItems="center">
           <StyledTokenContent alignItems="center" flex={1}>
-            <UITokenPairImage width={24} height={24} {...vaultPoolConfig[VaultKey.CakeVault].tokenImage} />
+            <UITokenPairImage width={24} height={24} {...vaultPoolConfig[VaultKey.RotoVault].tokenImage} />
             <Box ml="8px" width="180px">
               <Text small bold>
-                {vaultPoolConfig[VaultKey.CakeVault].name}
+                {vaultPoolConfig[VaultKey.RotoVault].name}
               </Text>
               <Text color="textSubtle" fontSize="12px">
-                {vaultPoolConfig[VaultKey.CakeVault].description}
+                {vaultPoolConfig[VaultKey.RotoVault].description}
               </Text>
             </Box>
           </StyledTokenContent>
           <StyledTokenContent flexDirection="column" flex={1}>
             <Text color="textSubtle" fontSize="12px">
-              {t('iCAKE')}
+              {t('iROTO')}
             </Text>
-            <Balance small bold decimals={3} value={cakeAsNumberBalance} />
+            <Balance small bold decimals={3} value={rotoAsNumberBalance} />
           </StyledTokenContent>
           <ExpandableButton expanded={isExpanded} onClick={() => setIsExpanded((prev) => !prev)} />
         </Flex>
       </CardHeader>
       {isExpanded && (
-        <CakeVaultDetail
-          showICake
+        <RotoVaultDetail
+          showIRoto
           isLoading={isLoading}
           account={account}
           pool={pool}
