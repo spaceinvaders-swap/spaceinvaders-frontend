@@ -2481,4 +2481,20 @@ export const bscTokens = {
     'Liquid Staking BNB',
     'https://www.staderlabs.com/bnb/liquid-staking/bnbx/',
   ),
+  sd: new ERC20Token(
+    ChainId.BSC,
+    '0x3BC5AC0dFdC871B365d159f728dd1B9A0B5481E8',
+    18,
+    'SD',
+    'Stader (Wormhole)',
+    'https://www.staderlabs.com/',
+  ),
+  ageur: new ERC20Token(
+    ChainId.BSC,
+    '0x12f31B73D812C6Bb0d735a218c086d44D5fe5f89',
+    18,
+    'agEUR',
+    'agEUR',
+    'https://app.angle.money/#/',
+  ),
 }

@@ -16,7 +16,7 @@ export const footerLinks: (t: ContextApi["t"]) => FooterLinkType[] = (t) => [
       },
       {
         label: t("Blog"),
-        href: "https://medium.com/offsideswap",
+        href: "https://blog.offsideswap.finance/",
       },
       {
         label: t("Community"),
