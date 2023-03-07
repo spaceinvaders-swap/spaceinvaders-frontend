@@ -6,10 +6,13 @@
   "files": [
     "lib"
   ],
-  "repository": "https://github.com/offsideswap/offside-toolkit/tree/master/packages/eslint-config-offside",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/offsideswap/offside-toolkit.git#master"
+  },
   "license": "MIT",
   "author": "RabbitDoge",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^5.48.2",
     "@typescript-eslint/parser": "^5.48.2",
@@ -26,5 +29,15 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "bugs": {
+    "url": "https://github.com/offsideswap/offside-toolkit/issues"
+  },
+  "homepage": "https://github.com/offsideswap/offside-toolkit/tree/master#readme",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   }
 }

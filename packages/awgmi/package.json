@@ -92,5 +92,7 @@
     "@blocto/sdk": {
       "optional": true
     }
-  }
+  },
+  "description": "Connect to Aptos with similar [wagmi](https://github.com/wagmi-dev/wagmi) React hooks.",
+  "author": ""
 }

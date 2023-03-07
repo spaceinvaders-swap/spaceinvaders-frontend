@@ -1,8 +1,12 @@
 {
   "name": "@offsideswap/worker-utils",
-  "version": "0.0.0",
-  "private": true,
+  "version": "0.0.1",
+  "private": false,
   "scripts": {
     "test": "vitest --run"
-  }
+  },
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
